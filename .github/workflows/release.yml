@@ -1,0 +1,92 @@
+name: Build and release Sango
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Initialize pinned SDK only
+        shell: pwsh
+        run: |
+          git submodule update --init sdk
+          if ($LASTEXITCODE -ne 0) { throw 'SDK checkout failed' }
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Install verified toolchain
+        shell: pwsh
+        run: |
+          & ./sdk/scripts/setup_toolchain.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'Toolchain setup failed' }
+      - name: Compile C and validate BDA with SDK
+        shell: pwsh
+        run: |
+          python build.py
+          if ($LASTEXITCODE -ne 0) { throw 'Build or BDA validation failed' }
+      - name: Package update assets
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+          IS_TAG: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          if ($env:IS_TAG -eq 'true') {
+            python tools/package_release.py --tag "$env:RELEASE_TAG" --require-validated
+          } else {
+            python tools/package_release.py
+          }
+          if ($LASTEXITCODE -ne 0) { throw 'Packaging failed' }
+          python tools/verify_artifacts.py
+          if ($LASTEXITCODE -ne 0) { throw 'Artifact verification failed' }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: BBK9588-sango-release
+          path: dist/*
+          archive: true
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: BBK9588-sango-release
+          path: dist
+          skip-decompress: false
+          digest-mismatch: error
+      - name: Verify downloaded files
+        run: python3 tools/verify_artifacts.py --require-validated
+      - name: Create prerelease without replacing existing assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo 'Release already exists; refusing to overwrite it.' >&2
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" dist/* \
+            --verify-tag --prerelease \
+            --title "三国霸业 $RELEASE_TAG" \
+            --notes-file "releases/$RELEASE_TAG.md"

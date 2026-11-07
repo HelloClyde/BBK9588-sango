@@ -1,0 +1,12 @@
+{
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "bda_bytes": 214700,
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "compiler": "GCC 15.2.0",
+  "mips_checks": 593,
+  "native_firmware_interface_checks": 24,
+  "physical_device_verified": false,
+  "complete_campaign_verified": false,
+  "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
+  "notes": "Native battle UI uses a controlled fixture and exact payload/LIB staging to isolate synthetic NAND ECC artifacts. Historical save comparisons are not current-release regression tests."
+}

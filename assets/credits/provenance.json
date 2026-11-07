@@ -1,0 +1,45 @@
+{
+  "generator": "built-in image_gen (GPT Image)",
+  "references": [
+    "credits-9588-reference.png",
+    "credits-9288s-reference.png"
+  ],
+  "prompt": "imagegen-prompt.txt",
+  "master": "credits-gpt-image-master.png",
+  "master_size": [
+    1086,
+    1448
+  ],
+  "master_sha256": "e77286a08383ca9a9b85e1c262b7e83125cb377a0367a87d24a5a1bff4b16ff5",
+  "target": "credits-240x320.png",
+  "target_size": [
+    240,
+    320
+  ],
+  "target_sha256": "096faf2720625def1937ebea57dedcfff42191c6c44ee8374c77de777cb8b902",
+  "packed_bytes": 19206,
+  "packed_sha256": "b469e992d57fcf53a8c2adaba12f118b6946fa333bdbe976b5dcc03596cb5778",
+  "levels": [
+    0,
+    85,
+    170,
+    255
+  ],
+  "display_rectangle": [
+    0,
+    0,
+    240,
+    320
+  ],
+  "credits": [
+    "制作群组",
+    "策划",
+    "BBK gamegroup",
+    "程序",
+    "通宵虫",
+    "南方小凯",
+    "美工",
+    "Sunday"
+  ],
+  "original_references_distributed": false
+}

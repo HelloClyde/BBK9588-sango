@@ -1,0 +1,3715 @@
+{
+  "cases": 190,
+  "passed": 190,
+  "failed": 0,
+  "scope": "Original MIPS versus rebuilt C machine code with deterministic modeled SDK file/heap/GUI boundaries. Not complete firmware or hardware validation.",
+  "skipped_cases": [
+    {
+      "function": "bbk_rand",
+      "args": [],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "bbk_rand",
+      "args": [],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "bbk_rand",
+      "args": [],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "bbk_rand",
+      "args": [],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "bbk_rand",
+      "args": [],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        0,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        0,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        0,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        0,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1065353216,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1065353216,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1065353216,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1065353216,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1073741824,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1073741824,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1073741824,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1073741824,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1056964608,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1056964608,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1056964608,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1056964608,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1077936128,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1077936128,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1077936128,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1077936128,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3212836864,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3212836864,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3212836864,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3212836864,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3223322624,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3223322624,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3223322624,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        3223322624,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1092616192,
+        1065353216
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1092616192,
+        1073741824
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1092616192,
+        1056964608
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "soft_float_sub",
+      "args": [
+        1092616192,
+        1077936128
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "FUN_81c07fd4",
+      "args": [
+        3,
+        4,
+        0,
+        2167406592
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "FUN_81c098b4",
+      "args": [
+        1
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "FUN_81c098b4",
+      "args": [
+        103
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "FUN_81c098b4",
+      "args": [
+        106
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    },
+    {
+      "function": "FUN_81c098b4",
+      "args": [
+        28
+      ],
+      "reason": "No separate linked symbol; compiler inlined or removed the function."
+    }
+  ],
+  "failures": [],
+  "tests": [
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x0",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x0",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x0",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1056964608,
+        0
+      ],
+      "rebuilt_return": [
+        1056964608,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x0",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f800000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f800000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f800000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1069547520,
+        0
+      ],
+      "rebuilt_return": [
+        1069547520,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f800000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1082130432,
+        0
+      ],
+      "rebuilt_return": [
+        1082130432,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40000000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40000000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1082130432,
+        0
+      ],
+      "rebuilt_return": [
+        1082130432,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40000000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1075838976,
+        0
+      ],
+      "rebuilt_return": [
+        1075838976,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40000000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1084227584,
+        0
+      ],
+      "rebuilt_return": [
+        1084227584,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f000000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1069547520,
+        0
+      ],
+      "rebuilt_return": [
+        1069547520,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f000000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1075838976,
+        0
+      ],
+      "rebuilt_return": [
+        1075838976,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f000000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x3f000000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1080033280,
+        0
+      ],
+      "rebuilt_return": [
+        1080033280,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40400000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1082130432,
+        0
+      ],
+      "rebuilt_return": [
+        1082130432,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40400000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1084227584,
+        0
+      ],
+      "rebuilt_return": [
+        1084227584,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40400000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1080033280,
+        0
+      ],
+      "rebuilt_return": [
+        1080033280,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x40400000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1086324736,
+        0
+      ],
+      "rebuilt_return": [
+        1086324736,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xbf800000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xbf800000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xbf800000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3204448256,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3204448256,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xbf800000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xc0200000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        3217031168,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3217031168,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xc0200000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3204448256,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3204448256,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xc0200000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3221225472,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3221225472,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0xc0200000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1056964608,
+        0
+      ],
+      "rebuilt_return": [
+        1056964608,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x41200000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1093664768,
+        0
+      ],
+      "rebuilt_return": [
+        1093664768,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x41200000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1094713344,
+        0
+      ],
+      "rebuilt_return": [
+        1094713344,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x41200000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1093140480,
+        0
+      ],
+      "rebuilt_return": [
+        1093140480,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_add",
+      "args": [
+        "0x41200000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1095761920,
+        0
+      ],
+      "rebuilt_return": [
+        1095761920,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x0",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x0",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x0",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x0",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f800000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f800000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f800000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1056964608,
+        0
+      ],
+      "rebuilt_return": [
+        1056964608,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f800000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40000000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40000000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1082130432,
+        0
+      ],
+      "rebuilt_return": [
+        1082130432,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40000000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40000000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1086324736,
+        0
+      ],
+      "rebuilt_return": [
+        1086324736,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f000000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1056964608,
+        0
+      ],
+      "rebuilt_return": [
+        1056964608,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f000000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f000000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1048576000,
+        0
+      ],
+      "rebuilt_return": [
+        1048576000,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x3f000000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1069547520,
+        0
+      ],
+      "rebuilt_return": [
+        1069547520,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40400000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40400000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1086324736,
+        0
+      ],
+      "rebuilt_return": [
+        1086324736,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40400000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1069547520,
+        0
+      ],
+      "rebuilt_return": [
+        1069547520,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x40400000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1091567616,
+        0
+      ],
+      "rebuilt_return": [
+        1091567616,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xbf800000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        3212836864,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3212836864,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xbf800000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3221225472,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3221225472,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xbf800000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3204448256,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3204448256,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xbf800000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        3225419776,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3225419776,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xc0200000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        3223322624,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3223322624,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xc0200000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3231711232,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3231711232,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xc0200000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3214934016,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3214934016,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0xc0200000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        3236954112,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3236954112,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x41200000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1092616192,
+        0
+      ],
+      "rebuilt_return": [
+        1092616192,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x41200000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1101004800,
+        0
+      ],
+      "rebuilt_return": [
+        1101004800,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x41200000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1084227584,
+        0
+      ],
+      "rebuilt_return": [
+        1084227584,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_mul",
+      "args": [
+        "0x41200000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1106247680,
+        0
+      ],
+      "rebuilt_return": [
+        1106247680,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x0",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x0",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x0",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x0",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f800000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f800000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1056964608,
+        0
+      ],
+      "rebuilt_return": [
+        1056964608,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f800000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f800000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1051372203,
+        0
+      ],
+      "rebuilt_return": [
+        1051372203,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40000000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40000000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40000000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1082130432,
+        0
+      ],
+      "rebuilt_return": [
+        1082130432,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40000000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1059760811,
+        0
+      ],
+      "rebuilt_return": [
+        1059760811,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f000000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1056964608,
+        0
+      ],
+      "rebuilt_return": [
+        1056964608,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f000000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1048576000,
+        0
+      ],
+      "rebuilt_return": [
+        1048576000,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f000000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x3f000000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1042983595,
+        0
+      ],
+      "rebuilt_return": [
+        1042983595,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40400000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40400000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1069547520,
+        0
+      ],
+      "rebuilt_return": [
+        1069547520,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40400000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1086324736,
+        0
+      ],
+      "rebuilt_return": [
+        1086324736,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x40400000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xbf800000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        3212836864,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3212836864,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xbf800000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3204448256,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3204448256,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xbf800000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3221225472,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3221225472,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xbf800000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        3198855851,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3198855851,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xc0200000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        3223322624,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3223322624,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xc0200000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3214934016,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3214934016,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xc0200000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        3231711232,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3231711232,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0xc0200000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        3210040661,
+        2147483648
+      ],
+      "rebuilt_return": [
+        3210040661,
+        2147483648
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x41200000",
+        "0x3f800000"
+      ],
+      "passed": true,
+      "original_return": [
+        1092616192,
+        0
+      ],
+      "rebuilt_return": [
+        1092616192,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x41200000",
+        "0x40000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1084227584,
+        0
+      ],
+      "rebuilt_return": [
+        1084227584,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x41200000",
+        "0x3f000000"
+      ],
+      "passed": true,
+      "original_return": [
+        1101004800,
+        0
+      ],
+      "rebuilt_return": [
+        1101004800,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "soft_float_div",
+      "args": [
+        "0x41200000",
+        "0x40400000"
+      ],
+      "passed": true,
+      "original_return": [
+        1079334229,
+        0
+      ],
+      "rebuilt_return": [
+        1079334229,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x1"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x2"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        1
+      ],
+      "rebuilt_return": [
+        1,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x3"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        1
+      ],
+      "rebuilt_return": [
+        1,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0xa"
+      ],
+      "passed": true,
+      "original_return": [
+        3,
+        3
+      ],
+      "rebuilt_return": [
+        3,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x3f"
+      ],
+      "passed": true,
+      "original_return": [
+        7,
+        7
+      ],
+      "rebuilt_return": [
+        7,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x64"
+      ],
+      "passed": true,
+      "original_return": [
+        9,
+        9
+      ],
+      "rebuilt_return": [
+        9,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0xff"
+      ],
+      "passed": true,
+      "original_return": [
+        15,
+        15
+      ],
+      "rebuilt_return": [
+        15,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x1000"
+      ],
+      "passed": true,
+      "original_return": [
+        63,
+        63
+      ],
+      "rebuilt_return": [
+        63,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c07cac",
+      "args": [
+        "0x2710"
+      ],
+      "passed": true,
+      "original_return": [
+        99,
+        99
+      ],
+      "rebuilt_return": [
+        99,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x1"
+      ],
+      "passed": true,
+      "original_return": [
+        1065353216,
+        0
+      ],
+      "rebuilt_return": [
+        1065353216,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x2"
+      ],
+      "passed": true,
+      "original_return": [
+        1073741824,
+        0
+      ],
+      "rebuilt_return": [
+        1073741824,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x3"
+      ],
+      "passed": true,
+      "original_return": [
+        1077936128,
+        0
+      ],
+      "rebuilt_return": [
+        1077936128,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0xa"
+      ],
+      "passed": true,
+      "original_return": [
+        1092616192,
+        0
+      ],
+      "rebuilt_return": [
+        1092616192,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x3f"
+      ],
+      "passed": true,
+      "original_return": [
+        1115422720,
+        0
+      ],
+      "rebuilt_return": [
+        1115422720,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x64"
+      ],
+      "passed": true,
+      "original_return": [
+        1120403456,
+        0
+      ],
+      "rebuilt_return": [
+        1120403456,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0xff"
+      ],
+      "passed": true,
+      "original_return": [
+        1132396544,
+        0
+      ],
+      "rebuilt_return": [
+        1132396544,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x1000"
+      ],
+      "passed": true,
+      "original_return": [
+        1166016512,
+        0
+      ],
+      "rebuilt_return": [
+        1166016512,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1e6b0",
+      "args": [
+        "0x2710"
+      ],
+      "passed": true,
+      "original_return": [
+        1176256512,
+        0
+      ],
+      "rebuilt_return": [
+        1176256512,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1"
+      ],
+      "passed": true,
+      "original_return": [
+        413567,
+        2176839668
+      ],
+      "rebuilt_return": [
+        413567,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x2"
+      ],
+      "passed": true,
+      "original_return": [
+        424349,
+        2176839668
+      ],
+      "rebuilt_return": [
+        424349,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x3"
+      ],
+      "passed": true,
+      "original_return": [
+        196608,
+        2176839668
+      ],
+      "rebuilt_return": [
+        196608,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x4"
+      ],
+      "passed": true,
+      "original_return": [
+        29282,
+        2176839668
+      ],
+      "rebuilt_return": [
+        29282,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x5"
+      ],
+      "passed": true,
+      "original_return": [
+        290640,
+        2176839668
+      ],
+      "rebuilt_return": [
+        290640,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x6"
+      ],
+      "passed": true,
+      "original_return": [
+        163840,
+        2176839668
+      ],
+      "rebuilt_return": [
+        163840,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x7"
+      ],
+      "passed": true,
+      "original_return": [
+        436170,
+        2176839668
+      ],
+      "rebuilt_return": [
+        436170,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x8"
+      ],
+      "passed": true,
+      "original_return": [
+        434380,
+        2176839668
+      ],
+      "rebuilt_return": [
+        434380,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x9"
+      ],
+      "passed": true,
+      "original_return": [
+        98042,
+        2176839668
+      ],
+      "rebuilt_return": [
+        98042,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0xa"
+      ],
+      "passed": true,
+      "original_return": [
+        433348,
+        2176839668
+      ],
+      "rebuilt_return": [
+        433348,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0xb"
+      ],
+      "passed": true,
+      "original_return": [
+        425843,
+        2176839668
+      ],
+      "rebuilt_return": [
+        425843,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0xc"
+      ],
+      "passed": true,
+      "original_return": [
+        227855,
+        2176839668
+      ],
+      "rebuilt_return": [
+        227855,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0xd"
+      ],
+      "passed": true,
+      "original_return": [
+        259662,
+        2176839668
+      ],
+      "rebuilt_return": [
+        259662,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0xe"
+      ],
+      "passed": true,
+      "original_return": [
+        435358,
+        2176839668
+      ],
+      "rebuilt_return": [
+        435358,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0xf"
+      ],
+      "passed": true,
+      "original_return": [
+        32244,
+        2176839668
+      ],
+      "rebuilt_return": [
+        32244,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x10"
+      ],
+      "passed": true,
+      "original_return": [
+        395346,
+        2176839668
+      ],
+      "rebuilt_return": [
+        395346,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x11"
+      ],
+      "passed": true,
+      "original_return": [
+        4294967295,
+        2176839668
+      ],
+      "rebuilt_return": [
+        4294967295,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x12"
+      ],
+      "passed": true,
+      "original_return": [
+        4294967295,
+        2176839668
+      ],
+      "rebuilt_return": [
+        4294967295,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x13"
+      ],
+      "passed": true,
+      "original_return": [
+        248594,
+        2176839668
+      ],
+      "rebuilt_return": [
+        248594,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x14"
+      ],
+      "passed": true,
+      "original_return": [
+        327680,
+        2176839668
+      ],
+      "rebuilt_return": [
+        327680,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x15"
+      ],
+      "passed": true,
+      "original_return": [
+        336056,
+        2176839668
+      ],
+      "rebuilt_return": [
+        336056,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x16"
+      ],
+      "passed": true,
+      "original_return": [
+        314130,
+        2176839668
+      ],
+      "rebuilt_return": [
+        314130,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x17"
+      ],
+      "passed": true,
+      "original_return": [
+        183369,
+        2176839668
+      ],
+      "rebuilt_return": [
+        183369,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x18"
+      ],
+      "passed": true,
+      "original_return": [
+        281362,
+        2176839668
+      ],
+      "rebuilt_return": [
+        281362,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x19"
+      ],
+      "passed": true,
+      "original_return": [
+        410184,
+        2176839668
+      ],
+      "rebuilt_return": [
+        410184,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1a"
+      ],
+      "passed": true,
+      "original_return": [
+        437742,
+        2176839668
+      ],
+      "rebuilt_return": [
+        437742,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1b"
+      ],
+      "passed": true,
+      "original_return": [
+        423035,
+        2176839668
+      ],
+      "rebuilt_return": [
+        423035,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1c"
+      ],
+      "passed": true,
+      "original_return": [
+        393216,
+        2176839668
+      ],
+      "rebuilt_return": [
+        393216,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1d"
+      ],
+      "passed": true,
+      "original_return": [
+        386123,
+        2176839668
+      ],
+      "rebuilt_return": [
+        386123,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1e"
+      ],
+      "passed": true,
+      "original_return": [
+        390383,
+        2176839668
+      ],
+      "rebuilt_return": [
+        390383,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x1f"
+      ],
+      "passed": true,
+      "original_return": [
+        388253,
+        2176839668
+      ],
+      "rebuilt_return": [
+        388253,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x20"
+      ],
+      "passed": true,
+      "original_return": [
+        383993,
+        2176839668
+      ],
+      "rebuilt_return": [
+        383993,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x21"
+      ],
+      "passed": true,
+      "original_return": [
+        65274,
+        2176839668
+      ],
+      "rebuilt_return": [
+        65274,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x22"
+      ],
+      "passed": true,
+      "original_return": [
+        436956,
+        2176839668
+      ],
+      "rebuilt_return": [
+        436956,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x23"
+      ],
+      "passed": true,
+      "original_return": [
+        377375,
+        2176839668
+      ],
+      "rebuilt_return": [
+        377375,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x24"
+      ],
+      "passed": true,
+      "original_return": [
+        405948,
+        2176839668
+      ],
+      "rebuilt_return": [
+        405948,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x25"
+      ],
+      "passed": true,
+      "original_return": [
+        381811,
+        2176839668
+      ],
+      "rebuilt_return": [
+        381811,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x26"
+      ],
+      "passed": true,
+      "original_return": [
+        374974,
+        2176839668
+      ],
+      "rebuilt_return": [
+        374974,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c153d8",
+      "args": [
+        "0x27"
+      ],
+      "passed": true,
+      "original_return": [
+        403830,
+        2176839668
+      ],
+      "rebuilt_return": [
+        403830,
+        4
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x1",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        4294967279
+      ],
+      "rebuilt_return": [
+        0,
+        2169503752
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x2",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        4294967274
+      ],
+      "rebuilt_return": [
+        0,
+        2169503752
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x3",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        167
+      ],
+      "rebuilt_return": [
+        0,
+        2169503752
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x4",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        4294967283
+      ],
+      "rebuilt_return": [
+        0,
+        2169503752
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x5",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        4294967283
+      ],
+      "rebuilt_return": [
+        0,
+        2169503752
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x6",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        4294967267
+      ],
+      "rebuilt_return": [
+        0,
+        2169503752
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c154d8",
+      "args": [
+        "0x1",
+        "0x7",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        4294967287
+      ],
+      "rebuilt_return": [
+        0,
+        2169503776
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "sango_load_package_and_buffers",
+      "args": [],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        250
+      ],
+      "original_calls": 14,
+      "rebuilt_calls": 14
+    },
+    {
+      "function": "sango_create_app_frame",
+      "args": [],
+      "passed": true,
+      "original_return": [
+        0,
+        2172649472
+      ],
+      "rebuilt_return": [
+        0,
+        4294967295
+      ],
+      "original_calls": 8,
+      "rebuilt_calls": 8
+    },
+    {
+      "function": "sango_allocate_session_state",
+      "args": [],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        2164701231
+      ],
+      "original_calls": 4,
+      "rebuilt_calls": 4
+    },
+    {
+      "function": "FUN_81c08100",
+      "args": [
+        "0x1",
+        "0x2",
+        "0x4",
+        "0x5",
+        "0x0",
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        2173698976
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 6,
+      "rebuilt_calls": 6
+    },
+    {
+      "function": "FUN_81c0a990",
+      "args": [
+        "0x81300100",
+        "0x81300200"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        2173706432
+      ],
+      "rebuilt_return": [
+        0,
+        320
+      ],
+      "original_calls": 1,
+      "rebuilt_calls": 1
+    },
+    {
+      "function": "FUN_81c1b91c",
+      "args": [
+        "0x1",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        18,
+        0
+      ],
+      "rebuilt_return": [
+        18,
+        2177022377
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1b91c",
+      "args": [
+        "0x2",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        16,
+        0
+      ],
+      "rebuilt_return": [
+        16,
+        2177022377
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "FUN_81c1b91c",
+      "args": [
+        "0x3",
+        "0x81500000"
+      ],
+      "passed": true,
+      "original_return": [
+        11,
+        0
+      ],
+      "rebuilt_return": [
+        11,
+        2177022377
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x1",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 1,
+      "rebuilt_calls": 1
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x2",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 1,
+      "rebuilt_calls": 1
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x10",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x11",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x12",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 0,
+      "rebuilt_calls": 0
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x60",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 2,
+      "rebuilt_calls": 2
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x66",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 3,
+      "rebuilt_calls": 3
+    },
+    {
+      "function": "sango_window_proc",
+      "args": [
+        "0x81320000",
+        "0x144",
+        "0x12345678",
+        "0x34567890"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        0
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 1,
+      "rebuilt_calls": 1
+    },
+    {
+      "function": "FUN_81c16940",
+      "args": [
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        2172657664
+      ],
+      "rebuilt_return": [
+        1,
+        4294967295
+      ],
+      "original_calls": 72,
+      "rebuilt_calls": 72
+    },
+    {
+      "function": "FUN_81c16704",
+      "args": [
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        2172657664
+      ],
+      "rebuilt_return": [
+        1,
+        2176839644
+      ],
+      "original_calls": 77,
+      "rebuilt_calls": 77
+    },
+    {
+      "function": "FUN_81c16940",
+      "args": [
+        "0x1"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        2172657664
+      ],
+      "rebuilt_return": [
+        1,
+        4294967295
+      ],
+      "original_calls": 72,
+      "rebuilt_calls": 72
+    },
+    {
+      "function": "FUN_81c16704",
+      "args": [
+        "0x1"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        2172657664
+      ],
+      "rebuilt_return": [
+        1,
+        2176839644
+      ],
+      "original_calls": 77,
+      "rebuilt_calls": 77
+    },
+    {
+      "function": "FUN_81c16940",
+      "args": [
+        "0x2"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        2172657664
+      ],
+      "rebuilt_return": [
+        1,
+        4294967295
+      ],
+      "original_calls": 72,
+      "rebuilt_calls": 72
+    },
+    {
+      "function": "FUN_81c16704",
+      "args": [
+        "0x2"
+      ],
+      "passed": true,
+      "original_return": [
+        1,
+        2172657664
+      ],
+      "rebuilt_return": [
+        1,
+        2176839644
+      ],
+      "original_calls": 77,
+      "rebuilt_calls": 77
+    },
+    {
+      "function": "sango_select_session",
+      "args": [],
+      "passed": true,
+      "original_return": [
+        0,
+        255
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 153606,
+      "rebuilt_calls": 153606
+    },
+    {
+      "function": "FUN_81c162e0",
+      "args": [
+        "0x3"
+      ],
+      "passed": true,
+      "original_return": [
+        28,
+        28
+      ],
+      "rebuilt_return": [
+        28,
+        255
+      ],
+      "original_calls": 153620,
+      "rebuilt_calls": 153620
+    },
+    {
+      "function": "FUN_81c08100",
+      "args": [
+        "0x0",
+        "0x0",
+        "0xef",
+        "0x13f",
+        "0x2",
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        2173698976
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 6,
+      "rebuilt_calls": 6
+    },
+    {
+      "function": "FUN_81c08100",
+      "args": [
+        "0xef",
+        "0x13f",
+        "0xef",
+        "0x13f",
+        "0x2",
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        2173698976
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 6,
+      "rebuilt_calls": 6
+    },
+    {
+      "function": "FUN_81c08100",
+      "args": [
+        "-0x1",
+        "-0x2",
+        "0x4",
+        "0x5",
+        "0x2",
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        2173698976
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 6,
+      "rebuilt_calls": 6
+    },
+    {
+      "function": "FUN_81c08100",
+      "args": [
+        "0xffff",
+        "0xffff",
+        "0x1",
+        "0x1",
+        "0x2",
+        "0x0"
+      ],
+      "passed": true,
+      "original_return": [
+        0,
+        2173698976
+      ],
+      "rebuilt_return": [
+        0,
+        0
+      ],
+      "original_calls": 6,
+      "rebuilt_calls": 6
+    }
+  ]
+}

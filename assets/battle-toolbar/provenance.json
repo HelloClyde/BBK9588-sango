@@ -1,0 +1,43 @@
+{
+  "generator": "built-in image_gen (GPT Image)",
+  "prompt": "imagegen-prompt.txt",
+  "edit_reference": "toolbar-9288s-reference.png",
+  "reused_from": "../statusbar/toolbar-gpt-image-master.png",
+  "master": "toolbar-gpt-image-master.png",
+  "master_size": [
+    2172,
+    724
+  ],
+  "master_sha256": "4d0ac00b10a31734fd70ecf1cbba9bb8624b0aae8c9a8d6ac25b214ed3e5e099",
+  "crop_box": [
+    0,
+    203,
+    2172,
+    521
+  ],
+  "target": "toolbar-240x36.png",
+  "target_size": [
+    240,
+    36
+  ],
+  "target_sha256": "9fbd4298d57179bde199efdf0b52d2e6cb5279c4ae4fbdcf1be4f815014337b5",
+  "packed_sha256": "8603a4c643522850baef53e0f0db7b92b46e68435f646aaa9f0d47831d683c14",
+  "packed_bytes": 2166,
+  "display_rectangle": [
+    0,
+    257,
+    240,
+    36
+  ],
+  "text": [
+    "信息",
+    "查找"
+  ],
+  "levels": [
+    0,
+    85,
+    170,
+    255
+  ],
+  "original_references_distributed": false
+}

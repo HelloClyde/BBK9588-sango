@@ -1,0 +1,701 @@
+{
+  "passed": 67,
+  "failed": 0,
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "scope": "Actual compiled MIPS input normalization, touch dispatch, HUD and bitmap rasterization; OS delivery and unrelated modal/cursor drawing are modeled. Native battle-interface fixture checked separately.",
+  "cases": [
+    {
+      "case": "footer below status row is cleared to remove old toolbar and strategy UI",
+      "passed": true
+    },
+    {
+      "case": "compiled battle toolbar draws all pixels below the map and statistics",
+      "passed": true,
+      "pixels": 8640
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        85,
+        277
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        155,
+        277
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        55,
+        185
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        100,
+        185
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        85,
+        256
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        60,
+        259
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        113,
+        290
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        128,
+        259
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        181,
+        290
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        85,
+        258
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        85,
+        291
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        59,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        114,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        127,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        182,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        85,
+        21
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        100,
+        441
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        356,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        85,
+        300
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 1,
+      "xy": [
+        155,
+        300
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        85,
+        277
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        155,
+        277
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        55,
+        185
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        100,
+        185
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        85,
+        256
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        60,
+        259
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        113,
+        290
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        128,
+        259
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        181,
+        290
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        85,
+        258
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        85,
+        291
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        59,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        114,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        127,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        182,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        85,
+        21
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        100,
+        441
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        356,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        85,
+        300
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 2,
+      "xy": [
+        155,
+        300
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        85,
+        277
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        155,
+        277
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        55,
+        185
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        100,
+        185
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        85,
+        256
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        60,
+        259
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        113,
+        290
+      ],
+      "action": 1,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        128,
+        259
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        181,
+        290
+      ],
+      "action": 2,
+      "hud_restored": true,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        85,
+        258
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        85,
+        291
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        59,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        114,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        127,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        182,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        85,
+        21
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        100,
+        441
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        356,
+        277
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        85,
+        300
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "actual normalizer and battle touch dispatch",
+      "mode": 3,
+      "xy": [
+        155,
+        300
+      ],
+      "action": 0,
+      "hud_restored": false,
+      "passed": true
+    },
+    {
+      "case": "keyboard information shortcut retains action and restores HUD",
+      "key": 31,
+      "passed": true
+    },
+    {
+      "case": "keyboard information shortcut retains action and restores HUD",
+      "key": 35,
+      "passed": true
+    },
+    {
+      "case": "original confirm/cancel result retained",
+      "key": 28,
+      "passed": true
+    },
+    {
+      "case": "original confirm/cancel result retained",
+      "key": 1,
+      "passed": true
+    },
+    {
+      "case": "real battle HUD painter includes the visible toolbar",
+      "passed": true
+    }
+  ]
+}

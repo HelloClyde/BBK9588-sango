@@ -1,0 +1,48 @@
+{
+  "passed": 6,
+  "failed": 0,
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "previous_bda_sha256": "709190655867e9b2e07feead56c012c184c8181f52775768db779bbb40e9b549",
+  "payload_unchanged": false,
+  "payload_sha256": "242e108a5eb6025445585006eaf82f4c8fb3b73af9ed2a2626f4dfddb526e1af",
+  "scope": "Four SDK VX icon dimension/pixel checks retained with exact entire icon/header byte equality to previous validated icon revision, and official SDK validation of current BDA. Current game code changes are checked in the day-popup and gameplay reports. No physical-device launcher verification.",
+  "cases": [
+    {
+      "icon": 0,
+      "size": [
+        80,
+        80
+      ],
+      "all_rgb565_pixels_equal": true,
+      "non_grayscale_colors": 4560
+    },
+    {
+      "icon": 1,
+      "size": [
+        80,
+        80
+      ],
+      "all_rgb565_pixels_equal": true,
+      "non_grayscale_colors": 4560
+    },
+    {
+      "icon": 2,
+      "size": [
+        54,
+        54
+      ],
+      "all_rgb565_pixels_equal": true,
+      "non_grayscale_colors": 2356
+    },
+    {
+      "icon": 3,
+      "size": [
+        58,
+        58
+      ],
+      "all_rgb565_pixels_equal": true,
+      "non_grayscale_colors": 2677
+    }
+  ],
+  "icons_unchanged_from_previous": true
+}

@@ -1,0 +1,16 @@
+Use case: precise-object-edit.
+Asset type: full-screen credits page for the monochrome BBK 9588 game 三国霸业.
+Input image 1 (320×240 landscape): authoritative 9588 credits artwork and author names. Input image 2 (160×240 portrait): original 9288S portrait layout reference.
+Primary request: repair the incorrectly ported 9588 credits screen by faithfully rebuilding the credits artwork in PORTRAIT 3:4 aspect ratio, for a final device resolution of exactly 240×320. Produce a clean high-resolution portrait master with no outer padding, suitable for downsampling to 240×320 four-level grayscale. Keep the traditional Chinese ornamental frame, pale dragon/water/cloud background and monochrome retro game character, while improving legibility and spacing. All four edges and corners of the frame must fit inside the page. Do not rotate the text or crop a landscape page.
+Exact text (verbatim; preserve author credit spellings):
+制作群组
+策划
+BBK gamegroup
+程序
+通宵虫
+南方小凯
+美工
+Sunday
+Layout: centered title at top, followed by a clearly separated planning section, programming section with two author lines, and art section. Prefer role labels at left with names beside them where room permits, using a second line for the second programmer. Leave sufficient spacing and a safe margin inside the decorative border. Small original character doodles from the references may stay beside the appropriate names if there is space, never covering text.
+Style: black calligraphic Chinese text and matching Latin lettering on a white/light-gray background, fine ink line art, four grayscale levels only. Ensure the original author names are accurate, uncropped and unoverlapped when scaled to 240×320.
+Constraints: one finished credits page only; no device mockup, no new names, no English translation of Chinese credits, no added title 三国霸业, no buttons, no extra headings, no watermark, no invented legal text, no gradients, no color. This edits layout and clarity while preserving the original credits.

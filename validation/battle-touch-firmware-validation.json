@@ -1,0 +1,80 @@
+{
+  "passed": 12,
+  "failed": 0,
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "scope": "Native C200 firmware, production battle painter/input/modal functions and hardware input. Controlled terrain-only state entered at normal credits call by a separate RAM fixture. No full battle, AI, campaign or physical-device verification; fixture excluded from delivered BDA.",
+  "cases": [
+    {
+      "name": "Native battle toolbar matches every compiled pixel",
+      "passed": true,
+      "screenshot": "battle-touch-native-map.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Status row pixels remain unchanged and footer below buttons is cleared",
+      "passed": true,
+      "screenshot": "battle-touch-native-map.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Legacy map hotspot x=55 does not open a modal",
+      "passed": true,
+      "screenshot": "battle-touch-native-old-55.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Legacy map hotspot x=100 does not open a modal",
+      "passed": true,
+      "screenshot": "battle-touch-native-old-100.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Old bottom hotspot x=85, y=300 is ignored",
+      "passed": true,
+      "screenshot": "battle-touch-native-old-bottom-85.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Old bottom hotspot x=155, y=300 is ignored",
+      "passed": true,
+      "screenshot": "battle-touch-native-old-bottom-155.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Information at y=277 opens native terrain information",
+      "passed": true,
+      "screenshot": "battle-touch-native-info.png",
+      "screenshot_sha256": "f56946526438f8a5910b52a8377340c2e7b1f141daa31a36b402bfc92d996104"
+    },
+    {
+      "name": "Closing information restores map and toolbar",
+      "passed": true,
+      "screenshot": "battle-touch-native-info-return.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Find at y=277 opens native map overview",
+      "passed": true,
+      "screenshot": "battle-touch-native-overview.png",
+      "screenshot_sha256": "ab78c6886968e5ad91a6faccca8927f145245d63c28891870840683fc2f663b0"
+    },
+    {
+      "name": "Closing overview restores map and toolbar",
+      "passed": true,
+      "screenshot": "battle-touch-native-overview-return.png",
+      "screenshot_sha256": "0f87d5b00d1004c539c74725c85ebfa9ebd26d23bbc0f4ec7e156ea42baaf58f"
+    },
+    {
+      "name": "Battle cursor movement preserves toolbar",
+      "passed": true,
+      "screenshot": "battle-touch-native-move.png",
+      "screenshot_sha256": "fa8a8782c2b6e6c05fb6ceef2357ec9a95abdc01e28fc69c5754b0badcfb43f0"
+    },
+    {
+      "name": "Fixture exits through normal menu caller",
+      "passed": true,
+      "screenshot": "battle-touch-native-exit.png",
+      "screenshot_sha256": "91b16cf09ea40b122d9d1f1ec5ea929aeff6651e44a5bacce3e21adbf069e126"
+    }
+  ]
+}

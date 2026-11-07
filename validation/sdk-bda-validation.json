@@ -1,0 +1,71 @@
+{
+  "path": "build/三国霸业.bda",
+  "size": 214700,
+  "title": "三国霸业",
+  "category": 4,
+  "decoded_words": [
+    4932162,
+    1562662242,
+    16777474,
+    4,
+    214696,
+    38392,
+    136,
+    12824,
+    12824,
+    5856,
+    6752
+  ],
+  "entry_offset": 38392,
+  "entry_va": 2176843808,
+  "runtime_file_base": 2176805416,
+  "entry_code_word": 666763240,
+  "file_size_minus_4": 214696,
+  "expected_file_size_minus_4": 214696,
+  "checksum_ok": true,
+  "expected_magic": 4932162,
+  "expected_word04": 1562662242,
+  "expected_version": 16777474,
+  "header_xor_key": 1146246980,
+  "checksum_offset": 132,
+  "checksum_xor_key": 841827915,
+  "encoded_word_end": 44,
+  "title_offset": 44,
+  "title_size": 16,
+  "category_offset": 12,
+  "min_icon_start": 136,
+  "mips_beq_zero_zero_self": 268500991,
+  "icon_ranges": [
+    {
+      "index": 0,
+      "start": 136,
+      "end": 12960,
+      "size": 12824,
+      "vx": true
+    },
+    {
+      "index": 1,
+      "start": 12960,
+      "end": 25784,
+      "size": 12824,
+      "vx": true
+    },
+    {
+      "index": 2,
+      "start": 25784,
+      "end": 31640,
+      "size": 5856,
+      "vx": true
+    },
+    {
+      "index": 3,
+      "start": 31640,
+      "end": 38392,
+      "size": 6752,
+      "vx": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "ok": true
+}

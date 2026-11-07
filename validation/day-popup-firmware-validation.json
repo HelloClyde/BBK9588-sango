@@ -1,0 +1,31 @@
+{
+  "passed": 4,
+  "failed": 0,
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "cases": [
+    {
+      "name": "Day 1 popup matches centered template outside numeric glyphs",
+      "passed": true,
+      "screenshot": "day-popup-native-1.png"
+    },
+    {
+      "name": "Day 10 popup matches centered template outside numeric glyphs",
+      "passed": true,
+      "screenshot": "day-popup-native-10.png"
+    },
+    {
+      "name": "One-digit and two-digit day text render distinct native glyphs",
+      "passed": true,
+      "screenshots": [
+        "day-popup-native-1.png",
+        "day-popup-native-10.png"
+      ]
+    },
+    {
+      "name": "Dismissing popup restores the battle screen and toolbar",
+      "passed": true,
+      "screenshot": "day-popup-native-return.png"
+    }
+  ],
+  "scope": "Native C200 firmware and production popup painter in a controlled battle UI fixture; digits use native firmware fonts. Not physical-device or complete-battle verification."
+}

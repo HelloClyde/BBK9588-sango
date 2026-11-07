@@ -1,0 +1,70 @@
+{
+  "source": "9288S 三国霸业.exe (user-provided original; not included)",
+  "source_sha256": "4eafbd3c59b64bf56fb810e47de43cb9d1075530801a8f991cf007f510954f9c",
+  "descriptor_offset": 256,
+  "pixels_offset": 272,
+  "pixels_bytes": 512,
+  "decoded_size": [
+    32,
+    64
+  ],
+  "states": 2,
+  "state_size": [
+    32,
+    32
+  ],
+  "generator": "built-in image_gen (GPT Image)",
+  "prompt": "imagegen-prompt.txt",
+  "master": "icon-gpt-image-master.png",
+  "master_size": [
+    1254,
+    1254
+  ],
+  "master_sha256": "692ae72fa804c3745da4a23984c7877a7eaae970f6c74ab73f36fb3b5726d15a",
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "encoder": "sdk/bda_packer/vx_icon.py",
+  "icons": [
+    {
+      "index": 0,
+      "size": [
+        80,
+        80
+      ],
+      "offset": 136,
+      "bytes": 12824,
+      "vx_sha256": "e858361273c6a5f46baeefd9f107dddbea62de32d56a41fec1af2138cbf27c26"
+    },
+    {
+      "index": 1,
+      "size": [
+        80,
+        80
+      ],
+      "offset": 12960,
+      "bytes": 12824,
+      "vx_sha256": "e858361273c6a5f46baeefd9f107dddbea62de32d56a41fec1af2138cbf27c26"
+    },
+    {
+      "index": 2,
+      "size": [
+        54,
+        54
+      ],
+      "offset": 25784,
+      "bytes": 5856,
+      "vx_sha256": "d57ebcc24c70b1053824ebc2c13763507b7e55311b08e815f15120c4fff55f6d"
+    },
+    {
+      "index": 3,
+      "size": [
+        58,
+        58
+      ],
+      "offset": 31640,
+      "bytes": 6752,
+      "vx_sha256": "406734e0093f5aa5929112177314c64589e853301d56b58ee0698d20d962395e"
+    }
+  ],
+  "scope": "Application launcher icons only; no in-game image replacement.",
+  "original_references_distributed": false
+}

@@ -1,0 +1,45 @@
+{
+  "passed": 6,
+  "failed": 0,
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "staging": "port-staging.json",
+  "scope": "Native C200 firmware and hardware input chardev; exact BDA/LIB staging isolates synthetic NAND ECC artifacts. Not hardware verification.",
+  "cases": [
+    {
+      "name": "toolbar matches compiled raster through real firmware",
+      "passed": true,
+      "screenshot": "statusbar-game-map.png",
+      "screenshot_sha256": "c071244a853d3050b93c434ff2cd67e2a7df256a08fad2d4d27ddbd9dc7dc3fd"
+    },
+    {
+      "name": "Information touch at y=260 opens native dialog",
+      "passed": true,
+      "screenshot": "statusbar-game-info.png",
+      "screenshot_sha256": "6421db54f433001074e378dde7d847c624f67a219c07d0a37a8c3af67f912972"
+    },
+    {
+      "name": "Find touch at y=260 displays the exact route map",
+      "passed": true,
+      "screenshot": "statusbar-game-find.png",
+      "screenshot_sha256": "a4e96bd3bc7d352d4b6165c3acad521bb4017bfdf012a78b0a47193e172b4520"
+    },
+    {
+      "name": "Cancel returns to map",
+      "passed": true,
+      "screenshot": "statusbar-game-return.png",
+      "screenshot_sha256": "c071244a853d3050b93c434ff2cd67e2a7df256a08fad2d4d27ddbd9dc7dc3fd"
+    },
+    {
+      "name": "Old hidden hotspot is ignored",
+      "passed": true,
+      "screenshot": "statusbar-game-old-touch.png",
+      "screenshot_sha256": "c071244a853d3050b93c434ff2cd67e2a7df256a08fad2d4d27ddbd9dc7dc3fd"
+    },
+    {
+      "name": "Movement preserves toolbar",
+      "passed": true,
+      "screenshot": "statusbar-game-move.png",
+      "screenshot_sha256": "4aff9ceff3e070e8b4b617ddf081f6a1110832f2d7a1804638b01266b840c575"
+    }
+  ]
+}

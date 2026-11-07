@@ -1,0 +1,510 @@
+{
+  "passed": 38,
+  "failed": 0,
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "scope": "Compiled MIPS popup rasterization for all 30 days and actual turn dispatch; text coordinates and timer calls recorded through modeled SDK. Native firmware checks recorded separately.",
+  "cases": [
+    {
+      "day": 1,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "1"
+      ],
+      "passed": true
+    },
+    {
+      "day": 2,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "2"
+      ],
+      "passed": true
+    },
+    {
+      "day": 3,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "3"
+      ],
+      "passed": true
+    },
+    {
+      "day": 4,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "4"
+      ],
+      "passed": true
+    },
+    {
+      "day": 5,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "5"
+      ],
+      "passed": true
+    },
+    {
+      "day": 6,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "6"
+      ],
+      "passed": true
+    },
+    {
+      "day": 7,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "7"
+      ],
+      "passed": true
+    },
+    {
+      "day": 8,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "8"
+      ],
+      "passed": true
+    },
+    {
+      "day": 9,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        117,
+        153,
+        "9"
+      ],
+      "passed": true
+    },
+    {
+      "day": 10,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "10"
+      ],
+      "passed": true
+    },
+    {
+      "day": 11,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "11"
+      ],
+      "passed": true
+    },
+    {
+      "day": 12,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "12"
+      ],
+      "passed": true
+    },
+    {
+      "day": 13,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "13"
+      ],
+      "passed": true
+    },
+    {
+      "day": 14,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "14"
+      ],
+      "passed": true
+    },
+    {
+      "day": 15,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "15"
+      ],
+      "passed": true
+    },
+    {
+      "day": 16,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "16"
+      ],
+      "passed": true
+    },
+    {
+      "day": 17,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "17"
+      ],
+      "passed": true
+    },
+    {
+      "day": 18,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "18"
+      ],
+      "passed": true
+    },
+    {
+      "day": 19,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "19"
+      ],
+      "passed": true
+    },
+    {
+      "day": 20,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "20"
+      ],
+      "passed": true
+    },
+    {
+      "day": 21,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "21"
+      ],
+      "passed": true
+    },
+    {
+      "day": 22,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "22"
+      ],
+      "passed": true
+    },
+    {
+      "day": 23,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "23"
+      ],
+      "passed": true
+    },
+    {
+      "day": 24,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "24"
+      ],
+      "passed": true
+    },
+    {
+      "day": 25,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "25"
+      ],
+      "passed": true
+    },
+    {
+      "day": 26,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "26"
+      ],
+      "passed": true
+    },
+    {
+      "day": 27,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "27"
+      ],
+      "passed": true
+    },
+    {
+      "day": 28,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "28"
+      ],
+      "passed": true
+    },
+    {
+      "day": 29,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "29"
+      ],
+      "passed": true
+    },
+    {
+      "day": 30,
+      "popup": [
+        98,
+        149,
+        44,
+        21
+      ],
+      "text": [
+        114,
+        153,
+        "30"
+      ],
+      "passed": true
+    },
+    {
+      "case": "actual turn dispatcher retains day increment, delay, continuation and day-31 limit",
+      "previous_day": 0,
+      "passed": true
+    },
+    {
+      "case": "actual turn dispatcher retains day increment, delay, continuation and day-31 limit",
+      "previous_day": 9,
+      "passed": true
+    },
+    {
+      "case": "actual turn dispatcher retains day increment, delay, continuation and day-31 limit",
+      "previous_day": 29,
+      "passed": true
+    },
+    {
+      "case": "actual turn dispatcher retains day increment, delay, continuation and day-31 limit",
+      "previous_day": 30,
+      "passed": true
+    },
+    {
+      "case": "invalid image geometry does not wrap coordinates",
+      "size": [
+        0,
+        21
+      ],
+      "passed": true
+    },
+    {
+      "case": "invalid image geometry does not wrap coordinates",
+      "size": [
+        241,
+        21
+      ],
+      "passed": true
+    },
+    {
+      "case": "invalid image geometry does not wrap coordinates",
+      "size": [
+        44,
+        11
+      ],
+      "passed": true
+    },
+    {
+      "case": "invalid image geometry does not wrap coordinates",
+      "size": [
+        44,
+        321
+      ],
+      "passed": true
+    }
+  ]
+}
