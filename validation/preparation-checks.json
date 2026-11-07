@@ -1,0 +1,27 @@
+{
+  "prepared_date": "2026-11-08",
+  "project": "BBK9588-sango",
+  "proposed_version": "v0.1.0-alpha.1",
+  "checks": {
+    "readme_required_sections": true,
+    "readme_screenshots_exist": true,
+    "private_dump_and_host_path_audit": true,
+    "sdk_public_commit_confirmed": true,
+    "sdk_submodule_pinned": true,
+    "clean_public_sdk_checkout_build": true,
+    "sdk_installer_cached_archive_hash_checked": true,
+    "exact_bda_matches_runtime_evidence": true,
+    "sdk_static_bda_validation": true,
+    "actionlint_1_7_12": true,
+    "release_integrity_integration": true
+  },
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "toolchain_archive_sha256": "8ba866e25c9826ee04ab4310365d264e3e73769e3738bb58ae38fd6740b7ee8d",
+  "actionlint_archive_sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9",
+  "github_actions_executed": false,
+  "remote_repository_created": false,
+  "remote_push_performed": false,
+  "release_published": false,
+  "license_note": "New standalone code has scoped MIT terms; no original-game/derived-art open-source license was provided. Original full applications, LIB, firmware, NAND, fonts and saves are excluded."
+}

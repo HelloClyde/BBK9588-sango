@@ -14,6 +14,15 @@ def main():
     info=json.loads((args.dir/'BUILD_INFO.json').read_text(encoding='utf-8'))
     if args.require_validated and not info['matches_runtime_reference']:raise SystemExit('Artifact lacks matching runtime evidence')
     prefix='BBK9588-sango-'+info['version'];bda=(args.dir/(prefix+'.bda')).read_bytes()
+    expected_files={prefix+'.bda',prefix+'-update.zip','BUILD_INFO.json','SHA256SUMS.txt'}
+    if {p.name for p in args.dir.iterdir()}!=expected_files:raise SystemExit('Unexpected files in release directory')
+    if set(files)!=expected_files-{'SHA256SUMS.txt'} or len(files)!=3:raise SystemExit('Incomplete checksum manifest')
+    digest=hashlib.sha256(bda).hexdigest()
+    if digest!=info['sha256']:raise SystemExit('BDA differs from build metadata')
+    if args.require_validated:
+        reference=json.loads((ROOT/'validation/reference-build.json').read_text(encoding='utf-8'))
+        if digest!=reference['bda_sha256'] or info['sdk_commit']!=reference['sdk_commit']:
+            raise SystemExit('Release differs from runtime validation reference')
     with zipfile.ZipFile(args.dir/(prefix+'-update.zip')) as z:
         if z.testzip() is not None:raise SystemExit('Corrupt installation ZIP')
         expected={'应用/程序/三国霸业.bda','README.txt','LICENSE.md','LICENSES/MIT.txt',

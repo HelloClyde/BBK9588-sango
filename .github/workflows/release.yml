@@ -49,6 +49,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Packaging failed' }
           python tools/verify_artifacts.py
           if ($LASTEXITCODE -ne 0) { throw 'Artifact verification failed' }
+          python tools/test_release_pipeline.py
+          if ($LASTEXITCODE -ne 0) { throw 'Release integration checks failed' }
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: BBK9588-sango-release
