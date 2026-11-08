@@ -129,5 +129,18 @@
     "src/ui/system_menu.c",
     "src/runtime/libc.c",
     "src/runtime/soft_float.c"
-  ]
+  ],
+  "clean_checkout": {
+    "source_commit": "2a64e8a3b97fa90362cc60106e7ba669b5a209ca",
+    "default_readme_build": true,
+    "modules_compile_independently": 42,
+    "function_index_and_naming_guard": true,
+    "resource_code_usage_rules": 89,
+    "all_five_distribution_files_byte_identical": true,
+    "elf_bda_lib_byte_identical_to_baseline": true,
+    "release_integrity_checks": true,
+    "working_tree_clean": true,
+    "sdk_working_tree_clean": true,
+    "scope": "Independent existing checkout updated from local source only; pinned SDK and cached compiler. No remote Actions or publication."
+  }
 }
