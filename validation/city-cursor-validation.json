@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "e3cadecdbd6852108d416c893a1061f9e77f7ea7",
+  "baseline_bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
+  "bda_sha256": "45038b93b611b44426cb6e0377454f4e62ad8cb908bad16ffca5cf9012082402",
+  "sango_clr_sha256": "9d5fda527c01a4e9364ccc0089d9f10f57bf7ef3a8eb57fcdad738fdfed114de",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "changed_resource": 56,
+  "arrow_foreground_pixels": 68,
+  "hidden_arrow_pixels_restored": 37,
+  "white_background_pixels_removed": 79,
+  "other_color_frames_identical": 1203,
+  "mips_checks": 5073,
+  "strategy_cursor_checks": 88,
+  "cursor_grid_positions_checked": 49,
+  "native_color_interface_checks": 20,
+  "initialized_bytes_identical": 45536,
+  "save_layout_unchanged": true,
+  "source_sha256_lf": {
+    "assets/color/catalog.json": "7e2d70a7746ce50270cc24e240be23c677f054d798ac520a04ed93a17c03b5a1",
+    "tools/color_assets.py": "4cebf28665fb04c38c6e3609133735c4b93e1b248ac4e64966c63198af6fc86e",
+    "src/sango_color.c": "83a95b97e9129997e4eee94c1bfbd1b9878eef1405b8dbecd4c1d0942f0563bf",
+    "tools/test_color_assets.py": "fff48ac101d1b1d72d664c66617406b63a4224ed31adaa0c997f776e3d91b1d3",
+    "tools/test_strategy_color_map.py": "f5befecc1d8e906f516efb3eecbce43be8908850eabc21fd7eceacc61d3ec0d9"
+  },
+  "report_sha256_lf": {
+    "validation/color-mips-validation.json": "235a2fa7018a2a09321e728407276894d790898b313e2e6b6c851af538778a2d",
+    "validation/strategy-color-validation.json": "6db2d2cb91aff1a3a2081427bb6cfc5834c64bdf11f42e6100e0d0ad68e03f65",
+    "validation/color-firmware-validation.json": "ecd755e9a571bab201e61161f7309b6288254e8b8e8ecbad46e1a8c9e73244d8",
+    "validation/differential.json": "86eb6f769585776100d594d16271221826b055661e268156545b9cbbcd0e0747",
+    "validation/statusbar-validation.json": "096625c269d8e55f1a9c4fdb7d98fa9932b8d7b9ffe8edd68464f1bafce9dca9",
+    "validation/port-fixes-validation.json": "28295b2de0dc15e3fa08130f06166d2eb96088477d7a966dfaef0d01721109c9",
+    "validation/battle-touch-validation.json": "931b020e42318bf2283d4d6b480f8a98d3a29561a7e48719fb86a50083729392",
+    "validation/day-popup-validation.json": "1525a0167b5505f03d2137580fff293276171ce31e469fbb04589b120d70668c",
+    "validation/battle-hud-validation.json": "eeef63ae3838af8269f8b9baf71e441a7efdba632101b653295b1b298d25a297",
+    "validation/battle-summary-validation.json": "4e17de617e0bf4407956d46f403882308b1a18131341e51b4e02e43883882ed3",
+    "validation/battle-viewport-validation.json": "a49f331752a6cab4d859d70a3ed1a45a81e787a62b0947e146c2ed9dd57071d0",
+    "validation/library-loader-host.json": "b74affbba2e988e3eabbbbbb8e2242ff55f07c52a9630da436fa264687012b13"
+  },
+  "scope": "Real compiled MIPS keyed-alpha decoding and native C200 exact arrow silhouette, down/up input, transparent background equality and old-glyph restoration. Only resource056 color entry/pixels changed; native borrowed-buffer staging bypasses synthetic NAND ECC, file lifecycle modeled separately. No physical-device/full-campaign verification."
+}

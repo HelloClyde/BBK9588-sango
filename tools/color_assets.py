@@ -133,6 +133,26 @@ def transparent_background(image, policy):
 def encode_frame(image, frame):
     encoded=bytearray(rgb565(image));flags=frame['flags']
     policy=frame.get('transparency')
+    if policy and policy.get('mode')=='original-color-plane':
+        # Resource 056 has an intact 4-gray upward arrow but a corrupt LIB
+        # mask. Recover its exact original pixel geometry, not the clipped
+        # generated silhouette. This is a native resource palette/mask decode;
+        # both reference PNGs and the original LIB remain unchanged.
+        original=Image.open(LIBRARY/frame['source']).convert('RGB')
+        if original.size!=image.size:
+            raise ValueError('Original cursor plane dimensions changed')
+        palette=policy['palette_rgb'];encoded=bytearray()
+        for red,green,blue in original.get_flattened_data():
+            if red!=green or red!=blue or str(red) not in palette:
+                raise ValueError('Expected the original four-gray cursor plane')
+            color=palette[str(red)]
+            if color is None:
+                value=0
+            else:
+                red,green,blue=color
+                value=(((red>>3)<<11)|((green>>2)<<5)|(blue>>3)) or 1
+            encoded.extend(struct.pack('<H',value))
+        return bytes(encoded),flags|TRANSPARENT_ZERO
     if policy:
         transparent=transparent_background(image,policy)
         for index in range(image.width*image.height):

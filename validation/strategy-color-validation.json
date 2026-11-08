@@ -1,5 +1,5 @@
 {
-  "passed": 34,
+  "passed": 88,
   "failed": 0,
   "map_rectangle": [
     0,
@@ -25,7 +25,11 @@
     56,
     21
   ],
-  "bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
-  "color_sha256": "7da764ba1f77867bbb56f3515e6b58368ffcbe64312c9e8ba7aaaf6cad52ca3b",
+  "cursor_foreground_pixels": 68,
+  "cursor_legacy_hidden_pixels_restored": 37,
+  "cursor_legacy_white_pixels_removed": 79,
+  "cursor_grid_positions_checked": 49,
+  "bda_sha256": "45038b93b611b44426cb6e0377454f4e62ad8cb908bad16ffca5cf9012082402",
+  "color_sha256": "9d5fda527c01a4e9364ccc0089d9f10f57bf7ef3a8eb57fcdad738fdfed114de",
   "scope": "Real compiled strategy painter, all camera bounds, all ten city frames, white-detail preservation, full map pixel coverage, incremental/full redraw equality, scope and gray fallback. SDK pixels/strings, footer text/count boundaries modeled; native firmware separately checked."
 }

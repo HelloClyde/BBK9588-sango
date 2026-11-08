@@ -52,5 +52,7 @@
     "validation/battle-viewport-validation.json": "e3617c51646dff10e97bc93ad6b7272ef49595409ad1cc3a39abc24f3621d585",
     "validation/library-loader-host.json": "d8d7ed1e4392ea989c8793724a724488747a34f2044d27ace873691e467065dd"
   },
-  "scope": "Explicit CLR city alpha-key metadata from border-connected white matte; enclosed white details preserved. Named SDK color output fills 240x232 while logical selection/camera remains 7x7. Real MIPS and native C200 UI; native exact buffer staging bypasses synthetic NAND ECC, filesystem modeled separately. No full battle/campaign or physical-device claim."
+  "scope": "Explicit CLR city alpha-key metadata from border-connected white matte; enclosed white details preserved. Named SDK color output fills 240x232 while logical selection/camera remains 7x7. Real MIPS and native C200 UI; native exact buffer staging bypasses synthetic NAND ECC, filesystem modeled separately. No full battle/campaign or physical-device claim.",
+  "snapshot_commit": "e3cadecdbd6852108d416c893a1061f9e77f7ea7",
+  "history_note": "Historical e3cadec validation; source/report hashes resolve at snapshot_commit. Current cursor-only update has city-cursor-validation.json."
 }

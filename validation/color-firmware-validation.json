@@ -1,9 +1,9 @@
 {
-  "passed": 16,
+  "passed": 20,
   "failed": 0,
-  "bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
+  "bda_sha256": "45038b93b611b44426cb6e0377454f4e62ad8cb908bad16ffca5cf9012082402",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
-  "color_sha256": "7da764ba1f77867bbb56f3515e6b58368ffcbe64312c9e8ba7aaaf6cad52ca3b",
+  "color_sha256": "9d5fda527c01a4e9364ccc0089d9f10f57bf7ef3a8eb57fcdad738fdfed114de",
   "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled terrain-only battle fixture. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
   "cases": [
     {
@@ -82,25 +82,49 @@
       "name": "Native strategy toolbar matches color source and retained layout",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
+      "screenshot_sha256": "7316185bbc35230c63cafe4155cd40e8f86796840b44878a538122410ca6f767"
     },
     {
       "name": "Native strategy map and ruler portrait are colored",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
+      "screenshot_sha256": "7316185bbc35230c63cafe4155cd40e8f86796840b44878a538122410ca6f767"
     },
     {
       "name": "Right map edge has no white padding",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
+      "screenshot_sha256": "7316185bbc35230c63cafe4155cd40e8f86796840b44878a538122410ca6f767"
     },
     {
       "name": "Lower map edge reaches toolbar without a white gap",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
+      "screenshot_sha256": "7316185bbc35230c63cafe4155cd40e8f86796840b44878a538122410ca6f767"
+    },
+    {
+      "name": "Native selection cursor contains the complete original gold up-arrow",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy.png",
+      "screenshot_sha256": "7316185bbc35230c63cafe4155cd40e8f86796840b44878a538122410ca6f767"
+    },
+    {
+      "name": "Native down input moves the complete arrow by one logical cell",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy-cursor-move.png",
+      "screenshot_sha256": "1a7d5298af211c81142ea80a16fae34197a5f3a3660ab2e75ae2c0875968b8cb"
+    },
+    {
+      "name": "Cursor movement preserves transparent background and restores old arrow area",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy-cursor-move.png",
+      "screenshot_sha256": "1a7d5298af211c81142ea80a16fae34197a5f3a3660ab2e75ae2c0875968b8cb"
+    },
+    {
+      "name": "Returning the cursor restores the full map without white blocks or trails",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy-cursor-return.png",
+      "screenshot_sha256": "7316185bbc35230c63cafe4155cd40e8f86796840b44878a538122410ca6f767"
     }
   ]
 }

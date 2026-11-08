@@ -231,7 +231,10 @@ int sango_color_draw_raster(uint32_t x, short y, uint32_t width, uint32_t height
             int screen_y = (int)y + row;
             if (screen_x < 0 || screen_x >= 240 || screen_y < 0 || screen_y >= 320)
                 continue;
-            if (masked && ((mask[row * stride + column / 4] >> (6 - (column % 4) * 2)) & 1))
+            /* Explicit keyed alpha replaces a broken legacy mask (city cursor).
+             * Untagged masked frames still use the original LIB mask exactly. */
+            if (masked && !(flags & SANGO_COLOR_TRANSPARENT_ZERO) &&
+                ((mask[row * stride + column / 4] >> (6 - (column % 4) * 2)) & 1))
                 continue;
             if ((flags & SANGO_COLOR_TRANSPARENT_ZERO) && !pixels[row * width + column])
                 continue;

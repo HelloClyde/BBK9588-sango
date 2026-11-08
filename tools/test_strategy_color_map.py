@@ -46,6 +46,52 @@ def main():
         assert 0<values.count(0)<256
         assert len(m.pixels)==256-values.count(0)
         checks+=1
+    # Cursor 056 has a corrupt stock mask. Its intact color plane is an up
+    # arrow, including stem/base pixels the stock mask accidentally hides.
+    cursor=next(f for f in catalog['frames'] if f['resource']==56)
+    original=Image.open(ROOT/'assets/library'/cursor['source']).convert('RGBA')
+    foreground={(x,y) for y in range(16) for x in range(16)
+                if original.getpixel((x,y))[:3]!=(255,255,255)}
+    assert len(foreground)==68
+    assert {(7,2),(8,2),(6,11),(9,11),(6,14),(9,14)}<=foreground
+    corrupt_hidden=sum(original.getpixel(point)[3]==0 for point in foreground)
+    corrupt_white=sum(original.getpixel((x,y))[3]!=0 and (x,y) not in foreground
+                      for y in range(16) for x in range(16))
+    assert (corrupt_hidden,corrupt_white)==(37,79)
+    cursor_record=struct.unpack_from('<I',lib,55*4)[0]
+    cursor_spec=next(r for r in manifest['records'] if r['id']==56)['images'][0]
+    offset=cursor_record+cursor_spec['offset']+6;e=entries[offset]
+    assert e[4]==(1|TRANSPARENT_ZERO)
+    values=struct.unpack_from('<256H',colors,e[1])
+    assert {(x,y) for y in range(16) for x in range(16) if values[y*16+x]}==foreground
+    for x,y in foreground:
+        value=values[y*16+x]
+        red,green,blue=(value>>11)&31,(value>>5)&63,value&31
+        assert (red,green,blue)!=(31,63,31)
+    checks+=1
+    for x,y in [(40,40),(65533,-2),(234,314)]:
+        m.pixels.clear();m.call('sango_color_draw_raster',x,y,16,16,LIB_ADDRESS+offset,CONTEXT+8,1)
+        assert m.pixels==expected_pixels(lib,colors,e,x,y,CONTEXT+8)
+        checks+=1
+    m.pixels.clear()
+    m.call('sango_bitmap_draw_frame',40,40,16,16,0,LIB_ADDRESS+cursor_record+cursor_spec['offset'],CONTEXT+8)
+    assert {(x-40,y-40) for ctx,x,y,value in m.pixels}==foreground
+    assert len(m.pixels)==68
+    checks+=1
+    # All four corners keep the existing map visible; the corrected stem is
+    # also preserved at the bottom viewport row. Exercise every logical cell.
+    assert m.call('sango_color_strategy_map_begin',CONTEXT+8)==1
+    for cell_y in range(7):
+        for cell_x in range(7):
+            x,y=cell_x*32+8,cell_y*32+16;m.pixels.clear()
+            m.call('sango_color_draw_raster',x,y,16,16,LIB_ADDRESS+offset,CONTEXT+8,1)
+            painted={(px,py) for ctx,px,py,value in m.pixels}
+            expected={(px,py) for dx,dy in foreground
+                      for py in range((y+dy)*232//224,(y+dy+1)*232//224)
+                      for px in range((x+dx)*240//224,(x+dx+1)*240//224)}
+            assert painted==expected and all(0<=px<240 and 0<=py<232 for px,py in painted)
+            checks+=1
+    m.call('sango_color_strategy_map_end')
     m.word(STATE['g_scratch_buffer_address'],BUFFER+0x1000)
     m.write(STATE['g_scenario_id_view2'],b'\1');m.write(STATE['g_player_character'],b'\0')
     m.write(STATE['g_current_year'],struct.pack('<H',190));m.write(STATE['g_current_month'],b'\1')
@@ -92,7 +138,9 @@ def main():
     m.pixels.clear();m.call('sango_color_put_pixel',100,100,0x1234,CONTEXT+8)
     assert m.pixels==[(CONTEXT+8,100,100,0x1234)];checks+=1
     report={'passed':checks,'failed':0,'map_rectangle':[0,0,240,232],'logical_tiles':[7,7],
-            'viewports':18,'city_frames':10,'city_transparent_pixels':transparent_counts,
+            'viewports':18,'city_frames':10,'city_transparent_pixels':transparent_counts,'cursor_foreground_pixels':68,
+            'cursor_legacy_hidden_pixels_restored':37,'cursor_legacy_white_pixels_removed':79,
+            'cursor_grid_positions_checked':49,
             'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
             'color_sha256':hashlib.sha256(colors).hexdigest(),
             'scope':'Real compiled strategy painter, all camera bounds, all ten city frames, white-detail preservation, full map pixel coverage, incremental/full redraw equality, scope and gray fallback. SDK pixels/strings, footer text/count boundaries modeled; native firmware separately checked.'}

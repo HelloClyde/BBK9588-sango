@@ -18914,7 +18914,29 @@
       "flags": 1,
       "color": "library/战略地图/当前城市选择标记_资源056/当前城市选择标记.png",
       "batch": "small-01",
-      "color_sha256": "5ea3217dda5f73f15fc48b01f6d40eab7644f0d2fee8d8a1883e8cff5da56c38"
+      "color_sha256": "5ea3217dda5f73f15fc48b01f6d40eab7644f0d2fee8d8a1883e8cff5da56c38",
+      "transparency": {
+        "mode": "original-color-plane",
+        "palette_rgb": {
+          "0": [
+            24,
+            24,
+            16
+          ],
+          "85": [
+            128,
+            80,
+            24
+          ],
+          "170": [
+            248,
+            192,
+            48
+          ],
+          "255": null
+        },
+        "reason": "Original 9588 mask exposes 79 white background pixels and hides 37 actual arrow pixels. Decode its intact RGB color plane; use keyed alpha instead of the corrupt legacy mask."
+      }
     },
     {
       "resource": 69,

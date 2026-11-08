@@ -48,7 +48,7 @@ def expected_pixels(library,colors,entry,x,y,target):
         for col in range(w):
             sx=((x+col+32768)%65536)-32768;sy=y+row
             if not(0<=sx<240 and 0<=sy<320):continue
-            if flags&1 and (library[offset+row*((w+3)//4)+col//4]>>(6-(col%4)*2))&1:continue
+            if flags&1 and not flags&TRANSPARENT_ZERO and (library[offset+row*((w+3)//4)+col//4]>>(6-(col%4)*2))&1:continue
             if flags&TRANSPARENT_ZERO and not values[row*w+col]:continue
             expected.append((target,sx,sy,values[row*w+col] or 1))
     return expected

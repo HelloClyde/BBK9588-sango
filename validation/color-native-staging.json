@@ -2,10 +2,10 @@
   "entry": true,
   "package": true,
   "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
-  "payload_sha256": "f9bab6d42088834417989c5c1157d8ba0d8e244d9067299b9769a0eadfcc3fe7",
+  "payload_sha256": "57cb9d57d782caed29cc0c7290e74cd9d52d68aa4c7ca4ced50d98b525845ba9",
   "color": {
     "bytes": 2282488,
-    "sha256": "7da764ba1f77867bbb56f3515e6b58368ffcbe64312c9e8ba7aaaf6cad52ca3b",
+    "sha256": "9d5fda527c01a4e9364ccc0089d9f10f57bf7ef3a8eb57fcdad738fdfed114de",
     "scope": "Exact expanded LIB/CLR borrowed buffers staged for native SDK rendering; production CRC/parser executes in separate bootstrap. Storage loader/ownership tested separately in compiled MIPS."
   },
   "package_address": "0x81000000",

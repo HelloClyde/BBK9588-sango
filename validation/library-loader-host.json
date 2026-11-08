@@ -3,7 +3,7 @@
   "passed": 4,
   "failed": 0,
   "scope": "Compiled production MIPS with modeled SDK file/heap/GUI boundaries. Host check, not native firmware or hardware.",
-  "bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
+  "bda_sha256": "45038b93b611b44426cb6e0377454f4e62ad8cb908bad16ffca5cf9012082402",
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "sango_lib_bytes": 461116,
   "checks": [
