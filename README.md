@@ -126,7 +126,7 @@ python tools/test_sango_lib.py
 
 ## 感谢
 
-- 原游戏制作群组：策划 **BBK gamegroup**；程序 **通宵虫、南方小凯**；美工 **Sunday**。
+- 原游戏制作群组：策划 **BBK gamegroup**；程序 **通宵虫、南方小鬼**；美工 **Sunday**。
 - **HelloClyde / BBK9588-bda-sdk**：SDK、BDA 编码与校验工具。
 - 提供原文件、9588 真机反馈、9288S 对照及修复需求的使用者。
 - 应用图标、恢复底栏和制作群组母图通过 GPT Image 生成；来源和提示词在 `assets/` 中保存。
