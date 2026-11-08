@@ -75,5 +75,7 @@
     "day-popup-firmware-validation.json": "7dd9f2cadfb2778c0ee6b26bb26d63c3eecdd378a00fccb12e325d55c13b4c3c",
     "battle-hud-validation.json": "6b87ad2ce8b36e5754e9e0582a568d4da3c34f20e6e60b2cda212c45d8bdfcd6",
     "control-flow-validation.json": "b0082e42ae0aa5010dbe7e9138b25f3f472ef6abf317b6928027fe26b7a0de4a"
-  }
+  },
+  "status": "Historical first layout fix before lower summary restoration; source/report hashes refer to snapshot_commit.",
+  "snapshot_commit": "0655382a3ab0826c7e28596525b81808817f7e26"
 }

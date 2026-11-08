@@ -12,8 +12,8 @@
     "attack": 540,
     "float": 4974
   },
-  "baseline_elf_sha256": "ddd15b13e1abe4a7178e44ba65e2af447aea94b36840582fc9f5595d31085446",
-  "candidate_elf_sha256": "1263c9c3714d2da4516fdc7af7ccd024ee482dc256d297f3a8f04db59d86b8a3",
-  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
-  "scope": "The reported groups execute actual MIPS functions against the pre-refactor ELF: city/battle input, decimal input, pagination, animation timing, search outcomes, skill dispatch, attack preparation and soft-float boundary/random cases. Compares return, observable state, input consumption and rendering calls. Rendering/modal boundaries are deterministic models; not native firmware or hardware. In this layout fix, the inlined HUD wrapper/shared HUD function is normalized as one rendering boundary; intentional footer pixel changes are checked separately."
+  "baseline_elf_sha256": "1263c9c3714d2da4516fdc7af7ccd024ee482dc256d297f3a8f04db59d86b8a3",
+  "candidate_elf_sha256": "6f629790099ccc2b58d3b251a876245c84600e6514257c236f2fc9a711a72079",
+  "bda_sha256": "19367fc94b97afc492c0553846d8f9ec5048dd8a93ff636039b90b39a6c4663e",
+  "scope": "The reported groups execute actual MIPS functions against the pre-refactor ELF: city/battle input, decimal input, pagination, animation timing, search outcomes, skill dispatch, attack preparation and soft-float boundary/random cases. Compares return, observable state, input consumption and rendering calls. Rendering/modal boundaries are deterministic models; not native firmware or hardware. Intentional HUD changes use a common modeled painter boundary; footer pixels and snapshot behavior checked separately."
 }

@@ -314,6 +314,7 @@ draw_cursor_and_status:
         sango_city_read_name(city_marker_frame - 1, text_part);
         sango_text_draw_context(0x78, 0x115, text_part, g_game_context);
     }
+    sango_battle_summary_remember(city_count, tile_row, city_marker_frame);
     sango_strategy_present();
     return (uint32_t)(uint8_t)(&g_visible_city_ids)[cursor_column + cursor_row * 7];
 }

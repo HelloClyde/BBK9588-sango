@@ -419,18 +419,18 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c12b18` | [`sango_strategy_select_city`](../src/strategy/map.c#L7) |
 | `0x81c12e18` | [`sango_strategy_draw_map`](../src/strategy/map.c#L138) |
-| `0x81c13494` | [`sango_strategy_present`](../src/strategy/map.c#L322) |
-| `0x81c134b8` | [`sango_city_add_character`](../src/strategy/map.c#L329) |
-| `0x81c135a8` | [`sango_city_add_item`](../src/strategy/map.c#L372) |
-| `0x81c13698` | [`sango_city_roster_noop`](../src/strategy/map.c#L414) |
-| `0x81c136a0` | [`sango_city_adjacent_distance`](../src/strategy/map.c#L420) |
-| `0x81c13794` | [`sango_faction_list_cities`](../src/strategy/map.c#L472) |
-| `0x81c137f0` | [`sango_character_find_city`](../src/strategy/map.c#L494) |
-| `0x81c13870` | [`sango_city_list_idle_characters`](../src/strategy/map.c#L525) |
-| `0x81c13918` | [`sango_city_list_available_characters`](../src/strategy/map.c#L555) |
-| `0x81c139a8` | [`sango_city_list_captives`](../src/strategy/map.c#L585) |
-| `0x81c13a40` | [`sango_city_list_enemy_rulers`](../src/strategy/map.c#L615) |
-| `0x81c13ab8` | [`sango_faction_list_characters`](../src/strategy/map.c#L649) |
+| `0x81c13494` | [`sango_strategy_present`](../src/strategy/map.c#L323) |
+| `0x81c134b8` | [`sango_city_add_character`](../src/strategy/map.c#L330) |
+| `0x81c135a8` | [`sango_city_add_item`](../src/strategy/map.c#L373) |
+| `0x81c13698` | [`sango_city_roster_noop`](../src/strategy/map.c#L415) |
+| `0x81c136a0` | [`sango_city_adjacent_distance`](../src/strategy/map.c#L421) |
+| `0x81c13794` | [`sango_faction_list_cities`](../src/strategy/map.c#L473) |
+| `0x81c137f0` | [`sango_character_find_city`](../src/strategy/map.c#L495) |
+| `0x81c13870` | [`sango_city_list_idle_characters`](../src/strategy/map.c#L526) |
+| `0x81c13918` | [`sango_city_list_available_characters`](../src/strategy/map.c#L556) |
+| `0x81c139a8` | [`sango_city_list_captives`](../src/strategy/map.c#L586) |
+| `0x81c13a40` | [`sango_city_list_enemy_rulers`](../src/strategy/map.c#L616) |
+| `0x81c13ab8` | [`sango_faction_list_characters`](../src/strategy/map.c#L650) |
 
 ## src/ui/numeric.c
 

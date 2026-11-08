@@ -25,7 +25,7 @@ def machine():
     text=[];fonts=[];clears=[]
     def pixel(args):
         x,y,gray,target=args
-        assert target==CONTEXT and 0<=x<240 and 240<=y<300,(x,y,gray,target)
+        assert target==CONTEXT and 0<=x<240 and 240<=y<288,(x,y,gray,target)
         image.putpixel((x,y),GRAY[gray])
     def clear(args):
         left,top,right,bottom,target=args
@@ -57,7 +57,9 @@ def main():
     reference=Image.open(ROOT/'assets/battle-toolbar/status-row-9288s-reference.png').convert('L')
     assert reference.size==(160,16)
     expected_row=scale_reference(reference)
-    toolbar=Image.open(ROOT/'assets/battle-toolbar/toolbar-240x36.png').convert('L')
+    source=Image.open(ROOT/'assets/battle-toolbar/toolbar-240x36.png').convert('L')
+    toolbar=Image.new('L',(240,24))
+    for y in range(24):toolbar.paste(source.crop((0,y*3//2,240,y*3//2+1)),(0,y))
     count=0
     for food in (0,1,9,10,9999,65535):
         for weather in range(1,6):
@@ -68,8 +70,8 @@ def main():
             expected=expected_row.copy()
             expected.paste(scale_reference(weather_image(weather-1)),(112,3))
             assert image.crop((0,TOP,240,TOOLBAR_TOP)).tobytes()==expected.tobytes(),(food,weather)
-            assert image.crop((0,TOOLBAR_TOP,240,300)).tobytes()==toolbar.tobytes()
-            assert image.crop((0,300,240,320)).getextrema()==(255,255)
+            assert image.crop((0,TOOLBAR_TOP,240,288)).tobytes()==toolbar.tobytes()
+            assert image.crop((0,288,240,320)).getextrema()==(255,255)
             assert clears==[[0,TOOLBAR_TOP,239,319,CONTEXT]],clears
             assert text==[[21,244,str(food).encode().hex(),CONTEXT]],text
             assert fonts==[[3,CONTEXT],[0,CONTEXT]],fonts
@@ -86,15 +88,15 @@ def main():
             assert clears==[[159,242,237,261,target]],clears
             assert fonts==[[3,target],[0,target]],fonts
             count+=1
-    for x,y,expected in ((60,266,1),(113,297,1),(128,266,2),(181,297,2),
-                          (85,265,0),(85,298,0),(85,260,0),(85,300,0),
+    for x,y,expected in ((60,266,1),(113,285,1),(128,266,2),(181,285,2),
+                          (85,265,0),(85,286,0),(85,260,0),(85,300,0),
                           (59,282,0),(114,282,0),(127,282,0),(182,282,0),
                           (356,282,0),(85,538,0)):
         m=Machine((ROOT/'build/sango.elf').read_bytes())
         assert m.call('sango_battle_toolbar_hit',x,y)==expected,(x,y)
         count+=1
     report={'passed':count,'failed':0,'status_rectangle':[0,240,240,24],
-            'toolbar_rectangle':[0,264,240,36],'text_font_logical_id':3,
+            'toolbar_rectangle':[0,264,240,24],'summary_rectangle':[0,288,240,32],'text_font_logical_id':3,
             'reference_status_sha256':hashlib.sha256((ROOT/'assets/battle-toolbar/status-row-9288s-reference.png').read_bytes()).hexdigest(),
             'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
             'scope':'Compiled MIPS HUD/scaling/text preparation; SDK pixel/text boundaries modeled. '

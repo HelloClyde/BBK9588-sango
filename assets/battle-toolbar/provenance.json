@@ -27,7 +27,7 @@
     0,
     264,
     240,
-    36
+    24
   ],
   "text": [
     "信息",
@@ -39,5 +39,6 @@
     170,
     255
   ],
-  "original_references_distributed": true
+  "original_references_distributed": true,
+  "runtime_sampling": "36 source rows sampled into 24 screen rows; summary uses y=288..319"
 }

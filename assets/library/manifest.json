@@ -4639,7 +4639,7 @@
       ],
       "category": "战略地图",
       "name": "城市数与武将数图标",
-      "naming_evidence": "战略状态区帧1旁写玩家城市数量，帧0旁写FUN_81c17b3c返回的玩家武将总数。",
+      "naming_evidence": "战略状态区帧1旁写玩家城市数量，帧0旁写FUN_81c17b3c返回的玩家武将总数。战斗底部重现最后一次战略摘要，并沿用这两帧图标。",
       "usage_status": "confirmed",
       "code_evidence": [
         {
@@ -4656,6 +4656,11 @@
           "source": "src/strategy/items.c",
           "function": "sango_faction_count_characters",
           "expression": "sango_faction_list_characters("
+        },
+        {
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_summary_draw",
+          "expression": "sango_resource_item(69, 1, g_resource_package_address)"
         }
       ]
     },
@@ -5813,7 +5818,7 @@
       ],
       "category": "补充界面",
       "usage_status": "confirmed",
-      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用目标PNG；当前C并不从LIB的17号条目读取。",
+      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时纵向采样为24行，给下方势力摘要预留32行。当前C并不从LIB的17号条目读取。",
       "code_evidence": [
         {
           "source": "src/sango_statusbar.c",

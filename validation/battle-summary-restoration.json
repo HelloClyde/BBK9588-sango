@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "0655382a3ab0826c7e28596525b81808817f7e26",
+  "baseline_bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
+  "bda_sha256": "19367fc94b97afc492c0553846d8f9ec5048dd8a93ff636039b90b39a6c4663e",
+  "bda_bytes": 214700,
+  "elf_sha256": "6f629790099ccc2b58d3b251a876245c84600e6514257c236f2fc9a711a72079",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "initialized_data_bytes_identical": 45536,
+  "legacy_state_and_save_layout_unchanged": true,
+  "ui_cache_location": "Ordinary data section below original legacy initialized data; not in save buffers.",
+  "status_rectangle": [
+    0,
+    240,
+    240,
+    24
+  ],
+  "toolbar_rectangle": [
+    0,
+    264,
+    240,
+    24
+  ],
+  "summary_rectangle": [
+    0,
+    288,
+    240,
+    32
+  ],
+  "existing_mips_checks": 593,
+  "hud_mips_checks": 58,
+  "summary_snapshot_mips_checks": 9,
+  "production_mips_logic_comparisons": 27163,
+  "native_c200_interface_checks": 26,
+  "native_battle_interface_checks": 14,
+  "original_9288s_native_reference": "9288s-battle-layout-reference.json",
+  "resource_host_checks": {
+    "codec": 10,
+    "loader": 4,
+    "code_usage_rules": 89
+  },
+  "limits": "Native C200 uses a controlled terrain-only battle fixture with explicit summary input and original LIB; not complete battle/campaign/physical hardware verification. Expanded LIB has host evidence. Original 9288S screenshot obtained through normal game flow. Historical runtime-oracle comparisons not counted as newly executed tests.",
+  "source_sha256_lf": {
+    "src/sango_battle_ui.c": "fffb983b2ab3a755ff36d3b57f232950a66271c64a256981a812d5d13e7c1184",
+    "src/sango_statusbar.c": "b48387cf02c7e67f96fc7bfa9f8204756e59f239da5286a79e3640157af0d535",
+    "src/strategy/map.c": "de8cc4bc3186fa9283725fb8503062c05a549ab6f9655978654729064cf41ad1",
+    "include/sango_statusbar.h": "f562c453816048998e558ec6cb428ffdf1502215dce77863a7b9d28ddbd7327c",
+    "include/sango_battle_ui.h": "0c4a147b86140533a7284b1309c62f95f81ccbf179d7f852e6221cd6b1a5e8ac",
+    "tools/test_battle_hud.py": "e2cfa106e40a0437edd2a0b767da9ab102075c4f911264d6ba2858a86dc9ba03",
+    "tools/test_battle_summary.py": "14123985f310e1ee3cf1238d58dbfb0d9dc59021f83edc2d765f407b14f20699"
+  },
+  "report_sha256_lf": {
+    "differential.json": "76162f7bf9bf98af3563ade16416a6a3bf06426997fda60291bc970245024391",
+    "statusbar-validation.json": "996bcfa4731ed6fdb55bbb344d93b306633743479a2c568f3450d6040921ef73",
+    "port-fixes-validation.json": "f8f23cc16235421147df640d13ff9ff8822209ddffa151f759012257b0a55058",
+    "battle-touch-validation.json": "8cd955bce68da098da0c45d4437b9207a2f3daef58d2f7d77ea9035e074be544",
+    "day-popup-validation.json": "e1c7db1b01970980a30c1d6193b691030403a2a95540cb31031540f626a5e210",
+    "statusbar-firmware-validation.json": "fd6ec6892e91a07ef316d9d58e0303895c28e4bb7666ad9fb9eaea123a93c27b",
+    "port-firmware-validation.json": "86339a7a26dce1fc45da327d640cc70e8a273a4e91130f05cdaffc186a45d579",
+    "battle-touch-firmware-validation.json": "ab2372be3d4baa32bf144630a937912c443f01bc12ca4afb8754ba1ad5357aea",
+    "day-popup-firmware-validation.json": "99f1e6e5ac59c4304022b2af7967646d3e614a5b2aac7ffeb7f9f815fd387f14",
+    "battle-hud-validation.json": "50615b48f2783a8420d8432d35b5755234e9dec834dfb114c0009624cf116661",
+    "battle-summary-validation.json": "92d2984e215a34c470feae6636addd055b80dfd3733485a364d3a6289079bacd",
+    "control-flow-validation.json": "e8efb3040e5c9f5eca55f9b6b4c726823e6ad7d0da022eb49d4e6b721f6ae80c"
+  }
+}

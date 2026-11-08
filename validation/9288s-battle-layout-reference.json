@@ -2,7 +2,7 @@
   "date": "2026-11-08",
   "source": "Original 9288S 三国霸业.exe, inspected locally; original executable excluded from repository.",
   "source_exe_sha256": "4eafbd3c59b64bf56fb810e47de43cb9d1075530801a8f991cf007f510954f9c",
-  "evidence_kind": "Static original code and decoded bitmaps; not a 9288S runtime screenshot.",
+  "evidence_kind": "Static original code/bitmaps plus native unmodified 9288S game screenshot.",
   "original_status": {
     "resource_id": 8,
     "rectangle": [
@@ -71,7 +71,7 @@
   "reference_png": "assets/battle-toolbar/status-row-9288s-reference.png",
   "reference_png_sha256": "8cec92b344e7ff84378e6ae9e6373e59f1846008e7d44ee41af7c2cc2eadda6c",
   "new_layout": {
-    "scale": "3:2 integer pixel-center nearest",
+    "scale": "Status bitmap/weather 3:2 integer nearest; controls use 24 screen rows from the retained 240x36 source; compact original two-row summary below.",
     "status_rectangle": [
       0,
       240,
@@ -82,7 +82,7 @@
       0,
       264,
       240,
-      36
+      24
     ],
     "food_xy": [
       21,
@@ -100,6 +100,95 @@
     ],
     "native_text_font_id": 4,
     "text_note": "Existing SDK binding maps logical font 3 to native font 4, verified in native C200 firmware. Text baseline centered in the scaled row.",
-    "toolbar_note": "Reviewed GPT Image 240x36 toolbar retained and fitted within screen width. Both touch regions follow the shared toolbar top."
+    "toolbar_note": "The reviewed GPT Image 240x36 source is unchanged. Runtime vertical sampling to 24 rows reserves 32 rows for the native 24x24 portrait and two 12-pixel text rows. Full 240x240 battle map retained.",
+    "summary_rectangle": [
+      0,
+      288,
+      240,
+      32
+    ],
+    "summary_portrait_rectangle": [
+      31,
+      292,
+      24,
+      24
+    ],
+    "summary_city_count_xy": [
+      94,
+      291
+    ],
+    "summary_character_count_xy": [
+      94,
+      305
+    ],
+    "summary_year_xy": [
+      123,
+      291
+    ],
+    "summary_month_xy": [
+      123,
+      305
+    ],
+    "summary_city_xy": [
+      180,
+      298
+    ],
+    "summary_text_font_id": 0,
+    "summary_behavior": "Capture the last strategy ruler/scenario/counts/date/selected city while the strategic map paints; redraw that UI snapshot in battle. No new faction counting or shared-scratch writes during battle; UI cache excluded from saves."
+  },
+  "native_original": {
+    "machine": "QEMU bbk9288s / S1C33L05, original KNL 0100200608021118",
+    "kernel_sha256": "767d4ac9f9c80a6c007014bbdfa6969bb3e12274b6a893da409982490265df9b",
+    "exe_sha256": "4eafbd3c59b64bf56fb810e47de43cb9d1075530801a8f991cf007f510954f9c",
+    "entry": "Normal hardware input: calibration, entertainment menu, original game, new scenario/ruler, army dispatch, end month, battle. Isolated NAND rebuilt from a local audited FAT image. Original source image and saves unmodified. No guest code/data injection. Read-only inspection used for cursor coordinates.",
+    "screenshot": "docs/screenshots/battle-9288s.png",
+    "screenshot_sha256": "c7d6ed32cbe55cb67637ed13afeaa0f30aa1c0d37609c360ea1546a67c90037a",
+    "observed": "Below information/find controls are ruler portrait, city count, character count, year/month and city name; a strategic summary remains visible during battle.",
+    "scope": "One original new-game/battle UI observation; not full campaign or physical-device verification."
+  },
+  "original_summary": {
+    "rectangle": [
+      0,
+      200,
+      160,
+      40
+    ],
+    "portrait_rectangle": [
+      21,
+      206,
+      24,
+      24
+    ],
+    "city_count_xy": [
+      63,
+      205
+    ],
+    "character_count_xy": [
+      63,
+      219
+    ],
+    "year_xy": [
+      82,
+      205
+    ],
+    "month_xy": [
+      82,
+      219
+    ],
+    "city_xy": [
+      120,
+      212
+    ],
+    "strategy_summary_exe_file_offsets": [
+      "0xb7d4",
+      "0xb9aa"
+    ],
+    "battle_paint_exe_file_offsets": [
+      "0x1dec",
+      "0x1e4e",
+      "0x216c",
+      "0x21c8"
+    ],
+    "behavior": "Battle terrain/status painting does not replace this strategic footer. It is the last strategic summary, not per-unit battle stats."
   }
 }

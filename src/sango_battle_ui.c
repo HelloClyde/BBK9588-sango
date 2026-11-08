@@ -99,6 +99,63 @@ void sango_battle_status_draw(void)
     draw_status_text(STATUS_FOOD_X, food, g_game_context);
     sango_battle_status_draw_weather(g_game_context);
     sango_battle_toolbar_draw(g_game_context);
+    sango_battle_summary_draw(g_game_context);
+}
+
+/* The stock 9288S battle paints over the strategy map's upper area, leaving
+ * its ruler/counts/date/city summary visible. Remember that last map summary,
+ * rather than recounting troops or changing shared gameplay scratch buffers
+ * on every battle redraw. This UI cache is outside the saved legacy state. */
+static struct
+{
+    uint16_t year;
+    uint8_t month, ruler, scenario, cities, characters, city_plus_one;
+    bool valid;
+} battle_summary;
+
+void sango_battle_summary_remember(unsigned int cities, unsigned int characters,
+                                   unsigned int city_plus_one)
+{
+    battle_summary.year = g_current_year;
+    battle_summary.month = g_current_month;
+    battle_summary.ruler = g_player_character;
+    battle_summary.scenario = g_scenario_id_view2;
+    battle_summary.cities = cities;
+    battle_summary.characters = characters;
+    battle_summary.city_plus_one = city_plus_one;
+    battle_summary.valid = true;
+}
+
+void sango_battle_summary_draw(unsigned int target)
+{
+    char text[24], suffix[8];
+    uint8_t *portraits, *icons;
+    unsigned int top = SANGO_BATTLE_SUMMARY_TOP + 3;
+    if (!battle_summary.valid)
+        return;
+    portraits =
+        (uint8_t *)sango_resource_item(battle_summary.scenario + 47, 1, g_resource_package_address);
+    icons = (uint8_t *)sango_resource_item(69, 1, g_resource_package_address);
+    sango_bitmap_draw_frame(31, top + 1, 24, 24, battle_summary.ruler, portraits, target);
+    sango_bitmap_draw_frame(79, top + 1, 7, 9, 1, icons, target);
+    sango_format_integer(battle_summary.cities, text, 10);
+    sango_text_draw_context(94, top, text, target);
+    sango_bitmap_draw_frame(79, top + 16, 7, 9, 0, icons, target);
+    sango_format_integer(battle_summary.characters, text, 10);
+    sango_text_draw_context(94, top + 14, text, target);
+    sango_format_integer(battle_summary.year, text, 10);
+    sango_resource_read_text(64, 63, suffix);
+    bbk_strcat(text, suffix);
+    sango_text_draw_context(123, top, text, target);
+    sango_format_integer(battle_summary.month, text, 10);
+    sango_resource_read_text(64, 64, suffix);
+    bbk_strcat(text, suffix);
+    sango_text_draw_context(123, top + 14, text, target);
+    if (battle_summary.city_plus_one != 0)
+    {
+        sango_city_read_name(battle_summary.city_plus_one - 1, text);
+        sango_text_draw_context(180, top + 7, text, target);
+    }
 }
 
 void sango_battle_status_draw_description(char *text, unsigned int target)
