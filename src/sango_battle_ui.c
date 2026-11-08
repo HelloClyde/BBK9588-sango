@@ -12,14 +12,35 @@ enum
     STATUS_TEXT_FONT = 3 /* Existing font selector -> native 16-pixel font. */
 };
 
+unsigned int sango_battle_animation_left(void)
+{
+    const SangoBitmapHeader *panel;
+    if (!sango_color_is_loaded())
+        return 20;
+    panel = (const SangoBitmapHeader *)sango_resource_item(16, 1, g_resource_package_address);
+    return panel && panel->width <= 240 ? (240 - panel->width) / 2 : 20;
+}
+
+short sango_battle_animation_top(void)
+{
+    const SangoBitmapHeader *panel;
+    if (!sango_color_is_loaded())
+        return 49;
+    panel = (const SangoBitmapHeader *)sango_resource_item(16, 1, g_resource_package_address);
+    return panel && panel->height <= SANGO_BATTLE_MAP_HEIGHT
+               ? (SANGO_BATTLE_MAP_HEIGHT - panel->height) / 2
+               : 49;
+}
+
 /* The 9588 port extended resource 8 from 160 to 240 pixels by adding blank
  * columns before the right border. Its labels and separators still occupy
  * the original 160-pixel coordinate system. Scale that logical row, keeping
  * the actual right border, instead of stretching the appended blank area.
  * Weather frames use the same 3:2 mapping. All output uses named SDK bindings. */
-static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int frame,
-                               unsigned int reference_width, unsigned int left, unsigned int top,
-                               unsigned int target)
+static void draw_status_bitmap_region(const SangoBitmapHeader *bitmap, unsigned int frame,
+                                      unsigned int reference_width, unsigned int left,
+                                      unsigned int top, unsigned int target, unsigned int clip_left,
+                                      unsigned int clip_right)
 {
     unsigned int row_bytes, plane_bytes, plane_count, width, height, x, y;
     const uint8_t *mask, *colors;
@@ -44,6 +65,8 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
         unsigned int source_y = (y * 2 + 1) / 3;
         for (x = 0; x < width; ++x)
         {
+            if (left + x < clip_left || left + x >= clip_right)
+                continue;
             unsigned int source_x = (x * 2 + 1) / 3;
             unsigned int offset, shift, gray;
             if (source_x == reference_width - 1)
@@ -64,6 +87,21 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
             sango_display_put_gray_pixel((short)(left + x), (short)(top + y), gray, target);
         }
     }
+}
+
+static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int frame,
+                               unsigned int reference_width, unsigned int left, unsigned int top,
+                               unsigned int target)
+{
+    draw_status_bitmap_region(bitmap, frame, reference_width, left, top, target, 0, 240);
+}
+
+static void restore_status_image(unsigned int left, unsigned int right, unsigned int target)
+{
+    const SangoBitmapHeader *background =
+        (const SangoBitmapHeader *)sango_resource_item(8, 1, g_resource_package_address);
+    draw_status_bitmap_region(background, 0, STATUS_REFERENCE_WIDTH, 0, SANGO_BATTLE_STATUS_TOP,
+                              target, left, right);
 }
 
 static void draw_status_text(unsigned int x, char *text, unsigned int target)
@@ -87,6 +125,11 @@ static void draw_status_text(unsigned int x, char *text, unsigned int target)
         bytes += character_bytes;
     }
     visible[bytes] = 0;
+    if (sango_color_is_loaded())
+    {
+        sango_color_sdk_text(target, STATUS_TEXT_FONT, x, STATUS_TEXT_TOP, visible);
+        return;
+    }
     sango_display_select_font(STATUS_TEXT_FONT, target);
     sango_text_draw_native((short)x, STATUS_TEXT_TOP, visible, target);
     sango_display_select_font(0, target);
@@ -98,6 +141,8 @@ void sango_battle_status_draw_weather(unsigned int target)
         (const SangoBitmapHeader *)sango_resource_item(9, 1, g_resource_package_address);
     if (g_battle_weather == 0)
         return;
+    if (sango_color_is_loaded())
+        restore_status_image(STATUS_WEATHER_X, STATUS_WEATHER_X + 18, target);
     draw_status_bitmap(weather, g_battle_weather - 1, 12, STATUS_WEATHER_X, STATUS_WEATHER_TOP,
                        target);
 }
@@ -174,8 +219,12 @@ void sango_battle_summary_draw(unsigned int target)
 
 void sango_battle_status_draw_description(char *text, unsigned int target)
 {
-    sango_render_clear_rectangle(STATUS_DESCRIPTION_X, SANGO_BATTLE_STATUS_TOP + 2, 237,
-                                 SANGO_BATTLE_STATUS_TOP + SANGO_BATTLE_STATUS_HEIGHT - 3, target);
+    if (sango_color_is_loaded())
+        restore_status_image(STATUS_DESCRIPTION_X, 238, target);
+    else
+        sango_render_clear_rectangle(STATUS_DESCRIPTION_X, SANGO_BATTLE_STATUS_TOP + 2, 237,
+                                     SANGO_BATTLE_STATUS_TOP + SANGO_BATTLE_STATUS_HEIGHT - 3,
+                                     target);
     draw_status_text(STATUS_DESCRIPTION_X, text, target);
 }
 

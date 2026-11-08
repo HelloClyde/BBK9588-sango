@@ -66,7 +66,8 @@ def import_atlas(slug, source):
                round(bottom*master.height/reference_height))
         if row_bounds is not None:
             box = (0,row_bounds[index][0],master.width,row_bounds[index][1])
-        native = master.crop(box).resize(tuple(original['size']), Image.Resampling.LANCZOS)
+        sampling = Image.Resampling.NEAREST if batch.get('resample') == 'nearest' else Image.Resampling.LANCZOS
+        native = master.crop(box).resize(tuple(original['size']), sampling)
         # Every alias gets a semantically named RGB PNG. The original LIB mask
         # remains the authoritative transparent/opaque geometry at runtime.
         for frame in catalog['frames']:

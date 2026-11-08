@@ -161,23 +161,23 @@
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c058b8` | [`sango_battle_execute_skill`](../src/battle/actions.c#L7) |
-| `0x81c05cdc` | [`sango_battle_execute_surround_attack`](../src/battle/actions.c#L167) |
-| `0x81c05e0c` | [`sango_battle_execute_normal_attack`](../src/battle/actions.c#L221) |
-| `0x81c05f7c` | [`sango_battle_draw_damage_digits`](../src/battle/actions.c#L275) |
-| `0x81c060c8` | [`sango_battle_append_stat_value`](../src/battle/actions.c#L326) |
-| `0x81c06168` | [`sango_battle_damage_feedback`](../src/battle/actions.c#L359) |
-| `0x81c0620c` | [`sango_battle_terrain_at`](../src/battle/actions.c#L379) |
-| `0x81c062d0` | [`sango_battle_skill_parameters`](../src/battle/actions.c#L417) |
-| `0x81c06318` | [`sango_battle_find_unit_at`](../src/battle/actions.c#L426) |
-| `0x81c06384` | [`sango_battle_change_weather`](../src/battle/actions.c#L449) |
-| `0x81c06440` | [`sango_battle_show_options`](../src/battle/actions.c#L464) |
-| `0x81c065c4` | [`sango_battle_draw_unit_damage`](../src/battle/actions.c#L536) |
-| `0x81c06650` | [`sango_battle_resolve_character`](../src/battle/actions.c#L559) |
-| `0x81c0666c` | [`sango_battle_read_text`](../src/battle/actions.c#L565) |
-| `0x81c06694` | [`sango_battle_execute_action`](../src/battle/actions.c#L572) |
-| `0x81c06838` | [`sango_battle_unit_sprite_frame`](../src/battle/actions.c#L634) |
-| `0x81c068f0` | [`sango_battle_regenerate_unit_energy`](../src/battle/actions.c#L667) |
-| `0x81c069d4` | [`sango_battle_find_actionable_unit_at_cursor`](../src/battle/actions.c#L693) |
+| `0x81c05cdc` | [`sango_battle_execute_surround_attack`](../src/battle/actions.c#L173) |
+| `0x81c05e0c` | [`sango_battle_execute_normal_attack`](../src/battle/actions.c#L227) |
+| `0x81c05f7c` | [`sango_battle_draw_damage_digits`](../src/battle/actions.c#L284) |
+| `0x81c060c8` | [`sango_battle_append_stat_value`](../src/battle/actions.c#L335) |
+| `0x81c06168` | [`sango_battle_damage_feedback`](../src/battle/actions.c#L368) |
+| `0x81c0620c` | [`sango_battle_terrain_at`](../src/battle/actions.c#L388) |
+| `0x81c062d0` | [`sango_battle_skill_parameters`](../src/battle/actions.c#L426) |
+| `0x81c06318` | [`sango_battle_find_unit_at`](../src/battle/actions.c#L435) |
+| `0x81c06384` | [`sango_battle_change_weather`](../src/battle/actions.c#L458) |
+| `0x81c06440` | [`sango_battle_show_options`](../src/battle/actions.c#L474) |
+| `0x81c065c4` | [`sango_battle_draw_unit_damage`](../src/battle/actions.c#L546) |
+| `0x81c06650` | [`sango_battle_resolve_character`](../src/battle/actions.c#L569) |
+| `0x81c0666c` | [`sango_battle_read_text`](../src/battle/actions.c#L575) |
+| `0x81c06694` | [`sango_battle_execute_action`](../src/battle/actions.c#L582) |
+| `0x81c06838` | [`sango_battle_unit_sprite_frame`](../src/battle/actions.c#L644) |
+| `0x81c068f0` | [`sango_battle_regenerate_unit_energy`](../src/battle/actions.c#L677) |
+| `0x81c069d4` | [`sango_battle_find_actionable_unit_at_cursor`](../src/battle/actions.c#L703) |
 
 ## src/render/animation.c
 

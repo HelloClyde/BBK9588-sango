@@ -22,6 +22,7 @@ def main():
         assert pure_white==0,(f['frame'],pure_white)
         if f['frame']>=16 and f['frame']!=41:assert blue>=32,(f['frame'],blue)
         if f['frame']==1:assert all(g>160 and b<g for r,g,b in pixels)
+        if f['frame']==5:assert sum(g>r+25 and g>b+20 for r,g,b in pixels)>=96
         tile_stats.append({'frame':f['frame'],'white_pixels':pure_white,'water_blue_pixels':blue});checks+=1
     # All battle overlay color planes retain their original visible linework.
     # Unlike the old city cursor, none has hidden nonwhite foreground pixels.

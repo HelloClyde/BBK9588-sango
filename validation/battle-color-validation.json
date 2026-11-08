@@ -108,7 +108,7 @@
       "restores": 7
     }
   ],
-  "bda_sha256": "1b02eb5e7807ba3d5230cb4a6bae732ec43ffd42e959bf90b16949340a7a3386",
-  "color_sha256": "785de7fe0a575b05406da637eea26ab6e89dfdf9cdb47bbd219b5ffab80dedd4",
+  "bda_sha256": "4cbb00bfed8413053eb04e99c52e4bedaa628e945e74d7d95d61aa805d8b8bca",
+  "color_sha256": "d1be1b39364d16b0cdb824481bc7b99ee679d511c5a76bf028b4c33ea567d20e",
   "scope": "Real compiled MIPS timelines for all 17 battle groups, RGB565 sprite loops and backing-context ownership/clip/interrupt/failure paths. SDK capture/copy/pixel/timer boundaries modeled; native SDK backing-context copy separately verified. Terrain semantic colors and overlay alpha checked; no full battle/campaign or physical-device claim."
 }

@@ -23,6 +23,8 @@ def machine(library,color=None):
     m.word(STATE['g_message_context'],CONTEXT+4)
     m.word(STATE['g_game_context'],CONTEXT+8)
     m.pixels=[];m.guards=[]
+    m.texts=[]
+    m.intercept('sango_color_sdk_text',5,lambda a:m.texts.append([*a[:4],m.text(a[4])]))
     m.intercept('sango_color_sdk_pixel',4,lambda a:m.pixels.append(tuple(a)))
     m.intercept('sango_color_sdk_guard',1,lambda a:m.guards.append(a[0]))
     if color is not None:
@@ -123,8 +125,9 @@ def main():
     m.intercept('sango_render_clear_rectangle',5,lambda a:None)
     m.intercept('sango_render_present',1,lambda a:None)
     for name,rid,y in [('sango_statusbar_draw',17,232),('sango_battle_toolbar_draw',17,248),('sango_credits_draw',18,0)]:
-        m.pixels.clear();m.call(name,CONTEXT+8,instruction_limit=25_000_000)
-        assert m.pixels==expected_pixels(lib,colors,frame_entries[(rid,0,0)],0,y,CONTEXT+8)
+        m.pixels.clear();m.texts.clear();m.call(name,CONTEXT+8,instruction_limit=25_000_000)
+        expected=expected_pixels(lib,colors,frame_entries[(rid,0,0)],0,y,CONTEXT+8)
+        assert m.pixels==expected
         count+=1
     # Small valid package allows hostile headers/index entries to exercise real
     # CRC/validation without repeating a half-megabyte CRC for every mutation.

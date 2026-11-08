@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "40443c60c223a08cf5d22908ea5dd317cab1ca3d",
+  "baseline_bda_sha256": "1b02eb5e7807ba3d5230cb4a6bae732ec43ffd42e959bf90b16949340a7a3386",
+  "bda_sha256": "4cbb00bfed8413053eb04e99c52e4bedaa628e945e74d7d95d61aa805d8b8bca",
+  "sango_clr_sha256": "d1be1b39364d16b0cdb824481bc7b99ee679d511c5a76bf028b4c33ea567d20e",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "changed_color_resources": [
+    4,
+    8,
+    17
+  ],
+  "forest_frames_recolored": 1,
+  "fixed_labels_from_images": true,
+  "status_field": "one original line: unit name or terrain",
+  "modal_rectangle": [
+    55,
+    80,
+    130,
+    64
+  ],
+  "code_drawn_static_labels": false,
+  "battle_overlay_original_masks_audited": 168,
+  "mips_checks": 5436,
+  "mips_battle_color_checks": 250,
+  "mips_battle_ui_color_checks": 113,
+  "native_color_interface_checks": 29,
+  "native_animation_ranges": [
+    [
+      19,
+      0,
+      6
+    ],
+    [
+      27,
+      12,
+      17
+    ],
+    [
+      35,
+      0,
+      7
+    ],
+    [
+      38,
+      0,
+      14
+    ]
+  ],
+  "native_snapshot_restore_pixels": 76800,
+  "initialized_bytes_identical": 45536,
+  "initialized_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "save_layout_unchanged": true,
+  "source_sha256_lf": {
+    "assets/color/catalog.json": "1734375ce126decc27ab3dbc5f9339911d5b134eb3cae2203c607778d969d4ab",
+    "tools/color_assets.py": "0225cd0b75bec1b7690284c558ba658c70f5d204fa25e9b6f9f32bf147759189",
+    "src/sango_color.c": "01ca6705da3a0c734d218ab415121864c5a751b1ec0d0c5150b2e87b653f54c4",
+    "src/sango_color_sdk.c": "06c92379c1e5e3fc2f3a62b2be189d027e51714ab1729f4a4db9e1e90f378299",
+    "src/sango_color_animation.c": "542a4ae9926965755821ff7d1d03bbd60141a6b2f3480b85be6c3c2464b18f9f",
+    "src/battle/actions.c": "9cae99de23a6e01a29953987e7b2b297176d7f18fea8f2acda8bbe84d414e8bf",
+    "src/sango_battle_ui.c": "5553db5494af0ab5427959919e52e05bbcbaae5920dff12b3ebaa741bd0b3ce2",
+    "include/sango_battle_ui.h": "273abe8446ad85e14a76fffa8551170dd38d72f3a4256944a565388d24094c3e",
+    "tools/test_battle_color.py": "1772cb14d6bb0c49b7c3e71dc786790e3090364f0bd1f8f72ac3196551630783",
+    "tools/test_battle_ui_color.py": "7ba6521a820c7960a4ed5a00015696f10b30975afe27dc80d83f13b3fe8e6c2a",
+    "tools/test_color_assets.py": "604f42d48109d6b686fb71b851cb0cc297e8534269414893058a254859039855",
+    "tools/test_strategy_color_map.py": "f5befecc1d8e906f516efb3eecbce43be8908850eabc21fd7eceacc61d3ec0d9"
+  },
+  "report_sha256_lf": {
+    "validation/color-mips-validation.json": "b33afb48c3696f0b96b64b571da020c7c0667e3b3787f0c7287879568fb49a11",
+    "validation/strategy-color-validation.json": "c56bc866c70269d596f758dfe1cb7e40a95193f3b34f2aac4814338b010f8463",
+    "validation/battle-color-validation.json": "40e03473f078510b00c16f080dc55766fcb818f2b49723a467a3b0d26050e1fd",
+    "validation/battle-ui-color-validation.json": "b13d718aef0a8ab2de0fabe2b20b78faa201d781a116fb936bdbcce8ac14088a",
+    "validation/color-firmware-validation.json": "682ada954be19d7a78f1ef342b8fa631427c24b73855280330eb7819da226d99",
+    "validation/color-native-staging.json": "89161eeee13649f4cddc076725322f8857499753523116bb3fecfaefcd565ff7",
+    "validation/differential.json": "32c213aef1ba6f25060568687b88eb7310cca284860f5ff33e8b900b6a999448",
+    "validation/statusbar-validation.json": "290417989a2c1bc47e868b5381960eaae1504ce890fb5b40fecfbe0d07c1f7c1",
+    "validation/port-fixes-validation.json": "f8735a0a6312992207377ad31d9fbf61952134fb2149ac10ec043f587e2e2530",
+    "validation/battle-touch-validation.json": "8b80cdfadfe091f464b2a694832b43f135ab4decee7a184cfcac5ae49b3fc1ec",
+    "validation/day-popup-validation.json": "72937e0fe0e9ec672620f5de4ac46efbcae4bc77f68fb22aa2e9c520464e93eb",
+    "validation/battle-hud-validation.json": "11762fb6088109a008cf9575dee25850bd7841f70d17628b0abebb35e6c4a1d7",
+    "validation/battle-summary-validation.json": "64100d45469a3cb7a3529f1df349eeb136cae0cee5835f9a4703e68ffb2605a8",
+    "validation/battle-viewport-validation.json": "233f7cd3ac168562ce517d4036664b88a373f99d0e046f6382a562a59232854a",
+    "validation/library-loader-host.json": "900a8ecdce9d6ff0a7672c2b381526d4d3bf42fc18e5e71f188096fbfde808da"
+  },
+  "scope": "Image based HUD and original single-line name/terrain switch; 30 real skill and 36 normal attack dispatches compared across the UI translation. Real compiled 17 battle timelines with modeled SDK pixel/capture/timer boundaries; native SDK compatible snapshot/restore including black/white, four ranges match compiled final pixels, 20-unit controlled UI and native input. Exact BDA/LIB/CLR staged to bypass synthetic NAND ECC. No physical-device, native file loading, complete battle/AI/campaign claim.",
+  "changed_color_frames": 3,
+  "other_color_frames_identical": 1201,
+  "asset_batches": 21,
+  "font_weight": "regular; bold master preserved",
+  "asset_edit_tool": "built-in image_gen.imagegen (GPT Image)"
+}

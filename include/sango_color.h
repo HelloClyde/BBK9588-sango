@@ -25,4 +25,5 @@ int sango_color_draw_resource(unsigned int resource, int x, short y, unsigned in
 void sango_color_put_pixel(short x, short y, uint16_t color, unsigned int target);
 void sango_color_sdk_pixel(uint32_t context, int x, int y, uint16_t color);
 void sango_color_sdk_guard(int enabled);
+void sango_color_sdk_text(unsigned int target, int font, int x, int y, const char *text);
 #endif

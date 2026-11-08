@@ -1,7 +1,7 @@
 {
   "passed": 15,
   "failed": 0,
-  "bda_sha256": "1b02eb5e7807ba3d5230cb4a6bae732ec43ffd42e959bf90b16949340a7a3386",
+  "bda_sha256": "4cbb00bfed8413053eb04e99c52e4bedaa628e945e74d7d95d61aa805d8b8bca",
   "scope": "Actual compiled MIPS C rasterization through modeled SDK; actual map touch dispatch including y=260. Full firmware checked separately.",
   "cases": [
     {

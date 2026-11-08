@@ -70,5 +70,7 @@
     "validation/battle-viewport-validation.json": "308601873531d502ba34e6a6b24eb6f956f7975180c989c12c873e1673ae8af9",
     "validation/library-loader-host.json": "4f0954e5b82d789256e023d2bb9bd947c9ed0b34a40685f06009020809d1c1d4"
   },
-  "scope": "Real compiled 17 battle timelines with modeled SDK pixel/capture/timer boundaries; native SDK compatible snapshot/restore including black/white, four ranges match compiled final pixels, 20-unit controlled UI and native input. Exact BDA/LIB/CLR staged to bypass synthetic NAND ECC. No physical-device, native file loading, complete battle/AI/campaign claim."
+  "scope": "Real compiled 17 battle timelines with modeled SDK pixel/capture/timer boundaries; native SDK compatible snapshot/restore including black/white, four ranges match compiled final pixels, 20-unit controlled UI and native input. Exact BDA/LIB/CLR staged to bypass synthetic NAND ECC. No physical-device, native file loading, complete battle/AI/campaign claim.",
+  "snapshot_commit": "40443c60c223a08cf5d22908ea5dd317cab1ca3d",
+  "history_note": "Historical battle terrain/backdrop update. Hashes resolve at snapshot_commit; current image/font/centering update is battle-hud-image-validation.json."
 }

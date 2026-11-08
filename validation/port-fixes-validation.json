@@ -3,7 +3,7 @@
   "failed": 0,
   "battle_sprites": 140,
   "battle_groups": 17,
-  "bda_sha256": "1b02eb5e7807ba3d5230cb4a6bae732ec43ffd42e959bf90b16949340a7a3386",
+  "bda_sha256": "4cbb00bfed8413053eb04e99c52e4bedaa628e945e74d7d95d61aa805d8b8bca",
   "scope": "Actual compiled MIPS rasterizers against all original battle sprites through both offscreen and direct paths; actual timeline and credits menu code with modeled SDK pixels/timers. Not a complete battle/campaign or physical-device test.",
   "cases": [
     {

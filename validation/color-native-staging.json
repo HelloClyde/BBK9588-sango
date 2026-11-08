@@ -2,20 +2,20 @@
   "entry": true,
   "package": true,
   "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
-  "payload_sha256": "00b515d5d188c4f98a3657af41c1cf64dd7445d854b87f61f9c4b96c391aefaf",
+  "payload_sha256": "9fcc9183e1d58ae0763b20facd92b8a375018e4291a6a95bb26038cd9567f3dc",
   "color": {
     "bytes": 2282488,
-    "sha256": "785de7fe0a575b05406da637eea26ab6e89dfdf9cdb47bbd219b5ffab80dedd4",
+    "sha256": "d1be1b39364d16b0cdb824481bc7b99ee679d511c5a76bf028b4c33ea567d20e",
     "scope": "Exact expanded LIB/CLR borrowed buffers staged for native SDK rendering; production CRC/parser executes in separate bootstrap. Storage loader/ownership tested separately in compiled MIPS."
   },
   "package_address": "0x81000000",
   "package_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "battle_fixture": {
-    "sha256": "a6c1007b69dc2d0229190a80e270633faf95501378af79954104abc46925931a",
+    "sha256": "bc678510f7cbc1be6830d3e537e9aa12caa5d772dc73866b500accc68f614174",
     "entry": "0x81c30000",
     "trigger": "0x81c031c8",
     "scope": "Controlled battle UI fixture entered at normal credits call; exact fixture source is saved locally with its compile invocation; production battle functions and native hardware input. Fixture excluded from delivered BDA.",
-    "source_sha256": "709b53c5ebce905f0d8147e710919f5722a536d0833af349f167a43fdf53fed4",
+    "source_sha256": "6d2c9508221592954913a62e9d6af3d7005957de5799cd02057c0daded4d7872",
     "description": "Controlled 20-unit battlefield, full-canvas backing-context restore probe and actual animation ranges 19:0-6, 27:12-17, 35:0-7, 38:0-14. Fixture excluded from delivered BDA."
   }
 }

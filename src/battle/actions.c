@@ -88,12 +88,15 @@ uint32_t sango_battle_execute_skill(int action_address)
             if ((animation_resource != 0) && (g_battle_show_animations != '\0'))
             {
                 if ((&g_skill_animation_background_flag)[skill_index] != '\0')
-                    sango_bitmap_draw_resource(0x10, 1, 0x14, 0x31, '\0');
+                    sango_bitmap_draw_resource(0x10, 1, sango_battle_animation_left(),
+                                               sango_battle_animation_top(), '\0');
                 sango_animation_play_range(
                     (uint32_t)animation_resource,
                     (uint32_t)(uint8_t)(&g_skill_animation_first_command)[skill_index],
                     (uint32_t)(uint8_t)(&g_skill_animation_last_command)[skill_index], 0,
-                    (uint8_t)(&g_skill_animation_x_offset)[skill_index] + 0x14, 0x31);
+                    (uint8_t)(&g_skill_animation_x_offset)[skill_index] +
+                        sango_battle_animation_left(),
+                    sango_battle_animation_top());
             }
 
             uint32_t effect_text_id;
@@ -132,8 +135,11 @@ uint32_t sango_battle_execute_skill(int action_address)
                 else
                 {
                     sango_battle_read_text(effect_text_id, message_start);
-                    sango_text_draw_legacy(0x3c, 0x33, message_start);
-                    sango_battle_draw_damage_digits(0x3c, 0x59, (uint32_t)effect_amount);
+                    sango_text_draw_legacy(sango_battle_animation_left() + 40,
+                                           sango_battle_animation_top() + 2, message_start);
+                    sango_battle_draw_damage_digits(sango_battle_animation_left() + 40,
+                                                    sango_battle_animation_top() + 40,
+                                                    (uint32_t)effect_amount);
                 }
                 sango_input_wait(0x32, '\0');
             }
@@ -235,7 +241,8 @@ uint32_t sango_battle_execute_normal_attack(uint32_t target_unit)
     }
     else
     {
-        sango_bitmap_draw_resource(0x10, 1, 0x14, 0x31, '\0');
+        sango_bitmap_draw_resource(0x10, 1, sango_battle_animation_left(),
+                                   sango_battle_animation_top(), '\0');
         animation_resource = 0x19;
         first_command = 0;
         last_command = 4;
@@ -251,8 +258,10 @@ uint32_t sango_battle_execute_normal_attack(uint32_t target_unit)
                                1 &
                            0xff;
         }
-        sango_animation_play_range(animation_resource, first_command, last_command, 0, 0x14, 0x31);
-        sango_battle_draw_damage_digits(0x3c, 0x59, applied_damage);
+        sango_animation_play_range(animation_resource, first_command, last_command, 0,
+                                   sango_battle_animation_left(), sango_battle_animation_top());
+        sango_battle_draw_damage_digits(sango_battle_animation_left() + 40,
+                                        sango_battle_animation_top() + 40, applied_damage);
     }
     sango_input_wait(0x32, '\0');
     if ((uint8_t)(*g_attacker_level_address_view2 - *g_defender_level_address) < 0xe1)
@@ -453,7 +462,8 @@ void sango_battle_change_weather(void)
     weather = bbk_rand();
     weather = (int)weather % 5 + 1;
     g_battle_weather = (uint8_t)weather;
-    sango_bitmap_draw_resource((weather & 0xff) + 0x1b, 1, 0x14, 0x31, '\x01');
+    sango_bitmap_draw_resource((weather & 0xff) + 0x1b, 1, sango_battle_animation_left(),
+                               sango_battle_animation_top(), '\x01');
     sango_battle_status_draw_weather(0);
     sango_battle_status_draw_weather(g_game_context);
     sango_input_wait(0x32, '\0');
