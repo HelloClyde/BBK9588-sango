@@ -13,7 +13,7 @@ INK=(24,20,8)
 
 def compose():
     root=COLOR/'battle-ui';root.mkdir(exist_ok=True)
-    master_path=COLOR/'generated/gold-ui-battle-hud-background.png'
+    master_path=COLOR/'generated/gold-ui-battle-hud-smooth.png'
     master=Image.open(master_path).convert('RGB')
     def crop(box,size):
         box=tuple(round(v*(master.width/960 if i%2==0 else master.height/384)) for i,v in enumerate(box))
@@ -44,7 +44,7 @@ def compose():
     frame.update(batch='battle-hud-pixel-grid',color_sha256=hashlib.sha256((COLOR/frame['color']).read_bytes()).hexdigest())
     batch={'id':'battle-hud-pixel-grid','composition':'native-pixel-font','reference':'references/battle-hud-sharp.png','canvas':[960,384],
            'master':master_path.relative_to(COLOR).as_posix(),'master_size':list(master.size),'master_sha256':hashlib.sha256(master_path.read_bytes()).hexdigest(),
-           'prompt':'prompts/gold-ui-battle-hud-background.txt','items':[{'key':frame['source_rgba_sha256'],'box':[0,200,960,344]}],
+           'prompt':'prompts/gold-ui-battle-hud-smooth.txt','items':[{'key':frame['source_rgba_sha256'],'box':[0,200,960,344]}],
            'status':'imported','imported_frames':1,'font_grid':[16,16],'font_scale':[1,1]}
     catalog['batches']=[b for b in catalog['batches'] if b['id']!=batch['id']]+[batch]
     catalog['native_status_image']={'path':'battle-ui/status-row-240x24.png','source_resource':8,'size':[240,24],

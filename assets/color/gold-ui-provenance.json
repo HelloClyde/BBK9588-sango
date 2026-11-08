@@ -4,21 +4,24 @@
   "palette": "antique gold borders, light champagne paper, deep bronze/gold relief",
   "historical_color_claim": false,
   "basis": "User-approved gold preference; original grayscale resources do not establish the historical color palette.",
-  "source_commit": "2519f33a7781455f36694d93f8ec03d8564289e5",
+  "source_commit": "19d7ea3e128e56323ec4fe4fd56afc4d86d9c958",
   "red_green_archive": "variants/red-green-ui",
   "master_sha256": {
-    "assets/color/generated/gold-ui-battle-hud-background.png": "3fbaea9a732910bcd086aec9f3f39387f7bccca7a0cd2e4361e87bdf8e6575d8",
-    "assets/color/generated/page-044.png": "40289acaf0eb063c01005fb0c01820ed1bcb83c5fa8393c182f11fa942327877",
-    "assets/color/generated/page-045.png": "d2deae2c48a3d9313905b34d5e9ed45cfdcac8b52e529c631391bcc64f0598b0",
-    "assets/color/generated/page-046.png": "4fcf725d5ceb8783ccf20f2b29c538d8a2916920434787b0985df54a19ecb226",
-    "assets/color/generated/page-018.png": "ba179cd75066de6bc93578aea2fab5729178ee528fb06e05ce65e33f8789bede"
+    "assets/color/generated/gold-ui-battle-hud-smooth.png": "257645db70621f0081820ccb9cadb33c643ef1ae1081464a326afda6d6b29dee",
+    "assets/color/generated/page-044.png": "1325f46b345fce2171dacbfb32fc8e125cff12355630f0ac1404e6d1ff2312cd",
+    "assets/color/generated/page-045.png": "63812e55bcb9f48743a22b8bb6a4cce162086830c550e239518ce62009cc3453",
+    "assets/color/generated/page-046.png": "c372ee6600c0dd729680e4f0b39da851a86720bcce8d983add9cf4ea7a01aa5a",
+    "assets/color/generated/page-018.png": "a2237156827f3f9eb47f19e73555ad6177a22c327d0ffd86387fcdf72bb73c2f"
   },
   "prompt_sha256": {
-    "assets/color/prompts/gold-ui-battle-hud-background.txt": "e0d7e382cd4bf0d37e74954adbaad44b0851b3a2147c7ce2b74c0e2e44ed9c65",
-    "assets/color/prompts/gold-ui-page-044.txt": "43ff135e06f7c66ab0cd751d5f4497d0cd79760242512fcd8241b805f5d50f80",
-    "assets/color/prompts/gold-ui-page-045.txt": "b76852f198620869123e8a33dd5fb8f9001bf3d04addb885654964333ccd73df",
-    "assets/color/prompts/gold-ui-page-046.txt": "c73e527a328989e379a1eddb49170e4f21d80b767592f594e00581f8533b5812",
-    "assets/color/prompts/gold-ui-page-018.txt": "edf039b53231624dd770161744afdf349e02763887221b18e1a09d34614241c9"
+    "assets/color/prompts/gold-ui-battle-hud-smooth.txt": "aaf04e9461151807ffe31a69afae59bcd76e0f27778e0ed47cd10f4f1d858795",
+    "assets/color/prompts/gold-ui-page-044-smooth.txt": "97bca2e0f7fc52d1d251806431ad0dbda1945344869827a6eb68780acdf6562f",
+    "assets/color/prompts/gold-ui-page-045-smooth.txt": "3fe4f9b00f55db0aa25d7b6d6b5f837f86a0705bb04247af68be855104b7ac35",
+    "assets/color/prompts/gold-ui-page-046-smooth.txt": "37fb317b034587c0c67454a987d9041aeaebb3504414f5bd75806daa9f93d385",
+    "assets/color/prompts/gold-ui-page-018-smooth.txt": "fe1cfdbd1a3a975201ebee97221665c153d55b86eca7d019d311ce89ef7c20ff",
+    "assets/color/prompts/gold-ui-page-046-smooth-paper.txt": "372fb37c8d022ba6d7186aeb647bb867d2d803bc442325706619c0a3941f5b56"
   },
-  "fixed_labels": "Six existing 16x16 masks baked 1:1 at unchanged integer placements; no runtime fixed-text drawing."
+  "fixed_labels": "Six existing 16x16 masks baked 1:1 at unchanged integer placements; no runtime fixed-text drawing.",
+  "previous_gold_archive": "variants/gold-pixel-ui",
+  "rendering": "Refined continuous gold ornament curves and shading replace enlarged pixel-art blocks; existing native fixed-label masks stay 1:1."
 }

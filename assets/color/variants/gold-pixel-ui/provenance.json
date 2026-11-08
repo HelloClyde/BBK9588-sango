@@ -1,0 +1,24 @@
+{
+  "generator": "built-in GPT Image",
+  "mode": "edit",
+  "palette": "antique gold borders, light champagne paper, deep bronze/gold relief",
+  "historical_color_claim": false,
+  "basis": "User-approved gold preference; original grayscale resources do not establish the historical color palette.",
+  "source_commit": "2519f33a7781455f36694d93f8ec03d8564289e5",
+  "red_green_archive": "variants/red-green-ui",
+  "master_sha256": {
+    "assets/color/generated/gold-ui-battle-hud-background.png": "3fbaea9a732910bcd086aec9f3f39387f7bccca7a0cd2e4361e87bdf8e6575d8",
+    "assets/color/generated/page-044.png": "40289acaf0eb063c01005fb0c01820ed1bcb83c5fa8393c182f11fa942327877",
+    "assets/color/generated/page-045.png": "d2deae2c48a3d9313905b34d5e9ed45cfdcac8b52e529c631391bcc64f0598b0",
+    "assets/color/generated/page-046.png": "4fcf725d5ceb8783ccf20f2b29c538d8a2916920434787b0985df54a19ecb226",
+    "assets/color/generated/page-018.png": "ba179cd75066de6bc93578aea2fab5729178ee528fb06e05ce65e33f8789bede"
+  },
+  "prompt_sha256": {
+    "assets/color/prompts/gold-ui-battle-hud-background.txt": "e0d7e382cd4bf0d37e74954adbaad44b0851b3a2147c7ce2b74c0e2e44ed9c65",
+    "assets/color/prompts/gold-ui-page-044.txt": "43ff135e06f7c66ab0cd751d5f4497d0cd79760242512fcd8241b805f5d50f80",
+    "assets/color/prompts/gold-ui-page-045.txt": "b76852f198620869123e8a33dd5fb8f9001bf3d04addb885654964333ccd73df",
+    "assets/color/prompts/gold-ui-page-046.txt": "c73e527a328989e379a1eddb49170e4f21d80b767592f594e00581f8533b5812",
+    "assets/color/prompts/gold-ui-page-018.txt": "edf039b53231624dd770161744afdf349e02763887221b18e1a09d34614241c9"
+  },
+  "fixed_labels": "Six existing 16x16 masks baked 1:1 at unchanged integer placements; no runtime fixed-text drawing."
+}

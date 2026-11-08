@@ -51,5 +51,7 @@
   "native_firmware_checks": 30,
   "reused_other_mips_checks": 1505,
   "art_provenance": "assets/color/gold-ui-provenance.json",
-  "scope": "Five UI PNG frames and native HUD image recolored using built-in GPT Image. Existing font masks, placements, source LIB, executable and ELF remain identical. Other 1199 indexed frame PNGs unchanged. Fresh MIPS covers all 1204 RGB frames, footer/dispatch and 1:1 glyph grid; native C200 covers menu, battle/status/touch, credits, strategy and four animation ranges using controlled exact-byte RAM staging. Full-page lettering/illustrations visually reviewed; no pixel-identity claim for generated page art. Original selected-menu navy contrast retained. Gold is user-approved styling, not a verified original palette. No physical-device/full-campaign claim."
+  "scope": "Five UI PNG frames and native HUD image recolored using built-in GPT Image. Existing font masks, placements, source LIB, executable and ELF remain identical. Other 1199 indexed frame PNGs unchanged. Fresh MIPS covers all 1204 RGB frames, footer/dispatch and 1:1 glyph grid; native C200 covers menu, battle/status/touch, credits, strategy and four animation ranges using controlled exact-byte RAM staging. Full-page lettering/illustrations visually reviewed; no pixel-identity claim for generated page art. Original selected-menu navy contrast retained. Gold is user-approved styling, not a verified original palette. No physical-device/full-campaign claim.",
+  "snapshot_commit": "19d7ea3e128e56323ec4fe4fd56afc4d86d9c958",
+  "history_note": "Historical first gold palette at snapshot_commit. Current refined UI art and fresh checks are recorded in smooth-ui-validation.json."
 }

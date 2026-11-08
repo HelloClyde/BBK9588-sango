@@ -3,74 +3,74 @@
   "failed": 0,
   "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
-  "color_sha256": "eaf9beca0f0d3b9d155dbabbaddf93573b3f1b0cbec9233e0f4e8b29e142e51b",
+  "color_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
   "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled 20-unit battle fixture, backdrop probe and four production timeline ranges. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
   "cases": [
     {
       "name": "Native menu displays colored frame and panels",
       "passed": true,
       "screenshot": "docs/screenshots/color/main-menu.png",
-      "screenshot_sha256": "32dea4ff97173e3ee3eee51ed4a7a4e6816bcc0ee4df5a7c860a35a7c3cd2db2"
+      "screenshot_sha256": "cfb227fd8ebcc153c55dcaf66b35d726fe8663b2a47f24b74646945baba7655a"
     },
     {
       "name": "Native colored day-1 frame is centered and exact",
       "passed": true,
       "screenshot": "docs/screenshots/color/day-1.png",
-      "screenshot_sha256": "c3af4cade18b552e98acdc6815291b834c44b5ed25cf429bf141ea9f866c6229"
+      "screenshot_sha256": "117e9c282127bfe5e205f416bbdf9036453484c2f5bb090a9cbe1058e907d037"
     },
     {
       "name": "Native colored day-10 frame is centered and exact",
       "passed": true,
       "screenshot": "docs/screenshots/color/day-10.png",
-      "screenshot_sha256": "bb68c48708bef1fb51cf182a2ac0fec81a9091a8f60a05b17ed5f2287b400444"
+      "screenshot_sha256": "2109e7bc000f76e15d1837aee9364658e17e45ca142059e58351bc9b235a6147"
     },
     {
       "name": "Battle toolbar preserves full 240x36 RGB565 source",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Native 240x24 status image and weather match compiled RGB pixels",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Battle terrain and portrait summary both display color",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Native transparent food-number preserves image background",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Native transparent unit-name preserves image background",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Native six fixed glyph masks land on the exact 1:1 LCD grid",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Native colored info opens at retained touch position",
       "passed": true,
       "screenshot": "docs/screenshots/color/info.png",
-      "screenshot_sha256": "b1ccfa599bdd70892ef2a9169c975dd028a5095803445e998304c103fb9cb7fd"
+      "screenshot_sha256": "a149691a6717178e3c84d69968cb128e09af14f53e2f6177e251e4fc9228625e"
     },
     {
       "name": "Native info return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/info-return.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "dba1d6d2b9e60b7ed3aa7b25da9311688ec673c01a5f82f79993b294056db3d9"
     },
     {
       "name": "Native colored find opens at retained touch position",
@@ -82,109 +82,109 @@
       "name": "Native find return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/find-return.png",
-      "screenshot_sha256": "6f48d6c8fff62f6ffcd9a6883993084266982322fcb914775f5697df5cf0ea52"
+      "screenshot_sha256": "bd3a60d1eb61623a32bf72dd838e7eafdd6246f3b689bddceae1c543fe254531"
     },
     {
       "name": "Battle cursor movement preserves colored footer",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "fa8d3ec79ab2309cc2b6d62f2e5e36b54be8f885abfc0cfb01873c5bf03242a2"
+      "screenshot_sha256": "7a5c03cff64457b5d74ff8d5ae6e80d11cc58519e5d6ea1a4ca0362f62bc5cd4"
     },
     {
       "name": "Native empty tile switches name to terrain on original single line",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "fa8d3ec79ab2309cc2b6d62f2e5e36b54be8f885abfc0cfb01873c5bf03242a2"
+      "screenshot_sha256": "7a5c03cff64457b5d74ff8d5ae6e80d11cc58519e5d6ea1a4ca0362f62bc5cd4"
     },
     {
       "name": "Native sprite overlay changes the colored backdrop",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-overlay.png",
-      "screenshot_sha256": "cdfa2ea6721793e168669f9b8c40383005002a672fb7d2507594b3cfaaebd07f"
+      "screenshot_sha256": "77cb13a708e19763b0e08c63fc086db8d3babf1739a75824280d837d94cdea31"
     },
     {
       "name": "Native SDK snapshot restores all 76800 pixels including black and white",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-restored.png",
-      "screenshot_sha256": "5052fb5b302ef2ca9c9c51ec68cc3afbc3f6624f20a8cc0cc6f7715625f7e312"
+      "screenshot_sha256": "f17fc0b2e8f1b77604f96bf37671860ed626c35263689bbcd1e40681bf390f99"
     },
     {
       "name": "Native animation 19 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-19-final.png",
-      "screenshot_sha256": "33f7358f82184e32974527f21ff28885ccb61ce972ed74b3b32e35da3d5ae3cc"
+      "screenshot_sha256": "bd9b0d8108df357bf8fb020bb339204db10b0d40e6fa83eb74a03e238c70c0c3"
     },
     {
       "name": "Native animation 27 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-27-final.png",
-      "screenshot_sha256": "9c5c9595fc85b90f70e6cfea6fc9f91c4eff29c2a322a042420a5740883c90f3"
+      "screenshot_sha256": "12cfbe1024b49cde4310bc1b445f4c15082caa993c0db5a2952f4fa0754e1af3"
     },
     {
       "name": "Native animation 35 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-35-final.png",
-      "screenshot_sha256": "fec780771c8412d10ac9b58c51ce063ec2802fe2645b7056eb233515b8323df5"
+      "screenshot_sha256": "a478884673cc3830e3f3683883cbea5ea7fa19a10fb8c75d7f804218a80994e7"
     },
     {
       "name": "Native animation 38 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-38-final.png",
-      "screenshot_sha256": "f73433ca750a430e0ac3c4c9d82c5728d1a4bb4f0191825a83a5dc5e0d1bc98f"
+      "screenshot_sha256": "4bd11c8cb1c1efff75f2570a82f60c7ba15c595e407f0e27acd65e287c2c85ab"
     },
     {
       "name": "Native credits match all 76800 compiled RGB565 pixels",
       "passed": true,
       "screenshot": "docs/screenshots/color/credits.png",
-      "screenshot_sha256": "9fc8b7e14ba144f18d00bb91f7e6062a044a0e21ae1dbc64515bdb6f550c588e"
+      "screenshot_sha256": "d9fcd9307045a40e7cac4945ca90675da0c1f302ddd8745b8572632843d32d0e"
     },
     {
       "name": "Native strategy toolbar matches color source and retained layout",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "9889bd47db8fa928fc950a4b8c82cd407a3c5caa064e15380739b1b15def9222"
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
     },
     {
       "name": "Native strategy map and ruler portrait are colored",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "9889bd47db8fa928fc950a4b8c82cd407a3c5caa064e15380739b1b15def9222"
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
     },
     {
       "name": "Right map edge has no white padding",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "9889bd47db8fa928fc950a4b8c82cd407a3c5caa064e15380739b1b15def9222"
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
     },
     {
       "name": "Lower map edge reaches toolbar without a white gap",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "9889bd47db8fa928fc950a4b8c82cd407a3c5caa064e15380739b1b15def9222"
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
     },
     {
       "name": "Native selection cursor contains the complete original gold up-arrow",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "9889bd47db8fa928fc950a4b8c82cd407a3c5caa064e15380739b1b15def9222"
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
     },
     {
       "name": "Native down input moves the complete arrow by one logical cell",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy-cursor-move.png",
-      "screenshot_sha256": "80d03bae414cf3d4d05a4ebac76883bba1c4478e228074b41674d92ccadfaf07"
+      "screenshot_sha256": "e8eb1aa13471ba34786dfbe287cb916a4d04527e858f1549c5690f531bdc06d8"
     },
     {
       "name": "Cursor movement preserves transparent background and restores old arrow area",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy-cursor-move.png",
-      "screenshot_sha256": "80d03bae414cf3d4d05a4ebac76883bba1c4478e228074b41674d92ccadfaf07"
+      "screenshot_sha256": "e8eb1aa13471ba34786dfbe287cb916a4d04527e858f1549c5690f531bdc06d8"
     },
     {
       "name": "Returning the cursor restores the full map without white blocks or trails",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy-cursor-return.png",
-      "screenshot_sha256": "9889bd47db8fa928fc950a4b8c82cd407a3c5caa064e15380739b1b15def9222"
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
     }
   ]
 }

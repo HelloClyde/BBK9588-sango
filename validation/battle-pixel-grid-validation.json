@@ -16,6 +16,6 @@
   "rendered_status_pixels_compared": 5760,
   "fixed_characters": "粮天信息查找",
   "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
-  "color_sha256": "eaf9beca0f0d3b9d155dbabbaddf93573b3f1b0cbec9233e0f4e8b29e142e51b",
+  "color_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
   "scope": "Six baked single-bit glyph masks match final PNG pixels exactly at integer positions; compiled MIPS copies all 5760 native HUD pixels without scaling, restores the same image region, checks SGHUD01 trailer bounds/CRC/source, legacy compatibility and unload. SDK pixel/text boundaries modeled; native firmware separately checked."
 }

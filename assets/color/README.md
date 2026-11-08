@@ -73,7 +73,7 @@ python tools/test_color_assets.py
 
 ## 最终像素网格与1:1状态图
 
-当前状态图是[240×24 PNG](battle-ui/status-row-240x24.png)，按钮是[240×36 PNG](statusbar/toolbar-240x36.png)。GPT Image只生成[无文字的美术底图](generated/gold-ui-battle-hud-background.png)，[提示词](prompts/gold-ui-battle-hud-background.txt)保留；固定的粮、天、信、息、查、找使用[6张16×16单比特字形](battle-ui/glyphs/)在导出PNG时按整数坐标贴入，字形不经过任何缩放或抗锯齿。程序只复制整张成品图，不按字形绘制固定标签，状态图不再走旧3:2采样。
+当前状态图是[240×24 PNG](battle-ui/status-row-240x24.png)，按钮是[240×36 PNG](statusbar/toolbar-240x36.png)。GPT Image只生成[无文字的美术底图](generated/gold-ui-battle-hud-smooth.png)，[提示词](prompts/gold-ui-battle-hud-smooth.txt)保留；固定的粮、天、信、息、查、找使用[6张16×16单比特字形](battle-ui/glyphs/)在导出PNG时按整数坐标贴入，字形不经过任何缩放或抗锯齿。程序只复制整张成品图，不按字形绘制固定标签，状态图不再走旧3:2采样。
 
 ```powershell
 # 使用已入库的背景和字形，重新烘焙两张最终PNG；无需安装字体
@@ -92,3 +92,5 @@ SGCOLOR1的1204条原索引保持不变，可选的原尺寸状态图追加在�
 ## 金色UI方案
 
 当前选用金色边框、浅金纸底和深金/铜色纹饰。该配色依据用户偏好，原灰度素材不能证明历史原版颜色。主菜单、剧本、存读档、制作群组和共享底栏的5张GPT Image编辑母图与提示词记录在 [gold-ui-provenance.json](gold-ui-provenance.json)。固定字形仍按1:1烘焙，位置保持“粮”x=4、“天”x=82。人物/地图/战斗图标不做统一色调处理，选中菜单的深色对比保留。此前红绿母图、提示词、原生PNG和排版记录位于 `variants/red-green-ui/`，也可按提交2519f33追溯。
+
+当前UI美术以连续曲线/明暗重绘，去除此前母图中放大的像素块；固定文字仍使用已入库的16×16单比特掩码按1:1导出。该细化覆盖菜单、剧本、存读档、制作群组和共享底栏，未对小头像/城市/战斗精灵批量滤波或换色。选用5张母图及6份提示词见 `gold-ui-provenance.json`；原金色颗粒版本在 `variants/gold-pixel-ui/`。

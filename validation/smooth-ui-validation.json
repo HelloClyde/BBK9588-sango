@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-09",
+  "baseline_commit": "19d7ea3e128e56323ec4fe4fd56afc4d86d9c958",
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+  "color_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
+  "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "changed_indexed_ui_frames": [
+    {
+      "resource": 44,
+      "frame": 0,
+      "path": "assets/color/library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
+      "sha256": "fe37a1fd87963157f9968f48d557b525a0c90e98ce1426ebff8f6c92e2151c32"
+    },
+    {
+      "resource": 45,
+      "frame": 0,
+      "path": "assets/color/library/界面/剧本菜单静态底图_资源045/剧本菜单静态底图.png",
+      "sha256": "67c4ec23692b8c6100d942f983790241e546ce5ad142bb0e1494f9136e8a3d1d"
+    },
+    {
+      "resource": 46,
+      "frame": 0,
+      "path": "assets/color/library/界面/存读档列表底图_资源046/存读档列表底图.png",
+      "sha256": "53be89130de398a5f217df890cfe9766bd955841d6469fabcc8b3890726977ab"
+    },
+    {
+      "resource": 17,
+      "frame": 0,
+      "path": "assets/color/statusbar/toolbar-240x36.png",
+      "sha256": "137fc9caf86f5e8fafc34d8c168a53bc34725a894cd60e9b6ff9cdf1003dbeb7"
+    },
+    {
+      "resource": 18,
+      "frame": 0,
+      "path": "assets/color/credits/credits-240x320.png",
+      "sha256": "8152f6f1a69402f37fd80465e4a70c12084cb878c76e8f843253383996b0a66c"
+    }
+  ],
+  "unchanged_indexed_frames": 1199,
+  "unchanged_file_sha256": {
+    "build/三国霸业.bda": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+    "build/sango.elf": "d1fad32bcd71846cca3668bb839c859a28a41ae801383033e621dc93416c00ba",
+    "build/sango.lib": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11"
+  },
+  "fixed_glyph_masks_and_positions_unchanged": true,
+  "native_status_size": [
+    240,
+    24
+  ],
+  "fresh_mips_checks": 3952,
+  "native_firmware_checks": 30,
+  "other_mips_checks_reused": 1505,
+  "art_provenance": "assets/color/gold-ui-provenance.json",
+  "scope": "Built-in GPT Image re-renders enlarged blocky UI decoration as continuous gold relief. Main/scenario/save-load/credits backgrounds and common toolbar/native status updated; same source geometry and rendering sizes. Fixed-label masks remain exact 1:1. Native C200 verifies menus, footer/text backgrounds/touch, credits, strategy and four animation ranges using exact-byte RAM staging. Full-page generated art visually reviewed; not asserted pixel-identical. Other 1199 indexed PNGs, executable, ELF and LIB unchanged. Small portraits, battle sprites, terrain and selected-menu images retain their previous resolution/style; no claim that all art is de-pixelated. 240x320 LCD pixel limits remain. No physical-device/full-campaign claim."
+}
