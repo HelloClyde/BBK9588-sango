@@ -34,7 +34,8 @@ void sango_battle_draw_move_range(void)
             do
             {
                 viewport_row = window_row - ((viewport_y + window_top) - source_y & 0xff);
-                if (((viewport_column & 0xff) < 0xf) && ((viewport_row & 0xff) < 0xf))
+                if (((viewport_column & 0xff) < 0xf) &&
+                    ((viewport_row & 0xff) < SANGO_BATTLE_VIEW_ROWS))
                 {
                     if ('\0' < *(char *)(g_move_costs_address + window_row * 0xf + window_column))
                     {

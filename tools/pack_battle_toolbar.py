@@ -31,8 +31,8 @@ def main():
       'master':master_path.name,'master_size':list(master.size),'master_sha256':sha(master_path.read_bytes()),
       'crop_box':list(crop),'target':'toolbar-240x36.png','target_size':[240,36],
       'target_sha256':sha((ASSETS/'toolbar-240x36.png').read_bytes()),
-      'packed_sha256':sha(raw),'packed_bytes':len(raw),'display_rectangle':[0,264,240,24],
-      'runtime_sampling':'36 source rows sampled into 24 screen rows; summary uses y=288..319',
+      'packed_sha256':sha(raw),'packed_bytes':len(raw),'display_rectangle':[0,248,240,36],
+      'runtime_sampling':'None: full 240x36 source drawn at native size. Display viewport 240x224; summary uses y=284..319.',
       'text':['信息','查找'],'levels':[0,85,170,255]}
     (ASSETS/'provenance.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))

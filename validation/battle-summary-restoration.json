@@ -62,5 +62,7 @@
     "battle-hud-validation.json": "50615b48f2783a8420d8432d35b5755234e9dec834dfb114c0009624cf116661",
     "battle-summary-validation.json": "92d2984e215a34c470feae6636addd055b80dfd3733485a364d3a6289079bacd",
     "control-flow-validation.json": "e8efb3040e5c9f5eca55f9b6b4c726823e6ad7d0da022eb49d4e6b721f6ae80c"
-  }
+  },
+  "status": "Historical lower-summary restoration with compressed toolbar; source/report hashes refer to snapshot_commit.",
+  "snapshot_commit": "7a0d55a5321b1e7115c1074b83b8ee75637c3669"
 }

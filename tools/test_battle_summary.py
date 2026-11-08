@@ -34,7 +34,7 @@ def main():
     labels = text_items(record(manifest, 64))
     m, text, bitmaps = setup()
     m.call('sango_battle_status_draw')
-    assert not bitmaps and not [entry for entry in text if entry[1] >= 288]
+    assert not [row for row in bitmaps if row[1] >= 284] and not [entry for entry in text if entry[1] >= 284]
     count = 1
     for scenario in range(1, 5):
         for ruler, year, month, city_count, people_count, city in (
@@ -53,15 +53,16 @@ def main():
             m.write(STATE['g_scenario_id_view2'], bytes([5 - scenario]))
             state = m.read(0x81c2b0d0, 0x9a1)
             m.call('sango_battle_status_draw')
-            expected = [(94, 291, str(city_count).encode(), CONTEXT),
-                        (94, 305, str(people_count).encode(), CONTEXT),
-                        (123, 291, (str(year) + labels[62]).encode('gbk'), CONTEXT),
-                        (123, 305, (str(month) + labels[63]).encode('gbk'), CONTEXT)]
+            bitmaps = [row for row in bitmaps if row[1] >= 284]
+            expected = [(94, 289, str(city_count).encode(), CONTEXT),
+                        (94, 303, str(people_count).encode(), CONTEXT),
+                        (123, 289, (str(year) + labels[62]).encode('gbk'), CONTEXT),
+                        (123, 303, (str(month) + labels[63]).encode('gbk'), CONTEXT)]
             if city:
-                expected.append((180, 298, cities[city - 1].encode('gbk'), CONTEXT))
-            assert [entry for entry in text if entry[1] >= 288] == expected, text
+                expected.append((180, 296, cities[city - 1].encode('gbk'), CONTEXT))
+            assert [entry for entry in text if entry[1] >= 284] == expected, text
             assert [row[:5] for row in bitmaps] == [
-                [31, 292, 24, 24, ruler], [79, 292, 7, 9, 1], [79, 307, 7, 9, 0]], bitmaps
+                [31, 290, 24, 24, ruler], [79, 290, 7, 9, 1], [79, 305, 7, 9, 0]], bitmaps
             for row in bitmaps:
                 assert row[6] == CONTEXT
             # Header of the first frame must come from the snapshotted scenario.
@@ -73,7 +74,7 @@ def main():
             count += 1
     report = {'passed': count, 'failed': 0, 'bda_sha256': hashlib.sha256(
         (ROOT / 'build/三国霸业.bda').read_bytes()).hexdigest(),
-        'summary_rectangle': [0, 288, 240, 32],
+        'summary_rectangle': [0, 284, 240, 36],
         'scope': 'Compiled MIPS caches last strategic ruler/scenario/counts/date/city; validates '
                  'portrait resource/frame, two native text rows, empty city, redraw stability and '
                  'unchanged legacy state/shared scratch. SDK text/bitmap boundaries modeled; '

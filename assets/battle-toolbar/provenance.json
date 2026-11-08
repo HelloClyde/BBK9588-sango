@@ -25,9 +25,9 @@
   "packed_bytes": 2166,
   "display_rectangle": [
     0,
-    264,
+    248,
     240,
-    24
+    36
   ],
   "text": [
     "信息",
@@ -40,5 +40,5 @@
     255
   ],
   "original_references_distributed": true,
-  "runtime_sampling": "36 source rows sampled into 24 screen rows; summary uses y=288..319"
+  "runtime_sampling": "None: full 240x36 source drawn at native size. Display viewport 240x224; summary uses y=284..319."
 }

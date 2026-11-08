@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "7a0d55a5321b1e7115c1074b83b8ee75637c3669",
+  "baseline_bda_sha256": "19367fc94b97afc492c0553846d8f9ec5048dd8a93ff636039b90b39a6c4663e",
+  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
+  "bda_bytes": 214700,
+  "elf_sha256": "0b7831b8fc2a08b46c001cf34582c6fcdc6157b3a1ac3ada998acc4e639959c1",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "initialized_data_bytes_identical": 45536,
+  "save_layout_unchanged": true,
+  "gameplay_rule_sources_unchanged": [
+    "src/battle/movement.c",
+    "src/battle/ai.c",
+    "src/battle/combat_math.c",
+    "src/battle/army.c",
+    "src/battle/actions.c"
+  ],
+  "display_viewport_tiles": [
+    15,
+    14
+  ],
+  "movement_and_skill_windows": [
+    15,
+    15
+  ],
+  "map_rectangle": [
+    0,
+    0,
+    240,
+    224
+  ],
+  "status_rectangle": [
+    0,
+    224,
+    240,
+    24
+  ],
+  "toolbar_rectangle": [
+    0,
+    248,
+    240,
+    36
+  ],
+  "summary_rectangle": [
+    0,
+    284,
+    240,
+    36
+  ],
+  "toolbar_source_png_sha256": "9fbd4298d57179bde199efdf0b52d2e6cb5279c4ae4fbdcf1be4f815014337b5",
+  "toolbar_pixels_identical_to_source": 8640,
+  "existing_mips_checks": 593,
+  "hud_mips_checks": 58,
+  "summary_snapshot_mips_checks": 9,
+  "viewport_mips_checks": 507,
+  "production_mips_logic_comparisons": 27163,
+  "native_c200_interface_checks": 27,
+  "native_battle_interface_checks": 15,
+  "resource_host_checks": {
+    "codec": 10,
+    "loader": 4,
+    "code_usage_rules": 89
+  },
+  "scope": "Seven actual map resources checked for copy/clamp/scroll/full-height reachability and display clipping; native fixture crosses the fourteenth row and checks footer preservation. Existing logic differentials normalize deliberate display boundaries. Native C200 uses controlled terrain-only state and original LIB; expanded LIB uses host evidence. Not complete battle/campaign/physical-device proof.",
+  "source_sha256_lf": {
+    "include/sango_battle.h": "f1927dd7b10754b18e747173f296b6fa8ea77e543390d5ffe2c9a6cb9a77f277",
+    "include/sango_statusbar.h": "47e6510197f550729008bba8f8de0d746f801c05de6abca18d3b8403bd858fe7",
+    "src/sango_battle_ui.c": "e8e1193e49ea5dcf6f8641e5cf1fce92ebddd4d99529fd2a0348914bdbb5ab7d",
+    "src/sango_statusbar.c": "017593cae02d71681014bbeb6f88c3b372b6fc144e65ee1b4118896950f7a042",
+    "src/battle/field.c": "5d0fd20608cb9788f78c66f212375cb932e504823af714be0d3b7253ac2b8890",
+    "src/battle/controller.c": "697c304bcd8a890aa41ff5f11ff628b5653517bbc49ca050cce959d9228c6b16",
+    "src/battle/overview.c": "58d4e1257312a95c408227563bd7fa92767c90496bd780a1fe6072ed9c13d8fc",
+    "src/battle/player_turn.c": "3d6ef3feb15e5456abe1d53c7459f518a9921dab651b040788f05aed6e2e98c1",
+    "tools/test_battle_hud.py": "3c979612c32e0dbbd08420546805d56f93bcfe67db4767edbd1ac1912747311a",
+    "tools/test_battle_summary.py": "a4ff2a9fc62499c2f2a3b9650f350aed61ca45f366e6b654b1a4735cedd72ad5",
+    "tools/test_battle_viewport.py": "2a9f9b9a727c5a90dbd29b97704b51bede110d5d5dfe5c074d7e1ca1d408b872"
+  },
+  "report_sha256_lf": {
+    "differential.json": "e2857a61fa9d41d869937f9e8e215e5813fa2fe6da50743a13644fd094471493",
+    "statusbar-validation.json": "fe3878cc336e0ec132ba1ad21bcb2488fa8d0a73f451f7961fd2d1e89bce4dd8",
+    "port-fixes-validation.json": "db2af05931b92decc3500bad3eeac1bb6a7fcad0b3f710790db8e177089c06e4",
+    "battle-touch-validation.json": "0db806f52dc1d97e43369cf22362fcc230b15f48c2444a1fd9fbf69fb5e7eed9",
+    "day-popup-validation.json": "3d2a2373279b993bd96d1b87f1e22462a53ef06b42c6d0737bf6cd96da2fb6ed",
+    "statusbar-firmware-validation.json": "1848749b8e2a0dc1dff864d69a5515f9c68f2c361ba061c1dedf914769556fc7",
+    "port-firmware-validation.json": "b79f6c1bace1a429c91a345e40b8836cf07fde874ec1393f47784af39f55a9b3",
+    "battle-touch-firmware-validation.json": "95681b0aeaea28338683cd5aec647cafd20033c9e4307fbab281d554c3388482",
+    "day-popup-firmware-validation.json": "c4e6eb9099658683a40f076235f099327659a95499db6c0164461f10beb5e347",
+    "battle-hud-validation.json": "2d3ce0e23e78d902e23a193f267873b17de8db6c8f7df17811c203bf9f7e56c1",
+    "battle-summary-validation.json": "a7b11b2ab159c46127a9b93451b47ab0d1093d77235e0e4a8da544cafa51acf4",
+    "battle-viewport-validation.json": "afe92f93248270d8ad9825d4a69942f0317221539fb64a85aeadb42bca699b53",
+    "control-flow-validation.json": "588231ac06847c4ce56b4c1bf866fdf6706577548c92153ae3324427a2e679c0"
+  }
+}

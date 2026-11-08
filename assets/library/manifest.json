@@ -477,7 +477,7 @@
       ],
       "category": "战斗",
       "name": "战斗状态行底图",
-      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=240绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
+      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=224绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
       "usage_status": "confirmed",
       "code_evidence": [
         {
@@ -5818,7 +5818,7 @@
       ],
       "category": "补充界面",
       "usage_status": "confirmed",
-      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时纵向采样为24行，给下方势力摘要预留32行。当前C并不从LIB的17号条目读取。",
+      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时按240x36原尺寸绘制；战场显示15列14行，底部保留36行势力摘要。当前C并不从LIB的17号条目读取。",
       "code_evidence": [
         {
           "source": "src/sango_statusbar.c",

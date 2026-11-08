@@ -1,0 +1,29 @@
+{
+  "passed": 507,
+  "failed": 0,
+  "viewport_tiles": [
+    15,
+    14
+  ],
+  "map_rectangle": [
+    0,
+    0,
+    240,
+    224
+  ],
+  "rules_window_unchanged": [
+    15,
+    15
+  ],
+  "resources_checked": [
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116
+  ],
+  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
+  "scope": "Compiled MIPS real-map viewport copies, edge clamps, 210-tile painting, top-to-bottom scrolling/reachability, overlays and sprite/effect clipping; SDK rendering boundaries modeled. Not complete battle or hardware proof."
+}

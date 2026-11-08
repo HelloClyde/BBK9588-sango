@@ -40,10 +40,13 @@
     "battle_layout_27163_logic_differentials": true,
     "battle_summary_9_snapshot_checks": true,
     "battle_summary_26_native_interface_checks": true,
-    "original_9288s_battle_screenshot_confirmed": true
+    "original_9288s_battle_screenshot_confirmed": true,
+    "battle_toolbar_native_240x36_pixels": true,
+    "battle_viewport_507_mips_checks": true,
+    "battle_toolbar_27_native_interface_checks": true
   },
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
-  "bda_sha256": "19367fc94b97afc492c0553846d8f9ec5048dd8a93ff636039b90b39a6c4663e",
+  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
   "toolchain_archive_sha256": "8ba866e25c9826ee04ab4310365d264e3e73769e3738bb58ae38fd6740b7ee8d",
   "actionlint_archive_sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9",
   "github_actions_executed": true,

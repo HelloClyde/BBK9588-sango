@@ -243,7 +243,8 @@ void sango_battle_draw_target_markers(void)
         while (true)
         {
             map_y = template_row + template_origin & 0xff;
-            if ((g_battle_viewport_y <= map_y) && (map_y < g_battle_viewport_y + 0xf))
+            if ((g_battle_viewport_y <= map_y) &&
+                (map_y < g_battle_viewport_y + SANGO_BATTLE_VIEW_ROWS))
             {
                 viewport_y = (uint16_t)g_battle_viewport_y;
                 template_column = 0;
@@ -520,7 +521,7 @@ void sango_battle_draw_cursor(void)
     uint16_t screen_y;
 
     screen_y = ((uint16_t)g_battle_cursor_y - (uint16_t)g_battle_viewport_y) * 0x10;
-    if (screen_y < 0x101)
+    if (screen_y < SANGO_BATTLE_MAP_HEIGHT)
     {
         sango_battle_draw_bitmap(
             7, 5, ((uint32_t)g_battle_cursor_x - (uint32_t)g_battle_viewport_x) * 0x10 & 0xffff,

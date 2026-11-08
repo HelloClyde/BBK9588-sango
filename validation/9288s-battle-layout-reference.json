@@ -71,70 +71,84 @@
   "reference_png": "assets/battle-toolbar/status-row-9288s-reference.png",
   "reference_png_sha256": "8cec92b344e7ff84378e6ae9e6373e59f1846008e7d44ee41af7c2cc2eadda6c",
   "new_layout": {
-    "scale": "Status bitmap/weather 3:2 integer nearest; controls use 24 screen rows from the retained 240x36 source; compact original two-row summary below.",
+    "scale": "Status bitmap/weather 3:2 integer nearest; full 240x36 control source rendered at 1:1; original two-row summary retained.",
     "status_rectangle": [
       0,
-      240,
+      224,
       240,
       24
     ],
     "toolbar_rectangle": [
       0,
-      264,
+      248,
       240,
-      24
+      36
     ],
     "food_xy": [
       21,
-      244
+      228
     ],
     "weather_rectangle": [
       112,
-      243,
+      227,
       18,
       18
     ],
     "description_xy": [
       159,
-      244
+      228
     ],
     "native_text_font_id": 4,
     "text_note": "Existing SDK binding maps logical font 3 to native font 4, verified in native C200 firmware. Text baseline centered in the scaled row.",
-    "toolbar_note": "The reviewed GPT Image 240x36 source is unchanged. Runtime vertical sampling to 24 rows reserves 32 rows for the native 24x24 portrait and two 12-pixel text rows. Full 240x240 battle map retained.",
+    "toolbar_note": "The reviewed GPT Image 240x36 source and every displayed pixel are unchanged. One fewer visible map row reserves enough space; camera scrolling and display clipping updated. All map cells remain accessible.",
     "summary_rectangle": [
       0,
-      288,
+      284,
       240,
-      32
+      36
     ],
     "summary_portrait_rectangle": [
       31,
-      292,
+      290,
       24,
       24
     ],
     "summary_city_count_xy": [
       94,
-      291
+      289
     ],
     "summary_character_count_xy": [
       94,
-      305
+      303
     ],
     "summary_year_xy": [
       123,
-      291
+      289
     ],
     "summary_month_xy": [
       123,
-      305
+      303
     ],
     "summary_city_xy": [
       180,
-      298
+      296
     ],
     "summary_text_font_id": 0,
-    "summary_behavior": "Capture the last strategy ruler/scenario/counts/date/selected city while the strategic map paints; redraw that UI snapshot in battle. No new faction counting or shared-scratch writes during battle; UI cache excluded from saves."
+    "summary_behavior": "Capture the last strategy ruler/scenario/counts/date/selected city while the strategic map paints; redraw that UI snapshot in battle. No new faction counting or shared-scratch writes during battle; UI cache excluded from saves.",
+    "map_rectangle": [
+      0,
+      0,
+      240,
+      224
+    ],
+    "display_viewport_tiles": [
+      15,
+      14
+    ],
+    "rules_window_unchanged": [
+      15,
+      15
+    ]
   },
   "native_original": {
     "machine": "QEMU bbk9288s / S1C33L05, original KNL 0100200608021118",

@@ -82,11 +82,11 @@
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c027f0` | [`sango_battle_draw_move_range`](../src/battle/overview.c#L6) |
-| `0x81c02954` | [`sango_battle_show_overview`](../src/battle/overview.c#L54) |
-| `0x81c02c4c` | [`sango_battle_draw_overview_rows`](../src/battle/overview.c#L173) |
-| `0x81c02ec0` | [`sango_battle_count_active_units`](../src/battle/overview.c#L253) |
-| `0x81c02f08` | [`sango_battle_load_overview_text`](../src/battle/overview.c#L270) |
-| `0x81c02f30` | [`sango_battle_is_player_unit`](../src/battle/overview.c#L277) |
+| `0x81c02954` | [`sango_battle_show_overview`](../src/battle/overview.c#L55) |
+| `0x81c02c4c` | [`sango_battle_draw_overview_rows`](../src/battle/overview.c#L174) |
+| `0x81c02ec0` | [`sango_battle_count_active_units`](../src/battle/overview.c#L254) |
+| `0x81c02f08` | [`sango_battle_load_overview_text`](../src/battle/overview.c#L271) |
+| `0x81c02f30` | [`sango_battle_is_player_unit`](../src/battle/overview.c#L278) |
 
 ## src/battle/player_turn.c
 
@@ -99,12 +99,12 @@
 | `0x81c03154` | [`sango_battle_show_unit_commands`](../src/battle/player_turn.c#L95) |
 | `0x81c032d4` | [`sango_battle_select_target`](../src/battle/player_turn.c#L156) |
 | `0x81c0343c` | [`sango_battle_draw_target_markers`](../src/battle/player_turn.c#L227) |
-| `0x81c03590` | [`sango_battle_filter_unit_commands`](../src/battle/player_turn.c#L281) |
-| `0x81c03654` | [`sango_battle_finish_unit_action`](../src/battle/player_turn.c#L319) |
-| `0x81c03708` | [`sango_battle_select_move_destination`](../src/battle/player_turn.c#L347) |
-| `0x81c03874` | [`sango_battle_select_active_unit`](../src/battle/player_turn.c#L399) |
-| `0x81c038f4` | [`sango_battle_poll_map_action`](../src/battle/player_turn.c#L425) |
-| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L518) |
+| `0x81c03590` | [`sango_battle_filter_unit_commands`](../src/battle/player_turn.c#L282) |
+| `0x81c03654` | [`sango_battle_finish_unit_action`](../src/battle/player_turn.c#L320) |
+| `0x81c03708` | [`sango_battle_select_move_destination`](../src/battle/player_turn.c#L348) |
+| `0x81c03874` | [`sango_battle_select_active_unit`](../src/battle/player_turn.c#L400) |
+| `0x81c038f4` | [`sango_battle_poll_map_action`](../src/battle/player_turn.c#L426) |
+| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L519) |
 
 ## src/battle/field.c
 
@@ -124,19 +124,19 @@
 | `0x81c04590` | [`sango_battle_blink_unit`](../src/battle/field.c#L385) |
 | `0x81c04630` | [`sango_battle_draw_units`](../src/battle/field.c#L408) |
 | `0x81c047bc` | [`sango_battle_draw_tile`](../src/battle/field.c#L459) |
-| `0x81c048bc` | [`sango_battle_show_action_message`](../src/battle/field.c#L489) |
-| `0x81c04920` | [`sango_battle_check_level_and_retreat`](../src/battle/field.c#L505) |
-| `0x81c04ae8` | [`sango_battle_play_unit_effect`](../src/battle/field.c#L565) |
-| `0x81c04b9c` | [`sango_battle_draw_terrain`](../src/battle/field.c#L589) |
-| `0x81c04c60` | [`sango_battle_copy_viewport_tiles`](../src/battle/field.c#L613) |
-| `0x81c04d58` | [`sango_battle_draw_cursor_description`](../src/battle/field.c#L649) |
-| `0x81c04e34` | [`sango_battle_check_finish`](../src/battle/field.c#L681) |
-| `0x81c04efc` | [`sango_battle_unit_character`](../src/battle/field.c#L727) |
-| `0x81c04f18` | [`sango_battle_load_text`](../src/battle/field.c#L733) |
-| `0x81c04f40` | [`sango_battle_resource_item`](../src/battle/field.c#L740) |
-| `0x81c04f68` | [`sango_battle_present`](../src/battle/field.c#L749) |
-| `0x81c04f8c` | [`sango_battle_draw_text`](../src/battle/field.c#L756) |
-| `0x81c04fb4` | [`sango_battle_draw_bitmap`](../src/battle/field.c#L763) |
+| `0x81c048bc` | [`sango_battle_show_action_message`](../src/battle/field.c#L494) |
+| `0x81c04920` | [`sango_battle_check_level_and_retreat`](../src/battle/field.c#L510) |
+| `0x81c04ae8` | [`sango_battle_play_unit_effect`](../src/battle/field.c#L570) |
+| `0x81c04b9c` | [`sango_battle_draw_terrain`](../src/battle/field.c#L594) |
+| `0x81c04c60` | [`sango_battle_copy_viewport_tiles`](../src/battle/field.c#L618) |
+| `0x81c04d58` | [`sango_battle_draw_cursor_description`](../src/battle/field.c#L654) |
+| `0x81c04e34` | [`sango_battle_check_finish`](../src/battle/field.c#L686) |
+| `0x81c04efc` | [`sango_battle_unit_character`](../src/battle/field.c#L732) |
+| `0x81c04f18` | [`sango_battle_load_text`](../src/battle/field.c#L738) |
+| `0x81c04f40` | [`sango_battle_resource_item`](../src/battle/field.c#L745) |
+| `0x81c04f68` | [`sango_battle_present`](../src/battle/field.c#L754) |
+| `0x81c04f8c` | [`sango_battle_draw_text`](../src/battle/field.c#L761) |
+| `0x81c04fb4` | [`sango_battle_draw_bitmap`](../src/battle/field.c#L768) |
 
 ## src/battle/controller.c
 

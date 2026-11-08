@@ -2,6 +2,16 @@
 #define SANGO_BATTLE_H
 #include "sango_types.h"
 
+/* Display viewport only. Movement/skill rule windows keep their original 15x15 size. */
+enum
+{
+    SANGO_BATTLE_TILE_SIZE = 16,
+    SANGO_BATTLE_VIEW_COLUMNS = 15,
+    SANGO_BATTLE_VIEW_ROWS = 14,
+    SANGO_BATTLE_MAP_WIDTH = SANGO_BATTLE_VIEW_COLUMNS * SANGO_BATTLE_TILE_SIZE,
+    SANGO_BATTLE_MAP_HEIGHT = SANGO_BATTLE_VIEW_ROWS * SANGO_BATTLE_TILE_SIZE
+};
+
 void sango_battle_choose_auto_result(void);
 uint32_t sango_battle_sum_side_troops(char side);
 uint32_t sango_battle_character_id(uint32_t unit_id);

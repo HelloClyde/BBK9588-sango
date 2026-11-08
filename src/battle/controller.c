@@ -251,7 +251,7 @@ void sango_battle_focus_viewport(void)
             next_viewport_y = g_battle_viewport_y;
             if (((uint32_t)g_battle_cursor_x < g_battle_viewport_x + 0xf) &&
                 (next_viewport_x = g_battle_viewport_x, next_viewport_y = g_battle_viewport_y + 1,
-                 (uint32_t)g_battle_cursor_y < g_battle_viewport_y + 0xf))
+                 (uint32_t)g_battle_cursor_y < g_battle_viewport_y + SANGO_BATTLE_VIEW_ROWS))
             {
                 return;
             }

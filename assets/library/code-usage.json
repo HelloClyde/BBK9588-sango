@@ -10,11 +10,11 @@
     "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
     "src/battle/combat_math.c": "5a239d0d3ca4effb833d4fda82b7c56c42581a7f3da352839173bb74593c2099",
-    "src/battle/controller.c": "d065507a40efd8a1594090cd8e7e85bfbad49620c57fbdfc16a2152ab34a436c",
-    "src/battle/field.c": "e7eca6f9ce1ce1e38daad8310ddf9e88dd894076f900e08ad0134a68d8017dbf",
+    "src/battle/controller.c": "697c304bcd8a890aa41ff5f11ff628b5653517bbc49ca050cce959d9228c6b16",
+    "src/battle/field.c": "5d0fd20608cb9788f78c66f212375cb932e504823af714be0d3b7253ac2b8890",
     "src/battle/movement.c": "3e8e81140ce51fd648b59c970c06f349ad1ef7abacb9692db28da8a5ab2a2b56",
-    "src/battle/overview.c": "45dc16cbe084c407cae30643457acfeb267d257b59044eb37c5a3eb9b174b26a",
-    "src/battle/player_turn.c": "8b52ef3703712a2f893c953dd0c69841d1b91518034c76cfae2c38ac6f713280",
+    "src/battle/overview.c": "58d4e1257312a95c408227563bd7fa92767c90496bd780a1fe6072ed9c13d8fc",
+    "src/battle/player_turn.c": "3d6ef3feb15e5456abe1d53c7459f518a9921dab651b040788f05aed6e2e98c1",
     "src/platform/event_loop.c": "f8b9bd7312107f45da940ed3c51e87c82c4cd14fce34516405fd08a00b34577a",
     "src/platform/input_dialog.c": "3f20f477df4b9b4f4056e853cca59d2d8fe821aee9ccd2b8b2b252680cfc42ee",
     "src/platform/sdk_bindings.c": "ab2d0c5ac7c492639de582e4ef546e9b1ec40d80d08ee9add7b4e1fe0b9dbddd",
@@ -26,10 +26,10 @@
     "src/runtime/libc.c": "c7ede021266375069338092a07ac3e853b180208163e8a4881e58bb2d6c3f7a6",
     "src/runtime/soft_float.c": "28bf399b38fc0fc8b2da198142194d49f2e212e925cbabdb5d5b267fd348b0ed",
     "src/runtime/strings.c": "462d838a2767248b0598c73ef7f9cc62967e36ba93bf55efa18bddc4e5e9a923",
-    "src/sango_battle_ui.c": "fffb983b2ab3a755ff36d3b57f232950a66271c64a256981a812d5d13e7c1184",
+    "src/sango_battle_ui.c": "e8e1193e49ea5dcf6f8641e5cf1fce92ebddd4d99529fd2a0348914bdbb5ab7d",
     "src/sango_credits.c": "d6c65d6e7ae35a89085c8fc2338d9c2d42b9aa78a53b247a1635176f58fdd53b",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
-    "src/sango_statusbar.c": "b48387cf02c7e67f96fc7bfa9f8204756e59f239da5286a79e3640157af0d535",
+    "src/sango_statusbar.c": "017593cae02d71681014bbeb6f88c3b372b6fc144e65ee1b4118896950f7a042",
     "src/save/savegame.c": "04c04ed53a18f951504ffafcd5138475096b2fa9092eed97ff4a7514a5e3285f",
     "src/strategy/aftermath.c": "59ea738c5c2563e6ce1a30dd1144a009b214133483239f88ca4fe830fbb2eaa4",
     "src/strategy/ai.c": "eadc3db74a2ca965d29c6e2d4be95f807a4480324039e0b595007702931d5432",
@@ -156,7 +156,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_terrain",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_tileset_resource,",
-          "line": 589
+          "line": 594
         },
         {
           "source": "src/battle/actions.c",
@@ -321,7 +321,7 @@
           "source": "src/battle/player_turn.c",
           "function": "sango_battle_draw_cursor",
           "expression": "sango_battle_draw_bitmap(7,5,",
-          "line": 518
+          "line": 519
         }
       ]
     },
@@ -330,7 +330,7 @@
       "category": "战斗",
       "name": "战斗状态行底图",
       "usage_status": "confirmed",
-      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=240绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
+      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=224绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
       "code_evidence": [
         {
           "source": "src/sango_battle_ui.c",
@@ -2931,13 +2931,13 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_check_level_and_retreat",
           "expression": "sango_battle_play_unit_effect(0,5,",
-          "line": 505
+          "line": 510
         },
         {
           "source": "src/battle/field.c",
           "function": "sango_battle_check_level_and_retreat",
           "expression": "sango_battle_play_unit_effect(6,0xb,",
-          "line": 505
+          "line": 510
         },
         {
           "source": "src/battle/player_turn.c",
@@ -4990,7 +4990,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5037,7 +5037,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5108,7 +5108,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5167,7 +5167,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5238,7 +5238,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5297,7 +5297,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5344,7 +5344,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 613
+          "line": 618
         }
       ],
       "cities": [
@@ -5403,7 +5403,7 @@
       "category": "补充界面",
       "name": "信息查找补充底栏",
       "usage_status": "confirmed",
-      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时纵向采样为24行，给下方势力摘要预留32行。当前C并不从LIB的17号条目读取。",
+      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时按240x36原尺寸绘制；战场显示15列14行，底部保留36行势力摘要。当前C并不从LIB的17号条目读取。",
       "code_evidence": [
         {
           "source": "src/sango_statusbar.c",

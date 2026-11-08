@@ -1,20 +1,21 @@
 {
-  "bda_sha256": "19367fc94b97afc492c0553846d8f9ec5048dd8a93ff636039b90b39a6c4663e",
+  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
   "bda_bytes": 214700,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "GCC 15.2.0",
-  "mips_checks": 660,
-  "native_firmware_interface_checks": 26,
+  "mips_checks": 1167,
+  "native_firmware_interface_checks": 27,
   "physical_device_verified": false,
   "complete_campaign_verified": false,
   "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "sango_lib_bytes": 461116,
   "library_validation": "Host lossless roundtrip; 87 original records identical, 2 supplemental records appended. Native runtime evidence uses original 439720-byte library with the same BDA.",
-  "notes": "Lower battle summary restored after original 9288S native capture. 593 existing MIPS checks, 58 HUD checks, 9 summary snapshot checks, 27163 production-MIPS comparisons and 26 native C200 UI checks passed for this BDA. Native C200 battle uses a separate controlled fixture and original LIB. Expanded LIB uses host preservation/load checks. Runtime-oracle 60026 comparisons are historical unchanged-runtime evidence. No physical-device/full-campaign verification.",
+  "notes": "Battle toolbar now rendered at unchanged 240x36 source size. Display viewport is 15x14; movement/AI/skill rules retain 15x15. 593 existing MIPS, 58 HUD, 9 summary, 507 real-map display checks, 27163 production-MIPS comparisons and 27 native C200 UI checks passed for this BDA. Native C200 battle uses a separate terrain-only fixture and original LIB; expanded LIB uses host preservation/load checks. Runtime-oracle 60026 comparisons are historical unchanged-runtime evidence. No physical-device/full-campaign verification.",
   "control_flow_differential_checks": 27163,
   "runtime_oracle_differential_checks": 60026,
   "mips_existing_regression_checks": 593,
   "mips_battle_layout_checks": 58,
-  "mips_battle_summary_checks": 9
+  "mips_battle_summary_checks": 9,
+  "mips_battle_viewport_checks": 507
 }

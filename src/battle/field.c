@@ -235,7 +235,7 @@ void sango_battle_scroll_viewport(char suppress_scroll)
             next_viewport_x = g_battle_viewport_x + 1;
             if (((uint32_t)g_battle_cursor_x < g_battle_viewport_x + 0xf) &&
                 (next_viewport_x = g_battle_viewport_x, next_viewport_y = g_battle_viewport_y + 1,
-                 (uint32_t)g_battle_cursor_y < g_battle_viewport_y + 0xf))
+                 (uint32_t)g_battle_cursor_y < g_battle_viewport_y + SANGO_BATTLE_VIEW_ROWS))
                 goto redraw_status;
         }
     }
@@ -429,7 +429,7 @@ void sango_battle_draw_units(uint32_t animation_phase)
             unit_y = (uint32_t)map_y;
             if ((((g_battle_viewport_x <= map_x) && (map_x < g_battle_viewport_x + 0xf)) &&
                  (g_battle_viewport_y <= unit_y)) &&
-                (unit_y < g_battle_viewport_y + 0xf))
+                (unit_y < g_battle_viewport_y + SANGO_BATTLE_VIEW_ROWS))
             {
                 sprite_frame = sango_battle_unit_sprite_frame(unit_index);
                 if ((&g_first_unit_has_acted)[unit_offset_or_status_frame] == '\0')
@@ -464,6 +464,11 @@ void sango_battle_draw_tile(uint32_t map_x, uint32_t map_y, char draw_to_screen)
     uint16_t screen_y;
     uint32_t screen_x;
 
+    /* Ignore offscreen cells before looking up the display cache. */
+    if ((map_x & 0xff) < g_battle_viewport_x || (map_y & 0xff) < g_battle_viewport_y ||
+        (map_x & 0xff) - g_battle_viewport_x >= SANGO_BATTLE_VIEW_COLUMNS ||
+        (map_y & 0xff) - g_battle_viewport_y >= SANGO_BATTLE_VIEW_ROWS)
+        return;
     tile_id =
         *(uint8_t *)(g_viewport_tiles_address +
                      ((((map_y & 0xff) - (uint32_t)g_battle_viewport_y) * 0xf + (map_x & 0xff)) -
@@ -574,7 +579,7 @@ void sango_battle_play_unit_effect(uint32_t first_command, uint32_t last_command
         viewport_y = (uint16_t)g_battle_viewport_y;
         if (viewport_y <= map_y)
         {
-            if (map_y < (uint16_t)(viewport_y + 0xf))
+            if (map_y < (uint16_t)(viewport_y + SANGO_BATTLE_VIEW_ROWS))
             {
                 sango_animation_play_range(0x1b, first_command & 0xff, last_command & 0xff, 0,
                                            (map_x - viewport_x) * 0x10,
@@ -605,7 +610,7 @@ void sango_battle_draw_terrain(uint32_t view_x, uint32_t view_y)
             g_game_context);
         tile_index = tile_index + 1 & 0xffff;
         row_product = (uint32_t)((uint64_t)tile_index * 0x88888889 >> 0x20);
-    } while (tile_index < 0xe1);
+    } while (tile_index < SANGO_BATTLE_VIEW_COLUMNS * SANGO_BATTLE_VIEW_ROWS);
     return;
 }
 
@@ -625,9 +630,9 @@ void sango_battle_copy_viewport_tiles(uint32_t requested_x, uint32_t requested_y
     {
         view_x = g_battle_map_width - 0xf & 0xffff;
     }
-    if ((uint32_t)g_battle_map_height < view_y + 0xf)
+    if ((uint32_t)g_battle_map_height < view_y + SANGO_BATTLE_VIEW_ROWS)
     {
-        view_y = g_battle_map_height - 0xf & 0xffff;
+        view_y = g_battle_map_height - SANGO_BATTLE_VIEW_ROWS & 0xffff;
     }
     g_battle_viewport_y = (uint8_t)view_y;
     g_battle_viewport_x = (uint8_t)view_x;
@@ -641,7 +646,7 @@ void sango_battle_copy_viewport_tiles(uint32_t requested_x, uint32_t requested_y
         row = row + 1;
         source_row = (void *)((int)source_row + (uint32_t)g_battle_map_width);
         target_row = (void *)((int)target_row + 0xf);
-    } while (row < 0xf);
+    } while (row < SANGO_BATTLE_VIEW_ROWS);
     return;
 }
 
@@ -762,6 +767,8 @@ void sango_battle_draw_text(short x, short y, char *text)
 /* 原函数 0x81c04fb4 */
 void sango_battle_draw_bitmap(uint32_t resource_id, uint32_t frame_number, uint32_t x, short y)
 {
+    if ((x & 0xffff) >= SANGO_BATTLE_MAP_WIDTH || y < 0 || y >= SANGO_BATTLE_MAP_HEIGHT)
+        return;
     sango_bitmap_draw_resource(resource_id & 0xffff, frame_number & 0xff, x & 0xffff, y, '\0');
     return;
 }

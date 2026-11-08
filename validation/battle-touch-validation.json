@@ -1,7 +1,7 @@
 {
   "passed": 67,
   "failed": 0,
-  "bda_sha256": "19367fc94b97afc492c0553846d8f9ec5048dd8a93ff636039b90b39a6c4663e",
+  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
   "scope": "Actual compiled MIPS input normalization, touch dispatch, HUD and bitmap rasterization; OS delivery and unrelated modal/cursor drawing are modeled. Native battle-interface fixture checked separately.",
   "cases": [
     {
@@ -11,7 +11,7 @@
     {
       "case": "compiled battle toolbar draws all pixels below the map and statistics",
       "passed": true,
-      "pixels": 5760
+      "pixels": 8640
     },
     {
       "case": "actual normalizer and battle touch dispatch",
@@ -62,7 +62,7 @@
       "mode": 1,
       "xy": [
         85,
-        263
+        247
       ],
       "action": 0,
       "hud_restored": false,
@@ -73,7 +73,7 @@
       "mode": 1,
       "xy": [
         60,
-        266
+        250
       ],
       "action": 1,
       "hud_restored": true,
@@ -84,7 +84,7 @@
       "mode": 1,
       "xy": [
         113,
-        285
+        281
       ],
       "action": 1,
       "hud_restored": true,
@@ -95,7 +95,7 @@
       "mode": 1,
       "xy": [
         128,
-        266
+        250
       ],
       "action": 2,
       "hud_restored": true,
@@ -106,7 +106,7 @@
       "mode": 1,
       "xy": [
         181,
-        285
+        281
       ],
       "action": 2,
       "hud_restored": true,
@@ -117,7 +117,7 @@
       "mode": 1,
       "xy": [
         85,
-        265
+        249
       ],
       "action": 0,
       "hud_restored": false,
@@ -128,7 +128,7 @@
       "mode": 1,
       "xy": [
         85,
-        286
+        282
       ],
       "action": 0,
       "hud_restored": false,
@@ -282,7 +282,7 @@
       "mode": 2,
       "xy": [
         85,
-        263
+        247
       ],
       "action": 0,
       "hud_restored": false,
@@ -293,7 +293,7 @@
       "mode": 2,
       "xy": [
         60,
-        266
+        250
       ],
       "action": 1,
       "hud_restored": true,
@@ -304,7 +304,7 @@
       "mode": 2,
       "xy": [
         113,
-        285
+        281
       ],
       "action": 1,
       "hud_restored": true,
@@ -315,7 +315,7 @@
       "mode": 2,
       "xy": [
         128,
-        266
+        250
       ],
       "action": 2,
       "hud_restored": true,
@@ -326,7 +326,7 @@
       "mode": 2,
       "xy": [
         181,
-        285
+        281
       ],
       "action": 2,
       "hud_restored": true,
@@ -337,7 +337,7 @@
       "mode": 2,
       "xy": [
         85,
-        265
+        249
       ],
       "action": 0,
       "hud_restored": false,
@@ -348,7 +348,7 @@
       "mode": 2,
       "xy": [
         85,
-        286
+        282
       ],
       "action": 0,
       "hud_restored": false,
@@ -502,7 +502,7 @@
       "mode": 3,
       "xy": [
         85,
-        263
+        247
       ],
       "action": 0,
       "hud_restored": false,
@@ -513,7 +513,7 @@
       "mode": 3,
       "xy": [
         60,
-        266
+        250
       ],
       "action": 1,
       "hud_restored": true,
@@ -524,7 +524,7 @@
       "mode": 3,
       "xy": [
         113,
-        285
+        281
       ],
       "action": 1,
       "hud_restored": true,
@@ -535,7 +535,7 @@
       "mode": 3,
       "xy": [
         128,
-        266
+        250
       ],
       "action": 2,
       "hud_restored": true,
@@ -546,7 +546,7 @@
       "mode": 3,
       "xy": [
         181,
-        285
+        281
       ],
       "action": 2,
       "hud_restored": true,
@@ -557,7 +557,7 @@
       "mode": 3,
       "xy": [
         85,
-        265
+        249
       ],
       "action": 0,
       "hud_restored": false,
@@ -568,7 +568,7 @@
       "mode": 3,
       "xy": [
         85,
-        286
+        282
       ],
       "action": 0,
       "hud_restored": false,

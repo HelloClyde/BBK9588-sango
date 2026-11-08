@@ -130,7 +130,7 @@ void sango_battle_summary_draw(unsigned int target)
 {
     char text[24], suffix[8];
     uint8_t *portraits, *icons;
-    unsigned int top = SANGO_BATTLE_SUMMARY_TOP + 3;
+    unsigned int top = SANGO_BATTLE_SUMMARY_TOP + 5;
     if (!battle_summary.valid)
         return;
     portraits =
