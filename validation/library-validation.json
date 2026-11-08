@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-08",
+  "passed": 10,
+  "failed": 0,
+  "command": "python tools/test_sango_lib.py",
+  "environment": {
+    "python": "3.11.5",
+    "pillow": "12.3.0",
+    "os": "Windows"
+  },
+  "original_library": {
+    "bytes": 439720,
+    "sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
+    "exact_roundtrip": true
+  },
+  "rebuilt_library": {
+    "bytes": 461116,
+    "sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+    "original_records_unchanged": 87,
+    "supplements": [
+      17,
+      18
+    ],
+    "deterministic_reunpack_repack": true
+  },
+  "exported_png_frames": 1186,
+  "map_json_files": 7,
+  "animation_timelines": 19,
+  "native_or_hardware_test": false
+}

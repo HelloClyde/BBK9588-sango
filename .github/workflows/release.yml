@@ -30,6 +30,13 @@ jobs:
         run: |
           & ./sdk/scripts/setup_toolchain.ps1
           if ($LASTEXITCODE -ne 0) { throw 'Toolchain setup failed' }
+      - name: Install resource codec and verify lossless repacking
+        shell: pwsh
+        run: |
+          python -m pip install -r requirements-assets.txt
+          if ($LASTEXITCODE -ne 0) { throw 'Resource dependency setup failed' }
+          python tools/test_sango_lib.py
+          if ($LASTEXITCODE -ne 0) { throw 'Resource codec checks failed' }
       - name: Compile C and validate BDA with SDK
         shell: pwsh
         run: |

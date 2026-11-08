@@ -11,6 +11,8 @@ MIT 正文见 [LICENSES/MIT.txt](LICENSES/MIT.txt)。版权人为 2026 BBK9588-s
 原游戏恢复部分 `src/sango_game.c`、`src/sango_data.c`、`include/sango_recovered.h`，
 原作布局/接口材料及原作派生图像，不包含在上述 MIT 授权中。本次没有提供原游戏的源码开源或
 素材再分发许可，因此这里不替原作者授予额外权利。新增修复不能使原游戏整体自动获得 MIT 许可。
+`assets/library/` 的原始记录种子、导出 PNG/动画/地图，以及由其重新打包的 `sango.lib`，
+同样属于原游戏素材，不包含在新增工具脚本的 MIT 授权中。
 
 `sdk/` 子模块保留上游自己的 Apache-2.0 OR GPL-2.0-only 等声明，具体范围以上游为准。
 SDK 的许可不覆盖原游戏、字库、原图、`sango.LIB` 或固件。

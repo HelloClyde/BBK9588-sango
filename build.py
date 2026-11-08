@@ -59,6 +59,10 @@ def main():
     sys.path.insert(0,str(ROOT/'sdk'))
     from bda_packer.validate import validate_bda
     cc=compiler(args.cc);out=ROOT/'build';out.mkdir(exist_ok=True)
+    from tools.sango_lib import pack,generate_includes
+    library=pack(ROOT/'assets/library')
+    (out/'sango.lib').write_bytes(library)
+    generate_includes(ROOT/'assets/library',ROOT/'include')
     flags=['-std=gnu99','-EL','-march=mips32','-mabi=32','-msoft-float','-mno-abicalls',
         '-G0','-fno-pic','-ffreestanding','-fno-builtin','-fno-strict-aliasing','-fwrapv',
         '-Os','-ffunction-sections','-fdata-sections','-Wno-incompatible-pointer-types',
@@ -78,8 +82,10 @@ def main():
     (out/'sdk-validation.json').write_text(json.dumps(validation,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     reference=json.loads((ROOT/'validation/reference-build.json').read_text(encoding='utf-8'))
     result={'bda':'build/三国霸业.bda','bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),
+        'library':'build/sango.lib','library_bytes':len(library),'library_sha256':hashlib.sha256(library).hexdigest(),
         'sdk_commit':revision,'compiler':subprocess.check_output([str(cc),'--version'],text=True).splitlines()[0],
-        'matches_runtime_reference':hashlib.sha256(data).hexdigest()==reference['bda_sha256']}
+        'matches_runtime_reference':hashlib.sha256(data).hexdigest()==reference['bda_sha256'],
+        'matches_library_reference':hashlib.sha256(library).hexdigest()==reference.get('sango_lib_sha256')}
     (out/'build-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 

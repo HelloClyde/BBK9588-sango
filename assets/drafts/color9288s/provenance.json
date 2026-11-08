@@ -1,0 +1,45 @@
+{
+  "source_exe_sha256": "4eafbd3c59b64bf56fb810e47de43cb9d1075530801a8f991cf007f510954f9c",
+  "status": "draft_not_packed_not_used_in_bda",
+  "images": [
+    {
+      "batch": "portraits-00",
+      "file": "generated/portraits-00.png",
+      "generator": "built-in image_gen (GPT Image)",
+      "sha256": "ed0db418e23eaeb0d48729af05c54514ea4ca2823e96c12d344a9b6d150e2910",
+      "size": [
+        1254,
+        1254
+      ],
+      "prompt": "prompts/portraits-00.txt",
+      "reference": "sheets/portraits-00.png",
+      "status": "draft_not_used_in_bda"
+    },
+    {
+      "batch": "screens-03",
+      "file": "generated/screens-03.png",
+      "generator": "built-in image_gen (GPT Image)",
+      "sha256": "eb6a8317f6b05437b99783d71b9bc967f3df59c0a88312f970c9b748a2bd61b8",
+      "size": [
+        1024,
+        1536
+      ],
+      "prompt": "prompts/screens-03.txt",
+      "reference": "sheets/screens-03.png",
+      "status": "draft_not_used_in_bda"
+    },
+    {
+      "batch": "screens-04",
+      "file": "generated/screens-04.png",
+      "generator": "built-in image_gen (GPT Image)",
+      "sha256": "7ddadc98f3278fdbd63943c9dde74624d6a7e17653a54fd6a93acaeb547d241c",
+      "size": [
+        1024,
+        1536
+      ],
+      "prompt": "prompts/screens-04.txt",
+      "reference": "sheets/screens-04.png",
+      "status": "draft_not_used_in_bda"
+    }
+  ]
+}

@@ -37,5 +37,5 @@
     36
   ],
   "purpose": "Restore the omitted 9288S Information/Find toolbar in the 9588 C rebuild",
-  "original_references_distributed": false
+  "original_references_distributed": true
 }

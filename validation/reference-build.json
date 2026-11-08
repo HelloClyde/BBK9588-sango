@@ -8,5 +8,8 @@
   "physical_device_verified": false,
   "complete_campaign_verified": false,
   "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "sango_lib_bytes": 461116,
+  "library_validation": "Host lossless roundtrip; 87 original records identical, 2 supplemental records appended. Native runtime evidence uses original 439720-byte library with the same BDA.",
   "notes": "Native battle UI uses a controlled fixture and exact payload/LIB staging to isolate synthetic NAND ECC artifacts. Historical save comparisons are not current-release regression tests."
 }

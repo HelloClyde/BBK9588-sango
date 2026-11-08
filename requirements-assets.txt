@@ -1,2 +1,2 @@
-# Optional: only regenerating PNG/packed artwork needs Pillow.
+# Build dependency: unpack/edit/repack the library and encode supplemental PNGs.
 Pillow==12.3.0

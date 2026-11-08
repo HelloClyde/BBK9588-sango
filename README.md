@@ -10,7 +10,8 @@
 
 ## 快速开始
 
-发布前可按下方命令本地构建。正式发布后，从本仓库 Releases 选择同一版本的 BDA 或 `-update.zip`。
+发布前可按下方命令本地构建。正式发布后，从本仓库 Releases 选择同一版本的 `-update.zip`，
+或同时下载独立 BDA 和 `sango.lib`。
 仅更换应用图标为 9288S 原图的彩色高清重绘，游戏内仍使用原灰度资源及已恢复的底栏。
 
 适用于此前验证的 **9588/C200 固件环境**；不宣称适配所有 BBK 机型。
@@ -18,16 +19,18 @@
 
 ```text
 应用/
-└── 程序/
-    └── 三国霸业.bda
+├── 程序/
+│   └── 三国霸业.bda
+└── 数据/游戏/
+    └── sango.lib
 ```
 
-设备还须已有 `应用/数据/游戏/sango.LIB`，439720 字节，SHA-256：
-`42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5`。
-原 LIB 不随源码仓库或升级包分发，请沿用自己已有的原游戏安装资源。
+源码包含原 `sango.LIB` 完整解包素材与新增素材，构建时重新生成 `sango.lib`。
+新版资源库为 461116 字节，包含原 87 条资源和补充底栏、制作群组两条资源，随升级包安装。
+文件名沿用原来的 **sango.lib**，不是 sanguo.lib；Windows/设备中的旧拼写 `sango.LIB` 是同名文件。
 本包不包含系统固件、原版 BDA、字库转储或个人存档。
 
-升级前保留设备同名程序备份，把 `应用` 目录合并到内置存储根目录。
+升级前保留设备同名程序及资源备份，把 `应用` 目录合并到内置存储根目录。
 安全弹出设备、退出 USB 存储模式后，从“娱乐天地”打开《三国霸业》。不要把整个源码目录复制进设备。
 程序沿用 `系统/数据/游戏/sango0.sav`、`sango1.sav` 等原存档路径，升级包不覆盖它们。
 
@@ -41,17 +44,34 @@
 ```powershell
 git submodule update --init sdk
 powershell -ExecutionPolicy Bypass -File sdk/scripts/setup_toolchain.ps1
+python -m pip install -r requirements-assets.txt
 python build.py
 python tools/package_release.py --require-validated
 python tools/verify_artifacts.py --require-validated
 ```
 
 已有编译器时可指定路径：`python build.py --cc PATH/TO/mipsel-none-elf-gcc.exe`，
-或设置 `SANGO_CC`。普通构建仅用 Python 标准库和固定 SDK，无需 Pillow、图像服务或原版 BDA。
+或设置 `SANGO_CC`。构建需要 Pillow 编码仓库中的图片，无需图像生成服务或原版 BDA/LIB 文件。
 
-输出 `build/三国霸业.bda`；打包输出在 `dist/`，包括独立 BDA、升级 ZIP、`BUILD_INFO.json`
+输出 `build/三国霸业.bda` 和 `build/sango.lib`；打包输出在 `dist/`，包括独立 BDA、`sango.lib`、升级 ZIP、`BUILD_INFO.json`
 及逐文件 `SHA256SUMS.txt`。普通构建不会发布任何远程内容。
-`--require-validated` 要求输出哈希与保存的运行证据相符；修改代码后，须重新验证并更新参考记录。
+`--require-validated` 要求 BDA 与运行证据、LIB 与资源验证记录分别相符；修改代码或素材后，须重新验证并更新参考记录。
+
+### 素材编辑与 LIB 回包
+
+[assets/](assets/README.md) 统一保存解包资源、GPT Image 母图、目标尺寸图片、提示词和原图参考，
+包括此前保留的三张彩色草稿。`assets/library/manifest.json` 是 LIB 打包入口。
+
+```powershell
+python tools/sango_lib.py pack
+python tools/sango_lib.py pack --original-only -o build/sango-original.lib
+python tools/test_sango_lib.py
+```
+
+默认输出 `build/sango.lib`。原库未修改时，`--original-only` 可逐字节还原 439720 字节原文件。
+已导出 1186 张 PNG、19 组动画指令及 7 张战场地图；其余数据保留原二进制记录，无遗漏回包。
+新增底栏/制作群组以同一份 PNG 生成 LIB 条目和当前 C 内嵌数据；应用图标由 SDK 打入 BDA。
+详细格式、编辑约束及解包命令见 [资源说明](assets/library/README.md)。
 
 ## 截图
 
@@ -70,12 +90,12 @@ python tools/verify_artifacts.py --require-validated
 
 ## 依赖
 
-- **使用成品**：9588/C200 环境和自己已有的原 `sango.LIB`，不需要 SDK 或 Python。
+- **使用成品**：9588/C200 环境，安装同一版本的 BDA 与 `sango.lib`，不需要 SDK 或 Python。
 - **SDK**：[HelloClyde/BBK9588-bda-sdk](https://github.com/HelloClyde/BBK9588-bda-sdk)，
   子模块固定 `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，没有自动升级。
 - **工具链**：MIPS O32 小端、soft-float，已验证 GCC 15.2.0；SDK 安装脚本校验工具链 ZIP 的 SHA-256。
-- **构建**：Git 和 Python 3.11+；本地验证使用 Python 3.11.5，CI 配置为 Python 3.12/Windows。
-- **重新生成素材**：仅此步骤需要 `python -m pip install -r requirements-assets.txt`（Pillow 12.3.0）。
+- **构建**：Git、Python 3.11+ 和 Pillow 12.3.0；本地验证使用 Python 3.11.5，CI 配置为 Python 3.12/Windows。
+- **素材依赖安装**：`python -m pip install -r requirements-assets.txt`。
   母图与提示词已保存。`tools/pack_*.py` 只重新编码已有母图，不访问图像生成服务。
 - **模拟器复验**：用户自行提供兼容 QEMU、C200 固件和 NAND；它们不会上传仓库或 CI。
 

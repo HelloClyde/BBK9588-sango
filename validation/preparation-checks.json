@@ -13,7 +13,13 @@
     "exact_bda_matches_runtime_evidence": true,
     "sdk_static_bda_validation": true,
     "actionlint_1_7_12": true,
-    "release_integrity_integration": true
+    "release_integrity_integration": true,
+    "resource_lossless_roundtrip": true,
+    "original_87_records_preserved": true,
+    "supplemental_png_and_c_pixels_match": true,
+    "resource_codec_10_checks": true,
+    "expanded_library_mips_loader_4_checks": true,
+    "clean_checkout_with_resources": false
   },
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
@@ -23,5 +29,6 @@
   "remote_repository_created": false,
   "remote_push_performed": false,
   "release_published": false,
-  "license_note": "New standalone code has scoped MIT terms; no original-game/derived-art open-source license was provided. Original full applications, LIB, firmware, NAND, fonts and saves are excluded."
+  "license_note": "Scoped MIT only for independent new code. Original-game/derived-art licenses not provided. Unpacked LIB records and PNG references included at user request; complete original BDA/EXE, firmware, NAND, system fonts and saves excluded.",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11"
 }

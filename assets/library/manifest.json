@@ -1,0 +1,4192 @@
+{
+  "schema": 1,
+  "format": "Sango 9588 indexed 2bpp library",
+  "index_slots": 116,
+  "original_bytes": 439720,
+  "original_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
+  "original_index": [
+    413567,
+    424349,
+    196608,
+    29282,
+    290640,
+    163840,
+    436170,
+    434380,
+    98042,
+    433348,
+    425843,
+    227855,
+    259662,
+    435358,
+    32244,
+    395346,
+    4294967295,
+    4294967295,
+    248594,
+    327680,
+    336056,
+    314130,
+    183369,
+    281362,
+    410184,
+    437742,
+    423035,
+    393216,
+    386123,
+    390383,
+    388253,
+    383993,
+    65274,
+    436956,
+    377375,
+    405948,
+    381811,
+    374974,
+    403830,
+    397476,
+    401712,
+    408066,
+    399594,
+    294912,
+    262144,
+    229376,
+    421673,
+    464,
+    32768,
+    65536,
+    98304,
+    4294967295,
+    4294967295,
+    131072,
+    392513,
+    130810,
+    158738,
+    425451,
+    438480,
+    439100,
+    215842,
+    418449,
+    372562,
+    369648,
+    326820,
+    379621,
+    196083,
+    294754,
+    98240,
+    420061,
+    415225,
+    416837,
+    163470,
+    411905,
+    359018,
+    344424,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    4294967295,
+    94354,
+    127122,
+    323132,
+    61586,
+    354418,
+    349818,
+    360448,
+    365048,
+    4294967295,
+    4294967295,
+    425984,
+    427036,
+    428088,
+    429140,
+    430192,
+    431244,
+    432296
+  ],
+  "png_frames": 1186,
+  "records": [
+    {
+      "id": 1,
+      "kind": "raw",
+      "record": "r0001/record.bin",
+      "original_offset": 413567,
+      "original_bytes": 1658,
+      "original_sha256": "faf457ef54388a0c690503c3d1b025e095fbd9e4f81788cf3b407f1bf7cb2a44"
+    },
+    {
+      "id": 2,
+      "kind": "raw",
+      "record": "r0002/record.bin",
+      "original_offset": 424349,
+      "original_bytes": 1102,
+      "original_sha256": "0946741a744f9be9a2d3c2bf181d97093ca9d9033f462294621e75ef36b2175d"
+    },
+    {
+      "id": 3,
+      "kind": "animation",
+      "record": "r0003/record.bin",
+      "original_offset": 196608,
+      "original_bytes": 19234,
+      "original_sha256": "90ec7d5b4715b8d20afeb8630b99061384134de6dd483ee0fb127137e4e898c9",
+      "images": [
+        {
+          "width": 240,
+          "height": 320,
+          "frames": 1,
+          "flags": 32,
+          "offset": 28,
+          "bytes": 19206,
+          "pngs": [
+            "r0003/image-000-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0003/timeline.json"
+    },
+    {
+      "id": 4,
+      "kind": "bitmap",
+      "record": "r0004/record.bin",
+      "original_offset": 29282,
+      "original_bytes": 2962,
+      "original_sha256": "e30dc252486292ae5b89f1330b91b08fc4c8bece8151bbddb3b68cdaace67820",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 46,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2950,
+          "pngs": [
+            "r0004/image-frame-000.png",
+            "r0004/image-frame-001.png",
+            "r0004/image-frame-002.png",
+            "r0004/image-frame-003.png",
+            "r0004/image-frame-004.png",
+            "r0004/image-frame-005.png",
+            "r0004/image-frame-006.png",
+            "r0004/image-frame-007.png",
+            "r0004/image-frame-008.png",
+            "r0004/image-frame-009.png",
+            "r0004/image-frame-010.png",
+            "r0004/image-frame-011.png",
+            "r0004/image-frame-012.png",
+            "r0004/image-frame-013.png",
+            "r0004/image-frame-014.png",
+            "r0004/image-frame-015.png",
+            "r0004/image-frame-016.png",
+            "r0004/image-frame-017.png",
+            "r0004/image-frame-018.png",
+            "r0004/image-frame-019.png",
+            "r0004/image-frame-020.png",
+            "r0004/image-frame-021.png",
+            "r0004/image-frame-022.png",
+            "r0004/image-frame-023.png",
+            "r0004/image-frame-024.png",
+            "r0004/image-frame-025.png",
+            "r0004/image-frame-026.png",
+            "r0004/image-frame-027.png",
+            "r0004/image-frame-028.png",
+            "r0004/image-frame-029.png",
+            "r0004/image-frame-030.png",
+            "r0004/image-frame-031.png",
+            "r0004/image-frame-032.png",
+            "r0004/image-frame-033.png",
+            "r0004/image-frame-034.png",
+            "r0004/image-frame-035.png",
+            "r0004/image-frame-036.png",
+            "r0004/image-frame-037.png",
+            "r0004/image-frame-038.png",
+            "r0004/image-frame-039.png",
+            "r0004/image-frame-040.png",
+            "r0004/image-frame-041.png",
+            "r0004/image-frame-042.png",
+            "r0004/image-frame-043.png",
+            "r0004/image-frame-044.png",
+            "r0004/image-frame-045.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "bitmap",
+      "record": "r0005/record.bin",
+      "original_offset": 290640,
+      "original_bytes": 4114,
+      "original_sha256": "f5124f1fcede26dc06af524d1dcaa0211fc38a7d9db4d547cca3fd6add880e92",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 32,
+          "flags": 33,
+          "offset": 12,
+          "bytes": 4102,
+          "pngs": [
+            "r0005/image-frame-000.png",
+            "r0005/image-frame-001.png",
+            "r0005/image-frame-002.png",
+            "r0005/image-frame-003.png",
+            "r0005/image-frame-004.png",
+            "r0005/image-frame-005.png",
+            "r0005/image-frame-006.png",
+            "r0005/image-frame-007.png",
+            "r0005/image-frame-008.png",
+            "r0005/image-frame-009.png",
+            "r0005/image-frame-010.png",
+            "r0005/image-frame-011.png",
+            "r0005/image-frame-012.png",
+            "r0005/image-frame-013.png",
+            "r0005/image-frame-014.png",
+            "r0005/image-frame-015.png",
+            "r0005/image-frame-016.png",
+            "r0005/image-frame-017.png",
+            "r0005/image-frame-018.png",
+            "r0005/image-frame-019.png",
+            "r0005/image-frame-020.png",
+            "r0005/image-frame-021.png",
+            "r0005/image-frame-022.png",
+            "r0005/image-frame-023.png",
+            "r0005/image-frame-024.png",
+            "r0005/image-frame-025.png",
+            "r0005/image-frame-026.png",
+            "r0005/image-frame-027.png",
+            "r0005/image-frame-028.png",
+            "r0005/image-frame-029.png",
+            "r0005/image-frame-030.png",
+            "r0005/image-frame-031.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "animation",
+      "record": "r0006/record.bin",
+      "original_offset": 163840,
+      "original_bytes": 19529,
+      "original_sha256": "cf48d49ae6b201a627804685628705da53447e0f8bdf4c2411ee88782826d3e5",
+      "images": [
+        {
+          "width": 320,
+          "height": 240,
+          "frames": 1,
+          "flags": 32,
+          "offset": 323,
+          "bytes": 19206,
+          "pngs": [
+            "r0006/image-000-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0006/timeline.json"
+    },
+    {
+      "id": 7,
+      "kind": "bitmap",
+      "record": "r0007/record.bin",
+      "original_offset": 436170,
+      "original_bytes": 786,
+      "original_sha256": "d23306d6c719afb8225c34eb025367633e13fe65dec8e4d69534961399e4776b",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 6,
+          "flags": 33,
+          "offset": 12,
+          "bytes": 774,
+          "pngs": [
+            "r0007/image-frame-000.png",
+            "r0007/image-frame-001.png",
+            "r0007/image-frame-002.png",
+            "r0007/image-frame-003.png",
+            "r0007/image-frame-004.png",
+            "r0007/image-frame-005.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "bitmap",
+      "record": "r0008/record.bin",
+      "original_offset": 434380,
+      "original_bytes": 978,
+      "original_sha256": "451fc897c5300b3512a55510d41ad76d9df4e8f3479d3c2cf2d5af8afce6743a",
+      "images": [
+        {
+          "width": 240,
+          "height": 16,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 966,
+          "pngs": [
+            "r0008/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "bitmap",
+      "record": "r0009/record.bin",
+      "original_offset": 98042,
+      "original_bytes": 198,
+      "original_sha256": "a01a4e361a0fd78e84846235a34751726c91e147351d8bf47205b9cc58fd2c38",
+      "images": [
+        {
+          "width": 12,
+          "height": 12,
+          "frames": 5,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 186,
+          "pngs": [
+            "r0009/image-frame-000.png",
+            "r0009/image-frame-001.png",
+            "r0009/image-frame-002.png",
+            "r0009/image-frame-003.png",
+            "r0009/image-frame-004.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "raw",
+      "record": "r0010/record.bin",
+      "original_offset": 433348,
+      "original_bytes": 1032,
+      "original_sha256": "7ed8f52d538d980e604ffe15999022fda122292926f4c8742d461856c06b4860"
+    },
+    {
+      "id": 11,
+      "kind": "raw",
+      "record": "r0011/record.bin",
+      "original_offset": 425843,
+      "original_bytes": 132,
+      "original_sha256": "c5b2c921c4a56b2ac82775b030d1404a0e4c901fb44105c2a306ba6583f9eae8"
+    },
+    {
+      "id": 12,
+      "kind": "raw",
+      "record": "r0012/record.bin",
+      "original_offset": 227855,
+      "original_bytes": 1512,
+      "original_sha256": "037fe14c12dfa103111c5abd97b60a69d2d88fb0906bcf9699816437c64703a5"
+    },
+    {
+      "id": 13,
+      "kind": "raw",
+      "record": "r0013/record.bin",
+      "original_offset": 259662,
+      "original_bytes": 2442,
+      "original_sha256": "e2fd88743b51f8b4b17d2127d0ac1d069d5db55ca89bb18d2347047a9940bebb"
+    },
+    {
+      "id": 14,
+      "kind": "raw",
+      "record": "r0014/record.bin",
+      "original_offset": 435358,
+      "original_bytes": 812,
+      "original_sha256": "fd05494b3883307cdfcd4b96c6e33a518fb56d6a3523d91471eb8be0030f6a49"
+    },
+    {
+      "id": 15,
+      "kind": "bitmap",
+      "record": "r0015/record.bin",
+      "original_offset": 32244,
+      "original_bytes": 498,
+      "original_sha256": "c926bfb38aed1079e1a8752946200e2f1e5883c6b195f3453a0eb70f3839828b",
+      "images": [
+        {
+          "width": 12,
+          "height": 16,
+          "frames": 10,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 486,
+          "pngs": [
+            "r0015/image-frame-000.png",
+            "r0015/image-frame-001.png",
+            "r0015/image-frame-002.png",
+            "r0015/image-frame-003.png",
+            "r0015/image-frame-004.png",
+            "r0015/image-frame-005.png",
+            "r0015/image-frame-006.png",
+            "r0015/image-frame-007.png",
+            "r0015/image-frame-008.png",
+            "r0015/image-frame-009.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "kind": "bitmap",
+      "record": "r0016/record.bin",
+      "original_offset": 395346,
+      "original_bytes": 2130,
+      "original_sha256": "3ff1afa8804cc44c7e3f6a1119d7d1ca6adc27f3e9b4e6ba69e23136192dc931",
+      "images": [
+        {
+          "width": 130,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2118,
+          "pngs": [
+            "r0016/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "kind": "animation",
+      "record": "r0019/record.bin",
+      "original_offset": 248594,
+      "original_bytes": 11068,
+      "original_sha256": "cd55d8f7e6289b9dea806bbcb2fdca79657825c9bd7a9c8689fc514c1700e896",
+      "images": [
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 348,
+          "bytes": 582,
+          "pngs": [
+            "r0019/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 930,
+          "bytes": 510,
+          "pngs": [
+            "r0019/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 30,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1440,
+          "bytes": 614,
+          "pngs": [
+            "r0019/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2054,
+          "bytes": 636,
+          "pngs": [
+            "r0019/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2690,
+          "bytes": 636,
+          "pngs": [
+            "r0019/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 34,
+          "height": 41,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3326,
+          "bytes": 744,
+          "pngs": [
+            "r0019/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4070,
+          "bytes": 636,
+          "pngs": [
+            "r0019/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4706,
+          "bytes": 582,
+          "pngs": [
+            "r0019/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5288,
+          "bytes": 614,
+          "pngs": [
+            "r0019/image-008-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5902,
+          "bytes": 454,
+          "pngs": [
+            "r0019/image-009-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6356,
+          "bytes": 454,
+          "pngs": [
+            "r0019/image-010-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6810,
+          "bytes": 354,
+          "pngs": [
+            "r0019/image-011-frame-000.png"
+          ]
+        },
+        {
+          "width": 33,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7164,
+          "bytes": 528,
+          "pngs": [
+            "r0019/image-012-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7692,
+          "bytes": 726,
+          "pngs": [
+            "r0019/image-013-frame-000.png"
+          ]
+        },
+        {
+          "width": 38,
+          "height": 43,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8418,
+          "bytes": 866,
+          "pngs": [
+            "r0019/image-014-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 9284,
+          "bytes": 440,
+          "pngs": [
+            "r0019/image-015-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 9724,
+          "bytes": 566,
+          "pngs": [
+            "r0019/image-016-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 10290,
+          "bytes": 412,
+          "pngs": [
+            "r0019/image-017-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 10702,
+          "bytes": 366,
+          "pngs": [
+            "r0019/image-018-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0019/timeline.json"
+    },
+    {
+      "id": 20,
+      "kind": "animation",
+      "record": "r0020/record.bin",
+      "original_offset": 327680,
+      "original_bytes": 8376,
+      "original_sha256": "935a34d23de55223f33985d2a801276eb45e39595ff368a9343fb214b5278eb5",
+      "images": [
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 318,
+          "bytes": 454,
+          "pngs": [
+            "r0020/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 772,
+          "bytes": 398,
+          "pngs": [
+            "r0020/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 21,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1170,
+          "bytes": 342,
+          "pngs": [
+            "r0020/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 32,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1512,
+          "bytes": 502,
+          "pngs": [
+            "r0020/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2014,
+          "bytes": 582,
+          "pngs": [
+            "r0020/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2596,
+          "bytes": 614,
+          "pngs": [
+            "r0020/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3210,
+          "bytes": 454,
+          "pngs": [
+            "r0020/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3664,
+          "bytes": 454,
+          "pngs": [
+            "r0020/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4118,
+          "bytes": 354,
+          "pngs": [
+            "r0020/image-008-frame-000.png"
+          ]
+        },
+        {
+          "width": 33,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4472,
+          "bytes": 528,
+          "pngs": [
+            "r0020/image-009-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5000,
+          "bytes": 726,
+          "pngs": [
+            "r0020/image-010-frame-000.png"
+          ]
+        },
+        {
+          "width": 38,
+          "height": 43,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5726,
+          "bytes": 866,
+          "pngs": [
+            "r0020/image-011-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6592,
+          "bytes": 440,
+          "pngs": [
+            "r0020/image-012-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7032,
+          "bytes": 566,
+          "pngs": [
+            "r0020/image-013-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7598,
+          "bytes": 412,
+          "pngs": [
+            "r0020/image-014-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8010,
+          "bytes": 366,
+          "pngs": [
+            "r0020/image-015-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0020/timeline.json"
+    },
+    {
+      "id": 21,
+      "kind": "animation",
+      "record": "r0021/record.bin",
+      "original_offset": 336056,
+      "original_bytes": 8368,
+      "original_sha256": "6276d55fec9fbd8697d6487324020194b8cb16e93a1aa1db1079e53964f1a1cf",
+      "images": [
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 288,
+          "bytes": 354,
+          "pngs": [
+            "r0021/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 28,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 642,
+          "bytes": 440,
+          "pngs": [
+            "r0021/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 27,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1082,
+          "bytes": 440,
+          "pngs": [
+            "r0021/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 28,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1522,
+          "bytes": 412,
+          "pngs": [
+            "r0021/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1934,
+          "bytes": 582,
+          "pngs": [
+            "r0021/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2516,
+          "bytes": 614,
+          "pngs": [
+            "r0021/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3130,
+          "bytes": 454,
+          "pngs": [
+            "r0021/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3584,
+          "bytes": 454,
+          "pngs": [
+            "r0021/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 33,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4038,
+          "bytes": 528,
+          "pngs": [
+            "r0021/image-008-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4566,
+          "bytes": 354,
+          "pngs": [
+            "r0021/image-009-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4920,
+          "bytes": 726,
+          "pngs": [
+            "r0021/image-010-frame-000.png"
+          ]
+        },
+        {
+          "width": 38,
+          "height": 43,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5646,
+          "bytes": 866,
+          "pngs": [
+            "r0021/image-011-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6512,
+          "bytes": 566,
+          "pngs": [
+            "r0021/image-012-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7078,
+          "bytes": 440,
+          "pngs": [
+            "r0021/image-013-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7518,
+          "bytes": 412,
+          "pngs": [
+            "r0021/image-014-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7930,
+          "bytes": 366,
+          "pngs": [
+            "r0021/image-015-frame-000.png"
+          ]
+        },
+        {
+          "width": 9,
+          "height": 5,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8296,
+          "bytes": 36,
+          "pngs": [
+            "r0021/image-016-frame-000.png"
+          ]
+        },
+        {
+          "width": 10,
+          "height": 5,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8332,
+          "bytes": 36,
+          "pngs": [
+            "r0021/image-017-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0021/timeline.json"
+    },
+    {
+      "id": 22,
+      "kind": "animation",
+      "record": "r0022/record.bin",
+      "original_offset": 314130,
+      "original_bytes": 9002,
+      "original_sha256": "8d629ab9d119ca3ca75006675c306d25521b1d48794d2a7060eee2c1b9289a51",
+      "images": [
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 318,
+          "bytes": 412,
+          "pngs": [
+            "r0022/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 19,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 730,
+          "bytes": 306,
+          "pngs": [
+            "r0022/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1036,
+          "bytes": 366,
+          "pngs": [
+            "r0022/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1402,
+          "bytes": 426,
+          "pngs": [
+            "r0022/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 21,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1828,
+          "bytes": 342,
+          "pngs": [
+            "r0022/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 32,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2170,
+          "bytes": 470,
+          "pngs": [
+            "r0022/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2640,
+          "bytes": 582,
+          "pngs": [
+            "r0022/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3222,
+          "bytes": 614,
+          "pngs": [
+            "r0022/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3836,
+          "bytes": 454,
+          "pngs": [
+            "r0022/image-008-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4290,
+          "bytes": 454,
+          "pngs": [
+            "r0022/image-009-frame-000.png"
+          ]
+        },
+        {
+          "width": 33,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4744,
+          "bytes": 528,
+          "pngs": [
+            "r0022/image-010-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5272,
+          "bytes": 354,
+          "pngs": [
+            "r0022/image-011-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5626,
+          "bytes": 726,
+          "pngs": [
+            "r0022/image-012-frame-000.png"
+          ]
+        },
+        {
+          "width": 38,
+          "height": 43,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6352,
+          "bytes": 866,
+          "pngs": [
+            "r0022/image-013-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7218,
+          "bytes": 566,
+          "pngs": [
+            "r0022/image-014-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7784,
+          "bytes": 440,
+          "pngs": [
+            "r0022/image-015-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8224,
+          "bytes": 412,
+          "pngs": [
+            "r0022/image-016-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8636,
+          "bytes": 366,
+          "pngs": [
+            "r0022/image-017-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0022/timeline.json"
+    },
+    {
+      "id": 23,
+      "kind": "animation",
+      "record": "r0023/record.bin",
+      "original_offset": 183369,
+      "original_bytes": 12714,
+      "original_sha256": "3b4bd9b152e536da8f54fe5fed7cdc85ae59aa580dbc9ffd7592534aef44b11c",
+      "images": [
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 288,
+          "bytes": 726,
+          "pngs": [
+            "r0023/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 43,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1014,
+          "bytes": 886,
+          "pngs": [
+            "r0023/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 41,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1900,
+          "bytes": 886,
+          "pngs": [
+            "r0023/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 42,
+          "height": 41,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2786,
+          "bytes": 908,
+          "pngs": [
+            "r0023/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 41,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3694,
+          "bytes": 886,
+          "pngs": [
+            "r0023/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 41,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4580,
+          "bytes": 886,
+          "pngs": [
+            "r0023/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 42,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5466,
+          "bytes": 886,
+          "pngs": [
+            "r0023/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6352,
+          "bytes": 582,
+          "pngs": [
+            "r0023/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6934,
+          "bytes": 614,
+          "pngs": [
+            "r0023/image-008-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7548,
+          "bytes": 454,
+          "pngs": [
+            "r0023/image-009-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8002,
+          "bytes": 454,
+          "pngs": [
+            "r0023/image-010-frame-000.png"
+          ]
+        },
+        {
+          "width": 33,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8456,
+          "bytes": 528,
+          "pngs": [
+            "r0023/image-011-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8984,
+          "bytes": 354,
+          "pngs": [
+            "r0023/image-012-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 9338,
+          "bytes": 726,
+          "pngs": [
+            "r0023/image-013-frame-000.png"
+          ]
+        },
+        {
+          "width": 38,
+          "height": 43,
+          "frames": 1,
+          "flags": 33,
+          "offset": 10064,
+          "bytes": 866,
+          "pngs": [
+            "r0023/image-014-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 10930,
+          "bytes": 566,
+          "pngs": [
+            "r0023/image-015-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 11496,
+          "bytes": 440,
+          "pngs": [
+            "r0023/image-016-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 11936,
+          "bytes": 412,
+          "pngs": [
+            "r0023/image-017-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 12348,
+          "bytes": 366,
+          "pngs": [
+            "r0023/image-018-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0023/timeline.json"
+    },
+    {
+      "id": 24,
+      "kind": "animation",
+      "record": "r0024/record.bin",
+      "original_offset": 281362,
+      "original_bytes": 9278,
+      "original_sha256": "2aeb3dc3a2dcb5cb3db6382a1d7ae04b0c00000113b2087f4ab1e9de802087b0",
+      "images": [
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 318,
+          "bytes": 440,
+          "pngs": [
+            "r0024/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 27,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 758,
+          "bytes": 440,
+          "pngs": [
+            "r0024/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 27,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1198,
+          "bytes": 412,
+          "pngs": [
+            "r0024/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1610,
+          "bytes": 412,
+          "pngs": [
+            "r0024/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2022,
+          "bytes": 440,
+          "pngs": [
+            "r0024/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 30,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2462,
+          "bytes": 454,
+          "pngs": [
+            "r0024/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 36,
+          "frames": 1,
+          "flags": 33,
+          "offset": 2916,
+          "bytes": 582,
+          "pngs": [
+            "r0024/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 31,
+          "height": 38,
+          "frames": 1,
+          "flags": 33,
+          "offset": 3498,
+          "bytes": 614,
+          "pngs": [
+            "r0024/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 26,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4112,
+          "bytes": 454,
+          "pngs": [
+            "r0024/image-008-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 28,
+          "frames": 1,
+          "flags": 33,
+          "offset": 4566,
+          "bytes": 454,
+          "pngs": [
+            "r0024/image-009-frame-000.png"
+          ]
+        },
+        {
+          "width": 33,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5020,
+          "bytes": 528,
+          "pngs": [
+            "r0024/image-010-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5548,
+          "bytes": 354,
+          "pngs": [
+            "r0024/image-011-frame-000.png"
+          ]
+        },
+        {
+          "width": 36,
+          "height": 40,
+          "frames": 1,
+          "flags": 33,
+          "offset": 5902,
+          "bytes": 726,
+          "pngs": [
+            "r0024/image-012-frame-000.png"
+          ]
+        },
+        {
+          "width": 38,
+          "height": 43,
+          "frames": 1,
+          "flags": 33,
+          "offset": 6628,
+          "bytes": 866,
+          "pngs": [
+            "r0024/image-013-frame-000.png"
+          ]
+        },
+        {
+          "width": 29,
+          "height": 35,
+          "frames": 1,
+          "flags": 33,
+          "offset": 7494,
+          "bytes": 566,
+          "pngs": [
+            "r0024/image-014-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 31,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8060,
+          "bytes": 440,
+          "pngs": [
+            "r0024/image-015-frame-000.png"
+          ]
+        },
+        {
+          "width": 25,
+          "height": 29,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8500,
+          "bytes": 412,
+          "pngs": [
+            "r0024/image-016-frame-000.png"
+          ]
+        },
+        {
+          "width": 24,
+          "height": 30,
+          "frames": 1,
+          "flags": 33,
+          "offset": 8912,
+          "bytes": 366,
+          "pngs": [
+            "r0024/image-017-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0024/timeline.json"
+    },
+    {
+      "id": 25,
+      "kind": "animation",
+      "record": "r0025/record.bin",
+      "original_offset": 410184,
+      "original_bytes": 1721,
+      "original_sha256": "d7eded5bd234b4e0eee82e141fdd56ca380c0552d8021d03b807935de71d9fea",
+      "images": [
+        {
+          "width": 100,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 43,
+          "bytes": 1606,
+          "pngs": [
+            "r0025/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 9,
+          "height": 5,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1649,
+          "bytes": 36,
+          "pngs": [
+            "r0025/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 10,
+          "height": 5,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1685,
+          "bytes": 36,
+          "pngs": [
+            "r0025/image-002-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0025/timeline.json"
+    },
+    {
+      "id": 26,
+      "kind": "bitmap",
+      "record": "r0026/record.bin",
+      "original_offset": 437742,
+      "original_bytes": 738,
+      "original_sha256": "807a340376d487de83b495f5161b40451a6c1098d1f94734af24102debbecf2b",
+      "images": [
+        {
+          "width": 120,
+          "height": 24,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 726,
+          "pngs": [
+            "r0026/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "kind": "animation",
+      "record": "r0027/record.bin",
+      "original_offset": 423035,
+      "original_bytes": 1314,
+      "original_sha256": "208fae1a3d6331ffb66c5fc083b6a49407aa1aea5848596dac628323fe7cad13",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 108,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 242,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 376,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 510,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-003-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 644,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-004-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 778,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-005-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 912,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-006-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1046,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-007-frame-000.png"
+          ]
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1180,
+          "bytes": 134,
+          "pngs": [
+            "r0027/image-008-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0027/timeline.json"
+    },
+    {
+      "id": 28,
+      "kind": "bitmap",
+      "record": "r0028/record.bin",
+      "original_offset": 393216,
+      "original_bytes": 2130,
+      "original_sha256": "c37de65a0f20fbb9af49113dfa10dfc44239589e27a223beae9eae74d97763da",
+      "images": [
+        {
+          "width": 130,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2118,
+          "pngs": [
+            "r0028/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "kind": "bitmap",
+      "record": "r0029/record.bin",
+      "original_offset": 386123,
+      "original_bytes": 2130,
+      "original_sha256": "9d77b2f67a099fcf8748e6f2a64171a48ebe0bbd9e621de1b434656dd93bb2d9",
+      "images": [
+        {
+          "width": 130,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2118,
+          "pngs": [
+            "r0029/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "kind": "bitmap",
+      "record": "r0030/record.bin",
+      "original_offset": 390383,
+      "original_bytes": 2130,
+      "original_sha256": "65c550f4859b241c42f89c0a6f8d395b893c24572bc24922aec13fb0b58aa41a",
+      "images": [
+        {
+          "width": 130,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2118,
+          "pngs": [
+            "r0030/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "kind": "bitmap",
+      "record": "r0031/record.bin",
+      "original_offset": 388253,
+      "original_bytes": 2130,
+      "original_sha256": "20a696c0ef3461072cbc3a719a3890271d1e2276379c8721094c8ec48963b161",
+      "images": [
+        {
+          "width": 130,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2118,
+          "pngs": [
+            "r0031/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "kind": "bitmap",
+      "record": "r0032/record.bin",
+      "original_offset": 383993,
+      "original_bytes": 2130,
+      "original_sha256": "2c2953758fcc84abecbcc9f9875e8f21fafabf71c7d720b3d62ab7ee1287cf47",
+      "images": [
+        {
+          "width": 130,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 2118,
+          "pngs": [
+            "r0032/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "kind": "bitmap",
+      "record": "r0033/record.bin",
+      "original_offset": 65274,
+      "original_bytes": 249,
+      "original_sha256": "6bcb3b23ba55aec876e9658f207414f52f18759ea04ae5f23aa2f23eb1ac04c2",
+      "images": [
+        {
+          "width": 44,
+          "height": 21,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 237,
+          "pngs": [
+            "r0033/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "kind": "bitmap",
+      "record": "r0034/record.bin",
+      "original_offset": 436956,
+      "original_bytes": 786,
+      "original_sha256": "9e876558c467fba46cf1f6378886fd6a8544609f4ed872307a826657f600d6b0",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 6,
+          "flags": 33,
+          "offset": 12,
+          "bytes": 774,
+          "pngs": [
+            "r0034/image-frame-000.png",
+            "r0034/image-frame-001.png",
+            "r0034/image-frame-002.png",
+            "r0034/image-frame-003.png",
+            "r0034/image-frame-004.png",
+            "r0034/image-frame-005.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "kind": "animation",
+      "record": "r0035/record.bin",
+      "original_offset": 377375,
+      "original_bytes": 2246,
+      "original_sha256": "2b7b98010c7034f696376fa0a5b137e9deafacf0c95eaa480280fc64f2d68bc8",
+      "images": [
+        {
+          "width": 65,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1094,
+          "pngs": [
+            "r0035/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 65,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1152,
+          "bytes": 1094,
+          "pngs": [
+            "r0035/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0035/timeline.json"
+    },
+    {
+      "id": 36,
+      "kind": "animation",
+      "record": "r0036/record.bin",
+      "original_offset": 405948,
+      "original_bytes": 2118,
+      "original_sha256": "0d730ef3ea2c71e21759844730b6a148e0df30243f5bfb5191e0c56d985bab52",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0036/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1030,
+          "pngs": [
+            "r0036/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0036/timeline.json"
+    },
+    {
+      "id": 37,
+      "kind": "animation",
+      "record": "r0037/record.bin",
+      "original_offset": 381811,
+      "original_bytes": 2182,
+      "original_sha256": "cafcc316684ebe242581ffcb82f26fad270e371566190aba26cb4d4843485854",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0037/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 66,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1094,
+          "pngs": [
+            "r0037/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0037/timeline.json"
+    },
+    {
+      "id": 38,
+      "kind": "animation",
+      "record": "r0038/record.bin",
+      "original_offset": 374974,
+      "original_bytes": 2401,
+      "original_sha256": "f2ef05d75029557e6e960592b85921da5ff83ed9d1fc8e5b4c6e738e610c29c8",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 93,
+          "bytes": 518,
+          "pngs": [
+            "r0038/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 32,
+          "height": 32,
+          "frames": 1,
+          "flags": 33,
+          "offset": 611,
+          "bytes": 518,
+          "pngs": [
+            "r0038/image-001-frame-000.png"
+          ]
+        },
+        {
+          "width": 23,
+          "height": 21,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1129,
+          "bytes": 258,
+          "pngs": [
+            "r0038/image-002-frame-000.png"
+          ]
+        },
+        {
+          "width": 46,
+          "height": 42,
+          "frames": 1,
+          "flags": 33,
+          "offset": 1387,
+          "bytes": 1014,
+          "pngs": [
+            "r0038/image-003-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0038/timeline.json"
+    },
+    {
+      "id": 39,
+      "kind": "animation",
+      "record": "r0039/record.bin",
+      "original_offset": 403830,
+      "original_bytes": 2118,
+      "original_sha256": "8f64fb03f9905a948237234d84a497ec5ca5598e60aadef0987f1a74a879786a",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0039/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1030,
+          "pngs": [
+            "r0039/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0039/timeline.json"
+    },
+    {
+      "id": 40,
+      "kind": "animation",
+      "record": "r0040/record.bin",
+      "original_offset": 397476,
+      "original_bytes": 2118,
+      "original_sha256": "7a6b4703e7a03b33a7e93c493f36b924ac2b9abf374c48387310761bc37bf536",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0040/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1030,
+          "pngs": [
+            "r0040/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0040/timeline.json"
+    },
+    {
+      "id": 41,
+      "kind": "animation",
+      "record": "r0041/record.bin",
+      "original_offset": 401712,
+      "original_bytes": 2118,
+      "original_sha256": "12151b8412cf3adcc5055cbd1eaac2a89caecd26975ddf694203962d37c66742",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0041/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1030,
+          "pngs": [
+            "r0041/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0041/timeline.json"
+    },
+    {
+      "id": 42,
+      "kind": "animation",
+      "record": "r0042/record.bin",
+      "original_offset": 408066,
+      "original_bytes": 2118,
+      "original_sha256": "e15cbcebd37cdc7ebcaec85cf1b5a9973da08a8885ed032d7f9d5de917e0c2fd",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0042/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1030,
+          "pngs": [
+            "r0042/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0042/timeline.json"
+    },
+    {
+      "id": 43,
+      "kind": "animation",
+      "record": "r0043/record.bin",
+      "original_offset": 399594,
+      "original_bytes": 2118,
+      "original_sha256": "5c2d85ff37205016952c63e4194f71f53d17d4bfdf3b87ccc648be925e26e153",
+      "images": [
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 58,
+          "bytes": 1030,
+          "pngs": [
+            "r0043/image-000-frame-000.png"
+          ]
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 1088,
+          "bytes": 1030,
+          "pngs": [
+            "r0043/image-001-frame-000.png"
+          ]
+        }
+      ],
+      "timeline": "r0043/timeline.json"
+    },
+    {
+      "id": 44,
+      "kind": "bitmap",
+      "record": "r0044/record.bin",
+      "original_offset": 294912,
+      "original_bytes": 19218,
+      "original_sha256": "407c0150d8046e4942ca75ac5a2fd85d6e1d7074ae1ad81bcfbda53f875e6f7a",
+      "images": [
+        {
+          "width": 240,
+          "height": 320,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 19206,
+          "pngs": [
+            "r0044/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "kind": "bitmap",
+      "record": "r0045/record.bin",
+      "original_offset": 262144,
+      "original_bytes": 19218,
+      "original_sha256": "d633eaf48399531e2a57e83939fc3cd704a46a8f9fd6bea8492d9ff807093288",
+      "images": [
+        {
+          "width": 240,
+          "height": 320,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 19206,
+          "pngs": [
+            "r0045/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "kind": "bitmap",
+      "record": "r0046/record.bin",
+      "original_offset": 229376,
+      "original_bytes": 19218,
+      "original_sha256": "72a1459cefa5b08394b39f405742ced7730725ab0e7bc92fa2a16b86ed9a12cc",
+      "images": [
+        {
+          "width": 240,
+          "height": 320,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 19206,
+          "pngs": [
+            "r0046/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "kind": "bitmap",
+      "record": "r0047/record.bin",
+      "original_offset": 421673,
+      "original_bytes": 1362,
+      "original_sha256": "9fb499328b3e07d49df86ba134ba2b5c1cf7644b93561fd7b8014702ccbd1835",
+      "images": [
+        {
+          "width": 84,
+          "height": 64,
+          "frames": 1,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 1350,
+          "pngs": [
+            "r0047/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "kind": "bitmap",
+      "record": "r0048/record.bin",
+      "original_offset": 464,
+      "original_bytes": 28818,
+      "original_sha256": "5235da99cd179167548db6a0f14ab3b038e3950d8095a73296f139d5dd91c249",
+      "images": [
+        {
+          "width": 24,
+          "height": 24,
+          "frames": 200,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 28806,
+          "pngs": [
+            "r0048/image-frame-000.png",
+            "r0048/image-frame-001.png",
+            "r0048/image-frame-002.png",
+            "r0048/image-frame-003.png",
+            "r0048/image-frame-004.png",
+            "r0048/image-frame-005.png",
+            "r0048/image-frame-006.png",
+            "r0048/image-frame-007.png",
+            "r0048/image-frame-008.png",
+            "r0048/image-frame-009.png",
+            "r0048/image-frame-010.png",
+            "r0048/image-frame-011.png",
+            "r0048/image-frame-012.png",
+            "r0048/image-frame-013.png",
+            "r0048/image-frame-014.png",
+            "r0048/image-frame-015.png",
+            "r0048/image-frame-016.png",
+            "r0048/image-frame-017.png",
+            "r0048/image-frame-018.png",
+            "r0048/image-frame-019.png",
+            "r0048/image-frame-020.png",
+            "r0048/image-frame-021.png",
+            "r0048/image-frame-022.png",
+            "r0048/image-frame-023.png",
+            "r0048/image-frame-024.png",
+            "r0048/image-frame-025.png",
+            "r0048/image-frame-026.png",
+            "r0048/image-frame-027.png",
+            "r0048/image-frame-028.png",
+            "r0048/image-frame-029.png",
+            "r0048/image-frame-030.png",
+            "r0048/image-frame-031.png",
+            "r0048/image-frame-032.png",
+            "r0048/image-frame-033.png",
+            "r0048/image-frame-034.png",
+            "r0048/image-frame-035.png",
+            "r0048/image-frame-036.png",
+            "r0048/image-frame-037.png",
+            "r0048/image-frame-038.png",
+            "r0048/image-frame-039.png",
+            "r0048/image-frame-040.png",
+            "r0048/image-frame-041.png",
+            "r0048/image-frame-042.png",
+            "r0048/image-frame-043.png",
+            "r0048/image-frame-044.png",
+            "r0048/image-frame-045.png",
+            "r0048/image-frame-046.png",
+            "r0048/image-frame-047.png",
+            "r0048/image-frame-048.png",
+            "r0048/image-frame-049.png",
+            "r0048/image-frame-050.png",
+            "r0048/image-frame-051.png",
+            "r0048/image-frame-052.png",
+            "r0048/image-frame-053.png",
+            "r0048/image-frame-054.png",
+            "r0048/image-frame-055.png",
+            "r0048/image-frame-056.png",
+            "r0048/image-frame-057.png",
+            "r0048/image-frame-058.png",
+            "r0048/image-frame-059.png",
+            "r0048/image-frame-060.png",
+            "r0048/image-frame-061.png",
+            "r0048/image-frame-062.png",
+            "r0048/image-frame-063.png",
+            "r0048/image-frame-064.png",
+            "r0048/image-frame-065.png",
+            "r0048/image-frame-066.png",
+            "r0048/image-frame-067.png",
+            "r0048/image-frame-068.png",
+            "r0048/image-frame-069.png",
+            "r0048/image-frame-070.png",
+            "r0048/image-frame-071.png",
+            "r0048/image-frame-072.png",
+            "r0048/image-frame-073.png",
+            "r0048/image-frame-074.png",
+            "r0048/image-frame-075.png",
+            "r0048/image-frame-076.png",
+            "r0048/image-frame-077.png",
+            "r0048/image-frame-078.png",
+            "r0048/image-frame-079.png",
+            "r0048/image-frame-080.png",
+            "r0048/image-frame-081.png",
+            "r0048/image-frame-082.png",
+            "r0048/image-frame-083.png",
+            "r0048/image-frame-084.png",
+            "r0048/image-frame-085.png",
+            "r0048/image-frame-086.png",
+            "r0048/image-frame-087.png",
+            "r0048/image-frame-088.png",
+            "r0048/image-frame-089.png",
+            "r0048/image-frame-090.png",
+            "r0048/image-frame-091.png",
+            "r0048/image-frame-092.png",
+            "r0048/image-frame-093.png",
+            "r0048/image-frame-094.png",
+            "r0048/image-frame-095.png",
+            "r0048/image-frame-096.png",
+            "r0048/image-frame-097.png",
+            "r0048/image-frame-098.png",
+            "r0048/image-frame-099.png",
+            "r0048/image-frame-100.png",
+            "r0048/image-frame-101.png",
+            "r0048/image-frame-102.png",
+            "r0048/image-frame-103.png",
+            "r0048/image-frame-104.png",
+            "r0048/image-frame-105.png",
+            "r0048/image-frame-106.png",
+            "r0048/image-frame-107.png",
+            "r0048/image-frame-108.png",
+            "r0048/image-frame-109.png",
+            "r0048/image-frame-110.png",
+            "r0048/image-frame-111.png",
+            "r0048/image-frame-112.png",
+            "r0048/image-frame-113.png",
+            "r0048/image-frame-114.png",
+            "r0048/image-frame-115.png",
+            "r0048/image-frame-116.png",
+            "r0048/image-frame-117.png",
+            "r0048/image-frame-118.png",
+            "r0048/image-frame-119.png",
+            "r0048/image-frame-120.png",
+            "r0048/image-frame-121.png",
+            "r0048/image-frame-122.png",
+            "r0048/image-frame-123.png",
+            "r0048/image-frame-124.png",
+            "r0048/image-frame-125.png",
+            "r0048/image-frame-126.png",
+            "r0048/image-frame-127.png",
+            "r0048/image-frame-128.png",
+            "r0048/image-frame-129.png",
+            "r0048/image-frame-130.png",
+            "r0048/image-frame-131.png",
+            "r0048/image-frame-132.png",
+            "r0048/image-frame-133.png",
+            "r0048/image-frame-134.png",
+            "r0048/image-frame-135.png",
+            "r0048/image-frame-136.png",
+            "r0048/image-frame-137.png",
+            "r0048/image-frame-138.png",
+            "r0048/image-frame-139.png",
+            "r0048/image-frame-140.png",
+            "r0048/image-frame-141.png",
+            "r0048/image-frame-142.png",
+            "r0048/image-frame-143.png",
+            "r0048/image-frame-144.png",
+            "r0048/image-frame-145.png",
+            "r0048/image-frame-146.png",
+            "r0048/image-frame-147.png",
+            "r0048/image-frame-148.png",
+            "r0048/image-frame-149.png",
+            "r0048/image-frame-150.png",
+            "r0048/image-frame-151.png",
+            "r0048/image-frame-152.png",
+            "r0048/image-frame-153.png",
+            "r0048/image-frame-154.png",
+            "r0048/image-frame-155.png",
+            "r0048/image-frame-156.png",
+            "r0048/image-frame-157.png",
+            "r0048/image-frame-158.png",
+            "r0048/image-frame-159.png",
+            "r0048/image-frame-160.png",
+            "r0048/image-frame-161.png",
+            "r0048/image-frame-162.png",
+            "r0048/image-frame-163.png",
+            "r0048/image-frame-164.png",
+            "r0048/image-frame-165.png",
+            "r0048/image-frame-166.png",
+            "r0048/image-frame-167.png",
+            "r0048/image-frame-168.png",
+            "r0048/image-frame-169.png",
+            "r0048/image-frame-170.png",
+            "r0048/image-frame-171.png",
+            "r0048/image-frame-172.png",
+            "r0048/image-frame-173.png",
+            "r0048/image-frame-174.png",
+            "r0048/image-frame-175.png",
+            "r0048/image-frame-176.png",
+            "r0048/image-frame-177.png",
+            "r0048/image-frame-178.png",
+            "r0048/image-frame-179.png",
+            "r0048/image-frame-180.png",
+            "r0048/image-frame-181.png",
+            "r0048/image-frame-182.png",
+            "r0048/image-frame-183.png",
+            "r0048/image-frame-184.png",
+            "r0048/image-frame-185.png",
+            "r0048/image-frame-186.png",
+            "r0048/image-frame-187.png",
+            "r0048/image-frame-188.png",
+            "r0048/image-frame-189.png",
+            "r0048/image-frame-190.png",
+            "r0048/image-frame-191.png",
+            "r0048/image-frame-192.png",
+            "r0048/image-frame-193.png",
+            "r0048/image-frame-194.png",
+            "r0048/image-frame-195.png",
+            "r0048/image-frame-196.png",
+            "r0048/image-frame-197.png",
+            "r0048/image-frame-198.png",
+            "r0048/image-frame-199.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "kind": "bitmap",
+      "record": "r0049/record.bin",
+      "original_offset": 32768,
+      "original_bytes": 28818,
+      "original_sha256": "c7318b6f1140e05078174a28e215f62e83582f3c7e643839dffcc6d62a79fd95",
+      "images": [
+        {
+          "width": 24,
+          "height": 24,
+          "frames": 200,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 28806,
+          "pngs": [
+            "r0049/image-frame-000.png",
+            "r0049/image-frame-001.png",
+            "r0049/image-frame-002.png",
+            "r0049/image-frame-003.png",
+            "r0049/image-frame-004.png",
+            "r0049/image-frame-005.png",
+            "r0049/image-frame-006.png",
+            "r0049/image-frame-007.png",
+            "r0049/image-frame-008.png",
+            "r0049/image-frame-009.png",
+            "r0049/image-frame-010.png",
+            "r0049/image-frame-011.png",
+            "r0049/image-frame-012.png",
+            "r0049/image-frame-013.png",
+            "r0049/image-frame-014.png",
+            "r0049/image-frame-015.png",
+            "r0049/image-frame-016.png",
+            "r0049/image-frame-017.png",
+            "r0049/image-frame-018.png",
+            "r0049/image-frame-019.png",
+            "r0049/image-frame-020.png",
+            "r0049/image-frame-021.png",
+            "r0049/image-frame-022.png",
+            "r0049/image-frame-023.png",
+            "r0049/image-frame-024.png",
+            "r0049/image-frame-025.png",
+            "r0049/image-frame-026.png",
+            "r0049/image-frame-027.png",
+            "r0049/image-frame-028.png",
+            "r0049/image-frame-029.png",
+            "r0049/image-frame-030.png",
+            "r0049/image-frame-031.png",
+            "r0049/image-frame-032.png",
+            "r0049/image-frame-033.png",
+            "r0049/image-frame-034.png",
+            "r0049/image-frame-035.png",
+            "r0049/image-frame-036.png",
+            "r0049/image-frame-037.png",
+            "r0049/image-frame-038.png",
+            "r0049/image-frame-039.png",
+            "r0049/image-frame-040.png",
+            "r0049/image-frame-041.png",
+            "r0049/image-frame-042.png",
+            "r0049/image-frame-043.png",
+            "r0049/image-frame-044.png",
+            "r0049/image-frame-045.png",
+            "r0049/image-frame-046.png",
+            "r0049/image-frame-047.png",
+            "r0049/image-frame-048.png",
+            "r0049/image-frame-049.png",
+            "r0049/image-frame-050.png",
+            "r0049/image-frame-051.png",
+            "r0049/image-frame-052.png",
+            "r0049/image-frame-053.png",
+            "r0049/image-frame-054.png",
+            "r0049/image-frame-055.png",
+            "r0049/image-frame-056.png",
+            "r0049/image-frame-057.png",
+            "r0049/image-frame-058.png",
+            "r0049/image-frame-059.png",
+            "r0049/image-frame-060.png",
+            "r0049/image-frame-061.png",
+            "r0049/image-frame-062.png",
+            "r0049/image-frame-063.png",
+            "r0049/image-frame-064.png",
+            "r0049/image-frame-065.png",
+            "r0049/image-frame-066.png",
+            "r0049/image-frame-067.png",
+            "r0049/image-frame-068.png",
+            "r0049/image-frame-069.png",
+            "r0049/image-frame-070.png",
+            "r0049/image-frame-071.png",
+            "r0049/image-frame-072.png",
+            "r0049/image-frame-073.png",
+            "r0049/image-frame-074.png",
+            "r0049/image-frame-075.png",
+            "r0049/image-frame-076.png",
+            "r0049/image-frame-077.png",
+            "r0049/image-frame-078.png",
+            "r0049/image-frame-079.png",
+            "r0049/image-frame-080.png",
+            "r0049/image-frame-081.png",
+            "r0049/image-frame-082.png",
+            "r0049/image-frame-083.png",
+            "r0049/image-frame-084.png",
+            "r0049/image-frame-085.png",
+            "r0049/image-frame-086.png",
+            "r0049/image-frame-087.png",
+            "r0049/image-frame-088.png",
+            "r0049/image-frame-089.png",
+            "r0049/image-frame-090.png",
+            "r0049/image-frame-091.png",
+            "r0049/image-frame-092.png",
+            "r0049/image-frame-093.png",
+            "r0049/image-frame-094.png",
+            "r0049/image-frame-095.png",
+            "r0049/image-frame-096.png",
+            "r0049/image-frame-097.png",
+            "r0049/image-frame-098.png",
+            "r0049/image-frame-099.png",
+            "r0049/image-frame-100.png",
+            "r0049/image-frame-101.png",
+            "r0049/image-frame-102.png",
+            "r0049/image-frame-103.png",
+            "r0049/image-frame-104.png",
+            "r0049/image-frame-105.png",
+            "r0049/image-frame-106.png",
+            "r0049/image-frame-107.png",
+            "r0049/image-frame-108.png",
+            "r0049/image-frame-109.png",
+            "r0049/image-frame-110.png",
+            "r0049/image-frame-111.png",
+            "r0049/image-frame-112.png",
+            "r0049/image-frame-113.png",
+            "r0049/image-frame-114.png",
+            "r0049/image-frame-115.png",
+            "r0049/image-frame-116.png",
+            "r0049/image-frame-117.png",
+            "r0049/image-frame-118.png",
+            "r0049/image-frame-119.png",
+            "r0049/image-frame-120.png",
+            "r0049/image-frame-121.png",
+            "r0049/image-frame-122.png",
+            "r0049/image-frame-123.png",
+            "r0049/image-frame-124.png",
+            "r0049/image-frame-125.png",
+            "r0049/image-frame-126.png",
+            "r0049/image-frame-127.png",
+            "r0049/image-frame-128.png",
+            "r0049/image-frame-129.png",
+            "r0049/image-frame-130.png",
+            "r0049/image-frame-131.png",
+            "r0049/image-frame-132.png",
+            "r0049/image-frame-133.png",
+            "r0049/image-frame-134.png",
+            "r0049/image-frame-135.png",
+            "r0049/image-frame-136.png",
+            "r0049/image-frame-137.png",
+            "r0049/image-frame-138.png",
+            "r0049/image-frame-139.png",
+            "r0049/image-frame-140.png",
+            "r0049/image-frame-141.png",
+            "r0049/image-frame-142.png",
+            "r0049/image-frame-143.png",
+            "r0049/image-frame-144.png",
+            "r0049/image-frame-145.png",
+            "r0049/image-frame-146.png",
+            "r0049/image-frame-147.png",
+            "r0049/image-frame-148.png",
+            "r0049/image-frame-149.png",
+            "r0049/image-frame-150.png",
+            "r0049/image-frame-151.png",
+            "r0049/image-frame-152.png",
+            "r0049/image-frame-153.png",
+            "r0049/image-frame-154.png",
+            "r0049/image-frame-155.png",
+            "r0049/image-frame-156.png",
+            "r0049/image-frame-157.png",
+            "r0049/image-frame-158.png",
+            "r0049/image-frame-159.png",
+            "r0049/image-frame-160.png",
+            "r0049/image-frame-161.png",
+            "r0049/image-frame-162.png",
+            "r0049/image-frame-163.png",
+            "r0049/image-frame-164.png",
+            "r0049/image-frame-165.png",
+            "r0049/image-frame-166.png",
+            "r0049/image-frame-167.png",
+            "r0049/image-frame-168.png",
+            "r0049/image-frame-169.png",
+            "r0049/image-frame-170.png",
+            "r0049/image-frame-171.png",
+            "r0049/image-frame-172.png",
+            "r0049/image-frame-173.png",
+            "r0049/image-frame-174.png",
+            "r0049/image-frame-175.png",
+            "r0049/image-frame-176.png",
+            "r0049/image-frame-177.png",
+            "r0049/image-frame-178.png",
+            "r0049/image-frame-179.png",
+            "r0049/image-frame-180.png",
+            "r0049/image-frame-181.png",
+            "r0049/image-frame-182.png",
+            "r0049/image-frame-183.png",
+            "r0049/image-frame-184.png",
+            "r0049/image-frame-185.png",
+            "r0049/image-frame-186.png",
+            "r0049/image-frame-187.png",
+            "r0049/image-frame-188.png",
+            "r0049/image-frame-189.png",
+            "r0049/image-frame-190.png",
+            "r0049/image-frame-191.png",
+            "r0049/image-frame-192.png",
+            "r0049/image-frame-193.png",
+            "r0049/image-frame-194.png",
+            "r0049/image-frame-195.png",
+            "r0049/image-frame-196.png",
+            "r0049/image-frame-197.png",
+            "r0049/image-frame-198.png",
+            "r0049/image-frame-199.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "kind": "bitmap",
+      "record": "r0050/record.bin",
+      "original_offset": 65536,
+      "original_bytes": 28818,
+      "original_sha256": "af69f6159939fa53e2745ffbf652c67906b872854f17daa363494fa2bce82fea",
+      "images": [
+        {
+          "width": 24,
+          "height": 24,
+          "frames": 200,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 28806,
+          "pngs": [
+            "r0050/image-frame-000.png",
+            "r0050/image-frame-001.png",
+            "r0050/image-frame-002.png",
+            "r0050/image-frame-003.png",
+            "r0050/image-frame-004.png",
+            "r0050/image-frame-005.png",
+            "r0050/image-frame-006.png",
+            "r0050/image-frame-007.png",
+            "r0050/image-frame-008.png",
+            "r0050/image-frame-009.png",
+            "r0050/image-frame-010.png",
+            "r0050/image-frame-011.png",
+            "r0050/image-frame-012.png",
+            "r0050/image-frame-013.png",
+            "r0050/image-frame-014.png",
+            "r0050/image-frame-015.png",
+            "r0050/image-frame-016.png",
+            "r0050/image-frame-017.png",
+            "r0050/image-frame-018.png",
+            "r0050/image-frame-019.png",
+            "r0050/image-frame-020.png",
+            "r0050/image-frame-021.png",
+            "r0050/image-frame-022.png",
+            "r0050/image-frame-023.png",
+            "r0050/image-frame-024.png",
+            "r0050/image-frame-025.png",
+            "r0050/image-frame-026.png",
+            "r0050/image-frame-027.png",
+            "r0050/image-frame-028.png",
+            "r0050/image-frame-029.png",
+            "r0050/image-frame-030.png",
+            "r0050/image-frame-031.png",
+            "r0050/image-frame-032.png",
+            "r0050/image-frame-033.png",
+            "r0050/image-frame-034.png",
+            "r0050/image-frame-035.png",
+            "r0050/image-frame-036.png",
+            "r0050/image-frame-037.png",
+            "r0050/image-frame-038.png",
+            "r0050/image-frame-039.png",
+            "r0050/image-frame-040.png",
+            "r0050/image-frame-041.png",
+            "r0050/image-frame-042.png",
+            "r0050/image-frame-043.png",
+            "r0050/image-frame-044.png",
+            "r0050/image-frame-045.png",
+            "r0050/image-frame-046.png",
+            "r0050/image-frame-047.png",
+            "r0050/image-frame-048.png",
+            "r0050/image-frame-049.png",
+            "r0050/image-frame-050.png",
+            "r0050/image-frame-051.png",
+            "r0050/image-frame-052.png",
+            "r0050/image-frame-053.png",
+            "r0050/image-frame-054.png",
+            "r0050/image-frame-055.png",
+            "r0050/image-frame-056.png",
+            "r0050/image-frame-057.png",
+            "r0050/image-frame-058.png",
+            "r0050/image-frame-059.png",
+            "r0050/image-frame-060.png",
+            "r0050/image-frame-061.png",
+            "r0050/image-frame-062.png",
+            "r0050/image-frame-063.png",
+            "r0050/image-frame-064.png",
+            "r0050/image-frame-065.png",
+            "r0050/image-frame-066.png",
+            "r0050/image-frame-067.png",
+            "r0050/image-frame-068.png",
+            "r0050/image-frame-069.png",
+            "r0050/image-frame-070.png",
+            "r0050/image-frame-071.png",
+            "r0050/image-frame-072.png",
+            "r0050/image-frame-073.png",
+            "r0050/image-frame-074.png",
+            "r0050/image-frame-075.png",
+            "r0050/image-frame-076.png",
+            "r0050/image-frame-077.png",
+            "r0050/image-frame-078.png",
+            "r0050/image-frame-079.png",
+            "r0050/image-frame-080.png",
+            "r0050/image-frame-081.png",
+            "r0050/image-frame-082.png",
+            "r0050/image-frame-083.png",
+            "r0050/image-frame-084.png",
+            "r0050/image-frame-085.png",
+            "r0050/image-frame-086.png",
+            "r0050/image-frame-087.png",
+            "r0050/image-frame-088.png",
+            "r0050/image-frame-089.png",
+            "r0050/image-frame-090.png",
+            "r0050/image-frame-091.png",
+            "r0050/image-frame-092.png",
+            "r0050/image-frame-093.png",
+            "r0050/image-frame-094.png",
+            "r0050/image-frame-095.png",
+            "r0050/image-frame-096.png",
+            "r0050/image-frame-097.png",
+            "r0050/image-frame-098.png",
+            "r0050/image-frame-099.png",
+            "r0050/image-frame-100.png",
+            "r0050/image-frame-101.png",
+            "r0050/image-frame-102.png",
+            "r0050/image-frame-103.png",
+            "r0050/image-frame-104.png",
+            "r0050/image-frame-105.png",
+            "r0050/image-frame-106.png",
+            "r0050/image-frame-107.png",
+            "r0050/image-frame-108.png",
+            "r0050/image-frame-109.png",
+            "r0050/image-frame-110.png",
+            "r0050/image-frame-111.png",
+            "r0050/image-frame-112.png",
+            "r0050/image-frame-113.png",
+            "r0050/image-frame-114.png",
+            "r0050/image-frame-115.png",
+            "r0050/image-frame-116.png",
+            "r0050/image-frame-117.png",
+            "r0050/image-frame-118.png",
+            "r0050/image-frame-119.png",
+            "r0050/image-frame-120.png",
+            "r0050/image-frame-121.png",
+            "r0050/image-frame-122.png",
+            "r0050/image-frame-123.png",
+            "r0050/image-frame-124.png",
+            "r0050/image-frame-125.png",
+            "r0050/image-frame-126.png",
+            "r0050/image-frame-127.png",
+            "r0050/image-frame-128.png",
+            "r0050/image-frame-129.png",
+            "r0050/image-frame-130.png",
+            "r0050/image-frame-131.png",
+            "r0050/image-frame-132.png",
+            "r0050/image-frame-133.png",
+            "r0050/image-frame-134.png",
+            "r0050/image-frame-135.png",
+            "r0050/image-frame-136.png",
+            "r0050/image-frame-137.png",
+            "r0050/image-frame-138.png",
+            "r0050/image-frame-139.png",
+            "r0050/image-frame-140.png",
+            "r0050/image-frame-141.png",
+            "r0050/image-frame-142.png",
+            "r0050/image-frame-143.png",
+            "r0050/image-frame-144.png",
+            "r0050/image-frame-145.png",
+            "r0050/image-frame-146.png",
+            "r0050/image-frame-147.png",
+            "r0050/image-frame-148.png",
+            "r0050/image-frame-149.png",
+            "r0050/image-frame-150.png",
+            "r0050/image-frame-151.png",
+            "r0050/image-frame-152.png",
+            "r0050/image-frame-153.png",
+            "r0050/image-frame-154.png",
+            "r0050/image-frame-155.png",
+            "r0050/image-frame-156.png",
+            "r0050/image-frame-157.png",
+            "r0050/image-frame-158.png",
+            "r0050/image-frame-159.png",
+            "r0050/image-frame-160.png",
+            "r0050/image-frame-161.png",
+            "r0050/image-frame-162.png",
+            "r0050/image-frame-163.png",
+            "r0050/image-frame-164.png",
+            "r0050/image-frame-165.png",
+            "r0050/image-frame-166.png",
+            "r0050/image-frame-167.png",
+            "r0050/image-frame-168.png",
+            "r0050/image-frame-169.png",
+            "r0050/image-frame-170.png",
+            "r0050/image-frame-171.png",
+            "r0050/image-frame-172.png",
+            "r0050/image-frame-173.png",
+            "r0050/image-frame-174.png",
+            "r0050/image-frame-175.png",
+            "r0050/image-frame-176.png",
+            "r0050/image-frame-177.png",
+            "r0050/image-frame-178.png",
+            "r0050/image-frame-179.png",
+            "r0050/image-frame-180.png",
+            "r0050/image-frame-181.png",
+            "r0050/image-frame-182.png",
+            "r0050/image-frame-183.png",
+            "r0050/image-frame-184.png",
+            "r0050/image-frame-185.png",
+            "r0050/image-frame-186.png",
+            "r0050/image-frame-187.png",
+            "r0050/image-frame-188.png",
+            "r0050/image-frame-189.png",
+            "r0050/image-frame-190.png",
+            "r0050/image-frame-191.png",
+            "r0050/image-frame-192.png",
+            "r0050/image-frame-193.png",
+            "r0050/image-frame-194.png",
+            "r0050/image-frame-195.png",
+            "r0050/image-frame-196.png",
+            "r0050/image-frame-197.png",
+            "r0050/image-frame-198.png",
+            "r0050/image-frame-199.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "kind": "bitmap",
+      "record": "r0051/record.bin",
+      "original_offset": 98304,
+      "original_bytes": 28818,
+      "original_sha256": "edbfae102d4f778b8e7be4491a80443d2230f88bb1259587f07824ac53e4d316",
+      "images": [
+        {
+          "width": 24,
+          "height": 24,
+          "frames": 200,
+          "flags": 32,
+          "offset": 12,
+          "bytes": 28806,
+          "pngs": [
+            "r0051/image-frame-000.png",
+            "r0051/image-frame-001.png",
+            "r0051/image-frame-002.png",
+            "r0051/image-frame-003.png",
+            "r0051/image-frame-004.png",
+            "r0051/image-frame-005.png",
+            "r0051/image-frame-006.png",
+            "r0051/image-frame-007.png",
+            "r0051/image-frame-008.png",
+            "r0051/image-frame-009.png",
+            "r0051/image-frame-010.png",
+            "r0051/image-frame-011.png",
+            "r0051/image-frame-012.png",
+            "r0051/image-frame-013.png",
+            "r0051/image-frame-014.png",
+            "r0051/image-frame-015.png",
+            "r0051/image-frame-016.png",
+            "r0051/image-frame-017.png",
+            "r0051/image-frame-018.png",
+            "r0051/image-frame-019.png",
+            "r0051/image-frame-020.png",
+            "r0051/image-frame-021.png",
+            "r0051/image-frame-022.png",
+            "r0051/image-frame-023.png",
+            "r0051/image-frame-024.png",
+            "r0051/image-frame-025.png",
+            "r0051/image-frame-026.png",
+            "r0051/image-frame-027.png",
+            "r0051/image-frame-028.png",
+            "r0051/image-frame-029.png",
+            "r0051/image-frame-030.png",
+            "r0051/image-frame-031.png",
+            "r0051/image-frame-032.png",
+            "r0051/image-frame-033.png",
+            "r0051/image-frame-034.png",
+            "r0051/image-frame-035.png",
+            "r0051/image-frame-036.png",
+            "r0051/image-frame-037.png",
+            "r0051/image-frame-038.png",
+            "r0051/image-frame-039.png",
+            "r0051/image-frame-040.png",
+            "r0051/image-frame-041.png",
+            "r0051/image-frame-042.png",
+            "r0051/image-frame-043.png",
+            "r0051/image-frame-044.png",
+            "r0051/image-frame-045.png",
+            "r0051/image-frame-046.png",
+            "r0051/image-frame-047.png",
+            "r0051/image-frame-048.png",
+            "r0051/image-frame-049.png",
+            "r0051/image-frame-050.png",
+            "r0051/image-frame-051.png",
+            "r0051/image-frame-052.png",
+            "r0051/image-frame-053.png",
+            "r0051/image-frame-054.png",
+            "r0051/image-frame-055.png",
+            "r0051/image-frame-056.png",
+            "r0051/image-frame-057.png",
+            "r0051/image-frame-058.png",
+            "r0051/image-frame-059.png",
+            "r0051/image-frame-060.png",
+            "r0051/image-frame-061.png",
+            "r0051/image-frame-062.png",
+            "r0051/image-frame-063.png",
+            "r0051/image-frame-064.png",
+            "r0051/image-frame-065.png",
+            "r0051/image-frame-066.png",
+            "r0051/image-frame-067.png",
+            "r0051/image-frame-068.png",
+            "r0051/image-frame-069.png",
+            "r0051/image-frame-070.png",
+            "r0051/image-frame-071.png",
+            "r0051/image-frame-072.png",
+            "r0051/image-frame-073.png",
+            "r0051/image-frame-074.png",
+            "r0051/image-frame-075.png",
+            "r0051/image-frame-076.png",
+            "r0051/image-frame-077.png",
+            "r0051/image-frame-078.png",
+            "r0051/image-frame-079.png",
+            "r0051/image-frame-080.png",
+            "r0051/image-frame-081.png",
+            "r0051/image-frame-082.png",
+            "r0051/image-frame-083.png",
+            "r0051/image-frame-084.png",
+            "r0051/image-frame-085.png",
+            "r0051/image-frame-086.png",
+            "r0051/image-frame-087.png",
+            "r0051/image-frame-088.png",
+            "r0051/image-frame-089.png",
+            "r0051/image-frame-090.png",
+            "r0051/image-frame-091.png",
+            "r0051/image-frame-092.png",
+            "r0051/image-frame-093.png",
+            "r0051/image-frame-094.png",
+            "r0051/image-frame-095.png",
+            "r0051/image-frame-096.png",
+            "r0051/image-frame-097.png",
+            "r0051/image-frame-098.png",
+            "r0051/image-frame-099.png",
+            "r0051/image-frame-100.png",
+            "r0051/image-frame-101.png",
+            "r0051/image-frame-102.png",
+            "r0051/image-frame-103.png",
+            "r0051/image-frame-104.png",
+            "r0051/image-frame-105.png",
+            "r0051/image-frame-106.png",
+            "r0051/image-frame-107.png",
+            "r0051/image-frame-108.png",
+            "r0051/image-frame-109.png",
+            "r0051/image-frame-110.png",
+            "r0051/image-frame-111.png",
+            "r0051/image-frame-112.png",
+            "r0051/image-frame-113.png",
+            "r0051/image-frame-114.png",
+            "r0051/image-frame-115.png",
+            "r0051/image-frame-116.png",
+            "r0051/image-frame-117.png",
+            "r0051/image-frame-118.png",
+            "r0051/image-frame-119.png",
+            "r0051/image-frame-120.png",
+            "r0051/image-frame-121.png",
+            "r0051/image-frame-122.png",
+            "r0051/image-frame-123.png",
+            "r0051/image-frame-124.png",
+            "r0051/image-frame-125.png",
+            "r0051/image-frame-126.png",
+            "r0051/image-frame-127.png",
+            "r0051/image-frame-128.png",
+            "r0051/image-frame-129.png",
+            "r0051/image-frame-130.png",
+            "r0051/image-frame-131.png",
+            "r0051/image-frame-132.png",
+            "r0051/image-frame-133.png",
+            "r0051/image-frame-134.png",
+            "r0051/image-frame-135.png",
+            "r0051/image-frame-136.png",
+            "r0051/image-frame-137.png",
+            "r0051/image-frame-138.png",
+            "r0051/image-frame-139.png",
+            "r0051/image-frame-140.png",
+            "r0051/image-frame-141.png",
+            "r0051/image-frame-142.png",
+            "r0051/image-frame-143.png",
+            "r0051/image-frame-144.png",
+            "r0051/image-frame-145.png",
+            "r0051/image-frame-146.png",
+            "r0051/image-frame-147.png",
+            "r0051/image-frame-148.png",
+            "r0051/image-frame-149.png",
+            "r0051/image-frame-150.png",
+            "r0051/image-frame-151.png",
+            "r0051/image-frame-152.png",
+            "r0051/image-frame-153.png",
+            "r0051/image-frame-154.png",
+            "r0051/image-frame-155.png",
+            "r0051/image-frame-156.png",
+            "r0051/image-frame-157.png",
+            "r0051/image-frame-158.png",
+            "r0051/image-frame-159.png",
+            "r0051/image-frame-160.png",
+            "r0051/image-frame-161.png",
+            "r0051/image-frame-162.png",
+            "r0051/image-frame-163.png",
+            "r0051/image-frame-164.png",
+            "r0051/image-frame-165.png",
+            "r0051/image-frame-166.png",
+            "r0051/image-frame-167.png",
+            "r0051/image-frame-168.png",
+            "r0051/image-frame-169.png",
+            "r0051/image-frame-170.png",
+            "r0051/image-frame-171.png",
+            "r0051/image-frame-172.png",
+            "r0051/image-frame-173.png",
+            "r0051/image-frame-174.png",
+            "r0051/image-frame-175.png",
+            "r0051/image-frame-176.png",
+            "r0051/image-frame-177.png",
+            "r0051/image-frame-178.png",
+            "r0051/image-frame-179.png",
+            "r0051/image-frame-180.png",
+            "r0051/image-frame-181.png",
+            "r0051/image-frame-182.png",
+            "r0051/image-frame-183.png",
+            "r0051/image-frame-184.png",
+            "r0051/image-frame-185.png",
+            "r0051/image-frame-186.png",
+            "r0051/image-frame-187.png",
+            "r0051/image-frame-188.png",
+            "r0051/image-frame-189.png",
+            "r0051/image-frame-190.png",
+            "r0051/image-frame-191.png",
+            "r0051/image-frame-192.png",
+            "r0051/image-frame-193.png",
+            "r0051/image-frame-194.png",
+            "r0051/image-frame-195.png",
+            "r0051/image-frame-196.png",
+            "r0051/image-frame-197.png",
+            "r0051/image-frame-198.png",
+            "r0051/image-frame-199.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "kind": "bitmap",
+      "record": "r0054/record.bin",
+      "original_offset": 131072,
+      "original_bytes": 27666,
+      "original_sha256": "dfcd07276405d1ff09ce8069c103903eb785e7200b7501657f93fa03eb4a225b",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "frames": 108,
+          "flags": 0,
+          "offset": 12,
+          "bytes": 27654,
+          "pngs": [
+            "r0054/image-frame-000.png",
+            "r0054/image-frame-001.png",
+            "r0054/image-frame-002.png",
+            "r0054/image-frame-003.png",
+            "r0054/image-frame-004.png",
+            "r0054/image-frame-005.png",
+            "r0054/image-frame-006.png",
+            "r0054/image-frame-007.png",
+            "r0054/image-frame-008.png",
+            "r0054/image-frame-009.png",
+            "r0054/image-frame-010.png",
+            "r0054/image-frame-011.png",
+            "r0054/image-frame-012.png",
+            "r0054/image-frame-013.png",
+            "r0054/image-frame-014.png",
+            "r0054/image-frame-015.png",
+            "r0054/image-frame-016.png",
+            "r0054/image-frame-017.png",
+            "r0054/image-frame-018.png",
+            "r0054/image-frame-019.png",
+            "r0054/image-frame-020.png",
+            "r0054/image-frame-021.png",
+            "r0054/image-frame-022.png",
+            "r0054/image-frame-023.png",
+            "r0054/image-frame-024.png",
+            "r0054/image-frame-025.png",
+            "r0054/image-frame-026.png",
+            "r0054/image-frame-027.png",
+            "r0054/image-frame-028.png",
+            "r0054/image-frame-029.png",
+            "r0054/image-frame-030.png",
+            "r0054/image-frame-031.png",
+            "r0054/image-frame-032.png",
+            "r0054/image-frame-033.png",
+            "r0054/image-frame-034.png",
+            "r0054/image-frame-035.png",
+            "r0054/image-frame-036.png",
+            "r0054/image-frame-037.png",
+            "r0054/image-frame-038.png",
+            "r0054/image-frame-039.png",
+            "r0054/image-frame-040.png",
+            "r0054/image-frame-041.png",
+            "r0054/image-frame-042.png",
+            "r0054/image-frame-043.png",
+            "r0054/image-frame-044.png",
+            "r0054/image-frame-045.png",
+            "r0054/image-frame-046.png",
+            "r0054/image-frame-047.png",
+            "r0054/image-frame-048.png",
+            "r0054/image-frame-049.png",
+            "r0054/image-frame-050.png",
+            "r0054/image-frame-051.png",
+            "r0054/image-frame-052.png",
+            "r0054/image-frame-053.png",
+            "r0054/image-frame-054.png",
+            "r0054/image-frame-055.png",
+            "r0054/image-frame-056.png",
+            "r0054/image-frame-057.png",
+            "r0054/image-frame-058.png",
+            "r0054/image-frame-059.png",
+            "r0054/image-frame-060.png",
+            "r0054/image-frame-061.png",
+            "r0054/image-frame-062.png",
+            "r0054/image-frame-063.png",
+            "r0054/image-frame-064.png",
+            "r0054/image-frame-065.png",
+            "r0054/image-frame-066.png",
+            "r0054/image-frame-067.png",
+            "r0054/image-frame-068.png",
+            "r0054/image-frame-069.png",
+            "r0054/image-frame-070.png",
+            "r0054/image-frame-071.png",
+            "r0054/image-frame-072.png",
+            "r0054/image-frame-073.png",
+            "r0054/image-frame-074.png",
+            "r0054/image-frame-075.png",
+            "r0054/image-frame-076.png",
+            "r0054/image-frame-077.png",
+            "r0054/image-frame-078.png",
+            "r0054/image-frame-079.png",
+            "r0054/image-frame-080.png",
+            "r0054/image-frame-081.png",
+            "r0054/image-frame-082.png",
+            "r0054/image-frame-083.png",
+            "r0054/image-frame-084.png",
+            "r0054/image-frame-085.png",
+            "r0054/image-frame-086.png",
+            "r0054/image-frame-087.png",
+            "r0054/image-frame-088.png",
+            "r0054/image-frame-089.png",
+            "r0054/image-frame-090.png",
+            "r0054/image-frame-091.png",
+            "r0054/image-frame-092.png",
+            "r0054/image-frame-093.png",
+            "r0054/image-frame-094.png",
+            "r0054/image-frame-095.png",
+            "r0054/image-frame-096.png",
+            "r0054/image-frame-097.png",
+            "r0054/image-frame-098.png",
+            "r0054/image-frame-099.png",
+            "r0054/image-frame-100.png",
+            "r0054/image-frame-101.png",
+            "r0054/image-frame-102.png",
+            "r0054/image-frame-103.png",
+            "r0054/image-frame-104.png",
+            "r0054/image-frame-105.png",
+            "r0054/image-frame-106.png",
+            "r0054/image-frame-107.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "kind": "bitmap",
+      "record": "r0055/record.bin",
+      "original_offset": 392513,
+      "original_bytes": 658,
+      "original_sha256": "f1eb1ae1a2094fa337e4ebdef86c2efed7d476118bafe78babb008bc2445770b",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 10,
+          "flags": 0,
+          "offset": 12,
+          "bytes": 646,
+          "pngs": [
+            "r0055/image-frame-000.png",
+            "r0055/image-frame-001.png",
+            "r0055/image-frame-002.png",
+            "r0055/image-frame-003.png",
+            "r0055/image-frame-004.png",
+            "r0055/image-frame-005.png",
+            "r0055/image-frame-006.png",
+            "r0055/image-frame-007.png",
+            "r0055/image-frame-008.png",
+            "r0055/image-frame-009.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "kind": "bitmap",
+      "record": "r0056/record.bin",
+      "original_offset": 130810,
+      "original_bytes": 146,
+      "original_sha256": "0519e3c098f82dbf58a0df5bed7e553eaff33d854b7b1388b7eecfac70a6a0f9",
+      "images": [
+        {
+          "width": 16,
+          "height": 16,
+          "frames": 1,
+          "flags": 1,
+          "offset": 12,
+          "bytes": 134,
+          "pngs": [
+            "r0056/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "kind": "raw",
+      "record": "r0057/record.bin",
+      "original_offset": 158738,
+      "original_bytes": 4732,
+      "original_sha256": "b6777e362630beee6efd200e3a7dff6197358766e34d5decb7711ee3da585153"
+    },
+    {
+      "id": 58,
+      "kind": "raw",
+      "record": "r0058/record.bin",
+      "original_offset": 425451,
+      "original_bytes": 392,
+      "original_sha256": "877354fd7916626cef566b79526c9e2be65c5fee4741f5e3f41537693d31328c"
+    },
+    {
+      "id": 59,
+      "kind": "raw",
+      "record": "r0059/record.bin",
+      "original_offset": 438480,
+      "original_bytes": 620,
+      "original_sha256": "106f241d7deddbe9232b124d37eccf3876488165ccccfc2e28f89b7bbfda6470"
+    },
+    {
+      "id": 60,
+      "kind": "raw",
+      "record": "r0060/record.bin",
+      "original_offset": 439100,
+      "original_bytes": 620,
+      "original_sha256": "6ac1741b166aaee34ea70dbab5640b496d2e571c6186f7bd8199111c6c65fa05"
+    },
+    {
+      "id": 61,
+      "kind": "raw",
+      "record": "r0061/record.bin",
+      "original_offset": 215842,
+      "original_bytes": 12013,
+      "original_sha256": "fa512c4dd815e0a6770101548a10abbfacaaf4ce66794792d087766e72127097"
+    },
+    {
+      "id": 62,
+      "kind": "raw",
+      "record": "r0062/record.bin",
+      "original_offset": 418449,
+      "original_bytes": 1612,
+      "original_sha256": "f404d21b44e94a6c4aef2f575a61a4988f437b06e1c94067faf376c9d0debaf8"
+    },
+    {
+      "id": 63,
+      "kind": "raw",
+      "record": "r0063/record.bin",
+      "original_offset": 372562,
+      "original_bytes": 2412,
+      "original_sha256": "2d8ba74487633cc6beddba6b1d43195d6943fde1badbbd8e4b89fe945f1662f6"
+    },
+    {
+      "id": 64,
+      "kind": "raw",
+      "record": "r0064/record.bin",
+      "original_offset": 369648,
+      "original_bytes": 2914,
+      "original_sha256": "2f58ee8a003bdcaf0680557ad49ea86b0699257e65060209b597501f5039b099"
+    },
+    {
+      "id": 65,
+      "kind": "raw",
+      "record": "r0065/record.bin",
+      "original_offset": 326820,
+      "original_bytes": 812,
+      "original_sha256": "cde24ec1ffc5c17e1a8d48529a42c04ffa1e04aa396bf121f16f56a0b28deb12"
+    },
+    {
+      "id": 66,
+      "kind": "raw",
+      "record": "r0066/record.bin",
+      "original_offset": 379621,
+      "original_bytes": 2190,
+      "original_sha256": "069b204310f2f9c65b01506390b67d087a4bd1c8613b3cf92ed7428cba64f2f7"
+    },
+    {
+      "id": 67,
+      "kind": "raw",
+      "record": "r0067/record.bin",
+      "original_offset": 196083,
+      "original_bytes": 408,
+      "original_sha256": "2ece1fa3cc8c95c09aa0d56c4e36857ed2327fd0e1f6b4662bc1a7f44422c949"
+    },
+    {
+      "id": 68,
+      "kind": "raw",
+      "record": "r0068/record.bin",
+      "original_offset": 294754,
+      "original_bytes": 144,
+      "original_sha256": "46c1f19e6e519c8415e2ed9c5b07389c01eaef5fcc7b66ff769bba652d9ac11c"
+    },
+    {
+      "id": 69,
+      "kind": "bitmap",
+      "record": "r0069/record.bin",
+      "original_offset": 98240,
+      "original_bytes": 54,
+      "original_sha256": "acee2782a46a3cc0f9099a95f4ad720570bf39099119ada408457b1eb453ea08",
+      "images": [
+        {
+          "width": 7,
+          "height": 9,
+          "frames": 2,
+          "flags": 0,
+          "offset": 12,
+          "bytes": 42,
+          "pngs": [
+            "r0069/image-frame-000.png",
+            "r0069/image-frame-001.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "kind": "raw",
+      "record": "r0070/record.bin",
+      "original_offset": 420061,
+      "original_bytes": 1612,
+      "original_sha256": "23aa427eced87d45a5dae717ce8f3aff39eaed946cd6d9b9dddc0c08a8ce05f5"
+    },
+    {
+      "id": 71,
+      "kind": "raw",
+      "record": "r0071/record.bin",
+      "original_offset": 415225,
+      "original_bytes": 1612,
+      "original_sha256": "1dedb12a4ba0257d06650c8467bd4206de30037db1dfad021d3cbd83ef301d13"
+    },
+    {
+      "id": 72,
+      "kind": "raw",
+      "record": "r0072/record.bin",
+      "original_offset": 416837,
+      "original_bytes": 1612,
+      "original_sha256": "9738f4953879952498a1028abeab0195f6f9a475d243c526d83ef24e224b16ae"
+    },
+    {
+      "id": 73,
+      "kind": "raw",
+      "record": "r0073/record.bin",
+      "original_offset": 163470,
+      "original_bytes": 342,
+      "original_sha256": "48d43d3ced9631b324dc658fdd9302716d89f66bdb5fd04a42464f136c44db69"
+    },
+    {
+      "id": 74,
+      "kind": "raw",
+      "record": "r0074/record.bin",
+      "original_offset": 411905,
+      "original_bytes": 1662,
+      "original_sha256": "3dee8706090115798026c6710bf57b6c11957159af5bf4adcc867ae01d56c73d"
+    },
+    {
+      "id": 75,
+      "kind": "bitmap",
+      "record": "r0075/record.bin",
+      "original_offset": 359018,
+      "original_bytes": 1362,
+      "original_sha256": "4def30e813a4c9e9110e39141e49c9916e128c7c622864726b5bd1935a26a1b3",
+      "images": [
+        {
+          "width": 84,
+          "height": 64,
+          "frames": 1,
+          "flags": 0,
+          "offset": 12,
+          "bytes": 1350,
+          "pngs": [
+            "r0075/image-frame-000.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "kind": "bitmap",
+      "record": "r0076/record.bin",
+      "original_offset": 344424,
+      "original_bytes": 5394,
+      "original_sha256": "273b8a9c4dcd19b9975e27610d41221c5d57cad00b4e198437c482ac90a22a7a",
+      "images": [
+        {
+          "width": 84,
+          "height": 64,
+          "frames": 4,
+          "flags": 0,
+          "offset": 12,
+          "bytes": 5382,
+          "pngs": [
+            "r0076/image-frame-000.png",
+            "r0076/image-frame-001.png",
+            "r0076/image-frame-002.png",
+            "r0076/image-frame-003.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "kind": "raw",
+      "record": "r0100/record.bin",
+      "original_offset": 94354,
+      "original_bytes": 3688,
+      "original_sha256": "af2242d5b2e194228049ea743c317b265bbfe0fc9361129a03f4e32fa7d2a8ab"
+    },
+    {
+      "id": 101,
+      "kind": "raw",
+      "record": "r0101/record.bin",
+      "original_offset": 127122,
+      "original_bytes": 3688,
+      "original_sha256": "a89913735adf194a2c06c9956f82a7802075978a16202ac8a8ec6055ca2a02c3"
+    },
+    {
+      "id": 102,
+      "kind": "raw",
+      "record": "r0102/record.bin",
+      "original_offset": 323132,
+      "original_bytes": 3688,
+      "original_sha256": "84ac5653a3debd586966c37e4547c5b747e07f54da060ecb99a1a70c9b35d247"
+    },
+    {
+      "id": 103,
+      "kind": "raw",
+      "record": "r0103/record.bin",
+      "original_offset": 61586,
+      "original_bytes": 3688,
+      "original_sha256": "01cc24bc26f1a024a4ab03703bd426c829e9131158b556e7fb1450dd451f0baf"
+    },
+    {
+      "id": 104,
+      "kind": "raw",
+      "record": "r0104/record.bin",
+      "original_offset": 354418,
+      "original_bytes": 4600,
+      "original_sha256": "d49ea1ad06758cae68e61d76cf24e35065be6d32e7ec4c915387fd87bebeed5a"
+    },
+    {
+      "id": 105,
+      "kind": "raw",
+      "record": "r0105/record.bin",
+      "original_offset": 349818,
+      "original_bytes": 4600,
+      "original_sha256": "1526a97425ff9a70a0d996a641074ef8513c6ef1ef20238dc15c03a4d360b241"
+    },
+    {
+      "id": 106,
+      "kind": "raw",
+      "record": "r0106/record.bin",
+      "original_offset": 360448,
+      "original_bytes": 4600,
+      "original_sha256": "767caf3e9778f2dc38531872f81a68b7bd436572ef8915805b68589626cf3a27"
+    },
+    {
+      "id": 107,
+      "kind": "raw",
+      "record": "r0107/record.bin",
+      "original_offset": 365048,
+      "original_bytes": 4600,
+      "original_sha256": "a07ef9cbb2679e730003af52dc82f548e1d941b62cd19de7808a57ce7eb7edf7"
+    },
+    {
+      "id": 110,
+      "kind": "map",
+      "record": "r0110/record.bin",
+      "original_offset": 425984,
+      "original_bytes": 1052,
+      "original_sha256": "b8b27174c6da401cca54c6d6503b2a5b80d4ddaac4bc5501ff8d6fc571068449",
+      "map": "r0110/map.json"
+    },
+    {
+      "id": 111,
+      "kind": "map",
+      "record": "r0111/record.bin",
+      "original_offset": 427036,
+      "original_bytes": 1052,
+      "original_sha256": "e42f26683f9c11065e23131655ba6a6f6e54aaaad14bdc09a7d730e3dc2d6421",
+      "map": "r0111/map.json"
+    },
+    {
+      "id": 112,
+      "kind": "map",
+      "record": "r0112/record.bin",
+      "original_offset": 428088,
+      "original_bytes": 1052,
+      "original_sha256": "d711fa552fa044170e40c09e9462b88abcc50782d6e484c582c2eb530ca1a319",
+      "map": "r0112/map.json"
+    },
+    {
+      "id": 113,
+      "kind": "map",
+      "record": "r0113/record.bin",
+      "original_offset": 429140,
+      "original_bytes": 1052,
+      "original_sha256": "83cc76316b2e8f5fce56ebe4fd77e4092eccea97a197c467b146266d56eeb556",
+      "map": "r0113/map.json"
+    },
+    {
+      "id": 114,
+      "kind": "map",
+      "record": "r0114/record.bin",
+      "original_offset": 430192,
+      "original_bytes": 1052,
+      "original_sha256": "64939aade258764c3fa3d15c5ab03068c702417ab5d9005d2f67c7a7ef92a8d1",
+      "map": "r0114/map.json"
+    },
+    {
+      "id": 115,
+      "kind": "map",
+      "record": "r0115/record.bin",
+      "original_offset": 431244,
+      "original_bytes": 1052,
+      "original_sha256": "f38bbd35783733311b147e42835ec1685d5ee360b3074264fd590786296ec4fe",
+      "map": "r0115/map.json"
+    },
+    {
+      "id": 116,
+      "kind": "map",
+      "record": "r0116/record.bin",
+      "original_offset": 432296,
+      "original_bytes": 1052,
+      "original_sha256": "2b119c776c8d4b52e54cdefd166e7627b85de20699a9f1dc55fe3849fa848667",
+      "map": "r0116/map.json"
+    }
+  ],
+  "layout": [
+    {
+      "resource": 48
+    },
+    {
+      "resource": 4
+    },
+    {
+      "resource": 15
+    },
+    {
+      "padding_bytes": 26,
+      "fill": 0
+    },
+    {
+      "resource": 49
+    },
+    {
+      "resource": 103
+    },
+    {
+      "resource": 33
+    },
+    {
+      "padding_bytes": 13,
+      "fill": 0
+    },
+    {
+      "resource": 50
+    },
+    {
+      "resource": 100
+    },
+    {
+      "resource": 9
+    },
+    {
+      "resource": 69
+    },
+    {
+      "padding_bytes": 10,
+      "fill": 0
+    },
+    {
+      "resource": 51
+    },
+    {
+      "resource": 101
+    },
+    {
+      "resource": 56
+    },
+    {
+      "padding_bytes": 116,
+      "fill": 0
+    },
+    {
+      "resource": 54
+    },
+    {
+      "resource": 57
+    },
+    {
+      "resource": 73
+    },
+    {
+      "padding_bytes": 28,
+      "fill": 0
+    },
+    {
+      "resource": 6
+    },
+    {
+      "resource": 23
+    },
+    {
+      "resource": 67
+    },
+    {
+      "padding_bytes": 117,
+      "fill": 0
+    },
+    {
+      "resource": 3
+    },
+    {
+      "resource": 61
+    },
+    {
+      "resource": 12
+    },
+    {
+      "padding_bytes": 9,
+      "fill": 0
+    },
+    {
+      "resource": 46
+    },
+    {
+      "resource": 19
+    },
+    {
+      "resource": 13
+    },
+    {
+      "padding_bytes": 40,
+      "fill": 0
+    },
+    {
+      "resource": 45
+    },
+    {
+      "resource": 24
+    },
+    {
+      "resource": 5
+    },
+    {
+      "resource": 68
+    },
+    {
+      "padding_bytes": 14,
+      "fill": 0
+    },
+    {
+      "resource": 44
+    },
+    {
+      "resource": 22
+    },
+    {
+      "resource": 102
+    },
+    {
+      "resource": 65
+    },
+    {
+      "padding_bytes": 48,
+      "fill": 0
+    },
+    {
+      "resource": 20
+    },
+    {
+      "resource": 21
+    },
+    {
+      "resource": 76
+    },
+    {
+      "resource": 105
+    },
+    {
+      "resource": 104
+    },
+    {
+      "resource": 75
+    },
+    {
+      "padding_bytes": 68,
+      "fill": 0
+    },
+    {
+      "resource": 106
+    },
+    {
+      "resource": 107
+    },
+    {
+      "resource": 64
+    },
+    {
+      "resource": 63
+    },
+    {
+      "resource": 38
+    },
+    {
+      "resource": 35
+    },
+    {
+      "resource": 66
+    },
+    {
+      "resource": 37
+    },
+    {
+      "resource": 32
+    },
+    {
+      "resource": 29
+    },
+    {
+      "resource": 31
+    },
+    {
+      "resource": 30
+    },
+    {
+      "resource": 55
+    },
+    {
+      "padding_bytes": 45,
+      "fill": 0
+    },
+    {
+      "resource": 28
+    },
+    {
+      "resource": 16
+    },
+    {
+      "resource": 40
+    },
+    {
+      "resource": 43
+    },
+    {
+      "resource": 41
+    },
+    {
+      "resource": 39
+    },
+    {
+      "resource": 36
+    },
+    {
+      "resource": 42
+    },
+    {
+      "resource": 25
+    },
+    {
+      "resource": 74
+    },
+    {
+      "resource": 1
+    },
+    {
+      "resource": 71
+    },
+    {
+      "resource": 72
+    },
+    {
+      "resource": 62
+    },
+    {
+      "resource": 70
+    },
+    {
+      "resource": 47
+    },
+    {
+      "resource": 27
+    },
+    {
+      "resource": 2
+    },
+    {
+      "resource": 58
+    },
+    {
+      "resource": 11
+    },
+    {
+      "padding_bytes": 9,
+      "fill": 0
+    },
+    {
+      "resource": 110
+    },
+    {
+      "resource": 111
+    },
+    {
+      "resource": 112
+    },
+    {
+      "resource": 113
+    },
+    {
+      "resource": 114
+    },
+    {
+      "resource": 115
+    },
+    {
+      "resource": 116
+    },
+    {
+      "resource": 10
+    },
+    {
+      "resource": 8
+    },
+    {
+      "resource": 14
+    },
+    {
+      "resource": 7
+    },
+    {
+      "resource": 34
+    },
+    {
+      "resource": 26
+    },
+    {
+      "resource": 59
+    },
+    {
+      "resource": 60
+    }
+  ],
+  "supplements": [
+    {
+      "id": 17,
+      "name": "信息/查找底栏",
+      "image": {
+        "width": 240,
+        "height": 36,
+        "frames": 1,
+        "flags": 32,
+        "pngs": [
+          "../statusbar/toolbar-240x36.png"
+        ]
+      },
+      "c_includes": [
+        "sango_statusbar_bitmap.inc",
+        "sango_battle_toolbar_bitmap.inc"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "制作群组竖屏页",
+      "image": {
+        "width": 240,
+        "height": 320,
+        "frames": 1,
+        "flags": 32,
+        "pngs": [
+          "../credits/credits-240x320.png"
+        ]
+      },
+      "c_includes": [
+        "sango_credits_bitmap.inc"
+      ]
+    }
+  ]
+}

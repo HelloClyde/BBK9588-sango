@@ -17,6 +17,9 @@ __pycache__/
 *.sav
 *.SAV
 *.bin
+!assets/library/**/record.bin
+!assets/library/padding/*.bin
+!assets/library/trailer.bin
 *.nand
 *.img
 *.elf
