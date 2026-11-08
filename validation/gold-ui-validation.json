@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-09",
+  "baseline_commit": "2519f33a7781455f36694d93f8ec03d8564289e5",
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+  "color_sha256": "eaf9beca0f0d3b9d155dbabbaddf93573b3f1b0cbec9233e0f4e8b29e142e51b",
+  "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "changed_indexed_ui_frames": [
+    {
+      "resource": 44,
+      "frame": 0,
+      "path": "assets/color/library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
+      "sha256": "989084047b88707cbb24068c727c69541c819af388adcd258303bd8c376255a9"
+    },
+    {
+      "resource": 45,
+      "frame": 0,
+      "path": "assets/color/library/界面/剧本菜单静态底图_资源045/剧本菜单静态底图.png",
+      "sha256": "d3421a0ccc33db8985e58c389b5f40a15b7f4ae1bf5cd992a2943a19f6428ff8"
+    },
+    {
+      "resource": 46,
+      "frame": 0,
+      "path": "assets/color/library/界面/存读档列表底图_资源046/存读档列表底图.png",
+      "sha256": "b37162df375c691254ff02e09657781d0c9d3b4d1aabb6d8dd57a3af2e3a7d05"
+    },
+    {
+      "resource": 17,
+      "frame": 0,
+      "path": "assets/color/statusbar/toolbar-240x36.png",
+      "sha256": "33dfe97700609ccfa890d40dcddb77df555318ea6c98bbe9b7c4b1094ffc10ff"
+    },
+    {
+      "resource": 18,
+      "frame": 0,
+      "path": "assets/color/credits/credits-240x320.png",
+      "sha256": "194f24bf6549bb0f934f51a4db69d9784fb2cb05c4000fab96e3f1a1b9f768c1"
+    }
+  ],
+  "unchanged_indexed_frames": 1199,
+  "native_status_size": [
+    240,
+    24
+  ],
+  "fixed_glyphs_and_positions_unchanged": true,
+  "unchanged_file_sha256": {
+    "build/三国霸业.bda": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+    "build/sango.elf": "d1fad32bcd71846cca3668bb839c859a28a41ae801383033e621dc93416c00ba",
+    "build/sango.lib": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11"
+  },
+  "fresh_mips_checks": 3952,
+  "native_firmware_checks": 30,
+  "reused_other_mips_checks": 1505,
+  "art_provenance": "assets/color/gold-ui-provenance.json",
+  "scope": "Five UI PNG frames and native HUD image recolored using built-in GPT Image. Existing font masks, placements, source LIB, executable and ELF remain identical. Other 1199 indexed frame PNGs unchanged. Fresh MIPS covers all 1204 RGB frames, footer/dispatch and 1:1 glyph grid; native C200 covers menu, battle/status/touch, credits, strategy and four animation ranges using controlled exact-byte RAM staging. Full-page lettering/illustrations visually reviewed; no pixel-identity claim for generated page art. Original selected-menu navy contrast retained. Gold is user-approved styling, not a verified original palette. No physical-device/full-campaign claim."
+}

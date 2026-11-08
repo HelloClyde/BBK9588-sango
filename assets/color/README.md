@@ -73,7 +73,7 @@ python tools/test_color_assets.py
 
 ## 最终像素网格与1:1状态图
 
-当前状态图是[240×24 PNG](battle-ui/status-row-240x24.png)，按钮是[240×36 PNG](statusbar/toolbar-240x36.png)。GPT Image只生成[无文字的美术底图](generated/battle-hud-background.png)，[提示词](prompts/battle-hud-background.txt)保留；固定的粮、天、信、息、查、找使用[6张16×16单比特字形](battle-ui/glyphs/)在导出PNG时按整数坐标贴入，字形不经过任何缩放或抗锯齿。程序只复制整张成品图，不按字形绘制固定标签，状态图不再走旧3:2采样。
+当前状态图是[240×24 PNG](battle-ui/status-row-240x24.png)，按钮是[240×36 PNG](statusbar/toolbar-240x36.png)。GPT Image只生成[无文字的美术底图](generated/gold-ui-battle-hud-background.png)，[提示词](prompts/gold-ui-battle-hud-background.txt)保留；固定的粮、天、信、息、查、找使用[6张16×16单比特字形](battle-ui/glyphs/)在导出PNG时按整数坐标贴入，字形不经过任何缩放或抗锯齿。程序只复制整张成品图，不按字形绘制固定标签，状态图不再走旧3:2采样。
 
 ```powershell
 # 使用已入库的背景和字形，重新烘焙两张最终PNG；无需安装字体
@@ -88,3 +88,7 @@ python tools/test_battle_pixel_grid.py
 PNG为可编辑素材，合成脚本只在素材制作时使用。正常构建只编码已入库的PNG，不依赖Windows字体或图像生成服务。上一版粗体、常规字重母图均保留。
 
 SGCOLOR1的1204条原索引保持不变，可选的原尺寸状态图追加在索引像素区之后，文件末尾32字节为`<8sIIIIII>`：`SGHUD01\0`、像素偏移、像素字节数11520、宽240、高24、原资源008帧偏移、该像素区CRC32。原尺寸图为RGB565小端，不计入原1204条索引。读取时核对边界、尺寸、来源索引及CRC；没有此尾部的旧CLR继续按原路径显示。
+
+## 金色UI方案
+
+当前选用金色边框、浅金纸底和深金/铜色纹饰。该配色依据用户偏好，原灰度素材不能证明历史原版颜色。主菜单、剧本、存读档、制作群组和共享底栏的5张GPT Image编辑母图与提示词记录在 [gold-ui-provenance.json](gold-ui-provenance.json)。固定字形仍按1:1烘焙，位置保持“粮”x=4、“天”x=82。人物/地图/战斗图标不做统一色调处理，选中菜单的深色对比保留。此前红绿母图、提示词、原生PNG和排版记录位于 `variants/red-green-ui/`，也可按提交2519f33追溯。

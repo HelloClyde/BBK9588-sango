@@ -5,7 +5,7 @@
   "payload_sha256": "73b4e3707de9ddd1217db28ab0562781c0183bfe91cd66ade1ccab1590c953ea",
   "color": {
     "bytes": 2294040,
-    "sha256": "4da9f891017b9cd018f01fceccdc42f8fd3958f3ebef9a08c21cc57aabc7e3d3",
+    "sha256": "eaf9beca0f0d3b9d155dbabbaddf93573b3f1b0cbec9233e0f4e8b29e142e51b",
     "scope": "Exact expanded LIB/CLR borrowed buffers staged for native SDK rendering; production CRC/parser executes in separate bootstrap. Storage loader/ownership tested separately in compiled MIPS."
   },
   "package_address": "0x81000000",

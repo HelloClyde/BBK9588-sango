@@ -74,5 +74,7 @@
   "fresh_mips_checks": 3952,
   "native_firmware_checks": 30,
   "scope": "Only two existing masks moved 2 native pixels right while composing the status PNG. Backgrounds, button image, font masks, executable/ELF and LIB unchanged. All 1204 indexed CLR entries/pixels unchanged; only optional native status image pixels and their CRC change. Reran 3818 color, 113 HUD/dispatch and 21 pixel-grid MIPS checks plus 30 controlled native C200 interface checks. Remaining 1505 MIPS checks retained through unchanged executable and indexed assets. No physical-device or complete-campaign claim.",
-  "preview": "docs/screenshots/color/battle-footer-4x.png"
+  "preview": "docs/screenshots/color/battle-footer-4x.png",
+  "snapshot_commit": "2519f33a7781455f36694d93f8ec03d8564289e5",
+  "history_note": "Historical record at snapshot_commit; current gold UI artwork and fresh evidence are in gold-ui-validation.json. Executable and LIB remain unchanged."
 }

@@ -1,9 +1,9 @@
 {
   "artwork_generator": "built-in GPT Image",
   "font_masks": "glyphs/provenance.json",
-  "master": "generated/battle-hud-background.png",
-  "master_sha256": "2d158078e3cf4d8d963bdf09e4d2b29c0ed3bde51d4035d85739311f3f04b4c2",
-  "prompt": "prompts/battle-hud-background.txt",
+  "master": "generated/gold-ui-battle-hud-background.png",
+  "master_sha256": "3fbaea9a732910bcd086aec9f3f39387f7bccca7a0cd2e4361e87bdf8e6575d8",
+  "prompt": "prompts/gold-ui-battle-hud-background.txt",
   "ink_rgb": [
     24,
     20,

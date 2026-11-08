@@ -68,5 +68,5 @@
   "scope": "Four SDK VX icon dimensions and every RGB565 pixel compared with target PNGs, official SDK BDA validation, exact executable payload/ELF/LIB/CLR equality. Icon art visually reviewed at 80/58/54. Existing MIPS/native game-interface evidence is reused through identical payload; no new physical-device or native launcher claim.",
   "cleanup": "User-circled isolated black ink fragment to the right of the head removed; continuous flag cloth restored.",
   "snapshot_commit": "2739e71cf245c7a5439eac870fdbef5309128f62",
-  "history_note": "Icon-only change record at snapshot_commit. Current BDA is identical; later native HUD pixel changes are recorded in battle-label-position.json."
+  "history_note": "Historical record at snapshot_commit; current gold UI artwork and fresh evidence are in gold-ui-validation.json. Executable and LIB remain unchanged."
 }
