@@ -55,5 +55,17 @@
     "release_integrity_checks": true,
     "working_tree_clean": true,
     "sdk_working_tree_clean": true
+  },
+  "readability_clean_build": {
+    "source_commit": "20bc40bb63a8ea273d1147b60bd9f646838fae63",
+    "modules": 42,
+    "functions": 446,
+    "source_layout_and_index_check": true,
+    "resource_code_rules": 89,
+    "bda_and_lib_byte_identical_to_pre_refactor": true,
+    "all_dist_files_byte_identical": true,
+    "release_integrity_checks": true,
+    "working_tree_clean": true,
+    "sdk_working_tree_clean": true
   }
 }
