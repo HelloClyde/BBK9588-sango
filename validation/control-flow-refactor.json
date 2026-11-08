@@ -248,5 +248,20 @@
     "sango_soft_div_f64",
     "sango_soft_pack_f64"
   ],
-  "limits": "Covered compiled-MIPS cases and native UI only; not proof of all campaign/AI/error/timing behavior. Native firmware uses original library; expanded library uses host preservation/load checks. Legacy uninitialized battle timer is retained, not repaired."
+  "limits": "Covered compiled-MIPS cases and native UI only; not proof of all campaign/AI/error/timing behavior. Native firmware uses original library; expanded library uses host preservation/load checks. Legacy uninitialized battle timer is retained, not repaired.",
+  "clean_checkout": {
+    "source_commit": "bfb4a934f2de6deb69eb883ee48be6457cf92f1b",
+    "modules": 42,
+    "functions": 446,
+    "source_layout_and_index_check": true,
+    "independent_module_compile": true,
+    "resource_code_rules": 89,
+    "release_integrity_checks": true,
+    "all_five_dist_files_byte_identical": true,
+    "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+    "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+    "working_tree_clean": true,
+    "sdk_working_tree_clean": true,
+    "scope": "Existing independent clean checkout updated from local source only; SDK already pinned and toolchain installed. Default README build without private dumps or baseline ELF. No remote Actions or publication."
+  }
 }
