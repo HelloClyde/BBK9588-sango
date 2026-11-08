@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-09",
+  "baseline_commit": "2739e71cf245c7a5439eac870fdbef5309128f62",
+  "shift_native_pixels": [
+    2,
+    0
+  ],
+  "placements": [
+    {
+      "character": "粮",
+      "mask": "glyphs/粮_16x16.png",
+      "target": "status-row-240x24.png",
+      "rectangle": [
+        4,
+        4,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "天",
+      "mask": "glyphs/天_16x16.png",
+      "target": "status-row-240x24.png",
+      "rectangle": [
+        82,
+        4,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    }
+  ],
+  "screen_ink_bounds_exclusive": {
+    "粮": [
+      4,
+      228,
+      19,
+      244
+    ],
+    "天": [
+      82,
+      229,
+      97,
+      244
+    ]
+  },
+  "food_number_origin": [
+    21,
+    228
+  ],
+  "clear_columns_before_number": 2,
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+  "color_sha256": "4da9f891017b9cd018f01fceccdc42f8fd3958f3ebef9a08c21cc57aabc7e3d3",
+  "unchanged_file_sha256": {
+    "build/三国霸业.bda": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+    "build/sango.elf": "d1fad32bcd71846cca3668bb839c859a28a41ae801383033e621dc93416c00ba",
+    "build/sango.lib": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+    "assets/color/battle-ui/status-background-240x24.png": "7127418aaa3c4f98835d55311dc2824dedca4b8771a6c24ef22f6239ab332994",
+    "assets/color/battle-ui/toolbar-background-240x36.png": "ed08f2e3ad2854b3b9d07f91d1629c7ec7acf0958bd60e7160ce776ca73af7f1",
+    "assets/color/statusbar/toolbar-240x36.png": "5fd18c109d405097a836c0e817ff6ad4181095f989385e7a354b7c852a4d33a6"
+  },
+  "unchanged_indexed_color_frames": 1204,
+  "fixed_glyph_scale": [
+    1,
+    1
+  ],
+  "fresh_mips_checks": 3952,
+  "native_firmware_checks": 30,
+  "scope": "Only two existing masks moved 2 native pixels right while composing the status PNG. Backgrounds, button image, font masks, executable/ELF and LIB unchanged. All 1204 indexed CLR entries/pixels unchanged; only optional native status image pixels and their CRC change. Reran 3818 color, 113 HUD/dispatch and 21 pixel-grid MIPS checks plus 30 controlled native C200 interface checks. Remaining 1505 MIPS checks retained through unchanged executable and indexed assets. No physical-device or complete-campaign claim.",
+  "preview": "docs/screenshots/color/battle-footer-4x.png"
+}

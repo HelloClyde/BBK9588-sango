@@ -1,8 +1,8 @@
 {
   "passed": 113,
   "failed": 0,
-  "bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
-  "color_sha256": "055b422e7c845bea94f0d634f967a59a9fe8031f7c66dd3465a174a7c98b72ce",
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+  "color_sha256": "4da9f891017b9cd018f01fceccdc42f8fd3958f3ebef9a08c21cc57aabc7e3d3",
   "status_field": {
     "switch": "unit name or empty-tile terrain",
     "rectangle": [

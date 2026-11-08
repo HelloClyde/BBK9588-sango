@@ -1,9 +1,9 @@
 {
   "passed": 30,
   "failed": 0,
-  "bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
-  "color_sha256": "055b422e7c845bea94f0d634f967a59a9fe8031f7c66dd3465a174a7c98b72ce",
+  "color_sha256": "4da9f891017b9cd018f01fceccdc42f8fd3958f3ebef9a08c21cc57aabc7e3d3",
   "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled 20-unit battle fixture, backdrop probe and four production timeline ranges. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
   "cases": [
     {
@@ -16,61 +16,61 @@
       "name": "Native colored day-1 frame is centered and exact",
       "passed": true,
       "screenshot": "docs/screenshots/color/day-1.png",
-      "screenshot_sha256": "57cd6e0a2e6186efe3df88ec33f25163eb786c47338737dbcf2103088c72f4b5"
+      "screenshot_sha256": "b7238c8e2e54ea2b23e04e656a668b762b22dfbdc8e5102f959cee27c4a0b7b9"
     },
     {
       "name": "Native colored day-10 frame is centered and exact",
       "passed": true,
       "screenshot": "docs/screenshots/color/day-10.png",
-      "screenshot_sha256": "c1da67b42790841a2734487c2b9ea73c886b9a1c9f709223a5185eb75125baf0"
+      "screenshot_sha256": "a5cb98b2dc10bd657250bc6dda72553168d302c58f23af4f336c2409a1999139"
     },
     {
       "name": "Battle toolbar preserves full 240x36 RGB565 source",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Native 240x24 status image and weather match compiled RGB pixels",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Battle terrain and portrait summary both display color",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Native transparent food-number preserves image background",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Native transparent unit-name preserves image background",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Native six fixed glyph masks land on the exact 1:1 LCD grid",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Native colored info opens at retained touch position",
       "passed": true,
       "screenshot": "docs/screenshots/color/info.png",
-      "screenshot_sha256": "f4e1fa222ba39ec0b7510b179555e48880205b23f65abd695de1ed795bde5231"
+      "screenshot_sha256": "ab072b22a3cbb895c754aa1b054e187fb702cb73ddadfb605e6d7545b2a0bc8b"
     },
     {
       "name": "Native info return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/info-return.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Native colored find opens at retained touch position",
@@ -82,55 +82,55 @@
       "name": "Native find return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/find-return.png",
-      "screenshot_sha256": "d11140de92edf53b786f5bd2583e1c0c9bc0d9373fe647e5f6fb38c4542c181e"
+      "screenshot_sha256": "ebf1f7b4ffa175349b1cf530cc2a5def7d17ed788e26c332bd2d8fa07b5c7695"
     },
     {
       "name": "Battle cursor movement preserves colored footer",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "387953b9c4fd814fbf5183c15e9d5c298b808b7a92cbadd6b95ba08ccc1844dc"
+      "screenshot_sha256": "5417cd47ed1adab883a6998f9037720869f8a7678826e8df39d39c3ce08d6bd0"
     },
     {
       "name": "Native empty tile switches name to terrain on original single line",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "387953b9c4fd814fbf5183c15e9d5c298b808b7a92cbadd6b95ba08ccc1844dc"
+      "screenshot_sha256": "5417cd47ed1adab883a6998f9037720869f8a7678826e8df39d39c3ce08d6bd0"
     },
     {
       "name": "Native sprite overlay changes the colored backdrop",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-overlay.png",
-      "screenshot_sha256": "86d03b3ec74474a50c6d3c08a88d3b633987b41cb19434c9fb456cc3a784746b"
+      "screenshot_sha256": "351a7c80ff935f74b44bc9adf5ac875c2d129cb735b2627526986a8ec545defe"
     },
     {
       "name": "Native SDK snapshot restores all 76800 pixels including black and white",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-restored.png",
-      "screenshot_sha256": "11683951757caffb7cf0a617285e4d4dde9d1e00f41bb500f64bb0a4c973c2c1"
+      "screenshot_sha256": "b20a60f144d403833f7876d29fb60dd30a2450a5b84aa54c79ea8539569e115e"
     },
     {
       "name": "Native animation 19 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-19-final.png",
-      "screenshot_sha256": "dfd064b17b586fb85c9a8234cd27b46f36a6916574fc5308d8cb8a1c3f5eef38"
+      "screenshot_sha256": "fa97759f598f0cd3a84f1da78c37ccbe9aae909e53bd43d8e9b474fdab5a444c"
     },
     {
       "name": "Native animation 27 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-27-final.png",
-      "screenshot_sha256": "9cabd0fd702721163f5b6ee1bb62442be06c945e314dc72a2777f9a5449da304"
+      "screenshot_sha256": "e349495ace722dc9649a1d5c8e569a045c3307f55f752a2fbbb30c87e620ac47"
     },
     {
       "name": "Native animation 35 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-35-final.png",
-      "screenshot_sha256": "bfd0069d0f3012d9344ac97a01f6d5dee959fb389d17a0f6a83d2c2f164644cb"
+      "screenshot_sha256": "d1a6cd150f4937421b6f02ea175341d2c390d190b5be67e220bc54118eb62a29"
     },
     {
       "name": "Native animation 38 matches compiled timeline and retains colored background",
       "passed": true,
       "screenshot": "docs/screenshots/color/animation-38-final.png",
-      "screenshot_sha256": "b817321b3c1a3448cb7f71c167b25285b218d77e281f4cc990ddef33586c1f43"
+      "screenshot_sha256": "7359bd9e682c1928fcf662ffcd1bfd0ee3fd55e544be08a9bde574d493b4449b"
     },
     {
       "name": "Native credits match all 76800 compiled RGB565 pixels",

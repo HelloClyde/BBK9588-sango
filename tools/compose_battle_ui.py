@@ -34,8 +34,8 @@ def compose():
             assert mask.size==(16,16) and set(mask.get_flattened_data())=={0,255}
             image.paste(INK,(left+i*16,top,left+(i+1)*16,top+16),mask)
             placements.append({'character':char,'mask':f'glyphs/{char}_16x16.png','target':output,'rectangle':[left+i*16,top,16,16],'scale':[1,1]})
-    text(status,'粮',2,4,'status-row-240x24.png')
-    text(status,'天',80,4,'status-row-240x24.png')
+    text(status,'粮',4,4,'status-row-240x24.png')
+    text(status,'天',82,4,'status-row-240x24.png')
     text(toolbar,'信息',71,10,'toolbar-240x36.png')
     text(toolbar,'查找',139,10,'toolbar-240x36.png')
     status.save(root/'status-row-240x24.png')

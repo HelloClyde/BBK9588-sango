@@ -19,7 +19,7 @@
       "mask": "glyphs/粮_16x16.png",
       "target": "status-row-240x24.png",
       "rectangle": [
-        2,
+        4,
         4,
         16,
         16
@@ -34,7 +34,7 @@
       "mask": "glyphs/天_16x16.png",
       "target": "status-row-240x24.png",
       "rectangle": [
-        80,
+        82,
         4,
         16,
         16
