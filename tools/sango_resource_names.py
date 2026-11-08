@@ -81,15 +81,27 @@ RESOURCES={
     73:('文字','宝物与道具名称','Decoded names include 方天画戟/七星刀/六韬/赤兔.'),
     74:('文字','宝物与道具说明','Decoded text describes item effects and provenance.'),
     75:('战略地图','城市连接线路图','Find command route-map artwork, checked against rendered output.'),
-    76:('事件插图','战斗胜负与灾害插图','Visible victory/defeat/flood/fire illustrations; event callers use the four frames.'),
+    76:('事件插图','进攻交战与胜负提示插图','已核对四个调用函数和资源064的提示文字：帧0军队进攻，帧1双方交战，帧2战斗胜利，帧3战斗失败。'),
     **{rid:('地图数据',f'旧格式地图{rid-99:02d}','Original packed layout retained; geographic name not identified.') for rid in range(100,108)},
     **{rid:('战场地图',f'战场地图{rid-109:02d}','32x32 tile map; no historical battle name stored in the resource.') for rid in range(110,117)},
 }
 TROOPS=['骑兵','步兵','弓兵','水军','极兵','玄兵']
+EVENT76_FRAMES=[
+    {'frame':0,'name':'军队进攻','caller':'FUN_81c11d98','text_resource':64,'text_entries':[97,98],
+     'message':'我方或君主名 + 军队进攻 + 城市名'},
+    {'frame':1,'name':'双方交战','caller':'FUN_81c11f18','text_resource':64,'text_entries':[104,105],
+     'message':'君主甲 + 军 vs + 君主乙 + 军'},
+    {'frame':2,'name':'战斗胜利','caller':'FUN_81c12058','text_resource':64,'text_entries':[91,98],
+     'message':'我方或君主名 + 战斗胜利'},
+    {'frame':3,'name':'战斗失败','caller':'FUN_81c12188','text_resource':64,'text_entries':[92,98],
+     'message':'我方 + 战斗失败'},
+]
 
 def identity(rid):
     category,name,evidence=RESOURCES.get(rid,('未识别资源',f'用途待确认资源{rid:03d}','No verified semantic mapping.'))
-    return {'category':category,'name':name,'naming_evidence':evidence}
+    result={'category':category,'name':name,'naming_evidence':evidence}
+    if rid==76:result['frame_usage']=[dict(frame) for frame in EVENT76_FRAMES]
+    return result
 
 def folder_name(rid):
     info=identity(rid)
@@ -142,7 +154,7 @@ def bitmap_name(rid,frame,total,names=()):
         if frame==8:label='我方城池'
         if frame==9:label='城池备用样式'
         return f'{label}_帧{frame:03d}'
-    if rid==76:return ['骑马交战插图','战场列阵插图','洪水插图','火灾插图'][frame] if frame<4 else f'{name}_帧{frame:03d}'
+    if rid==76:return EVENT76_FRAMES[frame]['name'] if frame<4 else f'{name}_帧{frame:03d}'
     return name if total==1 else f'{name}_帧{frame:03d}'
 
 def animation_name(rid,image):

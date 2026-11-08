@@ -3903,7 +3903,7 @@
     {
       "id": 76,
       "kind": "bitmap",
-      "record": "事件插图/战斗胜负与灾害插图_资源076/战斗胜负与灾害插图_原始记录.bin",
+      "record": "事件插图/进攻交战与胜负提示插图_资源076/进攻交战与胜负提示插图_原始记录.bin",
       "original_offset": 344424,
       "original_bytes": 5394,
       "original_sha256": "273b8a9c4dcd19b9975e27610d41221c5d57cad00b4e198437c482ac90a22a7a",
@@ -3916,16 +3916,62 @@
           "offset": 12,
           "bytes": 5382,
           "pngs": [
-            "事件插图/战斗胜负与灾害插图_资源076/骑马交战插图.png",
-            "事件插图/战斗胜负与灾害插图_资源076/战场列阵插图.png",
-            "事件插图/战斗胜负与灾害插图_资源076/洪水插图.png",
-            "事件插图/战斗胜负与灾害插图_资源076/火灾插图.png"
+            "事件插图/进攻交战与胜负提示插图_资源076/军队进攻.png",
+            "事件插图/进攻交战与胜负提示插图_资源076/双方交战.png",
+            "事件插图/进攻交战与胜负提示插图_资源076/战斗胜利.png",
+            "事件插图/进攻交战与胜负提示插图_资源076/战斗失败.png"
           ]
         }
       ],
       "category": "事件插图",
-      "name": "战斗胜负与灾害插图",
-      "naming_evidence": "Visible victory/defeat/flood/fire illustrations; event callers use the four frames."
+      "name": "进攻交战与胜负提示插图",
+      "naming_evidence": "已核对四个调用函数和资源064的提示文字：帧0军队进攻，帧1双方交战，帧2战斗胜利，帧3战斗失败。",
+      "frame_usage": [
+        {
+          "frame": 0,
+          "name": "军队进攻",
+          "caller": "FUN_81c11d98",
+          "text_resource": 64,
+          "text_entries": [
+            97,
+            98
+          ],
+          "message": "我方或君主名 + 军队进攻 + 城市名"
+        },
+        {
+          "frame": 1,
+          "name": "双方交战",
+          "caller": "FUN_81c11f18",
+          "text_resource": 64,
+          "text_entries": [
+            104,
+            105
+          ],
+          "message": "君主甲 + 军 vs + 君主乙 + 军"
+        },
+        {
+          "frame": 2,
+          "name": "战斗胜利",
+          "caller": "FUN_81c12058",
+          "text_resource": 64,
+          "text_entries": [
+            91,
+            98
+          ],
+          "message": "我方或君主名 + 战斗胜利"
+        },
+        {
+          "frame": 3,
+          "name": "战斗失败",
+          "caller": "FUN_81c12188",
+          "text_resource": 64,
+          "text_entries": [
+            92,
+            98
+          ],
+          "message": "我方 + 战斗失败"
+        }
+      ]
     },
     {
       "id": 100,

@@ -163,6 +163,13 @@ def write_resource_index(root,manifest):
     for entry in manifest['records']:
         folder=Path(entry['record']).parent.as_posix();count=sum(len(s['pngs']) for s in entry.get('images',[]))
         lines.append(f"| {entry['id']:03d} | {entry['category']} | [{entry['name']}]({folder}/) | {kinds[entry['kind']]} | {count} |")
+    event=next((entry for entry in manifest['records'] if entry['id']==76 and entry.get('frame_usage')),None)
+    if event:
+        lines.extend(['','## 资源076逐帧用途','',
+            '帧序从0计数，以下用途由实际绘制调用及原游戏资源064文字共同确认。','',
+            '| 帧 | 图片 | 调用函数 | 提示文字 |','| --- | --- | --- | --- |'])
+        for usage,png in zip(event['frame_usage'],event['images'][0]['pngs']):
+            lines.append(f"| {usage['frame']} | [{usage['name']}]({png}) | `{usage['caller']}` | {usage['message']} |")
     if manifest.get('supplements'):
         lines.extend(['','## 补充素材','', '| ID | 素材 | 目标 PNG |','| --- | --- | --- |'])
         for entry in manifest['supplements']:

@@ -36,6 +36,58 @@
     "file_contents_unchanged": true,
     "bda_and_lib_hashes_unchanged": true,
     "reunpack_uses_same_naming_scheme": true,
-    "index": "assets/library/资源目录.md"
+    "index": "assets/library/资源目录.md",
+    "resource076_recheck": {
+      "name": "进攻交战与胜负提示插图",
+      "frames": [
+        {
+          "frame": 0,
+          "name": "军队进攻",
+          "caller": "FUN_81c11d98",
+          "text_resource": 64,
+          "text_entries": [
+            97,
+            98
+          ],
+          "message": "我方或君主名 + 军队进攻 + 城市名"
+        },
+        {
+          "frame": 1,
+          "name": "双方交战",
+          "caller": "FUN_81c11f18",
+          "text_resource": 64,
+          "text_entries": [
+            104,
+            105
+          ],
+          "message": "君主甲 + 军 vs + 君主乙 + 军"
+        },
+        {
+          "frame": 2,
+          "name": "战斗胜利",
+          "caller": "FUN_81c12058",
+          "text_resource": 64,
+          "text_entries": [
+            91,
+            98
+          ],
+          "message": "我方或君主名 + 战斗胜利"
+        },
+        {
+          "frame": 3,
+          "name": "战斗失败",
+          "caller": "FUN_81c12188",
+          "text_resource": 64,
+          "text_entries": [
+            92,
+            98
+          ],
+          "message": "我方 + 战斗失败"
+        }
+      ],
+      "evidence": "Reviewed production C frame arguments and decoded original resource064 prompt text; no disaster usage in these four callers.",
+      "png_and_record_bytes_unchanged": true,
+      "library_sha256_unchanged": true
+    }
   }
 }
