@@ -61,7 +61,8 @@ python tools/verify_artifacts.py --require-validated
 
 [assets/](assets/README.md) 统一保存解包资源、GPT Image 母图、目标尺寸图片、提示词和原图参考，
 包括此前保留的三张彩色草稿。`assets/library/manifest.json` 是 LIB 打包入口。
-解包素材使用中文分类与用途名称；头像按各剧本的原姓名表命名，见 [资源目录](assets/library/资源目录.md)。
+解包素材按代码中的实际用途命名；头像按各剧本的原姓名表命名，见 [资源目录](assets/library/资源目录.md)
+与 [逐项代码核对](assets/library/代码用途核对.md)。没有明确调用依据的内容保留待确认标记。
 
 ```powershell
 python tools/sango_lib.py pack
@@ -70,9 +71,11 @@ python tools/test_sango_lib.py
 ```
 
 默认输出 `build/sango.lib`。原库未修改时，`--original-only` 可逐字节还原 439720 字节原文件。
-已导出 1186 张 PNG、19 组动画指令及 7 张战场地图；其余数据保留原二进制记录，无遗漏回包。
+已导出 1202 张 PNG、27 组动画指令及 7 张战场地图；包括100～107号菜单选中动画。
+其余24条原资源保留二进制记录，无遗漏回包。
 新增底栏/制作群组以同一份 PNG 生成 LIB 条目和当前 C 内嵌数据；应用图标由 SDK 打入 BDA。
 详细格式、编辑约束及解包命令见 [资源说明](assets/library/README.md)。
+`python tools/audit_resource_usage.py --check` 可检查89项资源的命名依据、调用表达式和选择表是否仍与代码相符。
 
 ## 截图
 

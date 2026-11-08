@@ -1,0 +1,6706 @@
+{
+  "schema": 1,
+  "reviewed_resources": 89,
+  "source_sha256_lf": {
+    "docs/original-credits-call.c.txt": "8007364b97eed193ec0d2eae90c0d5acb24e34682f081484db2099e5d5ea861e",
+    "src/sango_battle_ui.c": "ca38355ce631b43b71b127edb0fc80950bed5e899092bb78fbb2eff2ad8d724f",
+    "src/sango_credits.c": "c75b7dfe2940e491d72adbbd935a2026d95d44ffa07bee1dd474ffb1d4e6ccc4",
+    "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
+    "src/sango_game.c": "63d46b793510a61f450c2dba49412e33e659512076593a2cc0ffa7fdc41323b0",
+    "src/sango_statusbar.c": "b0dbbcae164c72ba312d698bf4324a3e3ef7af6ae7fee01ca909a3cac196b359"
+  },
+  "resources": [
+    {
+      "id": 1,
+      "category": "文字",
+      "name": "战斗提示与存读档文字",
+      "usage_status": "confirmed",
+      "naming_evidence": "文字读取器以资源1和条目号读取；覆盖战斗提示、战场菜单与存读档路径。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c0666c",
+          "expression": "FUN_81c154d8(1,",
+          "line": 4691
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c164c8",
+          "expression": "FUN_81c154d8(1,0x40,",
+          "line": 15431
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "数据",
+      "name": "战斗与战略界面规则子表",
+      "usage_status": "confirmed",
+      "naming_evidence": "15个子表的使用点包含移动范围、技能列表、经验、地形修正、初始站位、城市坐标、列表列宽、行动消耗和城市战场类型。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c02524",
+          "expression": "in_t0 = 2;",
+          "line": 1638
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "FUN_81c152f0(2,'\\x0e',",
+          "line": 13008
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "界面",
+      "name": "启动片头动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源加载后、建立新会话前，生命周期函数播放资源3。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_game_lifecycle",
+          "expression": "FUN_81c162e0(3);",
+          "line": 15719
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "启动片头动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "界面/启动片头动画_资源003/启动片头动画.png"
+            ],
+            "command_indices": [
+              0,
+              1
+            ],
+            "uses": [
+              "启动片头动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "category": "战斗",
+      "name": "战场地形图块",
+      "usage_status": "confirmed",
+      "naming_evidence": "战场初始化将图集ID设为4；地图渲染按tile ID取64字节的16x16图块；地形类型由FUN_81c0620c确定。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c03c98",
+          "expression": "DAT_81c2b13e = 4;",
+          "line": 2703
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04b9c",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b13e,",
+          "line": 3411
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c0620c",
+          "expression": "bVar1 != 0x29",
+          "line": 4468
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "战斗",
+      "name": "部队兵种与状态小图",
+      "usage_status": "confirmed",
+      "naming_evidence": "FUN_81c06838按部队组、兵种、水域和混乱/石阵状态选择帧；FUN_81c04630加交替相位后绘制。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06838",
+          "expression": "uVar3 = 0xe;",
+          "line": 4776
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06838",
+          "expression": "uVar3 = 0xc;",
+          "line": 4776
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04630",
+          "expression": "FUN_81c04fb4(5,",
+          "line": 3198
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "历史界面",
+      "name": "原版制作群组动画",
+      "usage_status": "historical",
+      "naming_evidence": "原版制作群组入口播放资源6；当前入口已调用竖屏C素材，保留原资源供回包。",
+      "code_evidence": [
+        {
+          "source": "docs/original-credits-call.c.txt",
+          "function": "FUN_81c15e44",
+          "expression": "FUN_81c162e0(6);",
+          "line": 6
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15e44",
+          "expression": "sango_credits_draw(credits_draw_target);",
+          "line": 15173
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "原版制作群组动画",
+            "first": 0,
+            "last": 60
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "历史界面/原版制作群组动画_资源006/原版制作群组动画.png"
+            ],
+            "command_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "uses": [
+              "原版制作群组动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "category": "战斗",
+      "name": "移动范围与目标光标",
+      "usage_status": "confirmed",
+      "naming_evidence": "移动范围绘制直接使用帧0；选目标使用第2项（帧1），当前战场光标使用第5项（帧4）。其他帧未定位调用。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c027f0",
+          "expression": "FUN_81c152f0(7,'\\x01',",
+          "line": 1793
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c0343c",
+          "expression": "FUN_81c04fb4(7,2,",
+          "line": 2303
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c03c20",
+          "expression": "FUN_81c04fb4(7,5,",
+          "line": 2669
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "战斗",
+      "name": "战斗状态行底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "战斗HUD在y=241绘制资源8，随后填粮草数、天气和当前目标姓名/地形。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c03f6c",
+          "expression": "FUN_81c04fb4(8,1,0,0xf1);",
+          "line": 2849
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04d58",
+          "expression": "FUN_81c04f8c(0x6a,0xf3,",
+          "line": 3490
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "天气",
+      "name": "战斗天气状态图标",
+      "usage_status": "confirmed",
+      "naming_evidence": "天气状态值为1到5，位图条目使用1基索引；未找到代码内的逐状态中文天气名，保留状态编号。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06384",
+          "expression": "uVar1 = (int)uVar1 % 5 + 1;",
+          "line": 4550
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c03f6c",
+          "expression": "FUN_81c04fb4(9,",
+          "line": 2849
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "数据",
+      "name": "战斗计谋参数",
+      "usage_status": "confirmed",
+      "naming_evidence": "计谋ID减1后按34字节记录定位；使用者据此消耗技力、选择状态、伤害及目标条件。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c062d0",
+          "expression": "FUN_81c152f0(10,'\\x01',",
+          "line": 4506
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c062d0",
+          "expression": "* 0x22",
+          "line": 4506
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "pcVar4 = (char *)FUN_81c062d0(uVar8);",
+          "line": 4081
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "文字",
+      "name": "战斗计谋名称",
+      "usage_status": "confirmed",
+      "naming_evidence": "计谋列表与执行提示均按计谋ID读取资源11的名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c021d4",
+          "expression": "FUN_81c154d8(0xb,",
+          "line": 1454
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "FUN_81c154d8(0xb,uVar8,",
+          "line": 4081
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "调用待确认",
+      "name": "技能说明文本_调用待确认",
+      "usage_status": "unresolved",
+      "naming_evidence": "解码后的内容是30项计谋说明，但未在当前读取器调用中定位资源12；不声称已接入说明界面。",
+      "code_evidence": [],
+      "decoded_text_preview": [
+        "骑兵的基本技能，可对步兵造成一定伤害。",
+        "骑兵的中级技能，可对许多兵种造成一定伤害。",
+        "骑兵的高级技能，可对所有兵种造成较大伤害。"
+      ]
+    },
+    {
+      "id": 13,
+      "category": "数据",
+      "name": "计谋目标范围矩阵",
+      "usage_status": "confirmed",
+      "naming_evidence": "FUN_81c02524的计谋分支用资源13，并按81字节取9x9范围模板。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c02524",
+          "expression": "in_t0 = 0xd;",
+          "line": 1638
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c02524",
+          "expression": "* 0x51",
+          "line": 1638
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c02524",
+          "expression": "unaff_s1 = 9;",
+          "line": 1638
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "category": "剧本数据",
+      "name": "各剧本武将初始特技",
+      "usage_status": "confirmed",
+      "naming_evidence": "按剧本读取200字节表，按武将ID取特技并合入当前可用计谋列表。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c0205c",
+          "expression": "FUN_81c152f0(0xe,DAT_81c2b161,",
+          "line": 1404
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "category": "战斗",
+      "name": "战斗伤害数字字形",
+      "usage_status": "confirmed",
+      "naming_evidence": "数值绘制器将十进制字符减0x30，作为资源15的零基帧号。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05f7c",
+          "expression": "FUN_81c152f0(0xf,'\\x01',",
+          "line": 4357
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05f7c",
+          "expression": "cVar3 - 0x30",
+          "line": 4357
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "战斗",
+      "name": "战斗演出背景框",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击演出前绘制；计谋演出依初始化数据中的背景框标记决定是否绘制。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "FUN_81c077bc(0x10,1,0x14,0x31,'\\0');",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "(&DAT_81c201ac)[uVar5]",
+          "line": 4081
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "category": "战斗动画",
+      "name": "骑兵攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击通过攻击方兵种+19选择图集；另核对计谋到资源和时间轴区间的初始化表。单个精灵不凭外观指定攻击/受击角色。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = DAT_81c2b237 + 0x13;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c01278",
+          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;",
+          "line": 784
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋践踏",
+            "first": 11,
+            "last": 21
+          },
+          {
+            "use": "计谋冲锋",
+            "first": 11,
+            "last": 21
+          },
+          {
+            "use": "计谋突击",
+            "first": 11,
+            "last": 21
+          },
+          {
+            "use": "计谋突袭",
+            "first": 11,
+            "last": 21
+          },
+          {
+            "use": "普通攻击_目标兵种骑兵",
+            "first": 0,
+            "last": 10
+          },
+          {
+            "use": "普通攻击_目标兵种步兵",
+            "first": 11,
+            "last": 21
+          },
+          {
+            "use": "普通攻击_目标兵种弓兵",
+            "first": 22,
+            "last": 32
+          },
+          {
+            "use": "普通攻击_目标兵种水军",
+            "first": 33,
+            "last": 43
+          },
+          {
+            "use": "普通攻击_目标兵种极兵",
+            "first": 44,
+            "last": 54
+          },
+          {
+            "use": "普通攻击_目标兵种玄兵",
+            "first": 55,
+            "last": 65
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              8,
+              12,
+              19,
+              23,
+              30,
+              34,
+              41,
+              45,
+              52,
+              56,
+              63
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              2,
+              13,
+              24,
+              35,
+              46,
+              57
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3,
+              14,
+              25,
+              36,
+              47,
+              58
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵003.png"
+            ],
+            "command_indices": [
+              6,
+              17,
+              28,
+              39,
+              50,
+              61
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵004.png"
+            ],
+            "command_indices": [
+              5,
+              16,
+              27,
+              38,
+              49,
+              60
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵005.png"
+            ],
+            "command_indices": [
+              9,
+              20,
+              31,
+              42,
+              53,
+              64
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵006.png"
+            ],
+            "command_indices": [
+              4,
+              7,
+              15,
+              18,
+              26,
+              29,
+              37,
+              40,
+              48,
+              51,
+              59,
+              62
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵007.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵008.png"
+            ],
+            "command_indices": [
+              10
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 9,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵009.png"
+            ],
+            "command_indices": [
+              21
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 10,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵010.png"
+            ],
+            "command_indices": [
+              11
+            ],
+            "uses": [
+              "计谋践踏",
+              "计谋冲锋",
+              "计谋突击",
+              "计谋突袭",
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 11,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵011.png"
+            ],
+            "command_indices": [
+              22
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 12,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵012.png"
+            ],
+            "command_indices": [
+              32
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 13,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵013.png"
+            ],
+            "command_indices": [
+              44
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 14,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵014.png"
+            ],
+            "command_indices": [
+              54
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 15,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵015.png"
+            ],
+            "command_indices": [
+              55
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 16,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵016.png"
+            ],
+            "command_indices": [
+              65
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 17,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵017.png"
+            ],
+            "command_indices": [
+              33
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 18,
+            "pngs": [
+              "战斗动画/骑兵攻击演出_资源019/骑兵攻击演出_精灵018.png"
+            ],
+            "command_indices": [
+              43
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "category": "战斗动画",
+      "name": "步兵攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击通过攻击方兵种+19选择图集；另核对计谋到资源和时间轴区间的初始化表。单个精灵不凭外观指定攻击/受击角色。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = DAT_81c2b237 + 0x13;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c01278",
+          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;",
+          "line": 784
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋奋战",
+            "first": 10,
+            "last": 20
+          },
+          {
+            "use": "普通攻击_目标兵种骑兵",
+            "first": 0,
+            "last": 9
+          },
+          {
+            "use": "普通攻击_目标兵种步兵",
+            "first": 10,
+            "last": 19
+          },
+          {
+            "use": "普通攻击_目标兵种弓兵",
+            "first": 20,
+            "last": 29
+          },
+          {
+            "use": "普通攻击_目标兵种水军",
+            "first": 30,
+            "last": 39
+          },
+          {
+            "use": "普通攻击_目标兵种极兵",
+            "first": 40,
+            "last": 49
+          },
+          {
+            "use": "普通攻击_目标兵种玄兵",
+            "first": 50,
+            "last": 59
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              7,
+              11,
+              17,
+              21,
+              27,
+              31,
+              37,
+              41,
+              47,
+              51,
+              57
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              2,
+              4,
+              6,
+              12,
+              14,
+              16,
+              22,
+              24,
+              26,
+              32,
+              34,
+              36,
+              42,
+              44,
+              46,
+              52,
+              54,
+              56
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3,
+              5,
+              13,
+              15,
+              23,
+              25,
+              33,
+              35,
+              43,
+              45,
+              53,
+              55
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵003.png"
+            ],
+            "command_indices": [
+              8,
+              18,
+              28,
+              38,
+              48,
+              58
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵004.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵005.png"
+            ],
+            "command_indices": [
+              9
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵006.png"
+            ],
+            "command_indices": [
+              19
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵007.png"
+            ],
+            "command_indices": [
+              10
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵008.png"
+            ],
+            "command_indices": [
+              20
+            ],
+            "uses": [
+              "计谋奋战",
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 9,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵009.png"
+            ],
+            "command_indices": [
+              29
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 10,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵010.png"
+            ],
+            "command_indices": [
+              40
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 11,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵011.png"
+            ],
+            "command_indices": [
+              49
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 12,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵012.png"
+            ],
+            "command_indices": [
+              50
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 13,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵013.png"
+            ],
+            "command_indices": [
+              59
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 14,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵014.png"
+            ],
+            "command_indices": [
+              30
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 15,
+            "pngs": [
+              "战斗动画/步兵攻击演出_资源020/步兵攻击演出_精灵015.png"
+            ],
+            "command_indices": [
+              39
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "category": "战斗动画",
+      "name": "弓兵攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击通过攻击方兵种+19选择图集；另核对计谋到资源和时间轴区间的初始化表。单个精灵不凭外观指定攻击/受击角色。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = DAT_81c2b237 + 0x13;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c01278",
+          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;",
+          "line": 784
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋飞矢",
+            "first": 9,
+            "last": 17
+          },
+          {
+            "use": "计谋箭雨",
+            "first": 9,
+            "last": 17
+          },
+          {
+            "use": "普通攻击_目标兵种骑兵",
+            "first": 0,
+            "last": 8
+          },
+          {
+            "use": "普通攻击_目标兵种步兵",
+            "first": 9,
+            "last": 17
+          },
+          {
+            "use": "普通攻击_目标兵种弓兵",
+            "first": 18,
+            "last": 26
+          },
+          {
+            "use": "普通攻击_目标兵种水军",
+            "first": 27,
+            "last": 35
+          },
+          {
+            "use": "普通攻击_目标兵种极兵",
+            "first": 36,
+            "last": 44
+          },
+          {
+            "use": "普通攻击_目标兵种玄兵",
+            "first": 45,
+            "last": 53
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              10,
+              19,
+              28,
+              37,
+              46
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              2,
+              11,
+              20,
+              29,
+              38,
+              47
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3,
+              12,
+              21,
+              30,
+              39,
+              48
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵003.png"
+            ],
+            "command_indices": [
+              4,
+              13,
+              22,
+              31,
+              40,
+              49
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵004.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵005.png"
+            ],
+            "command_indices": [
+              8
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵006.png"
+            ],
+            "command_indices": [
+              17
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵007.png"
+            ],
+            "command_indices": [
+              9
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵008.png"
+            ],
+            "command_indices": [
+              26
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 9,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵009.png"
+            ],
+            "command_indices": [
+              18
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 10,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵010.png"
+            ],
+            "command_indices": [
+              36
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 11,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵011.png"
+            ],
+            "command_indices": [
+              44
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 12,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵012.png"
+            ],
+            "command_indices": [
+              53
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 13,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵013.png"
+            ],
+            "command_indices": [
+              45
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 14,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵014.png"
+            ],
+            "command_indices": [
+              27
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 15,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵015.png"
+            ],
+            "command_indices": [
+              35
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 16,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵016.png"
+            ],
+            "command_indices": [
+              5,
+              6,
+              14,
+              15,
+              23,
+              24,
+              32,
+              33,
+              41,
+              42,
+              50,
+              51
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 17,
+            "pngs": [
+              "战斗动画/弓兵攻击演出_资源021/弓兵攻击演出_精灵017.png"
+            ],
+            "command_indices": [
+              7,
+              16,
+              25,
+              34,
+              43,
+              52
+            ],
+            "uses": [
+              "计谋飞矢",
+              "计谋箭雨",
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "category": "战斗动画",
+      "name": "水军攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击通过攻击方兵种+19选择图集；另核对计谋到资源和时间轴区间的初始化表。单个精灵不凭外观指定攻击/受击角色。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = DAT_81c2b237 + 0x13;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c01278",
+          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;",
+          "line": 784
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "普通攻击_目标兵种骑兵",
+            "first": 0,
+            "last": 9
+          },
+          {
+            "use": "普通攻击_目标兵种步兵",
+            "first": 10,
+            "last": 19
+          },
+          {
+            "use": "普通攻击_目标兵种弓兵",
+            "first": 20,
+            "last": 29
+          },
+          {
+            "use": "普通攻击_目标兵种水军",
+            "first": 30,
+            "last": 39
+          },
+          {
+            "use": "普通攻击_目标兵种极兵",
+            "first": 40,
+            "last": 49
+          },
+          {
+            "use": "普通攻击_目标兵种玄兵",
+            "first": 50,
+            "last": 59
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              11,
+              21,
+              31,
+              41,
+              51
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              2,
+              12,
+              22,
+              32,
+              42,
+              52
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3,
+              5,
+              13,
+              15,
+              23,
+              25,
+              33,
+              35,
+              43,
+              45,
+              53,
+              55
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵003.png"
+            ],
+            "command_indices": [
+              4,
+              6,
+              14,
+              16,
+              24,
+              26,
+              34,
+              36,
+              44,
+              46,
+              54,
+              56
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵004.png"
+            ],
+            "command_indices": [
+              7,
+              17,
+              27,
+              37,
+              47,
+              57
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵005.png"
+            ],
+            "command_indices": [
+              8,
+              18,
+              28,
+              38,
+              48,
+              58
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵006.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵007.png"
+            ],
+            "command_indices": [
+              9
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵008.png"
+            ],
+            "command_indices": [
+              19
+            ],
+            "uses": [
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 9,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵009.png"
+            ],
+            "command_indices": [
+              10
+            ],
+            "uses": [
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 10,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵010.png"
+            ],
+            "command_indices": [
+              29
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 11,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵011.png"
+            ],
+            "command_indices": [
+              20
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 12,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵012.png"
+            ],
+            "command_indices": [
+              40
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 13,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵013.png"
+            ],
+            "command_indices": [
+              49
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 14,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵014.png"
+            ],
+            "command_indices": [
+              59
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 15,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵015.png"
+            ],
+            "command_indices": [
+              50
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 16,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵016.png"
+            ],
+            "command_indices": [
+              30
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 17,
+            "pngs": [
+              "战斗动画/水军攻击演出_资源022/水军攻击演出_精灵017.png"
+            ],
+            "command_indices": [
+              39
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "category": "战斗动画",
+      "name": "极兵攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击通过攻击方兵种+19选择图集；另核对计谋到资源和时间轴区间的初始化表。单个精灵不凭外观指定攻击/受击角色。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = DAT_81c2b237 + 0x13;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c01278",
+          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;",
+          "line": 784
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "普通攻击_目标兵种骑兵",
+            "first": 0,
+            "last": 8
+          },
+          {
+            "use": "普通攻击_目标兵种步兵",
+            "first": 9,
+            "last": 17
+          },
+          {
+            "use": "普通攻击_目标兵种弓兵",
+            "first": 18,
+            "last": 26
+          },
+          {
+            "use": "普通攻击_目标兵种水军",
+            "first": 27,
+            "last": 35
+          },
+          {
+            "use": "普通攻击_目标兵种极兵",
+            "first": 36,
+            "last": 44
+          },
+          {
+            "use": "普通攻击_目标兵种玄兵",
+            "first": 45,
+            "last": 53
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              10,
+              19,
+              28,
+              37,
+              46
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              2,
+              11,
+              20,
+              29,
+              38,
+              47
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3,
+              12,
+              21,
+              30,
+              39,
+              48
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵003.png"
+            ],
+            "command_indices": [
+              4,
+              13,
+              22,
+              31,
+              40,
+              49
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵004.png"
+            ],
+            "command_indices": [
+              5,
+              14,
+              23,
+              32,
+              41,
+              50
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵005.png"
+            ],
+            "command_indices": [
+              6,
+              15,
+              24,
+              33,
+              42,
+              51
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵006.png"
+            ],
+            "command_indices": [
+              7,
+              16,
+              25,
+              34,
+              43,
+              52
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵007.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵008.png"
+            ],
+            "command_indices": [
+              8
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 9,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵009.png"
+            ],
+            "command_indices": [
+              17
+            ],
+            "uses": [
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 10,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵010.png"
+            ],
+            "command_indices": [
+              9
+            ],
+            "uses": [
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 11,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵011.png"
+            ],
+            "command_indices": [
+              26
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 12,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵012.png"
+            ],
+            "command_indices": [
+              18
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 13,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵013.png"
+            ],
+            "command_indices": [
+              36
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 14,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵014.png"
+            ],
+            "command_indices": [
+              44
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 15,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵015.png"
+            ],
+            "command_indices": [
+              53
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 16,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵016.png"
+            ],
+            "command_indices": [
+              45
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 17,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵017.png"
+            ],
+            "command_indices": [
+              27
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 18,
+            "pngs": [
+              "战斗动画/极兵攻击演出_资源023/极兵攻击演出_精灵018.png"
+            ],
+            "command_indices": [
+              35
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "category": "战斗动画",
+      "name": "玄兵攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击通过攻击方兵种+19选择图集；另核对计谋到资源和时间轴区间的初始化表。单个精灵不凭外观指定攻击/受击角色。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = DAT_81c2b237 + 0x13;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c01278",
+          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;",
+          "line": 784
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "普通攻击_目标兵种骑兵",
+            "first": 0,
+            "last": 9
+          },
+          {
+            "use": "普通攻击_目标兵种步兵",
+            "first": 10,
+            "last": 19
+          },
+          {
+            "use": "普通攻击_目标兵种弓兵",
+            "first": 20,
+            "last": 29
+          },
+          {
+            "use": "普通攻击_目标兵种水军",
+            "first": 30,
+            "last": 39
+          },
+          {
+            "use": "普通攻击_目标兵种极兵",
+            "first": 40,
+            "last": 49
+          },
+          {
+            "use": "普通攻击_目标兵种玄兵",
+            "first": 50,
+            "last": 59
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              11,
+              21,
+              31,
+              41,
+              51
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              2,
+              12,
+              22,
+              32,
+              42,
+              52
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3,
+              5,
+              13,
+              15,
+              23,
+              25,
+              33,
+              35,
+              43,
+              45,
+              53,
+              55
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵003.png"
+            ],
+            "command_indices": [
+              4,
+              6,
+              14,
+              16,
+              24,
+              26,
+              34,
+              36,
+              44,
+              46,
+              54,
+              56
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵004.png"
+            ],
+            "command_indices": [
+              7,
+              17,
+              27,
+              37,
+              47,
+              57
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵005.png"
+            ],
+            "command_indices": [
+              8,
+              18,
+              28,
+              38,
+              48,
+              58
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵",
+              "普通攻击_目标兵种步兵",
+              "普通攻击_目标兵种弓兵",
+              "普通攻击_目标兵种水军",
+              "普通攻击_目标兵种极兵",
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵006.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵007.png"
+            ],
+            "command_indices": [
+              9
+            ],
+            "uses": [
+              "普通攻击_目标兵种骑兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵008.png"
+            ],
+            "command_indices": [
+              19
+            ],
+            "uses": [
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 9,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵009.png"
+            ],
+            "command_indices": [
+              10
+            ],
+            "uses": [
+              "普通攻击_目标兵种步兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 10,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵010.png"
+            ],
+            "command_indices": [
+              29
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 11,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵011.png"
+            ],
+            "command_indices": [
+              20
+            ],
+            "uses": [
+              "普通攻击_目标兵种弓兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 12,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵012.png"
+            ],
+            "command_indices": [
+              40
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 13,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵013.png"
+            ],
+            "command_indices": [
+              49
+            ],
+            "uses": [
+              "普通攻击_目标兵种极兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 14,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵014.png"
+            ],
+            "command_indices": [
+              59
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 15,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵015.png"
+            ],
+            "command_indices": [
+              50
+            ],
+            "uses": [
+              "普通攻击_目标兵种玄兵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 16,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵016.png"
+            ],
+            "command_indices": [
+              30
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 17,
+            "pngs": [
+              "战斗动画/玄兵攻击演出_资源024/玄兵攻击演出_精灵017.png"
+            ],
+            "command_indices": [
+              39
+            ],
+            "uses": [
+              "普通攻击_目标兵种水军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "category": "战斗动画",
+      "name": "水域目标普通攻击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "普通攻击默认选资源25；仅当目标地形不是7（河流）时改为按攻击方兵种选19到24。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "uVar5 = 0x19;",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c05e0c",
+          "expression": "DAT_81c2b249 != '\\a'",
+          "line": 4302
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c0620c",
+          "expression": "uVar3 = 7;",
+          "line": 4468
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "普通攻击_目标地形为河流",
+            "first": 0,
+            "last": 4
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/水域目标普通攻击演出_资源025/水域目标普通攻击演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              4
+            ],
+            "uses": [
+              "普通攻击_目标地形为河流"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/水域目标普通攻击演出_资源025/水域目标普通攻击演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              2
+            ],
+            "uses": [
+              "普通攻击_目标地形为河流"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/水域目标普通攻击演出_资源025/水域目标普通攻击演出_精灵002.png"
+            ],
+            "command_indices": [
+              3
+            ],
+            "uses": [
+              "普通攻击_目标地形为河流"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "category": "战斗",
+      "name": "战斗短消息底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "FUN_81c07bc0读取资源26，绘制文本、按参数等待；用于计谋名和失败等战斗短消息。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c07bc0",
+          "expression": "FUN_81c152f0(0x1a,'\\x01',",
+          "line": 5463
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "FUN_81c07bc0(acStack_48,",
+          "line": 4081
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "category": "战斗动画",
+      "name": "升级退场与行动特效",
+      "usage_status": "confirmed",
+      "naming_evidence": "FUN_81c04920将0到5用于升级、6到11用于兵力/生命耗尽退场；FUN_81c02f4c将12到17用于攻击或计谋指令。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04920",
+          "expression": "FUN_81c04ae8(0,5,",
+          "line": 3317
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04920",
+          "expression": "FUN_81c04ae8(6,0xb,",
+          "line": 3317
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c02f4c",
+          "expression": "FUN_81c06a70(0x1b,0xc,0x11,",
+          "line": 2085
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "武将升级",
+            "first": 0,
+            "last": 5
+          },
+          {
+            "use": "部队生命或兵力耗尽退场",
+            "first": 6,
+            "last": 11
+          },
+          {
+            "use": "攻击或计谋指令目标特效",
+            "first": 12,
+            "last": 17
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵000.png"
+            ],
+            "command_indices": [
+              4
+            ],
+            "uses": [
+              "武将升级"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵001.png"
+            ],
+            "command_indices": [
+              3,
+              5
+            ],
+            "uses": [
+              "武将升级"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵002.png"
+            ],
+            "command_indices": [
+              0,
+              6
+            ],
+            "uses": [
+              "武将升级",
+              "部队生命或兵力耗尽退场"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵003.png"
+            ],
+            "command_indices": [
+              1,
+              7
+            ],
+            "uses": [
+              "武将升级",
+              "部队生命或兵力耗尽退场"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 4,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵004.png"
+            ],
+            "command_indices": [
+              2,
+              8
+            ],
+            "uses": [
+              "武将升级",
+              "部队生命或兵力耗尽退场"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 5,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵005.png"
+            ],
+            "command_indices": [
+              10
+            ],
+            "uses": [
+              "部队生命或兵力耗尽退场"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 6,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵006.png"
+            ],
+            "command_indices": [
+              9,
+              11
+            ],
+            "uses": [
+              "部队生命或兵力耗尽退场"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 7,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵007.png"
+            ],
+            "command_indices": [
+              12,
+              14,
+              16
+            ],
+            "uses": [
+              "攻击或计谋指令目标特效"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 8,
+            "pngs": [
+              "战斗动画/升级退场与行动特效_资源027/升级退场与行动特效_精灵008.png"
+            ],
+            "command_indices": [
+              13,
+              15,
+              17
+            ],
+            "uses": [
+              "攻击或计谋指令目标特效"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "category": "天气",
+      "name": "天气状态01演出背景",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源ID=天气状态+27；代码只确认状态1到5的对应关系，未提供逐状态中文天气名。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06384",
+          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,",
+          "line": 4550
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "category": "天气",
+      "name": "天气状态02演出背景",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源ID=天气状态+27；代码只确认状态1到5的对应关系，未提供逐状态中文天气名。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06384",
+          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,",
+          "line": 4550
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "category": "天气",
+      "name": "天气状态03演出背景",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源ID=天气状态+27；代码只确认状态1到5的对应关系，未提供逐状态中文天气名。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06384",
+          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,",
+          "line": 4550
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "category": "天气",
+      "name": "天气状态04演出背景",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源ID=天气状态+27；代码只确认状态1到5的对应关系，未提供逐状态中文天气名。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06384",
+          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,",
+          "line": 4550
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "category": "天气",
+      "name": "天气状态05演出背景",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源ID=天气状态+27；代码只确认状态1到5的对应关系，未提供逐状态中文天气名。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c06384",
+          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,",
+          "line": 4550
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "category": "战斗",
+      "name": "战斗天数弹窗",
+      "usage_status": "confirmed",
+      "naming_evidence": "实际天数弹窗绘制函数读取资源33，并在中央空位绘制传入天数。",
+      "code_evidence": [
+        {
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_day_popup_draw",
+          "expression": "FUN_81c152f0(33,1,",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "category": "战斗",
+      "name": "禁咒与定身状态标记",
+      "usage_status": "confirmed",
+      "naming_evidence": "部队状态2（禁咒）选零基帧2/3，状态3（定身）选帧4/5；帧0/1未定位使用。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04630",
+          "expression": "cVar1 == '\\x02'",
+          "line": 3198
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04630",
+          "expression": "iVar4 = 4,",
+          "line": 3198
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04630",
+          "expression": "FUN_81c04fb4(0x22,",
+          "line": 3198
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "category": "计谋动画",
+      "name": "火攻火箭烈火演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋5火攻、11火箭、18烈火指向资源35。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋火攻",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋火箭",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋烈火",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/火攻火箭烈火演出_资源035/火攻火箭烈火演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋火攻",
+              "计谋火箭",
+              "计谋烈火"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/火攻火箭烈火演出_资源035/火攻火箭烈火演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋火攻",
+              "计谋火箭",
+              "计谋烈火"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "category": "计谋动画",
+      "name": "水淹海啸演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋12水淹、19海啸指向资源36。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋水淹",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋海啸",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/水淹海啸演出_资源036/水淹海啸演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋水淹",
+              "计谋海啸"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/水淹海啸演出_资源036/水淹海啸演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋水淹",
+              "计谋海啸"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 37,
+      "category": "计谋动画",
+      "name": "滚木落石演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋6滚木、7落石指向资源37；两者选取不同的指令区间。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋滚木",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋落石",
+            "first": 0,
+            "last": 0
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/滚木落石演出_资源037/滚木落石演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋滚木",
+              "计谋落石"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/滚木落石演出_资源037/滚木落石演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋滚木"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 38,
+      "category": "计谋动画",
+      "name": "撞击演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋13撞击指向资源38。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋撞击",
+            "first": 0,
+            "last": 14
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/撞击演出_资源038/撞击演出_精灵000.png"
+            ],
+            "command_indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "uses": [
+              "计谋撞击"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/撞击演出_资源038/撞击演出_精灵001.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "计谋撞击"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 2,
+            "pngs": [
+              "计谋动画/撞击演出_资源038/撞击演出_精灵002.png"
+            ],
+            "command_indices": [
+              13
+            ],
+            "uses": [
+              "计谋撞击"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 3,
+            "pngs": [
+              "计谋动画/撞击演出_资源038/撞击演出_精灵003.png"
+            ],
+            "command_indices": [
+              14
+            ],
+            "uses": [
+              "计谋撞击"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "category": "计谋动画",
+      "name": "咒封定身奇门演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋14咒封、15定身、20奇门指向资源39。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋咒封",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋定身",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋奇门",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/咒封定身奇门演出_资源039/咒封定身奇门演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋咒封",
+              "计谋定身",
+              "计谋奇门"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/咒封定身奇门演出_资源039/咒封定身奇门演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋咒封",
+              "计谋定身",
+              "计谋奇门"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 40,
+      "category": "计谋动画",
+      "name": "流言演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋16流言指向资源40。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋流言",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/流言演出_资源040/流言演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋流言"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/流言演出_资源040/流言演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋流言"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "category": "计谋动画",
+      "name": "援兵援军演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋17援兵、29援军指向资源41。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋援兵",
+            "first": 0,
+            "last": 7
+          },
+          {
+            "use": "计谋援军",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/援兵援军演出_资源041/援兵援军演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋援兵",
+              "计谋援军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/援兵援军演出_资源041/援兵援军演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋援兵",
+              "计谋援军"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "category": "计谋动画",
+      "name": "石阵演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋23石阵指向资源42。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋石阵",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/石阵演出_资源042/石阵演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋石阵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/石阵演出_资源042/石阵演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋石阵"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 43,
+      "category": "计谋动画",
+      "name": "陷阱演出",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化表将计谋24陷阱指向资源43。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c058b8",
+          "expression": "&DAT_81c20110 + uVar5 * 2",
+          "line": 4081
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "计谋陷阱",
+            "first": 0,
+            "last": 7
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "计谋动画/陷阱演出_资源043/陷阱演出_精灵000.png"
+            ],
+            "command_indices": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "uses": [
+              "计谋陷阱"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "计谋动画/陷阱演出_资源043/陷阱演出_精灵001.png"
+            ],
+            "command_indices": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "uses": [
+              "计谋陷阱"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 44,
+      "category": "界面",
+      "name": "主菜单静态底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "会话入口以资源44作菜单底图，选项动画基ID为100。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2c,100)",
+          "line": 15022
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "category": "界面",
+      "name": "剧本菜单静态底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "新会话选择以资源45作底图，选项动画基ID为104，选中项+1作为剧本ID。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2d,0x68)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c1b91c((char)uVar2 + '\\x01'",
+          "line": 15022
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "category": "界面",
+      "name": "存读档列表底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "FUN_81c164c8读取资源46后依次检查三组存档文件、绘制君主名和年月；同一列表用于存档和读档。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c164c8",
+          "expression": "FUN_81c077bc(0x2e,1,",
+          "line": 15431
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c16330",
+          "expression": "FUN_81c164c8();",
+          "line": 15367
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "category": "战略地图",
+      "name": "君主选择势力图",
+      "usage_status": "confirmed",
+      "naming_evidence": "君主选择器绘制资源47，并依据城市坐标和所选君主控制的城市闪烁标记。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15e6c",
+          "expression": "FUN_81c077bc(0x2f,1,",
+          "line": 15190
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15e6c",
+          "expression": "FUN_81c161c4(",
+          "line": 15190
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "category": "武将头像",
+      "name": "剧本01武将头像",
+      "usage_status": "confirmed",
+      "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c14fb8(0xc3,10,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x3e;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "category": "武将头像",
+      "name": "剧本02武将头像",
+      "usage_status": "confirmed",
+      "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c14fb8(0xc3,10,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x46;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "category": "武将头像",
+      "name": "剧本03武将头像",
+      "usage_status": "confirmed",
+      "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c14fb8(0xc3,10,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x47;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "category": "武将头像",
+      "name": "剧本04武将头像",
+      "usage_status": "confirmed",
+      "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c055b0",
+          "expression": "FUN_81c14fb8(0xc3,10,",
+          "line": 3969
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x48;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "category": "战略地图",
+      "name": "战略大地图拼块",
+      "usage_status": "confirmed",
+      "naming_evidence": "战略绘制器按(row*12+column)*256读取资源54的32x32块，帧索引对应12列9行。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "FUN_81c152f0(0x36,'\\x01',",
+          "line": 13008
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "* 0xc + (uint)*param_1) * 0x100",
+          "line": 13008
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "category": "战略地图",
+      "name": "城市归属图标",
+      "usage_status": "confirmed",
+      "naming_evidence": "战略城市叠加层按归属选择零基帧0无归属、7其他势力、8当前玩家。帧1到6和9未定位调用。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "FUN_81c152f0(0x37,'\\x01',",
+          "line": 13008
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "bVar7 = 8;",
+          "line": 13008
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "bVar7 = 7,",
+          "line": 13008
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "category": "战略地图",
+      "name": "当前城市选择标记",
+      "usage_status": "confirmed",
+      "naming_evidence": "战略地图绘制器在当前选中的地图格坐标上叠加资源56。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "FUN_81c152f0(0x38,'\\x01',",
+          "line": 13008
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "category": "剧本数据",
+      "name": "各剧本城市初始状态",
+      "usage_status": "confirmed",
+      "naming_evidence": "场景初始化读取资源57的31字节城市记录，写入城市状态数组并读取初始年份。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c1add4",
+          "expression": "FUN_81c152f0(0x39,param_1,",
+          "line": 18781
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "category": "文字",
+      "name": "城市名称",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市名读取包装器以城市ID+1读取资源58。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c1971c",
+          "expression": "FUN_81c154d8(0x3a,",
+          "line": 17619
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "category": "数据",
+      "name": "城市相邻关系表",
+      "usage_status": "confirmed",
+      "naming_evidence": "路线距离和相邻城选择函数读取资源59，每城16字节并扫描相邻城列表。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c136a0",
+          "expression": "FUN_81c152f0(0x3b,'\\x01',",
+          "line": 13286
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c128b4",
+          "expression": "FUN_81c152f0(0x3b,'\\x01',",
+          "line": 12722
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "category": "调用待确认",
+      "name": "原始数据表_用途待确认",
+      "usage_status": "unresolved",
+      "naming_evidence": "未定位当前代码对资源60的读取；不再因长度接近城市表而推定其用途。",
+      "code_evidence": []
+    },
+    {
+      "id": 61,
+      "category": "剧本数据",
+      "name": "各剧本武将初始属性",
+      "usage_status": "confirmed",
+      "naming_evidence": "场景初始化从资源61按15字节读取200项属性。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c1add4",
+          "expression": "FUN_81c152f0(0x3d,param_1,",
+          "line": 18781
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "category": "文字",
+      "name": "剧本01武将姓名",
+      "usage_status": "confirmed",
+      "naming_evidence": "姓名读取函数按剧本选择资源，再按武将ID+1读取。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x3e;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "category": "剧本数据",
+      "name": "各剧本武将出生年与登场城市",
+      "usage_status": "confirmed",
+      "naming_evidence": "年度更新比较出生年+16与当前年份，随后把尚未出现的武将加入指定城市。此表不是武将命令表。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17734",
+          "expression": "FUN_81c152f0(0x3f,DAT_81c2b161,",
+          "line": 16219
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17734",
+          "expression": "+ 0x10) == DAT_81c2b140",
+          "line": 16219
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17734",
+          "expression": "FUN_81c134b8(uVar5,(byte)uVar7)",
+          "line": 16219
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "category": "文字",
+      "name": "战略指令属性与事件文字",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市/武将/宝物属性列、战略指令、事件和胜负提示均按条目号读取资源64。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c19748",
+          "expression": "FUN_81c154d8(0x40,",
+          "line": 17644
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12058",
+          "expression": "FUN_81c154d8(0x40,0x5b,",
+          "line": 12396
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "category": "剧本数据",
+      "name": "各剧本城市武将排列索引",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化将200项复制到城市武将索引数组，城市记录的起点和数量用于取其中的武将ID。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c1add4",
+          "expression": "FUN_81c152f0(0x41,param_1,",
+          "line": 18781
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c13870",
+          "expression": "DAT_81c2b310",
+          "line": 13404
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "category": "数据",
+      "name": "宝物与道具属性",
+      "usage_status": "confirmed",
+      "naming_evidence": "66字节记录描述宝物效果，装备/卸下时按武力、智力和兵种效果字段更新武将。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17a08",
+          "expression": "FUN_81c152f0(0x42,'\\x01',",
+          "line": 16320
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17eb4",
+          "expression": "0x3e",
+          "line": 16515
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c185cc",
+          "expression": "0x41",
+          "line": 16893
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "category": "剧本数据",
+      "name": "各剧本宝物登场年份与城市",
+      "usage_status": "confirmed",
+      "naming_evidence": "资源67的三字节记录用于判断年份，并调用城市宝物插入函数；不是势力辅助表。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17e18",
+          "expression": "FUN_81c152f0(0x43,DAT_81c2b161,",
+          "line": 16484
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17e18",
+          "expression": "FUN_81c135a8(",
+          "line": 16484
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c135a8",
+          "expression": "param_2 < 0x21",
+          "line": 13230
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "category": "剧本数据",
+      "name": "各剧本城市宝物排列索引",
+      "usage_status": "confirmed",
+      "naming_evidence": "初始化将33项复制到宝物索引数组，城市宝物插入/移除函数操作同一数组；不是君主列表。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c1add4",
+          "expression": "FUN_81c152f0(0x44,param_1,",
+          "line": 18781
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c135a8",
+          "expression": "DAT_81c2b3e0",
+          "line": 13230
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12504",
+          "expression": "DAT_81c2b3e0",
+          "line": 12546
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "category": "战略地图",
+      "name": "城市数与武将数图标",
+      "usage_status": "confirmed",
+      "naming_evidence": "战略状态区帧1旁写玩家城市数量，帧0旁写FUN_81c17b3c返回的玩家武将总数。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "FUN_81c152f0(0x45,'\\x01',",
+          "line": 13008
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12e18",
+          "expression": "FUN_81c15070(0x35,0x10f,7,9,1,",
+          "line": 13008
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c17b3c",
+          "expression": "FUN_81c13ab8(",
+          "line": 16371
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "category": "文字",
+      "name": "剧本02武将姓名",
+      "usage_status": "confirmed",
+      "naming_evidence": "姓名读取函数按剧本选择资源，再按武将ID+1读取。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x46;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "category": "文字",
+      "name": "剧本03武将姓名",
+      "usage_status": "confirmed",
+      "naming_evidence": "姓名读取函数按剧本选择资源，再按武将ID+1读取。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x47;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "category": "文字",
+      "name": "剧本04武将姓名",
+      "usage_status": "confirmed",
+      "naming_evidence": "姓名读取函数按剧本选择资源，再按武将ID+1读取。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_load_named_text",
+          "expression": "in_a3 = 0x48;",
+          "line": 17871
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "category": "文字",
+      "name": "宝物与道具名称",
+      "usage_status": "confirmed",
+      "naming_evidence": "宝物名称包装器按宝物ID+1读取资源73。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c18c80",
+          "expression": "FUN_81c154d8(0x49,",
+          "line": 17163
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "category": "调用待确认",
+      "name": "宝物说明文本_调用待确认",
+      "usage_status": "unresolved",
+      "naming_evidence": "解码文本为各宝物说明；当前接口只按资源66显示属性，尚未定位读取资源74的调用点。",
+      "code_evidence": [],
+      "decoded_text_preview": [
+        "武力+10",
+        "王允之刀，后由孟德献刀而归董卓。武力+10。",
+        "武力+8"
+      ]
+    },
+    {
+      "id": 75,
+      "category": "战略地图",
+      "name": "查找城市连接图",
+      "usage_status": "confirmed",
+      "naming_evidence": "战略地图的查找键/触摸分支读取并居中显示资源75。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12b18",
+          "expression": "FUN_81c152f0(0x4b,'\\x01',",
+          "line": 12867
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "category": "事件插图",
+      "name": "进攻交战与胜负提示插图",
+      "usage_status": "confirmed",
+      "naming_evidence": "四个事件函数分别绘制帧0到3，并组合资源64的军队进攻、军vs军、战斗胜利和战斗失败提示。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c11d98",
+          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,0,",
+          "line": 12322
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c11f18",
+          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,1,",
+          "line": 12362
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12058",
+          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,2,",
+          "line": 12396
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c12188",
+          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,3,",
+          "line": 12431
+        }
+      ],
+      "frame_usage": [
+        {
+          "frame": 0,
+          "name": "军队进攻",
+          "caller": "FUN_81c11d98",
+          "text_resource": 64,
+          "text_entries": [
+            97,
+            98
+          ],
+          "message": "我方或君主名 + 军队进攻 + 城市名"
+        },
+        {
+          "frame": 1,
+          "name": "双方交战",
+          "caller": "FUN_81c11f18",
+          "text_resource": 64,
+          "text_entries": [
+            104,
+            105
+          ],
+          "message": "君主甲 + 军 vs + 君主乙 + 军"
+        },
+        {
+          "frame": 2,
+          "name": "战斗胜利",
+          "caller": "FUN_81c12058",
+          "text_resource": 64,
+          "text_entries": [
+            91,
+            98
+          ],
+          "message": "我方或君主名 + 战斗胜利"
+        },
+        {
+          "frame": 3,
+          "name": "战斗失败",
+          "caller": "FUN_81c12188",
+          "text_resource": 64,
+          "text_entries": [
+            92,
+            98
+          ],
+          "message": "我方 + 战斗失败"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "category": "菜单动画",
+      "name": "开始新局选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2c,100)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "开始新局选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "开始新局选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "开始新局选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 101,
+      "category": "菜单动画",
+      "name": "读取存档选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2c,100)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "读取存档选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "读取存档选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "读取存档选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 102,
+      "category": "菜单动画",
+      "name": "制作群组选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2c,100)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "制作群组选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "制作群组选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "制作群组选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 103,
+      "category": "菜单动画",
+      "name": "退出游戏选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2c,100)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "退出游戏选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "退出游戏选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "退出游戏选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 104,
+      "category": "菜单动画",
+      "name": "剧本01选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "剧本菜单底图45以104为动画基ID；选中序号+1传给剧本初始化。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2d,0x68)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "剧本01选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "剧本01选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "剧本01选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 105,
+      "category": "菜单动画",
+      "name": "剧本02选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "剧本菜单底图45以104为动画基ID；选中序号+1传给剧本初始化。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2d,0x68)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "剧本02选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "剧本02选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "剧本02选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 106,
+      "category": "菜单动画",
+      "name": "剧本03选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "剧本菜单底图45以104为动画基ID；选中序号+1传给剧本初始化。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2d,0x68)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "剧本03选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "剧本03选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "剧本03选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 107,
+      "category": "菜单动画",
+      "name": "剧本04选中动画",
+      "usage_status": "confirmed",
+      "naming_evidence": "剧本菜单底图45以104为动画基ID；选中序号+1传给剧本初始化。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "sango_select_session",
+          "expression": "FUN_81c15d18(0x2d,0x68)",
+          "line": 15022
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15d18",
+          "expression": "FUN_81c162e0(param_2 + (short)uVar2)",
+          "line": 15117
+        }
+      ],
+      "animation_usage": {
+        "intervals": [
+          {
+            "use": "剧本04选中动画",
+            "first": 0,
+            "last": 1
+          }
+        ],
+        "images": [
+          {
+            "image": 0,
+            "pngs": [
+              "菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵000.png"
+            ],
+            "command_indices": [
+              0
+            ],
+            "uses": [
+              "剧本04选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          },
+          {
+            "image": 1,
+            "pngs": [
+              "菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵001.png"
+            ],
+            "command_indices": [
+              1
+            ],
+            "uses": [
+              "剧本04选中动画"
+            ],
+            "role": "由时间轴指令引用；不凭画面指定精灵角色"
+          }
+        ]
+      }
+    },
+    {
+      "id": 110,
+      "category": "战场地图",
+      "name": "城池战场_类型00",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 1,
+          "city": "北平",
+          "map_type": 0,
+          "resource": 110
+        },
+        {
+          "city_id": 11,
+          "city": "邺",
+          "map_type": 0,
+          "resource": 110
+        },
+        {
+          "city_id": 15,
+          "city": "洛阳",
+          "map_type": 0,
+          "resource": 110
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "category": "战场地图",
+      "name": "城池战场_类型01",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 2,
+          "city": "襄平",
+          "map_type": 1,
+          "resource": 111
+        },
+        {
+          "city_id": 10,
+          "city": "长安",
+          "map_type": 1,
+          "resource": 111
+        },
+        {
+          "city_id": 17,
+          "city": "小沛",
+          "map_type": 1,
+          "resource": 111
+        },
+        {
+          "city_id": 20,
+          "city": "宛城",
+          "map_type": 1,
+          "resource": 111
+        },
+        {
+          "city_id": 21,
+          "city": "寿春",
+          "map_type": 1,
+          "resource": 111
+        },
+        {
+          "city_id": 32,
+          "city": "武陵",
+          "map_type": 1,
+          "resource": 111
+        },
+        {
+          "city_id": 37,
+          "city": "建宁",
+          "map_type": 1,
+          "resource": 111
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "category": "战场地图",
+      "name": "城池战场_类型02",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 6,
+          "city": "南皮",
+          "map_type": 2,
+          "resource": 112
+        },
+        {
+          "city_id": 12,
+          "city": "濮阳",
+          "map_type": 2,
+          "resource": 112
+        },
+        {
+          "city_id": 16,
+          "city": "许昌",
+          "map_type": 2,
+          "resource": 112
+        },
+        {
+          "city_id": 29,
+          "city": "会稽",
+          "map_type": 2,
+          "resource": 112
+        },
+        {
+          "city_id": 33,
+          "city": "长沙",
+          "map_type": 2,
+          "resource": 112
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "category": "战场地图",
+      "name": "城池战场_类型03",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 4,
+          "city": "晋阳",
+          "map_type": 3,
+          "resource": 113
+        },
+        {
+          "city_id": 9,
+          "city": "河内",
+          "map_type": 3,
+          "resource": 113
+        },
+        {
+          "city_id": 13,
+          "city": "徐州",
+          "map_type": 3,
+          "resource": 113
+        },
+        {
+          "city_id": 22,
+          "city": "建业",
+          "map_type": 3,
+          "resource": 113
+        },
+        {
+          "city_id": 26,
+          "city": "襄阳",
+          "map_type": 3,
+          "resource": 113
+        },
+        {
+          "city_id": 27,
+          "city": "江夏",
+          "map_type": 3,
+          "resource": 113
+        },
+        {
+          "city_id": 34,
+          "city": "柴桑",
+          "map_type": 3,
+          "resource": 113
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "category": "战场地图",
+      "name": "城池战场_类型04",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 5,
+          "city": "平原",
+          "map_type": 4,
+          "resource": 114
+        },
+        {
+          "city_id": 14,
+          "city": "汉中",
+          "map_type": 4,
+          "resource": 114
+        },
+        {
+          "city_id": 18,
+          "city": "下邳",
+          "map_type": 4,
+          "resource": 114
+        },
+        {
+          "city_id": 28,
+          "city": "庐江",
+          "map_type": 4,
+          "resource": 114
+        },
+        {
+          "city_id": 35,
+          "city": "零陵",
+          "map_type": 4,
+          "resource": 114
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "category": "战场地图",
+      "name": "城池战场_类型05",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 7,
+          "city": "北海",
+          "map_type": 5,
+          "resource": 115
+        },
+        {
+          "city_id": 23,
+          "city": "吴",
+          "map_type": 5,
+          "resource": 115
+        },
+        {
+          "city_id": 36,
+          "city": "桂阳",
+          "map_type": 5,
+          "resource": 115
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "category": "战场地图",
+      "name": "城池战场_类型06",
+      "usage_status": "confirmed",
+      "naming_evidence": "城市ID索引资源2第15子表，所得类型加110作为战场资源ID；不推定历史战役名称。",
+      "code_evidence": [
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "FUN_81c154d8(2,0xf,",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c10394",
+          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;",
+          "line": 11180
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c04c60",
+          "expression": "FUN_81c04f40((uint)DAT_81c2b262,",
+          "line": 3444
+        }
+      ],
+      "cities": [
+        {
+          "city_id": 0,
+          "city": "西凉",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 3,
+          "city": "安定",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 8,
+          "city": "天水",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 19,
+          "city": "梓潼",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 24,
+          "city": "成都",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 25,
+          "city": "棉竹",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 30,
+          "city": "云南",
+          "map_type": 6,
+          "resource": 116
+        },
+        {
+          "city_id": 31,
+          "city": "巴郡",
+          "map_type": 6,
+          "resource": 116
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "category": "补充界面",
+      "name": "信息查找补充底栏",
+      "usage_status": "confirmed",
+      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用目标PNG；当前C并不从LIB的17号条目读取。",
+      "code_evidence": [
+        {
+          "source": "src/sango_statusbar.c",
+          "function": "sango_statusbar_draw",
+          "expression": "toolbar_bitmap",
+          "line": 12
+        },
+        {
+          "source": "src/sango_statusbar.c",
+          "function": "sango_battle_toolbar_draw",
+          "expression": "battle_toolbar_bitmap",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "category": "补充界面",
+      "name": "制作群组补充竖屏页",
+      "usage_status": "confirmed",
+      "naming_evidence": "LIB补充条目和当前C制作群组页共用目标PNG；制作群组入口调用C位图。",
+      "code_evidence": [
+        {
+          "source": "src/sango_credits.c",
+          "function": "sango_credits_draw",
+          "expression": "credits_bitmap",
+          "line": 8
+        },
+        {
+          "source": "src/sango_game.c",
+          "function": "FUN_81c15e44",
+          "expression": "sango_credits_draw(",
+          "line": 15173
+        }
+      ]
+    }
+  ],
+  "selectors": {
+    "skills": [
+      {
+        "skill_id": 1,
+        "name": "践踏",
+        "resource": 19,
+        "first_command": 11,
+        "last_command": 21,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 2,
+        "name": "冲锋",
+        "resource": 19,
+        "first_command": 11,
+        "last_command": 21,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 3,
+        "name": "突击",
+        "resource": 19,
+        "first_command": 11,
+        "last_command": 21,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 4,
+        "name": "突袭",
+        "resource": 19,
+        "first_command": 11,
+        "last_command": 21,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 5,
+        "name": "火攻",
+        "resource": 35,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 6,
+        "name": "滚木",
+        "resource": 37,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 7,
+        "name": "落石",
+        "resource": 37,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 8,
+        "name": "奋战",
+        "resource": 20,
+        "first_command": 10,
+        "last_command": 20,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 9,
+        "name": "飞矢",
+        "resource": 21,
+        "first_command": 9,
+        "last_command": 17,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 10,
+        "name": "箭雨",
+        "resource": 21,
+        "first_command": 9,
+        "last_command": 17,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 11,
+        "name": "火箭",
+        "resource": 35,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 12,
+        "name": "水淹",
+        "resource": 36,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 13,
+        "name": "撞击",
+        "resource": 38,
+        "first_command": 0,
+        "last_command": 14,
+        "x_offset": 0,
+        "draw_background_frame": true
+      },
+      {
+        "skill_id": 14,
+        "name": "咒封",
+        "resource": 39,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 15,
+        "name": "定身",
+        "resource": 39,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 16,
+        "name": "流言",
+        "resource": 40,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 17,
+        "name": "援兵",
+        "resource": 41,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 18,
+        "name": "烈火",
+        "resource": 35,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 19,
+        "name": "海啸",
+        "resource": 36,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 20,
+        "name": "奇门",
+        "resource": 39,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 21,
+        "name": "遁甲",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 22,
+        "name": "天变",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 23,
+        "name": "石阵",
+        "resource": 42,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 24,
+        "name": "陷阱",
+        "resource": 43,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 25,
+        "name": "天籁",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 26,
+        "name": "潜踪",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 27,
+        "name": "围攻",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 28,
+        "name": "急行",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 29,
+        "name": "援军",
+        "resource": 41,
+        "first_command": 0,
+        "last_command": 7,
+        "x_offset": 33,
+        "draw_background_frame": false
+      },
+      {
+        "skill_id": 30,
+        "name": "谍报",
+        "resource": 0,
+        "first_command": 0,
+        "last_command": 0,
+        "x_offset": 0,
+        "draw_background_frame": false
+      }
+    ],
+    "ordinary_attack_command_strides": [
+      11,
+      10,
+      9,
+      10,
+      9,
+      10
+    ],
+    "city_maps": [
+      {
+        "city_id": 0,
+        "city": "西凉",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 1,
+        "city": "北平",
+        "map_type": 0,
+        "resource": 110
+      },
+      {
+        "city_id": 2,
+        "city": "襄平",
+        "map_type": 1,
+        "resource": 111
+      },
+      {
+        "city_id": 3,
+        "city": "安定",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 4,
+        "city": "晋阳",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 5,
+        "city": "平原",
+        "map_type": 4,
+        "resource": 114
+      },
+      {
+        "city_id": 6,
+        "city": "南皮",
+        "map_type": 2,
+        "resource": 112
+      },
+      {
+        "city_id": 7,
+        "city": "北海",
+        "map_type": 5,
+        "resource": 115
+      },
+      {
+        "city_id": 8,
+        "city": "天水",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 9,
+        "city": "河内",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 10,
+        "city": "长安",
+        "map_type": 1,
+        "resource": 111
+      },
+      {
+        "city_id": 11,
+        "city": "邺",
+        "map_type": 0,
+        "resource": 110
+      },
+      {
+        "city_id": 12,
+        "city": "濮阳",
+        "map_type": 2,
+        "resource": 112
+      },
+      {
+        "city_id": 13,
+        "city": "徐州",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 14,
+        "city": "汉中",
+        "map_type": 4,
+        "resource": 114
+      },
+      {
+        "city_id": 15,
+        "city": "洛阳",
+        "map_type": 0,
+        "resource": 110
+      },
+      {
+        "city_id": 16,
+        "city": "许昌",
+        "map_type": 2,
+        "resource": 112
+      },
+      {
+        "city_id": 17,
+        "city": "小沛",
+        "map_type": 1,
+        "resource": 111
+      },
+      {
+        "city_id": 18,
+        "city": "下邳",
+        "map_type": 4,
+        "resource": 114
+      },
+      {
+        "city_id": 19,
+        "city": "梓潼",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 20,
+        "city": "宛城",
+        "map_type": 1,
+        "resource": 111
+      },
+      {
+        "city_id": 21,
+        "city": "寿春",
+        "map_type": 1,
+        "resource": 111
+      },
+      {
+        "city_id": 22,
+        "city": "建业",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 23,
+        "city": "吴",
+        "map_type": 5,
+        "resource": 115
+      },
+      {
+        "city_id": 24,
+        "city": "成都",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 25,
+        "city": "棉竹",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 26,
+        "city": "襄阳",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 27,
+        "city": "江夏",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 28,
+        "city": "庐江",
+        "map_type": 4,
+        "resource": 114
+      },
+      {
+        "city_id": 29,
+        "city": "会稽",
+        "map_type": 2,
+        "resource": 112
+      },
+      {
+        "city_id": 30,
+        "city": "云南",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 31,
+        "city": "巴郡",
+        "map_type": 6,
+        "resource": 116
+      },
+      {
+        "city_id": 32,
+        "city": "武陵",
+        "map_type": 1,
+        "resource": 111
+      },
+      {
+        "city_id": 33,
+        "city": "长沙",
+        "map_type": 2,
+        "resource": 112
+      },
+      {
+        "city_id": 34,
+        "city": "柴桑",
+        "map_type": 3,
+        "resource": 113
+      },
+      {
+        "city_id": 35,
+        "city": "零陵",
+        "map_type": 4,
+        "resource": 114
+      },
+      {
+        "city_id": 36,
+        "city": "桂阳",
+        "map_type": 5,
+        "resource": 115
+      },
+      {
+        "city_id": 37,
+        "city": "建宁",
+        "map_type": 1,
+        "resource": 111
+      }
+    ]
+  },
+  "resource_calls_reviewed": [
+    {
+      "function": "FUN_81c00558",
+      "line": "iVar1 = FUN_81c152f0((uint)DAT_81c2b262,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c00784",
+      "line": "iVar2 = FUN_81c152f0(2,'\\x03',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c00bfc",
+      "line": "iVar8 = FUN_81c152f0(0x42,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c00e90",
+      "line": "iVar8 = FUN_81c152f0(0x42,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c0108c",
+      "line": "iVar5 = FUN_81c152f0(0x42,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c01278",
+      "line": "iVar5 = FUN_81c152f0(2,'\\x04',iVar5);"
+    },
+    {
+      "function": "FUN_81c0205c",
+      "line": "iVar2 = FUN_81c152f0(0xe,DAT_81c2b161,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c0205c",
+      "line": "iVar2 = FUN_81c152f0(2,'\\x02',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c021d4",
+      "line": "FUN_81c154d8(0xb,(uint)*pbVar1,pbVar2);"
+    },
+    {
+      "function": "FUN_81c02524",
+      "line": "iVar2 = FUN_81c152f0(in_t0,in_t1,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c027f0",
+      "line": "iVar4 = FUN_81c152f0(7,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c02f08",
+      "line": "FUN_81c154d8(1,param_1 & 0xff,param_2);"
+    },
+    {
+      "function": "FUN_81c02f4c",
+      "line": "FUN_81c06a70(0x1b,0xc,0x11,0,"
+    },
+    {
+      "function": "FUN_81c0343c",
+      "line": "FUN_81c04fb4(7,2,(uVar3 - uVar4) * 0x10 & 0xff,((short)uVar6 - uVar2) * 0x10 & 0xff);"
+    },
+    {
+      "function": "FUN_81c03c20",
+      "line": "FUN_81c04fb4(7,5,((uint)DAT_81c2b125 - (uint)DAT_81c2b150) * 0x10 & 0xffff,uVar1);"
+    },
+    {
+      "function": "FUN_81c03c98",
+      "line": "pbVar4 = (byte *)FUN_81c04f40((uint)DAT_81c2b262,'\\x01');"
+    },
+    {
+      "function": "FUN_81c03c98",
+      "line": "uVar6 = FUN_81c04f40(2,'\\x05');"
+    },
+    {
+      "function": "FUN_81c03f6c",
+      "line": "FUN_81c04fb4(8,1,0,0xf1);"
+    },
+    {
+      "function": "FUN_81c03f6c",
+      "line": "FUN_81c04fb4(9,(uint)DAT_81c2b17d,0x4b,0xf3);"
+    },
+    {
+      "function": "FUN_81c04630",
+      "line": "FUN_81c04fb4(5,uVar3 + 1 & 0xff,uVar6,sVar5);"
+    },
+    {
+      "function": "FUN_81c04630",
+      "line": "FUN_81c04fb4(0x22,iVar4 + (param_1 & 0xff) + 1 & 0xff,uVar6,sVar5);"
+    },
+    {
+      "function": "FUN_81c047bc",
+      "line": "uVar2 = FUN_81c04f40((uint)DAT_81c2b13e,'\\x01');"
+    },
+    {
+      "function": "FUN_81c04ae8",
+      "line": "FUN_81c06a70(0x1b,param_1 & 0xff,param_2 & 0xff,0,(param_3 - uVar1) * 0x10,"
+    },
+    {
+      "function": "FUN_81c04b9c",
+      "line": "uVar1 = FUN_81c04f40((uint)DAT_81c2b13e,'\\x01');"
+    },
+    {
+      "function": "FUN_81c04c60",
+      "line": "uVar1 = FUN_81c04f40((uint)DAT_81c2b262,'\\x01');"
+    },
+    {
+      "function": "FUN_81c04f18",
+      "line": "FUN_81c154d8(1,param_1 & 0xff,param_2);"
+    },
+    {
+      "function": "FUN_81c04f40",
+      "line": "uVar1 = FUN_81c152f0(kind & 0xffff,index,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c04fb4",
+      "line": "FUN_81c077bc(param_1 & 0xffff,param_2 & 0xff,param_3 & 0xffff,param_4,'\\0');"
+    },
+    {
+      "function": "FUN_81c055b0",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(DAT_81c2b161 + 0x2f,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c058b8",
+      "line": "FUN_81c154d8(0xb,uVar8,acStack_48 + 1);"
+    },
+    {
+      "function": "FUN_81c058b8",
+      "line": "FUN_81c154d8(0xb,uVar8,&uStack_42);"
+    },
+    {
+      "function": "FUN_81c058b8",
+      "line": "FUN_81c077bc(0x10,1,0x14,0x31,'\\0');"
+    },
+    {
+      "function": "FUN_81c058b8",
+      "line": "FUN_81c06a70((uint)uVar3,(uint)(byte)(&DAT_81c2014c)[uVar5],"
+    },
+    {
+      "function": "FUN_81c05e0c",
+      "line": "FUN_81c077bc(0x10,1,0x14,0x31,'\\0');"
+    },
+    {
+      "function": "FUN_81c05e0c",
+      "line": "FUN_81c06a70(uVar5,uVar3,uVar4,0,0x14,0x31);"
+    },
+    {
+      "function": "FUN_81c05f7c",
+      "line": "pbVar4 = (byte *)FUN_81c152f0(0xf,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c0620c",
+      "line": "pbVar2 = (byte *)FUN_81c152f0((uint)DAT_81c2b262,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c062d0",
+      "line": "iVar1 = FUN_81c152f0(10,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c06384",
+      "line": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,1,0x14,0x31,'\\x01');"
+    },
+    {
+      "function": "FUN_81c06384",
+      "line": "FUN_81c077bc(9,(uint)DAT_81c2b17d,0x4b,0xf3,'\\x01');"
+    },
+    {
+      "function": "FUN_81c06384",
+      "line": "FUN_81c077bc(9,(uint)DAT_81c2b17d,0x4b,0xf3,'\\0');"
+    },
+    {
+      "function": "FUN_81c0666c",
+      "line": "FUN_81c154d8(1,param_1 & 0xff,param_2);"
+    },
+    {
+      "function": "FUN_81c06a70",
+      "line": "iVar8 = FUN_81c152f0(param_1 & 0xffff,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c077bc",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(param_1 & 0xffff,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c07bc0",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(0x1a,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "iVar7 = FUN_81c152f0(0x3f,DAT_81c2b161,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "FUN_81c154d8(0x40,100,destination);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "FUN_81c154d8(0x40,99,destination);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "FUN_81c154d8(0x40,unaff_s5,destination);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "iVar7 = FUN_81c152f0(0x43,DAT_81c2b161,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "FUN_81c154d8(0x40,99,destination);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "FUN_81c154d8(0x40,0x65,destination);"
+    },
+    {
+      "function": "FUN_81c0b6f0",
+      "line": "FUN_81c154d8(0x40,uVar8 + 100 & 0xff,destination);"
+    },
+    {
+      "function": "FUN_81c0bc70",
+      "line": "FUN_81c154d8(0x40,(int)uVar5 % 3 + 0x7aU & 0xff,pcVar7);"
+    },
+    {
+      "function": "FUN_81c0c754",
+      "line": "FUN_81c154d8(0x40,iVar4 + uVar10 + ((int)uVar7 >> 2) * -4 & 0xff,destination);"
+    },
+    {
+      "function": "FUN_81c0c754",
+      "line": "FUN_81c154d8(0x40,0x6e,source);"
+    },
+    {
+      "function": "FUN_81c0cb64",
+      "line": "FUN_81c154d8(0x40,0x95,g_scratch_buffer_4096);"
+    },
+    {
+      "function": "FUN_81c0cb64",
+      "line": "FUN_81c154d8(0x40,0x96,source);"
+    },
+    {
+      "function": "FUN_81c0cb64",
+      "line": "FUN_81c154d8(0x40,0x97,source);"
+    },
+    {
+      "function": "FUN_81c0cd08",
+      "line": "FUN_81c154d8(0x40,uVar6,g_scratch_buffer_4096);"
+    },
+    {
+      "function": "FUN_81c0d498",
+      "line": "FUN_81c154d8(0x40,0x25,acStack_28);"
+    },
+    {
+      "function": "FUN_81c0d4f8",
+      "line": "FUN_81c154d8(0x40,0x26,acStack_58);"
+    },
+    {
+      "function": "FUN_81c0d558",
+      "line": "FUN_81c154d8(0x40,0x27,acStack_28);"
+    },
+    {
+      "function": "FUN_81c0d5b8",
+      "line": "FUN_81c154d8(0x40,0x28,acStack_28);"
+    },
+    {
+      "function": "FUN_81c0dc30",
+      "line": "FUN_81c154d8(0x40,0x74,destination);"
+    },
+    {
+      "function": "FUN_81c0dc30",
+      "line": "FUN_81c154d8(0x40,0x71,destination);"
+    },
+    {
+      "function": "FUN_81c0dc30",
+      "line": "FUN_81c154d8(0x40,0x75,destination);"
+    },
+    {
+      "function": "FUN_81c0dc30",
+      "line": "FUN_81c154d8(0x40,0x76,destination);"
+    },
+    {
+      "function": "FUN_81c0dc30",
+      "line": "FUN_81c154d8(0x40,0x72,source);"
+    },
+    {
+      "function": "FUN_81c0dc30",
+      "line": "FUN_81c154d8(0x40,0x73,source);"
+    },
+    {
+      "function": "FUN_81c0ddf0",
+      "line": "FUN_81c154d8(0x40,uVar3 & 0xff,pcVar6);"
+    },
+    {
+      "function": "FUN_81c0e38c",
+      "line": "FUN_81c154d8(0x40,0xa2,g_scratch_buffer_4096);"
+    },
+    {
+      "function": "FUN_81c0e53c",
+      "line": "FUN_81c154d8(0x40,(int)uVar2 % 3 + 0x7dU & 0xff,pcVar4);"
+    },
+    {
+      "function": "FUN_81c0e87c",
+      "line": "FUN_81c154d8(0x40,(int)uVar2 % 3 - 0x7dU & 0xff,pcVar8);"
+    },
+    {
+      "function": "FUN_81c0eb10",
+      "line": "FUN_81c154d8(0x40,0x2e,acStack_50);"
+    },
+    {
+      "function": "FUN_81c0ed78",
+      "line": "FUN_81c154d8(0x40,0xa1,g_scratch_buffer_4096);"
+    },
+    {
+      "function": "FUN_81c0ef00",
+      "line": "FUN_81c154d8(0x40,0x5d,pcVar9);"
+    },
+    {
+      "function": "FUN_81c0ef00",
+      "line": "FUN_81c154d8(0x40,0x98,pcVar9);"
+    },
+    {
+      "function": "FUN_81c0f244",
+      "line": "FUN_81c154d8(0x40,0x5d,pcVar10);"
+    },
+    {
+      "function": "FUN_81c0f244",
+      "line": "FUN_81c154d8(0x40,0x98,pcVar10);"
+    },
+    {
+      "function": "FUN_81c0fab8",
+      "line": "FUN_81c154d8(0x40,0x5d,pcVar6);"
+    },
+    {
+      "function": "FUN_81c10050",
+      "line": "FUN_81c154d8(0x40,0x5d,g_scratch_buffer_4096);"
+    },
+    {
+      "function": "FUN_81c10394",
+      "line": "FUN_81c154d8(2,0xf,pbVar7);"
+    },
+    {
+      "function": "FUN_81c10a4c",
+      "line": "FUN_81c154d8(0x40,DAT_81c2b17e + 0x69 & 0xff,source);"
+    },
+    {
+      "function": "FUN_81c10d6c",
+      "line": "FUN_81c154d8(0x40,0x6c,source);"
+    },
+    {
+      "function": "FUN_81c11404",
+      "line": "FUN_81c154d8(0x40,0x4e,destination);"
+    },
+    {
+      "function": "FUN_81c11404",
+      "line": "FUN_81c154d8(0x40,0x4f,source);"
+    },
+    {
+      "function": "FUN_81c11494",
+      "line": "FUN_81c154d8(0x40,0x51,source);"
+    },
+    {
+      "function": "FUN_81c114fc",
+      "line": "FUN_81c154d8(0x40,0x53,source);"
+    },
+    {
+      "function": "FUN_81c11638",
+      "line": "FUN_81c154d8(0x40,0x52,source);"
+    },
+    {
+      "function": "FUN_81c116a0",
+      "line": "FUN_81c154d8(0x40,0x5f,pcVar1);"
+    },
+    {
+      "function": "FUN_81c117d0",
+      "line": "FUN_81c154d8(0x40,(int)uVar6 % 3 - 0x80U & 0xff,pcVar8);"
+    },
+    {
+      "function": "FUN_81c11a2c",
+      "line": "FUN_81c154d8(0x40,0x94,pcVar4);"
+    },
+    {
+      "function": "FUN_81c11b50",
+      "line": "iVar1 = FUN_81c152f0(2,'\\n',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c11bbc",
+      "line": "iVar1 = FUN_81c152f0(2,'\\n',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c11d98",
+      "line": "pbVar1 = (byte *)FUN_81c152f0(0x4c,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c11d98",
+      "line": "FUN_81c154d8(0x40,0x62,destination);"
+    },
+    {
+      "function": "FUN_81c11d98",
+      "line": "FUN_81c154d8(0x40,0x61,source);"
+    },
+    {
+      "function": "FUN_81c11f18",
+      "line": "pbVar1 = (byte *)FUN_81c152f0(0x4c,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c11f18",
+      "line": "FUN_81c154d8(0x40,0x68,source);"
+    },
+    {
+      "function": "FUN_81c11f18",
+      "line": "FUN_81c154d8(0x40,0x69,source);"
+    },
+    {
+      "function": "FUN_81c12058",
+      "line": "pbVar1 = (byte *)FUN_81c152f0(0x4c,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12058",
+      "line": "FUN_81c154d8(0x40,0x62,destination);"
+    },
+    {
+      "function": "FUN_81c12058",
+      "line": "FUN_81c154d8(0x40,0x5b,source);"
+    },
+    {
+      "function": "FUN_81c12188",
+      "line": "pbVar1 = (byte *)FUN_81c152f0(0x4c,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12188",
+      "line": "FUN_81c154d8(0x40,0x62,destination);"
+    },
+    {
+      "function": "FUN_81c12188",
+      "line": "FUN_81c154d8(0x40,0x5c,source);"
+    },
+    {
+      "function": "FUN_81c12308",
+      "line": "iVar1 = FUN_81c152f0(2,'\\v',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12374",
+      "line": "iVar1 = FUN_81c152f0(2,'\\v',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c127ec",
+      "line": "iVar3 = FUN_81c152f0(0x3b,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c128b4",
+      "line": "iVar3 = FUN_81c152f0(0x3b,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12b18",
+      "line": "pbVar4 = (byte *)FUN_81c152f0(0x4b,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "iVar1 = FUN_81c152f0(2,'\\x0e',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "iVar1 = FUN_81c152f0(0x36,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(0x37,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(0x37,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "iVar1 = FUN_81c152f0(0x38,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(DAT_81c2b161 + 0x2f,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(0x45,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "FUN_81c154d8(0x40,0x3f,source);"
+    },
+    {
+      "function": "FUN_81c12e18",
+      "line": "FUN_81c154d8(0x40,0x40,source);"
+    },
+    {
+      "function": "FUN_81c136a0",
+      "line": "iVar3 = FUN_81c152f0(0x3b,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c13b9c",
+      "line": "FUN_81c154d8(0x40,0x29,acStack_28);"
+    },
+    {
+      "function": "FUN_81c13c3c",
+      "line": "FUN_81c154d8(0x40,0x2a,acStack_28);"
+    },
+    {
+      "function": "FUN_81c13cdc",
+      "line": "FUN_81c154d8(0x40,0x2b,acStack_28);"
+    },
+    {
+      "function": "sango_select_session",
+      "line": "iVar3 = FUN_81c152f0(2,'\\x06',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c15d18",
+      "line": "FUN_81c077bc((uint)param_1,1,0,0,'\\0');"
+    },
+    {
+      "function": "FUN_81c15d18",
+      "line": "FUN_81c077bc((uint)param_1,1,0,0,'\\0');"
+    },
+    {
+      "function": "FUN_81c15d18",
+      "line": "uVar1 = FUN_81c162e0(param_2 + (short)uVar2);"
+    },
+    {
+      "function": "FUN_81c15e6c",
+      "line": "FUN_81c154d8(1,0x2d,abStack_60);"
+    },
+    {
+      "function": "FUN_81c15e6c",
+      "line": "FUN_81c077bc(0x2f,1,0x3c,0x14,'\\x01');"
+    },
+    {
+      "function": "FUN_81c15e6c",
+      "line": "iVar2 = FUN_81c152f0(2,'\\x06',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c162e0",
+      "line": "iVar1 = FUN_81c152f0((uint)kind,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c162e0",
+      "line": "uVar2 = FUN_81c06a70((uint)kind,0,(uint)*(byte *)(iVar1 + 5),1,0,0);"
+    },
+    {
+      "function": "FUN_81c164c8",
+      "line": "FUN_81c077bc(0x2e,1,0,0,'\\x01');"
+    },
+    {
+      "function": "FUN_81c164c8",
+      "line": "FUN_81c154d8(1,0x40,acStack_88);"
+    },
+    {
+      "function": "FUN_81c164c8",
+      "line": "FUN_81c154d8(1,0x40,acStack_60);"
+    },
+    {
+      "function": "FUN_81c164c8",
+      "line": "FUN_81c154d8(1,0x42,acStack_88);"
+    },
+    {
+      "function": "FUN_81c164c8",
+      "line": "FUN_81c154d8(1,0x42,acStack_88);"
+    },
+    {
+      "function": "FUN_81c164c8",
+      "line": "FUN_81c154d8(1,0x41,acStack_88);"
+    },
+    {
+      "function": "FUN_81c16704",
+      "line": "FUN_81c154d8(1,0x44,acStack_38);"
+    },
+    {
+      "function": "FUN_81c16704",
+      "line": "FUN_81c154d8(1,0x40,acStack_38);"
+    },
+    {
+      "function": "FUN_81c16704",
+      "line": "FUN_81c154d8(1,0x46,acStack_38);"
+    },
+    {
+      "function": "FUN_81c16940",
+      "line": "FUN_81c154d8(1,0x43,acStack_60);"
+    },
+    {
+      "function": "FUN_81c16940",
+      "line": "FUN_81c154d8(1,0x40,acStack_60);"
+    },
+    {
+      "function": "FUN_81c16940",
+      "line": "FUN_81c154d8(1,0x47,auStack_38);"
+    },
+    {
+      "function": "FUN_81c16940",
+      "line": "FUN_81c154d8(1,0x45,acStack_60);"
+    },
+    {
+      "function": "sango_game_lifecycle",
+      "line": "FUN_81c162e0(3);"
+    },
+    {
+      "function": "sango_game_lifecycle",
+      "line": "FUN_81c154d8(1,0x2f,acStack_40);"
+    },
+    {
+      "function": "sango_game_lifecycle",
+      "line": "FUN_81c154d8(1,0x2e,acStack_78);"
+    },
+    {
+      "function": "FUN_81c16db0",
+      "line": "FUN_81c154d8(1,(byte)param_1 + 0x2e & 0xff,acStack_40);"
+    },
+    {
+      "function": "FUN_81c17734",
+      "line": "iVar2 = FUN_81c152f0(0x3f,DAT_81c2b161,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c17a08",
+      "line": "iVar3 = FUN_81c152f0(0x42,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c17c48",
+      "line": "FUN_81c154d8(0x40,0x6f,source);"
+    },
+    {
+      "function": "FUN_81c17c48",
+      "line": "FUN_81c154d8(0x40,0x70,source);"
+    },
+    {
+      "function": "FUN_81c17c48",
+      "line": "pbVar2 = (byte *)FUN_81c152f0(DAT_81c2b161 + 0x2f,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c17e18",
+      "line": "iVar2 = FUN_81c152f0(0x43,DAT_81c2b161,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c17eb4",
+      "line": "iVar1 = FUN_81c152f0(0x42,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c17f44",
+      "line": "FUN_81c154d8(0x40,(uint)param_1,acStack_20);"
+    },
+    {
+      "function": "FUN_81c17f78",
+      "line": "pbVar1 = (byte *)FUN_81c152f0(DAT_81c2b161 + 0x2f,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c18024",
+      "line": "pbVar1 = (byte *)FUN_81c152f0(DAT_81c2b161 + 0x2f,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c182d0",
+      "line": "iVar1 = FUN_81c152f0(0x3b,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c18450",
+      "line": "FUN_81c154d8(2,7,abStack_30);"
+    },
+    {
+      "function": "FUN_81c185cc",
+      "line": "iVar2 = FUN_81c152f0(0x42,'\\x01',g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c185cc",
+      "line": "FUN_81c154d8(0x40,unaff_s3,param_3);"
+    },
+    {
+      "function": "FUN_81c18704",
+      "line": "FUN_81c154d8(0x40,0x41,acStack_40);"
+    },
+    {
+      "function": "FUN_81c18704",
+      "line": "FUN_81c154d8(2,7,abStack_30);"
+    },
+    {
+      "function": "FUN_81c18704",
+      "line": "FUN_81c154d8(0x40,uVar2 + 0x42 & 0xff,acStack_40);"
+    },
+    {
+      "function": "FUN_81c18c80",
+      "line": "FUN_81c154d8(0x49,(byte)param_1 + 1 & 0xff,param_2);"
+    },
+    {
+      "function": "FUN_81c18cac",
+      "line": "FUN_81c154d8(unaff_s1,(param_1 & 0xff) + 1 & 0xff,acStack_50);"
+    },
+    {
+      "function": "FUN_81c18cac",
+      "line": "FUN_81c154d8(2,8,abStack_38);"
+    },
+    {
+      "function": "FUN_81c18e88",
+      "line": "FUN_81c154d8(uVar2,in_t1,param_3);"
+    },
+    {
+      "function": "FUN_81c19100",
+      "line": "FUN_81c154d8(0x40,0x17,acStack_48);"
+    },
+    {
+      "function": "FUN_81c19100",
+      "line": "FUN_81c154d8(2,8,abStack_38);"
+    },
+    {
+      "function": "FUN_81c19100",
+      "line": "FUN_81c154d8(0x40,uVar2 + 0x18 & 0xff,acStack_48);"
+    },
+    {
+      "function": "FUN_81c1971c",
+      "line": "FUN_81c154d8(0x3a,(byte)param_1 + 1 & 0xff,param_2);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,2,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,3,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(unaff_s0,uVar5,param_3 + 5);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,4,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,5,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,6,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,7,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,8,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,9,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,10,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,0xb,param_3);"
+    },
+    {
+      "function": "FUN_81c19748",
+      "line": "FUN_81c154d8(0x40,1,param_3);"
+    },
+    {
+      "function": "FUN_81c19a98",
+      "line": "FUN_81c154d8(0x40,param_4,param_2);"
+    },
+    {
+      "function": "sango_load_named_text",
+      "line": "FUN_81c154d8(in_a3,index + 1 & 0xff,output);"
+    },
+    {
+      "function": "FUN_81c19df8",
+      "line": "FUN_81c154d8(2,0xc,abStack_20);"
+    },
+    {
+      "function": "FUN_81c19df8",
+      "line": "FUN_81c154d8(2,0xd,abStack_18);"
+    },
+    {
+      "function": "FUN_81c1add4",
+      "line": "puVar2 = (undefined1 *)FUN_81c152f0(0x39,param_1,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c1add4",
+      "line": "puVar10 = (undefined1 *)FUN_81c152f0(0x3d,param_1,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c1add4",
+      "line": "pvVar4 = (void *)FUN_81c152f0(0x41,param_1,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c1add4",
+      "line": "pvVar4 = (void *)FUN_81c152f0(0x44,param_1,g_sango_package_data);"
+    },
+    {
+      "function": "FUN_81c1b2b4",
+      "line": "FUN_81c154d8(0x40,0x79,acStack_28);"
+    },
+    {
+      "function": "FUN_81c1b364",
+      "line": "FUN_81c154d8(0x40,0x2c,acStack_58);"
+    },
+    {
+      "function": "FUN_81c1b364",
+      "line": "FUN_81c154d8(0x40,0x2d,acStack_58);"
+    },
+    {
+      "function": "FUN_81c1b784",
+      "line": "FUN_81c154d8(0x40,0xa3,pbVar1 + 0xfa);"
+    }
+  ],
+  "limits": "12、60、74未定位当前读取路径；未命名的具体天气、未引用帧和精灵角色保留编号，不把静态检查当作完整战役运行验证。"
+}

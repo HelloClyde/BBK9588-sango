@@ -37,10 +37,11 @@ class LibraryTests(unittest.TestCase):
                 self.assertEqual(self.packed[(rid-1)*4:rid*4],self.original[(rid-1)*4:rid*4])
         self.assertEqual(len(self.packed),461116)
 
-    def test_maps_are_not_misread_as_images(self):
+    def test_maps_and_menu_animations_use_correct_formats(self):
         maps=[r for r in self.manifest['records'] if r['kind']=='map']
         self.assertEqual([r['id'] for r in maps],list(range(110,117)))
-        self.assertEqual(self.manifest['png_frames'],1186)
+        self.assertEqual(self.manifest['png_frames'],1202)
+        self.assertTrue(all(r['kind']=='animation' for r in self.manifest['records'] if 100<=r['id']<=107))
         for r in maps:
             grid=json.loads((SOURCE/r['map']).read_text(encoding='utf-8'))
             self.assertEqual((grid['width'],grid['height']),(32,32))
@@ -50,6 +51,8 @@ class LibraryTests(unittest.TestCase):
             root=Path(name)/'assets/library'
             result=lib.unpack(self.packed,root)
             self.assertEqual(len(result['records']),89)
+            self.assertEqual(result['png_frames'],1204)  # two supplemental PNGs
+            self.assertTrue(all(r['kind']=='animation' for r in result['records'] if 100<=r['id']<=107))
             self.assertEqual(lib.pack(root),self.packed)
 
     def test_c_fallbacks_and_library_use_identical_pixels(self):

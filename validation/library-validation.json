@@ -23,17 +23,15 @@
     ],
     "deterministic_reunpack_repack": true
   },
-  "exported_png_frames": 1186,
+  "exported_png_frames": 1202,
   "map_json_files": 7,
-  "animation_timelines": 19,
+  "animation_timelines": 27,
   "native_or_hardware_test": false,
   "semantic_names": {
     "resources": 87,
-    "renamed_files": 1299,
-    "png_frames": 1186,
+    "png_frames": 1202,
     "portraits_named_from_scenario_text": 800,
     "portraits_retaining_special_character_codes": 22,
-    "file_contents_unchanged": true,
     "bda_and_lib_hashes_unchanged": true,
     "reunpack_uses_same_naming_scheme": true,
     "index": "assets/library/资源目录.md",
@@ -88,6 +86,22 @@
       "evidence": "Reviewed production C frame arguments and decoded original resource064 prompt text; no disaster usage in these four callers.",
       "png_and_record_bytes_unchanged": true,
       "library_sha256_unchanged": true
-    }
+    },
+    "named_source_files": 1323,
+    "existing_png_seed_timeline_bytes_unchanged": true,
+    "code_usage_reviewed": 89,
+    "confirmed_current": 85,
+    "historical_replaced": [
+      6
+    ],
+    "unresolved_current_usage": [
+      12,
+      60,
+      74
+    ],
+    "additional_menu_pngs": 16,
+    "additional_menu_timelines": 8,
+    "code_usage_check": "python tools/audit_resource_usage.py --check",
+    "code_evidence": "assets/library/代码用途核对.md"
   }
 }

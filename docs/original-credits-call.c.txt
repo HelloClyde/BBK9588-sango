@@ -1,0 +1,11 @@
+/* 原版 9588 BDA 恢复代码：FUN_81c15e44，VA 0x81c15e44。
+ * 来源 BDA SHA-256:
+ * 38f3740af4d21ea3108e964b2824b518b1b5cc837e81fcb9b3cfefced7ff8ac6
+ * 当前版本已由 sango_credits_draw 的竖屏页替代，此片段只作原资源6的用途证据。
+ */
+void FUN_81c15e44(void)
+{
+  FUN_81c162e0(6);
+  FUN_81c14164(5000,'\x01');
+  return;
+}

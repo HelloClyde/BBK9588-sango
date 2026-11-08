@@ -8,7 +8,7 @@ try:
 except ImportError:
     import sango_resource_names as names
 
-ANIMATIONS={3,6,19,20,21,22,23,24,25,27,35,36,37,38,39,40,41,42,43}
+ANIMATIONS={3,6,19,20,21,22,23,24,25,27,35,36,37,38,39,40,41,42,43,*range(100,108)}
 ROOT=Path(__file__).resolve().parents[1]
 DEFAULT=ROOT/'assets/library'
 LEVELS=(255,170,85,0)
@@ -150,19 +150,25 @@ def semantic_names(data,root,manifest):
             old.rename(new)
     for folder in old_folders:
         if folder!=root and folder.exists() and not any(folder.iterdir()):folder.rmdir()
-    manifest['naming_schema']=1
+    for supplement in manifest.get('supplements',[]):
+        supplement.update(names.identity(supplement['id']))
+    manifest['naming_schema']=2
     write_resource_index(root,manifest)
 
 def write_resource_index(root,manifest):
     lines=['# 资源目录','',
-        '按实际画面和调用用途命名；资源 ID 与帧序保持原值。点击名称进入对应目录。',
+        '按代码读取路径、选择分支和初始化表命名；资源 ID 与帧序保持原值。点击名称进入对应目录。',
         '头像姓名取自同剧本的原游戏姓名表；`字码XXXX` 表示不能直接解码的游戏专用字，未猜写人名。',
         '动作编号、地图编号和部分样式编号表示原序号，不代表已确认某次历史战役或某个具体招式。','',
-        '| ID | 分类 | 素材 | 类型 | 图片数 |','| --- | --- | --- | --- | --- |']
+        '逐项证据保存在 `manifest.json` 的 `code_evidence`。','',
+        '| ID | 分类 | 素材 | 类型 | 图片数 | 状态 |','| --- | --- | --- | --- | --- | --- |']
     kinds={'raw':'原始数据','bitmap':'多帧位图','animation':'动画与指令','map':'地形矩阵'}
+    if (root/'代码用途核对.md').is_file():
+        lines.insert(7,'完整核对记录及计谋/城市战场选择表见 [代码用途核对](代码用途核对.md)。\n')
+    statuses={'confirmed':'已按代码确认','historical':'历史调用，当前已替代','unresolved':'调用或用途待确认'}
     for entry in manifest['records']:
         folder=Path(entry['record']).parent.as_posix();count=sum(len(s['pngs']) for s in entry.get('images',[]))
-        lines.append(f"| {entry['id']:03d} | {entry['category']} | [{entry['name']}]({folder}/) | {kinds[entry['kind']]} | {count} |")
+        lines.append(f"| {entry['id']:03d} | {entry['category']} | [{entry['name']}]({folder}/) | {kinds[entry['kind']]} | {count} | {statuses[entry['usage_status']]} |")
     event=next((entry for entry in manifest['records'] if entry['id']==76 and entry.get('frame_usage')),None)
     if event:
         lines.extend(['','## 资源076逐帧用途','',

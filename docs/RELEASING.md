@@ -18,7 +18,7 @@ upload-artifact v7.0.2、download-artifact v8.0.2。
 
 正常构建直接读取仓库中的解包资源和新增目标 PNG，不需要另外提供原版 BDA、LIB、固件、NAND、系统字库转储或个人存档。
 升级包包含新版程序及 `应用/数据/游戏/sango.lib`；发行目录同时提供独立 `sango.lib`。
-CI 运行 10 项资源回包检查，并校验 BDA、LIB、ZIP 内资源和逐文件哈希。
+CI先检查89项资源用途的代码依据及命名，再运行10项资源回包检查，并校验BDA、LIB、ZIP内资源和逐文件哈希。
 当前源文件包含原游戏恢复代码及初始化数据，许可缺项见根目录声明，不可擅自改成整仓 MIT。
 
 预发布说明位于 `releases/v0.1.0-alpha.1.md`。实际发布后应核对 tag 提交、对应 Actions run、
