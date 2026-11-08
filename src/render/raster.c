@@ -289,102 +289,104 @@ void sango_raster_draw_masked_screen(uint32_t param_1, short param_2, uint32_t p
 #undef param_5
 
 /* 原函数 0x81c149dc */
-void sango_text_draw_legacy(uint16_t param_1, uint16_t param_2, char *param_3)
+void sango_text_draw_legacy(uint16_t x, uint16_t y, char *text)
 {
     unsigned char abi_storage[28] __attribute__((aligned(8)));
-#define local_34 (*(int *)(abi_storage + 4))
-#define local_30 (*(int *)(abi_storage + 8))
+#define lines_written (*(int *)(abi_storage + 4))
+#define source_offset (*(int *)(abi_storage + 8))
 
-    uint32_t uVar1;
-    uint16_t uVar2;
-    int iVar3;
-    void *ptr;
-    char *pcVar4;
-    uint32_t uVar5;
-    int iVar6;
-    uint8_t *puVar7;
-    int iVar8;
-    uint32_t uVar9;
-    int iVar10;
-    bool bVar11;
-    int iVar12;
-    int iVar13;
+    uint32_t original_y;
+    uint16_t clip_bottom;
+    int line_stride;
+    void *wrapped_buffer;
+    char *scanned_character;
+    uint32_t characters_per_row;
+    int scan_offset;
+    uint8_t *line_terminator;
+    int last_byte_offset;
+    uint32_t wrapped_text_bytes;
+    int line_end_offset;
+    bool split_multibyte_character;
+    int buffer_offset;
+    int row_y_offset;
 
-    uVar2 = g_text_bottom;
-    uVar1 = (uint32_t)param_2;
-    uVar5 = (uint32_t)param_1;
-    if ((uint32_t)param_1 < (uint32_t)g_text_left)
+    clip_bottom = g_text_bottom;
+    original_y = (uint32_t)y;
+    uint32_t clipped_left = (uint32_t)x;
+    if ((uint32_t)x < (uint32_t)g_text_left)
     {
-        uVar5 = (uint32_t)g_text_left;
+        clipped_left = (uint32_t)g_text_left;
     }
-    if (uVar1 < g_text_top)
+    if (original_y < g_text_top)
     {
-        param_2 = g_text_top;
+        y = g_text_top;
     }
-    uVar5 = (int)(g_text_right - uVar5) / 6;
-    local_30 = 0;
-    local_34 = 0;
-    iVar3 = sango_crt_strlen(param_3);
-    if (uVar5 == 0)
+    characters_per_row = (int)(g_text_right - clipped_left) / 6;
+    source_offset = 0;
+    lines_written = 0;
+    int text_bytes = sango_crt_strlen(text);
+    if (characters_per_row == 0)
     {
         sango_legacy_trap(7);
     }
-    uVar9 = iVar3 + iVar3 / (int)uVar5;
-    if ((int)uVar9 < (int)uVar5)
+    wrapped_text_bytes = text_bytes + text_bytes / (int)characters_per_row;
+    if ((int)wrapped_text_bytes < (int)characters_per_row)
     {
-        uVar5 = uVar9;
+        characters_per_row = wrapped_text_bytes;
     }
-    ptr = bbk_alloc(uVar9 + 0x230);
-    iVar3 = uVar5 + 1;
-    sango_memory_fill(ptr, 0, uVar9 + 0x230);
-    if (iVar3 == 0)
+    wrapped_buffer = bbk_alloc(wrapped_text_bytes + 0x230);
+    line_stride = characters_per_row + 1;
+    sango_memory_fill(wrapped_buffer, 0, wrapped_text_bytes + 0x230);
+    if (line_stride == 0)
     {
         sango_legacy_trap(7);
     }
-    if (-1 < (int)uVar9 / iVar3)
+    if (-1 < (int)wrapped_text_bytes / line_stride)
     {
-        iVar13 = 0;
-        iVar12 = 0;
+        row_y_offset = 0;
+        buffer_offset = 0;
         do
         {
-            bVar11 = false;
-            iVar10 = iVar12 + uVar5;
-            bbk_memcpy((void *)((int)ptr + iVar12), param_3 + local_30, uVar5);
-            puVar7 = (uint8_t *)((int)ptr + iVar10);
-            local_30 = local_30 + uVar5;
-            if ((0x80 < (uint8_t)puVar7[-1]) &&
-                (iVar8 = iVar10 + -1, iVar6 = iVar8, iVar12 <= iVar8))
+            split_multibyte_character = false;
+            line_end_offset = buffer_offset + characters_per_row;
+            bbk_memcpy((void *)((int)wrapped_buffer + buffer_offset), text + source_offset,
+                       characters_per_row);
+            line_terminator = (uint8_t *)((int)wrapped_buffer + line_end_offset);
+            source_offset = source_offset + characters_per_row;
+            if ((0x80 < (uint8_t)line_terminator[-1]) &&
+                (last_byte_offset = line_end_offset + -1, scan_offset = last_byte_offset,
+                 buffer_offset <= last_byte_offset))
             {
                 do
                 {
-                    pcVar4 = (char *)((int)ptr + iVar6);
-                    iVar6 = iVar6 + -1;
-                    if (-1 < *pcVar4)
+                    scanned_character = (char *)((int)wrapped_buffer + scan_offset);
+                    scan_offset = scan_offset + -1;
+                    if (-1 < *scanned_character)
                         break;
-                    bVar11 = (bool)(bVar11 ^ 1);
-                } while (iVar12 <= iVar6);
-                if (bVar11)
+                    split_multibyte_character = (bool)(split_multibyte_character ^ 1);
+                } while (buffer_offset <= scan_offset);
+                if (split_multibyte_character)
                 {
-                    puVar7 = (uint8_t *)((int)ptr + iVar8);
-                    local_30 = local_30 + -1;
-                    iVar10 = iVar8;
+                    line_terminator = (uint8_t *)((int)wrapped_buffer + last_byte_offset);
+                    source_offset = source_offset + -1;
+                    line_end_offset = last_byte_offset;
                 }
             }
-            *puVar7 = 0;
-            if (((int)(uVar9 - iVar12) < (int)uVar5) ||
-                ((int)((uint32_t)uVar2 - (uint32_t)param_2) <= iVar13))
+            *line_terminator = 0;
+            if (((int)(wrapped_text_bytes - buffer_offset) < (int)characters_per_row) ||
+                ((int)((uint32_t)clip_bottom - (uint32_t)y) <= row_y_offset))
                 break;
             sango_display_select_font(0, 0);
-            sango_text_draw_native(param_1, (short)((uVar1 + iVar13) * 0x10000 >> 0x10),
-                                   (char *)((int)ptr + iVar12), 0);
-            local_34 = local_34 + 1;
-            iVar13 = iVar13 + 0xc;
-            if (iVar3 == 0)
+            sango_text_draw_native(x, (short)((original_y + row_y_offset) * 0x10000 >> 0x10),
+                                   (char *)((int)wrapped_buffer + buffer_offset), 0);
+            lines_written = lines_written + 1;
+            row_y_offset = row_y_offset + 0xc;
+            if (line_stride == 0)
             {
                 sango_legacy_trap(7);
             }
-            iVar12 = iVar10 + 1;
-        } while (local_34 <= (int)uVar9 / iVar3);
+            buffer_offset = line_end_offset + 1;
+        } while (lines_written <= (int)wrapped_text_bytes / line_stride);
     }
     if (g_text_auto_clip_view2 != '\0')
     {
@@ -393,11 +395,11 @@ void sango_text_draw_legacy(uint16_t param_1, uint16_t param_2, char *param_3)
         g_text_left = 0;
         g_text_top = 0;
     }
-    bbk_free_if_nonnull(ptr);
+    bbk_free_if_nonnull(wrapped_buffer);
     return;
 }
-#undef local_34
-#undef local_30
+#undef lines_written
+#undef source_offset
 
 /* 原函数 0x81c14cac */
 void sango_font_load_glyph(uint32_t param_1, int param_2)

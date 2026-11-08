@@ -222,119 +222,121 @@ void sango_menu_show_credits(void)
 }
 
 /* 原函数 0x81c15e6c */
-uint32_t sango_menu_choose_ruler(uint32_t param_1)
+uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
 {
     unsigned char abi_storage[64] __attribute__((aligned(8)));
-#define abStack_60 (*(uint8_t(*)[40])(abi_storage + 0))
-#define local_38 (*(int *)(abi_storage + 40))
-#define local_34 (*(int *)(abi_storage + 44))
+#define city_ids_or_title (*(uint8_t(*)[40])(abi_storage + 0))
+#define event_kind (*(int *)(abi_storage + 40))
+#define key_code (*(int *)(abi_storage + 44))
 
-    bool bVar1;
-    int iVar2;
-    uint32_t uVar3;
-    uint32_t uVar4;
-    int iVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
+    bool cities_flash_on;
+    int city_coordinates_address;
+    uint32_t first_visible;
+    uint32_t highlight_top;
+    int row_position;
+    uint32_t city_count;
+    uint32_t selected_ruler;
+    uint32_t total_rulers;
 
-    uVar8 = param_1 & 0xff;
-    uVar6 = 0;
+    total_rulers = ruler_count & 0xff;
+    uint32_t ruler_index = 0;
     sango_display_fill_gray_rectangle(0, 0, 0xef, 0x13f, 0, 0);
-    if (uVar8 != 0)
+    if (total_rulers != 0)
     {
         do
         {
-            uVar4 = uVar6 * 6 & 0xff;
-            sango_load_named_text(g_temp_character_ids_address[uVar6],
-                                  g_move_costs_address_view3 + uVar4);
-            uVar3 = sango_crt_strlen(g_move_costs_address_view3);
-            uVar3 = uVar3 & 0xff;
-            if (uVar3 < uVar4 + 6)
+            uint32_t text_slot_offset = ruler_index * 6 & 0xff;
+            sango_load_named_text(g_temp_character_ids_address[ruler_index],
+                                  g_move_costs_address_view3 + text_slot_offset);
+            uint32_t text_bytes = sango_crt_strlen(g_move_costs_address_view3);
+            text_bytes = text_bytes & 0xff;
+            if (text_bytes < text_slot_offset + 6)
             {
-                sango_memory_fill(g_move_costs_address_view3 + uVar3, 0x20, (uVar4 - uVar3) + 6);
+                sango_memory_fill(g_move_costs_address_view3 + text_bytes, 0x20,
+                                  (text_slot_offset - text_bytes) + 6);
             }
-            uVar6 = uVar6 + 1 & 0xff;
-        } while (uVar6 < uVar8);
+            ruler_index = ruler_index + 1 & 0xff;
+        } while (ruler_index < total_rulers);
     }
     sango_display_draw_rectangle(0, 0, 0xef, 0x13f, 3, 0, 0);
-    sango_resource_read_text(1, 0x2d, abStack_60);
-    sango_text_draw_legacy(0x48, 4, (char *)abStack_60);
+    sango_resource_read_text(1, 0x2d, city_ids_or_title);
+    sango_text_draw_legacy(0x48, 4, (char *)city_ids_or_title);
     sango_bitmap_draw_resource(0x2f, 1, 0x3c, 0x14, '\x01');
     sango_display_draw_rectangle(0xd, 10, 0x36, 0x13b, 3, 0, 0);
-    iVar2 = sango_resource_item(2, '\x06', g_resource_package_address);
+    city_coordinates_address = sango_resource_item(2, '\x06', g_resource_package_address);
     sango_menu_draw_ruler_names(0);
     sango_display_invert_rectangle(0x10, 0xd, 0x34, 0x19, 0);
-    uVar3 = 0;
-    uVar7 = 0;
-    bVar1 = false;
-    uVar6 = sango_faction_list_cities((uint32_t)*g_temp_character_ids_address, (int)abStack_60);
-    uVar4 = 0xd;
-    iVar5 = 0x19;
+    first_visible = 0;
+    selected_ruler = 0;
+    cities_flash_on = false;
+    city_count =
+        sango_faction_list_cities((uint32_t)*g_temp_character_ids_address, (int)city_ids_or_title);
+    highlight_top = 0xd;
+    row_position = 0x19;
     do
     {
-        while (sango_input_next_event(&local_38), local_38 != 5)
+        while (sango_input_next_event(&event_kind), event_kind != 5)
         {
-            bVar1 = (bool)(bVar1 ^ 1);
-            sango_menu_flash_ruler_cities(uVar6, abStack_60, iVar2);
+            cities_flash_on = (bool)(cities_flash_on ^ 1);
+            sango_menu_flash_ruler_cities(city_count, city_ids_or_title, city_coordinates_address);
         }
-        sango_display_invert_rectangle(0x10, (short)uVar4, 0x34, (short)iVar5, 0);
-        if (bVar1)
+        sango_display_invert_rectangle(0x10, (short)highlight_top, 0x34, (short)row_position, 0);
+        if (cities_flash_on)
         {
-            sango_menu_flash_ruler_cities(uVar6, abStack_60, iVar2);
-            bVar1 = false;
+            sango_menu_flash_ruler_cities(city_count, city_ids_or_title, city_coordinates_address);
+            cities_flash_on = false;
         }
-        if (local_34 == 0x1c)
+        if (key_code == 0x1c)
         {
-            return (uint32_t)g_temp_character_ids_address[uVar7];
+            return (uint32_t)g_temp_character_ids_address[selected_ruler];
         }
-        if (local_34 < 0x1d)
+        if (key_code < 0x1d)
         {
-            iVar5 = uVar7 - uVar3;
-            if (local_34 == 1)
+            row_position = selected_ruler - first_visible;
+            if (key_code == 1)
             {
                 return 0xff;
             }
         }
-        else if (local_34 == 0x67)
+        else if (key_code == 0x67)
         {
-            iVar5 = -uVar3;
-            if (uVar7 != 0)
+            row_position = -first_visible;
+            if (selected_ruler != 0)
             {
-                if (uVar7 == uVar3)
+                if (selected_ruler == first_visible)
                 {
-                    uVar3 = uVar7 - 1 & 0xff;
+                    first_visible = selected_ruler - 1 & 0xff;
                 }
-                uVar7 = uVar7 - 1 & 0xff;
-            LAB_81c160e8:
-                iVar5 = uVar7 - uVar3;
+                selected_ruler = selected_ruler - 1 & 0xff;
+            update_visible_row:
+                row_position = selected_ruler - first_visible;
             }
         }
         else
         {
-            iVar5 = uVar7 - uVar3;
-            if ((local_34 == 0x6c) && ((int)uVar7 < (int)(uVar8 - 1)))
+            row_position = selected_ruler - first_visible;
+            if ((key_code == 0x6c) && ((int)selected_ruler < (int)(total_rulers - 1)))
             {
-                uVar7 = uVar7 + 1 & 0xff;
-                iVar5 = uVar7 - uVar3;
-                if (0x18 < iVar5)
+                selected_ruler = selected_ruler + 1 & 0xff;
+                row_position = selected_ruler - first_visible;
+                if (0x18 < row_position)
                 {
-                    uVar3 = uVar3 + 1 & 0xff;
-                    goto LAB_81c160e8;
+                    first_visible = first_visible + 1 & 0xff;
+                    goto update_visible_row;
                 }
             }
         }
-        sango_menu_draw_ruler_names(uVar3);
-        uVar4 = iVar5 * 0xc + 0xdU & 0xff;
-        iVar5 = uVar4 + 0xc;
-        sango_display_invert_rectangle(0x10, (short)uVar4, 0x34, (short)iVar5, 0);
-        uVar6 = sango_faction_list_cities((uint32_t)g_temp_character_ids_address[uVar7],
-                                          (int)abStack_60);
+        sango_menu_draw_ruler_names(first_visible);
+        highlight_top = row_position * 0xc + 0xdU & 0xff;
+        row_position = highlight_top + 0xc;
+        sango_display_invert_rectangle(0x10, (short)highlight_top, 0x34, (short)row_position, 0);
+        city_count = sango_faction_list_cities(
+            (uint32_t)g_temp_character_ids_address[selected_ruler], (int)city_ids_or_title);
     } while (true);
 }
-#undef abStack_60
-#undef local_38
-#undef local_34
+#undef city_ids_or_title
+#undef event_kind
+#undef key_code
 
 /* 原函数 0x81c161c4 */
 void sango_menu_flash_ruler_cities(uint32_t param_1, uint8_t *param_2, int param_3)

@@ -109,103 +109,104 @@ uint32_t sango_city_remove_item(uint32_t param_1, uint8_t param_2)
 }
 
 /* 原函数 0x81c1261c */
-uint32_t sango_city_route_distance(uint32_t param_1, uint8_t param_2, uint8_t param_3, char param_4,
-                                   uint8_t param_5, uint8_t param_6)
+uint32_t sango_city_route_distance(uint32_t source_city, uint8_t source_x, uint8_t source_y,
+                                   char target_city, uint8_t target_x, uint8_t target_y)
 {
     unsigned char abi_storage[21] __attribute__((aligned(8)));
-    (*(uint8_t *)(abi_storage + 0)) = param_5;
-    (*(uint8_t *)(abi_storage + 4)) = param_6;
-#define param_5 (*(uint8_t *)(abi_storage + 0))
-#define param_6 (*(uint8_t *)(abi_storage + 4))
+    (*(uint8_t *)(abi_storage + 0)) = target_x;
+    (*(uint8_t *)(abi_storage + 4)) = target_y;
+#define target_x (*(uint8_t *)(abi_storage + 0))
+#define target_y (*(uint8_t *)(abi_storage + 4))
 
-    char cVar1;
-    uint8_t bVar2;
-    uint32_t uVar3;
-    char *pcVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    char *pcVar8;
-    uint32_t uVar9;
+    char distance_y;
+    uint8_t route_length;
+    uint32_t reachable_count;
+    char *city_entry;
+    uint32_t compare_index;
+    uint32_t next_unique_index;
+    uint32_t previous_count;
+    char *reachable_cities;
+    uint32_t search_index;
 
-    pcVar8 = (char *)(g_scratch_buffer_address + 200);
-    uVar3 = sango_city_find_neighbor(param_1 & 0xff, (int)pcVar8);
-    if (uVar3 != 0)
+    reachable_cities = (char *)(g_scratch_buffer_address + 200);
+    reachable_count = sango_city_find_neighbor(source_city & 0xff, (int)reachable_cities);
+    if (reachable_count != 0)
     {
         do
         {
-            uVar7 = uVar3;
-            uVar9 = 0;
-            uVar3 = uVar7;
-            if (uVar7 != 0)
+            previous_count = reachable_count;
+            search_index = 0;
+            reachable_count = previous_count;
+            if (previous_count != 0)
             {
                 do
                 {
-                    uVar6 = sango_city_find_neighbor((uint32_t)(uint8_t)pcVar8[uVar9],
-                                                     (int)(pcVar8 + uVar3));
-                    uVar9 = uVar9 + 1 & 0xff;
-                    uVar3 = uVar3 + uVar6 & 0xff;
-                } while (uVar9 < uVar7);
+                    uint32_t appended_count =
+                        sango_city_find_neighbor((uint32_t)(uint8_t)reachable_cities[search_index],
+                                                 (int)(reachable_cities + reachable_count));
+                    search_index = search_index + 1 & 0xff;
+                    reachable_count = reachable_count + appended_count & 0xff;
+                } while (search_index < previous_count);
             }
-            uVar9 = 0;
-            if (uVar3 != 0)
+            search_index = 0;
+            if (reachable_count != 0)
             {
-                uVar6 = 1;
+                next_unique_index = 1;
                 do
                 {
-                    uVar5 = uVar6 & 0xff;
-                    if (uVar5 < uVar3)
+                    compare_index = next_unique_index & 0xff;
+                    if (compare_index < reachable_count)
                     {
                         do
                         {
-                            if (pcVar8[uVar9] == pcVar8[uVar5])
+                            if (reachable_cities[search_index] == reachable_cities[compare_index])
                             {
-                                uVar3 = uVar3 - 1 & 0xff;
-                                pcVar8[uVar5] = pcVar8[uVar3];
+                                reachable_count = reachable_count - 1 & 0xff;
+                                reachable_cities[compare_index] = reachable_cities[reachable_count];
                             }
                             else
                             {
-                                uVar5 = uVar5 + 1 & 0xff;
+                                compare_index = compare_index + 1 & 0xff;
                             }
-                        } while (uVar5 < uVar3);
+                        } while (compare_index < reachable_count);
                     }
-                    uVar9 = uVar6 & 0xff;
-                    uVar6 = uVar9 + 1;
-                } while (uVar9 < uVar3);
+                    search_index = next_unique_index & 0xff;
+                    next_unique_index = search_index + 1;
+                } while (search_index < reachable_count);
             }
-        } while (uVar3 != uVar7);
-        uVar3 = 0;
-        if (uVar7 != 0)
+        } while (reachable_count != previous_count);
+        reachable_count = 0;
+        if (previous_count != 0)
         {
-            pcVar4 = pcVar8;
+            city_entry = reachable_cities;
             do
             {
-                uVar3 = uVar3 + 1 & 0xff;
-                if (*pcVar4 == param_4)
+                reachable_count = reachable_count + 1 & 0xff;
+                if (*city_entry == target_city)
                 {
-                    cVar1 = param_6 - param_3;
-                    if (param_6 <= param_3)
+                    distance_y = target_y - source_y;
+                    if (target_y <= source_y)
                     {
-                        cVar1 = param_3 - param_6;
+                        distance_y = source_y - target_y;
                     }
-                    if (param_2 < param_5)
+                    if (source_x < target_x)
                     {
-                        bVar2 = (cVar1 + param_5) - param_2;
+                        route_length = (distance_y + target_x) - source_x;
                     }
                     else
                     {
-                        bVar2 = (cVar1 + param_2) - param_5;
+                        route_length = (distance_y + source_x) - target_x;
                     }
-                    return (uint32_t)bVar2;
+                    return (uint32_t)route_length;
                 }
-                pcVar4 = pcVar8 + uVar3;
-            } while (uVar3 < uVar7);
+                city_entry = reachable_cities + reachable_count;
+            } while (reachable_count < previous_count);
         }
     }
     return 0xff;
 }
-#undef param_5
-#undef param_6
+#undef target_x
+#undef target_y
 
 /* 原函数 0x81c127ec */
 uint32_t sango_city_find_neighbor(uint32_t param_1, int param_2)

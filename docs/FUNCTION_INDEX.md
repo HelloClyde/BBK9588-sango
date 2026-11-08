@@ -61,19 +61,19 @@
 | `0x81c018b0` | [`sango_battle_ai_choose_skill`](../src/battle/ai.c#L44) |
 | `0x81c01af0` | [`sango_battle_ai_prepare_attack`](../src/battle/ai.c#L127) |
 | `0x81c01b68` | [`sango_battle_ai_choose_destination`](../src/battle/ai.c#L150) |
-| `0x81c01e74` | [`sango_battle_choose_skill`](../src/battle/ai.c#L284) |
-| `0x81c01fbc` | [`sango_battle_skill_target_allowed`](../src/battle/ai.c#L336) |
-| `0x81c0205c` | [`sango_battle_collect_unit_skills`](../src/battle/ai.c#L355) |
-| `0x81c021d4` | [`sango_battle_load_skill_names`](../src/battle/ai.c#L396) |
-| `0x81c02244` | [`sango_battle_skill_terrain_allowed`](../src/battle/ai.c#L420) |
-| `0x81c02314` | [`sango_battle_unit_terrain`](../src/battle/ai.c#L442) |
-| `0x81c02354` | [`sango_battle_select_combat_target`](../src/battle/ai.c#L454) |
-| `0x81c02444` | [`sango_battle_target_in_skill_range`](../src/battle/ai.c#L498) |
-| `0x81c024a0` | [`sango_battle_preview_skill_range`](../src/battle/ai.c#L517) |
-| `0x81c02524` | [`sango_battle_load_range_template`](../src/battle/ai.c#L540) |
-| `0x81c02664` | [`sango_battle_select_ai_unit`](../src/battle/ai.c#L581) |
-| `0x81c0272c` | [`sango_battle_distance_components`](../src/battle/ai.c#L621) |
-| `0x81c027a0` | [`sango_battle_manhattan_distance`](../src/battle/ai.c#L635) |
+| `0x81c01e74` | [`sango_battle_choose_skill`](../src/battle/ai.c#L290) |
+| `0x81c01fbc` | [`sango_battle_skill_target_allowed`](../src/battle/ai.c#L342) |
+| `0x81c0205c` | [`sango_battle_collect_unit_skills`](../src/battle/ai.c#L361) |
+| `0x81c021d4` | [`sango_battle_load_skill_names`](../src/battle/ai.c#L402) |
+| `0x81c02244` | [`sango_battle_skill_terrain_allowed`](../src/battle/ai.c#L426) |
+| `0x81c02314` | [`sango_battle_unit_terrain`](../src/battle/ai.c#L448) |
+| `0x81c02354` | [`sango_battle_select_combat_target`](../src/battle/ai.c#L460) |
+| `0x81c02444` | [`sango_battle_target_in_skill_range`](../src/battle/ai.c#L504) |
+| `0x81c024a0` | [`sango_battle_preview_skill_range`](../src/battle/ai.c#L523) |
+| `0x81c02524` | [`sango_battle_load_range_template`](../src/battle/ai.c#L546) |
+| `0x81c02664` | [`sango_battle_select_ai_unit`](../src/battle/ai.c#L587) |
+| `0x81c0272c` | [`sango_battle_distance_components`](../src/battle/ai.c#L627) |
+| `0x81c027a0` | [`sango_battle_manhattan_distance`](../src/battle/ai.c#L641) |
 
 ## src/battle/overview.c
 
@@ -83,10 +83,10 @@
 | --- | --- |
 | `0x81c027f0` | [`sango_battle_draw_move_range`](../src/battle/overview.c#L6) |
 | `0x81c02954` | [`sango_battle_show_overview`](../src/battle/overview.c#L52) |
-| `0x81c02c4c` | [`sango_battle_draw_overview_rows`](../src/battle/overview.c#L165) |
-| `0x81c02ec0` | [`sango_battle_count_active_units`](../src/battle/overview.c#L242) |
-| `0x81c02f08` | [`sango_battle_load_overview_text`](../src/battle/overview.c#L259) |
-| `0x81c02f30` | [`sango_battle_is_player_unit`](../src/battle/overview.c#L266) |
+| `0x81c02c4c` | [`sango_battle_draw_overview_rows`](../src/battle/overview.c#L171) |
+| `0x81c02ec0` | [`sango_battle_count_active_units`](../src/battle/overview.c#L248) |
+| `0x81c02f08` | [`sango_battle_load_overview_text`](../src/battle/overview.c#L265) |
+| `0x81c02f30` | [`sango_battle_is_player_unit`](../src/battle/overview.c#L272) |
 
 ## src/battle/player_turn.c
 
@@ -104,7 +104,7 @@
 | `0x81c03708` | [`sango_battle_select_move_destination`](../src/battle/player_turn.c#L337) |
 | `0x81c03874` | [`sango_battle_select_active_unit`](../src/battle/player_turn.c#L389) |
 | `0x81c038f4` | [`sango_battle_poll_map_action`](../src/battle/player_turn.c#L414) |
-| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L560) |
+| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L507) |
 
 ## src/battle/field.c
 
@@ -161,23 +161,23 @@
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c058b8` | [`sango_battle_execute_skill`](../src/battle/actions.c#L7) |
-| `0x81c05cdc` | [`sango_battle_execute_surround_attack`](../src/battle/actions.c#L170) |
-| `0x81c05e0c` | [`sango_battle_execute_normal_attack`](../src/battle/actions.c#L220) |
-| `0x81c05f7c` | [`sango_battle_draw_damage_digits`](../src/battle/actions.c#L274) |
-| `0x81c060c8` | [`sango_battle_append_stat_value`](../src/battle/actions.c#L324) |
-| `0x81c06168` | [`sango_battle_damage_feedback`](../src/battle/actions.c#L357) |
-| `0x81c0620c` | [`sango_battle_terrain_at`](../src/battle/actions.c#L375) |
-| `0x81c062d0` | [`sango_battle_skill_parameters`](../src/battle/actions.c#L413) |
-| `0x81c06318` | [`sango_battle_find_unit_at`](../src/battle/actions.c#L422) |
-| `0x81c06384` | [`sango_battle_change_weather`](../src/battle/actions.c#L445) |
-| `0x81c06440` | [`sango_battle_show_options`](../src/battle/actions.c#L460) |
-| `0x81c065c4` | [`sango_battle_draw_unit_damage`](../src/battle/actions.c#L531) |
-| `0x81c06650` | [`sango_battle_resolve_character`](../src/battle/actions.c#L552) |
-| `0x81c0666c` | [`sango_battle_read_text`](../src/battle/actions.c#L558) |
-| `0x81c06694` | [`sango_battle_execute_action`](../src/battle/actions.c#L565) |
-| `0x81c06838` | [`sango_battle_unit_sprite_frame`](../src/battle/actions.c#L625) |
-| `0x81c068f0` | [`sango_battle_regenerate_unit_energy`](../src/battle/actions.c#L658) |
-| `0x81c069d4` | [`sango_battle_find_actionable_unit_at_cursor`](../src/battle/actions.c#L682) |
+| `0x81c05cdc` | [`sango_battle_execute_surround_attack`](../src/battle/actions.c#L167) |
+| `0x81c05e0c` | [`sango_battle_execute_normal_attack`](../src/battle/actions.c#L217) |
+| `0x81c05f7c` | [`sango_battle_draw_damage_digits`](../src/battle/actions.c#L271) |
+| `0x81c060c8` | [`sango_battle_append_stat_value`](../src/battle/actions.c#L321) |
+| `0x81c06168` | [`sango_battle_damage_feedback`](../src/battle/actions.c#L354) |
+| `0x81c0620c` | [`sango_battle_terrain_at`](../src/battle/actions.c#L372) |
+| `0x81c062d0` | [`sango_battle_skill_parameters`](../src/battle/actions.c#L410) |
+| `0x81c06318` | [`sango_battle_find_unit_at`](../src/battle/actions.c#L419) |
+| `0x81c06384` | [`sango_battle_change_weather`](../src/battle/actions.c#L442) |
+| `0x81c06440` | [`sango_battle_show_options`](../src/battle/actions.c#L457) |
+| `0x81c065c4` | [`sango_battle_draw_unit_damage`](../src/battle/actions.c#L528) |
+| `0x81c06650` | [`sango_battle_resolve_character`](../src/battle/actions.c#L549) |
+| `0x81c0666c` | [`sango_battle_read_text`](../src/battle/actions.c#L555) |
+| `0x81c06694` | [`sango_battle_execute_action`](../src/battle/actions.c#L562) |
+| `0x81c06838` | [`sango_battle_unit_sprite_frame`](../src/battle/actions.c#L622) |
+| `0x81c068f0` | [`sango_battle_regenerate_unit_energy`](../src/battle/actions.c#L655) |
+| `0x81c069d4` | [`sango_battle_find_actionable_unit_at_cursor`](../src/battle/actions.c#L679) |
 
 ## src/render/animation.c
 
@@ -194,15 +194,15 @@
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c07068` | [`sango_ui_choose_option`](../src/ui/menu_and_text.c#L6) |
-| `0x81c077bc` | [`sango_bitmap_draw_resource`](../src/ui/menu_and_text.c#L202) |
-| `0x81c0791c` | [`sango_text_draw_wrapped_box`](../src/ui/menu_and_text.c#L261) |
-| `0x81c079fc` | [`sango_text_wrap_lines`](../src/ui/menu_and_text.c#L311) |
-| `0x81c07b20` | [`sango_text_find_line_end`](../src/ui/menu_and_text.c#L354) |
-| `0x81c07b58` | [`sango_text_draw_centered`](../src/ui/menu_and_text.c#L373) |
-| `0x81c07bc0` | [`sango_battle_show_short_message`](../src/ui/menu_and_text.c#L383) |
-| `0x81c07cac` | [`sango_math_sqrt_step_search`](../src/ui/menu_and_text.c#L404) |
-| `0x81c07cf0` | [`sango_text_draw_padded_number`](../src/ui/menu_and_text.c#L428) |
-| `0x81c07e10` | [`sango_character_troop_capacity`](../src/ui/menu_and_text.c#L473) |
+| `0x81c077bc` | [`sango_bitmap_draw_resource`](../src/ui/menu_and_text.c#L205) |
+| `0x81c0791c` | [`sango_text_draw_wrapped_box`](../src/ui/menu_and_text.c#L264) |
+| `0x81c079fc` | [`sango_text_wrap_lines`](../src/ui/menu_and_text.c#L314) |
+| `0x81c07b20` | [`sango_text_find_line_end`](../src/ui/menu_and_text.c#L357) |
+| `0x81c07b58` | [`sango_text_draw_centered`](../src/ui/menu_and_text.c#L376) |
+| `0x81c07bc0` | [`sango_battle_show_short_message`](../src/ui/menu_and_text.c#L386) |
+| `0x81c07cac` | [`sango_math_sqrt_step_search`](../src/ui/menu_and_text.c#L407) |
+| `0x81c07cf0` | [`sango_text_draw_padded_number`](../src/ui/menu_and_text.c#L431) |
+| `0x81c07e10` | [`sango_character_troop_capacity`](../src/ui/menu_and_text.c#L476) |
 
 ## src/platform/window_graphics.c
 
@@ -212,17 +212,17 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c07e70` | [`sango_window_proc`](../src/platform/window_graphics.c#L6) |
 | `0x81c07fd4` | [`sango_display_copy_and_refresh`](../src/platform/window_graphics.c#L45) |
-| `0x81c08100` | [`sango_display_fill_rectangle`](../src/platform/window_graphics.c#L77) |
-| `0x81c082fc` | [`sango_display_blit_palette_bitmap`](../src/platform/window_graphics.c#L137) |
-| `0x81c0863c` | [`sango_display_capture_bitmap`](../src/platform/window_graphics.c#L259) |
-| `0x81c0886c` | [`sango_display_put_gray_pixel`](../src/platform/window_graphics.c#L355) |
-| `0x81c089c4` | [`sango_display_draw_line`](../src/platform/window_graphics.c#L419) |
-| `0x81c08e7c` | [`sango_display_draw_rectangle`](../src/platform/window_graphics.c#L633) |
-| `0x81c090c4` | [`sango_display_draw_circle`](../src/platform/window_graphics.c#L721) |
-| `0x81c093c0` | [`sango_display_draw_polyline`](../src/platform/window_graphics.c#L821) |
-| `0x81c095b4` | [`sango_display_set_brush`](../src/platform/window_graphics.c#L881) |
-| `0x81c09680` | [`sango_display_set_text_color`](../src/platform/window_graphics.c#L920) |
-| `0x81c0974c` | [`sango_display_select_font`](../src/platform/window_graphics.c#L959) |
+| `0x81c08100` | [`sango_display_fill_rectangle`](../src/platform/window_graphics.c#L78) |
+| `0x81c082fc` | [`sango_display_blit_palette_bitmap`](../src/platform/window_graphics.c#L136) |
+| `0x81c0863c` | [`sango_display_capture_bitmap`](../src/platform/window_graphics.c#L264) |
+| `0x81c0886c` | [`sango_display_put_gray_pixel`](../src/platform/window_graphics.c#L363) |
+| `0x81c089c4` | [`sango_display_draw_line`](../src/platform/window_graphics.c#L424) |
+| `0x81c08e7c` | [`sango_display_draw_rectangle`](../src/platform/window_graphics.c#L638) |
+| `0x81c090c4` | [`sango_display_draw_circle`](../src/platform/window_graphics.c#L726) |
+| `0x81c093c0` | [`sango_display_draw_polyline`](../src/platform/window_graphics.c#L826) |
+| `0x81c095b4` | [`sango_display_set_brush`](../src/platform/window_graphics.c#L886) |
+| `0x81c09680` | [`sango_display_set_text_color`](../src/platform/window_graphics.c#L925) |
+| `0x81c0974c` | [`sango_display_select_font`](../src/platform/window_graphics.c#L964) |
 
 ## src/platform/input_dialog.c
 
@@ -231,12 +231,12 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c097f4` | [`sango_bitmap_open_embedded_entry`](../src/platform/input_dialog.c#L6) |
-| `0x81c098b4` | [`sango_input_key_is_down`](../src/platform/input_dialog.c#L49) |
-| `0x81c09990` | [`sango_input_decode_key_packet`](../src/platform/input_dialog.c#L109) |
-| `0x81c09b6c` | [`sango_text_input_proc`](../src/platform/input_dialog.c#L223) |
-| `0x81c09d90` | [`sango_text_input_dialog`](../src/platform/input_dialog.c#L269) |
-| `0x81c09fb0` | [`sango_display_render_bitmap_region`](../src/platform/input_dialog.c#L353) |
-| `0x81c0a2c0` | [`sango_platform_window_auxiliary`](../src/platform/input_dialog.c#L454) |
+| `0x81c098b4` | [`sango_input_key_is_down`](../src/platform/input_dialog.c#L50) |
+| `0x81c09990` | [`sango_raster_invert_packed_rectangle`](../src/platform/input_dialog.c#L78) |
+| `0x81c09b6c` | [`sango_text_input_proc`](../src/platform/input_dialog.c#L157) |
+| `0x81c09d90` | [`sango_text_input_dialog`](../src/platform/input_dialog.c#L203) |
+| `0x81c09fb0` | [`sango_display_render_bitmap_region`](../src/platform/input_dialog.c#L289) |
+| `0x81c0a2c0` | [`sango_platform_window_auxiliary`](../src/platform/input_dialog.c#L395) |
 
 ## src/platform/sdk_bindings.c
 
@@ -308,22 +308,22 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c0b6f0` | [`sango_strategy_resolve_search`](../src/strategy/domestic.c#L6) |
-| `0x81c0bc70` | [`sango_strategy_resolve_sow_discord`](../src/strategy/domestic.c#L208) |
-| `0x81c0bf24` | [`sango_strategy_resolve_recruit`](../src/strategy/domestic.c#L296) |
-| `0x81c0c168` | [`sango_strategy_resolve_defection`](../src/strategy/domestic.c#L367) |
-| `0x81c0c490` | [`sango_strategy_resolve_surrender`](../src/strategy/domestic.c#L472) |
-| `0x81c0c754` | [`sango_strategy_resolve_diplomatic_mission`](../src/strategy/domestic.c#L562) |
-| `0x81c0cb64` | [`sango_strategy_resolve_plunder`](../src/strategy/domestic.c#L709) |
-| `0x81c0cd08` | [`sango_strategy_execute_queued_order`](../src/strategy/domestic.c#L758) |
-| `0x81c0d03c` | [`sango_strategy_find_ready_order`](../src/strategy/domestic.c#L877) |
-| `0x81c0d0e4` | [`sango_strategy_return_order_character`](../src/strategy/domestic.c#L931) |
-| `0x81c0d304` | [`sango_strategy_success_stub`](../src/strategy/domestic.c#L938) |
-| `0x81c0d354` | [`sango_strategy_advance_orders`](../src/strategy/domestic.c#L944) |
-| `0x81c0d3e0` | [`sango_city_choose_command`](../src/strategy/domestic.c#L966) |
-| `0x81c0d498` | [`sango_city_choose_command_group`](../src/strategy/domestic.c#L1016) |
-| `0x81c0d4f8` | [`sango_city_choose_domestic_command`](../src/strategy/domestic.c#L1036) |
-| `0x81c0d558` | [`sango_city_choose_diplomacy_command`](../src/strategy/domestic.c#L1056) |
-| `0x81c0d5b8` | [`sango_city_choose_military_command`](../src/strategy/domestic.c#L1076) |
+| `0x81c0bc70` | [`sango_strategy_resolve_sow_discord`](../src/strategy/domestic.c#L177) |
+| `0x81c0bf24` | [`sango_strategy_resolve_recruit`](../src/strategy/domestic.c#L265) |
+| `0x81c0c168` | [`sango_strategy_resolve_defection`](../src/strategy/domestic.c#L336) |
+| `0x81c0c490` | [`sango_strategy_resolve_surrender`](../src/strategy/domestic.c#L444) |
+| `0x81c0c754` | [`sango_strategy_resolve_diplomatic_mission`](../src/strategy/domestic.c#L534) |
+| `0x81c0cb64` | [`sango_strategy_resolve_plunder`](../src/strategy/domestic.c#L697) |
+| `0x81c0cd08` | [`sango_strategy_execute_queued_order`](../src/strategy/domestic.c#L746) |
+| `0x81c0d03c` | [`sango_strategy_find_ready_order`](../src/strategy/domestic.c#L865) |
+| `0x81c0d0e4` | [`sango_strategy_return_order_character`](../src/strategy/domestic.c#L919) |
+| `0x81c0d304` | [`sango_strategy_success_stub`](../src/strategy/domestic.c#L926) |
+| `0x81c0d354` | [`sango_strategy_advance_orders`](../src/strategy/domestic.c#L932) |
+| `0x81c0d3e0` | [`sango_city_choose_command`](../src/strategy/domestic.c#L954) |
+| `0x81c0d498` | [`sango_city_choose_command_group`](../src/strategy/domestic.c#L1004) |
+| `0x81c0d4f8` | [`sango_city_choose_domestic_command`](../src/strategy/domestic.c#L1024) |
+| `0x81c0d558` | [`sango_city_choose_diplomacy_command`](../src/strategy/domestic.c#L1044) |
+| `0x81c0d5b8` | [`sango_city_choose_military_command`](../src/strategy/domestic.c#L1064) |
 
 ## src/strategy/orders.c
 
@@ -342,8 +342,8 @@ SDK窗口消息及基础绘图适配。
 | `0x81c0e53c` | [`sango_city_order_execute_captive`](../src/strategy/orders.c#L687) |
 | `0x81c0e6c4` | [`sango_city_order_exile_character`](../src/strategy/orders.c#L734) |
 | `0x81c0e87c` | [`sango_city_order_reward`](../src/strategy/orders.c#L791) |
-| `0x81c0eb10` | [`sango_city_order_trade`](../src/strategy/orders.c#L887) |
-| `0x81c0ed78` | [`sango_city_order_banquet`](../src/strategy/orders.c#L989) |
+| `0x81c0eb10` | [`sango_city_order_trade`](../src/strategy/orders.c#L894) |
+| `0x81c0ed78` | [`sango_city_order_banquet`](../src/strategy/orders.c#L1000) |
 
 ## src/strategy/military.c
 
@@ -352,18 +352,18 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c0ef00` | [`sango_city_order_transport`](../src/strategy/military.c#L6) |
-| `0x81c0f244` | [`sango_city_order_transfer`](../src/strategy/military.c#L171) |
-| `0x81c0f49c` | [`sango_city_order_sow_discord`](../src/strategy/military.c#L278) |
-| `0x81c0f61c` | [`sango_city_order_recruit_enemy`](../src/strategy/military.c#L350) |
-| `0x81c0f7a0` | [`sango_city_order_defection`](../src/strategy/military.c#L420) |
-| `0x81c0f934` | [`sango_city_order_demand_surrender`](../src/strategy/military.c#L495) |
-| `0x81c0fab8` | [`sango_city_order_scout`](../src/strategy/military.c#L565) |
-| `0x81c0fca4` | [`sango_city_order_recruit_troops`](../src/strategy/military.c#L659) |
-| `0x81c0fe88` | [`sango_city_assign_troops`](../src/strategy/military.c#L739) |
-| `0x81c10020` | [`sango_city_order_counterintelligence`](../src/strategy/military.c#L812) |
-| `0x81c10050` | [`sango_city_order_attack`](../src/strategy/military.c#L819) |
-| `0x81c10394` | [`sango_strategy_resolve_attack`](../src/strategy/military.c#L938) |
-| `0x81c10a4c` | [`sango_strategy_finish_battle`](../src/strategy/military.c#L1219) |
+| `0x81c0f244` | [`sango_city_order_transfer`](../src/strategy/military.c#L187) |
+| `0x81c0f49c` | [`sango_city_order_sow_discord`](../src/strategy/military.c#L297) |
+| `0x81c0f61c` | [`sango_city_order_recruit_enemy`](../src/strategy/military.c#L369) |
+| `0x81c0f7a0` | [`sango_city_order_defection`](../src/strategy/military.c#L439) |
+| `0x81c0f934` | [`sango_city_order_demand_surrender`](../src/strategy/military.c#L514) |
+| `0x81c0fab8` | [`sango_city_order_scout`](../src/strategy/military.c#L584) |
+| `0x81c0fca4` | [`sango_city_order_recruit_troops`](../src/strategy/military.c#L678) |
+| `0x81c0fe88` | [`sango_city_assign_troops`](../src/strategy/military.c#L758) |
+| `0x81c10020` | [`sango_city_order_counterintelligence`](../src/strategy/military.c#L831) |
+| `0x81c10050` | [`sango_city_order_attack`](../src/strategy/military.c#L838) |
+| `0x81c10394` | [`sango_strategy_resolve_attack`](../src/strategy/military.c#L962) |
+| `0x81c10a4c` | [`sango_strategy_finish_battle`](../src/strategy/military.c#L1258) |
 
 ## src/strategy/aftermath.c
 
@@ -376,24 +376,24 @@ SDK窗口消息及基础绘图适配。
 | `0x81c10fdc` | [`sango_character_escape_to_friendly_city`](../src/strategy/aftermath.c#L108) |
 | `0x81c1107c` | [`sango_city_choose_postbattle_governor`](../src/strategy/aftermath.c#L135) |
 | `0x81c11188` | [`sango_strategy_resolve_ruler_succession`](../src/strategy/aftermath.c#L188) |
-| `0x81c11404` | [`sango_strategy_show_new_ruler`](../src/strategy/aftermath.c#L300) |
-| `0x81c11494` | [`sango_strategy_show_ruler_changed`](../src/strategy/aftermath.c#L317) |
-| `0x81c114fc` | [`sango_strategy_show_faction_destroyed`](../src/strategy/aftermath.c#L332) |
-| `0x81c11564` | [`sango_strategy_queue_army`](../src/strategy/aftermath.c#L347) |
-| `0x81c11638` | [`sango_strategy_show_ruler_defection`](../src/strategy/aftermath.c#L379) |
-| `0x81c116a0` | [`sango_strategy_show_recruit_success`](../src/strategy/aftermath.c#L394) |
-| `0x81c116f0` | [`sango_strategy_enqueue_order`](../src/strategy/aftermath.c#L405) |
-| `0x81c11758` | [`sango_strategy_remove_order`](../src/strategy/aftermath.c#L428) |
-| `0x81c117c0` | [`sango_strategy_queue_noop`](../src/strategy/aftermath.c#L451) |
-| `0x81c117d0` | [`sango_city_order_confiscate`](../src/strategy/aftermath.c#L458) |
-| `0x81c11a2c` | [`sango_city_order_plunder`](../src/strategy/aftermath.c#L549) |
-| `0x81c11b50` | [`sango_character_can_pay_action`](../src/strategy/aftermath.c#L601) |
-| `0x81c11bbc` | [`sango_character_pay_action`](../src/strategy/aftermath.c#L611) |
-| `0x81c11c28` | [`sango_city_find_weakest_target`](../src/strategy/aftermath.c#L623) |
-| `0x81c11d98` | [`sango_strategy_show_army_attack`](../src/strategy/aftermath.c#L687) |
-| `0x81c11f18` | [`sango_strategy_show_armies_engage`](../src/strategy/aftermath.c#L719) |
-| `0x81c12058` | [`sango_strategy_show_battle_victory`](../src/strategy/aftermath.c#L744) |
-| `0x81c12188` | [`sango_strategy_show_battle_defeat`](../src/strategy/aftermath.c#L772) |
+| `0x81c11404` | [`sango_strategy_show_new_ruler`](../src/strategy/aftermath.c#L304) |
+| `0x81c11494` | [`sango_strategy_show_ruler_changed`](../src/strategy/aftermath.c#L321) |
+| `0x81c114fc` | [`sango_strategy_show_faction_destroyed`](../src/strategy/aftermath.c#L336) |
+| `0x81c11564` | [`sango_strategy_queue_army`](../src/strategy/aftermath.c#L351) |
+| `0x81c11638` | [`sango_strategy_show_ruler_defection`](../src/strategy/aftermath.c#L383) |
+| `0x81c116a0` | [`sango_strategy_show_recruit_success`](../src/strategy/aftermath.c#L398) |
+| `0x81c116f0` | [`sango_strategy_enqueue_order`](../src/strategy/aftermath.c#L409) |
+| `0x81c11758` | [`sango_strategy_remove_order`](../src/strategy/aftermath.c#L432) |
+| `0x81c117c0` | [`sango_strategy_queue_noop`](../src/strategy/aftermath.c#L455) |
+| `0x81c117d0` | [`sango_city_order_confiscate`](../src/strategy/aftermath.c#L462) |
+| `0x81c11a2c` | [`sango_city_order_plunder`](../src/strategy/aftermath.c#L553) |
+| `0x81c11b50` | [`sango_character_can_pay_action`](../src/strategy/aftermath.c#L605) |
+| `0x81c11bbc` | [`sango_character_pay_action`](../src/strategy/aftermath.c#L615) |
+| `0x81c11c28` | [`sango_city_find_weakest_target`](../src/strategy/aftermath.c#L627) |
+| `0x81c11d98` | [`sango_strategy_show_army_attack`](../src/strategy/aftermath.c#L691) |
+| `0x81c11f18` | [`sango_strategy_show_armies_engage`](../src/strategy/aftermath.c#L723) |
+| `0x81c12058` | [`sango_strategy_show_battle_victory`](../src/strategy/aftermath.c#L748) |
+| `0x81c12188` | [`sango_strategy_show_battle_defeat`](../src/strategy/aftermath.c#L776) |
 
 ## src/strategy/rosters.c
 
@@ -406,10 +406,10 @@ SDK窗口消息及基础绘图适配。
 | `0x81c123f0` | [`sango_city_remove_character`](../src/strategy/rosters.c#L28) |
 | `0x81c12504` | [`sango_city_remove_item`](../src/strategy/rosters.c#L70) |
 | `0x81c1261c` | [`sango_city_route_distance`](../src/strategy/rosters.c#L112) |
-| `0x81c127ec` | [`sango_city_find_neighbor`](../src/strategy/rosters.c#L211) |
-| `0x81c128b4` | [`sango_city_find_neighbor_position`](../src/strategy/rosters.c#L247) |
-| `0x81c1297c` | [`sango_city_list_enemy_neighbors`](../src/strategy/rosters.c#L286) |
-| `0x81c12a68` | [`sango_strategy_list_rulers`](../src/strategy/rosters.c#L327) |
+| `0x81c127ec` | [`sango_city_find_neighbor`](../src/strategy/rosters.c#L212) |
+| `0x81c128b4` | [`sango_city_find_neighbor_position`](../src/strategy/rosters.c#L248) |
+| `0x81c1297c` | [`sango_city_list_enemy_neighbors`](../src/strategy/rosters.c#L287) |
+| `0x81c12a68` | [`sango_strategy_list_rulers`](../src/strategy/rosters.c#L328) |
 
 ## src/strategy/map.c
 
@@ -418,19 +418,19 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c12b18` | [`sango_strategy_select_city`](../src/strategy/map.c#L7) |
-| `0x81c12e18` | [`sango_strategy_draw_map`](../src/strategy/map.c#L164) |
-| `0x81c13494` | [`sango_strategy_present`](../src/strategy/map.c#L341) |
-| `0x81c134b8` | [`sango_city_add_character`](../src/strategy/map.c#L348) |
-| `0x81c135a8` | [`sango_city_add_item`](../src/strategy/map.c#L390) |
-| `0x81c13698` | [`sango_city_roster_noop`](../src/strategy/map.c#L432) |
-| `0x81c136a0` | [`sango_city_adjacent_distance`](../src/strategy/map.c#L438) |
-| `0x81c13794` | [`sango_faction_list_cities`](../src/strategy/map.c#L490) |
-| `0x81c137f0` | [`sango_character_find_city`](../src/strategy/map.c#L512) |
-| `0x81c13870` | [`sango_city_list_idle_characters`](../src/strategy/map.c#L543) |
-| `0x81c13918` | [`sango_city_list_available_characters`](../src/strategy/map.c#L573) |
-| `0x81c139a8` | [`sango_city_list_captives`](../src/strategy/map.c#L603) |
-| `0x81c13a40` | [`sango_city_list_enemy_rulers`](../src/strategy/map.c#L633) |
-| `0x81c13ab8` | [`sango_faction_list_characters`](../src/strategy/map.c#L667) |
+| `0x81c12e18` | [`sango_strategy_draw_map`](../src/strategy/map.c#L138) |
+| `0x81c13494` | [`sango_strategy_present`](../src/strategy/map.c#L322) |
+| `0x81c134b8` | [`sango_city_add_character`](../src/strategy/map.c#L329) |
+| `0x81c135a8` | [`sango_city_add_item`](../src/strategy/map.c#L371) |
+| `0x81c13698` | [`sango_city_roster_noop`](../src/strategy/map.c#L413) |
+| `0x81c136a0` | [`sango_city_adjacent_distance`](../src/strategy/map.c#L419) |
+| `0x81c13794` | [`sango_faction_list_cities`](../src/strategy/map.c#L471) |
+| `0x81c137f0` | [`sango_character_find_city`](../src/strategy/map.c#L493) |
+| `0x81c13870` | [`sango_city_list_idle_characters`](../src/strategy/map.c#L524) |
+| `0x81c13918` | [`sango_city_list_available_characters`](../src/strategy/map.c#L554) |
+| `0x81c139a8` | [`sango_city_list_captives`](../src/strategy/map.c#L584) |
+| `0x81c13a40` | [`sango_city_list_enemy_rulers`](../src/strategy/map.c#L614) |
+| `0x81c13ab8` | [`sango_faction_list_characters`](../src/strategy/map.c#L648) |
 
 ## src/ui/numeric.c
 
@@ -475,17 +475,17 @@ SDK窗口消息及基础绘图适配。
 | `0x81c14690` | [`sango_raster_draw_masked`](../src/render/raster.c#L135) |
 | `0x81c14838` | [`sango_raster_draw_masked_screen`](../src/render/raster.c#L215) |
 | `0x81c149dc` | [`sango_text_draw_legacy`](../src/render/raster.c#L292) |
-| `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L403) |
-| `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L446) |
-| `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L452) |
-| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L480) |
-| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L487) |
-| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L524) |
-| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L566) |
-| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L574) |
-| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L587) |
-| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L595) |
-| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L607) |
+| `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L405) |
+| `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L448) |
+| `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L454) |
+| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L482) |
+| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L489) |
+| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L526) |
+| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L568) |
+| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L576) |
+| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L589) |
+| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L597) |
+| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L609) |
 
 ## src/resources/library.c
 
@@ -512,9 +512,9 @@ SDK窗口消息及基础绘图适配。
 | `0x81c15d18` | [`sango_menu_select_animated`](../src/ui/start_menu.c#L156) |
 | `0x81c15e44` | [`sango_menu_show_credits`](../src/ui/start_menu.c#L217) |
 | `0x81c15e6c` | [`sango_menu_choose_ruler`](../src/ui/start_menu.c#L225) |
-| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L340) |
-| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L365) |
-| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L376) |
+| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L342) |
+| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L367) |
+| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L378) |
 
 ## src/save/savegame.c
 
@@ -546,11 +546,11 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c16e00` | [`sango_strategy_apply_monthly_economy`](../src/strategy/calendar.c#L6) |
-| `0x81c171cc` | [`sango_strategy_apply_city_disasters`](../src/strategy/calendar.c#L159) |
-| `0x81c1740c` | [`sango_strategy_apply_disaster_losses`](../src/strategy/calendar.c#L256) |
-| `0x81c1767c` | [`sango_strategy_collect_commerce_income`](../src/strategy/calendar.c#L321) |
-| `0x81c176d8` | [`sango_strategy_collect_agriculture_income`](../src/strategy/calendar.c#L345) |
-| `0x81c17734` | [`sango_strategy_update_character_ages_and_debut`](../src/strategy/calendar.c#L369) |
+| `0x81c171cc` | [`sango_strategy_apply_city_disasters`](../src/strategy/calendar.c#L171) |
+| `0x81c1740c` | [`sango_strategy_apply_disaster_losses`](../src/strategy/calendar.c#L281) |
+| `0x81c1767c` | [`sango_strategy_collect_commerce_income`](../src/strategy/calendar.c#L346) |
+| `0x81c176d8` | [`sango_strategy_collect_agriculture_income`](../src/strategy/calendar.c#L370) |
+| `0x81c17734` | [`sango_strategy_update_character_ages_and_debut`](../src/strategy/calendar.c#L394) |
 
 ## src/strategy/items.c
 
@@ -573,7 +573,7 @@ SDK窗口消息及基础绘图适配。
 | `0x81c17f44` | [`sango_ui_show_strategy_text`](../src/ui/info_panels.c#L101) |
 | `0x81c17f78` | [`sango_ui_draw_character_panel`](../src/ui/info_panels.c#L113) |
 | `0x81c18024` | [`sango_ui_show_character_message`](../src/ui/info_panels.c#L130) |
-| `0x81c18150` | [`sango_character_add_item`](../src/ui/info_panels.c#L161) |
+| `0x81c18150` | [`sango_item_mark_discovered`](../src/ui/info_panels.c#L161) |
 | `0x81c181b8` | [`sango_city_list_items`](../src/ui/info_panels.c#L188) |
 | `0x81c18248` | [`sango_city_find_item`](../src/ui/info_panels.c#L222) |
 | `0x81c182d0` | [`sango_city_neighbor_direction`](../src/ui/info_panels.c#L256) |
@@ -586,16 +586,16 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c18350` | [`sango_ui_table_begin`](../src/ui/lists.c#L6) |
 | `0x81c18380` | [`sango_ui_table_next_cell`](../src/ui/lists.c#L26) |
-| `0x81c18410` | [`sango_ui_table_next_row`](../src/ui/lists.c#L61) |
-| `0x81c18450` | [`sango_ui_draw_item_row`](../src/ui/lists.c#L77) |
-| `0x81c185cc` | [`sango_item_format_attribute`](../src/ui/lists.c#L125) |
+| `0x81c18410` | [`sango_ui_table_next_row`](../src/ui/lists.c#L62) |
+| `0x81c18450` | [`sango_ui_draw_item_row`](../src/ui/lists.c#L78) |
+| `0x81c185cc` | [`sango_item_format_attribute`](../src/ui/lists.c#L126) |
 | `0x81c18704` | [`sango_ui_draw_item_header`](../src/ui/lists.c#L187) |
 | `0x81c18874` | [`sango_ui_select_item`](../src/ui/lists.c#L235) |
-| `0x81c18c80` | [`sango_item_read_name`](../src/ui/lists.c#L422) |
-| `0x81c18cac` | [`sango_ui_draw_character_row`](../src/ui/lists.c#L429) |
-| `0x81c18e88` | [`sango_character_format_attribute`](../src/ui/lists.c#L497) |
-| `0x81c19100` | [`sango_ui_draw_character_header`](../src/ui/lists.c#L639) |
-| `0x81c19270` | [`sango_ui_select_character`](../src/ui/lists.c#L687) |
+| `0x81c18c80` | [`sango_item_read_name`](../src/ui/lists.c#L385) |
+| `0x81c18cac` | [`sango_ui_draw_character_row`](../src/ui/lists.c#L392) |
+| `0x81c18e88` | [`sango_character_format_attribute`](../src/ui/lists.c#L461) |
+| `0x81c19100` | [`sango_ui_draw_character_header`](../src/ui/lists.c#L604) |
+| `0x81c19270` | [`sango_ui_select_character`](../src/ui/lists.c#L652) |
 
 ## src/ui/city_details.c
 
@@ -605,10 +605,10 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c1971c` | [`sango_city_read_name`](../src/ui/city_details.c#L6) |
 | `0x81c19748` | [`sango_city_format_attribute`](../src/ui/city_details.c#L13) |
-| `0x81c19a98` | [`sango_city_format_status`](../src/ui/city_details.c#L132) |
-| `0x81c19b1c` | [`sango_ui_show_city_details`](../src/ui/city_details.c#L156) |
-| `0x81c19cac` | [`sango_load_named_text`](../src/ui/city_details.c#L236) |
-| `0x81c19d30` | [`sango_strategy_run_player_commands`](../src/ui/city_details.c#L264) |
+| `0x81c19a98` | [`sango_city_format_status`](../src/ui/city_details.c#L133) |
+| `0x81c19b1c` | [`sango_ui_show_city_details`](../src/ui/city_details.c#L157) |
+| `0x81c19cac` | [`sango_load_named_text`](../src/ui/city_details.c#L237) |
+| `0x81c19d30` | [`sango_strategy_run_player_commands`](../src/ui/city_details.c#L265) |
 
 ## src/strategy/ai.c
 
@@ -618,9 +618,9 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c19df8` | [`sango_strategy_run_city_ai`](../src/strategy/ai.c#L6) |
 | `0x81c19f8c` | [`sango_strategy_ai_domestic_actions`](../src/strategy/ai.c#L71) |
-| `0x81c1a188` | [`sango_strategy_ai_diplomacy_actions`](../src/strategy/ai.c#L174) |
-| `0x81c1a480` | [`sango_strategy_ai_city_events`](../src/strategy/ai.c#L331) |
-| `0x81c1a6a4` | [`sango_strategy_ai_military_actions`](../src/strategy/ai.c#L428) |
+| `0x81c1a188` | [`sango_strategy_ai_diplomacy_actions`](../src/strategy/ai.c#L175) |
+| `0x81c1a480` | [`sango_strategy_ai_city_events`](../src/strategy/ai.c#L346) |
+| `0x81c1a6a4` | [`sango_strategy_ai_military_actions`](../src/strategy/ai.c#L447) |
 
 ## src/strategy/turns.c
 
@@ -643,7 +643,7 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c1b2b4` | [`sango_ui_show_system_menu`](../src/ui/system_menu.c#L6) |
 | `0x81c1b364` | [`sango_ui_select_number`](../src/ui/system_menu.c#L44) |
-| `0x81c1b784` | [`sango_ui_show_ai_progress`](../src/ui/system_menu.c#L177) |
+| `0x81c1b784` | [`sango_ui_show_ai_progress`](../src/ui/system_menu.c#L158) |
 
 ## src/strategy/session.c
 
@@ -662,15 +662,15 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c1b950` | [`sango_crt_memchr`](../src/runtime/strings.c#L6) |
 | `0x81c1b980` | [`sango_crt_sprintf_words`](../src/runtime/strings.c#L26) |
-| `0x81c1b9d4` | [`sango_crt_strlen`](../src/runtime/strings.c#L48) |
-| `0x81c1ba04` | [`sango_crt_strtol`](../src/runtime/strings.c#L67) |
-| `0x81c1bc58` | [`sango_crt_atoi_compat`](../src/runtime/strings.c#L186) |
-| `0x81c1bcbc` | [`sango_crt_strcpy`](../src/runtime/strings.c#L193) |
-| `0x81c1bce0` | [`crt_memset`](../src/runtime/strings.c#L210) |
-| `0x81c1bd08` | [`crt_memcpy`](../src/runtime/strings.c#L225) |
-| `0x81c1bd3c` | [`sango_crt_stub_1bd3c`](../src/runtime/strings.c#L244) |
-| `0x81c1bd48` | [`sango_crt_stub_1bd48`](../src/runtime/strings.c#L250) |
-| `0x81c1bd50` | [`sango_crt_vformat`](../src/runtime/strings.c#L256) |
+| `0x81c1b9d4` | [`sango_crt_strlen`](../src/runtime/strings.c#L49) |
+| `0x81c1ba04` | [`sango_crt_strtol`](../src/runtime/strings.c#L68) |
+| `0x81c1bc58` | [`sango_crt_atoi_compat`](../src/runtime/strings.c#L166) |
+| `0x81c1bcbc` | [`sango_crt_strcpy`](../src/runtime/strings.c#L173) |
+| `0x81c1bce0` | [`crt_memset`](../src/runtime/strings.c#L190) |
+| `0x81c1bd08` | [`crt_memcpy`](../src/runtime/strings.c#L205) |
+| `0x81c1bd3c` | [`sango_crt_stub_1bd3c`](../src/runtime/strings.c#L224) |
+| `0x81c1bd48` | [`sango_crt_stub_1bd48`](../src/runtime/strings.c#L230) |
+| `0x81c1bd50` | [`sango_crt_vformat`](../src/runtime/strings.c#L236) |
 
 ## src/runtime/format.c
 
@@ -687,12 +687,12 @@ SDK窗口消息及基础绘图适配。
 | `0x81c1c600` | [`sango_crt_isdigit`](../src/runtime/format.c#L88) |
 | `0x81c1c620` | [`sango_crt_isspace`](../src/runtime/format.c#L101) |
 | `0x81c1c650` | [`sango_crt_toupper`](../src/runtime/format.c#L116) |
-| `0x81c1c670` | [`sango_crt_format_integer_entry`](../src/runtime/format.c#L131) |
-| `0x81c1c6d0` | [`sango_crt_format_integer_words`](../src/runtime/format.c#L157) |
-| `0x81c1ce34` | [`sango_crt_format_float_field`](../src/runtime/format.c#L554) |
-| `0x81c1d198` | [`sango_crt_format_unsigned_digits`](../src/runtime/format.c#L734) |
-| `0x81c1d2d4` | [`sango_crt_format_double_digits`](../src/runtime/format.c#L806) |
-| `0x81c1da28` | [`sango_crt_scale_double_decimal`](../src/runtime/format.c#L1063) |
+| `0x81c1c670` | [`sango_crt_format_entry`](../src/runtime/format.c#L131) |
+| `0x81c1c6d0` | [`sango_crt_format_words`](../src/runtime/format.c#L156) |
+| `0x81c1ce34` | [`sango_crt_format_field`](../src/runtime/format.c#L565) |
+| `0x81c1d198` | [`sango_crt_format_unsigned_digits`](../src/runtime/format.c#L746) |
+| `0x81c1d2d4` | [`sango_crt_format_double_digits`](../src/runtime/format.c#L822) |
+| `0x81c1da28` | [`sango_crt_scale_double_decimal`](../src/runtime/format.c#L1113) |
 
 ## src/runtime/libc.c
 
@@ -701,14 +701,14 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c1dc10` | [`sango_crt_heap_allocate`](../src/runtime/libc.c#L6) |
-| `0x81c1dd88` | [`sango_crt_heap_initialize`](../src/runtime/libc.c#L65) |
-| `0x81c1de00` | [`sango_crt_abs`](../src/runtime/libc.c#L87) |
-| `0x81c1de20` | [`crt_rand`](../src/runtime/libc.c#L97) |
-| `0x81c1de60` | [`crt_srand`](../src/runtime/libc.c#L104) |
-| `0x81c1de70` | [`sango_crt_strcat`](../src/runtime/libc.c#L111) |
-| `0x81c1deb0` | [`sango_crt_heap_shift_forward`](../src/runtime/libc.c#L135) |
-| `0x81c1dee0` | [`sango_crt_zero_bytes`](../src/runtime/libc.c#L154) |
-| `0x81c1df08` | [`sango_crt_heap_shift_backward`](../src/runtime/libc.c#L174) |
+| `0x81c1dd88` | [`sango_crt_heap_initialize`](../src/runtime/libc.c#L68) |
+| `0x81c1de00` | [`sango_crt_abs`](../src/runtime/libc.c#L90) |
+| `0x81c1de20` | [`crt_rand`](../src/runtime/libc.c#L100) |
+| `0x81c1de60` | [`crt_srand`](../src/runtime/libc.c#L107) |
+| `0x81c1de70` | [`sango_crt_strcat`](../src/runtime/libc.c#L114) |
+| `0x81c1deb0` | [`sango_crt_heap_shift_forward`](../src/runtime/libc.c#L138) |
+| `0x81c1dee0` | [`sango_crt_zero_bytes`](../src/runtime/libc.c#L157) |
+| `0x81c1df08` | [`sango_crt_heap_shift_backward`](../src/runtime/libc.c#L177) |
 
 ## src/runtime/soft_float.c
 
@@ -718,27 +718,27 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c1df40` | [`sango_soft_f32_to_int`](../src/runtime/soft_float.c#L6) |
 | `0x81c1dfb0` | [`sango_soft_add_f32_parts`](../src/runtime/soft_float.c#L26) |
-| `0x81c1e1ec` | [`soft_float_add`](../src/runtime/soft_float.c#L174) |
-| `0x81c1e24c` | [`soft_float_sub`](../src/runtime/soft_float.c#L201) |
-| `0x81c1e2c0` | [`soft_float_mul`](../src/runtime/soft_float.c#L231) |
-| `0x81c1e4b0` | [`soft_float_div`](../src/runtime/soft_float.c#L347) |
-| `0x81c1e620` | [`sango_soft_compare_f32`](../src/runtime/soft_float.c#L440) |
-| `0x81c1e6b0` | [`sango_soft_int_to_f32`](../src/runtime/soft_float.c#L467) |
-| `0x81c1e770` | [`sango_soft_unpack_f32_integer`](../src/runtime/soft_float.c#L514) |
-| `0x81c1e810` | [`sango_soft_add_f64_parts`](../src/runtime/soft_float.c#L558) |
-| `0x81c1eb70` | [`sango_soft_add_f64`](../src/runtime/soft_float.c#L724) |
-| `0x81c1ebd8` | [`sango_soft_sub_f64`](../src/runtime/soft_float.c#L757) |
-| `0x81c1ec50` | [`sango_soft_mul_f64`](../src/runtime/soft_float.c#L793) |
-| `0x81c1efe0` | [`sango_soft_div_f64`](../src/runtime/soft_float.c#L948) |
-| `0x81c1f210` | [`sango_soft_compare_f64_nan_high`](../src/runtime/soft_float.c#L1070) |
-| `0x81c1f2a0` | [`sango_soft_compare_f64_nan_low`](../src/runtime/soft_float.c#L1104) |
-| `0x81c1f330` | [`sango_soft_compare_f64_nan_low_compat`](../src/runtime/soft_float.c#L1138) |
-| `0x81c1f3c0` | [`sango_soft_compare_f64_nan_high_compat`](../src/runtime/soft_float.c#L1172) |
-| `0x81c1f450` | [`sango_soft_int_to_f64`](../src/runtime/soft_float.c#L1206) |
-| `0x81c1f540` | [`sango_soft_f64_to_int`](../src/runtime/soft_float.c#L1260) |
-| `0x81c1f620` | [`sango_soft_pack_f32`](../src/runtime/soft_float.c#L1323) |
-| `0x81c1f790` | [`sango_soft_unpack_f32`](../src/runtime/soft_float.c#L1407) |
-| `0x81c1f860` | [`sango_soft_compare_f32_parts`](../src/runtime/soft_float.c#L1469) |
-| `0x81c1f9a0` | [`sango_soft_pack_f64`](../src/runtime/soft_float.c#L1546) |
-| `0x81c1fc40` | [`sango_soft_unpack_f64`](../src/runtime/soft_float.c#L1683) |
-| `0x81c1fd60` | [`sango_soft_compare_f64_parts`](../src/runtime/soft_float.c#L1751) |
+| `0x81c1e1ec` | [`soft_float_add`](../src/runtime/soft_float.c#L182) |
+| `0x81c1e24c` | [`soft_float_sub`](../src/runtime/soft_float.c#L209) |
+| `0x81c1e2c0` | [`soft_float_mul`](../src/runtime/soft_float.c#L239) |
+| `0x81c1e4b0` | [`soft_float_div`](../src/runtime/soft_float.c#L355) |
+| `0x81c1e620` | [`sango_soft_compare_f32`](../src/runtime/soft_float.c#L448) |
+| `0x81c1e6b0` | [`sango_soft_int_to_f32`](../src/runtime/soft_float.c#L475) |
+| `0x81c1e770` | [`sango_soft_unpack_f32_integer`](../src/runtime/soft_float.c#L522) |
+| `0x81c1e810` | [`sango_soft_add_f64_parts`](../src/runtime/soft_float.c#L566) |
+| `0x81c1eb70` | [`sango_soft_add_f64`](../src/runtime/soft_float.c#L756) |
+| `0x81c1ebd8` | [`sango_soft_sub_f64`](../src/runtime/soft_float.c#L789) |
+| `0x81c1ec50` | [`sango_soft_mul_f64`](../src/runtime/soft_float.c#L825) |
+| `0x81c1efe0` | [`sango_soft_div_f64`](../src/runtime/soft_float.c#L994) |
+| `0x81c1f210` | [`sango_soft_compare_f64_nan_high`](../src/runtime/soft_float.c#L1120) |
+| `0x81c1f2a0` | [`sango_soft_compare_f64_nan_low`](../src/runtime/soft_float.c#L1154) |
+| `0x81c1f330` | [`sango_soft_compare_f64_nan_low_compat`](../src/runtime/soft_float.c#L1188) |
+| `0x81c1f3c0` | [`sango_soft_compare_f64_nan_high_compat`](../src/runtime/soft_float.c#L1222) |
+| `0x81c1f450` | [`sango_soft_int_to_f64`](../src/runtime/soft_float.c#L1256) |
+| `0x81c1f540` | [`sango_soft_f64_to_int`](../src/runtime/soft_float.c#L1310) |
+| `0x81c1f620` | [`sango_soft_pack_f32`](../src/runtime/soft_float.c#L1373) |
+| `0x81c1f790` | [`sango_soft_unpack_f32`](../src/runtime/soft_float.c#L1457) |
+| `0x81c1f860` | [`sango_soft_compare_f32_parts`](../src/runtime/soft_float.c#L1519) |
+| `0x81c1f9a0` | [`sango_soft_pack_f64`](../src/runtime/soft_float.c#L1596) |
+| `0x81c1fc40` | [`sango_soft_unpack_f64`](../src/runtime/soft_float.c#L1714) |
+| `0x81c1fd60` | [`sango_soft_compare_f64_parts`](../src/runtime/soft_float.c#L1782) |

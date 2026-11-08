@@ -3,57 +3,60 @@
 /* 恢复的整数转换、随机数及字符串辅助。 */
 
 /* 原函数 0x81c1dc10 */
-int sango_crt_heap_allocate(int param_1)
+int sango_crt_heap_allocate(int requested_bytes)
 {
-    uint32_t uVar1;
-    uint32_t uVar2;
-    int *piVar3;
-    uint32_t uVar4;
-    int iVar5;
-    int unaff_gp;
+    uint32_t block_flags_and_size;
+    uint32_t block_index;
+    int *block_descriptor;
+    uint32_t aligned_bytes;
+    int block_address;
+    int legacy_gp;
 
-    if (param_1 != 0)
+    if (requested_bytes != 0)
     {
-        piVar3 = (int *)(*(int *)(unaff_gp + 0xe0) + -8);
-        if (7 < *(int *)(unaff_gp + 0xe8) - *(int *)(unaff_gp + 0xf0))
+        block_descriptor = (int *)(*(int *)(legacy_gp + 0xe0) + -8);
+        if (7 < *(int *)(legacy_gp + 0xe8) - *(int *)(legacy_gp + 0xf0))
         {
-            uVar2 = 0;
-            if (*(int *)(unaff_gp + 0xec) != 0)
+            block_index = 0;
+            if (*(int *)(legacy_gp + 0xec) != 0)
             {
                 do
                 {
-                    uVar1 = piVar3[1];
-                    if (((uVar1 & 1) == 0) && (uVar4 = param_1 + 3U & 0xfffffffc, uVar4 <= uVar1))
+                    block_flags_and_size = block_descriptor[1];
+                    if (((block_flags_and_size & 1) == 0) &&
+                        (aligned_bytes = requested_bytes + 3U & 0xfffffffc,
+                         aligned_bytes <= block_flags_and_size))
                     {
-                        piVar3[1] = uVar4 | 1;
-                        iVar5 = *piVar3;
-                        if (uVar1 - uVar4 == 0)
+                        block_descriptor[1] = aligned_bytes | 1;
+                        block_address = *block_descriptor;
+                        if (block_flags_and_size - aligned_bytes == 0)
                         {
-                            return iVar5;
+                            return block_address;
                         }
-                        sango_crt_heap_shift_forward(*(uint32_t **)(unaff_gp + 0xe8),
-                                                     (*(int *)(unaff_gp + 0xec) - uVar2) + -1);
-                        piVar3[-1] = uVar1 - uVar4;
-                        piVar3[-2] = iVar5 + uVar4;
-                        *(int *)(unaff_gp + 0xe8) = *(int *)(unaff_gp + 0xe8) + -8;
-                        *(int *)(unaff_gp + 0xec) = *(int *)(unaff_gp + 0xec) + 1;
-                        return iVar5;
+                        sango_crt_heap_shift_forward(*(uint32_t **)(legacy_gp + 0xe8),
+                                                     (*(int *)(legacy_gp + 0xec) - block_index) +
+                                                         -1);
+                        block_descriptor[-1] = block_flags_and_size - aligned_bytes;
+                        block_descriptor[-2] = block_address + aligned_bytes;
+                        *(int *)(legacy_gp + 0xe8) = *(int *)(legacy_gp + 0xe8) + -8;
+                        *(int *)(legacy_gp + 0xec) = *(int *)(legacy_gp + 0xec) + 1;
+                        return block_address;
                     }
-                    uVar2 = uVar2 + 1;
-                    piVar3 = piVar3 + -2;
-                } while (uVar2 < *(uint32_t *)(unaff_gp + 0xec));
+                    block_index = block_index + 1;
+                    block_descriptor = block_descriptor + -2;
+                } while (block_index < *(uint32_t *)(legacy_gp + 0xec));
             }
-            if ((param_1 + 3U & 0xfffffffc) + 8 <=
-                (uint32_t)(*(int *)(unaff_gp + 0xe8) - *(int *)(unaff_gp + 0xf0)))
+            if ((requested_bytes + 3U & 0xfffffffc) + 8 <=
+                (uint32_t)(*(int *)(legacy_gp + 0xe8) - *(int *)(legacy_gp + 0xf0)))
             {
-                iVar5 = *(int *)(unaff_gp + 0xf0);
-                *piVar3 = iVar5;
-                uVar2 = param_1 + 3U & 0xfffffffc;
-                piVar3[1] = uVar2 | 1;
-                *(uint32_t *)(unaff_gp + 0xf0) = uVar2 + *(int *)(unaff_gp + 0xf0);
-                *(int *)(unaff_gp + 0xec) = *(int *)(unaff_gp + 0xec) + 1;
-                *(int *)(unaff_gp + 0xe8) = *(int *)(unaff_gp + 0xe8) + -8;
-                return iVar5;
+                block_address = *(int *)(legacy_gp + 0xf0);
+                *block_descriptor = block_address;
+                block_index = requested_bytes + 3U & 0xfffffffc;
+                block_descriptor[1] = block_index | 1;
+                *(uint32_t *)(legacy_gp + 0xf0) = block_index + *(int *)(legacy_gp + 0xf0);
+                *(int *)(legacy_gp + 0xec) = *(int *)(legacy_gp + 0xec) + 1;
+                *(int *)(legacy_gp + 0xe8) = *(int *)(legacy_gp + 0xe8) + -8;
+                return block_address;
             }
         }
         g_runtime_errno = 0xc;
@@ -62,35 +65,35 @@ int sango_crt_heap_allocate(int param_1)
 }
 
 /* 原函数 0x81c1dd88 */
-uint32_t sango_crt_heap_initialize(int param_1, int param_2)
+uint32_t sango_crt_heap_initialize(int heap_begin, int heap_end)
 {
-    bool bVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
-    int unaff_gp;
+    bool range_too_small;
+    uint32_t aligned_begin;
+    uint32_t aligned_end;
+    int legacy_gp;
 
-    uVar2 = param_1 + 3U & 0xfffffffc;
-    *(uint32_t *)(unaff_gp + 0xe4) = uVar2;
-    uVar3 = param_2 + 3U & 0xfffffffc;
-    *(uint32_t *)(unaff_gp + 0xe0) = uVar3;
-    bVar1 = uVar3 < uVar2 + 0x10;
-    if (!bVar1)
+    aligned_begin = heap_begin + 3U & 0xfffffffc;
+    *(uint32_t *)(legacy_gp + 0xe4) = aligned_begin;
+    aligned_end = heap_end + 3U & 0xfffffffc;
+    *(uint32_t *)(legacy_gp + 0xe0) = aligned_end;
+    range_too_small = aligned_end < aligned_begin + 0x10;
+    if (!range_too_small)
     {
-        *(uint32_t *)(unaff_gp + 0xf0) = *(uint32_t *)(unaff_gp + 0xe4);
-        *(int *)(unaff_gp + 0xe8) = *(int *)(unaff_gp + 0xe0) + -8;
-        *(uint32_t *)(unaff_gp + 0xec) = 0;
+        *(uint32_t *)(legacy_gp + 0xf0) = *(uint32_t *)(legacy_gp + 0xe4);
+        *(int *)(legacy_gp + 0xe8) = *(int *)(legacy_gp + 0xe0) + -8;
+        *(uint32_t *)(legacy_gp + 0xec) = 0;
     }
-    return (uint32_t)bVar1;
+    return (uint32_t)range_too_small;
 }
 
 /* 原函数 0x81c1de00 */
-int sango_crt_abs(int param_1)
+int sango_crt_abs(int value)
 {
-    if (param_1 < 0)
+    if (value < 0)
     {
-        param_1 = -param_1;
+        value = -value;
     }
-    return param_1;
+    return value;
 }
 
 /* 原函数 0x81c1de20 */
@@ -108,44 +111,44 @@ void crt_srand(uint32_t seed)
 }
 
 /* 原函数 0x81c1de70 */
-char *sango_crt_strcat(char *param_1, char *param_2)
+char *sango_crt_strcat(char *destination, char *source)
 {
-    char cVar1;
-    char *pcVar2;
-    char *pcVar3;
+    char character;
+    char *terminator_search;
+    char *output_cursor;
 
-    pcVar2 = param_1;
+    terminator_search = destination;
     do
     {
-        pcVar3 = pcVar2;
-        pcVar2 = pcVar3 + 1;
-    } while (*pcVar3 != '\0');
-    pcVar3 = pcVar3 + -1;
+        output_cursor = terminator_search;
+        terminator_search = output_cursor + 1;
+    } while (*output_cursor != '\0');
+    output_cursor = output_cursor + -1;
     do
     {
-        cVar1 = *param_2;
-        param_2 = param_2 + 1;
-        pcVar3 = pcVar3 + 1;
-        *pcVar3 = cVar1;
-    } while (cVar1 != '\0');
-    return param_1;
+        character = *source;
+        source = source + 1;
+        output_cursor = output_cursor + 1;
+        *output_cursor = character;
+    } while (character != '\0');
+    return destination;
 }
 
 /* 原函数 0x81c1deb0 */
-void sango_crt_heap_shift_forward(uint32_t *param_1, int param_2)
+void sango_crt_heap_shift_forward(uint32_t *descriptor_words, int descriptor_count)
 {
-    int iVar1;
+    int descriptor_index;
 
-    iVar1 = 0;
-    if (0 < param_2)
+    descriptor_index = 0;
+    if (0 < descriptor_count)
     {
         do
         {
-            param_1[-2] = *param_1;
-            param_1[-1] = param_1[1];
-            iVar1 = iVar1 + 1;
-            param_1 = param_1 + 2;
-        } while (iVar1 < param_2);
+            descriptor_words[-2] = *descriptor_words;
+            descriptor_words[-1] = descriptor_words[1];
+            descriptor_index = descriptor_index + 1;
+            descriptor_words = descriptor_words + 2;
+        } while (descriptor_index < descriptor_count);
     }
     return;
 }

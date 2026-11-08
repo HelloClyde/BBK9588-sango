@@ -5,7 +5,7 @@
 /* 原函数 0x81c07e70 */
 uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32_t lparam)
 {
-    uint32_t uVar1;
+    uint32_t message_result;
 
     g_native_event_kind = message;
     if (message < 0x13)
@@ -37,37 +37,38 @@ uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32
             g_draw_context = bda_sango_gui_current_draw(handle);
         }
     }
-    uVar1 = bda_sango_gui_default_proc(handle, message, wparam, lparam);
-    return uVar1;
+    message_result = bda_sango_gui_default_proc(handle, message, wparam, lparam);
+    return message_result;
 }
 
 /* 原函数 0x81c07fd4 */
-void sango_display_copy_and_refresh(short param_1, short param_2, uint32_t param_3,
-                                    uint32_t param_4)
+void sango_display_copy_and_refresh(short source_x, short source_y, uint32_t target_context,
+                                    uint32_t source_context)
 {
-    int iVar1;
-    int iVar2;
+    int copy_x;
+    int copy_y;
 
-    iVar1 = (int)param_1;
-    iVar2 = (int)param_2;
-    if (((iVar1 + 0xefU & 0xffff) < 0x1df) && ((iVar2 + 0x13fU & 0xffff) < 0x27f))
+    copy_x = (int)source_x;
+    copy_y = (int)source_y;
+    if (((copy_x + 0xefU & 0xffff) < 0x1df) && ((copy_y + 0x13fU & 0xffff) < 0x27f))
     {
-        if (param_3 == 0)
+        if (target_context == 0)
         {
-            if (param_4 != 0)
+            if (source_context != 0)
             {
-                bda_sango_gui_context_copy(0, 0, 0, 0xf0, 0x140, g_draw_context, iVar1, iVar2, 0);
+                bda_sango_gui_context_copy(0, 0, 0, 0xf0, 0x140, g_draw_context, copy_x, copy_y, 0);
                 bda_sango_gui_request_redraw(g_app_frame, 0, 0);
             }
         }
         else
         {
-            if (param_4 == 0)
+            if (source_context == 0)
             {
-                param_4 = 0;
-                param_3 = g_draw_context;
+                source_context = 0;
+                target_context = g_draw_context;
             }
-            bda_sango_gui_context_copy(param_3, 0, 0, 0xf0, 0x140, param_4, iVar1, iVar2, 0);
+            bda_sango_gui_context_copy(target_context, 0, 0, 0xf0, 0x140, source_context, copy_x,
+                                       copy_y, 0);
         }
     }
     return;
@@ -83,50 +84,48 @@ void sango_display_fill_rectangle(short left, short top, short right, short bott
 #define color (*(uint32_t *)(abi_storage + 0))
 #define target (*(uint32_t *)(abi_storage + 4))
 
-    int iVar1;
-    int iVar2;
-    int iVar3;
-    int iVar4;
-    uint32_t uVar5;
+    int width;
+    int height;
+    int screen_x;
+    int screen_y;
+    uint32_t brush_kind;
 
-    iVar4 = (unsigned short)top;
-    iVar3 = (unsigned short)left;
-    iVar2 = (unsigned short)(bottom - top + 1);
-    iVar1 = (unsigned short)(right - left + 1);
+    screen_y = (unsigned short)top;
+    screen_x = (unsigned short)left;
+    height = (unsigned short)(bottom - top + 1);
+    width = (unsigned short)(right - left + 1);
     if (color == 1)
     {
-        uVar5 = 8;
+        brush_kind = 8;
     }
     else if (color == 0)
     {
-        uVar5 = 0xf;
+        brush_kind = 0xf;
     }
     else if (color == 2)
     {
-        uVar5 = 7;
+        brush_kind = 7;
     }
     else
     {
-        uVar5 = 0x10;
-        if (color != 3)
-            goto LAB_81c08188;
+        brush_kind = 0x10;
     }
-    color = (uint32_t)bda_sango_gui_draw_object(uVar5);
-LAB_81c08188:
+    if (color <= 3)
+        color = (uint32_t)bda_sango_gui_draw_object(brush_kind);
     if (target == 0)
     {
         bda_sango_gui_draw_guard(1);
         bda_sango_gui_bind_image_resource(g_draw_context, color);
-        bda_sango_gui_fill_region(g_draw_context, iVar3, iVar4, iVar1, iVar2);
+        bda_sango_gui_fill_region(g_draw_context, screen_x, screen_y, width, height);
         bda_sango_gui_request_redraw(g_app_frame, 0, 0);
         bda_sango_gui_draw_guard(0);
     }
     else
     {
         bda_sango_gui_bind_image_resource(g_draw_context, color);
-        bda_sango_gui_fill_region(g_draw_context, iVar3, iVar4, iVar1, iVar2);
+        bda_sango_gui_fill_region(g_draw_context, screen_x, screen_y, width, height);
         bda_sango_gui_bind_image_resource(target, color);
-        bda_sango_gui_fill_region(target, iVar3, iVar4, iVar1, iVar2);
+        bda_sango_gui_fill_region(target, screen_x, screen_y, width, height);
     }
     return;
 }
@@ -134,500 +133,506 @@ LAB_81c08188:
 #undef target
 
 /* 原函数 0x81c082fc */
-void sango_display_blit_palette_bitmap(short param_1, short param_2, short param_3, short param_4,
-                                       short param_5, short param_6, int param_7, uint32_t param_8,
-                                       uint32_t param_9, uint32_t param_10, int param_11)
+void sango_display_blit_palette_bitmap(short x, short y, short width, short height, short source_x,
+                                       short source_y, int bitmap_address,
+                                       uint32_t ignored_argument8, uint32_t ignored_argument9,
+                                       uint32_t draw_context, int transparency_mode)
 {
     unsigned char abi_storage[132] __attribute__((aligned(8)));
-    (*(short *)(abi_storage + 88)) = param_5;
-    (*(short *)(abi_storage + 92)) = param_6;
-    (*(int *)(abi_storage + 96)) = param_7;
-    (*(uint32_t *)(abi_storage + 100)) = param_8;
-    (*(uint32_t *)(abi_storage + 104)) = param_9;
-    (*(uint32_t *)(abi_storage + 108)) = param_10;
-    (*(int *)(abi_storage + 112)) = param_11;
-#define param_5 (*(short *)(abi_storage + 88))
-#define local_48 (*(uint32_t *)(abi_storage + 0))
-#define param_6 (*(short *)(abi_storage + 92))
-#define local_44 (*(int *)(abi_storage + 4))
-#define param_7 (*(int *)(abi_storage + 96))
-#define local_40 (*(int *)(abi_storage + 8))
-#define param_8 (*(uint32_t *)(abi_storage + 100))
-#define local_3c (*(uint32_t *)(abi_storage + 12))
-#define param_9 (*(uint32_t *)(abi_storage + 104))
-#define local_38 (*(uint8_t *)(abi_storage + 16))
-#define param_10 (*(uint32_t *)(abi_storage + 108))
-#define local_37 (*(uint8_t *)(abi_storage + 17))
-#define param_11 (*(int *)(abi_storage + 112))
-#define local_34 (*(int *)(abi_storage + 20))
-#define local_30 (*(int *)(abi_storage + 24))
-#define local_28 (*(uint8_t *)(abi_storage + 32))
-#define local_27 (*(uint8_t *)(abi_storage + 33))
-#define local_26 (*(uint8_t *)(abi_storage + 34))
-#define local_25 (*(uint8_t *)(abi_storage + 35))
+    (*(short *)(abi_storage + 88)) = source_x;
+    (*(short *)(abi_storage + 92)) = source_y;
+    (*(int *)(abi_storage + 96)) = bitmap_address;
+    (*(uint32_t *)(abi_storage + 100)) = ignored_argument8;
+    (*(uint32_t *)(abi_storage + 104)) = ignored_argument9;
+    (*(uint32_t *)(abi_storage + 108)) = draw_context;
+    (*(int *)(abi_storage + 112)) = transparency_mode;
+#define source_x (*(short *)(abi_storage + 88))
+#define descriptor_flags (*(uint32_t *)(abi_storage + 0))
+#define source_y (*(short *)(abi_storage + 92))
+#define bitmap_width (*(int *)(abi_storage + 4))
+#define bitmap_address (*(int *)(abi_storage + 96))
+#define bitmap_height (*(int *)(abi_storage + 8))
+#define ignored_argument8 (*(uint32_t *)(abi_storage + 100))
+#define descriptor_aux (*(uint32_t *)(abi_storage + 12))
+#define ignored_argument9 (*(uint32_t *)(abi_storage + 104))
+#define pixel_format (*(uint8_t *)(abi_storage + 16))
+#define draw_context (*(uint32_t *)(abi_storage + 108))
+#define pixel_bits (*(uint8_t *)(abi_storage + 17))
+#define transparency_mode (*(int *)(abi_storage + 112))
+#define pixel_address (*(int *)(abi_storage + 20))
+#define transparent_color (*(int *)(abi_storage + 24))
+#define height_byte0 (*(uint8_t *)(abi_storage + 32))
+#define height_byte1 (*(uint8_t *)(abi_storage + 33))
+#define height_byte2 (*(uint8_t *)(abi_storage + 34))
+#define height_byte3 (*(uint8_t *)(abi_storage + 35))
 
-    uint32_t uVar1;
-    int iVar2;
-    int iVar3;
-    int iVar4;
-    int iVar5;
-    int iVar6;
-    int iVar7;
+    uint32_t active_draw_context;
+    int draw_height;
+    int crop_x;
+    int crop_y;
+    int screen_x;
+    int screen_y;
+    int draw_width;
 
-    local_48 = 0;
-    iVar5 = (int)param_1;
-    iVar6 = (int)param_2;
-    local_44 =
-        (((uint32_t) * (uint8_t *)(param_7 + 7) * 0x100 + (uint32_t) * (uint8_t *)(param_7 + 6)) *
-             0x100 +
-         (uint32_t) * (uint8_t *)(param_7 + 5)) *
-            0x100 +
-        (uint32_t) * (uint8_t *)(param_7 + 4);
-    local_28 = *(uint8_t *)(param_7 + 8);
-    iVar7 = (int)param_3;
-    iVar2 = (int)param_4;
-    local_27 = *(uint8_t *)(param_7 + 9);
-    local_26 = *(uint8_t *)(param_7 + 10);
-    local_25 = *(uint8_t *)(param_7 + 0xb);
-    local_3c = 0;
-    local_40 =
-        (((uint32_t)local_25 * 0x100 + (uint32_t)local_26) * 0x100 + (uint32_t)local_27) * 0x100 +
-        (uint32_t)local_28;
-    local_38 = *(uint8_t *)(param_7 + 0x10);
-    local_34 = param_7 + 0x16;
-    local_37 = 0x10;
-    local_30 = -1;
-    iVar3 = (int)param_5;
-    iVar4 = (int)param_6;
-    if (param_11 == 0)
+    descriptor_flags = 0;
+    screen_x = (int)x;
+    screen_y = (int)y;
+    bitmap_width = (((uint32_t) * (uint8_t *)(bitmap_address + 7) * 0x100 +
+                     (uint32_t) * (uint8_t *)(bitmap_address + 6)) *
+                        0x100 +
+                    (uint32_t) * (uint8_t *)(bitmap_address + 5)) *
+                       0x100 +
+                   (uint32_t) * (uint8_t *)(bitmap_address + 4);
+    height_byte0 = *(uint8_t *)(bitmap_address + 8);
+    draw_width = (int)width;
+    draw_height = (int)height;
+    height_byte1 = *(uint8_t *)(bitmap_address + 9);
+    height_byte2 = *(uint8_t *)(bitmap_address + 10);
+    height_byte3 = *(uint8_t *)(bitmap_address + 0xb);
+    descriptor_aux = 0;
+    bitmap_height = (((uint32_t)height_byte3 * 0x100 + (uint32_t)height_byte2) * 0x100 +
+                     (uint32_t)height_byte1) *
+                        0x100 +
+                    (uint32_t)height_byte0;
+    pixel_format = *(uint8_t *)(bitmap_address + 0x10);
+    pixel_address = bitmap_address + 0x16;
+    pixel_bits = 0x10;
+    transparent_color = -1;
+    crop_x = (int)source_x;
+    crop_y = (int)source_y;
+    if (transparency_mode == 0)
     {
-        if (param_10 != 0)
+        if (draw_context != 0)
         {
-            bda_sango_gui_render_region(param_10, iVar5, iVar6, iVar7, iVar2, local_44, local_40,
-                                        &local_48, iVar3, iVar4);
+            bda_sango_gui_render_region(draw_context, screen_x, screen_y, draw_width, draw_height,
+                                        bitmap_width, bitmap_height, &descriptor_flags, crop_x,
+                                        crop_y);
             return;
         }
         bda_sango_gui_draw_guard(1);
-        uVar1 = bda_sango_gui_object_draw_begin(g_app_frame);
-        bda_sango_gui_render_region(uVar1, iVar5, iVar6, iVar7, iVar2, local_44, local_40,
-                                    &local_48, iVar3, iVar4);
+        active_draw_context = bda_sango_gui_object_draw_begin(g_app_frame);
+        bda_sango_gui_render_region(active_draw_context, screen_x, screen_y, draw_width,
+                                    draw_height, bitmap_width, bitmap_height, &descriptor_flags,
+                                    crop_x, crop_y);
     }
     else
     {
-        if (param_11 != 1)
+        if (transparency_mode != 1)
         {
             return;
         }
-        if (param_10 != 0)
+        if (draw_context != 0)
         {
-            local_30 = bda_sango_gui_rgb(param_10, 0xff, 0, 0xff);
-            bda_sango_gui_render_region(param_10, iVar5, iVar6, iVar7, iVar2, local_44, local_40,
-                                        &local_48, iVar3, iVar4);
+            transparent_color = bda_sango_gui_rgb(draw_context, 0xff, 0, 0xff);
+            bda_sango_gui_render_region(draw_context, screen_x, screen_y, draw_width, draw_height,
+                                        bitmap_width, bitmap_height, &descriptor_flags, crop_x,
+                                        crop_y);
             return;
         }
         bda_sango_gui_draw_guard(1);
-        uVar1 = bda_sango_gui_object_draw_begin(g_app_frame);
-        local_30 = bda_sango_gui_rgb(uVar1, 0xff, 0, 0xff);
-        bda_sango_gui_render_region(uVar1, iVar5, iVar6, iVar7, iVar2, local_44, local_40,
-                                    &local_48, iVar3, iVar4);
+        active_draw_context = bda_sango_gui_object_draw_begin(g_app_frame);
+        transparent_color = bda_sango_gui_rgb(active_draw_context, 0xff, 0, 0xff);
+        bda_sango_gui_render_region(active_draw_context, screen_x, screen_y, draw_width,
+                                    draw_height, bitmap_width, bitmap_height, &descriptor_flags,
+                                    crop_x, crop_y);
     }
-    bda_sango_gui_object_draw_end(g_app_frame, uVar1);
+    bda_sango_gui_object_draw_end(g_app_frame, active_draw_context);
     bda_sango_gui_draw_guard(0);
     return;
 }
-#undef param_5
-#undef local_48
-#undef param_6
-#undef local_44
-#undef param_7
-#undef local_40
-#undef param_8
-#undef local_3c
-#undef param_9
-#undef local_38
-#undef param_10
-#undef local_37
-#undef param_11
-#undef local_34
-#undef local_30
-#undef local_28
-#undef local_27
-#undef local_26
-#undef local_25
+#undef source_x
+#undef descriptor_flags
+#undef source_y
+#undef bitmap_width
+#undef bitmap_address
+#undef bitmap_height
+#undef ignored_argument8
+#undef descriptor_aux
+#undef ignored_argument9
+#undef pixel_format
+#undef draw_context
+#undef pixel_bits
+#undef transparency_mode
+#undef pixel_address
+#undef transparent_color
+#undef height_byte0
+#undef height_byte1
+#undef height_byte2
+#undef height_byte3
 
 /* 原函数 0x81c0863c */
-void sango_display_capture_bitmap(short param_1, short param_2, short param_3, short param_4,
-                                  short param_5, short param_6, uint16_t *param_7, int param_8,
-                                  uint32_t param_9, int param_10, int param_11)
+void sango_display_capture_bitmap(short x, short y, short width, short height, short source_x,
+                                  short source_y, uint16_t *dimensions, int bitmap_address,
+                                  uint32_t ignored_argument9, int draw_mode, int pixel_mode)
 {
     unsigned char abi_storage[44] __attribute__((aligned(8)));
-    (*(short *)(abi_storage + 0)) = param_5;
-    (*(short *)(abi_storage + 4)) = param_6;
-    (*(uint16_t **)(abi_storage + 8)) = param_7;
-    (*(int *)(abi_storage + 12)) = param_8;
-    (*(uint32_t *)(abi_storage + 16)) = param_9;
-    (*(int *)(abi_storage + 20)) = param_10;
-    (*(int *)(abi_storage + 24)) = param_11;
-#define param_5 (*(short *)(abi_storage + 0))
-#define param_6 (*(short *)(abi_storage + 4))
-#define param_7 (*(uint16_t **)(abi_storage + 8))
-#define param_8 (*(int *)(abi_storage + 12))
-#define param_9 (*(uint32_t *)(abi_storage + 16))
-#define param_10 (*(int *)(abi_storage + 20))
-#define param_11 (*(int *)(abi_storage + 24))
+    (*(short *)(abi_storage + 0)) = source_x;
+    (*(short *)(abi_storage + 4)) = source_y;
+    (*(uint16_t **)(abi_storage + 8)) = dimensions;
+    (*(int *)(abi_storage + 12)) = bitmap_address;
+    (*(uint32_t *)(abi_storage + 16)) = ignored_argument9;
+    (*(int *)(abi_storage + 20)) = draw_mode;
+    (*(int *)(abi_storage + 24)) = pixel_mode;
+#define source_x (*(short *)(abi_storage + 0))
+#define source_y (*(short *)(abi_storage + 4))
+#define dimensions (*(uint16_t **)(abi_storage + 8))
+#define bitmap_address (*(int *)(abi_storage + 12))
+#define ignored_argument9 (*(uint32_t *)(abi_storage + 16))
+#define draw_mode (*(int *)(abi_storage + 20))
+#define pixel_mode (*(int *)(abi_storage + 24))
 
-    uint16_t uVar1;
-    uint16_t uVar2;
-    void *pvVar3;
-    int iVar4;
-    int iVar5;
-    int iVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
-    uint32_t unaff_s5;
-    void *pvVar9;
+    uint16_t source_height;
+    uint16_t source_width;
+    void *cropped_pixels;
+    int rounded_width;
+    int crop_x_or_result;
+    int crop_y;
+    uint32_t draw_width;
+    uint32_t draw_height;
+    uint32_t copy_mode;
+    void *pixel_data;
 
-    uVar7 = (uint32_t)param_3;
-    uVar8 = (uint32_t)param_4;
-    iVar5 = (int)param_5;
-    iVar6 = (int)param_6;
-    if (param_11 == 1)
+    draw_width = (uint32_t)width;
+    draw_height = (uint32_t)height;
+    crop_x_or_result = (int)source_x;
+    crop_y = (int)source_y;
+    if (pixel_mode == 1)
     {
-        unaff_s5 = 1;
+        copy_mode = 1;
     }
-    else if (param_11 == 2)
+    else if (pixel_mode == 2)
     {
-        unaff_s5 = 2;
+        copy_mode = 2;
     }
-    if (1 < (unaff_s5 - 1 & 0xff))
+    if (1 < (copy_mode - 1 & 0xff))
     {
         return;
     }
-    if (param_7 == (uint16_t *)0x0)
+    if (dimensions == (uint16_t *)0x0)
     {
         return;
     }
-    uVar1 = param_7[1];
-    uVar2 = *param_7;
-    pvVar9 = (void *)(param_8 + 0xc);
-    if ((((iVar5 != 0) || (iVar6 != 0)) || (uVar2 != uVar7)) || (uVar1 != uVar8))
+    source_height = dimensions[1];
+    source_width = *dimensions;
+    pixel_data = (void *)(bitmap_address + 0xc);
+    if ((((crop_x_or_result != 0) || (crop_y != 0)) || (source_width != draw_width)) ||
+        (source_height != draw_height))
     {
-        iVar4 = uVar7 + 3;
-        if ((int)(uVar7 + 3) < 0)
+        rounded_width = draw_width + 3;
+        if ((int)(draw_width + 3) < 0)
         {
-            iVar4 = uVar7 + 6;
+            rounded_width = draw_width + 6;
         }
-        pvVar3 = bda_sango_mem_alloc((iVar4 >> 2) * uVar8 + 0x20);
-        if (pvVar3 == 0)
+        cropped_pixels = bda_sango_mem_alloc((rounded_width >> 2) * draw_height + 0x20);
+        if (cropped_pixels == 0)
         {
             return;
         }
-        iVar5 = bda_sango_gui_bitmap_crop((uint32_t)uVar2, (uint32_t)uVar1, iVar5, iVar6,
-                                          iVar5 + uVar7 + -1, iVar6 + uVar8 + -1, pvVar9, pvVar3);
-        pvVar9 = pvVar3;
-        if (iVar5 == 0)
-            goto LAB_81c08778;
+        crop_x_or_result =
+            bda_sango_gui_bitmap_crop((uint32_t)source_width, (uint32_t)source_height,
+                                      crop_x_or_result, crop_y, crop_x_or_result + draw_width + -1,
+                                      crop_y + draw_height + -1, pixel_data, cropped_pixels);
+        pixel_data = cropped_pixels;
+        if (crop_x_or_result == 0)
+            goto release_pixel_data;
     }
-    if (param_10 == 0)
+    if (draw_mode == 0)
     {
-        bda_sango_gui_bitmap_context(g_draw_context, (int)param_1, (int)param_2, uVar7, uVar8,
-                                     pvVar9, unaff_s5);
-        bda_sango_gui_bitmap_buffer((int)param_1, (int)param_2, uVar7, uVar8, pvVar9,
-                                    g_frame_buffer, unaff_s5);
+        bda_sango_gui_bitmap_context(g_draw_context, (int)x, (int)y, draw_width, draw_height,
+                                     pixel_data, copy_mode);
+        bda_sango_gui_bitmap_buffer((int)x, (int)y, draw_width, draw_height, pixel_data,
+                                    g_frame_buffer, copy_mode);
         bda_sango_gui_request_redraw(g_app_frame, 0, 0);
     }
-LAB_81c08778:
-    if (pvVar9 != 0)
+release_pixel_data:
+    if (pixel_data != 0)
     {
-        bda_sango_mem_free(pvVar9);
+        bda_sango_mem_free(pixel_data);
     }
     return;
 }
-#undef param_5
-#undef param_6
-#undef param_7
-#undef param_8
-#undef param_9
-#undef param_10
-#undef param_11
+#undef source_x
+#undef source_y
+#undef dimensions
+#undef bitmap_address
+#undef ignored_argument9
+#undef draw_mode
+#undef pixel_mode
 
 /* 原函数 0x81c0886c */
-void sango_display_put_gray_pixel(short param_1, short param_2, uint32_t param_3, uint32_t param_4)
+void sango_display_put_gray_pixel(short x, short y, uint32_t gray_level, uint32_t draw_context)
 {
-    uint32_t uVar1;
-    int iVar2;
-    int iVar3;
-    void *unaff_s3;
+    uint32_t brush_kind;
+    int screen_x;
+    int screen_y;
+    void *brush_object;
 
-    iVar2 = (int)param_1;
-    iVar3 = (int)param_2;
-    if (iVar2 < 0)
+    screen_x = (int)x;
+    screen_y = (int)y;
+    if (screen_x < 0)
     {
         return;
     }
-    if (iVar3 < 0)
+    if (screen_y < 0)
     {
         return;
     }
-    if (0xef < iVar2)
+    if (0xef < screen_x)
     {
         return;
     }
-    if (0x13f < iVar3)
+    if (0x13f < screen_y)
     {
         return;
     }
-    if (3 < param_3)
+    if (3 < gray_level)
     {
         return;
     }
-    if (param_3 == 1)
+    if (gray_level == 1)
     {
-        uVar1 = 8;
+        brush_kind = 8;
     }
-    else if (param_3 == 0)
+    else if (gray_level == 0)
     {
-        uVar1 = 0xf;
+        brush_kind = 0xf;
     }
-    else if (param_3 == 2)
+    else if (gray_level == 2)
     {
-        uVar1 = 7;
+        brush_kind = 7;
     }
     else
     {
-        uVar1 = 0x10;
-        if (param_3 != 3)
-            goto LAB_81c088dc;
+        brush_kind = 0x10;
     }
-    unaff_s3 = bda_sango_gui_draw_object(uVar1);
-LAB_81c088dc:
-    if (param_4 == 0)
+    brush_object = bda_sango_gui_draw_object(brush_kind);
+    if (draw_context == 0)
     {
         bda_sango_gui_draw_guard(1);
-        bda_sango_gui_put_pixel(g_draw_context, iVar2, iVar3, (uint32_t)unaff_s3);
+        bda_sango_gui_put_pixel(g_draw_context, screen_x, screen_y, (uint32_t)brush_object);
         bda_sango_gui_request_redraw(g_app_frame, 0, 0);
         bda_sango_gui_draw_guard(0);
     }
     else
     {
-        bda_sango_gui_put_pixel(param_4, iVar2, iVar3, (uint32_t)unaff_s3);
+        bda_sango_gui_put_pixel(draw_context, screen_x, screen_y, (uint32_t)brush_object);
     }
     return;
 }
 
 /* 原函数 0x81c089c4 */
-void sango_display_draw_line(short param_1, short param_2, short param_3, short param_4,
-                             uint32_t param_5, uint32_t param_6, uint32_t param_7)
+void sango_display_draw_line(short start_x, short start_y, short end_x, short end_y,
+                             uint32_t gray_level, uint32_t ignored_style, uint32_t target_context)
 {
     unsigned char abi_storage[28] __attribute__((aligned(8)));
-    (*(uint32_t *)(abi_storage + 0)) = param_5;
-    (*(uint32_t *)(abi_storage + 4)) = param_6;
-    (*(uint32_t *)(abi_storage + 8)) = param_7;
-#define param_5 (*(uint32_t *)(abi_storage + 0))
-#define param_6 (*(uint32_t *)(abi_storage + 4))
-#define param_7 (*(uint32_t *)(abi_storage + 8))
+    (*(uint32_t *)(abi_storage + 0)) = gray_level;
+    (*(uint32_t *)(abi_storage + 4)) = ignored_style;
+    (*(uint32_t *)(abi_storage + 8)) = target_context;
+#define gray_level (*(uint32_t *)(abi_storage + 0))
+#define ignored_style (*(uint32_t *)(abi_storage + 4))
+#define target_context (*(uint32_t *)(abi_storage + 8))
 
-    short sVar1;
-    short sVar2;
-    int iVar3;
-    int iVar4;
-    void *pvVar5;
-    int iVar6;
-    uint32_t uVar7;
-    void *unaff_s0;
-    int iVar8;
-    int iVar9;
-    int iVar10;
-    int iVar11;
-    int iVar12;
-    int iVar13;
-    int iVar14;
-    int iVar15;
+    short delta_x_short;
+    short delta_y_short;
+    int abs_delta_x;
+    int abs_delta_y;
+    void *previous_pen;
+    int slope_sign;
+    uint32_t pen_kind;
+    void *pen_object;
+    int x_work;
+    int clipped_start_x;
+    int y_work;
+    int clipped_start_y;
+    int clipped_end_x;
+    int clipped_end_y;
+    int delta_y;
+    int delta_x;
 
-    iVar8 = (int)param_1;
-    iVar10 = (int)param_2;
-    iVar12 = (int)param_3;
-    iVar13 = (int)param_4;
-    if ((iVar8 < 0) && (iVar12 < 0))
+    x_work = (int)start_x;
+    y_work = (int)start_y;
+    clipped_end_x = (int)end_x;
+    clipped_end_y = (int)end_y;
+    if ((x_work < 0) && (clipped_end_x < 0))
     {
         return;
     }
-    if ((iVar10 < 0) && (iVar13 < 0))
+    if ((y_work < 0) && (clipped_end_y < 0))
     {
         return;
     }
-    if ((0xef < iVar8) && (0xef < iVar12))
+    if ((0xef < x_work) && (0xef < clipped_end_x))
     {
         return;
     }
-    if ((0x13f < iVar10) && (0x13f < iVar13))
+    if ((0x13f < y_work) && (0x13f < clipped_end_y))
     {
         return;
     }
-    iVar9 = iVar8;
-    if (iVar8 < 0)
+    clipped_start_x = x_work;
+    if (x_work < 0)
     {
-        iVar9 = 0;
+        clipped_start_x = 0;
     }
-    if (iVar12 < 0)
+    if (clipped_end_x < 0)
     {
-        iVar12 = 0;
+        clipped_end_x = 0;
     }
-    iVar11 = iVar10;
-    if (iVar10 < 0)
+    clipped_start_y = y_work;
+    if (y_work < 0)
     {
-        iVar11 = 0;
+        clipped_start_y = 0;
     }
-    if (iVar13 < 0)
+    if (clipped_end_y < 0)
     {
-        iVar13 = 0;
+        clipped_end_y = 0;
     }
-    if (0xef < iVar12)
+    if (0xef < clipped_end_x)
     {
-        iVar12 = 0xef;
+        clipped_end_x = 0xef;
     }
-    if (0x13f < iVar13)
+    if (0x13f < clipped_end_y)
     {
-        iVar13 = 0x13f;
+        clipped_end_y = 0x13f;
     }
-    if (0xef < iVar8)
+    if (0xef < x_work)
     {
-        iVar9 = 0xef;
+        clipped_start_x = 0xef;
     }
-    if (0x13f < iVar10)
+    if (0x13f < y_work)
     {
-        iVar11 = 0x13f;
+        clipped_start_y = 0x13f;
     }
-    if (3 < param_5)
+    if (3 < gray_level)
     {
         return;
     }
-    if (param_5 == 1)
+    if (gray_level == 1)
     {
-        uVar7 = 8;
+        pen_kind = 8;
     }
-    else if (param_5 == 0)
+    else if (gray_level == 0)
     {
-        uVar7 = 0xf;
+        pen_kind = 0xf;
     }
-    else if (param_5 == 2)
+    else if (gray_level == 2)
     {
-        uVar7 = 7;
+        pen_kind = 7;
     }
     else
     {
-        uVar7 = 0x10;
-        if (param_5 != 3)
-            goto LAB_81c08ab8;
+        pen_kind = 0x10;
     }
-    unaff_s0 = bda_sango_gui_draw_object(uVar7);
-LAB_81c08ab8:
-    if (param_7 == 0)
+    pen_object = bda_sango_gui_draw_object(pen_kind);
+    if (target_context == 0)
     {
-        pvVar5 = bda_sango_gui_select_draw_object(g_draw_context, unaff_s0);
+        previous_pen = bda_sango_gui_select_draw_object(g_draw_context, pen_object);
         bda_sango_gui_draw_guard(1);
-        bda_sango_gui_move_to(g_draw_context, iVar9, iVar11);
-        bda_sango_gui_line_to(g_draw_context, iVar12, iVar13);
+        bda_sango_gui_move_to(g_draw_context, clipped_start_x, clipped_start_y);
+        bda_sango_gui_line_to(g_draw_context, clipped_end_x, clipped_end_y);
         bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-        bda_sango_gui_select_draw_object(g_draw_context, pvVar5);
+        bda_sango_gui_select_draw_object(g_draw_context, previous_pen);
         bda_sango_gui_draw_guard(0);
     }
-    else if ((iVar9 == iVar12) || (iVar11 == iVar13))
+    else if ((clipped_start_x == clipped_end_x) || (clipped_start_y == clipped_end_y))
     {
-        iVar8 = iVar9;
-        if (iVar12 < iVar9)
+        x_work = clipped_start_x;
+        if (clipped_end_x < clipped_start_x)
         {
-            iVar8 = iVar12;
-            iVar12 = iVar9;
+            x_work = clipped_end_x;
+            clipped_end_x = clipped_start_x;
         }
-        iVar10 = iVar11;
-        if (iVar13 < iVar11)
+        y_work = clipped_start_y;
+        if (clipped_end_y < clipped_start_y)
         {
-            iVar10 = iVar13;
-            iVar13 = iVar11;
+            y_work = clipped_end_y;
+            clipped_end_y = clipped_start_y;
         }
-        sango_display_fill_rectangle((short)iVar8, (short)iVar10, (short)iVar12, (short)iVar13,
-                                     param_5, param_7);
+        sango_display_fill_rectangle((short)x_work, (short)y_work, (short)clipped_end_x,
+                                     (short)clipped_end_y, gray_level, target_context);
     }
     else
     {
-        iVar8 = (iVar12 - iVar9) * 0x10000;
-        iVar10 = (iVar13 - iVar11) * 0x10000;
-        iVar15 = iVar8 >> 0x10;
-        iVar14 = iVar10 >> 0x10;
-        iVar6 = 1;
-        if (iVar15 * iVar14 < 0)
+        x_work = (clipped_end_x - clipped_start_x) * 0x10000;
+        y_work = (clipped_end_y - clipped_start_y) * 0x10000;
+        delta_x = x_work >> 0x10;
+        delta_y = y_work >> 0x10;
+        slope_sign = 1;
+        if (delta_x * delta_y < 0)
         {
-            iVar6 = -1;
+            slope_sign = -1;
         }
-        iVar3 = sango_crt_abs(iVar15);
-        iVar4 = sango_crt_abs(iVar14);
-        sVar1 = (short)((uint32_t)iVar8 >> 0x10);
-        sVar2 = (short)((uint32_t)iVar10 >> 0x10);
-        if (iVar4 < iVar3)
+        abs_delta_x = sango_crt_abs(delta_x);
+        abs_delta_y = sango_crt_abs(delta_y);
+        delta_x_short = (short)((uint32_t)x_work >> 0x10);
+        delta_y_short = (short)((uint32_t)y_work >> 0x10);
+        if (abs_delta_y < abs_delta_x)
         {
-            iVar8 = iVar9;
-            if (iVar15 < 0)
+            x_work = clipped_start_x;
+            if (delta_x < 0)
             {
-                iVar15 = (int)-sVar1;
-                iVar14 = (int)-sVar2;
-                iVar8 = iVar12;
-                iVar11 = iVar13;
-                iVar12 = iVar9;
+                delta_x = (int)-delta_x_short;
+                delta_y = (int)-delta_y_short;
+                x_work = clipped_end_x;
+                clipped_start_y = clipped_end_y;
+                clipped_end_x = clipped_start_x;
             }
-            iVar13 = iVar14 * 2 - iVar15;
-            sango_display_put_gray_pixel((short)iVar8, (short)iVar11, param_5, param_7);
-            while (iVar8 < iVar12)
+            clipped_end_y = delta_y * 2 - delta_x;
+            sango_display_put_gray_pixel((short)x_work, (short)clipped_start_y, gray_level,
+                                         target_context);
+            while (x_work < clipped_end_x)
             {
-                iVar13 = iVar13 * 0x10000 >> 0x10;
-                iVar9 = (iVar8 + 1) * 0x10000;
-                iVar8 = iVar9 >> 0x10;
-                iVar10 = iVar14 << 0x11;
-                if (-1 < iVar13)
+                clipped_end_y = clipped_end_y * 0x10000 >> 0x10;
+                clipped_start_x = (x_work + 1) * 0x10000;
+                x_work = clipped_start_x >> 0x10;
+                y_work = delta_y << 0x11;
+                if (-1 < clipped_end_y)
                 {
-                    iVar11 = (iVar11 + iVar6) * 0x10000 >> 0x10;
-                    iVar10 = (iVar14 - iVar15) * 0x20000;
+                    clipped_start_y = (clipped_start_y + slope_sign) * 0x10000 >> 0x10;
+                    y_work = (delta_y - delta_x) * 0x20000;
                 }
-                iVar13 = iVar13 + (iVar10 >> 0x10);
-                sango_display_put_gray_pixel((short)((uint32_t)iVar9 >> 0x10), (short)iVar11,
-                                             param_5, param_7);
+                clipped_end_y = clipped_end_y + (y_work >> 0x10);
+                sango_display_put_gray_pixel((short)((uint32_t)clipped_start_x >> 0x10),
+                                             (short)clipped_start_y, gray_level, target_context);
             }
         }
         else
         {
-            iVar8 = iVar11;
-            if (iVar14 < 0)
+            x_work = clipped_start_y;
+            if (delta_y < 0)
             {
-                iVar15 = (int)-sVar1;
-                iVar14 = (int)-sVar2;
-                iVar9 = iVar12;
-                iVar8 = iVar13;
-                iVar13 = iVar11;
+                delta_x = (int)-delta_x_short;
+                delta_y = (int)-delta_y_short;
+                clipped_start_x = clipped_end_x;
+                x_work = clipped_end_y;
+                clipped_end_y = clipped_start_y;
             }
-            iVar12 = iVar15 * 2 - iVar14;
-            sango_display_put_gray_pixel((short)iVar9, (short)iVar8, param_5, param_7);
-            while (iVar8 < iVar13)
+            clipped_end_x = delta_x * 2 - delta_y;
+            sango_display_put_gray_pixel((short)clipped_start_x, (short)x_work, gray_level,
+                                         target_context);
+            while (x_work < clipped_end_y)
             {
-                iVar12 = iVar12 * 0x10000 >> 0x10;
-                iVar11 = (iVar8 + 1) * 0x10000;
-                iVar8 = iVar11 >> 0x10;
-                iVar10 = iVar15 << 0x11;
-                if (-1 < iVar12)
+                clipped_end_x = clipped_end_x * 0x10000 >> 0x10;
+                clipped_start_y = (x_work + 1) * 0x10000;
+                x_work = clipped_start_y >> 0x10;
+                y_work = delta_x << 0x11;
+                if (-1 < clipped_end_x)
                 {
-                    iVar9 = (iVar9 + iVar6) * 0x10000 >> 0x10;
-                    iVar10 = (iVar15 - iVar14) * 0x20000;
+                    clipped_start_x = (clipped_start_x + slope_sign) * 0x10000 >> 0x10;
+                    y_work = (delta_x - delta_y) * 0x20000;
                 }
-                iVar12 = iVar12 + (iVar10 >> 0x10);
-                sango_display_put_gray_pixel((short)iVar9, (short)((uint32_t)iVar11 >> 0x10),
-                                             param_5, param_7);
+                clipped_end_x = clipped_end_x + (y_work >> 0x10);
+                sango_display_put_gray_pixel((short)clipped_start_x,
+                                             (short)((uint32_t)clipped_start_y >> 0x10), gray_level,
+                                             target_context);
             }
         }
     }
     return;
 }
-#undef param_5
-#undef param_6
-#undef param_7
+#undef gray_level
+#undef ignored_style
+#undef target_context
 
 /* 原函数 0x81c08e7c */
 void sango_display_draw_rectangle(short param_1, short param_2, short param_3, short param_4,
@@ -718,104 +723,104 @@ LAB_81c08f2c:
 #undef param_7
 
 /* 原函数 0x81c090c4 */
-void sango_display_draw_circle(short param_1, short param_2, int param_3, uint32_t param_4,
-                               uint32_t param_5, int param_6)
+void sango_display_draw_circle(short center_x, short center_y, int radius, uint32_t gray_level,
+                               uint32_t ignored_style, int draw_context)
 {
     unsigned char abi_storage[24] __attribute__((aligned(8)));
-    (*(uint32_t *)(abi_storage + 0)) = param_5;
-    (*(int *)(abi_storage + 4)) = param_6;
-#define param_5 (*(uint32_t *)(abi_storage + 0))
-#define param_6 (*(int *)(abi_storage + 4))
+    (*(uint32_t *)(abi_storage + 0)) = ignored_style;
+    (*(int *)(abi_storage + 4)) = draw_context;
+#define ignored_style (*(uint32_t *)(abi_storage + 0))
+#define draw_context (*(int *)(abi_storage + 4))
 
-    int iVar1;
-    void *pvVar2;
-    int iVar3;
-    short sVar4;
-    short sVar5;
-    int iVar6;
-    uint32_t uVar7;
-    short sVar8;
-    void *unaff_s1;
-    int iVar9;
-    int iVar10;
-    int iVar11;
-    int iVar12;
+    int offset_difference;
+    void *previous_pen;
+    int decision_error;
+    short point_x_positive;
+    short point_x_negative;
+    int origin_x;
+    uint32_t pen_kind;
+    short point_y;
+    void *pen_object;
+    int offset_y;
+    int offset_x;
+    int previous_error;
+    int origin_y;
 
-    iVar6 = (int)param_1;
-    iVar12 = (int)param_2;
-    if (param_3 == 0)
+    origin_x = (int)center_x;
+    origin_y = (int)center_y;
+    if (radius == 0)
     {
         return;
     }
-    if (3 < param_4)
+    if (3 < gray_level)
     {
         return;
     }
-    if (param_4 == 1)
+    if (gray_level == 1)
     {
-        uVar7 = 8;
+        pen_kind = 8;
     }
-    else if (param_4 == 0)
+    else if (gray_level == 0)
     {
-        uVar7 = 0xf;
+        pen_kind = 0xf;
     }
-    else if (param_4 == 2)
+    else if (gray_level == 2)
     {
-        uVar7 = 7;
+        pen_kind = 7;
     }
     else
     {
-        uVar7 = 0x10;
-        if (param_4 != 3)
-            goto LAB_81c09140;
+        pen_kind = 0x10;
+        if (gray_level != 3)
+            goto draw_circle;
     }
-    unaff_s1 = bda_sango_gui_draw_object(uVar7);
-LAB_81c09140:
-    if (param_6 == 0)
+    pen_object = bda_sango_gui_draw_object(pen_kind);
+draw_circle:
+    if (draw_context == 0)
     {
-        pvVar2 = bda_sango_gui_select_draw_object(g_draw_context, unaff_s1);
-        bda_sango_gui_circle(g_draw_context, iVar6, iVar12, param_3);
+        previous_pen = bda_sango_gui_select_draw_object(g_draw_context, pen_object);
+        bda_sango_gui_circle(g_draw_context, origin_x, origin_y, radius);
         bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-        bda_sango_gui_select_draw_object(g_draw_context, pvVar2);
+        bda_sango_gui_select_draw_object(g_draw_context, previous_pen);
     }
-    iVar3 = param_3 * -2 + 3;
-    iVar9 = (int)(short)param_3;
-    iVar10 = 0;
-    if (-1 < iVar9)
+    decision_error = radius * -2 + 3;
+    offset_y = (int)(short)radius;
+    offset_x = 0;
+    if (-1 < offset_y)
     {
         do
         {
-            iVar11 = iVar3 * 0x10000 >> 0x10;
-            sVar4 = (short)((uint32_t)((iVar6 + iVar10) * 0x10000) >> 0x10);
-            sVar8 = (short)((uint32_t)((iVar12 + iVar9) * 0x10000) >> 0x10);
-            sango_display_put_gray_pixel(sVar4, sVar8, param_4, param_6);
-            sVar5 = (short)((uint32_t)((iVar6 - iVar10) * 0x10000) >> 0x10);
-            sango_display_put_gray_pixel(sVar5, sVar8, param_4, param_6);
-            sVar8 = (short)((uint32_t)((iVar12 - iVar9) * 0x10000) >> 0x10);
-            sango_display_put_gray_pixel(sVar4, sVar8, param_4, param_6);
-            sango_display_put_gray_pixel(sVar5, sVar8, param_4, param_6);
-            sVar4 = (short)((uint32_t)((iVar6 + iVar9) * 0x10000) >> 0x10);
-            sVar8 = (short)((uint32_t)((iVar12 + iVar10) * 0x10000) >> 0x10);
-            sango_display_put_gray_pixel(sVar4, sVar8, param_4, param_6);
-            sVar5 = (short)((uint32_t)((iVar6 - iVar9) * 0x10000) >> 0x10);
-            sango_display_put_gray_pixel(sVar5, sVar8, param_4, param_6);
-            sVar8 = (short)((uint32_t)((iVar12 - iVar10) * 0x10000) >> 0x10);
-            sango_display_put_gray_pixel(sVar4, sVar8, param_4, param_6);
-            sango_display_put_gray_pixel(sVar5, sVar8, param_4, param_6);
-            iVar1 = iVar10 - iVar9;
-            iVar3 = iVar11 + iVar10 * 4 + 6;
-            if (-1 < iVar11)
+            previous_error = decision_error * 0x10000 >> 0x10;
+            point_x_positive = (short)((uint32_t)((origin_x + offset_x) * 0x10000) >> 0x10);
+            point_y = (short)((uint32_t)((origin_y + offset_y) * 0x10000) >> 0x10);
+            sango_display_put_gray_pixel(point_x_positive, point_y, gray_level, draw_context);
+            point_x_negative = (short)((uint32_t)((origin_x - offset_x) * 0x10000) >> 0x10);
+            sango_display_put_gray_pixel(point_x_negative, point_y, gray_level, draw_context);
+            point_y = (short)((uint32_t)((origin_y - offset_y) * 0x10000) >> 0x10);
+            sango_display_put_gray_pixel(point_x_positive, point_y, gray_level, draw_context);
+            sango_display_put_gray_pixel(point_x_negative, point_y, gray_level, draw_context);
+            point_x_positive = (short)((uint32_t)((origin_x + offset_y) * 0x10000) >> 0x10);
+            point_y = (short)((uint32_t)((origin_y + offset_x) * 0x10000) >> 0x10);
+            sango_display_put_gray_pixel(point_x_positive, point_y, gray_level, draw_context);
+            point_x_negative = (short)((uint32_t)((origin_x - offset_y) * 0x10000) >> 0x10);
+            sango_display_put_gray_pixel(point_x_negative, point_y, gray_level, draw_context);
+            point_y = (short)((uint32_t)((origin_y - offset_x) * 0x10000) >> 0x10);
+            sango_display_put_gray_pixel(point_x_positive, point_y, gray_level, draw_context);
+            sango_display_put_gray_pixel(point_x_negative, point_y, gray_level, draw_context);
+            offset_difference = offset_x - offset_y;
+            decision_error = previous_error + offset_x * 4 + 6;
+            if (-1 < previous_error)
             {
-                iVar9 = (iVar9 + -1) * 0x10000 >> 0x10;
-                iVar3 = iVar11 + iVar1 * 4 + 10;
+                offset_y = (offset_y + -1) * 0x10000 >> 0x10;
+                decision_error = previous_error + offset_difference * 4 + 10;
             }
-            iVar10 = (iVar10 + 1) * 0x10000 >> 0x10;
-        } while (iVar10 <= iVar9);
+            offset_x = (offset_x + 1) * 0x10000 >> 0x10;
+        } while (offset_x <= offset_y);
     }
     return;
 }
-#undef param_5
-#undef param_6
+#undef ignored_style
+#undef draw_context
 
 /* 原函数 0x81c093c0 */
 void sango_display_draw_polyline(short param_1, short param_2, int param_3, uint32_t param_4,

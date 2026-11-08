@@ -10,151 +10,125 @@ uint32_t sango_strategy_select_city(uint8_t *map_state)
 #define event_kind (*(int *)(abi_storage + 0))
 #define key_code (*(int *)(abi_storage + 4))
 
-    bool redraw_map;
-    bool showing_find_map;
-    uint8_t bVar3;
-    uint8_t *find_map;
-    uint32_t uVar5;
-    short sVar6;
-    uint8_t scroll_mode;
+    bool redraw_map = true;
+    bool showing_find_map = false;
+    uint8_t scroll_mode = 0;
     uint32_t selected_city_plus_one;
 
-    redraw_map = true;
-    scroll_mode = 0;
-    showing_find_map = false;
     sango_render_clear_rectangle(0, 0, 0xef, 0x13f, g_game_context);
-LAB_81c12b64:
-    if (!redraw_map)
-        goto LAB_81c12b8c;
-LAB_81c12b6c:
-    if (showing_find_map)
-        goto LAB_81c12b8c;
-    do
+    while (true)
     {
-        selected_city_plus_one = sango_strategy_draw_map(map_state, scroll_mode);
-        redraw_map = false;
-        scroll_mode = 0;
-    LAB_81c12b8c:
+        if (redraw_map && !showing_find_map)
+        {
+            selected_city_plus_one = sango_strategy_draw_map(map_state, scroll_mode);
+            redraw_map = false;
+            scroll_mode = 0;
+        }
+
         sango_input_next_event(&event_kind);
-        if (event_kind == 5)
+        if ((event_kind != 5) && (event_kind != 0xb))
+            continue;
+
+        /* 任意按键或触摸先关闭查找图，不同时执行该输入的地图命令。 */
+        if (showing_find_map)
         {
-            if (!showing_find_map)
-                break;
+            showing_find_map = false;
+            redraw_map = true;
+            continue;
         }
-        else
+
+        bool open_find_map = event_kind == 5 && key_code == 0x1f;
+        if (event_kind == 0xb)
         {
-            if (event_kind != 0xb)
-                goto LAB_81c12b64;
-            if (!showing_find_map)
+            /* 直接读取完整16位坐标，旧全局坐标会把255之后的行截断。 */
+            enum SangoStatusbarAction action = sango_statusbar_hit(*(uint16_t *)(abi_storage + 8),
+                                                                   *(uint16_t *)(abi_storage + 10));
+            if (action == SANGO_STATUSBAR_INFO)
             {
-                /* The input message retains full 16-bit x/y at bytes 8/10.
-                      Legacy coordinate globals truncate y to a uint8_t above row 255. */
-                enum SangoStatusbarAction action = sango_statusbar_hit(
-                    *(uint16_t *)(abi_storage + 8), *(uint16_t *)(abi_storage + 10));
-                if (action == SANGO_STATUSBAR_INFO)
-                {
-                    sango_ui_show_message(&g_legacy_data_81c20570, 2);
-                    sango_strategy_present();
-                }
-                if (action != SANGO_STATUSBAR_FIND)
-                    goto LAB_81c12b64;
-                sVar6 = 0x13f;
-                goto LAB_81c12c2c;
+                sango_ui_show_message(&g_legacy_data_81c20570, 2);
+                sango_strategy_present();
             }
+            if (action != SANGO_STATUSBAR_FIND)
+                continue;
+            open_find_map = true;
         }
-        showing_find_map = false;
-    } while (true);
-    if (key_code == 0x67)
-    {
-        bVar3 = map_state[3];
-        if (bVar3 == 0)
-            goto LAB_81c12b64;
-        map_state[3] = bVar3 - 1;
-        scroll_mode = 1;
-        if (map_state[1] <= (uint8_t)(bVar3 - 1))
-            goto LAB_81c12d6c;
-        map_state[1] = bVar3 - 1;
-    }
-    else
-    {
-        if (key_code < 0x68)
+
+        if (open_find_map)
         {
-            if (key_code == 0x1c)
+            sango_display_fill_gray_rectangle(0, 0, 0xef, 0x13f, 0, 0);
+            uint8_t *find_map =
+                (uint8_t *)sango_resource_item(0x4b, '\x01', g_resource_package_address);
+            showing_find_map = true;
+            /* 9588查找图为84×64，按资源描述居中，不套用9288S的160×160。 */
+            uint16_t map_width = (uint16_t)(find_map[0] | (find_map[1] << 8));
+            uint16_t map_height = (uint16_t)(find_map[2] | (find_map[3] << 8));
+            sango_bitmap_draw_frame_screen((240 - map_width) / 2, (320 - map_height) / 2, map_width,
+                                           map_height, 0, find_map);
+            continue;
+        }
+
+        uint8_t previous_coordinate;
+        switch (key_code)
+        {
+        case 1:
+            return 0xff;
+        case 0x1c:
+            if (selected_city_plus_one != 0)
+                return selected_city_plus_one - 1 & 0xff;
+            continue;
+        case 0x67: /* 上 */
+            previous_coordinate = map_state[3];
+            if (previous_coordinate == 0)
+                continue;
+            map_state[3] = previous_coordinate - 1;
+            scroll_mode = 1;
+            if (map_state[1] > (uint8_t)(previous_coordinate - 1))
             {
-                if (selected_city_plus_one == 0)
-                    goto LAB_81c12b64;
-                uVar5 = selected_city_plus_one - 1 & 0xff;
+                map_state[1] = previous_coordinate - 1;
+                scroll_mode = 0;
             }
-            else
-            {
-                if (0x1c < key_code)
-                {
-                    sVar6 = 0x13f;
-                    if (key_code == 0x1f)
-                    {
-                    LAB_81c12c2c:
-                        sango_display_fill_gray_rectangle(0, 0, 0xef, sVar6, 0, 0);
-                        find_map = (uint8_t *)sango_resource_item(0x4b, '\x01',
-                                                                  g_resource_package_address);
-                        showing_find_map = true;
-                        /* The 9588 resource is 84x64, unlike the 9288S 160x160 map.
-                              Respect its descriptor rather than reading past the bitmap. */
-                        uint16_t map_width = (uint16_t)(find_map[0] | (find_map[1] << 8));
-                        uint16_t map_height = (uint16_t)(find_map[2] | (find_map[3] << 8));
-                        sango_bitmap_draw_frame_screen((240 - map_width) / 2,
-                                                       (320 - map_height) / 2, map_width,
-                                                       map_height, 0, find_map);
-                    }
-                    goto LAB_81c12b64;
-                }
-                uVar5 = 0xff;
-                if (key_code != 1)
-                    goto LAB_81c12b64;
-            }
-            return uVar5;
-        }
-        if (key_code == 0x6a)
-        {
-            bVar3 = map_state[2];
-            if (10 < bVar3)
-                goto LAB_81c12b64;
-            map_state[2] = bVar3 + 1;
-            scroll_mode = 4;
-            if ((uint32_t)(uint8_t)(bVar3 + 1) < *map_state + 7)
-                goto LAB_81c12d6c;
-            *map_state = bVar3 - 5;
-        }
-        else if (key_code < 0x6b)
-        {
-            if (key_code != 0x69)
-                goto LAB_81c12b64;
-            bVar3 = map_state[2];
-            if (bVar3 == 0)
-                goto LAB_81c12b64;
-            map_state[2] = bVar3 - 1;
+            break;
+        case 0x69: /* 左 */
+            previous_coordinate = map_state[2];
+            if (previous_coordinate == 0)
+                continue;
+            map_state[2] = previous_coordinate - 1;
             scroll_mode = 2;
-            if (*map_state <= (uint8_t)(bVar3 - 1))
-                goto LAB_81c12d6c;
-            *map_state = bVar3 - 1;
-        }
-        else
-        {
-            if (key_code != 0x6c)
-                goto LAB_81c12b64;
-            bVar3 = map_state[3];
-            if (7 < bVar3)
-                goto LAB_81c12b64;
-            map_state[3] = bVar3 + 1;
+            if (*map_state > (uint8_t)(previous_coordinate - 1))
+            {
+                *map_state = previous_coordinate - 1;
+                scroll_mode = 0;
+            }
+            break;
+        case 0x6a: /* 右 */
+            previous_coordinate = map_state[2];
+            if (previous_coordinate > 10)
+                continue;
+            map_state[2] = previous_coordinate + 1;
+            scroll_mode = 4;
+            if ((uint32_t)(uint8_t)(previous_coordinate + 1) >= *map_state + 7)
+            {
+                *map_state = previous_coordinate - 5;
+                scroll_mode = 0;
+            }
+            break;
+        case 0x6c: /* 下 */
+            previous_coordinate = map_state[3];
+            if (previous_coordinate > 7)
+                continue;
+            map_state[3] = previous_coordinate + 1;
             scroll_mode = 3;
-            if ((uint32_t)(uint8_t)(bVar3 + 1) < map_state[1] + 7)
-                goto LAB_81c12d6c;
-            map_state[1] = bVar3 - 5;
+            if ((uint32_t)(uint8_t)(previous_coordinate + 1) >= map_state[1] + 7)
+            {
+                map_state[1] = previous_coordinate - 5;
+                scroll_mode = 0;
+            }
+            break;
+        default:
+            continue;
         }
+        redraw_map = true;
     }
-    scroll_mode = 0;
-LAB_81c12d6c:
-    redraw_map = true;
-    goto LAB_81c12b6c;
 }
 #undef event_kind
 #undef key_code
@@ -163,161 +137,168 @@ LAB_81c12d6c:
 /* 绘制12列战略底图的7×7可见区域、城市归属图标及底部状态。 */
 uint32_t sango_strategy_draw_map(uint8_t *map_state, uint8_t scroll_mode)
 {
-    int iVar1;
-    uint8_t *pbVar2;
+    int resource_address;
+    uint8_t *bitmap;
     char *city_id_output;
-    uint32_t uVar4;
-    short sVar5;
-    uint32_t uVar6;
+    uint32_t tile_index;
+    short tile_y;
+    uint32_t tile_column;
     char *status_text;
     uint8_t city_marker_frame;
-    uint32_t uVar8;
-    uint32_t uVar9;
-    uint32_t uVar10;
+    uint32_t cursor_row;
+    uint32_t cursor_column;
+    uint32_t tile_row;
     char *text_part;
 
-    iVar1 = sango_resource_item(2, '\x0e', g_resource_package_address);
-    uVar9 = 0;
-    uVar8 = (uint32_t)map_state[1] * 0xc + (uint32_t)*map_state;
+    resource_address = sango_resource_item(2, '\x0e', g_resource_package_address);
+    uint32_t map_row = 0;
+    uint32_t source_offset = (uint32_t)map_state[1] * 0xc + (uint32_t)*map_state;
     do
     {
-        bbk_memcpy(&g_visible_city_ids + uVar9 * 7, (void *)(iVar1 + uVar8), 7);
-        uVar9 = uVar9 + 1 & 0xff;
-        uVar8 = uVar8 + 0xc & 0xffff;
-    } while (uVar9 < 7);
-    uVar8 = (uint32_t)map_state[3] - (uint32_t)map_state[1] & 0xff;
-    uVar9 = (uint32_t)map_state[2] - (uint32_t)*map_state & 0xff;
-    iVar1 = sango_resource_item(0x36, '\x01', g_resource_package_address);
+        bbk_memcpy(&g_visible_city_ids + map_row * 7, (void *)(resource_address + source_offset),
+                   7);
+        map_row = map_row + 1 & 0xff;
+        source_offset = source_offset + 0xc & 0xffff;
+    } while (map_row < 7);
+    cursor_row = (uint32_t)map_state[3] - (uint32_t)map_state[1] & 0xff;
+    cursor_column = (uint32_t)map_state[2] - (uint32_t)*map_state & 0xff;
+    resource_address = sango_resource_item(0x36, '\x01', g_resource_package_address);
+    /* 全图重画或仅恢复光标离开的那一块，随后共用底栏绘制。 */
     if (scroll_mode == 0)
     {
-        uVar10 = 0;
+        tile_row = 0;
         do
         {
-            uVar6 = 0;
-            uVar4 = ((uVar10 + map_state[1]) * 0xc + (uint32_t)*map_state) * 0x100;
+            tile_column = 0;
+            tile_index = ((tile_row + map_state[1]) * 0xc + (uint32_t)*map_state) * 0x100;
             do
             {
-                sango_raster_draw_opaque(uVar6 << 5, (short)(uVar10 << 5), 0x20, 0x20,
-                                         iVar1 + 6 + (uVar4 & 0xffff), g_game_context);
-                uVar6 = uVar6 + 1 & 0xff;
-                uVar4 = (uVar4 & 0xffff) + 0x100;
-            } while (uVar6 < 7);
-            uVar10 = uVar10 + 1 & 0xff;
-        } while (uVar10 < 7);
-        uVar10 = 0;
+                sango_raster_draw_opaque(tile_column << 5, (short)(tile_row << 5), 0x20, 0x20,
+                                         resource_address + 6 + (tile_index & 0xffff),
+                                         g_game_context);
+                tile_column = tile_column + 1 & 0xff;
+                tile_index = (tile_index & 0xffff) + 0x100;
+            } while (tile_column < 7);
+            tile_row = tile_row + 1 & 0xff;
+        } while (tile_row < 7);
+        tile_row = 0;
         do
         {
-            uVar4 = 0;
-            pbVar2 = &g_visible_city_ids + uVar10 * 7;
+            tile_index = 0;
+            bitmap = &g_visible_city_ids + tile_row * 7;
             do
             {
                 city_marker_frame = 8;
-                if (*pbVar2 != 0)
+                if (*bitmap != 0)
                 {
-                    if (((uint32_t)(uint8_t)(&g_city_owner_one_based_view)[(uint32_t)*pbVar2 *
+                    if (((uint32_t)(uint8_t)(&g_city_owner_one_based_view)[(uint32_t)*bitmap *
                                                                            0x24] !=
                          g_player_character + 1) &&
                         (city_marker_frame = 7,
-                         (uint8_t)(&g_city_owner_one_based_view)[(uint32_t)*pbVar2 * 0x24] == 0))
+                         (uint8_t)(&g_city_owner_one_based_view)[(uint32_t)*bitmap * 0x24] == 0))
                     {
                         city_marker_frame = 0;
                     }
-                    pbVar2 =
+                    bitmap =
                         (uint8_t *)sango_resource_item(0x37, '\x01', g_resource_package_address);
-                    sango_bitmap_draw_frame((short)uVar4 * 0x20 + 8, (short)uVar10 * 0x20 + 8, 0x10,
-                                            0x10, city_marker_frame, pbVar2, g_game_context);
+                    sango_bitmap_draw_frame((short)tile_index * 0x20 + 8,
+                                            (short)tile_row * 0x20 + 8, 0x10, 0x10,
+                                            city_marker_frame, bitmap, g_game_context);
                 }
-                uVar4 = uVar4 + 1 & 0xff;
-                pbVar2 = &g_visible_city_ids + uVar10 * 7 + uVar4;
-            } while (uVar4 < 7);
-            uVar10 = uVar10 + 1 & 0xff;
-        } while (uVar10 < 7);
-        goto LAB_81c1304c;
+                tile_index = tile_index + 1 & 0xff;
+                bitmap = &g_visible_city_ids + tile_row * 7 + tile_index;
+            } while (tile_index < 7);
+            tile_row = tile_row + 1 & 0xff;
+        } while (tile_row < 7);
+        goto draw_cursor_and_status;
     }
-    uVar10 = uVar8;
+    tile_row = cursor_row;
     if (scroll_mode == 2)
     {
-        uVar4 = uVar9 + 1;
-    LAB_81c13484:
-        uVar6 = uVar4 & 0xff;
+        tile_index = cursor_column + 1;
+    restore_previous_column:
+        tile_column = tile_index & 0xff;
     }
     else
     {
-        uVar6 = uVar9;
+        tile_column = cursor_column;
         if (scroll_mode < 3)
         {
-            uVar4 = uVar8 + 1;
+            tile_index = cursor_row + 1;
             if (scroll_mode == 1)
             {
-            LAB_81c13468:
-                uVar10 = uVar4 & 0xff;
+            restore_previous_row:
+                tile_row = tile_index & 0xff;
             }
         }
         else
         {
-            uVar4 = uVar8 - 1;
+            tile_index = cursor_row - 1;
             if (scroll_mode == 3)
-                goto LAB_81c13468;
-            uVar4 = uVar9 - 1;
+                goto restore_previous_row;
+            tile_index = cursor_column - 1;
             if (scroll_mode == 4)
-                goto LAB_81c13484;
+                goto restore_previous_column;
         }
     }
-    sVar5 = (short)uVar10 * 0x20;
+    tile_y = (short)tile_row * 0x20;
     sango_raster_draw_opaque(
-        uVar6 * 0x20, sVar5, 0x20, 0x20,
-        iVar1 + 6 +
-            (((uVar10 + map_state[1]) * 0xc + (uint32_t)*map_state + uVar6) * 0x100 & 0xffff),
+        tile_column * 0x20, tile_y, 0x20, 0x20,
+        resource_address + 6 +
+            (((tile_row + map_state[1]) * 0xc + (uint32_t)*map_state + tile_column) * 0x100 &
+             0xffff),
         g_game_context);
-    if ((uint8_t)(&g_visible_city_ids)[uVar6 + uVar10 * 7] != 0)
+    if ((uint8_t)(&g_visible_city_ids)[tile_column + tile_row * 7] != 0)
     {
         city_marker_frame = 8;
         if (((uint32_t)(uint8_t)(&g_city_owner_one_based_view)
-                 [(uint32_t)(uint8_t)(&g_visible_city_ids)[uVar6 + uVar10 * 7] * 0x24] !=
+                 [(uint32_t)(uint8_t)(&g_visible_city_ids)[tile_column + tile_row * 7] * 0x24] !=
              g_player_character + 1) &&
             (city_marker_frame = 7,
              (uint8_t)(&g_city_owner_one_based_view)
-                     [(uint32_t)(uint8_t)(&g_visible_city_ids)[uVar6 + uVar10 * 7] * 0x24] == 0))
+                     [(uint32_t)(uint8_t)(&g_visible_city_ids)[tile_column + tile_row * 7] *
+                      0x24] == 0))
         {
             city_marker_frame = 0;
         }
-        pbVar2 = (uint8_t *)sango_resource_item(0x37, '\x01', g_resource_package_address);
-        sango_bitmap_draw_frame((short)(uVar6 * 0x20) + 8, sVar5 + 8, 0x10, 0x10, city_marker_frame,
-                                pbVar2, g_game_context);
+        bitmap = (uint8_t *)sango_resource_item(0x37, '\x01', g_resource_package_address);
+        sango_bitmap_draw_frame((short)(tile_column * 0x20) + 8, tile_y + 8, 0x10, 0x10,
+                                city_marker_frame, bitmap, g_game_context);
     }
-LAB_81c1304c:
-    iVar1 = sango_resource_item(0x38, '\x01', g_resource_package_address);
-    sango_raster_draw_masked(uVar9 * 0x20 + 8, (short)uVar8 * 0x20 + 0x10, 0x10, 0x10, iVar1 + 6,
-                             g_game_context);
+draw_cursor_and_status:
+    resource_address = sango_resource_item(0x38, '\x01', g_resource_package_address);
+    sango_raster_draw_masked(cursor_column * 0x20 + 8, (short)cursor_row * 0x20 + 0x10, 0x10, 0x10,
+                             resource_address + 6, g_game_context);
     text_part = (char *)(g_scratch_buffer_address + 0x154);
     status_text = (char *)(g_scratch_buffer_address + 300);
     sango_render_clear_rectangle(0, 0xe0, 0xef, 0x13f, g_game_context);
     sango_statusbar_draw(g_game_context);
-    pbVar2 = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
+    bitmap = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
                                             g_resource_package_address);
-    sango_bitmap_draw_frame(0x15, 0x10f, 0x18, 0x18, g_player_character, pbVar2, g_game_context);
-    pbVar2 = (uint8_t *)sango_resource_item(0x45, '\x01', g_resource_package_address);
-    sango_bitmap_draw_frame(0x35, 0x10f, 7, 9, 1, pbVar2, g_game_context);
-    uVar10 = (uint32_t)g_player_character;
-    uVar4 = 0;
-    uVar6 = 0;
-    iVar1 = 0;
+    sango_bitmap_draw_frame(0x15, 0x10f, 0x18, 0x18, g_player_character, bitmap, g_game_context);
+    bitmap = (uint8_t *)sango_resource_item(0x45, '\x01', g_resource_package_address);
+    sango_bitmap_draw_frame(0x35, 0x10f, 7, 9, 1, bitmap, g_game_context);
+    uint32_t player_id = (uint32_t)g_player_character;
+    uint32_t city_count = 0;
+    uint32_t city_id = 0;
+    int city_stride_factor = 0;
     do
     {
-        city_id_output = status_text + uVar4;
-        if ((uint32_t)(uint8_t)(&g_first_city_owner)[(iVar1 + uVar6) * 4] == uVar10 + 1)
+        city_id_output = status_text + city_count;
+        if ((uint32_t)(uint8_t)(&g_first_city_owner)[(city_stride_factor + city_id) * 4] ==
+            player_id + 1)
         {
-            uVar4 = uVar4 + 1 & 0xff;
-            *city_id_output = (char)uVar6;
+            city_count = city_count + 1 & 0xff;
+            *city_id_output = (char)city_id;
         }
-        uVar6 = uVar6 + 1 & 0xff;
-        iVar1 = uVar6 << 3;
-    } while (uVar6 < 0x26);
-    sango_format_integer(uVar4, status_text, 10);
+        city_id = city_id + 1 & 0xff;
+        city_stride_factor = city_id << 3;
+    } while (city_id < 0x26);
+    sango_format_integer(city_count, status_text, 10);
     sango_text_draw_context(0x3f, 0x10e, status_text, g_game_context);
-    sango_bitmap_draw_frame(0x35, 0x11e, 7, 9, 0, pbVar2, g_game_context);
-    uVar10 = sango_faction_count_characters((uint32_t)g_player_character);
-    sango_format_integer(uVar10, status_text, 10);
+    sango_bitmap_draw_frame(0x35, 0x11e, 7, 9, 0, bitmap, g_game_context);
+    tile_row = sango_faction_count_characters((uint32_t)g_player_character);
+    sango_format_integer(tile_row, status_text, 10);
     sango_text_draw_context(0x3f, 0x11c, status_text, g_game_context);
     sango_format_integer((uint32_t)g_current_year, status_text, 10);
     sango_resource_read_text(0x40, 0x3f, text_part);
@@ -327,14 +308,14 @@ LAB_81c1304c:
     sango_resource_read_text(0x40, 0x40, text_part);
     bbk_strcat(status_text, text_part);
     sango_text_draw_context(0x52, 0x11c, status_text, g_game_context);
-    city_marker_frame = (&g_visible_city_ids)[uVar9 + uVar8 * 7];
+    city_marker_frame = (&g_visible_city_ids)[cursor_column + cursor_row * 7];
     if (city_marker_frame != 0)
     {
         sango_city_read_name(city_marker_frame - 1, text_part);
         sango_text_draw_context(0x78, 0x115, text_part, g_game_context);
     }
     sango_strategy_present();
-    return (uint32_t)(uint8_t)(&g_visible_city_ids)[uVar9 + uVar8 * 7];
+    return (uint32_t)(uint8_t)(&g_visible_city_ids)[cursor_column + cursor_row * 7];
 }
 
 /* 原函数 0x81c13494 */

@@ -147,138 +147,144 @@ uint32_t sango_battle_ai_prepare_attack(uint8_t *param_1)
 #undef auStack_16
 
 /* 原函数 0x81c01b68 */
-void sango_battle_ai_choose_destination(uint32_t param_1)
+void sango_battle_ai_choose_destination(uint32_t unit_id)
 {
     unsigned char abi_storage[44] __attribute__((aligned(8)));
-#define local_38 (*(uint32_t *)(abi_storage + 16))
-#define local_34 (*(uint32_t *)(abi_storage + 20))
-#define local_30 (*(int *)(abi_storage + 24))
-#define auStack_46 (*(uint8_t(*)[2])(abi_storage + 2))
-#define local_48 (*(uint8_t *)(abi_storage + 0))
-#define local_47 (*(uint8_t *)(abi_storage + 1))
-#define local_44 (*(uint16_t(*)[2])(abi_storage + 4))
-#define local_40 (*(uint32_t *)(abi_storage + 8))
-#define local_3c (*(uint32_t *)(abi_storage + 12))
+#define best_distance (*(uint32_t *)(abi_storage + 16))
+#define best_x (*(uint32_t *)(abi_storage + 20))
+#define unit_stride_base (*(int *)(abi_storage + 24))
+#define combat_target (*(uint8_t(*)[2])(abi_storage + 2))
+#define objective_x (*(uint8_t *)(abi_storage + 0))
+#define objective_y (*(uint8_t *)(abi_storage + 1))
+#define attack_score (*(uint16_t(*)[2])(abi_storage + 4))
+#define original_x (*(uint32_t *)(abi_storage + 8))
+#define original_y (*(uint32_t *)(abi_storage + 12))
 
-    uint16_t uVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
-    uint32_t uVar4;
-    int iVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
-    uint32_t uVar9;
-    uint32_t uVar10;
-    uint8_t bVar11;
-    uint8_t bVar12;
-    uint32_t uVar13;
-    uint32_t uVar14;
-    uint32_t uVar15;
-    uint32_t index;
-    uint16_t uVar16;
-    uint8_t bVar17;
-    uint32_t uVar18;
+    uint16_t candidate_score;
+    uint32_t chosen_x;
+    uint32_t window_x;
+    uint32_t chosen_y_or_roll;
+    int terrain_type;
+    uint32_t candidate_distance;
+    uint32_t tie_break;
+    uint32_t distance_from_origin;
+    uint32_t best_origin_distance;
+    uint32_t chosen_distance;
+    uint8_t candidate_x_byte;
+    uint8_t candidate_y_byte;
+    uint32_t window_y;
+    uint32_t candidate_y;
+    uint32_t candidate_x;
+    uint32_t unit_index;
+    uint16_t best_attack_score;
+    uint8_t best_y_byte;
+    uint32_t best_y;
 
-    index = param_1 & 0xff;
-    uVar3 = sango_battle_unit_terrain(index);
-    if (uVar3 != 5)
+    unit_index = unit_id & 0xff;
+    window_x = sango_battle_unit_terrain(unit_index);
+    if (window_x != 5)
     {
-        local_30 = index << 3;
-        sango_battle_distance_components(&local_48, &local_47);
-        uVar16 = 0;
-        local_3c = (uint32_t)(uint8_t)(&g_first_unit_y)[local_30 - index];
-        local_40 = (uint32_t)(uint8_t)(&g_first_unit_x)[local_30 - index];
-        sango_battle_is_player_unit(index);
-        local_38 = 0xff;
-        bVar17 = (uint8_t)local_3c;
-        local_34 = local_40;
-        uVar18 = local_3c;
-        for (uVar3 = (uint32_t)g_move_window_left; uVar3 < 0xf; uVar3 = uVar3 + 1 & 0xff)
+        unit_stride_base = unit_index << 3;
+        sango_battle_distance_components(&objective_x, &objective_y);
+        best_attack_score = 0;
+        original_y = (uint32_t)(uint8_t)(&g_first_unit_y)[unit_stride_base - unit_index];
+        original_x = (uint32_t)(uint8_t)(&g_first_unit_x)[unit_stride_base - unit_index];
+        sango_battle_is_player_unit(unit_index);
+        best_distance = 0xff;
+        best_y_byte = (uint8_t)original_y;
+        best_x = original_x;
+        best_y = original_y;
+        for (window_x = (uint32_t)g_move_window_left; window_x < 0xf;
+             window_x = window_x + 1 & 0xff)
         {
-            for (uVar13 = (uint32_t)g_move_window_top; bVar17 = (uint8_t)uVar18, uVar13 < 0xf;
-                 uVar13 = uVar13 + 1 & 0xff)
+            for (window_y = (uint32_t)g_move_window_top;
+                 best_y_byte = (uint8_t)best_y, window_y < 0xf; window_y = window_y + 1 & 0xff)
             {
-                if (-1 < *(char *)(g_move_costs_address + uVar13 * 0xf + uVar3))
+                if (-1 < *(char *)(g_move_costs_address + window_y * 0xf + window_x))
                 {
-                    uVar10 = (uint32_t)g_move_source_x + (uVar3 - g_move_window_left);
-                    uVar4 = (uint32_t)g_move_source_y + (uVar13 - g_move_window_top);
-                    uVar15 = uVar10 & 0xff;
-                    uVar14 = uVar4 & 0xff;
-                    iVar5 = sango_battle_terrain_at(uVar15, uVar14);
-                    bVar11 = (uint8_t)uVar10;
-                    bVar12 = (uint8_t)uVar4;
-                    if ((g_battle_control_mode == '\0') && (iVar5 == 5))
+                    chosen_distance = (uint32_t)g_move_source_x + (window_x - g_move_window_left);
+                    chosen_y_or_roll = (uint32_t)g_move_source_y + (window_y - g_move_window_top);
+                    candidate_x = chosen_distance & 0xff;
+                    candidate_y = chosen_y_or_roll & 0xff;
+                    terrain_type = sango_battle_terrain_at(candidate_x, candidate_y);
+                    candidate_x_byte = (uint8_t)chosen_distance;
+                    candidate_y_byte = (uint8_t)chosen_y_or_roll;
+                    if ((g_battle_control_mode == '\0') && (terrain_type == 5))
                     {
-                        (&g_first_unit_y)[local_30 - index] = bVar12;
-                        (&g_first_unit_x)[local_30 - index] = bVar11;
-                        sango_battle_redraw_field(index);
+                        (&g_first_unit_y)[unit_stride_base - unit_index] = candidate_y_byte;
+                        (&g_first_unit_x)[unit_stride_base - unit_index] = candidate_x_byte;
+                        sango_battle_redraw_field(unit_index);
                         return;
                     }
-                    uVar6 = sango_battle_manhattan_distance(bVar11, bVar12, local_48, local_47);
-                    sango_battle_preview_skill_range(index, bVar11, bVar12);
-                    sango_battle_select_combat_target(local_44, auStack_46);
-                    uVar1 = local_44[0];
-                    uVar4 = uVar14;
-                    uVar10 = uVar6;
-                    uVar2 = uVar15;
-                    if (uVar16 == 0)
+                    candidate_distance = sango_battle_manhattan_distance(
+                        candidate_x_byte, candidate_y_byte, objective_x, objective_y);
+                    sango_battle_preview_skill_range(unit_index, candidate_x_byte,
+                                                     candidate_y_byte);
+                    sango_battle_select_combat_target(attack_score, combat_target);
+                    candidate_score = attack_score[0];
+                    chosen_y_or_roll = candidate_y;
+                    chosen_distance = candidate_distance;
+                    chosen_x = candidate_x;
+                    if (best_attack_score == 0)
                     {
-                        if (((local_44[0] == 0) && (local_38 <= uVar6)) &&
-                            (uVar4 = uVar18, uVar10 = local_38, uVar2 = local_34,
-                             local_38 == uVar6))
+                        if (((attack_score[0] == 0) && (best_distance <= candidate_distance)) &&
+                            (chosen_y_or_roll = best_y, chosen_distance = best_distance,
+                             chosen_x = best_x, best_distance == candidate_distance))
                         {
-                            uVar4 = bbk_rand();
-                            uVar7 = (int)uVar4 % 10 & 0xff;
-                            uVar16 = uVar1;
-                        LAB_81c01dc8:
-                            uVar4 = uVar14;
-                            uVar10 = uVar6;
-                            uVar2 = uVar15;
-                            if (uVar7 == 0)
-                                goto LAB_81c01d0c;
+                            chosen_y_or_roll = bbk_rand();
+                            tie_break = (int)chosen_y_or_roll % 10 & 0xff;
+                            best_attack_score = candidate_score;
+                        consider_tied_candidate:
+                            chosen_y_or_roll = candidate_y;
+                            chosen_distance = candidate_distance;
+                            chosen_x = candidate_x;
+                            if (tie_break == 0)
+                                goto next_candidate;
                         }
                     }
                     else
                     {
-                        if (local_44[0] < uVar16)
-                            goto LAB_81c01d0c;
-                        if ((local_44[0] <= uVar16) && (4 < (iVar5 - 2U & 0xff)))
+                        if (attack_score[0] < best_attack_score)
+                            goto next_candidate;
+                        if ((attack_score[0] <= best_attack_score) &&
+                            (4 < (terrain_type - 2U & 0xff)))
                         {
-                            uVar8 = sango_battle_manhattan_distance(
-                                bVar11, bVar12, (uint8_t)local_40, (uint8_t)local_3c);
-                            uVar9 = sango_battle_manhattan_distance(
-                                (uint8_t)local_34, bVar17, (uint8_t)local_40, (uint8_t)local_3c);
-                            uVar7 = 0;
-                            if (uVar8 <= uVar9)
-                                goto LAB_81c01dc8;
+                            distance_from_origin = sango_battle_manhattan_distance(
+                                candidate_x_byte, candidate_y_byte, (uint8_t)original_x,
+                                (uint8_t)original_y);
+                            best_origin_distance = sango_battle_manhattan_distance(
+                                (uint8_t)best_x, best_y_byte, (uint8_t)original_x,
+                                (uint8_t)original_y);
+                            tie_break = 0;
+                            if (distance_from_origin <= best_origin_distance)
+                                goto consider_tied_candidate;
                         }
                     }
-                    local_34 = uVar2;
-                    local_38 = uVar10;
-                    uVar18 = uVar4;
-                    uVar16 = local_44[0];
+                    best_x = chosen_x;
+                    best_distance = chosen_distance;
+                    best_y = chosen_y_or_roll;
+                    best_attack_score = attack_score[0];
                 }
-            LAB_81c01d0c:
+            next_candidate:
             }
         }
-        if (local_38 != 0xff)
+        if (best_distance != 0xff)
         {
-            (&g_first_unit_y)[local_30 - index] = bVar17;
-            (&g_first_unit_x)[local_30 - index] = (char)local_34;
+            (&g_first_unit_y)[unit_stride_base - unit_index] = best_y_byte;
+            (&g_first_unit_x)[unit_stride_base - unit_index] = (char)best_x;
         }
     }
     return;
 }
-#undef local_38
-#undef local_34
-#undef local_30
-#undef auStack_46
-#undef local_48
-#undef local_47
-#undef local_44
-#undef local_40
-#undef local_3c
+#undef best_distance
+#undef best_x
+#undef unit_stride_base
+#undef combat_target
+#undef objective_x
+#undef objective_y
+#undef attack_score
+#undef original_x
+#undef original_y
 
 /* 原函数 0x81c01e74 */
 uint32_t sango_battle_choose_skill(uint32_t param_1, uint16_t *param_2, uint8_t *param_3)

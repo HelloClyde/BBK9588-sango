@@ -4,167 +4,164 @@
 
 /* 原函数 0x81c058b8 */
 /* 计谋ID读取名称、消耗和状态参数；动画资源及指令范围来自初始化表。 */
-uint32_t sango_battle_execute_skill(int param_1)
+uint32_t sango_battle_execute_skill(int action_address)
 {
     unsigned char abi_storage[56] __attribute__((aligned(8)));
-#define local_43 (*(uint8_t *)(abi_storage + 5))
-#define local_28 (*(uint16_t *)(abi_storage + 32))
-#define local_26 (*(uint16_t(*)[3])(abi_storage + 34))
-#define acStack_48 (*(char(*)[5])(abi_storage + 0))
-#define uStack_42 (*(uint8_t *)(abi_storage + 6))
-#define uStack_41 (*(uint8_t *)(abi_storage + 7))
-#define auStack_40 (*(uint8_t(*)[4])(abi_storage + 8))
-#define auStack_3c (*(uint8_t(*)[20])(abi_storage + 12))
+#define message_separator (*(uint8_t *)(abi_storage + 5))
+#define effect_amount (*(uint16_t *)(abi_storage + 32))
+#define effect_aux (*(uint16_t(*)[3])(abi_storage + 34))
+#define message_start (*(char(*)[5])(abi_storage + 0))
+#define skill_name_start (*(uint8_t *)(abi_storage + 6))
+#define failure_suffix_start (*(uint8_t *)(abi_storage + 7))
+#define status_text_start (*(uint8_t(*)[4])(abi_storage + 8))
+#define status_suffix_start (*(uint8_t(*)[20])(abi_storage + 12))
 
-    char cVar1;
-    char cVar2;
-    uint16_t uVar3;
-    char *pcVar4;
-    uint32_t uVar5;
-    int iVar6;
-    uint16_t *puVar7;
-    uint32_t uVar8;
-    uint32_t uVar9;
-    uint32_t uVar10;
+    const SangoBattleAction *action = (const SangoBattleAction *)(uintptr_t)action_address;
+    uint32_t skill_id = (uint32_t)action->skill;
+    uint32_t actor_unit = (uint32_t)action->actor_unit;
+    uint32_t target_unit = (uint32_t)action->target_unit;
+    char *skill_parameters = (char *)sango_battle_skill_parameters(skill_id);
+    char new_status;
+    char restores_troops;
+    uint32_t result;
 
-    uVar8 = (uint32_t) * (uint8_t *)(param_1 + 1);
-    uVar9 = (uint32_t) * (uint8_t *)(param_1 + 2);
-    uVar10 = (uint32_t) * (uint8_t *)(param_1 + 3);
-    pcVar4 = (char *)sango_battle_skill_parameters(uVar8);
-    (&g_first_unit_energy)[uVar9 * 7] = (&g_first_unit_energy)[uVar9 * 7] - pcVar4[6];
-    sango_memory_fill(acStack_48, 0x20, 10);
-    uVar5 = bbk_rand();
+    /* 先扣除技力，再做原有命中判定；失败也消耗技力。 */
+    (&g_first_unit_energy)[actor_unit * 7] =
+        (&g_first_unit_energy)[actor_unit * 7] - skill_parameters[6];
+    /* 这些消息片段共享连续栈区，不可拆为独立的小数组。 */
+    sango_memory_fill(message_start, 0x20, 10);
+    uint32_t random_roll = bbk_rand();
     if (g_defender_initiative + 0x14 == 0)
-    {
         sango_legacy_trap(7);
-    }
+
     if ((uint32_t)(g_attacker_initiative >> 1) <
-        ((int)uVar5 % (int)(g_defender_initiative + 0x14) & 0xffU))
+        ((int)random_roll % (int)(g_defender_initiative + 0x14) & 0xffU))
     {
-        sango_resource_read_text(0xb, uVar8, acStack_48 + 1);
-        local_43 = 0x20;
-        sango_battle_read_text(0x1a, &uStack_41);
-        sango_battle_show_short_message(acStack_48, 1, 0xff);
-        uVar5 = 0;
+        sango_resource_read_text(0xb, skill_id, message_start + 1);
+        message_separator = 0x20;
+        sango_battle_read_text(0x1a, &failure_suffix_start);
+        sango_battle_show_short_message(message_start, 1, 0xff);
+        result = 0;
     }
     else
     {
         if (g_battle_show_animations == '\0')
         {
-            sango_resource_read_text(0xb, uVar8, &uStack_42);
-            sango_battle_show_short_message(acStack_48, 1, 0);
-            cVar1 = pcVar4[1];
+            sango_resource_read_text(0xb, skill_id, &skill_name_start);
+            sango_battle_show_short_message(message_start, 1, 0);
+            new_status = skill_parameters[1];
         }
         else
-        {
-            cVar1 = pcVar4[1];
-        }
-        (&g_first_unit_status)[uVar10 * 7] = cVar1;
-        if (cVar1 == '\x03')
-        {
-            (&g_first_unit_move_range)[uVar10 * 7] = 1;
-        }
-        cVar2 = *pcVar4;
-        if (uVar8 == 0x16)
+            new_status = skill_parameters[1];
+
+        (&g_first_unit_status)[target_unit * 7] = new_status;
+        if (new_status == '\x03')
+            (&g_first_unit_move_range)[target_unit * 7] = 1;
+        restores_troops = *skill_parameters;
+
+        /* 天变、围攻、侦察走各自的效果流程，其余计谋共用伤害/回复路径。 */
+        if (skill_id == 0x16)
         {
             sango_battle_change_weather();
-            uVar5 = 8;
+            result = 8;
         }
-        else if (uVar8 == 0x1b)
+        else if (skill_id == 0x1b)
         {
-            uVar5 = sango_battle_execute_surround_attack(uVar10);
-            sango_battle_prepare_combatant(0, uVar9);
+            result = sango_battle_execute_surround_attack(target_unit);
+            sango_battle_prepare_combatant(0, actor_unit);
         }
-        else if (uVar8 == 0x1e)
+        else if (skill_id == 0x1e)
         {
             g_battle_recon_food = g_battle_defender_food;
             sango_battle_read_text(0x37, g_scratch_buffer_address);
-            uVar5 = sango_battle_resolve_character(uVar9);
-            sango_ui_show_character_message((uint8_t)uVar5, g_scratch_buffer_address);
+            uint32_t actor_character = sango_battle_resolve_character(actor_unit);
+            sango_ui_show_character_message((uint8_t)actor_character, g_scratch_buffer_address);
             sango_render_present(g_game_context);
-            uVar5 = 8;
+            result = 8;
         }
         else
         {
-            sango_battle_compute_skill_effect((int)pcVar4, &local_28, local_26);
-            uVar5 = uVar8 - 1 & 0xff;
-            uVar3 = *(uint16_t *)(&g_skill_animation_resource_bytes + uVar5 * 2);
-            if ((uVar3 != 0) && (g_battle_show_animations != '\0'))
+            sango_battle_compute_skill_effect((int)skill_parameters, &effect_amount, effect_aux);
+            uint32_t skill_index = skill_id - 1 & 0xff;
+            uint16_t animation_resource =
+                *(uint16_t *)(&g_skill_animation_resource_bytes + skill_index * 2);
+            if ((animation_resource != 0) && (g_battle_show_animations != '\0'))
             {
-                if ((&g_skill_animation_background_flag)[uVar5] != '\0')
-                {
+                if ((&g_skill_animation_background_flag)[skill_index] != '\0')
                     sango_bitmap_draw_resource(0x10, 1, 0x14, 0x31, '\0');
-                }
                 sango_animation_play_range(
-                    (uint32_t)uVar3, (uint32_t)(uint8_t)(&g_skill_animation_first_command)[uVar5],
-                    (uint32_t)(uint8_t)(&g_skill_animation_last_command)[uVar5], 0,
-                    (uint8_t)(&g_skill_animation_x_offset)[uVar5] + 0x14, 0x31);
+                    (uint32_t)animation_resource,
+                    (uint32_t)(uint8_t)(&g_skill_animation_first_command)[skill_index],
+                    (uint32_t)(uint8_t)(&g_skill_animation_last_command)[skill_index], 0,
+                    (uint8_t)(&g_skill_animation_x_offset)[skill_index] + 0x14, 0x31);
             }
-            if (local_28 == 0)
+
+            uint32_t effect_text_id;
+            uint32_t applied_amount;
+            if (effect_amount == 0)
             {
-                puVar7 = &g_battle_defender_food;
-                if (9 < uVar9)
-                {
-                    puVar7 = &g_battle_attacker_food;
-                }
-                local_28 = local_26[0];
-                uVar5 = sango_battle_subtract_clamped(puVar7, local_26[0]);
-                local_26[0] = (uint16_t)uVar5;
-                uVar5 = 0x19;
+                uint16_t *enemy_food = &g_battle_defender_food;
+                if (9 < actor_unit)
+                    enemy_food = &g_battle_attacker_food;
+                effect_amount = effect_aux[0];
+                applied_amount = sango_battle_subtract_clamped(enemy_food, effect_aux[0]);
+                effect_aux[0] = (uint16_t)applied_amount;
+                effect_text_id = 0x19;
             }
-            else if (cVar2 == '\0')
+            else if (restores_troops == '\0')
             {
-                uVar5 = 0x17;
-                uVar8 = sango_battle_subtract_clamped(g_defender_troops_address, local_28);
-                local_28 = (uint16_t)uVar8;
+                effect_text_id = 0x17;
+                applied_amount =
+                    sango_battle_subtract_clamped(g_defender_troops_address, effect_amount);
+                effect_amount = (uint16_t)applied_amount;
             }
             else
             {
-                uVar5 = sango_battle_resolve_character(uVar10);
-                iVar6 = sango_character_troop_capacity(uVar5);
-                uVar5 = 0x18;
-                uVar8 = sango_battle_add_clamped(g_defender_troops_address, (uint32_t)local_28,
-                                                 (uint16_t)iVar6);
-                local_28 = (uint16_t)uVar8;
+                uint32_t target_character = sango_battle_resolve_character(target_unit);
+                int troop_limit = sango_character_troop_capacity(target_character);
+                effect_text_id = 0x18;
+                applied_amount = sango_battle_add_clamped(
+                    g_defender_troops_address, (uint32_t)effect_amount, (uint16_t)troop_limit);
+                effect_amount = (uint16_t)applied_amount;
             }
-            if (local_28 != 0)
+
+            if (effect_amount != 0)
             {
                 if (g_battle_show_animations == '\0')
-                {
-                    sango_battle_draw_unit_damage('-', uVar10, (uint32_t)local_28);
-                }
+                    sango_battle_draw_unit_damage('-', target_unit, (uint32_t)effect_amount);
                 else
                 {
-                    sango_battle_read_text(uVar5, acStack_48);
-                    sango_text_draw_legacy(0x3c, 0x33, acStack_48);
-                    sango_battle_draw_damage_digits(0x3c, 0x59, (uint32_t)local_28);
+                    sango_battle_read_text(effect_text_id, message_start);
+                    sango_text_draw_legacy(0x3c, 0x33, message_start);
+                    sango_battle_draw_damage_digits(0x3c, 0x59, (uint32_t)effect_amount);
                 }
                 sango_input_wait(0x32, '\0');
             }
-            if (cVar1 != '\0')
+            if (new_status != '\0')
             {
-                uVar5 = sango_battle_resolve_character(uVar10);
-                sango_load_named_text((uint8_t)uVar5, acStack_48);
-                uVar5 = bbk_strlen(acStack_48);
-                uVar5 = uVar5 & 0xffff;
-                sango_battle_read_text(0x1b, acStack_48 + uVar5);
-                sango_battle_read_text((uint32_t)(uint8_t)(cVar1 + 0x1c), auStack_40 + uVar5);
-                sango_battle_read_text(0x24, auStack_3c + uVar5);
-                sango_ui_show_message(acStack_48, 1);
+                uint32_t target_character = sango_battle_resolve_character(target_unit);
+                sango_load_named_text((uint8_t)target_character, message_start);
+                uint32_t name_length = bbk_strlen(message_start);
+                name_length = name_length & 0xffff;
+                sango_battle_read_text(0x1b, message_start + name_length);
+                sango_battle_read_text((uint32_t)(uint8_t)(new_status + 0x1c),
+                                       status_text_start + name_length);
+                sango_battle_read_text(0x24, status_suffix_start + name_length);
+                sango_ui_show_message(message_start, 1);
             }
-            uVar5 = sango_battle_damage_feedback(local_28);
+            result = sango_battle_damage_feedback(effect_amount);
         }
     }
-    return uVar5;
+    return result;
 }
-#undef local_43
-#undef local_28
-#undef local_26
-#undef acStack_48
-#undef uStack_42
-#undef uStack_41
-#undef auStack_40
-#undef auStack_3c
+#undef message_separator
+#undef effect_amount
+#undef effect_aux
+#undef message_start
+#undef skill_name_start
+#undef failure_suffix_start
+#undef status_text_start
+#undef status_suffix_start
 
 /* 原函数 0x81c05cdc */
 uint32_t sango_battle_execute_surround_attack(uint32_t param_1)

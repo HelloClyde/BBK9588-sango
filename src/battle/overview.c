@@ -52,114 +52,120 @@ void sango_battle_draw_move_range(void)
 void sango_battle_show_overview(void)
 {
     unsigned char abi_storage[40] __attribute__((aligned(8)));
-#define acStack_38 (*(char(*)[24])(abi_storage + 0))
+#define overview_text (*(char(*)[24])(abi_storage + 0))
 
-    int iVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
-    char cVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
-    uint32_t uVar9;
+    int unit_offset;
+    uint32_t marker_color;
+    uint32_t exit_key;
+    char visible_side;
+    uint32_t input_or_count;
+    uint32_t map_left;
+    uint32_t map_top;
+    uint32_t first_unit;
+    uint32_t selected_side;
 
     sango_display_fill_gray_rectangle(0, 0, 0xef, 0x13f, 0, 0);
-    uVar6 = (int)(0x78 - (uint32_t)g_battle_map_width) / 2 & 0xff;
-    uVar7 = (int)(0x140 - (uint32_t)g_battle_map_height) / 2 + 0x14U & 0xff;
-    sango_battle_load_overview_text(0x31, acStack_38);
-    sango_text_draw_legacy(5, 3, acStack_38);
-    sango_battle_load_overview_text(0x30, acStack_38);
-    sango_format_integer((uint32_t)g_battle_day, acStack_38 + 3, 10);
-    uVar2 = bbk_strlen(acStack_38);
-    acStack_38[uVar2] = ' ';
-    sango_text_draw_legacy(5, 0x11, acStack_38);
-    sango_battle_load_overview_text(0x36, acStack_38);
-    sango_text_draw_legacy(0x24, (short)uVar7 - 0xf, acStack_38);
+    map_left = (int)(0x78 - (uint32_t)g_battle_map_width) / 2 & 0xff;
+    map_top = (int)(0x140 - (uint32_t)g_battle_map_height) / 2 + 0x14U & 0xff;
+    sango_battle_load_overview_text(0x31, overview_text);
+    sango_text_draw_legacy(5, 3, overview_text);
+    sango_battle_load_overview_text(0x30, overview_text);
+    sango_format_integer((uint32_t)g_battle_day, overview_text + 3, 10);
+    uint32_t text_length = bbk_strlen(overview_text);
+    overview_text[text_length] = ' ';
+    sango_text_draw_legacy(5, 0x11, overview_text);
+    sango_battle_load_overview_text(0x36, overview_text);
+    sango_text_draw_legacy(0x24, (short)map_top - 0xf, overview_text);
     sango_battle_draw_overview_rows('\x01', 0);
-    uVar2 = 3;
-    sango_display_draw_rectangle((short)uVar6 + -1, (short)uVar7 + -1,
-                                 (short)((g_battle_map_width + uVar6) * 0x10000 >> 0x10),
-                                 (short)((g_battle_map_height + uVar7) * 0x10000 >> 0x10), 3, 0, 0);
-    uVar9 = 1;
-    uVar8 = 0;
+    marker_color = 3;
+    sango_display_draw_rectangle((short)map_left + -1, (short)map_top + -1,
+                                 (short)((g_battle_map_width + map_left) * 0x10000 >> 0x10),
+                                 (short)((g_battle_map_height + map_top) * 0x10000 >> 0x10), 3, 0,
+                                 0);
+    selected_side = 1;
+    first_unit = 0;
     do
     {
         do
         {
-            uVar5 = 0;
+            input_or_count = 0;
             do
             {
-                iVar1 = uVar5 * 7;
-                if ((&g_first_unit_status)[iVar1] != '\b')
+                unit_offset = input_or_count * 7;
+                if ((&g_first_unit_status)[unit_offset] != '\b')
                 {
                     sango_display_put_gray_pixel(
-                        (short)(((uint8_t)(&g_first_unit_x)[iVar1] + uVar6) * 0x10000 >> 0x10),
-                        (short)(((uint8_t)(&g_first_unit_y)[iVar1] + uVar7) * 0x10000 >> 0x10),
-                        uVar2, 0);
+                        (short)(((uint8_t)(&g_first_unit_x)[unit_offset] + map_left) * 0x10000 >>
+                                0x10),
+                        (short)(((uint8_t)(&g_first_unit_y)[unit_offset] + map_top) * 0x10000 >>
+                                0x10),
+                        marker_color, 0);
                     sango_display_put_gray_pixel(
-                        (short)(((uint8_t)(&g_first_unit_x)[iVar1] + uVar6) * 0x10000 >> 0x10),
-                        (short)(((uint8_t)(&g_first_unit_y)[iVar1] + uVar7) * 0x10000 >> 0x10),
-                        uVar2, 0);
+                        (short)(((uint8_t)(&g_first_unit_x)[unit_offset] + map_left) * 0x10000 >>
+                                0x10),
+                        (short)(((uint8_t)(&g_first_unit_y)[unit_offset] + map_top) * 0x10000 >>
+                                0x10),
+                        marker_color, 0);
                 }
-                uVar5 = uVar5 + 1 & 0xff;
-            } while (uVar5 < 0x14);
-            if (uVar2 != 3)
+                input_or_count = input_or_count + 1 & 0xff;
+            } while (input_or_count < 0x14);
+            if (marker_color != 3)
             {
-                uVar2 = 0;
+                marker_color = 0;
             }
-            uVar5 = sango_input_wait(0x32, '\x01');
-        } while (uVar5 == 0);
-        cVar4 = (char)uVar9;
-        if (uVar5 == 0x67)
+            input_or_count = sango_input_wait(0x32, '\x01');
+        } while (input_or_count == 0);
+        visible_side = (char)selected_side;
+        if (input_or_count == 0x67)
         {
-            uVar5 = uVar8 - 0x18;
-            if (uVar8 == 0)
-                goto LAB_81c02b4c;
-        LAB_81c02bd0:
-            uVar8 = uVar5 & 0xff;
-        LAB_81c02b48:
-            cVar4 = (char)uVar9;
+            input_or_count = first_unit - 0x18;
+            if (first_unit == 0)
+                goto draw_unit_list;
+        change_list_offset:
+            first_unit = input_or_count & 0xff;
+        refresh_selected_side:
+            visible_side = (char)selected_side;
         }
         else
         {
-            if ((int)uVar5 < 0x68)
+            if ((int)input_or_count < 0x68)
             {
-                if (uVar5 != 0xb)
+                if (input_or_count != 0xb)
                 {
-                    uVar3 = 0x1c;
-                    if ((int)uVar5 < 0xc)
+                    exit_key = 0x1c;
+                    if ((int)input_or_count < 0xc)
                     {
-                        uVar3 = 1;
+                        exit_key = 1;
                     }
-                    if (uVar5 != uVar3)
-                        goto LAB_81c02b48;
+                    if (input_or_count != exit_key)
+                        goto refresh_selected_side;
                 }
                 return;
             }
-            if (0x68 < (int)uVar5)
+            if (0x68 < (int)input_or_count)
             {
-                if ((int)uVar5 < 0x6b)
+                if ((int)input_or_count < 0x6b)
                 {
-                    uVar9 = (uint32_t)(uVar9 == 0);
-                    uVar8 = 0;
-                    goto LAB_81c02b48;
+                    selected_side = (uint32_t)(selected_side == 0);
+                    first_unit = 0;
+                    goto refresh_selected_side;
                 }
-                if (((uVar5 == 0x6c) &&
-                     (uVar5 = sango_battle_count_active_units(uVar9), 0x17 < uVar5)) &&
-                    (uVar5 = sango_battle_count_active_units(uVar9),
-                     (int)uVar8 < (int)(uVar5 - 0x18)))
+                if (((input_or_count == 0x6c) &&
+                     (input_or_count = sango_battle_count_active_units(selected_side),
+                      0x17 < input_or_count)) &&
+                    (input_or_count = sango_battle_count_active_units(selected_side),
+                     (int)first_unit < (int)(input_or_count - 0x18)))
                 {
-                    uVar5 = uVar8 + 0x18;
-                    goto LAB_81c02bd0;
+                    input_or_count = first_unit + 0x18;
+                    goto change_list_offset;
                 }
             }
         }
-    LAB_81c02b4c:
-        sango_battle_draw_overview_rows(cVar4, uVar8);
+    draw_unit_list:
+        sango_battle_draw_overview_rows(visible_side, first_unit);
     } while (true);
 }
-#undef acStack_38
+#undef overview_text
 
 /* 原函数 0x81c02c4c */
 void sango_battle_draw_overview_rows(char param_1, uint32_t param_2)

@@ -3,46 +3,47 @@
 /* 恢复的字符串与基础格式化运行库。 */
 
 /* 原函数 0x81c1b950 */
-char *sango_crt_memchr(char *param_1, int param_2, int param_3)
+char *sango_crt_memchr(char *buffer, int character, int byte_count)
 {
-    char *pcVar1;
-    int iVar2;
+    char *candidate;
+    int remaining_bytes;
 
-    iVar2 = param_3 + -1;
+    remaining_bytes = byte_count + -1;
     do
     {
-        pcVar1 = param_1;
-        if (iVar2 < 0)
+        candidate = buffer;
+        if (remaining_bytes < 0)
         {
             return (char *)0x0;
         }
-        iVar2 = iVar2 + -1;
-        param_1 = pcVar1 + 1;
-    } while (*pcVar1 != param_2);
-    return pcVar1;
+        remaining_bytes = remaining_bytes + -1;
+        buffer = candidate + 1;
+    } while (*candidate != character);
+    return candidate;
 }
 
 /* 原函数 0x81c1b980 */
-void sango_crt_sprintf_words(uint8_t *param_1, uint8_t *param_2, uint32_t param_3, uint32_t param_4)
+void sango_crt_sprintf_words(uint8_t *output, uint8_t *format, uint32_t argument0,
+                             uint32_t argument1)
 {
     unsigned char abi_storage[32] __attribute__((aligned(8)));
-#define local_res4 (*(uint8_t **)(abi_storage + 4))
-#define local_res8 (*(uint32_t *)(abi_storage + 8))
-#define local_resc (*(uint32_t *)(abi_storage + 12))
-#define local_res0 (*(uint8_t **)(abi_storage + 0))
+#define saved_format (*(uint8_t **)(abi_storage + 4))
+#define first_argument_word (*(uint32_t *)(abi_storage + 8))
+#define second_argument_word (*(uint32_t *)(abi_storage + 12))
+#define output_cursor (*(uint8_t **)(abi_storage + 0))
 
-    local_res0 = param_1;
-    local_res4 = param_2;
-    local_res8 = param_3;
-    local_resc = param_4;
-    sango_crt_vformat(param_2, &local_res8, sango_crt_append_character, &local_res0);
-    *local_res0 = 0;
+    output_cursor = output;
+    saved_format = format;
+    first_argument_word = argument0;
+    second_argument_word = argument1;
+    sango_crt_vformat(format, &first_argument_word, sango_crt_append_character, &output_cursor);
+    *output_cursor = 0;
     return;
 }
-#undef local_res4
-#undef local_res8
-#undef local_resc
-#undef local_res0
+#undef saved_format
+#undef first_argument_word
+#undef second_argument_word
+#undef output_cursor
 
 /* 原函数 0x81c1b9d4 */
 int sango_crt_strlen(char *text)
@@ -64,159 +65,138 @@ int sango_crt_strlen(char *text)
 }
 
 /* 原函数 0x81c1ba04 */
-int sango_crt_strtol(char *param_1, uint32_t *param_2, int param_3)
+int sango_crt_strtol(char *cursor, uint32_t *end_pointer, int base)
 {
-    bool bVar1;
-    int iVar2;
-    char cVar3;
-    char *pcVar4;
-    int iVar5;
-    int iVar6;
-    int iVar7;
+    int number = 0;
+    int sign = 1;
+    while (sango_crt_isspace(*cursor) != 0)
+        cursor = cursor + 1;
+    char character = *cursor;
+    if (character == '+')
+    {
+        cursor = cursor + 1;
+        character = *cursor;
+    }
+    else if (character == '-')
+    {
+        cursor = cursor + 1;
+        character = *cursor;
+        sign = -1;
+    }
 
-    iVar6 = 0;
-    iVar7 = 1;
-    while (iVar2 = sango_crt_isspace(*param_1), iVar2 != 0)
+    bool alphabetic_digits;
+    if (character == '0')
     {
-        param_1 = param_1 + 1;
-    }
-    cVar3 = *param_1;
-    if (*param_1 == '+')
-    {
-        param_1 = param_1 + 1;
-        cVar3 = *param_1;
-    }
-    else if (*param_1 == '-')
-    {
-        param_1 = param_1 + 1;
-        cVar3 = *param_1;
-        iVar7 = -1;
-    }
-    pcVar4 = param_1;
-    if (cVar3 == '0')
-    {
-        pcVar4 = param_1 + 1;
-        iVar2 = sango_crt_toupper(*pcVar4);
-        if (iVar2 != 0x58)
+        char *next = cursor + 1;
+        if (sango_crt_toupper(*next) == 'X')
         {
-            if (param_3 == 0)
-            {
-                cVar3 = *pcVar4;
-                param_3 = 8;
-                goto LAB_81c1ba80;
-            }
-            cVar3 = *pcVar4;
-            bVar1 = param_3 < 0xb;
-            goto LAB_81c1bb3c;
+            cursor = cursor + 2;
+            character = *cursor;
+            base = 16;
+            alphabetic_digits = true;
         }
-        pcVar4 = param_1 + 2;
-        cVar3 = *pcVar4;
-        param_3 = 0x10;
-    joined_r0x81c1bb4c:
-        while (cVar3 != 0)
+        else
         {
-            iVar2 = sango_crt_isdigit(cVar3);
-            iVar5 = cVar3 + -0x30;
-            if (iVar2 == 0)
-            {
-                iVar2 = sango_crt_toupper(cVar3);
-                if ((iVar2 < 0x41) || (iVar5 = iVar2 + -0x37, param_3 + 0x37 <= iVar2))
-                    break;
-            }
-            pcVar4 = pcVar4 + 1;
-            if (param_3 == 0)
-            {
-                sango_legacy_trap(7);
-            }
-            bVar1 = 0x7fffffff / param_3 + -1 <= iVar6;
-            iVar6 = iVar6 * param_3 + iVar5;
-            if (bVar1)
-            {
-                iVar6 = 0x7fffffff;
-                g_runtime_errno = 0x22;
-            }
-            cVar3 = *pcVar4;
+            cursor = next;
+            character = *cursor;
+            if (base == 0)
+                base = 8;
+            alphabetic_digits = base >= 11;
         }
     }
     else
     {
-    LAB_81c1ba80:
-        bVar1 = param_3 < 0xb;
-        if (param_3 == 0)
+        alphabetic_digits = base >= 11;
+        if (base == 0)
+            base = 10;
+    }
+
+    /* 这是旧转换器的两个分支，不改成标准库strtol：
+     * 十进制字符分支保留原来的进制检查及溢出阈值；0x会强制切换16进制。 */
+    if (alphabetic_digits)
+    {
+        while (character != 0)
         {
-            param_3 = 10;
-        }
-        else
-        {
-        LAB_81c1bb3c:
-            if (!bVar1)
-                goto joined_r0x81c1bb4c;
-        }
-        while (iVar2 = sango_crt_isdigit(cVar3), iVar2 != 0)
-        {
-            if (param_3 == 0)
+            int digit = character - '0';
+            if (sango_crt_isdigit(character) == 0)
             {
+                int uppercase = sango_crt_toupper(character);
+                if (uppercase < 'A' || base + 0x37 <= uppercase)
+                    break;
+                digit = uppercase - 0x37;
+            }
+            cursor = cursor + 1;
+            if (base == 0)
                 sango_legacy_trap(7);
-            }
-            if (iVar6 < 0x7fffffff / param_3 + -1)
+            bool overflow = 0x7fffffff / base - 1 <= number;
+            number = number * base + digit;
+            if (overflow)
             {
-                iVar6 = iVar6 * param_3 + (int)*pcVar4 + -0x30;
+                number = 0x7fffffff;
+                g_runtime_errno = 0x22;
             }
+            character = *cursor;
+        }
+    }
+    else
+    {
+        while (sango_crt_isdigit(character) != 0)
+        {
+            if (base == 0)
+                sango_legacy_trap(7);
+            if (number < 0x7fffffff / base - 1)
+                number = number * base + (int)*cursor - '0';
             else
             {
                 g_runtime_errno = 0x22;
-                iVar6 = 0x7fffffff;
+                number = 0x7fffffff;
             }
-            pcVar4 = pcVar4 + 1;
-            cVar3 = *pcVar4;
+            cursor = cursor + 1;
+            character = *cursor;
         }
     }
-    if (param_2 != (uint32_t *)0x0)
-    {
-        *param_2 = pcVar4;
-    }
-    if (iVar7 == -1)
-    {
-        iVar6 = -iVar6;
-    }
-    return iVar6;
+    if (end_pointer != 0)
+        *end_pointer = (uint32_t)(uintptr_t)cursor;
+    if (sign == -1)
+        number = -number;
+    return number;
 }
 
 /* 原函数 0x81c1bc58 */
-void sango_crt_atoi_compat(char *param_1)
+void sango_crt_atoi_compat(char *text)
 {
-    sango_crt_strtol(param_1, (uint32_t *)0x0, 10);
+    sango_crt_strtol(text, (uint32_t *)0x0, 10);
     return;
 }
 
 /* 原函数 0x81c1bcbc */
-char *sango_crt_strcpy(char *param_1, char *param_2)
+char *sango_crt_strcpy(char *destination, char *source)
 {
-    char cVar1;
-    char *pcVar2;
+    char character;
+    char *output_cursor;
 
-    pcVar2 = param_1;
+    output_cursor = destination;
     do
     {
-        cVar1 = *param_2;
-        param_2 = param_2 + 1;
-        *pcVar2 = cVar1;
-        pcVar2 = pcVar2 + 1;
-    } while (cVar1 != '\0');
-    return param_1;
+        character = *source;
+        source = source + 1;
+        *output_cursor = character;
+        output_cursor = output_cursor + 1;
+    } while (character != '\0');
+    return destination;
 }
 
 /* 原函数 0x81c1bce0 */
 void *crt_memset(void *dst, int value, uint32_t size)
 {
-    uint8_t *puVar1;
-    int iVar2;
+    uint8_t *output_cursor;
+    int remaining_bytes;
 
-    puVar1 = (uint8_t *)dst;
-    for (iVar2 = size - 1; iVar2 != -1; iVar2 = iVar2 + -1)
+    output_cursor = (uint8_t *)dst;
+    for (remaining_bytes = size - 1; remaining_bytes != -1; remaining_bytes = remaining_bytes + -1)
     {
-        *puVar1 = (char)value;
-        puVar1 = puVar1 + 1;
+        *output_cursor = (char)value;
+        output_cursor = output_cursor + 1;
     }
     return dst;
 }
@@ -224,18 +204,18 @@ void *crt_memset(void *dst, int value, uint32_t size)
 /* 原函数 0x81c1bd08 */
 void *crt_memcpy(void *dst, void *src, uint32_t size)
 {
-    uint8_t uVar1;
-    uint8_t *puVar2;
-    int iVar3;
+    uint8_t byte;
+    uint8_t *output_cursor;
+    int remaining_bytes;
 
-    puVar2 = (uint8_t *)dst;
-    for (iVar3 = size - 1; iVar3 != -1; iVar3 = iVar3 + -1)
+    output_cursor = (uint8_t *)dst;
+    for (remaining_bytes = size - 1; remaining_bytes != -1; remaining_bytes = remaining_bytes + -1)
     {
         /* WARNING: Load size is inaccurate */
-        uVar1 = *(uint8_t *)src;
+        byte = *(uint8_t *)src;
         src = (void *)((int)src + 1);
-        *puVar2 = uVar1;
-        puVar2 = puVar2 + 1;
+        *output_cursor = byte;
+        output_cursor = output_cursor + 1;
     }
     return dst;
 }
@@ -253,444 +233,359 @@ void sango_crt_stub_1bd48(void)
 }
 
 /* 原函数 0x81c1bd50 */
-int sango_crt_vformat(uint8_t *param_1, uint32_t *param_2, uint8_t *param_3, uint32_t param_4)
+int sango_crt_vformat(uint8_t *format, uint32_t *arguments, uint8_t *emit_callback_address,
+                      uint32_t emit_context)
 {
     unsigned char abi_storage[104] __attribute__((aligned(8)));
-#define local_38 (*(uint32_t *)(abi_storage + 72))
-#define local_34 (*(uint32_t *)(abi_storage + 76))
-#define local_30 (*(uint32_t *)(abi_storage + 80))
-#define local_2c (*(uint32_t *)(abi_storage + 84))
-#define auStack_80 (*(uint8_t(*)[16])(abi_storage + 0))
-#define local_70 (*(uint8_t(*)[30])(abi_storage + 16))
-#define local_52 (*(uint8_t(*)[2])(abi_storage + 46))
-#define local_50 (*(char **)(abi_storage + 48))
-#define local_4c (*(uint32_t *)(abi_storage + 52))
-#define local_48 (*(char **)(abi_storage + 56))
-#define local_44 (*(char **)(abi_storage + 60))
-#define local_40 (*(int *)(abi_storage + 64))
-#define local_3c (*(char **)(abi_storage + 68))
+#define minimum_digits (*(int *)(abi_storage + 48))
+#define flags (*(uint32_t *)(abi_storage + 52))
+#define body_length (*(int *)(abi_storage + 56))
+#define field_width (*(int *)(abi_storage + 60))
+#define sign_character (*(int *)(abi_storage + 64))
+#define digit_table (*(char **)(abi_storage + 68))
+#define has_hex_prefix (*(uint32_t *)(abi_storage + 72))
+#define has_precision_padding (*(uint32_t *)(abi_storage + 76))
+#define padding_mode (*(uint32_t *)(abi_storage + 80))
+#define has_field_padding (*(uint32_t *)(abi_storage + 84))
 
-    uint8_t bVar1;
-    char cVar2;
-    uint8_t *puVar3;
-    char *pcVar4;
-    uint32_t uVar5;
-    uint8_t bVar6;
-    uint32_t uVar7;
-    int iVar8;
-    char *pcVar9;
-    char **ppcVar10;
-    char **ppcVar11;
-    uint8_t *pbVar12;
-    char *pcVar13;
-    uint32_t *puVar14;
-    uint32_t *puVar15;
-    int *piVar16;
-    int iVar17;
-    uint32_t uVar18;
+    enum
+    {
+        FORMAT_LONG = 1,
+        FORMAT_LONG_DOUBLE = 2,
+        FORMAT_SHORT = 4,
+        FORMAT_ALTERNATE = 8,
+        FORMAT_LEFT = 16,
+        FORMAT_ZERO = 32,
+        FORMAT_HEX_PREFIX = 64
+    };
+    SangoLegacyCode *emit = (SangoLegacyCode *)emit_callback_address;
+    int output_count = 0;
+    digit_table = g_legacy_data_81c20770;
 
-    bVar6 = *param_1;
-    local_3c = g_legacy_data_81c20770;
-    iVar17 = 0;
-LAB_81c1bda0:
-    uVar5 = (uint32_t)bVar6;
-    if (uVar5 == 0)
+    while (*format != 0)
     {
-    LAB_81c1be54:
-        return iVar17;
-    }
-    if (uVar5 == 0x25)
-    {
-        local_4c = 0;
-        local_50 = (char *)0x0;
-        local_44 = (char *)0x0;
-        pcVar13 = (char *)0xffffffff;
-        local_40 = 0;
-        pbVar12 = param_1;
-    LAB_81c1be0c:
-        param_1 = pbVar12 + 1;
-        uVar5 = (uint32_t)*param_1;
-        switch (uVar5)
+        if (*format != '%')
         {
-        case 0:
-            goto LAB_81c1be54;
-        default:
-            goto switchD_81c1be34_caseD_1;
-        case 0x20:
-            iVar8 = 0x20;
-            pbVar12 = param_1;
-            if (local_40 == 0)
-                goto LAB_81c1be48;
-            goto LAB_81c1be0c;
-        case 0x23:
-            local_4c = local_4c | 8;
-            break;
-        case 0x2a:
-            puVar14 = (uint32_t *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-            local_44 = (char *)*puVar14;
-            param_2 = puVar14 + 1;
-            pbVar12 = param_1;
-            if ((int)local_44 < 0)
+            /* 普通文本中的换行发出CR/LF，并按实际发出的两个字节计数。 */
+            if (*format == '\n')
             {
-                local_44 = (char *)-(int)local_44;
-                goto switchD_81c1be34_caseD_2d;
-            }
-            goto LAB_81c1be0c;
-        case 0x2b:
-            iVar8 = 0x2b;
-        LAB_81c1be48:
-            local_40 = iVar8;
-            pbVar12 = param_1;
-            goto LAB_81c1be0c;
-        case 0x2d:
-        switchD_81c1be34_caseD_2d:
-            local_4c = local_4c | 0x10;
-        LAB_81c1bec0:
-            pbVar12 = param_1;
-            goto LAB_81c1be0c;
-        case 0x2e:
-            pbVar12 = pbVar12 + 2;
-            bVar6 = *pbVar12;
-            pcVar13 = (char *)0x0;
-            if (bVar6 == 0x2a)
-            {
-                puVar14 = (uint32_t *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-                pcVar13 = (char *)*puVar14;
-                param_2 = puVar14 + 1;
+                emit('\r', emit_context);
+                emit('\n', emit_context);
+                output_count = output_count + 1;
             }
             else
-            {
-                while ((-1 < (char)bVar6 && (iVar8 = sango_crt_isdigit(bVar6), iVar8 != 0)))
-                {
-                    bVar1 = *pbVar12;
-                    pbVar12 = pbVar12 + 1;
-                    bVar6 = *pbVar12;
-                    pcVar13 = (char *)((int)pcVar13 * 10 + (uint32_t)bVar1 + -0x30);
-                }
-                pbVar12 = pbVar12 + -1;
-            }
-            if ((int)pcVar13 < -1)
-            {
-                pcVar13 = (char *)0xffffffff;
-            }
-            goto LAB_81c1be0c;
-        case 0x30:
-            local_4c = local_4c | 0x20;
-            break;
-        case 0x31:
-        case 0x32:
-        case 0x33:
-        case 0x34:
-        case 0x35:
-        case 0x36:
-        case 0x37:
-        case 0x38:
-        case 0x39:
-            pcVar4 = (char *)0x0;
-            while (true)
-            {
-                pbVar12 = param_1 + 1;
-                pcVar4 = (char *)((int)pcVar4 * 10 + uVar5 + -0x30);
-                if (((char)*pbVar12 < '\0') || (iVar8 = sango_crt_isdigit(*pbVar12), iVar8 == 0))
-                    break;
-                uVar5 = (uint32_t)*pbVar12;
-                param_1 = pbVar12;
-            }
-            local_44 = pcVar4;
-            pbVar12 = param_1;
-            goto LAB_81c1be0c;
-        case 0x44:
-            local_4c = local_4c | 1;
-        case 100:
-        case 0x69:
-            puVar3 = (uint8_t *)((int)param_2 + 3);
-            if ((local_4c & 4) == 0)
-            {
-                uVar5 = *(uint32_t *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            else
-            {
-                uVar5 = (uint32_t) * (short *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            param_2 = (uint32_t *)(((uint32_t)puVar3 & 0xfffffffc) + 4);
-            if ((int)uVar5 < 0)
-            {
-                uVar5 = -uVar5;
-                local_40 = 0x2d;
-            }
-            uVar7 = 10;
-        LAB_81c1bfe4:
-            local_50 = pcVar13;
-            if (-1 < (int)pcVar13)
-            {
-                local_4c = local_4c & 0xffffffdf;
-            }
-            ppcVar11 = &local_50;
-            if ((uVar5 != 0) || (puVar3 = auStack_80 + -(int)ppcVar11, pcVar13 != (char *)0x0))
-                goto LAB_81c1c010;
-            goto LAB_81c1c06c;
-        case 0x4c:
-            local_4c = local_4c | 2;
-            goto LAB_81c1bec0;
-        case 0x4f:
-            local_4c = local_4c | 1;
-        case 0x6f:
-            puVar3 = (uint8_t *)((int)param_2 + 3);
-            if ((local_4c & 4) == 0)
-            {
-                uVar5 = *(uint32_t *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            else
-            {
-                uVar5 = (uint32_t) * (short *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            param_2 = (uint32_t *)(((uint32_t)puVar3 & 0xfffffffc) + 4);
-            uVar7 = 8;
-        LAB_81c1c2a8:
-            local_40 = 0;
-            goto LAB_81c1bfe4;
-        case 0x55:
-            local_4c = local_4c | 1;
-        case 0x75:
-            puVar3 = (uint8_t *)((int)param_2 + 3);
-            if ((local_4c & 4) == 0)
-            {
-                uVar5 = *(uint32_t *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            else
-            {
-                uVar5 = (uint32_t) * (short *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            param_2 = (uint32_t *)(((uint32_t)puVar3 & 0xfffffffc) + 4);
-            uVar7 = 10;
-            goto LAB_81c1c2a8;
-        case 0x58:
-            local_3c = g_legacy_data_81c20784;
-        case 0x78:
-            puVar3 = (uint8_t *)((int)param_2 + 3);
-            if ((local_4c & 4) == 0)
-            {
-                uVar5 = *(uint32_t *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            else
-            {
-                uVar5 = (uint32_t) * (short *)((uint32_t)puVar3 & 0xfffffffc);
-            }
-            param_2 = (uint32_t *)(((uint32_t)puVar3 & 0xfffffffc) + 4);
-            uVar7 = 0x10;
-            if ((local_4c & 8) != 0)
-            {
-                if (uVar5 != 0)
-                {
-                    local_4c = local_4c | 0x40;
-                }
-            }
-            goto LAB_81c1c2a8;
-        case 99:
-            puVar3 = (uint8_t *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-            local_70[0] = *puVar3;
-            ppcVar11 = (char **)local_70;
-            param_2 = (uint32_t *)(puVar3 + 4);
-            local_48 = (char *)0x1;
-            local_40 = 0;
-            goto LAB_81c1c074;
-        case 0x68:
-            goto switchD_81c1be34_caseD_68;
-        case 0x6c:
-            local_4c = local_4c | 1;
-            break;
-        case 0x6e:
-            if (((local_4c & 1) == 0) && ((local_4c & 4) != 0))
-            {
-                puVar14 = (uint32_t *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-                param_2 = puVar14 + 1;
-                *(short *)*puVar14 = (short)iVar17;
-            }
-            else
-            {
-                puVar14 = (uint32_t *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-                param_2 = puVar14 + 1;
-                *(int *)*puVar14 = iVar17;
-            }
-            goto LAB_81c1bdc4;
-        case 0x70:
-            puVar15 = (uint32_t *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-            uVar5 = *puVar15;
-            uVar7 = 0x10;
-            param_2 = puVar15 + 1;
-            goto LAB_81c1c2a8;
-        case 0x73:
-            piVar16 = (int *)((uint32_t)((int)param_2 + 3) & 0xfffffffc);
-            ppcVar11 = (char **)*piVar16;
-            param_2 = (uint32_t *)(piVar16 + 1);
-            if (ppcVar11 == (char **)0x0)
-            {
-                ppcVar11 = (char **)g_legacy_data_81c20798;
-            }
-            if ((int)pcVar13 < 0)
-            {
-                local_48 = (char *)sango_crt_strlen((char *)ppcVar11);
-            }
-            else
-            {
-                pcVar4 = sango_crt_memchr((char *)ppcVar11, 0, (int)pcVar13);
-                local_48 = pcVar13;
-                if ((pcVar4 != (char *)0x0) && (local_48 = pcVar4 + -(int)ppcVar11,
-                                                (int)pcVar13 < (int)(pcVar4 + -(int)ppcVar11)))
-                {
-                    local_48 = pcVar13;
-                }
-            }
-            local_40 = 0;
-            goto LAB_81c1c074;
+                emit((uint32_t)*format, emit_context);
+            output_count = output_count + 1;
+            format = format + 1;
+            continue;
         }
-        pbVar12 = param_1;
-        goto LAB_81c1be0c;
-    }
-    if (uVar5 != 10)
-        goto LAB_81c1bdb8;
-    (*(SangoLegacyCode *)param_3)(0xd, param_4);
-    (*(SangoLegacyCode *)param_3)(10, param_4);
-    iVar17 = iVar17 + 1;
-    goto LAB_81c1bdc0;
-switchD_81c1be34_caseD_68:
-    local_4c = local_4c | 4;
-    pbVar12 = param_1;
-    goto LAB_81c1be0c;
-LAB_81c1c010:
-    do
-    {
-        ppcVar10 = ppcVar11;
-        uVar18 = uVar5 / uVar7;
-        if (uVar7 == 0)
+
+        flags = 0;
+        minimum_digits = 0;
+        field_width = 0;
+        sign_character = 0;
+        int precision = -1;
+        char *body_cursor;
+        uint32_t numeric_value = 0;
+        uint32_t radix = 10;
+        bool numeric_conversion = false;
+        bool unsigned_conversion = false;
+        bool literal_conversion = false;
+        bool count_conversion = false;
+
+        /* 扫描标志、宽度、精度及长度；遇到转换字符后进入一次输出流程。 */
+        while (true)
         {
-            sango_legacy_trap(7);
+            format = format + 1;
+            uint32_t conversion = (uint32_t)*format;
+            if (conversion == 0)
+                return output_count;
+            if (conversion == ' ')
+            {
+                if (sign_character == 0)
+                    sign_character = ' ';
+                continue;
+            }
+            if (conversion == '#')
+            {
+                flags |= FORMAT_ALTERNATE;
+                continue;
+            }
+            if (conversion == '+')
+            {
+                sign_character = '+';
+                continue;
+            }
+            if (conversion == '-')
+            {
+                flags |= FORMAT_LEFT;
+                continue;
+            }
+            if (conversion == '0')
+            {
+                flags |= FORMAT_ZERO;
+                continue;
+            }
+            if (conversion == 'h')
+            {
+                flags |= FORMAT_SHORT;
+                continue;
+            }
+            if (conversion == 'l')
+            {
+                flags |= FORMAT_LONG;
+                continue;
+            }
+            if (conversion == 'L')
+            {
+                flags |= FORMAT_LONG_DOUBLE;
+                continue;
+            }
+            if (conversion == '*')
+            {
+                uint32_t *word = (uint32_t *)((uint32_t)((int)arguments + 3) & 0xfffffffc);
+                field_width = (int)*word;
+                arguments = word + 1;
+                if (field_width < 0)
+                {
+                    field_width = -field_width;
+                    flags |= FORMAT_LEFT;
+                }
+                continue;
+            }
+            if (conversion >= '1' && conversion <= '9')
+            {
+                field_width = 0;
+                do
+                {
+                    field_width = field_width * 10 + (uint32_t)*format - '0';
+                    format = format + 1;
+                } while ((char)*format >= 0 && sango_crt_isdigit(*format) != 0);
+                format = format - 1;
+                continue;
+            }
+            if (conversion == '.')
+            {
+                format = format + 1;
+                precision = 0;
+                if (*format == '*')
+                {
+                    uint32_t *word = (uint32_t *)((uint32_t)((int)arguments + 3) & 0xfffffffc);
+                    precision = (int)*word;
+                    arguments = word + 1;
+                }
+                else
+                {
+                    while ((char)*format >= 0 && sango_crt_isdigit(*format) != 0)
+                    {
+                        precision = precision * 10 + (uint32_t)*format - '0';
+                        format = format + 1;
+                    }
+                    format = format - 1;
+                }
+                if (precision < -1)
+                    precision = -1;
+                continue;
+            }
+
+            if (conversion == 'n')
+            {
+                uint32_t *word = (uint32_t *)((uint32_t)((int)arguments + 3) & 0xfffffffc);
+                arguments = word + 1;
+                if ((flags & FORMAT_LONG) == 0 && (flags & FORMAT_SHORT) != 0)
+                    *(short *)*word = (short)output_count;
+                else
+                    *(int *)*word = output_count;
+                count_conversion = true;
+                break;
+            }
+            if (conversion == 'c')
+            {
+                uint8_t *word = (uint8_t *)((uint32_t)((int)arguments + 3) & 0xfffffffc);
+                abi_storage[16] = *word;
+                body_cursor = (char *)(abi_storage + 16);
+                arguments = (uint32_t *)(word + 4);
+                body_length = 1;
+                sign_character = 0;
+                break;
+            }
+            if (conversion == 's')
+            {
+                uint32_t *word = (uint32_t *)((uint32_t)((int)arguments + 3) & 0xfffffffc);
+                body_cursor = (char *)*word;
+                arguments = word + 1;
+                if (body_cursor == 0)
+                    body_cursor = g_legacy_data_81c20798;
+                if (precision < 0)
+                    body_length = sango_crt_strlen(body_cursor);
+                else
+                {
+                    char *terminator = sango_crt_memchr(body_cursor, 0, precision);
+                    body_length = precision;
+                    if (terminator != 0)
+                    {
+                        body_length = (int)terminator - (int)body_cursor;
+                        if (precision < body_length)
+                            body_length = precision;
+                    }
+                }
+                sign_character = 0;
+                break;
+            }
+
+            switch (conversion)
+            {
+            case 'D':
+                flags |= FORMAT_LONG;
+            case 'd':
+            case 'i':
+                radix = 10;
+                break;
+            case 'O':
+                flags |= FORMAT_LONG;
+            case 'o':
+                radix = 8;
+                unsigned_conversion = true;
+                break;
+            case 'U':
+                flags |= FORMAT_LONG;
+            case 'u':
+                radix = 10;
+                unsigned_conversion = true;
+                break;
+            case 'X':
+                digit_table = g_legacy_data_81c20784;
+            case 'x':
+                radix = 16;
+                unsigned_conversion = true;
+                break;
+            case 'p':
+                radix = 16;
+                unsigned_conversion = true;
+                break;
+            default:
+                literal_conversion = true;
+                break;
+            }
+            if (literal_conversion)
+                break;
+            uint32_t *word = (uint32_t *)((uint32_t)((int)arguments + 3) & 0xfffffffc);
+            /* 原运行库对h无符号转换也按short读入，保留其符号扩展。 */
+            if (conversion != 'p' && (flags & FORMAT_SHORT) != 0)
+                numeric_value = (uint32_t) * (short *)word;
+            else
+                numeric_value = *word;
+            arguments = word + 1;
+            if (!unsigned_conversion && (int)numeric_value < 0)
+            {
+                numeric_value = -numeric_value;
+                sign_character = '-';
+            }
+            if ((conversion == 'x' || conversion == 'X') && (flags & FORMAT_ALTERNATE) != 0 &&
+                numeric_value != 0)
+                flags |= FORMAT_HEX_PREFIX;
+            if (unsigned_conversion)
+                sign_character = 0;
+            numeric_conversion = true;
+            break;
         }
-        ppcVar11 = (char **)((int)ppcVar10 + -1);
-        cVar2 = local_3c[uVar5 % uVar7];
-        *(char *)ppcVar11 = cVar2;
-        uVar5 = uVar18;
-    } while (uVar18 != 0);
-    local_3c = g_legacy_data_81c20770;
-    if (((local_4c & 8) == 0) || (uVar7 != 8))
-    {
-    LAB_81c1c068:
-        puVar3 = auStack_80 + -(int)ppcVar11;
-    }
-    else
-    {
-        puVar3 = auStack_80 + -(int)ppcVar11;
-        if (cVar2 != '0')
+
+        if (count_conversion)
         {
-            ppcVar11 = (char **)((int)ppcVar10 + -2);
-            *(char *)ppcVar11 = '0';
-            goto LAB_81c1c068;
+            format = format + 1;
+            continue;
         }
-    }
-LAB_81c1c06c:
-    local_48 = puVar3 + 0x30;
-LAB_81c1c074:
-    pcVar13 = local_48;
-    if (local_40 != 0)
-    {
-        pcVar13 = local_48 + 1;
-    }
-    if ((local_4c & 0x40) != 0)
-    {
-        pcVar13 = pcVar13 + 2;
-    }
-    local_38 = local_4c & 0x40;
-    local_34 = (uint32_t)((int)pcVar13 < (int)local_50);
-    pcVar4 = pcVar13;
-    if ((int)pcVar13 < (int)local_50 != 0)
-    {
-        pcVar4 = local_50;
-    }
-    local_30 = local_4c & 0x30;
-    uVar5 = (uint32_t)((int)pcVar4 < (int)local_44);
-    local_2c = uVar5;
-    if ((((local_4c & 0x30) == 0) &&
-         (local_2c = (uint32_t)((int)pcVar4 < 0), local_44 != (char *)0x0)) &&
-        (local_2c = uVar5, pcVar9 = pcVar4, uVar5 != 0))
-    {
-        do
+        if (literal_conversion)
         {
-            (*(SangoLegacyCode *)param_3)(0x20, param_4);
-            pcVar9 = pcVar9 + 1;
-        } while ((int)pcVar9 < (int)local_44);
-    }
-    if (local_40 != 0)
-    {
-        (*(SangoLegacyCode *)param_3)(local_40, param_4);
-    }
-    if (local_38 != 0)
-    {
-        (*(SangoLegacyCode *)param_3)(0x30, param_4);
-        (*(SangoLegacyCode *)param_3)((int)(char)*param_1, param_4);
-    }
-    if ((local_30 == 0x20) && (local_2c != 0))
-    {
-        iVar8 = (int)local_44 - (int)pcVar4;
-        do
+            emit((uint32_t)(char)*format, emit_context);
+            output_count = output_count + 1;
+            format = format + 1;
+            continue;
+        }
+        if (numeric_conversion)
         {
-            iVar8 = iVar8 + -1;
-            (*(SangoLegacyCode *)param_3)(0x30, param_4);
-        } while (iVar8 != 0);
-    }
-    pcVar9 = local_48;
-    if (local_34 != 0)
-    {
-        iVar8 = (int)local_50 - (int)pcVar13;
-        do
+            minimum_digits = precision;
+            if (precision >= 0)
+                flags &= ~FORMAT_ZERO;
+            body_cursor = (char *)(abi_storage + 48);
+            if (numeric_value != 0 || precision != 0)
+            {
+                char leading_digit;
+                do
+                {
+                    uint32_t quotient = numeric_value / radix;
+                    if (radix == 0)
+                        sango_legacy_trap(7);
+                    body_cursor = body_cursor - 1;
+                    leading_digit = digit_table[numeric_value % radix];
+                    *body_cursor = leading_digit;
+                    numeric_value = quotient;
+                } while (numeric_value != 0);
+                digit_table = g_legacy_data_81c20770;
+                if ((flags & FORMAT_ALTERNATE) != 0 && radix == 8 && leading_digit != '0')
+                    *--body_cursor = '0';
+            }
+            body_length = (int)(abi_storage + 48) - (int)body_cursor;
+        }
+
+        /* 统一输出次序：左空格、符号/前缀、宽度零、精度零、正文、右空格。 */
+        int prefixed_length = body_length;
+        if (sign_character != 0)
+            prefixed_length = prefixed_length + 1;
+        if ((flags & FORMAT_HEX_PREFIX) != 0)
+            prefixed_length = prefixed_length + 2;
+        has_hex_prefix = flags & FORMAT_HEX_PREFIX;
+        has_precision_padding = (uint32_t)(prefixed_length < minimum_digits);
+        int measured_length = prefixed_length;
+        if (prefixed_length < minimum_digits)
+            measured_length = minimum_digits;
+        padding_mode = flags & (FORMAT_LEFT | FORMAT_ZERO);
+        uint32_t width_needed = (uint32_t)(measured_length < field_width);
+        has_field_padding = width_needed;
+        if (padding_mode == 0)
         {
-            iVar8 = iVar8 + -1;
-            (*(SangoLegacyCode *)param_3)(0x30, param_4);
-            pcVar9 = local_48;
-        } while (iVar8 != 0);
-    }
-    while (-1 < (int)(pcVar9 + -1))
-    {
-        (*(SangoLegacyCode *)param_3)((int)*(char *)ppcVar11, param_4);
-        ppcVar11 = (char **)((int)ppcVar11 + 1);
-        pcVar9 = pcVar9 + -1;
-    }
-    if (((local_4c & 0x10) != 0) && (local_2c != 0))
-    {
-        iVar8 = (int)local_44 - (int)pcVar4;
-        do
+            has_field_padding = (uint32_t)(measured_length < 0);
+            if (field_width != 0)
+            {
+                has_field_padding = width_needed;
+                if (width_needed != 0)
+                    for (int position = measured_length; position < field_width; position++)
+                        emit(' ', emit_context);
+            }
+        }
+        if (sign_character != 0)
+            emit(sign_character, emit_context);
+        if (has_hex_prefix != 0)
         {
-            iVar8 = iVar8 + -1;
-            (*(SangoLegacyCode *)param_3)(0x20, param_4);
-        } while (iVar8 != 0);
+            emit('0', emit_context);
+            emit((int)(char)*format, emit_context);
+        }
+        if (padding_mode == FORMAT_ZERO && has_field_padding != 0)
+            for (int remaining = field_width - measured_length; remaining != 0; remaining--)
+                emit('0', emit_context);
+        if (has_precision_padding != 0)
+            for (int remaining = minimum_digits - prefixed_length; remaining != 0; remaining--)
+                emit('0', emit_context);
+        for (int remaining = body_length; - 1 < remaining - 1; remaining--)
+            emit((int)*body_cursor++, emit_context);
+        if ((flags & FORMAT_LEFT) != 0 && has_field_padding != 0)
+            for (int remaining = field_width - measured_length; remaining != 0; remaining--)
+                emit(' ', emit_context);
+        output_count = output_count + (has_field_padding != 0 ? field_width : measured_length);
+        format = format + 1;
     }
-    pcVar13 = local_44;
-    if (local_2c == 0)
-    {
-        pcVar13 = pcVar4;
-    }
-    iVar17 = iVar17 + (int)pcVar13;
-LAB_81c1bdc4:
-    param_1 = param_1 + 1;
-    bVar6 = *param_1;
-    goto LAB_81c1bda0;
-switchD_81c1be34_caseD_1:
-    uVar5 = (uint32_t)(char)*param_1;
-LAB_81c1bdb8:
-    (*(SangoLegacyCode *)param_3)(uVar5, param_4);
-LAB_81c1bdc0:
-    iVar17 = iVar17 + 1;
-    goto LAB_81c1bdc4;
+    return output_count;
 }
-#undef local_38
-#undef local_34
-#undef local_30
-#undef local_2c
-#undef auStack_80
-#undef local_70
-#undef local_52
-#undef local_50
-#undef local_4c
-#undef local_48
-#undef local_44
-#undef local_40
-#undef local_3c
+#undef has_hex_prefix
+#undef has_precision_padding
+#undef padding_mode
+#undef has_field_padding
+#undef digits_storage
+#undef character_storage
+#undef digits_tail
+#undef minimum_digits
+#undef flags
+#undef body_length
+#undef field_width
+#undef sign_character
+#undef digit_table

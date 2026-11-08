@@ -10,123 +10,124 @@ void sango_city_read_name(char city_id, void *name)
 }
 
 /* 原函数 0x81c19748 */
-void sango_city_format_attribute(uint32_t param_1, uint8_t param_2, char *param_3, uint32_t param_4)
+void sango_city_format_attribute(uint32_t city_id, uint8_t attribute, char *output,
+                                 uint32_t legacy_context)
 {
     unsigned char abi_storage[40] __attribute__((aligned(8)));
-#define acStack_28 (*(char(*)[24])(abi_storage + 0))
+#define value_text (*(char(*)[24])(abi_storage + 0))
 
-    uint8_t bVar1;
-    uint16_t uVar2;
-    uint32_t uVar3;
-    char *pcVar4;
-    uint16_t unaff_s0;
-    uint32_t uVar5;
+    uint8_t character_owner_id;
+    uint16_t development_limit;
+    uint32_t text_length;
+    char *status_context;
+    uint16_t name_resource;
+    uint32_t attribute_value;
 
-    uVar5 = param_1 & 0xff;
-    *param_3 = '\0';
-    switch (param_2)
+    uint32_t city_index = city_id & 0xff;
+    *output = '\0';
+    switch (attribute)
     {
     case 0:
-        sango_resource_read_text(0x40, 2, param_3);
-        bVar1 = (&g_first_city_owner)[uVar5 * 0x24];
-        goto LAB_81c197b0;
+        sango_resource_read_text(0x40, 2, output);
+        character_owner_id = (&g_first_city_owner)[city_index * 0x24];
+        goto append_character_name;
     case 1:
-        sango_resource_read_text(0x40, 3, param_3);
-        bVar1 = (&g_first_city_governor)[uVar5 * 0x24];
-    LAB_81c197b0:
-        if (bVar1 == 0)
+        sango_resource_read_text(0x40, 3, output);
+        character_owner_id = (&g_first_city_governor)[city_index * 0x24];
+    append_character_name:
+        if (character_owner_id == 0)
         {
-            unaff_s0 = 0x40;
-            uVar5 = 0x32;
+            name_resource = 0x40;
+            attribute_value = 0x32;
         }
         else
         {
             if (g_scenario_id_view2 == 2)
             {
-                unaff_s0 = 0x46;
+                name_resource = 0x46;
             }
             else if (g_scenario_id_view2 < 3)
             {
                 if (g_scenario_id_view2 == 1)
                 {
-                    unaff_s0 = 0x3e;
+                    name_resource = 0x3e;
                 }
             }
             else if (g_scenario_id_view2 == 3)
             {
-                unaff_s0 = 0x47;
+                name_resource = 0x47;
             }
             else if (g_scenario_id_view2 == 4)
             {
-                unaff_s0 = 0x48;
+                name_resource = 0x48;
             }
-            uVar5 = (uint32_t)bVar1;
+            attribute_value = (uint32_t)character_owner_id;
         }
-        sango_resource_read_text(unaff_s0, uVar5, param_3 + 5);
+        sango_resource_read_text(name_resource, attribute_value, output + 5);
         return;
     case 2:
-        sango_resource_read_text(0x40, 4, param_3);
-        sango_format_integer((uint32_t)(uint16_t)(&g_first_city_agriculture)[uVar5 * 0x12],
-                             acStack_28, 10);
-        bbk_strcat(param_3, acStack_28);
-        uVar3 = bbk_strlen(param_3);
-        param_3[uVar3 + 1] = '\0';
-        uVar3 = bbk_strlen(param_3);
-        param_3[uVar3] = '/';
-        uVar2 = (&g_first_city_agriculture_limit)[uVar5 * 0x12];
-        goto LAB_81c198e4;
+        sango_resource_read_text(0x40, 4, output);
+        sango_format_integer((uint32_t)(uint16_t)(&g_first_city_agriculture)[city_index * 0x12],
+                             value_text, 10);
+        bbk_strcat(output, value_text);
+        text_length = bbk_strlen(output);
+        output[text_length + 1] = '\0';
+        text_length = bbk_strlen(output);
+        output[text_length] = '/';
+        development_limit = (&g_first_city_agriculture_limit)[city_index * 0x12];
+        goto use_development_limit;
     case 3:
-        sango_resource_read_text(0x40, 5, param_3);
-        sango_format_integer((uint32_t)(uint16_t)(&g_first_city_commerce)[uVar5 * 0x12], acStack_28,
-                             10);
-        bbk_strcat(param_3, acStack_28);
-        uVar3 = bbk_strlen(param_3);
-        param_3[uVar3 + 1] = '\0';
-        uVar3 = bbk_strlen(param_3);
-        param_3[uVar3] = '/';
-        uVar2 = (&g_first_city_commerce_limit)[uVar5 * 0x12];
-    LAB_81c198e4:
-        uVar5 = (uint32_t)uVar2;
+        sango_resource_read_text(0x40, 5, output);
+        sango_format_integer((uint32_t)(uint16_t)(&g_first_city_commerce)[city_index * 0x12],
+                             value_text, 10);
+        bbk_strcat(output, value_text);
+        text_length = bbk_strlen(output);
+        output[text_length + 1] = '\0';
+        text_length = bbk_strlen(output);
+        output[text_length] = '/';
+        development_limit = (&g_first_city_commerce_limit)[city_index * 0x12];
+    use_development_limit:
+        attribute_value = (uint32_t)development_limit;
         break;
     case 4:
-        sango_resource_read_text(0x40, 6, param_3);
-        uVar5 = (uint32_t)(uint8_t)(&g_first_city_loyalty)[uVar5 * 0x24];
+        sango_resource_read_text(0x40, 6, output);
+        attribute_value = (uint32_t)(uint8_t)(&g_first_city_loyalty)[city_index * 0x24];
         break;
     case 5:
-        sango_resource_read_text(0x40, 7, param_3);
-        uVar5 = (uint32_t)(uint8_t)(&g_first_city_disaster_prevention)[uVar5 * 0x24];
+        sango_resource_read_text(0x40, 7, output);
+        attribute_value = (uint32_t)(uint8_t)(&g_first_city_disaster_prevention)[city_index * 0x24];
         break;
     case 6:
-        sango_resource_read_text(0x40, 8, param_3);
-        uVar5 = (&g_first_city_population_limit)[uVar5 * 9];
+        sango_resource_read_text(0x40, 8, output);
+        attribute_value = (&g_first_city_population_limit)[city_index * 9];
         break;
     case 7:
-        sango_resource_read_text(0x40, 9, param_3);
-        uVar5 = (uint32_t)(uint16_t)(&g_first_city_money)[uVar5 * 0x12];
+        sango_resource_read_text(0x40, 9, output);
+        attribute_value = (uint32_t)(uint16_t)(&g_first_city_money)[city_index * 0x12];
         break;
     case 8:
-        sango_resource_read_text(0x40, 10, param_3);
-        uVar5 = (uint32_t)(uint16_t)(&g_first_city_food)[uVar5 * 0x12];
+        sango_resource_read_text(0x40, 10, output);
+        attribute_value = (uint32_t)(uint16_t)(&g_first_city_food)[city_index * 0x12];
         break;
     case 9:
-        sango_resource_read_text(0x40, 0xb, param_3);
-        uVar5 = (uint32_t)(uint16_t)(&g_first_city_reserve_troops)[uVar5 * 0x12];
+        sango_resource_read_text(0x40, 0xb, output);
+        attribute_value = (uint32_t)(uint16_t)(&g_first_city_reserve_troops)[city_index * 0x12];
         break;
     case 10:
-        pcVar4 = param_3;
-        sango_resource_read_text(0x40, 1, param_3);
-        sango_city_format_status(uVar5, acStack_28, pcVar4, param_4);
-        goto LAB_81c198f4;
+        status_context = output;
+        sango_resource_read_text(0x40, 1, output);
+        sango_city_format_status(city_index, value_text, status_context, legacy_context);
+        goto append_value_text;
     default:
-        goto switchD_81c19784_default;
+        goto attribute_done;
     }
-    sango_format_integer(uVar5, acStack_28, 10);
-LAB_81c198f4:
-    bbk_strcat(param_3, acStack_28);
-switchD_81c19784_default:
+    sango_format_integer(attribute_value, value_text, 10);
+append_value_text:
+    bbk_strcat(output, value_text);
+attribute_done:
     return;
 }
-#undef acStack_28
+#undef value_text
 
 /* 原函数 0x81c19a98 */
 void sango_city_format_status(uint32_t param_1, void *param_2, uint32_t param_3, uint32_t param_4)

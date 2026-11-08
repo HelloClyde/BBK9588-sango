@@ -6,49 +6,49 @@
     "src/app/boot.c": "dae47ac3bada542fac7057690cf34a30af0166b40b2e41cd2eff26668b5ed71f",
     "src/app/lifecycle.c": "fe5d64c5b605506bea7972c970c199867bd9d8144f09e28bed0fde24cf30e3d4",
     "src/app/memory.c": "32d2b7f0f4651e7160dde9fdc9de15e208a2d31ba518c888af732c0cd122ab9c",
-    "src/battle/actions.c": "0c69d57fd2f6a3a4133d8e88d2abaaa161c56d5e10f5087ddeea53e2539c58cc",
-    "src/battle/ai.c": "dde3fbcd24d2f90e2178d09a80608e1a3bbd7e5c45840752b69853f6c0f3ea70",
+    "src/battle/actions.c": "9fc0e7a11b25b56a0d103491b9694f53ca3b198747d3fe2073f311c91c229543",
+    "src/battle/ai.c": "b10a5c18f262636eb8df459f370cce1b20b3f2c8b2744e0ed03cec203ba6cf4b",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
     "src/battle/combat_math.c": "5b690070d6ff45b87a30f08b85cee2b4d79a6962ea169b3a7daa19acdc64124e",
     "src/battle/controller.c": "36ced46bc546aa021ecb62ba6f1338d2b15c199738766284b4f11d98a8582b80",
     "src/battle/field.c": "8619249f6bf2c0a4949341fdfede96e5cedf8028284e548f1fcc8d23af84563c",
     "src/battle/movement.c": "0f70020d6352940f2251ecaf02ecfb9cd2aa623959467b51a2b9257b3945ad0f",
-    "src/battle/overview.c": "f5b464c666d8f927c4b1d1c2ae4b1e667ceb1df21baf953bab5d3cbd0a443b55",
-    "src/battle/player_turn.c": "177d515ac29a6d3667174708334b9faa2352243c797cc9066761f49da7e14b85",
+    "src/battle/overview.c": "39fd6d9cb961740256de3c09ab6ff0824c06a97bdbddbe6796b11acacc6057a1",
+    "src/battle/player_turn.c": "5fcaf005e91f0a39a6d18acd6cb68d3255d4452d3c51add852ccab4d6ed538e2",
     "src/platform/event_loop.c": "b590200f7faa039e1026c655993bbbde747aef9dcf46dcd9d32c10d2d8f0bd1c",
-    "src/platform/input_dialog.c": "b01a4004e67d2923854491e2f9b754688cd656698042e55dfcd5db79b45a1b72",
-    "src/platform/sdk_bindings.c": "50718f6bafa619017994bedbeca4b9dfc4bab258b7c237396a8a71b1ee75203e",
-    "src/platform/window_graphics.c": "8a6b616501dcabe5169c89a59a4aa34e7823517714fc93b36c715307615946b1",
-    "src/render/animation.c": "4847460ee8822ab0f8bc8926cff97225b9cff0d21f8f3c5f536cfa8a7e3c0935",
-    "src/render/raster.c": "9b3aeaf3f5eac49b5aefbb62c289ef3b2f513a69854abfee5338e2b4dea5af60",
+    "src/platform/input_dialog.c": "f89f302cac181b5c4dff3f0a6bd6b6895155ad5d37ffaa630d6287e8ec05b4fc",
+    "src/platform/sdk_bindings.c": "f26f3fe3062b9bdf7ff92e202ec1574bd677ed1a5f8817c99bbbd5545f167574",
+    "src/platform/window_graphics.c": "23b9a7f24069bfdd99db4ddb0f96aa41454a70db9dd779b72aa03ff43787de5b",
+    "src/render/animation.c": "e4b5bb8bf5144c67f8e049097f7d992d5b51a7bb54a5b1fb9f366ce8ee86a04e",
+    "src/render/raster.c": "1092d804ec29af82fcea25536b5ecbaacf4459ac50d892de9cf8e51102f9deb6",
     "src/resources/library.c": "f8e60532554b9dab0c864313179da4c5d1561cfdd2667af56ba19aef57d0aaa2",
-    "src/runtime/format.c": "58106c6bd11683c57615059d6b16ad7c67d76913f23b763fccca28104863abe3",
-    "src/runtime/libc.c": "e9a3db5338ad98647367f6947a25cefbce10f7a345b4de463232a130cc093392",
-    "src/runtime/soft_float.c": "51acac6ddbea250f46566852bc25845ae14a386d2637bb8912065b51e00e9ef5",
-    "src/runtime/strings.c": "ea13b3d0969ea0da0908377a82cfa09c5b1a347fe9c21d173f8769722c5d9778",
+    "src/runtime/format.c": "bfc7988a1d3bc4d5907b1cee71092457ed1e752a30d91447f704ff091af61daa",
+    "src/runtime/libc.c": "f5fe416862a6a339121593ec4c2460884568a8fcb7f4f05c6c3f1474d189c532",
+    "src/runtime/soft_float.c": "2288ad35bc480dbd823383c243bc322750dd0764e1cc0ac112c8f94cdde1d3b6",
+    "src/runtime/strings.c": "462d838a2767248b0598c73ef7f9cc62967e36ba93bf55efa18bddc4e5e9a923",
     "src/sango_battle_ui.c": "5ca1e0e241b262b87294012af2a6cbf327fe76c8dff66fbf98f02d84dc0fe974",
     "src/sango_credits.c": "d6c65d6e7ae35a89085c8fc2338d9c2d42b9aa78a53b247a1635176f58fdd53b",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
     "src/sango_statusbar.c": "fb7c1c99af3c2d32af2adca4b799e8fb7097f6760ecb3ed08f83d4ed5ec18884",
     "src/save/savegame.c": "12c974a8da6c9918758953c9c627afcc6c564b95d1cfb116595ba7cea80f9c76",
-    "src/strategy/aftermath.c": "cfc77da94736be2a55b99fd06b5cd976f257a91b205cdbfec9fe90a6df423fc5",
-    "src/strategy/ai.c": "6358c978796f38549a06e1f679f5205af92527c497b2b954caafc01d0d3623dc",
-    "src/strategy/calendar.c": "33a53591e0aa296951e08477f1c9e90227c69f941aff3782ccad8f0c3a2d833a",
-    "src/strategy/domestic.c": "7e8290dcfac585897e009000750d30f2b4ba3039bfe50ca4dcbed6b7b6243ddf",
+    "src/strategy/aftermath.c": "df0bd23d392dcdcb15705aea774fa643e5747d351c499bb715731d1fdae42e13",
+    "src/strategy/ai.c": "eadc3db74a2ca965d29c6e2d4be95f807a4480324039e0b595007702931d5432",
+    "src/strategy/calendar.c": "cd66c6e2ab3963c3f70829ee78ff024218caec84d79ddeef2458c73fd96b2483",
+    "src/strategy/domestic.c": "2a6561d637719bcbef3eb57b0292488f57b368630c1d68912fc8338e1a860b90",
     "src/strategy/items.c": "bf357c1068d66304525872e31112e9e6c8afcc3222df5cfb6cc37bf1e828da1d",
-    "src/strategy/map.c": "6417b15fd9419d9b76af0024dc1d7c3a083be4cdd62d5e1d5fbaca1990a26f3c",
-    "src/strategy/military.c": "2386e4c80b823282cf0e5f97739d606d677e1470648159e98c7a64102dc390e4",
-    "src/strategy/orders.c": "d8065cf596955931a0d0e2a0fb44b3332639da0d467b69e9d5266d9f61998dda",
-    "src/strategy/rosters.c": "76a7f4ffe7ca3c375b3e642b2dda978bac89c3d6675970f4146015cb347290e0",
+    "src/strategy/map.c": "a1433af7dd72626f3f89ba60959f7a0c715db46e00b5fca7b6c47098506380fa",
+    "src/strategy/military.c": "2dff06b167f53a9da7e935ecba96a76877c53c1455dacc4c32770e62bf2419ae",
+    "src/strategy/orders.c": "dc52a96b76b3da9896c3a8447c92fad408fc6b04bbac55881d172cb61223cd45",
+    "src/strategy/rosters.c": "712ddf774c1363768f606d449676c143a80ea97cdd914ba6aba76e775d71ea6f",
     "src/strategy/session.c": "a24876f87471b314709682ce019e1801de10d743cfa09a0c3cf1790d7b7b0890",
     "src/strategy/turns.c": "c5b0b61ae7a3d3f377eafb3654c9092ee4f54078868977cba4d51684a6f6920e",
-    "src/ui/city_details.c": "6bb2374bca07e31fd08bd9b7c2ee7076ce20bab2cd40d2c8e1f4583fcd1b3260",
-    "src/ui/info_panels.c": "9fdcd7a4018d4aac0071e441e6b858c78adfcbeac4b3b2a4c981fe2b0b9d4a6f",
-    "src/ui/lists.c": "bbd224a32a7d12b7b0ebf54bf87317526863af398ab3b49ef6eaa9d952a52950",
-    "src/ui/menu_and_text.c": "d99649dd273631356a4c2f57c993776c1dcfa867821357fe227f87d9e3c1505f",
+    "src/ui/city_details.c": "97af488e22b8f5f34ff9eeb384f3600640d76b9b3a9d9f2ff2d54bab8d85b245",
+    "src/ui/info_panels.c": "7e574c5af44d038374a8f550bc2274f6cf727529131851d89451327ebb36339a",
+    "src/ui/lists.c": "5b3132a9bc6c3465490d36c8280fb0058cf970726aa3167bf4593b8d40825f27",
+    "src/ui/menu_and_text.c": "f7ab8042c700ef55167872eb0480622c163124bb5a177157a40e914085c8cfb3",
     "src/ui/numeric.c": "2f3b2931ff7963ae1115efcac6f42499d19ea1c5d7892950d9cb86435147553d",
-    "src/ui/start_menu.c": "cdf819571478a7bb7bdc0311c52c638c4bce0b21b4b6348a5d7f3cd86663c8c5",
-    "src/ui/system_menu.c": "69f43e5fa463d81d06a2f6bbce6acc82c4d3098c9567127fd29bb91a09825deb"
+    "src/ui/start_menu.c": "bb3a307b31421ce80bc320d2e99de5faa84666d260e9b77d7768d37ed03df90b",
+    "src/ui/system_menu.c": "4570bfe0c4cedc218390fffc28eb1da5d16fafc22961315fda3253f644b72119"
   },
   "resources": [
     {
@@ -62,7 +62,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_read_text",
           "expression": "sango_resource_read_text(1,",
-          "line": 558
+          "line": 555
         },
         {
           "source": "src/save/savegame.c",
@@ -83,19 +83,19 @@
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
           "expression": "in_t0 = 2;",
-          "line": 540
+          "line": 546
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(2,'\\x0e',",
-          "line": 164
+          "line": 138
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         }
       ]
     },
@@ -162,7 +162,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_terrain_at",
           "expression": "tile != 0x29",
-          "line": 375
+          "line": 372
         }
       ]
     },
@@ -177,13 +177,13 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_unit_sprite_frame",
           "expression": "frame = 0xe;",
-          "line": 625
+          "line": 622
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_unit_sprite_frame",
           "expression": "frame = 0xc;",
-          "line": 625
+          "line": 622
         },
         {
           "source": "src/battle/field.c",
@@ -321,7 +321,7 @@
           "source": "src/battle/player_turn.c",
           "function": "sango_battle_draw_cursor",
           "expression": "sango_battle_draw_bitmap(7,5,",
-          "line": 560
+          "line": 507
         }
       ]
     },
@@ -357,7 +357,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_change_weather",
           "expression": "weather = (int)weather % 5 + 1;",
-          "line": 445
+          "line": 442
         },
         {
           "source": "src/battle/field.c",
@@ -378,18 +378,18 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_skill_parameters",
           "expression": "sango_resource_item(10,'\\x01',",
-          "line": 413
+          "line": 410
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_skill_parameters",
           "expression": "* 0x22",
-          "line": 413
+          "line": 410
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "pcVar4 = (char *)sango_battle_skill_parameters(uVar8);",
+          "expression": "skill_parameters = (char *)sango_battle_skill_parameters(skill_id);",
           "line": 7
         }
       ]
@@ -405,12 +405,12 @@
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_skill_names",
           "expression": "sango_resource_read_text(0xb,",
-          "line": 396
+          "line": 402
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "sango_resource_read_text(0xb,uVar8,",
+          "expression": "sango_resource_read_text(0xb,skill_id,",
           "line": 7
         }
       ]
@@ -439,19 +439,19 @@
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
           "expression": "in_t0 = 0xd;",
-          "line": 540
+          "line": 546
         },
         {
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
           "expression": "* 0x51",
-          "line": 540
+          "line": 546
         },
         {
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
           "expression": "unaff_s1 = 9;",
-          "line": 540
+          "line": 546
         }
       ]
     },
@@ -466,7 +466,7 @@
           "source": "src/battle/ai.c",
           "function": "sango_battle_collect_unit_skills",
           "expression": "sango_resource_item(0xe,g_scenario_id,",
-          "line": 355
+          "line": 361
         }
       ]
     },
@@ -481,13 +481,13 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_draw_damage_digits",
           "expression": "sango_resource_item(0xf,'\\x01',",
-          "line": 274
+          "line": 271
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_draw_damage_digits",
           "expression": "cVar3 - 0x30",
-          "line": 274
+          "line": 271
         }
       ]
     },
@@ -502,12 +502,12 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "sango_bitmap_draw_resource(0x10,1,0x14,0x31,'\\0');",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "(&g_skill_animation_background_flag)[uVar5]",
+          "expression": "(&g_skill_animation_background_flag)[skill_index]",
           "line": 7
         }
       ]
@@ -523,7 +523,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = g_attacker_troop_type + 0x13;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/combat_math.c",
@@ -534,7 +534,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -971,7 +971,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = g_attacker_troop_type + 0x13;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/combat_math.c",
@@ -982,7 +982,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -1318,7 +1318,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = g_attacker_troop_type + 0x13;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/combat_math.c",
@@ -1329,7 +1329,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -1707,7 +1707,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = g_attacker_troop_type + 0x13;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/combat_math.c",
@@ -1718,7 +1718,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -2076,7 +2076,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = g_attacker_troop_type + 0x13;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/combat_math.c",
@@ -2087,7 +2087,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -2456,7 +2456,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = g_attacker_troop_type + 0x13;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/combat_math.c",
@@ -2467,7 +2467,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -2825,19 +2825,19 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "animation_resource = 0x19;",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_normal_attack",
           "expression": "g_defender_terrain_view2 != '\\a'",
-          "line": 220
+          "line": 217
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_terrain_at",
           "expression": "terrain = 7;",
-          "line": 375
+          "line": 372
         }
       ],
       "animation_usage": {
@@ -2904,12 +2904,12 @@
           "source": "src/ui/menu_and_text.c",
           "function": "sango_battle_show_short_message",
           "expression": "sango_resource_item(0x1a,'\\x01',",
-          "line": 383
+          "line": 386
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "sango_battle_show_short_message(acStack_48,",
+          "expression": "sango_battle_show_short_message(message_start,",
           "line": 7
         }
       ]
@@ -3102,7 +3102,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_change_weather",
           "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,",
-          "line": 445
+          "line": 442
         }
       ]
     },
@@ -3117,7 +3117,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_change_weather",
           "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,",
-          "line": 445
+          "line": 442
         }
       ]
     },
@@ -3132,7 +3132,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_change_weather",
           "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,",
-          "line": 445
+          "line": 442
         }
       ]
     },
@@ -3147,7 +3147,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_change_weather",
           "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,",
-          "line": 445
+          "line": 442
         }
       ]
     },
@@ -3162,7 +3162,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_change_weather",
           "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,",
-          "line": 445
+          "line": 442
         }
       ]
     },
@@ -3218,7 +3218,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3290,7 +3290,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3355,7 +3355,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3419,7 +3419,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3508,7 +3508,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3580,7 +3580,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3638,7 +3638,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3703,7 +3703,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3761,7 +3761,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2",
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2",
           "line": 7
         }
       ],
@@ -3910,7 +3910,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x3e;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -3937,7 +3937,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x46;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -3964,7 +3964,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x47;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -3991,7 +3991,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x48;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -4006,13 +4006,13 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x36,'\\x01',",
-          "line": 164
+          "line": 138
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "* 0xc + (uint32_t)*map_state) * 0x100",
-          "line": 164
+          "line": 138
         }
       ]
     },
@@ -4027,19 +4027,19 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x37,'\\x01',",
-          "line": 164
+          "line": 138
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "city_marker_frame = 8;",
-          "line": 164
+          "line": 138
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "city_marker_frame = 7,",
-          "line": 164
+          "line": 138
         }
       ]
     },
@@ -4054,7 +4054,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x38,'\\x01',",
-          "line": 164
+          "line": 138
         }
       ]
     },
@@ -4099,13 +4099,13 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_adjacent_distance",
           "expression": "sango_resource_item(0x3b,'\\x01',",
-          "line": 438
+          "line": 419
         },
         {
           "source": "src/strategy/rosters.c",
           "function": "sango_city_find_neighbor_position",
           "expression": "sango_resource_item(0x3b,'\\x01',",
-          "line": 247
+          "line": 248
         }
       ]
     },
@@ -4143,7 +4143,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x3e;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -4158,19 +4158,19 @@
           "source": "src/strategy/calendar.c",
           "function": "sango_strategy_update_character_ages_and_debut",
           "expression": "sango_resource_item(0x3f,g_scenario_id,",
-          "line": 369
+          "line": 394
         },
         {
           "source": "src/strategy/calendar.c",
           "function": "sango_strategy_update_character_ages_and_debut",
           "expression": "+ 0x10) == g_current_year_view2",
-          "line": 369
+          "line": 394
         },
         {
           "source": "src/strategy/calendar.c",
           "function": "sango_strategy_update_character_ages_and_debut",
-          "expression": "sango_city_add_character(uVar5,(uint8_t)uVar7)",
-          "line": 369
+          "expression": "sango_city_add_character(spawn_city,(uint8_t)character_id)",
+          "line": 394
         }
       ]
     },
@@ -4191,7 +4191,7 @@
           "source": "src/strategy/aftermath.c",
           "function": "sango_strategy_show_battle_victory",
           "expression": "sango_resource_read_text(0x40,0x5b,",
-          "line": 744
+          "line": 748
         }
       ]
     },
@@ -4212,7 +4212,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_list_idle_characters",
           "expression": "g_city_character_roster",
-          "line": 543
+          "line": 524
         }
       ]
     },
@@ -4239,7 +4239,7 @@
           "source": "src/ui/lists.c",
           "function": "sango_item_format_attribute",
           "expression": "0x41",
-          "line": 125
+          "line": 126
         }
       ]
     },
@@ -4266,7 +4266,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_add_item",
           "expression": "item_id < 0x21",
-          "line": 390
+          "line": 371
         }
       ]
     },
@@ -4287,7 +4287,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_add_item",
           "expression": "g_city_item_roster",
-          "line": 390
+          "line": 371
         },
         {
           "source": "src/strategy/rosters.c",
@@ -4308,13 +4308,13 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x45,'\\x01',",
-          "line": 164
+          "line": 138
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_bitmap_draw_frame(0x35,0x10f,7,9,1,",
-          "line": 164
+          "line": 138
         },
         {
           "source": "src/strategy/items.c",
@@ -4335,7 +4335,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x46;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -4350,7 +4350,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x47;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -4365,7 +4365,7 @@
           "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
           "expression": "name_resource = 0x48;",
-          "line": 236
+          "line": 237
         }
       ]
     },
@@ -4380,7 +4380,7 @@
           "source": "src/ui/lists.c",
           "function": "sango_item_read_name",
           "expression": "sango_resource_read_text(0x49,",
-          "line": 422
+          "line": 385
         }
       ]
     },
@@ -4423,25 +4423,25 @@
           "source": "src/strategy/aftermath.c",
           "function": "sango_strategy_show_army_attack",
           "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,0,",
-          "line": 687
+          "line": 691
         },
         {
           "source": "src/strategy/aftermath.c",
           "function": "sango_strategy_show_armies_engage",
           "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,1,",
-          "line": 719
+          "line": 723
         },
         {
           "source": "src/strategy/aftermath.c",
           "function": "sango_strategy_show_battle_victory",
           "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,2,",
-          "line": 744
+          "line": 748
         },
         {
           "source": "src/strategy/aftermath.c",
           "function": "sango_strategy_show_battle_defeat",
           "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,3,",
-          "line": 772
+          "line": 776
         }
       ],
       "frame_usage": [
@@ -4966,13 +4966,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -5013,13 +5013,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -5084,13 +5084,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -5143,13 +5143,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -5214,13 +5214,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -5273,13 +5273,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -5320,13 +5320,13 @@
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
           "expression": "sango_resource_read_text(2,0xf,",
-          "line": 938
+          "line": 962
         },
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;",
-          "line": 938
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;",
+          "line": 962
         },
         {
           "source": "src/battle/field.c",
@@ -6064,11 +6064,11 @@
     },
     {
       "function": "sango_battle_execute_skill",
-      "line": "sango_resource_read_text(0xb, uVar8, acStack_48 + 1);"
+      "line": "sango_resource_read_text(0xb, skill_id, message_start + 1);"
     },
     {
       "function": "sango_battle_execute_skill",
-      "line": "sango_resource_read_text(0xb, uVar8, &uStack_42);"
+      "line": "sango_resource_read_text(0xb, skill_id, &skill_name_start);"
     },
     {
       "function": "sango_battle_execute_skill",
@@ -6120,7 +6120,7 @@
     },
     {
       "function": "sango_animation_play_range",
-      "line": "iVar8 = sango_resource_item(resource_id & 0xffff, '\\x01', g_resource_package_address);"
+      "line": "sango_resource_item(resource_id & 0xffff, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_bitmap_draw_resource",
@@ -6132,35 +6132,35 @@
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "iVar7 = sango_resource_item(0x3f, g_scenario_id, g_resource_package_address);"
+      "line": "sango_resource_item(0x3f, g_scenario_id, g_resource_package_address);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "sango_resource_read_text(0x40, 100, destination);"
+      "line": "sango_resource_read_text(0x40, 100, message);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "sango_resource_read_text(0x40, 99, destination);"
+      "line": "sango_resource_read_text(0x40, 99, message);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "sango_resource_read_text(0x40, unaff_s5, destination);"
+      "line": "sango_resource_read_text(0x40, response_text_id, message);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "iVar7 = sango_resource_item(0x43, g_scenario_id, g_resource_package_address);"
+      "line": "sango_resource_item(0x43, g_scenario_id, g_resource_package_address);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "sango_resource_read_text(0x40, 99, destination);"
+      "line": "sango_resource_read_text(0x40, 99, message);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "sango_resource_read_text(0x40, 0x65, destination);"
+      "line": "sango_resource_read_text(0x40, 0x65, message);"
     },
     {
       "function": "sango_strategy_resolve_search",
-      "line": "sango_resource_read_text(0x40, uVar8 + 100 & 0xff, destination);"
+      "line": "sango_resource_read_text(0x40, outcome + 100 & 0xff, message);"
     },
     {
       "function": "sango_strategy_resolve_sow_discord",
@@ -6168,11 +6168,11 @@
     },
     {
       "function": "sango_strategy_resolve_diplomatic_mission",
-      "line": "sango_resource_read_text(0x40, iVar4 + uVar10 + ((int)uVar7 >> 2) * -4 & 0xff, destination);"
+      "line": "sango_resource_read_text(0x40,"
     },
     {
       "function": "sango_strategy_resolve_diplomatic_mission",
-      "line": "sango_resource_read_text(0x40, 0x6e, source);"
+      "line": "sango_resource_read_text(0x40, 0x6e, text_part);"
     },
     {
       "function": "sango_strategy_resolve_plunder",
@@ -6188,7 +6188,7 @@
     },
     {
       "function": "sango_strategy_execute_queued_order",
-      "line": "sango_resource_read_text(0x40, uVar6, g_scratch_buffer_address);"
+      "line": "sango_resource_read_text(0x40, message_id, g_scratch_buffer_address);"
     },
     {
       "function": "sango_city_choose_command_group",
@@ -6244,11 +6244,11 @@
     },
     {
       "function": "sango_city_order_reward",
-      "line": "sango_resource_read_text(0x40, (int)uVar2 % 3 - 0x7dU & 0xff, pcVar8);"
+      "line": "sango_resource_read_text(0x40, (int)item_selection_or_roll % 3 - 0x7dU & 0xff,"
     },
     {
       "function": "sango_city_order_trade",
-      "line": "sango_resource_read_text(0x40, 0x2e, acStack_50);"
+      "line": "sango_resource_read_text(0x40, 0x2e, menu_text);"
     },
     {
       "function": "sango_city_order_banquet",
@@ -6256,19 +6256,19 @@
     },
     {
       "function": "sango_city_order_transport",
-      "line": "sango_resource_read_text(0x40, 0x5d, pcVar9);"
+      "line": "sango_resource_read_text(0x40, 0x5d, message);"
     },
     {
       "function": "sango_city_order_transport",
-      "line": "sango_resource_read_text(0x40, 0x98, pcVar9);"
+      "line": "sango_resource_read_text(0x40, 0x98, message);"
     },
     {
       "function": "sango_city_order_transfer",
-      "line": "sango_resource_read_text(0x40, 0x5d, pcVar10);"
+      "line": "sango_resource_read_text(0x40, 0x5d, message);"
     },
     {
       "function": "sango_city_order_transfer",
-      "line": "sango_resource_read_text(0x40, 0x98, pcVar10);"
+      "line": "sango_resource_read_text(0x40, 0x98, message);"
     },
     {
       "function": "sango_city_order_scout",
@@ -6280,11 +6280,11 @@
     },
     {
       "function": "sango_strategy_resolve_attack",
-      "line": "sango_resource_read_text(2, 0xf, pbVar7);"
+      "line": "sango_resource_read_text(2, 0xf, roster_buffer);"
     },
     {
       "function": "sango_strategy_finish_battle",
-      "line": "sango_resource_read_text(0x40, g_capture_count + 0x69 & 0xff, source);"
+      "line": "sango_resource_read_text(0x40, g_capture_count + 0x69 & 0xff, text_part);"
     },
     {
       "function": "sango_strategy_handle_defeated_units",
@@ -6396,15 +6396,15 @@
     },
     {
       "function": "sango_strategy_select_city",
-      "line": "find_map = (uint8_t *)sango_resource_item(0x4b, '\\x01',"
+      "line": "(uint8_t *)sango_resource_item(0x4b, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_draw_map",
-      "line": "iVar1 = sango_resource_item(2, '\\x0e', g_resource_package_address);"
+      "line": "resource_address = sango_resource_item(2, '\\x0e', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_draw_map",
-      "line": "iVar1 = sango_resource_item(0x36, '\\x01', g_resource_package_address);"
+      "line": "resource_address = sango_resource_item(0x36, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_draw_map",
@@ -6412,19 +6412,19 @@
     },
     {
       "function": "sango_strategy_draw_map",
-      "line": "pbVar2 = (uint8_t *)sango_resource_item(0x37, '\\x01', g_resource_package_address);"
+      "line": "bitmap = (uint8_t *)sango_resource_item(0x37, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_draw_map",
-      "line": "iVar1 = sango_resource_item(0x38, '\\x01', g_resource_package_address);"
+      "line": "resource_address = sango_resource_item(0x38, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_draw_map",
-      "line": "pbVar2 = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\\x01',"
+      "line": "bitmap = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\\x01',"
     },
     {
       "function": "sango_strategy_draw_map",
-      "line": "pbVar2 = (uint8_t *)sango_resource_item(0x45, '\\x01', g_resource_package_address);"
+      "line": "bitmap = (uint8_t *)sango_resource_item(0x45, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_draw_map",
@@ -6472,7 +6472,7 @@
     },
     {
       "function": "sango_menu_choose_ruler",
-      "line": "sango_resource_read_text(1, 0x2d, abStack_60);"
+      "line": "sango_resource_read_text(1, 0x2d, city_ids_or_title);"
     },
     {
       "function": "sango_menu_choose_ruler",
@@ -6480,7 +6480,7 @@
     },
     {
       "function": "sango_menu_choose_ruler",
-      "line": "iVar2 = sango_resource_item(2, '\\x06', g_resource_package_address);"
+      "line": "city_coordinates_address = sango_resource_item(2, '\\x06', g_resource_package_address);"
     },
     {
       "function": "sango_animation_play_resource",
@@ -6564,7 +6564,7 @@
     },
     {
       "function": "sango_strategy_update_character_ages_and_debut",
-      "line": "iVar2 = sango_resource_item(0x3f, g_scenario_id, g_resource_package_address);"
+      "line": "record_address = sango_resource_item(0x3f, g_scenario_id, g_resource_package_address);"
     },
     {
       "function": "sango_item_apply_attributes",
@@ -6608,27 +6608,31 @@
     },
     {
       "function": "sango_ui_draw_item_row",
-      "line": "sango_resource_read_text(2, 7, abStack_30);"
+      "line": "sango_resource_read_text(2, 7, column_widths);"
     },
     {
       "function": "sango_item_format_attribute",
-      "line": "iVar2 = sango_resource_item(0x42, '\\x01', g_resource_package_address);"
+      "line": "item_address = sango_resource_item(0x42, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_item_format_attribute",
-      "line": "sango_resource_read_text(0x40, unaff_s3, param_3);"
+      "line": "sango_resource_read_text(0x40, text_id, output);"
+    },
+    {
+      "function": "sango_item_format_attribute",
+      "line": "sango_resource_read_text(0x40, text_id, output);"
     },
     {
       "function": "sango_ui_draw_item_header",
-      "line": "sango_resource_read_text(0x40, 0x41, acStack_40);"
+      "line": "sango_resource_read_text(0x40, 0x41, header_text);"
     },
     {
       "function": "sango_ui_draw_item_header",
-      "line": "sango_resource_read_text(2, 7, abStack_30);"
+      "line": "sango_resource_read_text(2, 7, column_widths);"
     },
     {
       "function": "sango_ui_draw_item_header",
-      "line": "sango_resource_read_text(0x40, uVar2 + 0x42 & 0xff, acStack_40);"
+      "line": "sango_resource_read_text(0x40, attribute_index + 0x42 & 0xff, header_text);"
     },
     {
       "function": "sango_item_read_name",
@@ -6636,27 +6640,35 @@
     },
     {
       "function": "sango_ui_draw_character_row",
-      "line": "sango_resource_read_text(unaff_s1, (param_1 & 0xff) + 1 & 0xff, acStack_50);"
+      "line": "sango_resource_read_text(name_resource, (character_id & 0xff) + 1 & 0xff, attribute_text);"
     },
     {
       "function": "sango_ui_draw_character_row",
-      "line": "sango_resource_read_text(2, 8, abStack_38);"
+      "line": "sango_resource_read_text(2, 8, column_widths);"
     },
     {
       "function": "sango_character_format_attribute",
-      "line": "sango_resource_read_text(uVar2, in_t1, param_3);"
+      "line": "sango_resource_read_text(text_resource, text_id, output);"
+    },
+    {
+      "function": "sango_character_format_attribute",
+      "line": "sango_resource_read_text(text_resource, text_id, output);"
+    },
+    {
+      "function": "sango_character_format_attribute",
+      "line": "sango_resource_read_text(text_resource, text_id, output);"
     },
     {
       "function": "sango_ui_draw_character_header",
-      "line": "sango_resource_read_text(0x40, 0x17, acStack_48);"
+      "line": "sango_resource_read_text(0x40, 0x17, header_text);"
     },
     {
       "function": "sango_ui_draw_character_header",
-      "line": "sango_resource_read_text(2, 8, abStack_38);"
+      "line": "sango_resource_read_text(2, 8, column_widths);"
     },
     {
       "function": "sango_ui_draw_character_header",
-      "line": "sango_resource_read_text(0x40, uVar2 + 0x18 & 0xff, acStack_48);"
+      "line": "sango_resource_read_text(0x40, attribute_index + 0x18 & 0xff, header_text);"
     },
     {
       "function": "sango_city_read_name",
@@ -6664,51 +6676,51 @@
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 2, param_3);"
+      "line": "sango_resource_read_text(0x40, 2, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 3, param_3);"
+      "line": "sango_resource_read_text(0x40, 3, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(unaff_s0, uVar5, param_3 + 5);"
+      "line": "sango_resource_read_text(name_resource, attribute_value, output + 5);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 4, param_3);"
+      "line": "sango_resource_read_text(0x40, 4, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 5, param_3);"
+      "line": "sango_resource_read_text(0x40, 5, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 6, param_3);"
+      "line": "sango_resource_read_text(0x40, 6, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 7, param_3);"
+      "line": "sango_resource_read_text(0x40, 7, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 8, param_3);"
+      "line": "sango_resource_read_text(0x40, 8, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 9, param_3);"
+      "line": "sango_resource_read_text(0x40, 9, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 10, param_3);"
+      "line": "sango_resource_read_text(0x40, 10, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 0xb, param_3);"
+      "line": "sango_resource_read_text(0x40, 0xb, output);"
     },
     {
       "function": "sango_city_format_attribute",
-      "line": "sango_resource_read_text(0x40, 1, param_3);"
+      "line": "sango_resource_read_text(0x40, 1, output);"
     },
     {
       "function": "sango_city_format_status",
@@ -6720,11 +6732,11 @@
     },
     {
       "function": "sango_strategy_run_city_ai",
-      "line": "sango_resource_read_text(2, 0xc, abStack_20);"
+      "line": "sango_resource_read_text(2, 0xc, domestic_thresholds);"
     },
     {
       "function": "sango_strategy_run_city_ai",
-      "line": "sango_resource_read_text(2, 0xd, abStack_18);"
+      "line": "sango_resource_read_text(2, 0xd, diplomacy_thresholds);"
     },
     {
       "function": "sango_scenario_initialize",
@@ -6748,11 +6760,11 @@
     },
     {
       "function": "sango_ui_select_number",
-      "line": "sango_resource_read_text(0x40, 0x2c, acStack_58);"
+      "line": "sango_resource_read_text(0x40, 0x2c, prompt_text);"
     },
     {
       "function": "sango_ui_select_number",
-      "line": "sango_resource_read_text(0x40, 0x2d, acStack_58);"
+      "line": "sango_resource_read_text(0x40, 0x2d, prompt_text);"
     },
     {
       "function": "sango_ui_show_ai_progress",

@@ -635,9 +635,40 @@
       "name": "sango_battle_ai_choose_destination",
       "original_address": 2176850792,
       "file": "src/battle/ai.c",
-      "signature": "void sango_battle_ai_choose_destination(uint32_t param_1)",
+      "signature": "void sango_battle_ai_choose_destination(uint32_t unit_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "unit_id",
+        "local_38": "best_distance",
+        "local_34": "best_x",
+        "local_30": "unit_stride_base",
+        "auStack_46": "combat_target",
+        "local_48": "objective_x",
+        "local_47": "objective_y",
+        "local_44": "attack_score",
+        "local_40": "original_x",
+        "local_3c": "original_y",
+        "uVar1": "candidate_score",
+        "uVar2": "chosen_x",
+        "uVar3": "window_x",
+        "uVar4": "chosen_y_or_roll",
+        "iVar5": "terrain_type",
+        "uVar6": "candidate_distance",
+        "uVar7": "tie_break",
+        "uVar8": "distance_from_origin",
+        "uVar9": "best_origin_distance",
+        "uVar10": "chosen_distance",
+        "bVar11": "candidate_x_byte",
+        "bVar12": "candidate_y_byte",
+        "uVar13": "window_y",
+        "uVar14": "candidate_y",
+        "uVar15": "candidate_x",
+        "index": "unit_index",
+        "uVar16": "best_attack_score",
+        "bVar17": "best_y_byte",
+        "uVar18": "best_y",
+        "LAB_81c01dc8": "consider_tied_candidate",
+        "LAB_81c01d0c": "next_candidate"
       },
       "name_status": "named",
       "globals": {
@@ -882,7 +913,20 @@
       "file": "src/battle/overview.c",
       "signature": "void sango_battle_show_overview(void)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "acStack_38": "overview_text",
+        "iVar1": "unit_offset",
+        "uVar2": "marker_color",
+        "uVar3": "exit_key",
+        "cVar4": "visible_side",
+        "uVar5": "input_or_count",
+        "uVar6": "map_left",
+        "uVar7": "map_top",
+        "uVar8": "first_unit",
+        "uVar9": "selected_side",
+        "LAB_81c02b4c": "draw_unit_list",
+        "LAB_81c02bd0": "change_list_offset",
+        "LAB_81c02b48": "refresh_selected_side"
       },
       "name_status": "named",
       "globals": {
@@ -1124,9 +1168,24 @@
       "name": "sango_battle_poll_map_action",
       "original_address": 2176858356,
       "file": "src/battle/player_turn.c",
-      "signature": "uint32_t sango_battle_poll_map_action(char param_1)",
+      "signature": "uint32_t sango_battle_poll_map_action(char preview_mode)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "preview_mode",
+        "local_28": "event_kind",
+        "local_24": "key_code",
+        "bVar1": "next_coordinate",
+        "cVar2": "scroll_hint",
+        "uVar3": "confirmation_result",
+        "unaff_s0": "legacy_timer_ticks",
+        "uVar4": "blink_phase",
+        "LAB_81c03918": "read_next_event",
+        "LAB_81c03b8c": "timer_tick",
+        "LAB_81c03aac": "apply_cursor_y",
+        "LAB_81c03a74": "apply_cursor_x",
+        "LAB_81c039e8": "refresh_viewport",
+        "LAB_81c03950": "refresh_units",
+        "LAB_81c03970": "draw_cursor"
       },
       "name_status": "named",
       "globals": {
@@ -1755,9 +1814,29 @@
       "name": "sango_battle_execute_skill",
       "original_address": 2176866488,
       "file": "src/battle/actions.c",
-      "signature": "uint32_t sango_battle_execute_skill(int param_1)",
+      "signature": "uint32_t sango_battle_execute_skill(int action_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "action_address",
+        "local_43": "message_separator",
+        "local_28": "effect_amount",
+        "local_26": "effect_aux",
+        "acStack_48": "message_start",
+        "uStack_42": "skill_name_start",
+        "uStack_41": "failure_suffix_start",
+        "auStack_40": "status_text_start",
+        "auStack_3c": "status_suffix_start",
+        "cVar1": "new_status",
+        "cVar2": "restores_troops",
+        "uVar3": "animation_resource",
+        "pcVar4": "skill_parameters",
+        "iVar6": "troop_limit",
+        "puVar7": "enemy_food",
+        "uVar8": "skill_id",
+        "uVar9": "actor_unit",
+        "uVar10": "target_unit",
+        "uVar5": "skill_index",
+        "work_value": "skill_index"
       },
       "name_status": "named",
       "globals": {
@@ -2097,7 +2176,22 @@
         "iVar21": "delays_address",
         "pbVar18": "lifetimes",
         "bVar4": "needs_erase",
-        "bVar5": "needs_draw"
+        "bVar5": "needs_draw",
+        "local_30": "last_drawn_index",
+        "iVar6": "sprite_table_address",
+        "iVar8": "record_address",
+        "bVar1": "height_high",
+        "bVar2": "height_low",
+        "bVar3": "bitmap_flags",
+        "bVar7": "remaining_lifetime",
+        "uVar9": "sprite_width",
+        "pbVar11": "bitmap",
+        "uVar12": "command_index",
+        "pbVar13": "erased_bitmap",
+        "uVar14": "sprite_height",
+        "pbVar15": "command",
+        "uVar16": "screen_x",
+        "uVar17": "active_end_index"
       },
       "name_status": "named",
       "globals": {
@@ -2111,9 +2205,31 @@
       "name": "sango_ui_choose_option",
       "original_address": 2176872552,
       "file": "src/ui/menu_and_text.c",
-      "signature": "uint32_t sango_ui_choose_option(uint16_t *param_1, uint32_t param_2, char *param_3)",
+      "signature": "uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, char *menu_text)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "bounds",
+        "param_2": "initial_selection",
+        "param_3": "menu_text",
+        "local_60": "event_kind",
+        "local_5c": "key_code",
+        "local_40": "characters_per_row",
+        "local_3c": "option_count",
+        "local_38": "top_option",
+        "local_34": "visible_rows",
+        "local_30": "text_offset",
+        "bVar1": "has_scrollbar",
+        "bVar2": "thumb_changed",
+        "sVar3": "previous_thumb_top",
+        "uVar4": "thumb_y",
+        "uVar5": "float_operand",
+        "sVar6": "thumb_bottom",
+        "uVar7": "track_top",
+        "uVar8": "highlight_top",
+        "iVar9": "highlight_bottom",
+        "iVar10": "visible_selection_row",
+        "uVar11": "selected_option",
+        "LAB_81c07348": "update_selection_highlight"
       },
       "name_status": "named",
       "globals": {
@@ -2271,7 +2387,8 @@
       "file": "src/platform/window_graphics.c",
       "signature": "uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32_t lparam)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "uVar1": "message_result"
       },
       "name_status": "named",
       "globals": {
@@ -2287,9 +2404,15 @@
       "name": "sango_display_copy_and_refresh",
       "original_address": 2176876500,
       "file": "src/platform/window_graphics.c",
-      "signature": "void sango_display_copy_and_refresh(short param_1, short param_2, uint32_t param_3, uint32_t param_4)",
+      "signature": "void sango_display_copy_and_refresh(short source_x, short source_y, uint32_t target_context, uint32_t source_context)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "source_x",
+        "param_2": "source_y",
+        "param_3": "target_context",
+        "param_4": "source_context",
+        "iVar1": "copy_x",
+        "iVar2": "copy_y"
       },
       "name_status": "named",
       "globals": {
@@ -2304,7 +2427,13 @@
       "file": "src/platform/window_graphics.c",
       "signature": "void sango_display_fill_rectangle(short left, short top, short right, short bottom, uint32_t color, uint32_t target)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "iVar1": "width",
+        "iVar2": "height",
+        "iVar3": "screen_x",
+        "iVar4": "screen_y",
+        "uVar5": "brush_kind",
+        "LAB_81c08188": "fill_region"
       },
       "name_status": "named",
       "globals": {
@@ -2317,9 +2446,39 @@
       "name": "sango_display_blit_palette_bitmap",
       "original_address": 2176877308,
       "file": "src/platform/window_graphics.c",
-      "signature": "void sango_display_blit_palette_bitmap(short param_1, short param_2, short param_3, short param_4, short param_5, short param_6, int param_7, uint32_t param_8, uint32_t param_9, uint32_t param_10, int param_11)",
+      "signature": "void sango_display_blit_palette_bitmap(short x, short y, short width, short height, short source_x, short source_y, int bitmap_address, uint32_t ignored_argument8, uint32_t ignored_argument9, uint32_t draw_context, int transparency_mode)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "x",
+        "param_2": "y",
+        "param_3": "width",
+        "param_4": "height",
+        "param_5": "source_x",
+        "param_6": "source_y",
+        "param_7": "bitmap_address",
+        "param_8": "ignored_argument8",
+        "param_9": "ignored_argument9",
+        "param_10": "draw_context",
+        "param_11": "transparency_mode",
+        "local_48": "descriptor_flags",
+        "local_44": "bitmap_width",
+        "local_40": "bitmap_height",
+        "local_3c": "descriptor_aux",
+        "local_38": "pixel_format",
+        "local_37": "pixel_bits",
+        "local_34": "pixel_address",
+        "local_30": "transparent_color",
+        "local_28": "height_byte0",
+        "local_27": "height_byte1",
+        "local_26": "height_byte2",
+        "local_25": "height_byte3",
+        "uVar1": "active_draw_context",
+        "iVar2": "draw_height",
+        "iVar3": "crop_x",
+        "iVar4": "crop_y",
+        "iVar5": "screen_x",
+        "iVar6": "screen_y",
+        "iVar7": "draw_width"
       },
       "name_status": "named",
       "globals": {
@@ -2331,9 +2490,31 @@
       "name": "sango_display_capture_bitmap",
       "original_address": 2176878140,
       "file": "src/platform/window_graphics.c",
-      "signature": "void sango_display_capture_bitmap(short param_1, short param_2, short param_3, short param_4, short param_5, short param_6, uint16_t *param_7, int param_8, uint32_t param_9, int param_10, int param_11)",
+      "signature": "void sango_display_capture_bitmap(short x, short y, short width, short height, short source_x, short source_y, uint16_t *dimensions, int bitmap_address, uint32_t ignored_argument9, int draw_mode, int pixel_mode)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "x",
+        "param_2": "y",
+        "param_3": "width",
+        "param_4": "height",
+        "param_5": "source_x",
+        "param_6": "source_y",
+        "param_7": "dimensions",
+        "param_8": "bitmap_address",
+        "param_9": "ignored_argument9",
+        "param_10": "draw_mode",
+        "param_11": "pixel_mode",
+        "uVar1": "source_height",
+        "uVar2": "source_width",
+        "pvVar3": "cropped_pixels",
+        "iVar4": "rounded_width",
+        "iVar5": "crop_x_or_result",
+        "iVar6": "crop_y",
+        "uVar7": "draw_width",
+        "uVar8": "draw_height",
+        "unaff_s5": "copy_mode",
+        "pvVar9": "pixel_data",
+        "LAB_81c08778": "release_pixel_data"
       },
       "name_status": "named",
       "globals": {
@@ -2347,9 +2528,18 @@
       "name": "sango_display_put_gray_pixel",
       "original_address": 2176878700,
       "file": "src/platform/window_graphics.c",
-      "signature": "void sango_display_put_gray_pixel(short param_1, short param_2, uint32_t param_3, uint32_t param_4)",
+      "signature": "void sango_display_put_gray_pixel(short x, short y, uint32_t gray_level, uint32_t draw_context)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "x",
+        "param_2": "y",
+        "param_3": "gray_level",
+        "param_4": "draw_context",
+        "uVar1": "brush_kind",
+        "iVar2": "screen_x",
+        "iVar3": "screen_y",
+        "unaff_s3": "brush_object",
+        "LAB_81c088dc": "draw_pixel"
       },
       "name_status": "named",
       "globals": {
@@ -2362,9 +2552,33 @@
       "name": "sango_display_draw_line",
       "original_address": 2176879044,
       "file": "src/platform/window_graphics.c",
-      "signature": "void sango_display_draw_line(short param_1, short param_2, short param_3, short param_4, uint32_t param_5, uint32_t param_6, uint32_t param_7)",
+      "signature": "void sango_display_draw_line(short start_x, short start_y, short end_x, short end_y, uint32_t gray_level, uint32_t ignored_style, uint32_t target_context)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "start_x",
+        "param_2": "start_y",
+        "param_3": "end_x",
+        "param_4": "end_y",
+        "param_5": "gray_level",
+        "param_6": "ignored_style",
+        "param_7": "target_context",
+        "sVar1": "delta_x_short",
+        "sVar2": "delta_y_short",
+        "iVar3": "abs_delta_x",
+        "iVar4": "abs_delta_y",
+        "pvVar5": "previous_pen",
+        "iVar6": "slope_sign",
+        "uVar7": "pen_kind",
+        "unaff_s0": "pen_object",
+        "iVar8": "x_work",
+        "iVar9": "clipped_start_x",
+        "iVar10": "y_work",
+        "iVar11": "clipped_start_y",
+        "iVar12": "clipped_end_x",
+        "iVar13": "clipped_end_y",
+        "iVar14": "delta_y",
+        "iVar15": "delta_x",
+        "LAB_81c08ab8": "draw_clipped_line"
       },
       "name_status": "named",
       "globals": {
@@ -2392,9 +2606,29 @@
       "name": "sango_display_draw_circle",
       "original_address": 2176880836,
       "file": "src/platform/window_graphics.c",
-      "signature": "void sango_display_draw_circle(short param_1, short param_2, int param_3, uint32_t param_4, uint32_t param_5, int param_6)",
+      "signature": "void sango_display_draw_circle(short center_x, short center_y, int radius, uint32_t gray_level, uint32_t ignored_style, int draw_context)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "center_x",
+        "param_2": "center_y",
+        "param_3": "radius",
+        "param_4": "gray_level",
+        "param_5": "ignored_style",
+        "param_6": "draw_context",
+        "iVar1": "offset_difference",
+        "pvVar2": "previous_pen",
+        "iVar3": "decision_error",
+        "sVar4": "point_x_positive",
+        "sVar5": "point_x_negative",
+        "iVar6": "origin_x",
+        "uVar7": "pen_kind",
+        "sVar8": "point_y",
+        "unaff_s1": "pen_object",
+        "iVar9": "offset_y",
+        "iVar10": "offset_x",
+        "iVar11": "previous_error",
+        "iVar12": "origin_y",
+        "LAB_81c09140": "draw_circle"
       },
       "name_status": "named",
       "globals": {
@@ -2464,9 +2698,17 @@
       "name": "sango_bitmap_open_embedded_entry",
       "original_address": 2176882676,
       "file": "src/platform/input_dialog.c",
-      "signature": "uint16_t *sango_bitmap_open_embedded_entry(uint32_t *param_1, uint32_t param_2, int param_3, int param_4)",
+      "signature": "uint16_t *sango_bitmap_open_embedded_entry(uint32_t *entry_state, uint32_t access_mode, int entry_index, int container_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "entry_state",
+        "param_2": "access_mode",
+        "param_3": "entry_index",
+        "param_4": "container_address",
+        "local_18": "entry_offset",
+        "uVar1": "width",
+        "uVar2": "height",
+        "puVar3": "bitmap"
       },
       "name_status": "named",
       "globals": {}
@@ -2476,21 +2718,48 @@
       "name": "sango_input_key_is_down",
       "original_address": 2176882868,
       "file": "src/platform/input_dialog.c",
-      "signature": "uint32_t sango_input_key_is_down(uint32_t param_1)",
+      "signature": "uint32_t sango_input_key_is_down(uint32_t key_code)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "key_code",
+        "local_18": "right_key",
+        "local_17": "left_key",
+        "local_16": "down_key",
+        "local_15": "up_key",
+        "local_14": "cancel_key",
+        "local_13": "confirm_key"
       },
       "name_status": "named",
       "globals": {}
     },
     {
       "legacy_name": "FUN_81c09990",
-      "name": "sango_input_decode_key_packet",
+      "name": "sango_raster_invert_packed_rectangle",
       "original_address": 2176883088,
       "file": "src/platform/input_dialog.c",
-      "signature": "void sango_input_decode_key_packet(short param_1, short param_2, short param_3, short param_4, int param_5)",
+      "signature": "void sango_raster_invert_packed_rectangle(short x1, short y1, short x2, short y2, int pixel_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "x1",
+        "param_2": "y1",
+        "param_3": "x2",
+        "param_4": "y2",
+        "param_5": "pixel_address",
+        "local_10": "left_edge_masks",
+        "local_8": "right_edge_masks",
+        "bVar1": "pixel_byte",
+        "bVar2": "edge_mask",
+        "pbVar3": "interior_cursor",
+        "iVar4": "row_bytes",
+        "iVar5": "interior_bytes",
+        "iVar6": "row_index",
+        "iVar7": "row_byte_offset",
+        "iVar8": "clipped_top",
+        "iVar9": "first_row_address",
+        "iVar10": "clipped_bottom",
+        "iVar11": "right_remainder",
+        "iVar12": "row_word_offset",
+        "iVar13": "left_remainder"
       },
       "name_status": "named",
       "globals": {
@@ -2505,7 +2774,8 @@
       "file": "src/platform/input_dialog.c",
       "signature": "uint32_t sango_text_input_proc(uint32_t handle, int message, uint32_t wparam, uint32_t lparam)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "uVar1": "message_result"
       },
       "name_status": "named",
       "globals": {
@@ -2520,9 +2790,30 @@
       "name": "sango_text_input_dialog",
       "original_address": 2176884112,
       "file": "src/platform/input_dialog.c",
-      "signature": "uint32_t sango_text_input_dialog(uint32_t param_1, uint8_t *param_2, uint32_t param_3)",
+      "signature": "uint32_t sango_text_input_dialog(uint32_t title_address, uint8_t *output_text, uint32_t edit_argument)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "title_address",
+        "param_2": "output_text",
+        "param_3": "edit_argument",
+        "local_50": "frame_proc",
+        "local_4c": "frame_x",
+        "local_48": "frame_y",
+        "local_44": "frame_height",
+        "local_40": "frame_width",
+        "local_3c": "frame_surface",
+        "local_38": "frame_aux30",
+        "auStack_30": "event_packet",
+        "local_68": "frame_style",
+        "local_64": "frame_internal28",
+        "local_60": "frame_title",
+        "local_5c": "frame_internal44",
+        "local_58": "frame_internal48",
+        "local_54": "frame_helper_arg14",
+        "iVar1": "event_or_display_metric",
+        "uVar2": "frame_handle",
+        "uVar3": "dialog_result",
+        "input_mode": "edit_argument"
       },
       "name_status": "named",
       "globals": {
@@ -2537,9 +2828,31 @@
       "name": "sango_display_render_bitmap_region",
       "original_address": 2176884656,
       "file": "src/platform/input_dialog.c",
-      "signature": "void sango_display_render_bitmap_region(short param_1, short param_2, int param_3, uint32_t param_4, int param_5, int param_6)",
+      "signature": "void sango_display_render_bitmap_region(short x, short y, int entry_index, uint32_t draw_context, int transparency_mode, int container_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "x",
+        "param_2": "y",
+        "param_3": "entry_index",
+        "param_4": "draw_context",
+        "param_5": "transparency_mode",
+        "param_6": "container_address",
+        "local_50": "entry_state",
+        "local_40": "descriptor_flags",
+        "local_3c": "bitmap_width",
+        "local_38": "bitmap_height",
+        "local_34": "descriptor_aux",
+        "local_30": "pixel_format",
+        "local_2f": "pixel_bits",
+        "local_2c": "pixel_address",
+        "local_28": "transparent_color",
+        "local_20": "height_byte0",
+        "local_1f": "height_byte1",
+        "local_1e": "height_byte2",
+        "local_1d": "height_byte3",
+        "uVar1": "active_draw_context",
+        "iVar2": "screen_x",
+        "iVar3": "screen_y"
       },
       "name_status": "named",
       "globals": {
@@ -2551,9 +2864,11 @@
       "name": "sango_platform_window_auxiliary",
       "original_address": 2176885440,
       "file": "src/platform/input_dialog.c",
-      "signature": "void sango_platform_window_auxiliary(uint32_t param_1, uint32_t param_2)",
+      "signature": "void sango_platform_window_auxiliary(uint32_t argument0, uint32_t argument1)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "argument0",
+        "param_2": "argument1"
       },
       "name_status": "named",
       "globals": {
@@ -3284,9 +3599,27 @@
       "name": "sango_strategy_resolve_search",
       "original_address": 2176890608,
       "file": "src/strategy/domestic.c",
-      "signature": "uint32_t sango_strategy_resolve_search(int param_1)",
+      "signature": "uint32_t sango_strategy_resolve_search(int order_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "order_address",
+        "bVar1": "is_player",
+        "bVar2": "actor_id",
+        "bVar3": "item_id",
+        "destination": "message",
+        "source": "text_part",
+        "uVar4": "intelligence",
+        "uVar5": "candidate_count",
+        "uVar6": "selection_roll",
+        "index": "speaker_id",
+        "iVar7": "debut_address",
+        "uVar8": "outcome",
+        "uVar9": "player_index",
+        "uVar10": "actor_owner",
+        "unaff_s5": "found_amount",
+        "LAB_81c0bc08": "recruit_discovered_character",
+        "LAB_81c0bb8c": "choose_response_text",
+        "LAB_81c0b79c": "finish_search"
       },
       "name_status": "named",
       "globals": {
@@ -3336,9 +3669,21 @@
       "name": "sango_strategy_resolve_defection",
       "original_address": 2176893288,
       "file": "src/strategy/domestic.c",
-      "signature": "uint32_t sango_strategy_resolve_defection(int param_1)",
+      "signature": "uint32_t sango_strategy_resolve_defection(int order_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "order_address",
+        "bVar1": "envoy_id",
+        "uVar2": "random_or_city",
+        "bVar3": "character_id",
+        "pcVar4": "message",
+        "uVar5": "success_threshold",
+        "iVar6": "target_offset",
+        "iVar7": "envoy_offset",
+        "LAB_81c0c20c": "report_failed_recruitment",
+        "LAB_81c0c270": "use_failure_message",
+        "LAB_81c0c278": "show_envoy_message",
+        "LAB_81c0c23c": "return_envoy"
       },
       "name_status": "named",
       "globals": {
@@ -3371,9 +3716,25 @@
       "name": "sango_strategy_resolve_diplomatic_mission",
       "original_address": 2176894804,
       "file": "src/strategy/domestic.c",
-      "signature": "uint32_t sango_strategy_resolve_diplomatic_mission(int param_1)",
+      "signature": "uint32_t sango_strategy_resolve_diplomatic_mission(int order_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "order_address",
+        "index": "target_ruler",
+        "bVar1": "envoy_id",
+        "bVar2": "surrendered",
+        "uVar3": "target_count_or_chance",
+        "iVar4": "scratch_or_message_base",
+        "bVar5": "owner_or_speaker",
+        "uVar6": "character_index",
+        "uVar7": "player_or_city_count",
+        "source": "text_part",
+        "destination": "message",
+        "iVar8": "target_record_or_roster",
+        "iVar9": "envoy_offset",
+        "uVar10": "target_or_city_index",
+        "unaff_s5": "envoy_owner",
+        "LAB_81c0c844": "show_result_and_return_envoy"
       },
       "name_status": "named",
       "globals": {
@@ -3410,9 +3771,17 @@
       "name": "sango_strategy_execute_queued_order",
       "original_address": 2176896264,
       "file": "src/strategy/domestic.c",
-      "signature": "uint32_t sango_strategy_execute_queued_order(uint8_t *param_1)",
+      "signature": "uint32_t sango_strategy_execute_queued_order(uint8_t *order)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "order",
+        "cVar1": "target_owner",
+        "cVar2": "character_owner",
+        "pcVar3": "message",
+        "uVar4": "target_or_roll",
+        "bVar5": "character_id",
+        "uVar6": "message_id",
+        "switchD_81c0cd48_caseD_0": "order_done"
       },
       "name_status": "named",
       "globals": {
@@ -3543,9 +3912,13 @@
       "name": "sango_city_execute_command",
       "original_address": 2176898584,
       "file": "src/strategy/orders.c",
-      "signature": "uint32_t sango_city_execute_command(uint8_t param_1, uint8_t param_2)",
+      "signature": "uint32_t sango_city_execute_command(uint8_t city_id, uint8_t command_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "param_2": "command_id",
+        "uVar1": "city_index",
+        "uVar2": "accepted"
       },
       "name_status": "named",
       "globals": {}
@@ -3701,9 +4074,23 @@
       "name": "sango_city_order_reward",
       "original_address": 2176903292,
       "file": "src/strategy/orders.c",
-      "signature": "uint32_t sango_city_order_reward(uint32_t param_1)",
+      "signature": "uint32_t sango_city_order_reward(uint32_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "bVar1": "item_id",
+        "uVar2": "item_selection_or_roll",
+        "uVar3": "character_selection",
+        "iVar4": "character_list_or_record",
+        "uVar5": "item_effect_result",
+        "bVar6": "character_or_message",
+        "bVar7": "message_id",
+        "pcVar8": "message",
+        "iVar9": "item_ids_address",
+        "uVar10": "city_index",
+        "iVar11": "character_offset",
+        "iVar12": "equipment_slot",
+        "LAB_81c0e9b4": "finish_item_reward"
       },
       "name_status": "named",
       "globals": {
@@ -3718,9 +4105,22 @@
       "name": "sango_city_order_trade",
       "original_address": 2176903952,
       "file": "src/strategy/orders.c",
-      "signature": "uint32_t sango_city_order_trade(uint8_t param_1)",
+      "signature": "uint32_t sango_city_order_trade(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_3e": "order_city",
+        "local_35": "order_months",
+        "acStack_50": "menu_text",
+        "local_30": "menu_bounds",
+        "local_40": "order_kind",
+        "local_3f": "order_character",
+        "uVar1": "city_index",
+        "iVar2": "idle_ids_address",
+        "uVar3": "selection",
+        "uVar4": "updated_money",
+        "bVar5": "character_id",
+        "LAB_81c0ed68": "report_unavailable_trade"
       },
       "name_status": "named",
       "globals": {
@@ -3752,9 +4152,35 @@
       "name": "sango_city_order_transport",
       "original_address": 2176904960,
       "file": "src/strategy/military.c",
-      "signature": "uint32_t sango_city_order_transport(uint32_t param_1)",
+      "signature": "uint32_t sango_city_order_transport(uint32_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_40": "source_city",
+        "local_3c": "idle_ids_address",
+        "local_38": "city_word_offset",
+        "local_34": "city_byte_offset",
+        "local_30": "source_byte_offset",
+        "local_50": "order_kind",
+        "local_4f": "order_character",
+        "local_4e": "order_city",
+        "local_4d": "order_target",
+        "local_4c": "transport_troops",
+        "local_4a": "transport_food",
+        "local_48": "transport_money",
+        "local_45": "travel_months",
+        "bVar1": "source_map_x",
+        "bVar2": "source_map_y",
+        "uVar3": "selection",
+        "uVar4": "route_months",
+        "bVar5": "courier_argument",
+        "bVar6": "message_id",
+        "uVar7": "city_index",
+        "iVar8": "input_step",
+        "pcVar9": "message",
+        "unaff_s6": "courier_id",
+        "LAB_81c0ef6c": "resume_transport_input",
+        "LAB_81c0f1b8": "choose_courier"
       },
       "name_status": "named",
       "globals": {
@@ -3773,9 +4199,29 @@
       "name": "sango_city_order_transfer",
       "original_address": 2176905796,
       "file": "src/strategy/military.c",
-      "signature": "uint32_t sango_city_order_transfer(uint8_t param_1)",
+      "signature": "uint32_t sango_city_order_transfer(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_40": "order_kind",
+        "local_3f": "order_character",
+        "local_3e": "order_city",
+        "local_3d": "order_target",
+        "local_35": "travel_months",
+        "local_30": "source_city_record",
+        "uVar1": "city_index",
+        "bVar2": "has_character",
+        "iVar3": "idle_ids_address",
+        "bVar4": "source_map_x",
+        "bVar5": "source_map_y",
+        "uVar6": "selection",
+        "uVar7": "route_months",
+        "bVar8": "character_argument",
+        "bVar9": "message_id",
+        "unaff_s4": "character_id",
+        "pcVar10": "message",
+        "LAB_81c0f41c": "choose_character",
+        "LAB_81c0f348": "validate_transfer_route"
       },
       "name_status": "named",
       "globals": {
@@ -3915,9 +4361,25 @@
       "name": "sango_city_order_attack",
       "original_address": 2176909392,
       "file": "src/strategy/military.c",
-      "signature": "uint32_t sango_city_order_attack(uint8_t param_1)",
+      "signature": "uint32_t sango_city_order_attack(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_48": "army_character_ids",
+        "local_38": "order_prefix",
+        "local_36": "order_city",
+        "local_35": "order_target",
+        "local_32": "army_food",
+        "local_2d": "travel_months",
+        "bVar1": "has_food",
+        "uVar2": "city_index",
+        "pcVar3": "scratch_text_or_ids",
+        "bVar4": "source_map_x",
+        "bVar5": "source_map_y",
+        "uVar6": "selection",
+        "uVar7": "route_months",
+        "bVar8": "message_id",
+        "uVar9": "army_size"
       },
       "name_status": "named",
       "globals": {
@@ -3934,9 +4396,24 @@
       "name": "sango_strategy_resolve_attack",
       "original_address": 2176910228,
       "file": "src/strategy/military.c",
-      "signature": "uint32_t sango_strategy_resolve_attack(int param_1)",
+      "signature": "uint32_t sango_strategy_resolve_attack(int order_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "order_address",
+        "bVar1": "selected_character",
+        "bVar2": "defender_owner_id",
+        "bVar3": "attacker_owner_id",
+        "bVar4": "swap_character",
+        "uVar5": "roster_count",
+        "pbVar6": "marching_entry",
+        "pbVar7": "roster_buffer",
+        "iVar8": "character_table_base",
+        "uVar9": "next_sort_index",
+        "pbVar10": "roster_entry",
+        "uVar11": "compare_index",
+        "uVar12": "defender_index",
+        "uVar13": "target_city",
+        "uVar14": "last_defender_index"
       },
       "name_status": "named",
       "globals": {
@@ -3962,9 +4439,19 @@
       "name": "sango_strategy_finish_battle",
       "original_address": 2176911948,
       "file": "src/strategy/military.c",
-      "signature": "uint32_t sango_strategy_finish_battle(uint32_t param_1, char param_2)",
+      "signature": "uint32_t sango_strategy_finish_battle(uint32_t city_id, char battle_result)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "param_2": "battle_result",
+        "uVar1": "previous_agriculture",
+        "uVar2": "previous_commerce",
+        "uVar3": "previous_money",
+        "destination": "message",
+        "uVar4": "roster_index_or_ruler",
+        "uVar5": "city_index",
+        "uVar6": "defeated_ruler",
+        "source": "text_part"
       },
       "name_status": "named",
       "globals": {
@@ -4055,9 +4542,21 @@
       "name": "sango_strategy_resolve_ruler_succession",
       "original_address": 2176913800,
       "file": "src/strategy/aftermath.c",
-      "signature": "void sango_strategy_resolve_ruler_succession(uint8_t param_1)",
+      "signature": "void sango_strategy_resolve_ruler_succession(uint8_t previous_ruler)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "previous_ruler",
+        "auStack_f0": "owner_name",
+        "auStack_88": "character_name",
+        "uVar1": "city_count",
+        "uVar2": "character_count",
+        "bVar3": "successor_id",
+        "pbVar4": "roster_entry",
+        "pbVar5": "roster_cursor",
+        "uVar6": "candidate_index",
+        "uVar7": "ruler_or_index",
+        "pbVar8": "successor_entry",
+        "pbVar9": "member_ids"
       },
       "name_status": "named",
       "globals": {
@@ -4422,9 +4921,24 @@
       "name": "sango_city_route_distance",
       "original_address": 2176919068,
       "file": "src/strategy/rosters.c",
-      "signature": "uint32_t sango_city_route_distance(uint32_t param_1, uint8_t param_2, uint8_t param_3, char param_4, uint8_t param_5, uint8_t param_6)",
+      "signature": "uint32_t sango_city_route_distance(uint32_t source_city, uint8_t source_x, uint8_t source_y, char target_city, uint8_t target_x, uint8_t target_y)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "source_city",
+        "param_2": "source_x",
+        "param_3": "source_y",
+        "param_4": "target_city",
+        "param_5": "target_x",
+        "param_6": "target_y",
+        "cVar1": "distance_y",
+        "bVar2": "route_length",
+        "uVar3": "reachable_count",
+        "pcVar4": "city_entry",
+        "uVar5": "compare_index",
+        "uVar6": "next_or_appended",
+        "uVar7": "previous_count",
+        "pcVar8": "reachable_cities",
+        "uVar9": "search_index"
       },
       "name_status": "named",
       "globals": {
@@ -4511,7 +5025,10 @@
         "local_28": "event_kind",
         "local_24": "key_code",
         "unaff_s4": "selected_city_plus_one",
-        "pbVar4": "find_map"
+        "pbVar4": "find_map",
+        "bVar3": "previous_coordinate",
+        "uVar5": "selected_city",
+        "sVar6": "screen_bottom"
       },
       "name_status": "named",
       "globals": {
@@ -4535,7 +5052,18 @@
         "source": "text_part",
         "destination": "status_text",
         "bVar7": "city_marker_frame",
-        "pcVar3": "city_id_output"
+        "pcVar3": "city_id_output",
+        "iVar1": "resource_address",
+        "pbVar2": "bitmap_or_city_entry",
+        "uVar4": "column_or_count",
+        "sVar5": "tile_y",
+        "uVar6": "column_or_city",
+        "uVar8": "cursor_row",
+        "uVar9": "cursor_column",
+        "uVar10": "row_or_faction",
+        "LAB_81c1304c": "draw_cursor_and_status",
+        "LAB_81c13484": "restore_previous_column",
+        "LAB_81c13468": "restore_previous_row"
       },
       "name_status": "named",
       "globals": {
@@ -4991,9 +5519,28 @@
       "name": "sango_text_draw_legacy",
       "original_address": 2176928220,
       "file": "src/render/raster.c",
-      "signature": "void sango_text_draw_legacy(uint16_t param_1, uint16_t param_2, char *param_3)",
+      "signature": "void sango_text_draw_legacy(uint16_t x, uint16_t y, char *text)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "x",
+        "param_2": "y",
+        "param_3": "text",
+        "local_34": "lines_written",
+        "local_30": "source_offset",
+        "uVar1": "original_y",
+        "uVar2": "clip_bottom",
+        "iVar3": "line_stride",
+        "ptr": "wrapped_buffer",
+        "pcVar4": "scanned_character",
+        "uVar5": "characters_per_row",
+        "iVar6": "scan_offset",
+        "puVar7": "line_terminator",
+        "iVar8": "last_byte_offset",
+        "uVar9": "wrapped_text_bytes",
+        "iVar10": "line_end_offset",
+        "bVar11": "split_multibyte_character",
+        "iVar12": "buffer_offset",
+        "iVar13": "row_y_offset"
       },
       "name_status": "named",
       "globals": {
@@ -5408,9 +5955,22 @@
       "name": "sango_menu_choose_ruler",
       "original_address": 2176933484,
       "file": "src/ui/start_menu.c",
-      "signature": "uint32_t sango_menu_choose_ruler(uint32_t param_1)",
+      "signature": "uint32_t sango_menu_choose_ruler(uint32_t ruler_count)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "ruler_count",
+        "abStack_60": "city_ids_or_title",
+        "local_38": "event_kind",
+        "local_34": "key_code",
+        "bVar1": "cities_flash_on",
+        "iVar2": "city_coordinates_address",
+        "uVar3": "first_visible",
+        "uVar4": "highlight_top",
+        "iVar5": "row_position",
+        "uVar6": "city_count",
+        "uVar7": "selected_ruler",
+        "uVar8": "total_rulers",
+        "LAB_81c160e8": "update_visible_row"
       },
       "name_status": "named",
       "globals": {
@@ -5643,7 +6203,21 @@
       "file": "src/strategy/calendar.c",
       "signature": "uint32_t sango_strategy_apply_monthly_economy(void)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "cVar1": "previous_city_status",
+        "uVar2": "previous_troops",
+        "pbVar3": "roster_buffer",
+        "iVar4": "city_byte_offset",
+        "iVar5": "character_table_base",
+        "iVar6": "city_word_offset",
+        "pcVar7": "captive_record",
+        "iVar8": "character_address",
+        "uVar9": "updated_troops",
+        "uVar10": "city_id",
+        "uVar11": "roster_index",
+        "pbVar12": "roster_entry",
+        "uVar13": "total_troops",
+        "uVar14": "roster_count"
       },
       "name_status": "named",
       "globals": {
@@ -5670,7 +6244,20 @@
       "file": "src/strategy/calendar.c",
       "signature": "uint32_t sango_strategy_apply_city_disasters(void)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "bVar1": "owner_id",
+        "bVar2": "new_status",
+        "iVar3": "event_argument",
+        "uVar4": "random_roll",
+        "uVar5": "recovered",
+        "uVar6": "event_condition",
+        "uVar7": "previous_status",
+        "iVar8": "city_stride_base",
+        "pbVar9": "city_status",
+        "uVar10": "city_id",
+        "LAB_81c1736c": "apply_new_disaster",
+        "LAB_81c17370": "notify_player",
+        "switchD_81c1729c_default": "next_city"
       },
       "name_status": "named",
       "globals": {
@@ -5680,7 +6267,7 @@
         "DAT_81c2b45c": "g_first_city_loyalty",
         "DAT_81c2b45d": "g_first_city_disaster_prevention",
         "DAT_81c2b46a": "g_first_city_food",
-        "switchdataD_81c20624": "g_legacy_data_81c20624"
+        "switchdataD_81c20624": "g_city_status_dispatch_tags"
       }
     },
     {
@@ -5741,7 +6328,17 @@
       "file": "src/strategy/calendar.c",
       "signature": "uint32_t sango_strategy_update_character_ages_and_debut(void)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "bVar1": "already_present",
+        "iVar2": "record_address",
+        "uVar3": "roster_index",
+        "iVar4": "city_offset_or_result",
+        "uVar5": "spawn_city",
+        "uVar6": "present_count",
+        "uVar7": "character_id",
+        "uVar8": "record_offset",
+        "LAB_81c17974": "check_duplicate_character",
+        "LAB_81c177a0": "next_character_record"
       },
       "name_status": "named",
       "globals": {
@@ -5879,12 +6476,17 @@
     },
     {
       "legacy_name": "FUN_81c18150",
-      "name": "sango_character_add_item",
+      "name": "sango_item_mark_discovered",
       "original_address": 2176942416,
       "file": "src/ui/info_panels.c",
-      "signature": "void sango_character_add_item(uint8_t param_1)",
+      "signature": "void sango_item_mark_discovered(uint8_t item_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "item_id",
+        "bVar1": "roster_value",
+        "uVar2": "roster_index",
+        "pbVar3": "roster_entry",
+        "uVar4": "total_items"
       },
       "name_status": "named",
       "globals": {
@@ -5944,9 +6546,14 @@
       "name": "sango_ui_table_begin",
       "original_address": 2176942928,
       "file": "src/ui/lists.c",
-      "signature": "void sango_ui_table_begin(uint8_t param_1, uint8_t param_2, uint8_t param_3, uint8_t param_4, uint8_t *param_5)",
+      "signature": "void sango_ui_table_begin(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *table_state)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "left",
+        "param_2": "top",
+        "param_3": "right",
+        "param_4": "bottom",
+        "param_5": "table_state"
       },
       "name_status": "named",
       "globals": {}
@@ -5956,9 +6563,17 @@
       "name": "sango_ui_table_next_cell",
       "original_address": 2176942976,
       "file": "src/ui/lists.c",
-      "signature": "uint32_t sango_ui_table_next_cell(uint8_t param_1, uint8_t param_2, int param_3, uint8_t *param_4, uint8_t *param_5)",
+      "signature": "uint32_t sango_ui_table_next_cell(uint8_t cell_width, uint8_t cell_height, int table_address, uint8_t *cell_x, uint8_t *cell_y)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "cell_width",
+        "param_2": "cell_height",
+        "param_3": "table_address",
+        "param_4": "cell_x",
+        "param_5": "cell_y",
+        "cVar1": "next_x",
+        "iVar2": "cell_bottom",
+        "uVar3": "cell_fits"
       },
       "name_status": "named",
       "globals": {}
@@ -5968,9 +6583,11 @@
       "name": "sango_ui_table_next_row",
       "original_address": 2176943120,
       "file": "src/ui/lists.c",
-      "signature": "uint32_t sango_ui_table_next_row(uint8_t *param_1)",
+      "signature": "uint32_t sango_ui_table_next_row(uint8_t *table_state)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "table_state",
+        "cVar1": "previous_bottom"
       },
       "name_status": "named",
       "globals": {}
@@ -5980,9 +6597,22 @@
       "name": "sango_ui_draw_item_row",
       "original_address": 2176943184,
       "file": "src/ui/lists.c",
-      "signature": "void sango_ui_draw_item_row(uint8_t param_1, uint32_t param_2, char param_3, char param_4, char param_5)",
+      "signature": "void sango_ui_draw_item_row(uint8_t item_id, uint32_t first_attribute, char left, char top, char width)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "item_id",
+        "param_2": "first_attribute",
+        "param_3": "left",
+        "param_4": "top",
+        "param_5": "width",
+        "iVar1": "cell_fits",
+        "uVar2": "attribute_index",
+        "pbVar3": "column_width",
+        "abStack_30": "column_widths",
+        "acStack_48": "attribute_text",
+        "auStack_28": "table_state",
+        "local_50": "cell_x",
+        "local_4f": "cell_y"
       },
       "name_status": "named",
       "globals": {}
@@ -5992,9 +6622,18 @@
       "name": "sango_item_format_attribute",
       "original_address": 2176943564,
       "file": "src/ui/lists.c",
-      "signature": "void sango_item_format_attribute(uint32_t param_1, uint8_t param_2, uint8_t *param_3)",
+      "signature": "void sango_item_format_attribute(uint32_t item_id, uint8_t attribute, uint8_t *output)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "item_id",
+        "param_2": "attribute",
+        "param_3": "output",
+        "bVar1": "troop_type",
+        "iVar2": "item_address",
+        "uVar3": "number",
+        "unaff_s3": "text_id",
+        "LAB_81c18654": "read_attribute_text",
+        "switchD_81c18634_default": "attribute_done"
       },
       "name_status": "named",
       "globals": {
@@ -6006,9 +6645,21 @@
       "name": "sango_ui_draw_item_header",
       "original_address": 2176943876,
       "file": "src/ui/lists.c",
-      "signature": "uint32_t sango_ui_draw_item_header(uint32_t param_1, char param_2, char param_3, char param_4)",
+      "signature": "uint32_t sango_ui_draw_item_header(uint32_t first_attribute, char left, char top, char width)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "first_attribute",
+        "param_2": "left",
+        "param_3": "top",
+        "param_4": "width",
+        "auStack_28": "table_state",
+        "local_48": "cell_x",
+        "local_47": "cell_y",
+        "abStack_30": "column_widths",
+        "acStack_40": "header_text",
+        "iVar1": "cell_fits",
+        "uVar2": "attribute_index",
+        "pbVar3": "column_width"
       },
       "name_status": "named",
       "globals": {}
@@ -6018,9 +6669,42 @@
       "name": "sango_ui_select_item",
       "original_address": 2176944244,
       "file": "src/ui/lists.c",
-      "signature": "uint32_t sango_ui_select_item(int param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, uint8_t param_5, uint8_t param_6)",
+      "signature": "uint32_t sango_ui_select_item(int item_ids_address, uint32_t item_count, uint32_t left, uint32_t top, uint8_t right, uint8_t bottom)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "item_ids_address",
+        "param_2": "item_count",
+        "param_3": "left",
+        "param_4": "top",
+        "param_5": "right",
+        "param_6": "bottom",
+        "local_50": "column_pages",
+        "local_48": "event_kind",
+        "local_44": "key_code",
+        "local_38": "content_right",
+        "local_34": "column_page",
+        "local_30": "twice_visible_rows",
+        "local_2c": "highlight_right_fixed",
+        "bVar1": "redraw_table",
+        "uVar2": "header_left",
+        "uVar3": "next_attribute",
+        "sVar4": "content_left_short",
+        "cVar5": "header_x",
+        "cVar6": "header_y",
+        "cVar7": "table_width",
+        "iVar8": "row_position",
+        "sVar9": "highlight_right",
+        "pbVar10": "first_attribute",
+        "uVar11": "box_top",
+        "uVar12": "content_top",
+        "uVar13": "content_left",
+        "uVar14": "visible_rows",
+        "uVar15": "total_items",
+        "uVar16": "top_row",
+        "uVar17": "next_top_row",
+        "uVar18": "selected_row",
+        "LAB_81c18a44": "redraw_item_rows",
+        "LAB_81c18bbc": "highlight_item_row"
       },
       "name_status": "named",
       "globals": {}
@@ -6044,9 +6728,23 @@
       "name": "sango_ui_draw_character_row",
       "original_address": 2176945324,
       "file": "src/ui/lists.c",
-      "signature": "void sango_ui_draw_character_row(uint32_t param_1, uint32_t param_2, char param_3, char param_4, char param_5)",
+      "signature": "void sango_ui_draw_character_row(uint32_t character_id, uint32_t first_attribute, char left, char top, char width)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character_id",
+        "param_2": "first_attribute",
+        "param_3": "left",
+        "param_4": "top",
+        "param_5": "width",
+        "local_58": "cell_x",
+        "local_57": "cell_y",
+        "abStack_38": "column_widths",
+        "acStack_50": "attribute_text",
+        "auStack_28": "table_state",
+        "iVar1": "cell_fits",
+        "uVar2": "attribute_index",
+        "unaff_s1": "name_resource",
+        "pbVar3": "column_width"
       },
       "name_status": "named",
       "globals": {
@@ -6058,9 +6756,21 @@
       "name": "sango_character_format_attribute",
       "original_address": 2176945800,
       "file": "src/ui/lists.c",
-      "signature": "void sango_character_format_attribute(uint32_t param_1, uint8_t param_2, uint8_t *param_3)",
+      "signature": "void sango_character_format_attribute(uint32_t character_id, uint8_t attribute, uint8_t *output)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character_id",
+        "param_2": "attribute",
+        "param_3": "output",
+        "cVar1": "equipped_item",
+        "uVar2": "text_resource",
+        "uVar3": "number",
+        "uVar4": "owner_id",
+        "iVar5": "character_offset",
+        "in_t1": "text_id",
+        "LAB_81c18f2c": "read_attribute_text",
+        "LAB_81c190cc": "read_equipped_item",
+        "switchD_81c18ecc_default": "attribute_done"
       },
       "name_status": "named",
       "globals": {
@@ -6073,9 +6783,21 @@
       "name": "sango_ui_draw_character_header",
       "original_address": 2176946432,
       "file": "src/ui/lists.c",
-      "signature": "uint32_t sango_ui_draw_character_header(uint32_t param_1, char param_2, char param_3, char param_4)",
+      "signature": "uint32_t sango_ui_draw_character_header(uint32_t first_attribute, char left, char top, char width)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "first_attribute",
+        "param_2": "left",
+        "param_3": "top",
+        "param_4": "width",
+        "local_4f": "cell_y",
+        "auStack_28": "table_state",
+        "abStack_38": "column_widths",
+        "acStack_48": "header_text",
+        "local_50": "cell_x",
+        "iVar1": "cell_fits",
+        "uVar2": "attribute_index",
+        "pbVar3": "column_width"
       },
       "name_status": "named",
       "globals": {}
@@ -6085,9 +6807,48 @@
       "name": "sango_ui_select_character",
       "original_address": 2176946800,
       "file": "src/ui/lists.c",
-      "signature": "uint32_t sango_ui_select_character(int param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, uint8_t param_5, uint8_t param_6)",
+      "signature": "uint32_t sango_ui_select_character(int character_ids_address, uint32_t character_count, uint32_t left, uint32_t top, uint8_t right, uint8_t bottom)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character_ids_address",
+        "param_2": "character_count",
+        "param_3": "left",
+        "param_4": "top",
+        "param_5": "right",
+        "param_6": "bottom",
+        "local_50": "column_pages",
+        "local_48": "event_kind",
+        "local_44": "key_code",
+        "local_38": "content_right",
+        "local_34": "content_bottom",
+        "local_30": "column_page",
+        "local_2c": "highlight_right_fixed",
+        "bVar1": "redraw_table",
+        "uVar2": "header_left",
+        "uVar3": "next_attribute",
+        "sVar4": "content_left_short",
+        "cVar5": "header_x",
+        "sVar6": "highlight_top",
+        "iVar7": "row_position",
+        "cVar8": "header_y",
+        "sVar9": "draw_right",
+        "cVar10": "table_width",
+        "sVar11": "highlight_bottom",
+        "iVar12": "row_origin",
+        "uVar13": "top_row",
+        "pbVar14": "first_attribute",
+        "uVar15": "box_top",
+        "uVar16": "content_top",
+        "uVar17": "content_left",
+        "uVar18": "visible_rows",
+        "uVar19": "total_characters",
+        "uVar20": "selected_row",
+        "uVar21": "next_top_row",
+        "LAB_81c1947c": "redraw_character_rows",
+        "LAB_81c19418": "move_selection_up",
+        "LAB_81c1959c": "highlight_character_row",
+        "LAB_81c196c8": "change_column_page",
+        "LAB_81c19478": "prepare_row_redraw"
       },
       "name_status": "named",
       "globals": {}
@@ -6111,9 +6872,24 @@
       "name": "sango_city_format_attribute",
       "original_address": 2176948040,
       "file": "src/ui/city_details.c",
-      "signature": "void sango_city_format_attribute(uint32_t param_1, uint8_t param_2, char *param_3, uint32_t param_4)",
+      "signature": "void sango_city_format_attribute(uint32_t city_id, uint8_t attribute, char *output, uint32_t legacy_context)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "param_2": "attribute",
+        "param_3": "output",
+        "param_4": "legacy_context",
+        "acStack_28": "value_text",
+        "bVar1": "character_owner_id",
+        "uVar2": "development_limit",
+        "uVar3": "text_length",
+        "pcVar4": "status_context",
+        "unaff_s0": "name_resource",
+        "uVar5": "attribute_value",
+        "LAB_81c197b0": "append_character_name",
+        "LAB_81c198e4": "use_development_limit",
+        "LAB_81c198f4": "append_value_text",
+        "switchD_81c19784_default": "attribute_done"
       },
       "name_status": "named",
       "globals": {
@@ -6198,7 +6974,16 @@
       "file": "src/strategy/ai.c",
       "signature": "void sango_strategy_run_city_ai(void)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "abStack_20": "domestic_thresholds",
+        "abStack_18": "diplomacy_thresholds",
+        "cVar1": "previous_prevention",
+        "bVar2": "ruler_profile",
+        "iVar3": "city_offset",
+        "uVar4": "random_roll",
+        "bVar5": "city_argument",
+        "uVar6": "owner_or_choice",
+        "uVar7": "city_id"
       },
       "name_status": "named",
       "globals": {
@@ -6216,9 +7001,30 @@
       "name": "sango_strategy_ai_domestic_actions",
       "original_address": 2176950156,
       "file": "src/strategy/ai.c",
-      "signature": "void sango_strategy_ai_domestic_actions(uint8_t param_1)",
+      "signature": "void sango_strategy_ai_domestic_actions(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_38": "idle_ids_address",
+        "local_34": "commerce_limit",
+        "local_30": "agriculture_limit",
+        "local_48": "order_kind",
+        "local_47": "order_character",
+        "local_46": "order_city",
+        "local_45": "order_target",
+        "local_3d": "order_months",
+        "bVar1": "previous_loyalty",
+        "uVar2": "previous_development",
+        "uVar3": "city_index",
+        "uVar4": "idle_count",
+        "uVar5": "random_or_population",
+        "pbVar6": "character_entry",
+        "uVar7": "character_index",
+        "puVar8": "population_limit",
+        "pbVar9": "loyalty",
+        "puVar10": "commerce",
+        "puVar11": "agriculture",
+        "switchD_81c1a094_caseD_4": "next_character"
       },
       "name_status": "named",
       "globals": {
@@ -6237,9 +7043,27 @@
       "name": "sango_strategy_ai_diplomacy_actions",
       "original_address": 2176950664,
       "file": "src/strategy/ai.c",
-      "signature": "void sango_strategy_ai_diplomacy_actions(uint8_t param_1)",
+      "signature": "void sango_strategy_ai_diplomacy_actions(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_30": "order_kind",
+        "local_2f": "order_character",
+        "local_2e": "order_city",
+        "local_2d": "order_target",
+        "local_25": "order_months",
+        "uVar1": "city_index",
+        "iVar2": "idle_ids_address",
+        "uVar3": "idle_count",
+        "uVar4": "random_choice",
+        "uVar5": "candidate_count",
+        "bVar6": "removed_character",
+        "pbVar7": "character_entry",
+        "pbVar8": "candidate_ids",
+        "uVar9": "character_index",
+        "switchD_81c1a250_default": "enqueue_order",
+        "LAB_81c1a320": "remove_selected_character",
+        "LAB_81c1a264": "next_character"
       },
       "name_status": "named",
       "globals": {
@@ -6254,9 +7078,28 @@
       "name": "sango_strategy_ai_city_events",
       "original_address": 2176951424,
       "file": "src/strategy/ai.c",
-      "signature": "void sango_strategy_ai_city_events(uint8_t param_1)",
+      "signature": "void sango_strategy_ai_city_events(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_40": "order_kind",
+        "local_3f": "order_character",
+        "local_3e": "order_city",
+        "local_3d": "order_target",
+        "local_35": "order_months",
+        "local_30": "target_index",
+        "cVar1": "previous_prevention",
+        "uVar2": "city_index",
+        "iVar3": "idle_ids_address",
+        "iVar4": "city_offset",
+        "uVar5": "idle_count",
+        "uVar6": "random_or_candidate_count",
+        "pbVar7": "city_entry",
+        "uVar8": "neighbor_count_or_roll",
+        "uVar9": "candidate_index",
+        "uVar10": "character_index",
+        "pbVar11": "candidate_ids",
+        "switchD_81c1a570_default": "enqueue_order"
       },
       "name_status": "named",
       "globals": {
@@ -6271,9 +7114,33 @@
       "name": "sango_strategy_ai_military_actions",
       "original_address": 2176951972,
       "file": "src/strategy/ai.c",
-      "signature": "void sango_strategy_ai_military_actions(uint8_t param_1)",
+      "signature": "void sango_strategy_ai_military_actions(uint8_t city_id)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "city_id",
+        "local_38": "order_kind",
+        "local_37": "order_character",
+        "local_36": "order_city",
+        "local_35": "order_target",
+        "local_34": "order_value0",
+        "local_32": "army_food",
+        "local_2d": "order_months",
+        "local_48": "army_character_ids",
+        "bVar1": "swap_character",
+        "uVar2": "city_index",
+        "iVar3": "idle_ids_address",
+        "uVar4": "idle_count",
+        "uVar5": "character_index",
+        "uVar6": "candidate_count",
+        "uVar7": "army_limit",
+        "bVar8": "leading_character",
+        "pcVar9": "army_slot",
+        "iVar10": "character_address",
+        "uVar11": "sort_index",
+        "pbVar12": "character_entry",
+        "pbVar13": "candidate_ids",
+        "uVar14": "compare_index",
+        "LAB_81c1a810": "next_character"
       },
       "name_status": "named",
       "globals": {
@@ -6452,9 +7319,29 @@
       "name": "sango_ui_select_number",
       "original_address": 2176955236,
       "file": "src/ui/system_menu.c",
-      "signature": "uint32_t sango_ui_select_number(uint32_t param_1, uint32_t param_2)",
+      "signature": "uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "initial_value",
+        "param_2": "maximum_value",
+        "local_40": "event_kind",
+        "local_3c": "key_code",
+        "acStack_58": "prompt_text",
+        "acStack_51": "maximum_text",
+        "local_30": "digit0",
+        "local_2f": "digit1",
+        "local_2e": "digit2",
+        "local_2d": "digit3",
+        "local_2c": "digit_terminator",
+        "bVar1": "redraw_digits",
+        "sVar2": "highlight_offset",
+        "cVar3": "low_value_byte",
+        "uVar4": "digit_index",
+        "uVar5": "result",
+        "uVar6": "value",
+        "uVar7": "last_digit_index",
+        "uVar8": "limit",
+        "uVar9": "step"
       },
       "name_status": "named",
       "globals": {}
@@ -6509,9 +7396,14 @@
       "name": "sango_crt_memchr",
       "original_address": 2176956752,
       "file": "src/runtime/strings.c",
-      "signature": "char *sango_crt_memchr(char *param_1, int param_2, int param_3)",
+      "signature": "char *sango_crt_memchr(char *buffer, int character, int byte_count)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "buffer",
+        "param_2": "character",
+        "param_3": "byte_count",
+        "pcVar1": "candidate",
+        "iVar2": "remaining_bytes"
       },
       "name_status": "named",
       "globals": {}
@@ -6521,9 +7413,17 @@
       "name": "sango_crt_sprintf_words",
       "original_address": 2176956800,
       "file": "src/runtime/strings.c",
-      "signature": "void sango_crt_sprintf_words(uint8_t *param_1, uint8_t *param_2, uint32_t param_3, uint32_t param_4)",
+      "signature": "void sango_crt_sprintf_words(uint8_t *output, uint8_t *format, uint32_t argument0, uint32_t argument1)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "output",
+        "param_2": "format",
+        "param_3": "argument0",
+        "param_4": "argument1",
+        "local_res4": "saved_format",
+        "local_res8": "first_argument_word",
+        "local_resc": "second_argument_word",
+        "local_res0": "output_cursor"
       },
       "name_status": "named",
       "globals": {}
@@ -6549,9 +7449,19 @@
       "name": "sango_crt_strtol",
       "original_address": 2176956932,
       "file": "src/runtime/strings.c",
-      "signature": "int sango_crt_strtol(char *param_1, uint32_t *param_2, int param_3)",
+      "signature": "int sango_crt_strtol(char *cursor, uint32_t *end_pointer, int base)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "cursor",
+        "param_2": "end_pointer",
+        "param_3": "base",
+        "bVar1": "range_guard",
+        "iVar2": "character_class",
+        "cVar3": "character",
+        "pcVar4": "digit_cursor",
+        "iVar5": "digit",
+        "iVar6": "number",
+        "iVar7": "sign"
       },
       "name_status": "named",
       "globals": {
@@ -6563,9 +7473,10 @@
       "name": "sango_crt_atoi_compat",
       "original_address": 2176957528,
       "file": "src/runtime/strings.c",
-      "signature": "void sango_crt_atoi_compat(char *param_1)",
+      "signature": "void sango_crt_atoi_compat(char *text)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "text"
       },
       "name_status": "named",
       "globals": {}
@@ -6575,9 +7486,13 @@
       "name": "sango_crt_strcpy",
       "original_address": 2176957628,
       "file": "src/runtime/strings.c",
-      "signature": "char *sango_crt_strcpy(char *param_1, char *param_2)",
+      "signature": "char *sango_crt_strcpy(char *destination, char *source)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "destination",
+        "param_2": "source",
+        "cVar1": "character",
+        "pcVar2": "output_cursor"
       },
       "name_status": "named",
       "globals": {}
@@ -6589,7 +7504,9 @@
       "file": "src/runtime/strings.c",
       "signature": "void *crt_memset(void *dst, int value, uint32_t size)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "puVar1": "output_cursor",
+        "iVar2": "remaining_bytes"
       },
       "name_status": "named",
       "globals": {}
@@ -6601,7 +7518,10 @@
       "file": "src/runtime/strings.c",
       "signature": "void *crt_memcpy(void *dst, void *src, uint32_t size)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "uVar1": "byte",
+        "puVar2": "output_cursor",
+        "iVar3": "remaining_bytes"
       },
       "name_status": "named",
       "globals": {}
@@ -6637,9 +7557,44 @@
       "name": "sango_crt_vformat",
       "original_address": 2176957776,
       "file": "src/runtime/strings.c",
-      "signature": "int sango_crt_vformat(uint8_t *param_1, uint32_t *param_2, uint8_t *param_3, uint32_t param_4)",
+      "signature": "int sango_crt_vformat(uint8_t *format, uint32_t *arguments, uint8_t *emit_callback_address, uint32_t emit_context)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "format",
+        "param_2": "arguments",
+        "param_3": "emit_callback_address",
+        "param_4": "emit_context",
+        "local_38": "has_hex_prefix",
+        "local_34": "has_precision_padding",
+        "local_30": "padding_mode",
+        "local_2c": "has_field_padding",
+        "auStack_80": "digits_storage",
+        "local_70": "character_storage",
+        "local_52": "digits_tail",
+        "local_50": "minimum_digits",
+        "local_4c": "flags",
+        "local_48": "body_length",
+        "local_44": "field_width",
+        "local_40": "sign_character",
+        "local_3c": "digit_table",
+        "bVar1": "format_digit",
+        "cVar2": "leading_digit",
+        "puVar3": "aligned_argument",
+        "pcVar4": "measured_length",
+        "uVar5": "numeric_value",
+        "bVar6": "format_byte",
+        "uVar7": "radix",
+        "iVar8": "padding_remaining",
+        "pcVar9": "output_remaining",
+        "ppcVar10": "previous_digit",
+        "ppcVar11": "body_cursor",
+        "pbVar12": "format_cursor",
+        "pcVar13": "precision",
+        "puVar14": "argument_word",
+        "puVar15": "pointer_word",
+        "piVar16": "string_word",
+        "iVar17": "output_count",
+        "uVar18": "quotient"
       },
       "name_status": "named",
       "globals": {
@@ -6653,9 +7608,12 @@
       "name": "sango_crt_append_character",
       "original_address": 2176959628,
       "file": "src/runtime/format.c",
-      "signature": "void sango_crt_append_character(uint8_t param_1, int *param_2)",
+      "signature": "void sango_crt_append_character(uint8_t character, int *output_cursor_address)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character",
+        "param_2": "output_cursor_address",
+        "puVar1": "output_cursor"
       },
       "name_status": "named",
       "globals": {}
@@ -6693,9 +7651,13 @@
       "name": "sango_crt_read_buffer",
       "original_address": 2176959808,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_read_buffer(uint32_t param_1, uint8_t *param_2, int param_3)",
+      "signature": "int sango_crt_read_buffer(uint32_t stream_handle, uint8_t *output, int requested_bytes)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "stream_handle",
+        "param_2": "output",
+        "param_3": "requested_bytes",
+        "iVar1": "bytes_read"
       },
       "name_status": "named",
       "globals": {
@@ -6748,9 +7710,11 @@
       "name": "sango_crt_isdigit",
       "original_address": 2176960000,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_isdigit(char param_1)",
+      "signature": "int sango_crt_isdigit(char character)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character",
+        "iVar1": "result"
       },
       "name_status": "named",
       "globals": {}
@@ -6760,9 +7724,12 @@
       "name": "sango_crt_isspace",
       "original_address": 2176960032,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_isspace(char param_1)",
+      "signature": "int sango_crt_isspace(char character)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character",
+        "iVar1": "result",
+        "iVar2": "character_code"
       },
       "name_status": "named",
       "globals": {}
@@ -6772,33 +7739,75 @@
       "name": "sango_crt_toupper",
       "original_address": 2176960080,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_toupper(char param_1)",
+      "signature": "int sango_crt_toupper(char character)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "character",
+        "iVar1": "uppercase",
+        "iVar2": "character_code"
       },
       "name_status": "named",
       "globals": {}
     },
     {
       "legacy_name": "FUN_81c1c670",
-      "name": "sango_crt_format_integer_entry",
+      "name": "sango_crt_format_entry",
       "original_address": 2176960112,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_format_integer_entry(uint8_t *param_1, uint8_t *param_2, int param_3, uint32_t param_4)",
+      "signature": "int sango_crt_format_entry(uint8_t *output, uint8_t *format, int argument0, uint32_t argument1)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "output",
+        "param_2": "format",
+        "param_3": "argument0",
+        "param_4": "argument1",
+        "local_resc": "second_argument_word",
+        "local_res8": "first_argument_word",
+        "iVar1": "output_bytes"
       },
       "name_status": "named",
       "globals": {}
     },
     {
       "legacy_name": "FUN_81c1c6d0",
-      "name": "sango_crt_format_integer_words",
+      "name": "sango_crt_format_words",
       "original_address": 2176960208,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_format_integer_words(int param_1, void *param_2, uint8_t *param_3, int *param_4)",
+      "signature": "int sango_crt_format_words(int output_mode, void *output_target, uint8_t *format, int *arguments)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "output_mode",
+        "param_2": "output_target",
+        "param_3": "format",
+        "param_4": "arguments",
+        "local_90": "argument_cursor",
+        "local_8c": "alignment_code",
+        "local_88": "sign_code",
+        "local_84": "zero_padding_code",
+        "local_80": "alternate_code",
+        "local_7c": "length_modifier",
+        "local_78": "field_width",
+        "local_74": "precision",
+        "local_70": "field_body",
+        "local_6c": "leading_spaces",
+        "local_68": "leading_zeros",
+        "local_64": "internal_zeros",
+        "local_60": "fractional_zeros",
+        "local_5c": "trailing_spaces",
+        "local_58": "prefix_length",
+        "local_54": "body_length",
+        "local_50": "suffix_length",
+        "acStack_48": "field_prefix",
+        "bVar1": "format_byte",
+        "uVar2": "stream_result_word",
+        "piVar3": "argument_word",
+        "iVar4": "parse_status",
+        "pbVar5": "specifier_cursor",
+        "pbVar6": "next_format",
+        "dst": "output_cursor",
+        "uVar7": "span_length",
+        "iVar8": "output_count",
+        "LAB_81c1c938": "read_conversion"
       },
       "name_status": "named",
       "globals": {
@@ -6808,12 +7817,27 @@
     },
     {
       "legacy_name": "FUN_81c1ce34",
-      "name": "sango_crt_format_float_field",
+      "name": "sango_crt_format_field",
       "original_address": 2176962100,
       "file": "src/runtime/format.c",
-      "signature": "char *sango_crt_format_float_field(int *param_1, char *param_2, char *param_3)",
+      "signature": "char *sango_crt_format_field(int *field, char *conversion, char *prefix_buffer)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "field",
+        "param_2": "conversion",
+        "param_3": "prefix_buffer",
+        "pcVar1": "trap_handler",
+        "puVar2": "string_argument",
+        "puVar3": "argument_word",
+        "iVar4": "remaining_width",
+        "iVar5": "precision",
+        "pcVar6": "string_value",
+        "uVar7": "value_low",
+        "uVar8": "value_high_or_radix",
+        "LAB_81c1d098": "prepare_float_body",
+        "LAB_81c1d128": "apply_field_padding",
+        "LAB_81c1cf50": "prepare_integer_body",
+        "LAB_81c1d014": "format_integer_digits"
       },
       "name_status": "named",
       "globals": {}
@@ -6823,9 +7847,17 @@
       "name": "sango_crt_format_unsigned_digits",
       "original_address": 2176962968,
       "file": "src/runtime/format.c",
-      "signature": "void sango_crt_format_unsigned_digits(int param_1, uint32_t param_2, uint32_t param_3, char *param_4)",
+      "signature": "void sango_crt_format_unsigned_digits(int field_address, uint32_t value, uint32_t radix, char *conversion)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "field_address",
+        "param_2": "value",
+        "param_3": "radix",
+        "param_4": "conversion",
+        "acStack_21": "reverse_digits",
+        "pcVar1": "digit_table",
+        "iVar2": "precision_or_write_index",
+        "iVar3": "first_digit"
       },
       "name_status": "named",
       "globals": {
@@ -6838,9 +7870,27 @@
       "name": "sango_crt_format_double_digits",
       "original_address": 2176963284,
       "file": "src/runtime/format.c",
-      "signature": "void sango_crt_format_double_digits(int param_1, uint32_t param_2, uint32_t param_3, int param_4, char *param_5)",
+      "signature": "void sango_crt_format_double_digits(int field_address, uint32_t abi_alignment_word, uint32_t value_low, int value_high, char *conversion)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "field_address",
+        "param_2": "abi_alignment_word",
+        "param_3": "value_low",
+        "param_4": "value_high",
+        "param_5": "conversion",
+        "local_48": "decimal_digits",
+        "local_30": "decimal_exponent",
+        "cVar1": "conversion_character",
+        "iVar2": "digit_count_or_scale_index",
+        "iVar3": "prefix_or_table_offset",
+        "iVar4": "comparison_result",
+        "uVar5": "threshold_low",
+        "uVar6": "scaled_low_or_digit_count",
+        "uVar7": "scaled_high_or_length",
+        "uVar8": "scaled_value",
+        "uVar9": "candidate_value",
+        "LAB_81c1d378": "disable_zero_padding",
+        "LAB_81c1d99c": "apply_zero_padding"
       },
       "name_status": "named",
       "globals": {
@@ -6860,9 +7910,25 @@
       "name": "sango_crt_scale_double_decimal",
       "original_address": 2176965160,
       "file": "src/runtime/format.c",
-      "signature": "int sango_crt_scale_double_decimal(uint32_t param_1, uint32_t param_2, int *param_3, int param_4, uint8_t *param_5)",
+      "signature": "int sango_crt_scale_double_decimal(uint32_t value_low, uint32_t value_high, int *decimal_exponent, int requested_digits, uint8_t *output_digits)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "value_low",
+        "param_2": "value_high",
+        "param_3": "decimal_exponent",
+        "param_4": "requested_digits",
+        "param_5": "output_digits",
+        "uVar1": "ten_low",
+        "uVar2": "ten_high",
+        "cVar3": "carried_digit",
+        "iVar4": "digit_index",
+        "uVar5": "integral_digit",
+        "pcVar6": "rounding_digit",
+        "iVar7": "trimmed_digits",
+        "uVar8": "scaled_high",
+        "uVar9": "integral_as_double",
+        "uVar10": "scaled_value",
+        "LAB_81c1db48": "round_decimal_digits"
       },
       "name_status": "named",
       "globals": {
@@ -6875,9 +7941,16 @@
       "name": "sango_crt_heap_allocate",
       "original_address": 2176965648,
       "file": "src/runtime/libc.c",
-      "signature": "int sango_crt_heap_allocate(int param_1)",
+      "signature": "int sango_crt_heap_allocate(int requested_bytes)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "requested_bytes",
+        "uVar1": "block_flags_and_size",
+        "uVar2": "block_index",
+        "piVar3": "block_descriptor",
+        "uVar4": "aligned_bytes",
+        "iVar5": "block_address",
+        "unaff_gp": "legacy_gp"
       },
       "name_status": "named",
       "globals": {
@@ -6889,9 +7962,15 @@
       "name": "sango_crt_heap_initialize",
       "original_address": 2176966024,
       "file": "src/runtime/libc.c",
-      "signature": "uint32_t sango_crt_heap_initialize(int param_1, int param_2)",
+      "signature": "uint32_t sango_crt_heap_initialize(int heap_begin, int heap_end)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "heap_begin",
+        "param_2": "heap_end",
+        "bVar1": "range_too_small",
+        "uVar2": "aligned_begin",
+        "uVar3": "aligned_end",
+        "unaff_gp": "legacy_gp"
       },
       "name_status": "named",
       "globals": {}
@@ -6901,9 +7980,10 @@
       "name": "sango_crt_abs",
       "original_address": 2176966144,
       "file": "src/runtime/libc.c",
-      "signature": "int sango_crt_abs(int param_1)",
+      "signature": "int sango_crt_abs(int value)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "value"
       },
       "name_status": "named",
       "globals": {}
@@ -6941,9 +8021,14 @@
       "name": "sango_crt_strcat",
       "original_address": 2176966256,
       "file": "src/runtime/libc.c",
-      "signature": "char *sango_crt_strcat(char *param_1, char *param_2)",
+      "signature": "char *sango_crt_strcat(char *destination, char *source)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "destination",
+        "param_2": "source",
+        "cVar1": "character",
+        "pcVar2": "terminator_search",
+        "pcVar3": "output_cursor"
       },
       "name_status": "named",
       "globals": {}
@@ -6953,9 +8038,12 @@
       "name": "sango_crt_heap_shift_forward",
       "original_address": 2176966320,
       "file": "src/runtime/libc.c",
-      "signature": "void sango_crt_heap_shift_forward(uint32_t *param_1, int param_2)",
+      "signature": "void sango_crt_heap_shift_forward(uint32_t *descriptor_words, int descriptor_count)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "descriptor_words",
+        "param_2": "descriptor_count",
+        "iVar1": "descriptor_index"
       },
       "name_status": "named",
       "globals": {}
@@ -7004,9 +8092,20 @@
       "name": "sango_soft_add_f32_parts",
       "original_address": 2176966576,
       "file": "src/runtime/soft_float.c",
-      "signature": "uint32_t *sango_soft_add_f32_parts(uint32_t *param_1, uint32_t *param_2, uint32_t *param_3)",
+      "signature": "uint32_t *sango_soft_add_f32_parts(uint32_t *left, uint32_t *right, uint32_t *output)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "left",
+        "param_2": "right",
+        "param_3": "output",
+        "bVar1": "left_has_smaller_exponent",
+        "iVar2": "exponent_distance",
+        "uVar3": "significand",
+        "uVar4": "aligned_exponent",
+        "puVar5": "chosen_parts",
+        "uVar6": "result_exponent",
+        "uVar7": "left_exponent",
+        "uVar8": "right_significand"
       },
       "name_status": "named",
       "globals": {
@@ -7044,7 +8143,26 @@
       "file": "src/runtime/soft_float.c",
       "signature": "uint32_t soft_float_mul(uint32_t left, uint32_t right)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "local_40": "left_kind",
+        "local_3c": "left_sign",
+        "local_38": "left_exponent",
+        "local_34": "left_significand",
+        "local_30": "right_kind",
+        "local_2c": "right_sign",
+        "local_28": "right_exponent",
+        "local_24": "right_significand",
+        "local_20": "result_kind",
+        "local_1c": "result_sign",
+        "local_18": "result_exponent",
+        "local_14": "result_significand",
+        "local_10": "left_bits",
+        "local_c": "right_bits",
+        "uVar1": "wide_product",
+        "uVar2": "product_word",
+        "puVar3": "chosen_parts",
+        "LAB_81c1e33c": "use_left_special_value",
+        "LAB_81c1e354": "pack_product"
       },
       "name_status": "named",
       "globals": {
@@ -7108,9 +8226,23 @@
       "name": "sango_soft_add_f64_parts",
       "original_address": 2176968720,
       "file": "src/runtime/soft_float.c",
-      "signature": "uint32_t *sango_soft_add_f64_parts(uint32_t *param_1, uint32_t *param_2, uint32_t *param_3)",
+      "signature": "uint32_t *sango_soft_add_f64_parts(uint32_t *left, uint32_t *right, uint32_t *output)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "left",
+        "param_2": "right",
+        "param_3": "output",
+        "bVar1": "left_has_smaller_exponent",
+        "iVar2": "exponent_distance",
+        "uVar3": "significand_high",
+        "uVar4": "result_exponent",
+        "uVar5": "aligned_exponent",
+        "uVar6": "difference_high",
+        "puVar7": "chosen_parts",
+        "uVar8": "right_significand_low",
+        "uVar9": "right_significand_high",
+        "uVar10": "left_significand_low",
+        "uVar11": "left_exponent"
       },
       "name_status": "named",
       "globals": {
@@ -7146,9 +8278,45 @@
       "name": "sango_soft_mul_f64",
       "original_address": 2176969808,
       "file": "src/runtime/soft_float.c",
-      "signature": "uint64_t sango_soft_mul_f64(uint32_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4)",
+      "signature": "uint64_t sango_soft_mul_f64(uint32_t left_low, uint32_t left_high, uint32_t right_low, uint32_t right_high)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "left_low",
+        "param_2": "left_high",
+        "param_3": "right_low",
+        "param_4": "right_high",
+        "local_70": "left_kind",
+        "local_6c": "left_sign",
+        "local_68": "left_exponent",
+        "local_60": "left_significand_low",
+        "local_5c": "left_significand_high",
+        "local_58": "right_kind",
+        "local_54": "right_sign",
+        "local_50": "right_exponent",
+        "local_48": "right_significand_low",
+        "local_44": "right_significand_high",
+        "local_40": "result_kind",
+        "local_3c": "result_sign",
+        "local_38": "result_exponent",
+        "local_30": "result_significand",
+        "local_28": "left_bits_low",
+        "local_24": "left_bits_high",
+        "local_20": "right_bits_low",
+        "local_1c": "right_bits_high",
+        "lVar1": "cross_product0",
+        "lVar2": "cross_product_sum",
+        "uVar3": "normalization_candidate",
+        "uVar4": "shifted_high_word",
+        "puVar5": "chosen_parts",
+        "uVar6": "middle_product_word",
+        "uVar7": "cross_sum_high",
+        "uVar8": "cross_sum_carry",
+        "uVar9": "low_product_word",
+        "uVar10": "cross_product0_high",
+        "uVar11": "low_product_high",
+        "uVar12": "packed_result",
+        "LAB_81c1ece4": "use_left_special_value",
+        "LAB_81c1ecfc": "pack_product"
       },
       "name_status": "named",
       "globals": {
@@ -7160,9 +8328,34 @@
       "name": "sango_soft_div_f64",
       "original_address": 2176970720,
       "file": "src/runtime/soft_float.c",
-      "signature": "uint64_t sango_soft_div_f64(uint32_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4)",
+      "signature": "uint64_t sango_soft_div_f64(uint32_t left_low, uint32_t left_high, uint32_t right_low, uint32_t right_high)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "left_low",
+        "param_2": "left_high",
+        "param_3": "right_low",
+        "param_4": "right_high",
+        "local_48": "left_kind",
+        "local_44": "result_sign",
+        "local_40": "result_exponent",
+        "local_38": "remainder_low",
+        "local_34": "remainder_high",
+        "local_30": "right_kind",
+        "local_2c": "right_sign",
+        "local_28": "right_exponent",
+        "local_20": "divisor_low",
+        "local_1c": "divisor_high",
+        "local_18": "left_bits_low",
+        "local_14": "left_bits_high",
+        "local_10": "right_bits_low",
+        "local_c": "right_bits_high",
+        "bVar1": "remainder_below_divisor",
+        "puVar2": "chosen_parts",
+        "uVar3": "quotient_bit_low",
+        "uVar4": "quotient_bit_high",
+        "uVar5": "quotient_low",
+        "uVar6": "quotient_high",
+        "uVar7": "packed_result"
       },
       "name_status": "named",
       "globals": {
@@ -7285,9 +8478,23 @@
       "name": "sango_soft_pack_f64",
       "original_address": 2176973216,
       "file": "src/runtime/soft_float.c",
-      "signature": "uint64_t sango_soft_pack_f64(uint32_t *param_1)",
+      "signature": "uint64_t sango_soft_pack_f64(uint32_t *parts)",
       "locals": {
-        "sg_stack": "abi_storage"
+        "sg_stack": "abi_storage",
+        "param_1": "parts",
+        "bVar1": "rounding_carry",
+        "uVar2": "shift_bits",
+        "iVar3": "low_shift_marker",
+        "uVar4": "exponent",
+        "uVar5": "shifted_low",
+        "uVar6": "significand_low",
+        "uVar7": "significand_high",
+        "uVar8": "biased_exponent",
+        "LAB_81c1f9d4": "emit_packed_bits",
+        "LAB_81c1fba8": "overflow_to_infinity",
+        "LAB_81c1faa0": "carry_subnormal_rounding",
+        "LAB_81c1fabc": "join_significand_words",
+        "LAB_81c1fbdc": "carry_normal_rounding"
       },
       "name_status": "named",
       "globals": {}
@@ -8444,7 +9651,7 @@
       "address": 2177022371
     },
     {
-      "alias": "g_legacy_data_81c20624",
+      "alias": "g_city_status_dispatch_tags",
       "expression": "(*(u32 *)(0x81c20624u))",
       "address": 2176976420
     },
@@ -8685,5 +9892,6 @@
     "code": "SangoLegacyCode",
     "trap": "sango_legacy_trap"
   },
-  "readability_revision": 2
+  "readability_revision": 3,
+  "control_flow_notes": "Phase 2 names the remaining large functions, separates reused variable roles and restructures input/pagination/search/runtime branches. Integer widths, legacy wraparound, shared stack regions and save/state layouts remain fixed. Shared cleanup and wizard-backtracking labels are retained by purpose."
 }

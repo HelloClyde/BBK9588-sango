@@ -1,7 +1,7 @@
 {
   "passed": 6,
   "failed": 0,
-  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
   "staging": "port-staging.json",
   "scope": "Native C200 firmware and hardware input chardev; exact BDA/LIB staging isolates synthetic NAND ECC artifacts. Not hardware verification.",
   "cases": [

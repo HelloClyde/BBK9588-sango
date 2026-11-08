@@ -89,6 +89,15 @@ typedef struct
     uint8_t status;
 } SangoBattleUnit;
 
+/* 战斗命令前四字节；栈缓冲可能更大，消息和旧ABI仍按原长度传递。 */
+typedef struct
+{
+    uint8_t command;
+    uint8_t skill;
+    uint8_t actor_unit;
+    uint8_t target_unit;
+} SangoBattleAction;
+
 typedef struct
 {
     uint8_t kind;
@@ -122,6 +131,7 @@ _Static_assert(offsetof(SangoCity, population) == 16, "city population");
 _Static_assert(offsetof(SangoCity, money) == 24, "city money");
 _Static_assert(offsetof(SangoCity, character_start) == 30, "city roster");
 _Static_assert(sizeof(SangoBattleUnit) == SANGO_BATTLE_UNIT_STRIDE, "battle unit");
+_Static_assert(sizeof(SangoBattleAction) == 4, "battle action prefix");
 _Static_assert(offsetof(SangoBattleUnit, status) == 6, "battle status");
 _Static_assert(sizeof(SangoOrder) == SANGO_ORDER_STRIDE, "order record");
 _Static_assert(sizeof(SangoCombatant) == 20, "combatant view");

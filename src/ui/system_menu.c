@@ -41,137 +41,118 @@ uint32_t sango_ui_show_system_menu(void)
 #undef acStack_28
 
 /* 原函数 0x81c1b364 */
-uint32_t sango_ui_select_number(uint32_t param_1, uint32_t param_2)
+uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
 {
     unsigned char abi_storage[61] __attribute__((aligned(8)));
-#define local_40 (*(int *)(abi_storage + 24))
-#define local_3c (*(int *)(abi_storage + 28))
-#define acStack_58 (*(char(*)[7])(abi_storage + 0))
-#define local_30 (*(char *)(abi_storage + 40))
-#define local_2f (*(char *)(abi_storage + 41))
-#define local_2e (*(char *)(abi_storage + 42))
-#define acStack_51 (*(char(*)[17])(abi_storage + 7))
-#define local_2d (*(char *)(abi_storage + 43))
-#define local_2c (*(uint8_t *)(abi_storage + 44))
+#define event_kind (*(int *)(abi_storage + 24))
+#define key_code (*(int *)(abi_storage + 28))
+#define prompt_text (*(char(*)[7])(abi_storage + 0))
+#define maximum_text (*(char(*)[17])(abi_storage + 7))
+#define digit0 (*(char *)(abi_storage + 40))
+#define digit1 (*(char *)(abi_storage + 41))
+#define digit2 (*(char *)(abi_storage + 42))
+#define digit3 (*(char *)(abi_storage + 43))
+#define digit_terminator (*(uint8_t *)(abi_storage + 44))
 
-    bool bVar1;
-    short sVar2;
-    char cVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
-    uint32_t uVar9;
+    uint32_t limit = maximum_value & 0xffff;
+    if (9999 < limit)
+        limit = 9999;
+    uint32_t value = initial_value & 0xffff;
+    sango_resource_read_text(0x40, 0x2c, prompt_text);
+    sango_text_draw_legacy(0x53, 0x99, prompt_text);
+    sango_resource_read_text(0x40, 0x2d, prompt_text);
+    sango_format_integer(limit, maximum_text, 10);
+    sango_text_draw_legacy(0x53, 0xa5, prompt_text);
 
-    uVar8 = param_2 & 0xffff;
-    if (9999 < uVar8)
+    uint32_t last_digit_index = bbk_strlen(maximum_text) - 1 & 0xff;
+    uint32_t digit_index = last_digit_index;
+    uint32_t step = 1;
+    bool redraw_digits = true;
+    while (true)
     {
-        uVar8 = 9999;
+        if (redraw_digits)
+        {
+            /* 保留原来的逐位生成和8/16位转换，包括超出上限的初始值。 */
+            char low_value_byte = (char)value;
+            if (last_digit_index == 3)
+            {
+                digit_terminator = 0;
+                digit0 = (char)(value / 1000) + '0';
+                digit3 = low_value_byte + (char)(value / 10) * -10 + '0';
+                digit1 = (char)((value % 1000) / 100) + '0';
+                digit2 = (char)((value % 100) / 10) + '0';
+            }
+            if (last_digit_index == 2)
+            {
+                digit3 = '\0';
+                digit2 = low_value_byte + (char)(value / 10) * -10 + '0';
+                digit0 = (char)((value % 1000) / 100) + '0';
+                digit1 = (char)((value % 100) / 10) + '0';
+            }
+            if (last_digit_index == 1)
+            {
+                digit2 = '\0';
+                digit1 = low_value_byte + (char)(value / 10) * -10 + '0';
+                digit0 = (char)((value % 100) / 10) + '0';
+            }
+            if (last_digit_index == 0)
+            {
+                digit1 = '\0';
+                digit0 = low_value_byte + (char)(value / 10) * -10 + '0';
+            }
+            sango_text_draw_legacy(0x7d, 0x99, &digit0);
+            short highlight_offset = (short)digit_index * 6;
+            redraw_digits = false;
+            sango_display_invert_rectangle(highlight_offset + 0x7d, 0x99, highlight_offset + 0x82,
+                                           0xa4, 0);
+        }
+
+        sango_input_next_event(&event_kind);
+        if (event_kind != 5)
+            continue;
+        switch (key_code)
+        {
+        case 1:
+            return 0xffff;
+        case 0x1c:
+            return value;
+        case 0x67: /* 增加当前十进制位 */
+            if (limit < value + step)
+                continue;
+            value = value + step & 0xffff;
+            break;
+        case 0x6c: /* 减少当前十进制位 */
+            if ((value < step) || ((int)(value - step) < 0))
+                continue;
+            value = value - step & 0xffff;
+            break;
+        case 0x69: /* 光标向高位移动 */
+            if (digit_index == 0)
+                continue;
+            digit_index = digit_index - 1 & 0xff;
+            step = step * 10 & 0xffff;
+            break;
+        case 0x6a: /* 光标向低位移动 */
+            if (last_digit_index <= digit_index)
+                continue;
+            digit_index = digit_index + 1 & 0xff;
+            step = step / 10 & 0xffff;
+            break;
+        default:
+            continue;
+        }
+        redraw_digits = true;
     }
-    uVar6 = param_1 & 0xffff;
-    sango_resource_read_text(0x40, 0x2c, acStack_58);
-    sango_text_draw_legacy(0x53, 0x99, acStack_58);
-    sango_resource_read_text(0x40, 0x2d, acStack_58);
-    sango_format_integer(uVar8, acStack_51, 10);
-    sango_text_draw_legacy(0x53, 0xa5, acStack_58);
-    uVar4 = bbk_strlen(acStack_51);
-    uVar7 = uVar4 - 1 & 0xff;
-    uVar9 = 1;
-    bVar1 = true;
-    uVar4 = uVar7;
-LAB_81c1b42c:
-    do
-    {
-        if (!bVar1)
-            goto LAB_81c1b4bc;
-    LAB_81c1b434:
-        while (true)
-        {
-            cVar3 = (char)uVar6;
-            if (uVar7 == 3)
-            {
-                local_2c = 0;
-                local_30 = (char)(uVar6 / 1000) + '0';
-                local_2d = cVar3 + (char)(uVar6 / 10) * -10 + '0';
-                local_2f = (char)((uVar6 % 1000) / 100) + '0';
-                local_2e = (char)((uVar6 % 100) / 10) + '0';
-            }
-            if (uVar7 == 2)
-            {
-                local_2d = '\0';
-                local_2e = cVar3 + (char)(uVar6 / 10) * -10 + '0';
-                local_30 = (char)((uVar6 % 1000) / 100) + '0';
-                local_2f = (char)((uVar6 % 100) / 10) + '0';
-            }
-            if (uVar7 == 1)
-            {
-                local_2e = '\0';
-                local_2f = cVar3 + (char)(uVar6 / 10) * -10 + '0';
-                local_30 = (char)((uVar6 % 100) / 10) + '0';
-            }
-            if (uVar7 == 0)
-            {
-                local_2f = '\0';
-                local_30 = cVar3 + (char)(uVar6 / 10) * -10 + '0';
-            }
-            sango_text_draw_legacy(0x7d, 0x99, &local_30);
-            sVar2 = (short)uVar4 * 6;
-            bVar1 = false;
-            sango_display_invert_rectangle(sVar2 + 0x7d, 0x99, sVar2 + 0x82, 0xa4, 0);
-        LAB_81c1b4bc:
-            sango_input_next_event(&local_40);
-            if (local_40 != 5)
-                goto LAB_81c1b42c;
-            if (local_3c != 0x67)
-                break;
-            if (uVar8 < uVar6 + uVar9)
-                goto LAB_81c1b42c;
-            uVar6 = uVar6 + uVar9 & 0xffff;
-        }
-        if (0x67 < local_3c)
-        {
-            if (local_3c == 0x6a)
-            {
-                if (uVar7 <= uVar4)
-                    goto LAB_81c1b42c;
-                uVar4 = uVar4 + 1;
-                uVar9 = uVar9 / 10;
-            }
-            else
-            {
-                if (0x6a < local_3c)
-                {
-                    if (((local_3c != 0x6c) || (uVar6 < uVar9)) || ((int)(uVar6 - uVar9) < 0))
-                        goto LAB_81c1b42c;
-                    uVar6 = uVar6 - uVar9 & 0xffff;
-                    goto LAB_81c1b434;
-                }
-                if ((local_3c != 0x69) || (uVar4 == 0))
-                    goto LAB_81c1b42c;
-                uVar4 = uVar4 - 1;
-                uVar9 = uVar9 * 10;
-            }
-            uVar4 = uVar4 & 0xff;
-            uVar9 = uVar9 & 0xffff;
-            goto LAB_81c1b434;
-        }
-        uVar5 = 0xffff;
-        if ((local_3c == 1) || (uVar5 = uVar6, local_3c == 0x1c))
-        {
-            return uVar5;
-        }
-    } while (true);
 }
-#undef local_40
-#undef local_3c
-#undef acStack_58
-#undef local_30
-#undef local_2f
-#undef local_2e
-#undef acStack_51
-#undef local_2d
-#undef local_2c
+#undef event_kind
+#undef key_code
+#undef prompt_text
+#undef digit0
+#undef digit1
+#undef digit2
+#undef maximum_text
+#undef digit3
+#undef digit_terminator
 
 /* 原函数 0x81c1b784 */
 void sango_ui_show_ai_progress(void)

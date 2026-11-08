@@ -1,5 +1,5 @@
 {
-  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
+  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
   "bda_bytes": 214700,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "GCC 15.2.0",
@@ -11,5 +11,7 @@
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "sango_lib_bytes": 461116,
   "library_validation": "Host lossless roundtrip; 87 original records identical, 2 supplemental records appended. Native runtime evidence uses original 439720-byte library with the same BDA.",
-  "notes": "Native battle UI uses a controlled fixture and exact payload/LIB staging to isolate synthetic NAND ECC artifacts. Historical save comparisons are not current-release regression tests."
+  "notes": "Native battle UI uses a controlled fixture and exact payload/LIB staging to isolate synthetic NAND ECC artifacts. Historical save comparisons are not current-release regression tests.",
+  "control_flow_differential_checks": 27163,
+  "runtime_oracle_differential_checks": 60026
 }

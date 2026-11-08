@@ -558,7 +558,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "pcVar4 = (char *)sango_battle_skill_parameters(uVar8);"
+          "expression": "skill_parameters = (char *)sango_battle_skill_parameters(skill_id);"
         }
       ]
     },
@@ -582,7 +582,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "sango_resource_read_text(0xb,uVar8,"
+          "expression": "sango_resource_read_text(0xb,skill_id,"
         }
       ]
     },
@@ -726,7 +726,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "(&g_skill_animation_background_flag)[uVar5]"
+          "expression": "(&g_skill_animation_background_flag)[skill_index]"
         }
       ]
     },
@@ -967,7 +967,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -1175,7 +1175,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -1405,7 +1405,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -1635,7 +1635,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -1876,7 +1876,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2106,7 +2106,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2208,7 +2208,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "sango_battle_show_short_message(acStack_48,"
+          "expression": "sango_battle_show_short_message(message_start,"
         }
       ]
     },
@@ -2622,7 +2622,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2666,7 +2666,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2710,7 +2710,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2776,7 +2776,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2820,7 +2820,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2864,7 +2864,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2908,7 +2908,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2952,7 +2952,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -2996,7 +2996,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_execute_skill",
-          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
+          "expression": "&g_skill_animation_resource_bytes + skill_index * 2"
         }
       ]
     },
@@ -4472,7 +4472,7 @@
         {
           "source": "src/strategy/calendar.c",
           "function": "sango_strategy_update_character_ages_and_debut",
-          "expression": "sango_city_add_character(uVar5,(uint8_t)uVar7)"
+          "expression": "sango_city_add_character(spawn_city,(uint8_t)character_id)"
         }
       ]
     },
@@ -5284,7 +5284,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",
@@ -5314,7 +5314,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",
@@ -5344,7 +5344,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",
@@ -5374,7 +5374,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",
@@ -5404,7 +5404,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",
@@ -5434,7 +5434,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",
@@ -5464,7 +5464,7 @@
         {
           "source": "src/strategy/military.c",
           "function": "sango_strategy_resolve_attack",
-          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
+          "expression": "g_battle_map_resource_view2 = roster_buffer[target_city] + 0x6e;"
         },
         {
           "source": "src/battle/field.c",

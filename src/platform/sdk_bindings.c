@@ -250,7 +250,7 @@ uint8_t *sango_format_integer(int param_1, uint8_t *param_2, int param_3)
             return pbVar2;
         }
     }
-    sango_crt_format_integer_entry(param_2, pbVar2, param_1, param_3);
+    sango_crt_format_entry(param_2, pbVar2, param_1, param_3);
     return pbVar2;
 }
 

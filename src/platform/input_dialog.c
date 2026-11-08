@@ -3,226 +3,160 @@
 /* 按键数据与文本输入对话框。 */
 
 /* 原函数 0x81c097f4 */
-uint16_t *sango_bitmap_open_embedded_entry(uint32_t *param_1, uint32_t param_2, int param_3,
-                                           int param_4)
+uint16_t *sango_bitmap_open_embedded_entry(uint32_t *entry_state, uint32_t access_mode,
+                                           int entry_index, int container_address)
 {
     unsigned char abi_storage[24] __attribute__((aligned(8)));
-#define local_18 (*(int(*)[2])(abi_storage + 0))
+#define entry_offset (*(int(*)[2])(abi_storage + 0))
 
-    uint16_t uVar1;
-    uint16_t uVar2;
-    uint16_t *puVar3;
+    uint16_t width;
+    uint16_t height;
+    uint16_t *bitmap;
 
-    if (2 < param_2)
+    if (2 < access_mode)
     {
         return (uint16_t *)0x0;
     }
-    crt_memcpy(local_18, (void *)(param_4 + param_3 * 4), 4);
-    puVar3 = (uint16_t *)(param_4 + local_18[0]);
-    if (param_2 == 1)
+    crt_memcpy(entry_offset, (void *)(container_address + entry_index * 4), 4);
+    bitmap = (uint16_t *)(container_address + entry_offset[0]);
+    if (access_mode == 1)
     {
-        *param_1 = puVar3;
+        *entry_state = bitmap;
     }
     else
     {
-        if (param_2 != 0)
+        if (access_mode != 0)
         {
-            if (param_2 == 2)
+            if (access_mode == 2)
             {
-                uVar1 = *puVar3;
-                uVar2 = puVar3[1];
-                param_1[1] = puVar3;
-                *param_1 = (uint16_t *)(((int)(uVar1 + 3) >> 2) * (uint32_t)uVar2 + (int)puVar3);
+                width = *bitmap;
+                height = bitmap[1];
+                entry_state[1] = bitmap;
+                *entry_state =
+                    (uint16_t *)(((int)(width + 3) >> 2) * (uint32_t)height + (int)bitmap);
             }
             goto LAB_81c09858;
         }
-        *param_1 = 0;
+        *entry_state = 0;
     }
-    param_1[1] = 0;
+    entry_state[1] = 0;
 LAB_81c09858:
-    param_1[2] = param_2;
-    return puVar3;
+    entry_state[2] = access_mode;
+    return bitmap;
 }
-#undef local_18
+#undef entry_offset
 
 /* 原函数 0x81c098b4 */
-uint32_t sango_input_key_is_down(uint32_t param_1)
+uint32_t sango_input_key_is_down(uint32_t key_code)
 {
     unsigned char abi_storage[22] __attribute__((aligned(8)));
-#define local_18 (*(char *)(abi_storage + 0))
-#define local_17 (*(char *)(abi_storage + 1))
-#define local_16 (*(char *)(abi_storage + 2))
-#define local_15 (*(char *)(abi_storage + 3))
-#define local_14 (*(char *)(abi_storage + 4))
-#define local_13 (*(char *)(abi_storage + 5))
-
-    crt_memset(&local_18, 0, 6);
-    bda_sango_gui_input_packet(&local_18);
-    if (param_1 != 0x67)
+#define key_packet (*(char(*)[6])(abi_storage + 0))
+    crt_memset(key_packet, 0, 6);
+    bda_sango_gui_input_packet(key_packet);
+    /* SDK的六字节状态顺序：右、左、下、上、返回、确定。 */
+    switch (key_code)
     {
-        if (param_1 < 0x68)
-        {
-            local_15 = '\x01';
-            if (param_1 != 1)
-            {
-                if (param_1 != 0x1c)
-                {
-                    return 0;
-                }
-                return (uint32_t)(local_13 == '\x01');
-            }
-            goto LAB_81c09944;
-        }
-        local_15 = local_18;
-        if (param_1 != 0x6a)
-        {
-            if (param_1 < 0x6b)
-            {
-                local_15 = local_17;
-                if (param_1 != 0x69)
-                {
-                    return 0;
-                }
-            }
-            else
-            {
-                local_15 = local_16;
-                if (param_1 != 0x6c)
-                {
-                    return 0;
-                }
-            }
-        }
+    case 0x67:
+        return (uint32_t)(key_packet[3] == '\x01');
+    case 0x69:
+        return (uint32_t)(key_packet[1] == '\x01');
+    case 0x6a:
+        return (uint32_t)(key_packet[0] == '\x01');
+    case 0x6c:
+        return (uint32_t)(key_packet[2] == '\x01');
+    case 1:
+        return (uint32_t)(key_packet[4] == '\x01');
+    case 0x1c:
+        return (uint32_t)(key_packet[5] == '\x01');
+    default:
+        return 0;
     }
-    local_14 = '\x01';
-LAB_81c09944:
-    return (uint32_t)(local_14 == local_15);
 }
-#undef local_18
-#undef local_17
-#undef local_16
-#undef local_15
-#undef local_14
-#undef local_13
+#undef key_packet
 
 /* 原函数 0x81c09990 */
-void sango_input_decode_key_packet(short param_1, short param_2, short param_3, short param_4,
-                                   int param_5)
+void sango_raster_invert_packed_rectangle(short x1, short y1, short x2, short y2, int pixel_address)
 {
     unsigned char abi_storage[52] __attribute__((aligned(8)));
-    (*(int *)(abi_storage + 32)) = param_5;
-#define param_5 (*(int *)(abi_storage + 32))
-#define local_10 (*(uint32_t(*)[2])(abi_storage + 0))
-#define local_8 (*(uint32_t(*)[2])(abi_storage + 8))
+    (*(int *)(abi_storage + 32)) = pixel_address;
+#define pixel_address (*(int *)(abi_storage + 32))
+#define left_edge_masks (*(uint32_t(*)[2])(abi_storage + 0))
+#define right_edge_masks (*(uint32_t(*)[2])(abi_storage + 8))
 
-    uint8_t bVar1;
-    uint8_t bVar2;
-    uint8_t *pbVar3;
-    int iVar4;
-    int iVar5;
-    int iVar6;
-    int iVar7;
-    int iVar8;
-    int iVar9;
-    int iVar10;
-    int iVar11;
-    int iVar12;
-    int iVar13;
+    int left = (int)x1;
+    int top = (int)y1;
+    int right = (int)x2;
+    int bottom = (int)y2;
+    left_edge_masks[0] = g_legacy_data_81c20244;
+    right_edge_masks[0] = g_legacy_data_81c20248;
+    if (left >= 240 || top >= 320 || right < 0 || bottom < 0)
+        return;
+    if (left < 0)
+        left = 0;
+    if (top < 0)
+        top = 0;
+    if (right > 239)
+        right = 239;
+    if (bottom > 319)
+        bottom = 319;
 
-    iVar6 = (int)param_1;
-    local_10[0] = g_legacy_data_81c20244;
-    local_8[0] = g_legacy_data_81c20248;
-    iVar4 = (int)param_3;
-    iVar8 = (int)param_2;
-    iVar10 = (int)param_4;
-    if (iVar6 < 0xf0)
+    /* 2bpp帧缓冲每行60字节。首尾字节按掩码取反，中间字节整体取反。 */
+    int rounded_right = right + 3;
+    if (-1 < right)
+        rounded_right = right;
+    int rounded_left = left + 3;
+    if (-1 < left)
+        rounded_left = left;
+    int left_remainder = (left + (rounded_left >> 2) * -4) * 0x10000 >> 0x10;
+    int right_remainder = (right + (rounded_right >> 2) * -4) * 0x10000 >> 0x10;
+    int horizontal_span = (right - right_remainder) + (left_remainder - left);
+    int row_bytes = horizontal_span + 4;
+    if (row_bytes < 0)
+        row_bytes = horizontal_span + 7;
+    row_bytes = row_bytes >> 2;
+
+    int row_index = 0;
+    if (-1 < bottom - top)
     {
-        if (iVar6 < 0)
+        int first_row_address = pixel_address + (int)(short)(rounded_left >> 2) + top * 60;
+        int row_word_offset = 0;
+        int row_byte_offset = 0;
+        do
         {
-            iVar6 = 0;
-        }
-        if (iVar8 < 0x140)
-        {
-            if (iVar8 < 0)
+            uint8_t pixel_byte = *(uint8_t *)(row_byte_offset + first_row_address);
+            uint8_t edge_mask = *(uint8_t *)((int)left_edge_masks + left_remainder);
+            int last_byte_address = row_byte_offset + first_row_address + row_bytes - 1;
+            *(uint8_t *)(row_byte_offset + first_row_address) =
+                ~pixel_byte & edge_mask | pixel_byte & ~edge_mask;
+            pixel_byte = *(uint8_t *)last_byte_address;
+            edge_mask = *(uint8_t *)((int)right_edge_masks + right_remainder);
+            *(uint8_t *)last_byte_address = ~pixel_byte & edge_mask | pixel_byte & ~edge_mask;
+            /* 首尾可能是同一字节，保留原先两次掩码操作的顺序。 */
+            if ((2 < row_bytes) && (0 < row_bytes - 2))
             {
-                iVar8 = 0;
-            }
-            if (-1 < iVar4)
-            {
-                if (0xef < iVar4)
+                uint8_t *interior_cursor = (uint8_t *)(row_word_offset * 4 + first_row_address);
+                int interior_bytes = row_bytes - 2;
+                do
                 {
-                    iVar4 = 0xef;
-                }
-                if (-1 < iVar10)
-                {
-                    iVar11 = iVar4 + 3;
-                    if (-1 < iVar4)
-                    {
-                        iVar11 = iVar4;
-                    }
-                    iVar7 = iVar6 + 3;
-                    if (-1 < iVar6)
-                    {
-                        iVar7 = iVar6;
-                    }
-                    iVar13 = (iVar6 + (iVar7 >> 2) * -4) * 0x10000 >> 0x10;
-                    iVar11 = (iVar4 + (iVar11 >> 2) * -4) * 0x10000 >> 0x10;
-                    iVar6 = (iVar4 - iVar11) + (iVar13 - iVar6);
-                    iVar4 = iVar6 + 4;
-                    if (0x13f < iVar10)
-                    {
-                        iVar10 = 0x13f;
-                    }
-                    if (iVar4 < 0)
-                    {
-                        iVar4 = iVar6 + 7;
-                    }
-                    iVar4 = iVar4 >> 2;
-                    iVar6 = 0;
-                    if (-1 < iVar10 - iVar8)
-                    {
-                        iVar9 = param_5 + (int)(short)(iVar7 >> 2) + iVar8 * 0x3c;
-                        iVar12 = 0;
-                        iVar7 = 0;
-                        do
-                        {
-                            bVar1 = *(uint8_t *)(iVar7 + iVar9);
-                            bVar2 = *(uint8_t *)((int)local_10 + iVar13);
-                            iVar5 = iVar7 + iVar9 + iVar4;
-                            *(uint8_t *)(iVar7 + iVar9) = ~bVar1 & bVar2 | bVar1 & ~bVar2;
-                            bVar1 = *(uint8_t *)(iVar5 + -1);
-                            bVar2 = *(uint8_t *)((int)local_8 + iVar11);
-                            *(uint8_t *)(iVar5 + -1) = ~bVar1 & bVar2 | bVar1 & ~bVar2;
-                            if ((2 < iVar4) && (0 < iVar4 + -2))
-                            {
-                                pbVar3 = (uint8_t *)(iVar12 * 4 + iVar9);
-                                iVar5 = iVar4 + -2;
-                                do
-                                {
-                                    pbVar3 = pbVar3 + 1;
-                                    iVar5 = iVar5 + -1;
-                                    *pbVar3 = ~*pbVar3;
-                                } while (iVar5 != 0);
-                            }
-                            iVar6 = iVar6 + 1;
-                            iVar7 = iVar7 + 0x3c;
-                            iVar12 = iVar12 + 0xf;
-                        } while (iVar6 <= iVar10 - iVar8);
-                    }
-                }
+                    interior_cursor = interior_cursor + 1;
+                    interior_bytes = interior_bytes - 1;
+                    *interior_cursor = ~*interior_cursor;
+                } while (interior_bytes != 0);
             }
-        }
+            row_index = row_index + 1;
+            row_byte_offset = row_byte_offset + 60;
+            row_word_offset = row_word_offset + 15;
+        } while (row_index <= bottom - top);
     }
-    return;
 }
-#undef param_5
-#undef local_10
-#undef local_8
+#undef pixel_address
+#undef left_edge_masks
+#undef right_edge_masks
 
 /* 原函数 0x81c09b6c */
 uint32_t sango_text_input_proc(uint32_t handle, int message, uint32_t wparam, uint32_t lparam)
 {
-    uint32_t uVar1;
+    uint32_t message_result;
 
     if (message == 0x66)
     {
@@ -230,7 +164,7 @@ uint32_t sango_text_input_proc(uint32_t handle, int message, uint32_t wparam, ui
         bda_sango_gui_control_destroy(g_platform_state_104);
         bda_sango_gui_frame_stop(handle);
         bda_sango_gui_frame_release(handle);
-        uVar1 = 0;
+        message_result = 0;
     }
     else
     {
@@ -260,199 +194,206 @@ uint32_t sango_text_input_proc(uint32_t handle, int message, uint32_t wparam, ui
                 bda_sango_gui_set_active(g_platform_state_104);
             }
         }
-        uVar1 = bda_sango_gui_default_proc(handle, message, wparam, lparam);
+        message_result = bda_sango_gui_default_proc(handle, message, wparam, lparam);
     }
-    return uVar1;
+    return message_result;
 }
 
 /* 原函数 0x81c09d90 */
-uint32_t sango_text_input_dialog(uint32_t param_1, uint8_t *param_2, uint32_t param_3)
+uint32_t sango_text_input_dialog(uint32_t title_address, uint8_t *output_text,
+                                 uint32_t edit_argument)
 {
     unsigned char abi_storage[104] __attribute__((aligned(8)));
-#define local_50 (*(SangoLegacyCode **)(abi_storage + 24))
-#define local_4c (*(uint32_t *)(abi_storage + 28))
-#define local_48 (*(uint32_t *)(abi_storage + 32))
-#define local_44 (*(uint32_t *)(abi_storage + 36))
-#define local_40 (*(uint32_t *)(abi_storage + 40))
-#define local_3c (*(void **)(abi_storage + 44))
-#define local_38 (*(uint32_t *)(abi_storage + 48))
-#define auStack_30 (*(uint8_t(*)[32])(abi_storage + 56))
-#define local_68 (*(uint32_t *)(abi_storage + 0))
-#define local_64 (*(uint32_t *)(abi_storage + 4))
-#define local_60 (*(uint32_t *)(abi_storage + 8))
-#define local_5c (*(uint32_t *)(abi_storage + 12))
-#define local_58 (*(uint32_t *)(abi_storage + 16))
-#define local_54 (*(uint32_t *)(abi_storage + 20))
+#define frame_proc (*(SangoLegacyCode **)(abi_storage + 24))
+#define frame_x (*(uint32_t *)(abi_storage + 28))
+#define frame_y (*(uint32_t *)(abi_storage + 32))
+#define frame_height (*(uint32_t *)(abi_storage + 36))
+#define frame_width (*(uint32_t *)(abi_storage + 40))
+#define frame_surface (*(void **)(abi_storage + 44))
+#define frame_aux30 (*(uint32_t *)(abi_storage + 48))
+#define event_packet (*(uint8_t(*)[32])(abi_storage + 56))
+#define frame_style (*(uint32_t *)(abi_storage + 0))
+#define frame_internal28 (*(uint32_t *)(abi_storage + 4))
+#define frame_title (*(uint32_t *)(abi_storage + 8))
+#define frame_internal44 (*(uint32_t *)(abi_storage + 12))
+#define frame_internal48 (*(uint32_t *)(abi_storage + 16))
+#define frame_helper_arg14 (*(uint32_t *)(abi_storage + 20))
 
-    int iVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
+    int event_or_display_metric;
+    uint32_t frame_handle;
+    uint32_t dialog_result;
 
-    *param_2 = 0;
-    local_68 = 0x28400000;
-    local_50 = sango_text_input_proc;
-    local_4c = 0x5a;
-    local_44 = 0xe6;
-    local_48 = 0x50;
-    local_40 = 0x8c;
-    local_64 = 0;
-    local_5c = 0;
-    local_58 = 0;
-    g_text_input_frame = param_3;
-    g_legacy_data_81c2b10c_view2 = param_2;
-    local_60 = param_1;
-    local_3c = bda_sango_gui_draw_object(8);
-    local_38 = 0;
-    local_54 = 0;
-    iVar1 = bda_sango_gui_display_metric(0, 6);
-    g_input_dialog_backing = bda_sango_mem_alloc(iVar1 * 0x3200 + 10);
+    *output_text = 0;
+    frame_style = 0x28400000;
+    frame_proc = sango_text_input_proc;
+    frame_x = 0x5a;
+    frame_height = 0xe6;
+    frame_y = 0x50;
+    frame_width = 0x8c;
+    frame_internal28 = 0;
+    frame_internal44 = 0;
+    frame_internal48 = 0;
+    g_text_input_frame = edit_argument;
+    g_legacy_data_81c2b10c_view2 = output_text;
+    frame_title = title_address;
+    frame_surface = bda_sango_gui_draw_object(8);
+    frame_aux30 = 0;
+    frame_helper_arg14 = 0;
+    event_or_display_metric = bda_sango_gui_display_metric(0, 6);
+    g_input_dialog_backing = bda_sango_mem_alloc(event_or_display_metric * 0x3200 + 10);
     if (g_input_dialog_backing != 0)
     {
         bda_sango_gui_capture_region(0, 200, 0x140, 0x28, g_input_dialog_backing);
     }
-    uVar2 = bda_sango_gui_register_frame(&local_68);
-    if (uVar2 == 0xffffffff)
+    frame_handle = bda_sango_gui_register_frame(&frame_style);
+    if (frame_handle == 0xffffffff)
     {
         bda_sango_mem_free(g_input_dialog_backing);
-        uVar3 = 1;
+        dialog_result = 1;
     }
     else
     {
-        while (iVar1 = bda_sango_gui_event_poll(auStack_30, 0), iVar1 != 0)
+        while (event_or_display_metric = bda_sango_gui_event_poll(event_packet, 0),
+               event_or_display_metric != 0)
         {
-            bda_sango_gui_event_step(auStack_30);
-            bda_sango_gui_event_dispatch(auStack_30);
+            bda_sango_gui_event_step(event_packet);
+            bda_sango_gui_event_dispatch(event_packet);
         }
-        bda_sango_gui_close_frame(uVar2);
-        uVar3 = g_platform_state_108;
+        bda_sango_gui_close_frame(frame_handle);
+        dialog_result = g_platform_state_108;
         if (g_input_dialog_backing != 0)
         {
             bda_sango_gui_restore_region(0, 200, 0xf0, 0x28, g_input_dialog_backing);
             bda_sango_mem_free(g_input_dialog_backing);
-            uVar3 = g_platform_state_108;
+            dialog_result = g_platform_state_108;
         }
     }
-    return uVar3;
+    return dialog_result;
 }
-#undef local_50
-#undef local_4c
-#undef local_48
-#undef local_44
-#undef local_40
-#undef local_3c
-#undef local_38
-#undef auStack_30
-#undef local_68
-#undef local_64
-#undef local_60
-#undef local_5c
-#undef local_58
-#undef local_54
+#undef frame_proc
+#undef frame_x
+#undef frame_y
+#undef frame_height
+#undef frame_width
+#undef frame_surface
+#undef frame_aux30
+#undef event_packet
+#undef frame_style
+#undef frame_internal28
+#undef frame_title
+#undef frame_internal44
+#undef frame_internal48
+#undef frame_helper_arg14
 
 /* 原函数 0x81c09fb0 */
-void sango_display_render_bitmap_region(short param_1, short param_2, int param_3, uint32_t param_4,
-                                        int param_5, int param_6)
+void sango_display_render_bitmap_region(short x, short y, int entry_index, uint32_t draw_context,
+                                        int transparency_mode, int container_address)
 {
     unsigned char abi_storage[120] __attribute__((aligned(8)));
-    (*(int *)(abi_storage + 96)) = param_5;
-    (*(int *)(abi_storage + 100)) = param_6;
-#define param_5 (*(int *)(abi_storage + 96))
-#define param_6 (*(int *)(abi_storage + 100))
-#define local_50 (*(int(*)[4])(abi_storage + 0))
-#define local_40 (*(uint32_t *)(abi_storage + 16))
-#define local_3c (*(int *)(abi_storage + 20))
-#define local_38 (*(int *)(abi_storage + 24))
-#define local_34 (*(uint32_t *)(abi_storage + 28))
-#define local_30 (*(uint8_t *)(abi_storage + 32))
-#define local_2f (*(uint8_t *)(abi_storage + 33))
-#define local_2c (*(int *)(abi_storage + 36))
-#define local_28 (*(int *)(abi_storage + 40))
-#define local_20 (*(uint8_t *)(abi_storage + 48))
-#define local_1f (*(uint8_t *)(abi_storage + 49))
-#define local_1e (*(uint8_t *)(abi_storage + 50))
-#define local_1d (*(uint8_t *)(abi_storage + 51))
+    (*(int *)(abi_storage + 96)) = transparency_mode;
+    (*(int *)(abi_storage + 100)) = container_address;
+#define transparency_mode (*(int *)(abi_storage + 96))
+#define container_address (*(int *)(abi_storage + 100))
+#define entry_state (*(int(*)[4])(abi_storage + 0))
+#define descriptor_flags (*(uint32_t *)(abi_storage + 16))
+#define bitmap_width (*(int *)(abi_storage + 20))
+#define bitmap_height (*(int *)(abi_storage + 24))
+#define descriptor_aux (*(uint32_t *)(abi_storage + 28))
+#define pixel_format (*(uint8_t *)(abi_storage + 32))
+#define pixel_bits (*(uint8_t *)(abi_storage + 33))
+#define pixel_address (*(int *)(abi_storage + 36))
+#define transparent_color (*(int *)(abi_storage + 40))
+#define height_byte0 (*(uint8_t *)(abi_storage + 48))
+#define height_byte1 (*(uint8_t *)(abi_storage + 49))
+#define height_byte2 (*(uint8_t *)(abi_storage + 50))
+#define height_byte3 (*(uint8_t *)(abi_storage + 51))
 
-    uint32_t uVar1;
-    int iVar2;
-    int iVar3;
+    uint32_t active_draw_context;
+    int screen_x;
+    int screen_y;
 
-    iVar3 = (int)param_2;
-    iVar2 = (int)param_1;
-    sango_bitmap_open_embedded_entry(local_50, 1, param_3, param_6);
-    local_40 = 0;
-    local_3c = (((uint32_t) * (uint8_t *)(local_50[0] + 7) * 0x100 +
-                 (uint32_t) * (uint8_t *)(local_50[0] + 6)) *
-                    0x100 +
-                (uint32_t) * (uint8_t *)(local_50[0] + 5)) *
-                   0x100 +
-               (uint32_t) * (uint8_t *)(local_50[0] + 4);
-    local_20 = *(uint8_t *)(local_50[0] + 8);
-    local_1f = *(uint8_t *)(local_50[0] + 9);
-    local_1e = *(uint8_t *)(local_50[0] + 10);
-    local_1d = *(uint8_t *)(local_50[0] + 0xb);
-    local_34 = 0;
-    local_38 =
-        (((uint32_t)local_1d * 0x100 + (uint32_t)local_1e) * 0x100 + (uint32_t)local_1f) * 0x100 +
-        (uint32_t)local_20;
-    local_30 = *(uint8_t *)(local_50[0] + 0x10);
-    local_2c = local_50[0] + 0x16;
-    local_2f = 0x10;
-    local_28 = -1;
-    if (param_5 == 0)
+    screen_y = (int)y;
+    screen_x = (int)x;
+    sango_bitmap_open_embedded_entry(entry_state, 1, entry_index, container_address);
+    descriptor_flags = 0;
+    bitmap_width = (((uint32_t) * (uint8_t *)(entry_state[0] + 7) * 0x100 +
+                     (uint32_t) * (uint8_t *)(entry_state[0] + 6)) *
+                        0x100 +
+                    (uint32_t) * (uint8_t *)(entry_state[0] + 5)) *
+                       0x100 +
+                   (uint32_t) * (uint8_t *)(entry_state[0] + 4);
+    height_byte0 = *(uint8_t *)(entry_state[0] + 8);
+    height_byte1 = *(uint8_t *)(entry_state[0] + 9);
+    height_byte2 = *(uint8_t *)(entry_state[0] + 10);
+    height_byte3 = *(uint8_t *)(entry_state[0] + 0xb);
+    descriptor_aux = 0;
+    bitmap_height = (((uint32_t)height_byte3 * 0x100 + (uint32_t)height_byte2) * 0x100 +
+                     (uint32_t)height_byte1) *
+                        0x100 +
+                    (uint32_t)height_byte0;
+    pixel_format = *(uint8_t *)(entry_state[0] + 0x10);
+    pixel_address = entry_state[0] + 0x16;
+    pixel_bits = 0x10;
+    transparent_color = -1;
+    if (transparency_mode == 0)
     {
-        if (param_4 != 0)
+        if (draw_context != 0)
         {
-            bda_sango_gui_render_region(param_4, iVar2, iVar3, local_3c, local_38, local_3c,
-                                        local_38, &local_40, 0, 0);
+            bda_sango_gui_render_region(draw_context, screen_x, screen_y, bitmap_width,
+                                        bitmap_height, bitmap_width, bitmap_height,
+                                        &descriptor_flags, 0, 0);
             return;
         }
         bda_sango_gui_draw_guard(1);
-        uVar1 = bda_sango_gui_object_draw_begin(g_app_frame);
-        bda_sango_gui_render_region(uVar1, iVar2, iVar3, local_3c, local_38, local_3c, local_38,
-                                    &local_40, 0, 0);
+        active_draw_context = bda_sango_gui_object_draw_begin(g_app_frame);
+        bda_sango_gui_render_region(active_draw_context, screen_x, screen_y, bitmap_width,
+                                    bitmap_height, bitmap_width, bitmap_height, &descriptor_flags,
+                                    0, 0);
     }
     else
     {
-        if (param_5 != 1)
+        if (transparency_mode != 1)
         {
             return;
         }
-        if (param_4 != 0)
+        if (draw_context != 0)
         {
-            local_28 = bda_sango_gui_rgb(param_4, 0xff, 0, 0xff);
-            bda_sango_gui_render_region(param_4, iVar2, iVar3, local_3c, local_38, local_3c,
-                                        local_38, &local_40, 0, 0);
+            transparent_color = bda_sango_gui_rgb(draw_context, 0xff, 0, 0xff);
+            bda_sango_gui_render_region(draw_context, screen_x, screen_y, bitmap_width,
+                                        bitmap_height, bitmap_width, bitmap_height,
+                                        &descriptor_flags, 0, 0);
             return;
         }
         bda_sango_gui_draw_guard(1);
-        uVar1 = bda_sango_gui_object_draw_begin(g_app_frame);
-        local_28 = bda_sango_gui_rgb(uVar1, 0xff, 0, 0xff);
-        bda_sango_gui_render_region(uVar1, iVar2, iVar3, local_3c, local_38, local_3c, local_38,
-                                    &local_40, 0, 0);
+        active_draw_context = bda_sango_gui_object_draw_begin(g_app_frame);
+        transparent_color = bda_sango_gui_rgb(active_draw_context, 0xff, 0, 0xff);
+        bda_sango_gui_render_region(active_draw_context, screen_x, screen_y, bitmap_width,
+                                    bitmap_height, bitmap_width, bitmap_height, &descriptor_flags,
+                                    0, 0);
     }
-    bda_sango_gui_object_draw_end(g_app_frame, uVar1);
+    bda_sango_gui_object_draw_end(g_app_frame, active_draw_context);
     bda_sango_gui_draw_guard(0);
     return;
 }
-#undef param_5
-#undef param_6
-#undef local_50
-#undef local_40
-#undef local_3c
-#undef local_38
-#undef local_34
-#undef local_30
-#undef local_2f
-#undef local_2c
-#undef local_28
-#undef local_20
-#undef local_1f
-#undef local_1e
-#undef local_1d
+#undef transparency_mode
+#undef container_address
+#undef entry_state
+#undef descriptor_flags
+#undef bitmap_width
+#undef bitmap_height
+#undef descriptor_aux
+#undef pixel_format
+#undef pixel_bits
+#undef pixel_address
+#undef transparent_color
+#undef height_byte0
+#undef height_byte1
+#undef height_byte2
+#undef height_byte3
 
 /* 原函数 0x81c0a2c0 */
-void sango_platform_window_auxiliary(uint32_t param_1, uint32_t param_2)
+void sango_platform_window_auxiliary(uint32_t argument0, uint32_t argument1)
 {
-    bda_sango_gui_window_aux_a(g_app_frame, param_1, param_2);
+    bda_sango_gui_window_aux_a(g_app_frame, argument0, argument1);
     return;
 }

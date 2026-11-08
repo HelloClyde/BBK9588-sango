@@ -23,7 +23,7 @@ void sango_battle_compute_skill_effect(int param_1, uint16_t *param_2, uint16_t 
 uint32_t sango_battle_ai_plan_unit(uint8_t *param_1);
 uint32_t sango_battle_ai_choose_skill(uint8_t *param_1);
 uint32_t sango_battle_ai_prepare_attack(uint8_t *param_1);
-void sango_battle_ai_choose_destination(uint32_t param_1);
+void sango_battle_ai_choose_destination(uint32_t unit_id);
 uint32_t sango_battle_choose_skill(uint32_t param_1, uint16_t *param_2, uint8_t *param_3);
 uint32_t sango_battle_skill_target_allowed(uint32_t param_1, uint32_t param_2);
 void sango_battle_collect_unit_skills(uint32_t param_1, char *param_2);
@@ -36,8 +36,7 @@ void sango_battle_preview_skill_range(uint32_t param_1, uint8_t param_2, uint8_t
 void sango_battle_load_range_template(char param_1, uint32_t param_2, uint32_t param_3);
 uint32_t sango_battle_select_ai_unit(void);
 void sango_battle_distance_components(uint8_t *param_1, uint8_t *param_2);
-uint32_t sango_battle_manhattan_distance(uint8_t param_1, uint8_t param_2, uint8_t param_3,
-                                         uint8_t param_4);
+uint32_t sango_battle_manhattan_distance(uint8_t param_1, uint8_t param_2, uint8_t param_3, uint8_t param_4);
 void sango_battle_draw_move_range(void);
 void sango_battle_show_overview(void);
 void sango_battle_draw_overview_rows(char param_1, uint32_t param_2);
@@ -53,7 +52,7 @@ void sango_battle_filter_unit_commands(uint32_t param_1, uint16_t *param_2);
 uint32_t sango_battle_finish_unit_action(uint8_t *record);
 uint32_t sango_battle_select_move_destination(uint32_t param_1);
 uint32_t sango_battle_select_active_unit(void);
-uint32_t sango_battle_poll_map_action(char param_1);
+uint32_t sango_battle_poll_map_action(char preview_mode);
 void sango_battle_draw_cursor(void);
 uint32_t sango_battle_initialize_field(void);
 uint32_t sango_battle_spawn_origin(char param_1);
@@ -69,8 +68,7 @@ void sango_battle_draw_units(uint32_t param_1);
 void sango_battle_draw_tile(uint32_t param_1, uint32_t param_2, char param_3);
 void sango_battle_show_action_message(uint32_t param_1);
 void sango_battle_check_level_and_retreat(void);
-void sango_battle_play_unit_effect(uint32_t param_1, uint32_t param_2, uint16_t param_3,
-                                   uint16_t param_4);
+void sango_battle_play_unit_effect(uint32_t param_1, uint32_t param_2, uint16_t param_3, uint16_t param_4);
 void sango_battle_draw_terrain(uint32_t view_x, uint32_t view_y);
 void sango_battle_copy_viewport_tiles(uint32_t requested_x, uint32_t requested_y);
 void sango_battle_draw_cursor_description(void);
@@ -90,7 +88,7 @@ uint32_t sango_battle_reset_session(void);
 void sango_battle_refresh_display(void);
 void sango_battle_focus_viewport(void);
 void sango_battle_show_cursor_info(void);
-uint32_t sango_battle_execute_skill(int param_1);
+uint32_t sango_battle_execute_skill(int action_address);
 uint32_t sango_battle_execute_surround_attack(uint32_t param_1);
 uint32_t sango_battle_execute_normal_attack(uint32_t target_unit);
 void sango_battle_draw_damage_digits(uint16_t param_1, uint16_t param_2, uint32_t param_3);

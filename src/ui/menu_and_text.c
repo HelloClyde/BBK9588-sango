@@ -3,54 +3,54 @@
 /* 选项菜单、位图控件、文本布局与数值提示。 */
 
 /* 原函数 0x81c07068 */
-uint32_t sango_ui_choose_option(uint16_t *param_1, uint32_t param_2, char *param_3)
+uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, char *menu_text)
 {
     unsigned char abi_storage[68] __attribute__((aligned(8)));
-#define local_60 (*(int *)(abi_storage + 0))
-#define local_5c (*(int *)(abi_storage + 4))
-#define local_40 (*(uint32_t *)(abi_storage + 32))
-#define local_3c (*(uint32_t *)(abi_storage + 36))
-#define local_38 (*(uint32_t *)(abi_storage + 40))
-#define local_34 (*(uint32_t *)(abi_storage + 44))
-#define local_30 (*(uint32_t *)(abi_storage + 48))
+#define event_kind (*(int *)(abi_storage + 0))
+#define key_code (*(int *)(abi_storage + 4))
+#define characters_per_row (*(uint32_t *)(abi_storage + 32))
+#define option_count (*(uint32_t *)(abi_storage + 36))
+#define top_option (*(uint32_t *)(abi_storage + 40))
+#define visible_rows (*(uint32_t *)(abi_storage + 44))
+#define text_offset (*(uint32_t *)(abi_storage + 48))
 
-    bool bVar1;
-    bool bVar2;
-    short sVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
-    short sVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
-    int iVar9;
-    int iVar10;
-    uint32_t uVar11;
+    bool has_scrollbar;
+    bool thumb_changed;
+    short previous_thumb_top;
+    uint32_t thumb_y;
+    uint32_t float_operand;
+    short thumb_bottom;
+    uint32_t track_top;
+    uint32_t highlight_top;
+    int highlight_bottom;
+    int visible_selection_row;
+    uint32_t selected_option;
 
     g_text_auto_clip = 0;
-    g_text_bottom = param_1[3];
-    g_text_top = param_1[1];
-    g_text_left = *param_1;
-    g_text_right = param_1[2];
-    uVar11 = param_2 & 0xff;
-    local_34 = (int)((uint32_t)g_text_bottom - (uint32_t)g_text_top) / 0xc & 0xff;
-    local_40 = (int)((uint32_t)g_text_right - (uint32_t)g_text_left) / 6 & 0xff;
-    uVar4 = bbk_strlen(param_3);
-    if (local_40 == 0)
+    g_text_bottom = bounds[3];
+    g_text_top = bounds[1];
+    g_text_left = *bounds;
+    g_text_right = bounds[2];
+    selected_option = initial_selection & 0xff;
+    visible_rows = (int)((uint32_t)g_text_bottom - (uint32_t)g_text_top) / 0xc & 0xff;
+    characters_per_row = (int)((uint32_t)g_text_right - (uint32_t)g_text_left) / 6 & 0xff;
+    uint32_t text_bytes = bbk_strlen(menu_text);
+    if (characters_per_row == 0)
     {
         sango_legacy_trap(7);
     }
-    local_3c = uVar4 / local_40 & 0xff;
+    option_count = text_bytes / characters_per_row & 0xff;
     sango_display_fill_gray_rectangle(g_text_left - 3, g_text_top - 3, g_text_right + 2,
                                       g_text_bottom + 2, 0, 0);
-    bVar1 = local_34 < local_3c;
-    local_38 = uVar11;
-    if (!bVar1)
+    has_scrollbar = visible_rows < option_count;
+    top_option = selected_option;
+    if (!has_scrollbar)
     {
-        local_38 = 0;
+        top_option = 0;
     }
     sango_display_draw_rectangle(g_text_left - 3, g_text_top - 3, g_text_right + 2,
                                  g_text_bottom + 2, 3, 0, 0);
-    if (bVar1)
+    if (has_scrollbar)
     {
         sango_display_fill_gray_rectangle(g_text_right + 2, g_text_top - 3, g_text_right + 6,
                                           g_text_bottom + 2, 0, 0);
@@ -58,70 +58,72 @@ uint32_t sango_ui_choose_option(uint16_t *param_1, uint32_t param_2, char *param
                                      g_text_bottom + 2, 3, 0, 0);
         sango_display_draw_rectangle(g_text_right + 2, g_text_top - 1, g_text_right + 6,
                                      g_text_bottom, 3, 0, 0);
-        if ((int)local_3c < (int)(local_38 + local_34))
+        if ((int)option_count < (int)(top_option + visible_rows))
         {
-            local_38 = local_3c - local_34 & 0xff;
+            top_option = option_count - visible_rows & 0xff;
         }
     }
-    local_30 = local_38 * local_40;
-    bVar2 = true;
-    iVar10 = uVar11 - local_38;
-    sango_text_draw_legacy(g_text_left, g_text_top, param_3 + local_30);
-    uVar8 = (uint32_t)(uint8_t)g_text_top + iVar10 * 0xc & 0xff;
-    iVar9 = uVar8 + 0xc;
-    sango_display_invert_rectangle(g_text_left, (short)uVar8, g_text_right, (short)iVar9, 0);
-    uVar4 = (uint32_t)(uint8_t)g_text_top;
+    text_offset = top_option * characters_per_row;
+    thumb_changed = true;
+    visible_selection_row = selected_option - top_option;
+    sango_text_draw_legacy(g_text_left, g_text_top, menu_text + text_offset);
+    highlight_top = (uint32_t)(uint8_t)g_text_top + visible_selection_row * 0xc & 0xff;
+    highlight_bottom = highlight_top + 0xc;
+    sango_display_invert_rectangle(g_text_left, (short)highlight_top, g_text_right,
+                                   (short)highlight_bottom, 0);
+    thumb_y = (uint32_t)(uint8_t)g_text_top;
     do
     {
         do
         {
-            if (bVar1)
+            if (has_scrollbar)
             {
-                sVar3 = (short)uVar4;
-                sVar6 = sVar3 + 2;
-                if (bVar2)
+                previous_thumb_top = (short)thumb_y;
+                thumb_bottom = previous_thumb_top + 2;
+                if (thumb_changed)
                 {
-                    sango_display_draw_rectangle(g_text_right + 3, sVar3, g_text_right + 5, sVar6,
-                                                 0, 0, 0);
-                    sango_display_put_gray_pixel(g_text_right + 4, sVar3 + 1, 0, 0);
-                    sango_display_put_gray_pixel(g_text_right + 4, sVar3 + 1, 0, 0);
-                    uVar4 = sango_soft_int_to_f32((int)(char)uVar11);
-                    if ((char)uVar11 < 0)
+                    sango_display_draw_rectangle(g_text_right + 3, previous_thumb_top,
+                                                 g_text_right + 5, thumb_bottom, 0, 0, 0);
+                    sango_display_put_gray_pixel(g_text_right + 4, previous_thumb_top + 1, 0, 0);
+                    sango_display_put_gray_pixel(g_text_right + 4, previous_thumb_top + 1, 0, 0);
+                    uint32_t float_bits = sango_soft_int_to_f32((int)(char)selected_option);
+                    if ((char)selected_option < 0)
                     {
-                        uVar4 = soft_float_add(uVar4, g_legacy_data_81c20c4c);
+                        float_bits = soft_float_add(float_bits, g_legacy_data_81c20c4c);
                     }
-                    bVar2 = false;
-                    uVar5 = sango_soft_int_to_f32(local_3c - 1);
-                    uVar4 = soft_float_div(uVar4, uVar5);
-                    uVar7 = (uint32_t)g_text_top;
-                    uVar5 = sango_soft_int_to_f32((g_text_bottom - uVar7) - 3);
-                    uVar4 = soft_float_mul(uVar4, uVar5);
-                    uVar5 = sango_soft_int_to_f32(uVar7);
-                    uVar4 = soft_float_add(uVar4, uVar5);
-                    uVar4 = sango_soft_f32_to_int(uVar4);
-                    uVar4 = uVar4 & 0xff;
-                    sVar6 = (short)uVar4 + 2;
-                    sango_display_draw_rectangle(g_text_right + 3, (short)uVar4, g_text_right + 5,
-                                                 sVar6, 3, 0, 0);
+                    thumb_changed = false;
+                    float_operand = sango_soft_int_to_f32(option_count - 1);
+                    float_bits = soft_float_div(float_bits, float_operand);
+                    track_top = (uint32_t)g_text_top;
+                    float_operand = sango_soft_int_to_f32((g_text_bottom - track_top) - 3);
+                    float_bits = soft_float_mul(float_bits, float_operand);
+                    float_operand = sango_soft_int_to_f32(track_top);
+                    float_bits = soft_float_add(float_bits, float_operand);
+                    float_bits = sango_soft_f32_to_int(float_bits);
+                    thumb_y = float_bits & 0xff;
+                    thumb_bottom = (short)thumb_y + 2;
+                    sango_display_draw_rectangle(g_text_right + 3, (short)thumb_y, g_text_right + 5,
+                                                 thumb_bottom, 3, 0, 0);
                 }
-                sango_display_invert_rectangle(g_text_right + 3, (short)uVar4, g_text_right + 5,
-                                               sVar6, 0);
+                sango_display_invert_rectangle(g_text_right + 3, (short)thumb_y, g_text_right + 5,
+                                               thumb_bottom, 0);
             }
-            sango_input_next_event(&local_60);
-        } while (local_60 != 5);
-        sango_display_invert_rectangle(g_text_left, (short)uVar8, g_text_right, (short)iVar9, 0);
-        if (local_5c == 0x1c)
+            sango_input_next_event(&event_kind);
+        } while (event_kind != 5);
+        sango_display_invert_rectangle(g_text_left, (short)highlight_top, g_text_right,
+                                       (short)highlight_bottom, 0);
+        if (key_code == 0x1c)
         {
             g_text_left = 0;
             g_text_auto_clip = 1;
             g_text_bottom = 0x140;
             g_text_top = 0;
             g_text_right = 0xef;
-            return uVar11;
+            return selected_option;
         }
-        if (local_5c < 0x1d)
+        if (key_code < 0x1d)
         {
-            if (local_5c == 1)
+            if (key_code == 1)
             {
                 g_text_auto_clip = 1;
                 g_text_bottom = 0x140;
@@ -133,70 +135,71 @@ uint32_t sango_ui_choose_option(uint16_t *param_1, uint32_t param_2, char *param
         }
         else
         {
-            if (local_5c == 0x67)
+            if (key_code == 0x67)
             {
-                if (uVar11 == 0)
+                if (selected_option == 0)
                 {
-                    bVar2 = true;
-                    local_38 = local_3c - local_34 & 0xff;
-                    local_30 = local_38 * local_40;
-                    uVar11 = local_3c - 1 & 0xff;
-                    iVar10 = uVar11 - local_38;
+                    thumb_changed = true;
+                    top_option = option_count - visible_rows & 0xff;
+                    text_offset = top_option * characters_per_row;
+                    selected_option = option_count - 1 & 0xff;
+                    visible_selection_row = selected_option - top_option;
                 }
                 else
                 {
-                    uVar11 = uVar11 - 1 & 0xff;
-                    bVar2 = true;
-                    iVar10 = uVar11 - local_38;
-                    if (local_38 <= uVar11)
-                        goto LAB_81c07348;
-                    local_38 = local_38 - 1 & 0xff;
-                    local_30 = local_30 - local_40 & 0xffff;
-                    iVar10 = uVar11 - local_38;
+                    selected_option = selected_option - 1 & 0xff;
+                    thumb_changed = true;
+                    visible_selection_row = selected_option - top_option;
+                    if (top_option <= selected_option)
+                        goto update_selection_highlight;
+                    top_option = top_option - 1 & 0xff;
+                    text_offset = text_offset - characters_per_row & 0xffff;
+                    visible_selection_row = selected_option - top_option;
                 }
             }
             else
             {
-                if (local_5c != 0x6c)
-                    goto LAB_81c07348;
-                if (uVar11 == local_3c - 1)
+                if (key_code != 0x6c)
+                    goto update_selection_highlight;
+                if (selected_option == option_count - 1)
                 {
-                    uVar11 = 0;
-                    bVar2 = true;
-                    iVar10 = 0;
-                    local_38 = 0;
-                    local_30 = 0;
+                    selected_option = 0;
+                    thumb_changed = true;
+                    visible_selection_row = 0;
+                    top_option = 0;
+                    text_offset = 0;
                 }
                 else
                 {
-                    if ((int)uVar11 < (int)(local_3c - 1))
+                    if ((int)selected_option < (int)(option_count - 1))
                     {
-                        uVar11 = uVar11 + 1 & 0xff;
-                        bVar2 = true;
-                        iVar10 = uVar11 - local_38;
+                        selected_option = selected_option + 1 & 0xff;
+                        thumb_changed = true;
+                        visible_selection_row = selected_option - top_option;
                     }
-                    if (iVar10 < (int)local_34)
-                        goto LAB_81c07348;
-                    local_38 = local_38 + 1 & 0xff;
-                    local_30 = local_30 + local_40 & 0xffff;
-                    iVar10 = uVar11 - local_38;
+                    if (visible_selection_row < (int)visible_rows)
+                        goto update_selection_highlight;
+                    top_option = top_option + 1 & 0xff;
+                    text_offset = text_offset + characters_per_row & 0xffff;
+                    visible_selection_row = selected_option - top_option;
                 }
             }
-            sango_text_draw_legacy(g_text_left, g_text_top, param_3 + local_30);
+            sango_text_draw_legacy(g_text_left, g_text_top, menu_text + text_offset);
         }
-    LAB_81c07348:
-        uVar8 = (uint32_t)(uint8_t)g_text_top + iVar10 * 0xc & 0xff;
-        iVar9 = uVar8 + 0xc;
-        sango_display_invert_rectangle(g_text_left, (short)uVar8, g_text_right, (short)iVar9, 0);
+    update_selection_highlight:
+        highlight_top = (uint32_t)(uint8_t)g_text_top + visible_selection_row * 0xc & 0xff;
+        highlight_bottom = highlight_top + 0xc;
+        sango_display_invert_rectangle(g_text_left, (short)highlight_top, g_text_right,
+                                       (short)highlight_bottom, 0);
     } while (true);
 }
-#undef local_60
-#undef local_5c
-#undef local_40
-#undef local_3c
-#undef local_38
-#undef local_34
-#undef local_30
+#undef event_kind
+#undef key_code
+#undef characters_per_row
+#undef option_count
+#undef top_option
+#undef visible_rows
+#undef text_offset
 
 /* 原函数 0x81c077bc */
 void sango_bitmap_draw_resource(uint32_t resource_id, uint32_t frame_number, uint32_t x, short y,

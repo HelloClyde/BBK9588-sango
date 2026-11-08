@@ -5,20 +5,20 @@
 /* 原函数 0x81c16e00 */
 uint32_t sango_strategy_apply_monthly_economy(void)
 {
-    char cVar1;
-    uint16_t uVar2;
-    uint8_t *pbVar3;
-    int iVar4;
-    int iVar5;
-    int iVar6;
-    char *pcVar7;
-    int iVar8;
-    uint32_t uVar9;
-    uint32_t uVar10;
-    uint32_t uVar11;
-    uint8_t *pbVar12;
-    uint32_t uVar13;
-    uint32_t uVar14;
+    char previous_city_status;
+    uint16_t previous_troops;
+    uint8_t *roster_buffer;
+    int city_byte_offset;
+    int character_table_base;
+    int city_word_offset;
+    char *captive_record;
+    int character_address;
+    uint32_t updated_troops;
+    uint32_t city_id;
+    uint32_t roster_index;
+    uint8_t *roster_entry;
+    uint32_t total_troops;
+    uint32_t roster_count;
 
     if ((g_current_month == 6) || (g_current_month == 10))
     {
@@ -28,224 +28,249 @@ uint32_t sango_strategy_apply_monthly_economy(void)
     {
         sango_strategy_collect_commerce_income();
     }
-    uVar10 = (uint32_t)g_legacy_data_81c2b9a2 + (uint32_t)g_legacy_data_81c2b9a3 & 0xff;
-    uVar14 = 0;
-    if (uVar10 != 0)
+    uint32_t active_character_count =
+        (uint32_t)g_legacy_data_81c2b9a2 + (uint32_t)g_legacy_data_81c2b9a3 & 0xff;
+    uint32_t character_index = 0;
+    if (active_character_count != 0)
     {
         do
         {
-            iVar6 = uVar14 * 0x10 + g_character_table_address;
-            *(char *)(iVar6 + 8) = *(char *)(iVar6 + 8) + '\x04';
-            iVar6 = uVar14 * 0x10 + g_character_table_address;
-            if (100 < *(uint8_t *)(iVar6 + 8))
+            int regenerating_character = character_index * 0x10 + g_character_table_address;
+            *(char *)(regenerating_character + 8) = *(char *)(regenerating_character + 8) + '\x04';
+            regenerating_character = character_index * 0x10 + g_character_table_address;
+            if (100 < *(uint8_t *)(regenerating_character + 8))
             {
-                *(uint8_t *)(iVar6 + 8) = 100;
+                *(uint8_t *)(regenerating_character + 8) = 100;
             }
-            uVar14 = uVar14 + 1 & 0xff;
-        } while (uVar14 < uVar10);
+            character_index = character_index + 1 & 0xff;
+        } while (character_index < active_character_count);
     }
-    pbVar3 = g_scratch_buffer_address;
-    uVar10 = 0;
-    iVar6 = 0;
+    roster_buffer = g_scratch_buffer_address;
+    city_id = 0;
+    city_word_offset = 0;
     do
     {
-        iVar6 = iVar6 + uVar10;
-        iVar4 = iVar6 * 4;
-        if ((&g_first_city_owner)[iVar4] != '\0')
+        city_word_offset = city_word_offset + city_id;
+        city_byte_offset = city_word_offset * 4;
+        if ((&g_first_city_owner)[city_byte_offset] != '\0')
         {
             if ((uint32_t)g_current_month % 3 == 0)
             {
-                uVar11 = bbk_rand();
-                uVar14 = uVar11 + 3;
-                if (-1 < (int)uVar11)
+                uint32_t random_roll = bbk_rand();
+                uint32_t degradation_amount = random_roll + 3;
+                if (-1 < (int)random_roll)
                 {
-                    uVar14 = uVar11;
+                    degradation_amount = random_roll;
                 }
-                uVar14 = uVar11 + ((int)uVar14 >> 2) * -4 + 1;
-                if ((uVar14 & 0xff) < (uint32_t)(uint8_t)(&g_first_city_disaster_prevention)[iVar4])
+                degradation_amount = random_roll + ((int)degradation_amount >> 2) * -4 + 1;
+                if ((degradation_amount & 0xff) <
+                    (uint32_t)(uint8_t)(&g_first_city_disaster_prevention)[city_byte_offset])
                 {
-                    (&g_first_city_disaster_prevention)[iVar4] =
-                        (&g_first_city_disaster_prevention)[iVar4] - (char)uVar14;
+                    (&g_first_city_disaster_prevention)[city_byte_offset] =
+                        (&g_first_city_disaster_prevention)[city_byte_offset] -
+                        (char)degradation_amount;
                 }
             }
-            if (30000 < (uint16_t)(&g_first_city_money)[iVar6 * 2])
+            if (30000 < (uint16_t)(&g_first_city_money)[city_word_offset * 2])
             {
-                (&g_first_city_money)[iVar6 * 2] = 30000;
+                (&g_first_city_money)[city_word_offset * 2] = 30000;
             }
-            iVar5 = (&g_first_city_population_limit)[iVar6];
-            (&g_first_city_population_limit)[iVar6] = iVar5 + 0x32U;
-            if ((uint32_t)(&g_first_city_population)[iVar6] < iVar5 + 0x32U)
+            int previous_population_limit = (&g_first_city_population_limit)[city_word_offset];
+            (&g_first_city_population_limit)[city_word_offset] = previous_population_limit + 0x32U;
+            if ((uint32_t)(&g_first_city_population)[city_word_offset] <
+                previous_population_limit + 0x32U)
             {
-                (&g_first_city_population_limit)[iVar6] = (&g_first_city_population)[iVar6];
+                (&g_first_city_population_limit)[city_word_offset] =
+                    (&g_first_city_population)[city_word_offset];
             }
-            uVar13 = (uint32_t)(uint16_t)(&g_first_city_reserve_troops)[iVar6 * 2];
-            uVar14 = sango_city_list_idle_characters(uVar10, (int)pbVar3);
-            iVar5 = g_character_table_address;
-            uVar11 = 0;
-            if (uVar14 != 0)
+            total_troops = (uint32_t)(uint16_t)(&g_first_city_reserve_troops)[city_word_offset * 2];
+            roster_count = sango_city_list_idle_characters(city_id, (int)roster_buffer);
+            character_table_base = g_character_table_address;
+            roster_index = 0;
+            if (roster_count != 0)
             {
                 do
                 {
-                    pbVar12 = pbVar3 + uVar11;
-                    uVar2 = *(uint16_t *)((uint32_t)*pbVar12 * 0x10 + iVar5 + 10);
-                    uVar9 = (uint32_t)uVar2;
-                    switch ((&g_first_city_status)[uVar14 * 0x24])
+                    roster_entry = roster_buffer + roster_index;
+                    previous_troops =
+                        *(uint16_t *)((uint32_t)*roster_entry * 0x10 + character_table_base + 10);
+                    updated_troops = (uint32_t)previous_troops;
+                    switch ((&g_first_city_status)[roster_count * 0x24])
                     {
                     case 2:
                     case 3:
-                        uVar9 = uVar9 - (uVar2 >> 2) & 0xffff;
+                        updated_troops = updated_troops - (previous_troops >> 2) & 0xffff;
                         break;
                     case 4:
-                        uVar9 = (uint32_t)(uVar2 >> 1);
+                        updated_troops = (uint32_t)(previous_troops >> 1);
                     }
-                    uVar11 = uVar11 + 1 & 0xff;
-                    *(short *)((uint32_t)*pbVar12 * 0x10 + iVar5 + 10) = (short)uVar9;
-                    uVar13 = uVar13 + uVar9 & 0xffff;
-                } while (uVar11 < uVar14);
+                    roster_index = roster_index + 1 & 0xff;
+                    *(short *)((uint32_t)*roster_entry * 0x10 + character_table_base + 10) =
+                        (short)updated_troops;
+                    total_troops = total_troops + updated_troops & 0xffff;
+                } while (roster_index < roster_count);
             }
-            iVar5 = g_character_table_address;
-            if (uVar13 / 0x32 < (uint32_t)(uint16_t)(&g_first_city_food)[iVar6 * 2])
+            character_table_base = g_character_table_address;
+            if (total_troops / 0x32 <
+                (uint32_t)(uint16_t)(&g_first_city_food)[city_word_offset * 2])
             {
-                (&g_first_city_food)[iVar6 * 2] =
-                    (&g_first_city_food)[iVar6 * 2] - (short)(uVar13 / 0x32);
+                (&g_first_city_food)[city_word_offset * 2] =
+                    (&g_first_city_food)[city_word_offset * 2] - (short)(total_troops / 0x32);
             }
             else
             {
-                uVar11 = 0;
-                if (uVar14 != 0)
+                roster_index = 0;
+                if (roster_count != 0)
                 {
                     do
                     {
-                        pbVar12 = pbVar3 + uVar11;
-                        uVar11 = uVar11 + 1 & 0xff;
-                        iVar8 = (uint32_t)*pbVar12 * 0x10 + iVar5;
-                        *(uint16_t *)(iVar8 + 10) = *(uint16_t *)(iVar8 + 10) >> 1;
-                    } while (uVar11 < uVar14);
+                        roster_entry = roster_buffer + roster_index;
+                        roster_index = roster_index + 1 & 0xff;
+                        character_address = (uint32_t)*roster_entry * 0x10 + character_table_base;
+                        *(uint16_t *)(character_address + 10) =
+                            *(uint16_t *)(character_address + 10) >> 1;
+                    } while (roster_index < roster_count);
                 }
-                (&g_first_city_food)[iVar6 * 2] = 0;
-                cVar1 = (&g_first_city_status)[iVar4];
-                (&g_first_city_status)[iVar4] = '\x01';
-                if ((cVar1 != '\x01') &&
-                    ((uint32_t)(uint8_t)(&g_first_city_owner)[iVar4] == g_player_character + 1))
+                (&g_first_city_food)[city_word_offset * 2] = 0;
+                previous_city_status = (&g_first_city_status)[city_byte_offset];
+                (&g_first_city_status)[city_byte_offset] = '\x01';
+                if ((previous_city_status != '\x01') &&
+                    ((uint32_t)(uint8_t)(&g_first_city_owner)[city_byte_offset] ==
+                     g_player_character + 1))
                 {
-                    sango_ui_show_city_event((uint8_t)uVar10, &g_first_city_food + iVar6 * 2,
-                                             uVar11, uVar14);
+                    sango_ui_show_city_event((uint8_t)city_id,
+                                             &g_first_city_food + city_word_offset * 2,
+                                             roster_index, roster_count);
                 }
             }
-            uVar14 = sango_city_list_captives(uVar10, (int)pbVar3);
-            uVar11 = 0;
-            pbVar12 = pbVar3;
-            if (uVar14 != 0)
+            roster_count = sango_city_list_captives(city_id, (int)roster_buffer);
+            roster_index = 0;
+            roster_entry = roster_buffer;
+            if (roster_count != 0)
             {
                 do
                 {
-                    pcVar7 = (char *)((uint32_t)*pbVar12 * 0x10 + g_character_table_address);
-                    if (*pcVar7 == (&g_first_city_owner)[iVar4])
+                    captive_record =
+                        (char *)((uint32_t)*roster_entry * 0x10 + g_character_table_address);
+                    if (*captive_record == (&g_first_city_owner)[city_byte_offset])
                     {
-                        pcVar7[1] = (&g_first_city_owner)[iVar4];
+                        captive_record[1] = (&g_first_city_owner)[city_byte_offset];
                     }
-                    uVar11 = uVar11 + 1 & 0xff;
-                    pbVar12 = pbVar3 + uVar11;
-                } while (uVar11 < uVar14);
+                    roster_index = roster_index + 1 & 0xff;
+                    roster_entry = roster_buffer + roster_index;
+                } while (roster_index < roster_count);
             }
         }
-        uVar10 = uVar10 + 1 & 0xff;
-        iVar6 = uVar10 << 3;
-    } while (uVar10 < 0x26);
+        city_id = city_id + 1 & 0xff;
+        city_word_offset = city_id << 3;
+    } while (city_id < 0x26);
     return 1;
 }
 
 /* 原函数 0x81c171cc */
 uint32_t sango_strategy_apply_city_disasters(void)
 {
-    uint8_t bVar1;
-    uint8_t bVar2;
-    int iVar3;
-    uint32_t uVar4;
-    uint16_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    int iVar8;
-    uint8_t *pbVar9;
-    uint32_t uVar10;
+    uint8_t owner_id;
+    uint8_t new_status;
+    int event_argument;
+    uint32_t random_roll;
+    uint16_t recovered;
+    uint32_t event_condition;
+    uint32_t previous_status;
+    int city_stride_base;
+    uint8_t *city_status;
+    uint32_t city_id;
 
-    uVar10 = 0;
-    iVar8 = 0;
+    /* 原表中的地址值只作为状态处理标签比较，不能当作新的函数入口。 */
+    enum
+    {
+        ROLL_NEW_DISASTER = 0x81c172a4,
+        RECOVER_WITH_FOOD = 0x81c173b0,
+        RECOVER_WITH_PREVENTION = 0x81c173d4,
+        RECOVER_WITH_LOYALTY = 0x81c173f0
+    };
+    city_id = 0;
+    city_stride_base = 0;
     do
     {
-        iVar3 = (iVar8 + uVar10) * 4;
-        pbVar9 = &g_first_city_status + iVar3;
-        bVar1 = (&g_first_city_owner)[iVar3];
-        if (bVar1 != 0)
+        event_argument = (city_stride_base + city_id) * 4;
+        city_status = &g_first_city_status + event_argument;
+        owner_id = (&g_first_city_owner)[event_argument];
+        if (owner_id != 0)
         {
-            uVar4 = bbk_rand();
-            uVar7 = (uint32_t)*pbVar9;
-            uVar6 = (uint32_t)(uVar7 < 5);
-            uVar4 = (int)uVar4 % 100 & 0xff;
-            if (uVar6 != 0)
+            random_roll = bbk_rand();
+            previous_status = (uint32_t)*city_status;
+            event_condition = (uint32_t)(previous_status < 5);
+            random_roll = (int)random_roll % 100 & 0xff;
+            if (event_condition != 0)
             {
-                switch ((uint32_t)(&g_legacy_data_81c20624)[uVar7] & 0xfffffffe)
+                switch ((uint32_t)(&g_city_status_dispatch_tags)[previous_status] & 0xfffffffe)
                 {
-                case 0x81c172a4:
-                    iVar8 = (iVar8 + uVar10) * 4;
-                    if ((uint8_t)(&g_first_city_disaster_prevention)[iVar8] < uVar4)
+                case ROLL_NEW_DISASTER:
+                    city_stride_base = (city_stride_base + city_id) * 4;
+                    if ((uint8_t)(&g_first_city_disaster_prevention)[city_stride_base] <
+                        random_roll)
                     {
-                        uVar4 = bbk_rand();
-                        iVar3 = (int)uVar4 >> 0x1f;
-                        uVar4 = (int)uVar4 % 5 & 0xff;
-                        bVar2 = 3;
-                        if (uVar4 == 1)
+                        random_roll = bbk_rand();
+                        event_argument = (int)random_roll >> 0x1f;
+                        random_roll = (int)random_roll % 5 & 0xff;
+                        new_status = 3;
+                        if (random_roll == 1)
                         {
-                        LAB_81c1736c:
-                            *pbVar9 = bVar2;
-                        LAB_81c17370:
-                            if ((*pbVar9 != 0) && ((uint32_t)bVar1 == g_player_character + 1))
+                        apply_new_disaster:
+                            *city_status = new_status;
+                        notify_player:
+                            if ((*city_status != 0) &&
+                                ((uint32_t)owner_id == g_player_character + 1))
                             {
-                                sango_ui_show_city_event((uint8_t)uVar10, iVar3, uVar6, uVar7);
+                                sango_ui_show_city_event((uint8_t)city_id, event_argument,
+                                                         event_condition, previous_status);
                             }
                         }
-                        else if (uVar4 < 2)
+                        else if (random_roll < 2)
                         {
-                            bVar2 = 2;
-                            if (uVar4 == 0)
-                                goto LAB_81c1736c;
+                            new_status = 2;
+                            if (random_roll == 0)
+                                goto apply_new_disaster;
                         }
-                        else if (uVar4 == 2)
+                        else if (random_roll == 2)
                         {
-                            uVar4 = bbk_rand();
-                            iVar3 = (int)uVar4 >> 0x1f;
-                            uVar6 = (uint32_t)((uint32_t)(uint8_t)(&g_first_city_loyalty)[iVar8] <
-                                               ((int)uVar4 % 100 & 0xffU));
-                            bVar2 = 4;
-                            if (uVar6 != 0)
-                                goto LAB_81c1736c;
-                            goto LAB_81c17370;
+                            random_roll = bbk_rand();
+                            event_argument = (int)random_roll >> 0x1f;
+                            event_condition = (uint32_t)((uint32_t)(uint8_t)(&g_first_city_loyalty)
+                                                             [city_stride_base] <
+                                                         ((int)random_roll % 100 & 0xffU));
+                            new_status = 4;
+                            if (event_condition != 0)
+                                goto apply_new_disaster;
+                            goto notify_player;
                         }
                     }
-                    goto switchD_81c1729c_default;
-                case 0x81c173b0:
-                    uVar5 = (&g_first_city_food)[(iVar8 + uVar10) * 2];
+                    goto next_city;
+                case RECOVER_WITH_FOOD:
+                    recovered = (&g_first_city_food)[(city_stride_base + city_id) * 2];
                     break;
-                case 0x81c173d4:
-                    uVar5 =
-                        (uint16_t)(uVar4 <
-                                   (uint8_t)(&g_first_city_disaster_prevention)[(iVar8 + uVar10) *
-                                                                                4]);
+                case RECOVER_WITH_PREVENTION:
+                    recovered =
+                        (uint16_t)(random_roll < (uint8_t)(&g_first_city_disaster_prevention)
+                                                     [(city_stride_base + city_id) * 4]);
                     break;
-                case 0x81c173f0:
-                    uVar5 =
-                        (uint16_t)(uVar4 < (uint8_t)(&g_first_city_loyalty)[(iVar8 + uVar10) * 4]);
+                case RECOVER_WITH_LOYALTY:
+                    recovered =
+                        (uint16_t)(random_roll <
+                                   (uint8_t)(&g_first_city_loyalty)[(city_stride_base + city_id) *
+                                                                    4]);
                 }
-                if (uVar5 != 0)
+                if (recovered != 0)
                 {
-                    *pbVar9 = 0;
+                    *city_status = 0;
                 }
             }
         }
-    switchD_81c1729c_default:
-        uVar10 = uVar10 + 1 & 0xff;
-        iVar8 = uVar10 << 3;
-        if (0x25 < uVar10)
+    next_city:
+        city_id = city_id + 1 & 0xff;
+        city_stride_base = city_id << 3;
+        if (0x25 < city_id)
         {
             return 1;
         }
@@ -368,99 +393,108 @@ void sango_strategy_collect_agriculture_income(void)
 /* 年度武将年龄与登场更新；原数据中出生年+16为成年登场年份。 */
 uint32_t sango_strategy_update_character_ages_and_debut(void)
 {
-    bool bVar1;
-    int iVar2;
-    uint32_t uVar3;
-    int iVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
+    bool already_present;
+    int record_address;
+    uint32_t roster_index;
+    int city_offset_or_result;
+    uint32_t spawn_city;
+    uint32_t present_count;
+    uint32_t character_id;
+    uint32_t record_offset;
 
     if (g_current_month_view2 == '\x01')
     {
-        uVar7 = 0;
+        character_id = 0;
         do
         {
-            iVar2 = uVar7 * 0x10 + g_character_table_address;
-            uVar7 = uVar7 + 1 & 0xff;
-            *(char *)(iVar2 + 0xe) = *(char *)(iVar2 + 0xe) + '\x01';
-        } while (uVar7 < 200);
+            record_address = character_id * 0x10 + g_character_table_address;
+            character_id = character_id + 1 & 0xff;
+            *(char *)(record_address + 0xe) = *(char *)(record_address + 0xe) + '\x01';
+        } while (character_id < 200);
     }
-    uVar7 = 0;
-    iVar2 = sango_resource_item(0x3f, g_scenario_id, g_resource_package_address);
-    uVar8 = 0;
+    character_id = 0;
+    record_address = sango_resource_item(0x3f, g_scenario_id, g_resource_package_address);
+    record_offset = 0;
     do
     {
-        if ((uint16_t)(*(uint8_t *)(iVar2 + uVar8) + 0x10) == g_current_year_view2)
+        if ((uint16_t)(*(uint8_t *)(record_address + record_offset) + 0x10) == g_current_year_view2)
         {
-            uVar5 = (uint32_t)((uint8_t *)(iVar2 + uVar8))[2];
-            if (uVar5 == 0)
+            spawn_city = (uint32_t)((uint8_t *)(record_address + record_offset))[2];
+            if (spawn_city == 0)
             {
-                uVar5 = bbk_rand();
-                uVar5 = (int)uVar5 % 0x26 & 0xff;
+                spawn_city = bbk_rand();
+                spawn_city = (int)spawn_city % 0x26 & 0xff;
             }
-            uVar6 = 0;
-            uVar3 = 0;
+            present_count = 0;
+            roster_index = 0;
             do
             {
-                iVar4 = uVar3 * 0x24;
-                uVar3 = uVar3 + 1 & 0xff;
-                uVar6 = uVar6 + (uint8_t)(&g_first_city_character_count)[iVar4] & 0xff;
-            } while (uVar3 < 0x26);
-            uVar3 = 0;
-            if (uVar6 == 0)
+                city_offset_or_result = roster_index * 0x24;
+                roster_index = roster_index + 1 & 0xff;
+                present_count =
+                    present_count +
+                        (uint8_t)(&g_first_city_character_count)[city_offset_or_result] &
+                    0xff;
+            } while (roster_index < 0x26);
+            roster_index = 0;
+            if (present_count == 0)
             {
-                bVar1 = false;
-            LAB_81c17974:
-                if (bVar1)
-                    goto LAB_81c177a0;
+                already_present = false;
+            check_duplicate_character:
+                if (already_present)
+                    goto next_character_record;
             }
             else
             {
                 do
                 {
-                    if ((uint8_t)(&g_city_character_roster)[uVar3] == uVar7)
+                    if ((uint8_t)(&g_city_character_roster)[roster_index] == character_id)
                     {
-                        bVar1 = uVar3 < uVar6;
-                        goto LAB_81c17974;
+                        already_present = roster_index < present_count;
+                        goto check_duplicate_character;
                     }
-                    uVar3 = uVar3 + 1 & 0xff;
-                } while (uVar3 < uVar6);
+                    roster_index = roster_index + 1 & 0xff;
+                } while (roster_index < present_count);
             }
-            iVar4 = sango_city_add_character(uVar5, (uint8_t)uVar7);
-            if (iVar4 == 0)
+            city_offset_or_result = sango_city_add_character(spawn_city, (uint8_t)character_id);
+            if (city_offset_or_result == 0)
             {
                 return 0;
             }
-            *(uint8_t *)(uVar7 * 0x10 + g_character_table_address + 0xe) = 0x10;
+            *(uint8_t *)(character_id * 0x10 + g_character_table_address + 0xe) = 0x10;
         }
-    LAB_81c177a0:
-        uVar7 = uVar7 + 1 & 0xff;
-        uVar8 = uVar8 + 3 & 0xffff;
-        if (199 < uVar7)
+    next_character_record:
+        character_id = character_id + 1 & 0xff;
+        record_offset = record_offset + 3 & 0xffff;
+        if (199 < character_id)
         {
-            uVar7 = 0;
-            iVar2 = 0;
+            uint32_t city_index = 0;
+            record_address = 0;
             do
             {
-                iVar2 = (iVar2 + uVar7) * 4;
-                uVar8 = (uint32_t)(uint8_t)(&g_first_city_character_start)[iVar2];
-                uVar5 = uVar8 + (uint8_t)(&g_first_city_character_count)[iVar2];
-                for (; uVar8 < (uVar5 & 0xff); uVar8 = uVar8 + 1 & 0xff)
+                record_address = (record_address + city_index) * 4;
+                uint32_t roster_position =
+                    (uint32_t)(uint8_t)(&g_first_city_character_start)[record_address];
+                uint32_t roster_end =
+                    roster_position + (uint8_t)(&g_first_city_character_count)[record_address];
+                for (; roster_position < (roster_end & 0xff);
+                     roster_position = roster_position + 1 & 0xff)
                 {
-                    iVar2 = uVar8 * 0x10 + g_character_table_address;
-                    *(char *)(iVar2 + 0xe) = *(char *)(iVar2 + 0xe) + '\x01';
-                    if (((0x59 < *(uint8_t *)(uVar8 * 0x10 + g_character_table_address + 0xe)) &&
-                         (uVar3 = bbk_rand(), (int)uVar3 % 100 < 0x32)) &&
-                        (iVar2 = sango_city_remove_character(uVar7, (uint8_t)uVar8), iVar2 == 0))
+                    record_address = roster_position * 0x10 + g_character_table_address;
+                    *(char *)(record_address + 0xe) = *(char *)(record_address + 0xe) + '\x01';
+                    if (((0x59 <
+                          *(uint8_t *)(roster_position * 0x10 + g_character_table_address + 0xe)) &&
+                         (roster_index = bbk_rand(), (int)roster_index % 100 < 0x32)) &&
+                        (record_address =
+                             sango_city_remove_character(city_index, (uint8_t)roster_position),
+                         record_address == 0))
                     {
                         return 0;
                     }
                 }
-                uVar7 = uVar7 + 1 & 0xff;
-                iVar2 = uVar7 << 3;
-                if (0x25 < uVar7)
+                city_index = city_index + 1 & 0xff;
+                record_address = city_index << 3;
+                if (0x25 < city_index)
                 {
                     return 1;
                 }

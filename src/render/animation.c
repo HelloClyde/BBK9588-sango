@@ -11,227 +11,217 @@ uint32_t sango_animation_play_range(uint32_t resource_id, uint32_t first_command
     unsigned char abi_storage[86] __attribute__((aligned(8)));
     (*(uint16_t *)(abi_storage + 64)) = origin_x;
     (*(short *)(abi_storage + 68)) = origin_y;
-#define local_30 (*(uint32_t *)(abi_storage + 0))
+#define last_drawn_index (*(uint32_t *)(abi_storage + 0))
 #define origin_x (*(uint16_t *)(abi_storage + 64))
 #define origin_y (*(short *)(abi_storage + 68))
 
-    uint8_t bVar1;
-    uint8_t bVar2;
-    uint8_t bVar3;
-    bool needs_erase;
-    bool needs_draw;
-    int iVar6;
-    uint8_t bVar7;
-    int iVar8;
-    uint32_t uVar9;
-    uint32_t range_end;
-    uint8_t *pbVar11;
-    uint32_t uVar12;
-    uint8_t *pbVar13;
-    uint32_t uVar14;
-    uint8_t *pbVar15;
-    uint32_t uVar16;
-    uint32_t uVar17;
-    uint8_t *lifetimes;
-    uint32_t range_begin;
-    int commands_address;
-    int delays_address;
-
-    range_end = last_command & 0xff;
-    range_begin = first_command & 0xff;
-    iVar8 = sango_resource_item(resource_id & 0xffff, '\x01', g_resource_package_address);
-    iVar6 = g_scratch_buffer_address;
-    needs_erase = true;
-    needs_draw = true;
-    if (iVar8 == 0)
+    uint32_t range_end = last_command & 0xff;
+    uint32_t range_begin = first_command & 0xff;
+    int animation_address =
+        sango_resource_item(resource_id & 0xffff, '\x01', g_resource_package_address);
+    int sprite_table_address = g_scratch_buffer_address;
+    bool needs_erase = true;
+    bool needs_draw = true;
+    if (animation_address == 0)
     {
         sango_debug_show_resource_id(resource_id & 0xffff);
+        return 0xff;
     }
-    else
+
+    int commands_address = animation_address + 6;
+    uint8_t sprite_count = *(uint8_t *)(animation_address + 3);
+    int delays_address = g_scratch_buffer_address + 400;
+    uint8_t *sprite_cursor =
+        (uint8_t *)(commands_address + (uint32_t) * (uint8_t *)(animation_address + 2) * 5);
+    uint8_t *lifetimes = (uint8_t *)(g_scratch_buffer_address + 500);
+
+    /* 每条指令使用独立的延迟、存活计数；原有8位计数和包含末端的范围不变。 */
+    uint32_t command_index = 0;
+    if (-1 < (int)(range_end - range_begin))
     {
-        commands_address = iVar8 + 6;
-        bVar7 = *(uint8_t *)(iVar8 + 3);
-        delays_address = g_scratch_buffer_address + 400;
-        pbVar15 = (uint8_t *)(commands_address + (uint32_t) * (uint8_t *)(iVar8 + 2) * 5);
-        lifetimes = (uint8_t *)(g_scratch_buffer_address + 500);
-        uVar17 = 0;
-        if (-1 < (int)(range_end - range_begin))
-        {
-            do
-            {
-                iVar8 = (uVar17 + range_begin) * 5 + commands_address;
-                *(uint8_t *)(delays_address + uVar17) = *(uint8_t *)(iVar8 + 3);
-                pbVar11 = lifetimes + uVar17;
-                uVar17 = uVar17 + 1 & 0xff;
-                *pbVar11 = *(uint8_t *)(iVar8 + 2);
-            } while ((int)uVar17 <= (int)(range_end - range_begin));
-        }
-        uVar17 = 0;
-        if (bVar7 != 0)
-        {
-            do
-            {
-                bVar1 = pbVar15[3];
-                bVar2 = pbVar15[2];
-                uVar9 = (uint32_t)pbVar15[1] * 0x100 + (uint32_t)*pbVar15;
-                bVar3 = pbVar15[5];
-                iVar8 = uVar17 * 4;
-                uVar17 = uVar17 + 1 & 0xff;
-                uVar12 = (uVar9 & 0xffff) >> 2;
-                if ((uVar9 & 3) != 0)
-                {
-                    uVar12 = uVar12 + 1;
-                }
-                *(uint8_t **)(iVar8 + iVar6) = pbVar15;
-                uVar12 = uVar12 * ((uint32_t)bVar1 * 0x100 + (uint32_t)bVar2 & 0xffff) & 0xffff;
-                pbVar15 = pbVar15 + ((bVar3 & 1) * uVar12 + uVar12 + 6 & 0xffff);
-            } while (uVar17 < bVar7);
-        }
-        uVar17 = 0;
-        local_30 = 0;
         do
         {
+            int command_address = (command_index + range_begin) * 5 + commands_address;
+            *(uint8_t *)(delays_address + command_index) = *(uint8_t *)(command_address + 3);
+            uint8_t *lifetime_entry = lifetimes + command_index;
+            command_index = command_index + 1 & 0xff;
+            *lifetime_entry = *(uint8_t *)(command_address + 2);
+        } while ((int)command_index <= (int)(range_end - range_begin));
+    }
+
+    /* 精灵在资源中紧邻排列，mask标志决定每帧是否附带第二个像素平面。 */
+    uint32_t sprite_index = 0;
+    if (sprite_count != 0)
+    {
+        do
+        {
+            uint8_t height_high = sprite_cursor[3];
+            uint8_t height_low = sprite_cursor[2];
+            uint32_t sprite_width = (uint32_t)sprite_cursor[1] * 0x100 + (uint32_t)*sprite_cursor;
+            uint8_t bitmap_flags = sprite_cursor[5];
+            int sprite_slot_offset = sprite_index * 4;
+            sprite_index = sprite_index + 1 & 0xff;
+            uint32_t row_bytes = (sprite_width & 0xffff) >> 2;
+            if ((sprite_width & 3) != 0)
+                row_bytes = row_bytes + 1;
+            *(uint8_t **)(sprite_slot_offset + sprite_table_address) = sprite_cursor;
+            uint32_t plane_bytes =
+                row_bytes * ((uint32_t)height_high * 0x100 + (uint32_t)height_low & 0xffff) &
+                0xffff;
+            sprite_cursor =
+                sprite_cursor + ((bitmap_flags & 1) * plane_bytes + plane_bytes + 6 & 0xffff);
+        } while (sprite_index < sprite_count);
+    }
+
+    uint32_t active_end_index = 0;
+    last_drawn_index = 0;
+    do
+    {
+        uint32_t absolute_command;
+        do
+        {
+            command_index = 0;
+            uint8_t *lifetime_cursor = lifetimes;
+            if ((play_flags & 1) != 0)
+            {
+                uint32_t key = sango_input_peek_key();
+                if (key != 0xff)
+                    return key;
+            }
+
+            /* 先擦除本拍到期的精灵，再减少计数；禁用擦除也要触发后续重绘。 */
             do
             {
-                uVar12 = 0;
-                pbVar15 = lifetimes;
-                if (((play_flags & 1) != 0) && (uVar9 = sango_input_peek_key(), uVar9 != 0xff))
+                if (*lifetime_cursor == 1)
                 {
-                    return uVar9;
+                    uint8_t *command =
+                        (uint8_t *)((command_index + range_begin) * 5 + commands_address);
+                    needs_erase = true;
+                    if ((play_flags & 2) == 0)
+                    {
+                        uint8_t *bitmap =
+                            *(uint8_t **)((uint32_t)command[4] * 4 + sprite_table_address);
+                        sango_render_clear_rectangle(
+                            origin_x + *command, origin_y + (uint16_t)command[1],
+                            origin_x + *command + (uint16_t)bitmap[1] * 0x100 + (uint16_t)*bitmap -
+                                1,
+                            origin_y + (uint16_t)command[1] + (uint16_t)bitmap[3] * 0x100 +
+                                (uint16_t)bitmap[2] - 1,
+                            g_game_context);
+                    }
                 }
+                uint8_t remaining_lifetime = *lifetime_cursor;
+                command_index = command_index + 1 & 0xff;
+                if (remaining_lifetime != 0)
+                    *lifetime_cursor = remaining_lifetime - 1;
+                lifetime_cursor = lifetimes + command_index;
+            } while (command_index <= active_end_index);
+
+            if (needs_erase)
+            {
+                command_index = 0;
                 do
                 {
-                    if (*pbVar15 == 1)
+                    uint8_t *command =
+                        (uint8_t *)((command_index + range_begin) * 5 + commands_address);
+                    if (lifetimes[command_index] != 0)
                     {
-                        pbVar11 = (uint8_t *)((uVar12 + range_begin) * 5 + commands_address);
-                        needs_erase = true;
-                        if ((play_flags & 2) != 0)
-                            goto LAB_81c06c20;
-                        pbVar13 = *(uint8_t **)((uint32_t)pbVar11[4] * 4 + iVar6);
-                        sango_render_clear_rectangle(
-                            origin_x + *pbVar11, origin_y + (uint16_t)pbVar11[1],
-                            origin_x + *pbVar11 + (uint16_t)pbVar13[1] * 0x100 +
-                                (uint16_t)*pbVar13 + -1,
-                            origin_y + (uint16_t)pbVar11[1] + (uint16_t)pbVar13[3] * 0x100 +
-                                (uint16_t)pbVar13[2] + -1,
-                            g_game_context);
-                        bVar7 = *pbVar15;
+                        uint8_t *bitmap =
+                            *(uint8_t **)((uint32_t)command[4] * 4 + sprite_table_address);
+                        uint32_t screen_x = (uint32_t)origin_x + (uint32_t)*command & 0xffff;
+                        uint32_t sprite_width =
+                            (uint32_t)bitmap[1] * 0x100 + (uint32_t)*bitmap & 0xffff;
+                        uint32_t sprite_height =
+                            (uint32_t)bitmap[3] * 0x100 + (uint32_t)bitmap[2] & 0xffff;
+                        if ((bitmap[5] & 1) == 1)
+                            sango_raster_draw_masked(screen_x, origin_y + (uint16_t)command[1],
+                                                     sprite_width, sprite_height, (int)(bitmap + 6),
+                                                     g_game_context);
+                        else
+                            sango_raster_draw_opaque(screen_x, origin_y + (uint16_t)command[1],
+                                                     sprite_width, sprite_height, (int)(bitmap + 6),
+                                                     g_game_context);
                     }
-                    else
-                    {
-                    LAB_81c06c20:
-                        bVar7 = *pbVar15;
-                    }
-                    uVar12 = uVar12 + 1 & 0xff;
-                    if (bVar7 != 0)
-                    {
-                        *pbVar15 = bVar7 - 1;
-                    }
-                    pbVar15 = lifetimes + uVar12;
-                } while (uVar12 <= uVar17);
-                if (needs_erase)
-                {
-                    uVar12 = 0;
-                    do
-                    {
-                        pbVar15 = (uint8_t *)((uVar12 + range_begin) * 5 + commands_address);
-                        if (lifetimes[uVar12] != 0)
-                        {
-                            pbVar11 = *(uint8_t **)((uint32_t)pbVar15[4] * 4 + iVar6);
-                            uVar16 = (uint32_t)origin_x + (uint32_t)*pbVar15 & 0xffff;
-                            uVar9 = (uint32_t)pbVar11[1] * 0x100 + (uint32_t)*pbVar11 & 0xffff;
-                            uVar14 = (uint32_t)pbVar11[3] * 0x100 + (uint32_t)pbVar11[2] & 0xffff;
-                            if ((pbVar11[5] & 1) == 1)
-                            {
-                                sango_raster_draw_masked(uVar16, origin_y + (uint16_t)pbVar15[1],
-                                                         uVar9, uVar14, (int)(pbVar11 + 6),
-                                                         g_game_context);
-                            }
-                            else
-                            {
-                                sango_raster_draw_opaque(uVar16, origin_y + (uint16_t)pbVar15[1],
-                                                         uVar9, uVar14, (int)(pbVar11 + 6),
-                                                         g_game_context);
-                            }
-                        }
-                        uVar12 = uVar12 + 1 & 0xff;
-                    } while (uVar12 <= local_30);
-                }
-                uVar12 = local_30;
-                if (needs_draw)
-                {
-                    while (uVar12 = uVar12 + 1 & 0xff, local_30 = uVar17, uVar12 <= uVar17)
-                    {
-                        pbVar15 = (uint8_t *)((uVar12 + range_begin) * 5 + commands_address);
-                        if (lifetimes[uVar12] != 0)
-                        {
-                            pbVar11 = *(uint8_t **)((uint32_t)pbVar15[4] * 4 + iVar6);
-                            uVar16 = (uint32_t)origin_x + (uint32_t)*pbVar15 & 0xffff;
-                            uVar9 = (uint32_t)pbVar11[1] * 0x100 + (uint32_t)*pbVar11 & 0xffff;
-                            uVar14 = (uint32_t)pbVar11[3] * 0x100 + (uint32_t)pbVar11[2] & 0xffff;
-                            if ((pbVar11[5] & 1) == 1)
-                            {
-                                sango_raster_draw_masked(uVar16, origin_y + (uint16_t)pbVar15[1],
-                                                         uVar9, uVar14, (int)(pbVar11 + 6),
-                                                         g_game_context);
-                            }
-                            else
-                            {
-                                sango_raster_draw_opaque(uVar16, origin_y + (uint16_t)pbVar15[1],
-                                                         uVar9, uVar14, (int)(pbVar11 + 6),
-                                                         g_game_context);
-                            }
-                        }
-                    }
-                }
-                if ((needs_draw) || (needs_erase))
-                {
-                    needs_draw = false;
-                    needs_erase = false;
-                    sango_render_present(g_game_context);
-                }
-                else
-                {
-                    uVar12 = sango_input_wait(1, '\x01');
-                    if (uVar12 != 0)
-                    {
-                        return uVar12;
-                    }
-                }
-                bVar7 = *(uint8_t *)(delays_address + uVar17);
-                if (bVar7 != 0)
-                {
-                    bVar7 = bVar7 - 1;
-                    *(uint8_t *)(delays_address + uVar17) = bVar7;
-                }
-                uVar12 = uVar17 + range_begin;
-                if ((bVar7 < 2) && (uVar12 < range_end))
-                {
-                    needs_draw = true;
-                    do
-                    {
-                        uVar17 = uVar17 + 1 & 0xff;
-                        uVar12 = uVar17 + range_begin;
-                        if (1 < *(uint8_t *)(delays_address + uVar17))
-                            break;
-                    } while (uVar12 < range_end);
-                }
-            } while (uVar12 < range_end);
-            uVar12 = 0;
-            pbVar15 = lifetimes;
-            while (*pbVar15 < 2)
+                    command_index = command_index + 1 & 0xff;
+                } while (command_index <= last_drawn_index);
+            }
+
+            command_index = last_drawn_index;
+            if (needs_draw)
             {
-                uVar12 = uVar12 + 1 & 0xff;
-                pbVar15 = lifetimes + uVar12;
-                if (uVar17 < uVar12)
+                while (command_index = command_index + 1 & 0xff,
+                       last_drawn_index = active_end_index, command_index <= active_end_index)
                 {
-                    return 0xff;
+                    uint8_t *command =
+                        (uint8_t *)((command_index + range_begin) * 5 + commands_address);
+                    if (lifetimes[command_index] != 0)
+                    {
+                        uint8_t *bitmap =
+                            *(uint8_t **)((uint32_t)command[4] * 4 + sprite_table_address);
+                        uint32_t screen_x = (uint32_t)origin_x + (uint32_t)*command & 0xffff;
+                        uint32_t sprite_width =
+                            (uint32_t)bitmap[1] * 0x100 + (uint32_t)*bitmap & 0xffff;
+                        uint32_t sprite_height =
+                            (uint32_t)bitmap[3] * 0x100 + (uint32_t)bitmap[2] & 0xffff;
+                        if ((bitmap[5] & 1) == 1)
+                            sango_raster_draw_masked(screen_x, origin_y + (uint16_t)command[1],
+                                                     sprite_width, sprite_height, (int)(bitmap + 6),
+                                                     g_game_context);
+                        else
+                            sango_raster_draw_opaque(screen_x, origin_y + (uint16_t)command[1],
+                                                     sprite_width, sprite_height, (int)(bitmap + 6),
+                                                     g_game_context);
+                    }
                 }
             }
-        } while (uVar12 <= uVar17);
-    }
+
+            if (needs_draw || needs_erase)
+            {
+                needs_draw = false;
+                needs_erase = false;
+                sango_render_present(g_game_context);
+            }
+            else
+            {
+                uint32_t input_result = sango_input_wait(1, '\x01');
+                if (input_result != 0)
+                    return input_result;
+            }
+
+            uint8_t *delay = (uint8_t *)(delays_address + active_end_index);
+            uint8_t remaining_delay = *delay;
+            if (remaining_delay != 0)
+            {
+                remaining_delay = remaining_delay - 1;
+                *delay = remaining_delay;
+            }
+            absolute_command = active_end_index + range_begin;
+            if ((remaining_delay < 2) && (absolute_command < range_end))
+            {
+                needs_draw = true;
+                do
+                {
+                    active_end_index = active_end_index + 1 & 0xff;
+                    absolute_command = active_end_index + range_begin;
+                    if (1 < *(uint8_t *)(delays_address + active_end_index))
+                        break;
+                } while (absolute_command < range_end);
+            }
+        } while (absolute_command < range_end);
+
+        /* 最后一条指令已进入播放，仍需等已激活精灵全部到期。 */
+        command_index = 0;
+        uint8_t *lifetime_cursor = lifetimes;
+        while (*lifetime_cursor < 2)
+        {
+            command_index = command_index + 1 & 0xff;
+            lifetime_cursor = lifetimes + command_index;
+            if (active_end_index < command_index)
+                return 0xff;
+        }
+    } while (command_index <= active_end_index);
     return 0xff;
 }
-#undef local_30
+#undef last_drawn_index
 #undef origin_x
 #undef origin_y

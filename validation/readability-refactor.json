@@ -122,5 +122,7 @@
     "tools/source_index.py": "efa1c1c90efcec34359c176a025e252ae76ba373f1a67d3681fe63f437f72f1c",
     "tools/source_map.py": "0ecb8903de1ba0521318d9abf680bee2329f0e71ffcc6d919f1ec425827afb84"
   },
-  "scope": "Readability refactor. New ELF was checked using legacy debug aliases. Final BDA payload and whole container are byte-identical to that checked ELF and the previous validated release. No new native-firmware or hardware session; existing evidence retains its original limits. Complex recovered routines still contain temporary names, byte offsets and goto control flow."
+  "scope": "Readability refactor. New ELF was checked using legacy debug aliases. Final BDA payload and whole container are byte-identical to that checked ELF and the previous validated release. No new native-firmware or hardware session; existing evidence retains its original limits. Complex recovered routines still contain temporary names, byte offsets and goto control flow.",
+  "status": "Historical first-phase record; source/report paths and hashes refer to the snapshot commit, not current HEAD.",
+  "snapshot_commit": "ad129c18bdb7a7b254b739a58fb046a9e9713b7d"
 }

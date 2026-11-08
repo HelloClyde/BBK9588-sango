@@ -60,13 +60,13 @@ uint32_t sango_strategy_handle_defeated_units(uint32_t param_1, char *param_2)
                     else
                     {
                         sango_city_add_item(uVar8, *(char *)(iVar6 + 0xc) - 1);
-                        sango_character_add_item(*(char *)(iVar6 + 0xc) - 1);
+                        sango_item_mark_discovered(*(char *)(iVar6 + 0xc) - 1);
                         cVar1 = *(char *)(iVar6 + 0xd);
                     }
                     if (cVar1 != '\0')
                     {
                         sango_city_add_item(uVar8, cVar1 - 1);
-                        sango_character_add_item(*(char *)(iVar6 + 0xd) - 1);
+                        sango_item_mark_discovered(*(char *)(iVar6 + 0xd) - 1);
                     }
                     if (g_battle_control_mode != '\x02')
                     {
@@ -185,116 +185,120 @@ uint32_t sango_city_choose_postbattle_governor(uint8_t param_1, uint32_t param_2
 }
 
 /* 原函数 0x81c11188 */
-void sango_strategy_resolve_ruler_succession(uint8_t param_1)
+void sango_strategy_resolve_ruler_succession(uint8_t previous_ruler)
 {
     unsigned char abi_storage[224] __attribute__((aligned(8)));
-#define auStack_f0 (*(uint8_t(*)[104])(abi_storage + 0))
-#define auStack_88 (*(uint8_t(*)[104])(abi_storage + 104))
+#define owner_name (*(uint8_t(*)[104])(abi_storage + 0))
+#define character_name (*(uint8_t(*)[104])(abi_storage + 104))
 
-    uint32_t uVar1;
-    uint32_t uVar2;
-    uint8_t bVar3;
-    uint8_t *pbVar4;
-    uint8_t *pbVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint8_t *pbVar8;
-    uint8_t *pbVar9;
+    uint32_t city_count;
+    uint32_t character_count;
+    uint8_t successor_id;
+    uint8_t *roster_entry;
+    uint8_t *roster_cursor;
+    uint32_t candidate_index;
+    uint32_t roster_index;
+    uint8_t *successor_entry;
+    uint8_t *member_ids;
 
-    uVar7 = (uint32_t)param_1;
-    sango_strategy_show_new_ruler(param_1);
-    pbVar5 = g_scratch_buffer_address;
-    uVar1 = sango_faction_list_cities(uVar7, (int)g_scratch_buffer_address);
-    pbVar9 = pbVar5 + 0x26;
-    if (uVar1 == 0)
+    uint32_t previous_ruler_id = (uint32_t)previous_ruler;
+    sango_strategy_show_new_ruler(previous_ruler);
+    roster_cursor = g_scratch_buffer_address;
+    city_count = sango_faction_list_cities(previous_ruler_id, (int)g_scratch_buffer_address);
+    member_ids = roster_cursor + 0x26;
+    if (city_count == 0)
     {
-        sango_strategy_show_faction_destroyed(param_1);
+        sango_strategy_show_faction_destroyed(previous_ruler);
     }
     else
     {
-        uVar2 = sango_faction_list_characters(uVar7, (int)pbVar9);
-        if (uVar2 == 0)
+        character_count = sango_faction_list_characters(previous_ruler_id, (int)member_ids);
+        if (character_count == 0)
         {
-            sango_strategy_show_faction_destroyed(param_1);
-            uVar7 = 0;
-            pbVar9 = pbVar5;
-            if (uVar1 != 0)
+            sango_strategy_show_faction_destroyed(previous_ruler);
+            roster_index = 0;
+            member_ids = roster_cursor;
+            if (city_count != 0)
             {
                 do
                 {
-                    uVar7 = uVar7 + 1 & 0xff;
-                    (&g_first_city_owner)[(uint32_t)*pbVar9 * 0x24] = 0;
-                    pbVar9 = pbVar5 + uVar7;
-                } while (uVar7 < uVar1);
+                    roster_index = roster_index + 1 & 0xff;
+                    (&g_first_city_owner)[(uint32_t)*member_ids * 0x24] = 0;
+                    member_ids = roster_cursor + roster_index;
+                } while (roster_index < city_count);
             }
         }
         else
         {
-            uVar6 = 1;
-            if (g_player_character == uVar7)
+            candidate_index = 1;
+            if (g_player_character == previous_ruler_id)
             {
                 sango_ui_show_strategy_text(0x50);
                 do
                 {
-                    uVar7 = sango_ui_select_character((int)pbVar9, uVar2, 4, 2, 0xeb, 0x3d);
-                } while (uVar7 == 0xff);
-                pbVar8 = pbVar9 + uVar7;
-                g_player_character = *pbVar8;
-                bVar3 = *pbVar8;
+                    roster_index = sango_ui_select_character((int)member_ids, character_count, 4, 2,
+                                                             0xeb, 0x3d);
+                } while (roster_index == 0xff);
+                successor_entry = member_ids + roster_index;
+                g_player_character = *successor_entry;
+                successor_id = *successor_entry;
             }
             else
             {
-                pbVar8 = pbVar9;
-                if (1 < uVar2)
+                successor_entry = member_ids;
+                if (1 < character_count)
                 {
                     do
                     {
-                        pbVar4 = pbVar9 + uVar6;
-                        uVar6 = uVar6 + 1 & 0xff;
-                        if (*(uint8_t *)((uint32_t)*pbVar8 * 0x10 + g_character_table_address + 4) <
-                            *(uint8_t *)((uint32_t)*pbVar4 * 0x10 + g_character_table_address + 4))
+                        roster_entry = member_ids + candidate_index;
+                        candidate_index = candidate_index + 1 & 0xff;
+                        if (*(uint8_t *)((uint32_t)*successor_entry * 0x10 +
+                                         g_character_table_address + 4) <
+                            *(uint8_t *)((uint32_t)*roster_entry * 0x10 +
+                                         g_character_table_address + 4))
                         {
-                            pbVar8 = pbVar4;
+                            successor_entry = roster_entry;
                         }
-                    } while (uVar6 < uVar2);
+                    } while (candidate_index < character_count);
                 }
-                bVar3 = *pbVar8;
+                successor_id = *successor_entry;
             }
-            uVar7 = 0;
-            sango_strategy_show_ruler_changed(bVar3);
-            *(uint8_t *)((uint32_t)*pbVar8 * 0x10 + g_character_table_address + 5) = 100;
-            pbVar4 = pbVar5;
-            if (uVar1 != 0)
+            roster_index = 0;
+            sango_strategy_show_ruler_changed(successor_id);
+            *(uint8_t *)((uint32_t)*successor_entry * 0x10 + g_character_table_address + 5) = 100;
+            roster_entry = roster_cursor;
+            if (city_count != 0)
             {
                 do
                 {
-                    uVar7 = uVar7 + 1 & 0xff;
-                    (&g_first_city_owner)[(uint32_t)*pbVar4 * 0x24] = *pbVar8 + 1;
-                    pbVar4 = pbVar5 + uVar7;
-                } while (uVar7 < uVar1);
+                    roster_index = roster_index + 1 & 0xff;
+                    (&g_first_city_owner)[(uint32_t)*roster_entry * 0x24] = *successor_entry + 1;
+                    roster_entry = roster_cursor + roster_index;
+                } while (roster_index < city_count);
             }
-            uVar7 = 0;
-            if (uVar2 != 0)
+            roster_index = 0;
+            if (character_count != 0)
             {
-                pbVar5 = pbVar9;
+                roster_cursor = member_ids;
                 do
                 {
-                    *(uint8_t *)((uint32_t)*pbVar5 * 0x10 + g_character_table_address + 1) =
-                        *pbVar8 + 1;
+                    *(uint8_t *)((uint32_t)*roster_cursor * 0x10 + g_character_table_address + 1) =
+                        *successor_entry + 1;
                     sango_load_named_text(
-                        *(char *)((uint32_t)*pbVar5 * 0x10 + g_character_table_address + 1) + 0xff,
-                        auStack_f0);
-                    sango_load_named_text(*pbVar5, auStack_88);
-                    uVar7 = uVar7 + 1 & 0xff;
-                    pbVar5 = pbVar9 + uVar7;
-                } while (uVar7 < uVar2);
+                        *(char *)((uint32_t)*roster_cursor * 0x10 + g_character_table_address + 1) +
+                            0xff,
+                        owner_name);
+                    sango_load_named_text(*roster_cursor, character_name);
+                    roster_index = roster_index + 1 & 0xff;
+                    roster_cursor = member_ids + roster_index;
+                } while (roster_index < character_count);
             }
         }
     }
     return;
 }
-#undef auStack_f0
-#undef auStack_88
+#undef owner_name
+#undef character_name
 
 /* 原函数 0x81c11404 */
 void sango_strategy_show_new_ruler(uint8_t param_1)
@@ -535,7 +539,7 @@ uint32_t sango_city_order_confiscate(uint32_t param_1)
                 }
                 pbVar9 = local_30 + uVar5;
                 sango_city_add_item(param_1 & 0xff, *pbVar9);
-                sango_character_add_item(*pbVar9);
+                sango_item_mark_discovered(*pbVar9);
                 sango_item_remove_attributes((uint32_t)*pbVar9, uVar4);
                 pcVar10[uVar5] = '\0';
             }

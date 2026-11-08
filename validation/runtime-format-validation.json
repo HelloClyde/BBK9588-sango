@@ -1,0 +1,12 @@
+{
+  "passed": 60026,
+  "failed": 0,
+  "groups": {
+    "vformat": 58516,
+    "fields": 1314,
+    "strtol": 196
+  },
+  "baseline_elf_sha256": "3b55f42a611f275c211f62b0686b32e0b5ee34d7e4617d9dccda9392abcf89e0",
+  "candidate_elf_sha256": "b654383e622e5fa347801045d010365ae550455c47d680df9706ba33965398fc",
+  "scope": "The reported groups execute retained MIPS runtime code in a separate ELF. vformat compares counts, emitted bytes, %n writes and O32 alignment; fields compares integer/float/string conversion; strtol compares value, end pointer and errno. Legacy quirks are preserved. vformat itself is discarded from the production BDA. This is a host CPU model, not firmware or hardware validation."
+}

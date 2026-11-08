@@ -158,28 +158,28 @@ void sango_ui_show_character_message(uint8_t param_1, char *param_2)
 #undef local_30
 
 /* 原函数 0x81c18150 */
-void sango_character_add_item(uint8_t param_1)
+void sango_item_mark_discovered(uint8_t item_id)
 {
-    uint8_t bVar1;
-    uint32_t uVar2;
-    uint8_t *pbVar3;
-    uint32_t uVar4;
+    uint8_t roster_value;
+    uint32_t roster_index;
+    uint8_t *roster_entry;
+    uint32_t total_items;
 
-    uVar4 = (uint32_t)g_legacy_data_81c2b9a4 + (uint32_t)g_legacy_data_81c2b9a5 & 0xff;
-    uVar2 = 0;
-    if (uVar4 != 0)
+    total_items = (uint32_t)g_legacy_data_81c2b9a4 + (uint32_t)g_legacy_data_81c2b9a5 & 0xff;
+    roster_index = 0;
+    if (total_items != 0)
     {
         do
         {
-            pbVar3 = &g_city_item_roster + uVar2;
-            bVar1 = *pbVar3;
-            uVar2 = uVar2 + 1 & 0xff;
-            if ((bVar1 & 0x7f) == param_1)
+            roster_entry = &g_city_item_roster + roster_index;
+            roster_value = *roster_entry;
+            roster_index = roster_index + 1 & 0xff;
+            if ((roster_value & 0x7f) == item_id)
             {
-                *pbVar3 = bVar1 | 0x80;
+                *roster_entry = roster_value | 0x80;
                 return;
             }
-        } while (uVar2 < uVar4);
+        } while (roster_index < total_items);
     }
     return;
 }

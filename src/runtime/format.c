@@ -3,13 +3,13 @@
 /* 恢复的数值格式化和浮点文本转换。 */
 
 /* 原函数 0x81c1c48c */
-void sango_crt_append_character(uint8_t param_1, int *param_2)
+void sango_crt_append_character(uint8_t character, int *output_cursor_address)
 {
-    uint8_t *puVar1;
+    uint8_t *output_cursor;
 
-    puVar1 = (uint8_t *)*param_2;
-    *puVar1 = param_1;
-    *param_2 = (int)(puVar1 + 1);
+    output_cursor = (uint8_t *)*output_cursor_address;
+    *output_cursor = character;
+    *output_cursor_address = (int)(output_cursor + 1);
     return;
 }
 
@@ -36,12 +36,12 @@ void sango_crt_initialize(void)
 }
 
 /* 原函数 0x81c1c540 */
-int sango_crt_read_buffer(uint32_t param_1, uint8_t *param_2, int param_3)
+int sango_crt_read_buffer(uint32_t stream_handle, uint8_t *output, int requested_bytes)
 {
-    int iVar1;
+    int bytes_read;
 
-    iVar1 = 0;
-    while ((param_3 != 0 && (g_legacy_data_81c2b1f4 != '\x01')))
+    bytes_read = 0;
+    while ((requested_bytes != 0 && (g_legacy_data_81c2b1f4 != '\x01')))
     {
         if (g_legacy_data_81c2b9e0 == '\0')
         {
@@ -51,14 +51,14 @@ int sango_crt_read_buffer(uint32_t param_1, uint8_t *param_2, int param_3)
         else
         {
             g_legacy_data_81c2b9e0 = g_legacy_data_81c2b9e0 + -1;
-            param_3 = param_3 + -1;
-            iVar1 = iVar1 + 1;
-            *param_2 = (&g_legacy_data_81c2b9e0)[g_legacy_data_81c2b1f0];
+            requested_bytes = requested_bytes + -1;
+            bytes_read = bytes_read + 1;
+            *output = (&g_legacy_data_81c2b9e0)[g_legacy_data_81c2b1f0];
             g_legacy_data_81c2b1f0 = g_legacy_data_81c2b1f0 + 1;
-            param_2 = param_2 + 1;
+            output = output + 1;
         }
     }
-    return iVar1;
+    return bytes_read;
 }
 
 /* 原函数 0x81c1c5d8 */
@@ -85,1064 +85,1110 @@ void crt_diagnostic_noop(uint32_t ignored, ...)
 }
 
 /* 原函数 0x81c1c600 */
-int sango_crt_isdigit(char param_1)
+int sango_crt_isdigit(char character)
 {
-    int iVar1;
+    int result;
 
-    iVar1 = (int)param_1;
-    if (9 < iVar1 - 0x30U)
+    result = (int)character;
+    if (9 < result - 0x30U)
     {
-        iVar1 = 0;
+        result = 0;
     }
-    return iVar1;
+    return result;
 }
 
 /* 原函数 0x81c1c620 */
-int sango_crt_isspace(char param_1)
+int sango_crt_isspace(char character)
 {
-    int iVar1;
-    int iVar2;
+    int result;
+    int character_code;
 
-    iVar2 = (int)param_1;
-    iVar1 = iVar2;
-    if ((4 < iVar2 - 9U) && (iVar1 = 0, iVar2 == 0x20))
+    character_code = (int)character;
+    result = character_code;
+    if ((4 < character_code - 9U) && (result = 0, character_code == 0x20))
     {
-        iVar1 = iVar2;
+        result = character_code;
     }
-    return iVar1;
+    return result;
 }
 
 /* 原函数 0x81c1c650 */
-int sango_crt_toupper(char param_1)
+int sango_crt_toupper(char character)
 {
-    int iVar1;
-    int iVar2;
+    int uppercase;
+    int character_code;
 
-    iVar2 = (int)param_1;
-    iVar1 = iVar2 + -0x20;
-    if (0x19 < iVar2 - 0x61U)
+    character_code = (int)character;
+    uppercase = character_code + -0x20;
+    if (0x19 < character_code - 0x61U)
     {
-        iVar1 = iVar2;
+        uppercase = character_code;
     }
-    return iVar1;
+    return uppercase;
 }
 
 /* 原函数 0x81c1c670 */
-int sango_crt_format_integer_entry(uint8_t *param_1, uint8_t *param_2, int param_3,
-                                   uint32_t param_4)
+int sango_crt_format_entry(uint8_t *output, uint8_t *format, int argument0, uint32_t argument1)
 {
     unsigned char abi_storage[24] __attribute__((aligned(8)));
-#define local_resc (*(uint32_t *)(abi_storage + 4))
-#define local_res8 (*(int *)(abi_storage + 0))
+#define second_argument_word (*(uint32_t *)(abi_storage + 4))
+#define first_argument_word (*(int *)(abi_storage + 0))
 
-    int iVar1;
+    int output_bytes;
 
-    local_res8 = param_3;
-    local_resc = param_4;
-    iVar1 = sango_crt_format_integer_words(0x4d, param_1, param_2, &local_res8);
-    if (iVar1 < 0)
+    first_argument_word = argument0;
+    second_argument_word = argument1;
+    output_bytes = sango_crt_format_words(0x4d, output, format, &first_argument_word);
+    if (output_bytes < 0)
     {
-        *param_1 = 0;
+        *output = 0;
     }
     else
     {
-        param_1[iVar1] = 0;
+        output[output_bytes] = 0;
     }
-    return iVar1;
+    return output_bytes;
 }
-#undef local_resc
-#undef local_res8
+#undef second_argument_word
+#undef first_argument_word
 
 /* 原函数 0x81c1c6d0 */
-int sango_crt_format_integer_words(int param_1, void *param_2, uint8_t *param_3, int *param_4)
+int sango_crt_format_words(int output_mode, void *output_target, uint8_t *format, int *arguments)
 {
     unsigned char abi_storage[120] __attribute__((aligned(8)));
-#define local_90 (*(int **)(abi_storage + 0))
-#define local_8c (*(uint32_t *)(abi_storage + 4))
-#define local_88 (*(int *)(abi_storage + 8))
-#define local_84 (*(uint32_t *)(abi_storage + 12))
-#define local_80 (*(uint32_t *)(abi_storage + 16))
-#define local_7c (*(uint32_t *)(abi_storage + 20))
-#define local_78 (*(int *)(abi_storage + 24))
-#define local_74 (*(int *)(abi_storage + 28))
-#define local_70 (*(void **)(abi_storage + 32))
-#define local_6c (*(uint32_t *)(abi_storage + 36))
-#define local_68 (*(uint32_t *)(abi_storage + 40))
-#define local_64 (*(uint32_t *)(abi_storage + 44))
-#define local_60 (*(uint32_t *)(abi_storage + 48))
-#define local_5c (*(uint32_t *)(abi_storage + 52))
-#define local_58 (*(uint32_t *)(abi_storage + 56))
-#define local_54 (*(uint32_t *)(abi_storage + 60))
-#define local_50 (*(uint32_t *)(abi_storage + 64))
-#define acStack_48 (*(char(*)[32])(abi_storage + 72))
+#define argument_cursor (*(int **)(abi_storage + 0))
+#define alignment_code (*(uint32_t *)(abi_storage + 4))
+#define sign_code (*(int *)(abi_storage + 8))
+#define zero_padding_code (*(uint32_t *)(abi_storage + 12))
+#define alternate_code (*(uint32_t *)(abi_storage + 16))
+#define length_modifier (*(uint32_t *)(abi_storage + 20))
+#define field_width (*(int *)(abi_storage + 24))
+#define precision (*(int *)(abi_storage + 28))
+#define field_body (*(void **)(abi_storage + 32))
+#define leading_spaces (*(uint32_t *)(abi_storage + 36))
+#define leading_zeros (*(uint32_t *)(abi_storage + 40))
+#define internal_zeros (*(uint32_t *)(abi_storage + 44))
+#define fractional_zeros (*(uint32_t *)(abi_storage + 48))
+#define trailing_spaces (*(uint32_t *)(abi_storage + 52))
+#define prefix_length (*(uint32_t *)(abi_storage + 56))
+#define body_length (*(uint32_t *)(abi_storage + 60))
+#define suffix_length (*(uint32_t *)(abi_storage + 64))
+#define field_prefix (*(char(*)[32])(abi_storage + 72))
 
-    uint8_t bVar1;
-    uint32_t uVar2;
-    int *piVar3;
-    int iVar4;
-    uint8_t *pbVar5;
-    uint8_t *pbVar6;
-    void *dst;
-    uint32_t uVar7;
-    int iVar8;
+    uint8_t format_byte;
+    uint32_t stream_result_word;
+    int *argument_word;
+    int parse_status;
+    uint8_t *specifier_cursor;
+    uint8_t *next_format;
+    void *output_cursor;
+    uint32_t span_length;
+    int output_count;
 
-    iVar8 = 0;
-    dst = param_2;
-    local_90 = param_4;
-    if (param_3 != (uint8_t *)0x0)
+    output_count = 0;
+    output_cursor = output_target;
+    argument_cursor = arguments;
+    if (format != (uint8_t *)0x0)
     {
         do
         {
-            uVar7 = 0;
-            bVar1 = *param_3;
-            pbVar5 = param_3;
-            while ((bVar1 != 0x25 && (bVar1 != 0)))
+            span_length = 0;
+            format_byte = *format;
+            specifier_cursor = format;
+            while ((format_byte != 0x25 && (format_byte != 0)))
             {
-                pbVar5 = pbVar5 + 1;
-                uVar7 = uVar7 + 1;
-                bVar1 = *pbVar5;
+                specifier_cursor = specifier_cursor + 1;
+                span_length = span_length + 1;
+                format_byte = *specifier_cursor;
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), param_3, uVar7);
-                if (uVar2 != uVar7)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), format, span_length);
+                if (stream_result_word != span_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, param_3, uVar7);
-                dst = (void *)((int)dst + uVar7);
+                crt_memcpy(output_cursor, format, span_length);
+                output_cursor = (void *)((int)output_cursor + span_length);
             }
-            iVar8 = iVar8 + uVar7;
-            if (*pbVar5 != 0x25)
+            output_count = output_count + span_length;
+            if (*specifier_cursor != 0x25)
             {
-                return iVar8;
+                return output_count;
             }
-            local_8c = 0x4c;
-            local_88 = 0x4c;
-            local_84 = 0x4c;
-            local_80 = 0x4c;
-            iVar4 = 0x4c;
+            alignment_code = 0x4c;
+            sign_code = 0x4c;
+            zero_padding_code = 0x4c;
+            alternate_code = 0x4c;
+            parse_status = 0x4c;
             do
             {
-                pbVar6 = pbVar5;
-                pbVar5 = pbVar6 + 1;
-                switch (*pbVar5)
+                next_format = specifier_cursor;
+                specifier_cursor = next_format + 1;
+                switch (*specifier_cursor)
                 {
                 case 0x20:
-                    if (local_88 == 0x4c)
+                    if (sign_code == 0x4c)
                     {
-                        local_88 = 0x20;
+                        sign_code = 0x20;
                     }
                     break;
                 default:
-                    iVar4 = 0x48;
+                    parse_status = 0x48;
                     break;
                 case 0x23:
-                    local_80 = 0x48;
+                    alternate_code = 0x48;
                     break;
                 case 0x2b:
-                    local_88 = 0x2b;
+                    sign_code = 0x2b;
                     break;
                 case 0x2d:
-                    local_8c = 0x48;
+                    alignment_code = 0x48;
                     break;
                 case 0x30:
-                    local_84 = 0x48;
+                    zero_padding_code = 0x48;
                 }
-            } while (iVar4 == 0x4c);
-            if (*pbVar5 == 0x2a)
+            } while (parse_status == 0x4c);
+            if (*specifier_cursor == 0x2a)
             {
-                piVar3 = (int *)((int)local_90 + 3U & 0xfffffffc);
-                local_90 = piVar3 + 1;
-                local_78 = *piVar3;
-                if (local_78 < 0)
+                argument_word = (int *)((int)argument_cursor + 3U & 0xfffffffc);
+                argument_cursor = argument_word + 1;
+                field_width = *argument_word;
+                if (field_width < 0)
                 {
-                    local_8c = 0x48;
-                    local_78 = -local_78;
+                    alignment_code = 0x48;
+                    field_width = -field_width;
                 }
-                pbVar5 = pbVar6 + 2;
-                bVar1 = *pbVar5;
+                specifier_cursor = next_format + 2;
+                format_byte = *specifier_cursor;
             }
             else
             {
-                local_78 = 0;
-                while (iVar4 = sango_crt_isdigit(*pbVar5), iVar4 != 0)
+                field_width = 0;
+                while (parse_status = sango_crt_isdigit(*specifier_cursor), parse_status != 0)
                 {
-                    local_78 = local_78 * 10 + (uint32_t)*pbVar5 + -0x30;
-                    pbVar5 = pbVar5 + 1;
+                    field_width = field_width * 10 + (uint32_t)*specifier_cursor + -0x30;
+                    specifier_cursor = specifier_cursor + 1;
                 }
-                bVar1 = *pbVar5;
+                format_byte = *specifier_cursor;
             }
-            if (bVar1 == 0x2e)
+            if (format_byte == 0x2e)
             {
-                pbVar6 = pbVar5 + 1;
-                if (*pbVar6 == 0x2a)
+                next_format = specifier_cursor + 1;
+                if (*next_format == 0x2a)
                 {
-                    piVar3 = (int *)((int)local_90 + 3U & 0xfffffffc);
-                    local_90 = piVar3 + 1;
-                    local_74 = *piVar3;
-                    pbVar6 = pbVar5 + 2;
-                    goto LAB_81c1c938;
+                    argument_word = (int *)((int)argument_cursor + 3U & 0xfffffffc);
+                    argument_cursor = argument_word + 1;
+                    precision = *argument_word;
+                    next_format = specifier_cursor + 2;
                 }
-                local_74 = 0;
-                while (iVar4 = sango_crt_isdigit(*pbVar6), iVar4 != 0)
+                else
                 {
-                    local_74 = local_74 * 10 + (uint32_t)*pbVar6 + -0x30;
-                    pbVar6 = pbVar6 + 1;
+                    precision = 0;
+                    while (parse_status = sango_crt_isdigit(*next_format), parse_status != 0)
+                    {
+                        precision = precision * 10 + (uint32_t)*next_format - '0';
+                        next_format = next_format + 1;
+                    }
                 }
-                bVar1 = *pbVar6;
             }
             else
             {
-                local_74 = -1;
-                pbVar6 = pbVar5;
-            LAB_81c1c938:
-                bVar1 = *pbVar6;
+                precision = -1;
+                next_format = specifier_cursor;
             }
-            local_7c = (uint32_t)bVar1;
-            if ((local_7c == 0x68) || (local_7c = (uint32_t)*pbVar6, local_7c == 0x6c))
+            format_byte = *next_format;
+            length_modifier = (uint32_t)format_byte;
+            if ((length_modifier == 0x68) ||
+                (length_modifier = (uint32_t)*next_format, length_modifier == 0x6c))
             {
-                pbVar6 = pbVar6 + 1;
+                next_format = next_format + 1;
             }
             else
             {
-                local_7c = 0x4c;
+                length_modifier = 0x4c;
             }
-            param_3 = (uint8_t *)sango_crt_format_float_field((int *)&local_90, (char *)pbVar6,
-                                                              acStack_48);
-            for (uVar7 = local_6c; 0x14 < (int)uVar7; uVar7 = uVar7 - 0x14)
+            format = (uint8_t *)sango_crt_format_field((int *)&argument_cursor, (char *)next_format,
+                                                       field_prefix);
+            for (span_length = leading_spaces; 0x14 < (int)span_length;
+                 span_length = span_length - 0x14)
             {
-                iVar4 = 0x53;
-                if (param_1 == 0x53)
+                parse_status = 0x53;
+                if (output_mode == 0x53)
                 {
-                    crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c20990,
-                                        0x14);
-                    if (iVar4 != 0x14)
+                    crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4),
+                                        g_legacy_data_81c20990, 0x14);
+                    if (parse_status != 0x14)
                     {
                         return -1;
                     }
                 }
                 else
                 {
-                    crt_memcpy(dst, g_legacy_data_81c20990, 0x14);
-                    dst = (void *)((int)dst + 0x14);
+                    crt_memcpy(output_cursor, g_legacy_data_81c20990, 0x14);
+                    output_cursor = (void *)((int)output_cursor + 0x14);
                 }
-                iVar8 = iVar8 + 0x14;
+                output_count = output_count + 0x14;
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c20990, uVar7);
-                if (uVar2 != uVar7)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), g_legacy_data_81c20990,
+                                    span_length);
+                if (stream_result_word != span_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, g_legacy_data_81c20990, uVar7);
-                dst = (void *)((int)dst + uVar7);
+                crt_memcpy(output_cursor, g_legacy_data_81c20990, span_length);
+                output_cursor = (void *)((int)output_cursor + span_length);
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), acStack_48, local_58);
-                if (uVar2 != local_58)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), field_prefix,
+                                    prefix_length);
+                if (stream_result_word != prefix_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, acStack_48, local_58);
-                dst = (void *)((int)dst + local_58);
+                crt_memcpy(output_cursor, field_prefix, prefix_length);
+                output_cursor = (void *)((int)output_cursor + prefix_length);
             }
-            iVar8 = iVar8 + uVar7 + local_58;
-            for (uVar7 = local_68; 0x14 < (int)uVar7; uVar7 = uVar7 - 0x14)
+            output_count = output_count + span_length + prefix_length;
+            for (span_length = leading_zeros; 0x14 < (int)span_length;
+                 span_length = span_length - 0x14)
             {
-                iVar4 = 0x53;
-                if (param_1 == 0x53)
+                parse_status = 0x53;
+                if (output_mode == 0x53)
                 {
-                    crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c209a8,
-                                        0x14);
-                    if (iVar4 != 0x14)
+                    crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4),
+                                        g_legacy_data_81c209a8, 0x14);
+                    if (parse_status != 0x14)
                     {
                         return -1;
                     }
                 }
                 else
                 {
-                    crt_memcpy(dst, g_legacy_data_81c209a8, 0x14);
-                    dst = (void *)((int)dst + 0x14);
+                    crt_memcpy(output_cursor, g_legacy_data_81c209a8, 0x14);
+                    output_cursor = (void *)((int)output_cursor + 0x14);
                 }
-                iVar8 = iVar8 + 0x14;
+                output_count = output_count + 0x14;
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c209a8, uVar7);
-                if (uVar2 != uVar7)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), g_legacy_data_81c209a8,
+                                    span_length);
+                if (stream_result_word != span_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, g_legacy_data_81c209a8, uVar7);
-                dst = (void *)((int)dst + uVar7);
+                crt_memcpy(output_cursor, g_legacy_data_81c209a8, span_length);
+                output_cursor = (void *)((int)output_cursor + span_length);
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), local_70, local_54);
-                if (uVar2 != local_54)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), field_body, body_length);
+                if (stream_result_word != body_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, local_70, local_54);
-                dst = (void *)((int)dst + local_54);
+                crt_memcpy(output_cursor, field_body, body_length);
+                output_cursor = (void *)((int)output_cursor + body_length);
             }
-            iVar8 = iVar8 + uVar7 + local_54;
-            for (uVar7 = local_64; 0x14 < (int)uVar7; uVar7 = uVar7 - 0x14)
+            output_count = output_count + span_length + body_length;
+            for (span_length = internal_zeros; 0x14 < (int)span_length;
+                 span_length = span_length - 0x14)
             {
-                iVar4 = 0x53;
-                if (param_1 == 0x53)
+                parse_status = 0x53;
+                if (output_mode == 0x53)
                 {
-                    crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c209a8,
-                                        0x14);
-                    if (iVar4 != 0x14)
+                    crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4),
+                                        g_legacy_data_81c209a8, 0x14);
+                    if (parse_status != 0x14)
                     {
                         return -1;
                     }
                 }
                 else
                 {
-                    crt_memcpy(dst, g_legacy_data_81c209a8, 0x14);
-                    dst = (void *)((int)dst + 0x14);
+                    crt_memcpy(output_cursor, g_legacy_data_81c209a8, 0x14);
+                    output_cursor = (void *)((int)output_cursor + 0x14);
                 }
-                iVar8 = iVar8 + 0x14;
+                output_count = output_count + 0x14;
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c209a8, uVar7);
-                if (uVar2 != uVar7)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), g_legacy_data_81c209a8,
+                                    span_length);
+                if (stream_result_word != span_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, g_legacy_data_81c209a8, uVar7);
-                dst = (void *)((int)dst + uVar7);
+                crt_memcpy(output_cursor, g_legacy_data_81c209a8, span_length);
+                output_cursor = (void *)((int)output_cursor + span_length);
             }
-            if (param_1 == 0x53)
+            if (output_mode == 0x53)
             {
-                uVar2 = local_54;
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), (int)local_70 + local_54,
-                                    local_50);
-                if (uVar2 != local_50)
+                stream_result_word = body_length;
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4),
+                                    (int)field_body + body_length, suffix_length);
+                if (stream_result_word != suffix_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, (void *)((int)local_70 + local_54), local_50);
-                dst = (void *)((int)dst + local_50);
+                crt_memcpy(output_cursor, (void *)((int)field_body + body_length), suffix_length);
+                output_cursor = (void *)((int)output_cursor + suffix_length);
             }
-            iVar8 = iVar8 + uVar7 + local_50;
-            for (uVar7 = local_60; 0x14 < (int)uVar7; uVar7 = uVar7 - 0x14)
+            output_count = output_count + span_length + suffix_length;
+            for (span_length = fractional_zeros; 0x14 < (int)span_length;
+                 span_length = span_length - 0x14)
             {
-                iVar4 = 0x53;
-                if (param_1 == 0x53)
+                parse_status = 0x53;
+                if (output_mode == 0x53)
                 {
-                    crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c209a8,
-                                        0x14);
-                    if (iVar4 != 0x14)
+                    crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4),
+                                        g_legacy_data_81c209a8, 0x14);
+                    if (parse_status != 0x14)
                     {
                         return -1;
                     }
                 }
                 else
                 {
-                    crt_memcpy(dst, g_legacy_data_81c209a8, 0x14);
-                    dst = (void *)((int)dst + 0x14);
+                    crt_memcpy(output_cursor, g_legacy_data_81c209a8, 0x14);
+                    output_cursor = (void *)((int)output_cursor + 0x14);
                 }
-                iVar8 = iVar8 + 0x14;
+                output_count = output_count + 0x14;
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c209a8, uVar7);
-                if (uVar2 != uVar7)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), g_legacy_data_81c209a8,
+                                    span_length);
+                if (stream_result_word != span_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, g_legacy_data_81c209a8, uVar7);
-                dst = (void *)((int)dst + uVar7);
+                crt_memcpy(output_cursor, g_legacy_data_81c209a8, span_length);
+                output_cursor = (void *)((int)output_cursor + span_length);
             }
-            iVar8 = iVar8 + uVar7;
-            for (uVar7 = local_5c; 0x14 < (int)uVar7; uVar7 = uVar7 - 0x14)
+            output_count = output_count + span_length;
+            for (span_length = trailing_spaces; 0x14 < (int)span_length;
+                 span_length = span_length - 0x14)
             {
-                iVar4 = 0x53;
-                if (param_1 == 0x53)
+                parse_status = 0x53;
+                if (output_mode == 0x53)
                 {
-                    crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c20990,
-                                        0x14);
-                    if (iVar4 != 0x14)
+                    crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4),
+                                        g_legacy_data_81c20990, 0x14);
+                    if (parse_status != 0x14)
                     {
                         return -1;
                     }
                 }
                 else
                 {
-                    crt_memcpy(dst, g_legacy_data_81c20990, 0x14);
-                    dst = (void *)((int)dst + 0x14);
+                    crt_memcpy(output_cursor, g_legacy_data_81c20990, 0x14);
+                    output_cursor = (void *)((int)output_cursor + 0x14);
                 }
-                iVar8 = iVar8 + 0x14;
+                output_count = output_count + 0x14;
             }
-            uVar2 = 0x53;
-            if (param_1 == 0x53)
+            stream_result_word = 0x53;
+            if (output_mode == 0x53)
             {
-                crt_diagnostic_noop(*(uint32_t *)((int)param_2 + 4), g_legacy_data_81c20990, uVar7);
-                if (uVar2 != uVar7)
+                crt_diagnostic_noop(*(uint32_t *)((int)output_target + 4), g_legacy_data_81c20990,
+                                    span_length);
+                if (stream_result_word != span_length)
                 {
                     return -1;
                 }
             }
             else
             {
-                crt_memcpy(dst, g_legacy_data_81c20990, uVar7);
-                dst = (void *)((int)dst + uVar7);
+                crt_memcpy(output_cursor, g_legacy_data_81c20990, span_length);
+                output_cursor = (void *)((int)output_cursor + span_length);
             }
-            iVar8 = iVar8 + uVar7;
-        } while (param_3 != (uint8_t *)0x0);
+            output_count = output_count + span_length;
+        } while (format != (uint8_t *)0x0);
     }
-    return iVar8;
+    return output_count;
 }
-#undef local_90
-#undef local_8c
-#undef local_88
-#undef local_84
-#undef local_80
-#undef local_7c
-#undef local_78
-#undef local_74
-#undef local_70
-#undef local_6c
-#undef local_68
-#undef local_64
-#undef local_60
-#undef local_5c
-#undef local_58
-#undef local_54
-#undef local_50
-#undef acStack_48
+#undef argument_cursor
+#undef alignment_code
+#undef sign_code
+#undef zero_padding_code
+#undef alternate_code
+#undef length_modifier
+#undef field_width
+#undef precision
+#undef field_body
+#undef leading_spaces
+#undef leading_zeros
+#undef internal_zeros
+#undef fractional_zeros
+#undef trailing_spaces
+#undef prefix_length
+#undef body_length
+#undef suffix_length
+#undef field_prefix
 
 /* 原函数 0x81c1ce34 */
-char *sango_crt_format_float_field(int *param_1, char *param_2, char *param_3)
+char *sango_crt_format_field(int *field, char *conversion, char *prefix_buffer)
 {
-    SangoLegacyCode *pcVar1;
-    uint32_t *puVar2;
-    uint32_t *puVar3;
-    int iVar4;
-    int iVar5;
-    char *pcVar6;
-    uint32_t uVar7;
-    uint32_t uVar8;
+    SangoLegacyCode *trap_handler;
+    uint32_t *string_argument;
+    uint32_t *argument_word;
+    int remaining_width;
+    int precision;
+    char *string_value;
+    uint32_t value_low;
+    uint32_t value_high_or_radix;
 
-    param_1[9] = 0;
-    param_1[0xe] = 0;
-    param_1[10] = 0;
-    param_1[0xf] = 0;
-    param_1[0xb] = 0;
-    param_1[0x10] = 0;
-    param_1[0xc] = 0;
-    param_1[0xd] = 0;
-    switch (*param_2)
+    field[9] = 0;
+    field[0xe] = 0;
+    field[10] = 0;
+    field[0xf] = 0;
+    field[0xb] = 0;
+    field[0x10] = 0;
+    field[0xc] = 0;
+    field[0xd] = 0;
+    switch (*conversion)
     {
     case '%':
-        *param_3 = '%';
-        param_1[8] = (int)(param_3 + 1);
-        param_1[0xe] = 1;
+        *prefix_buffer = '%';
+        field[8] = (int)(prefix_buffer + 1);
+        field[0xe] = 1;
         break;
     default:
-        *param_3 = *param_2;
-        param_1[0xe] = 1;
-        param_1[6] = 0;
+        *prefix_buffer = *conversion;
+        field[0xe] = 1;
+        field[6] = 0;
         break;
     case 'E':
     case 'G':
     case 'e':
     case 'f':
     case 'g':
-        puVar3 = (uint32_t *)(*param_1 + 7U & 0xfffffff8);
-        *param_1 = (int)(puVar3 + 2);
-        uVar7 = *puVar3;
-        uVar8 = puVar3[1];
-        if ((int)uVar8 < 0)
+        argument_word = (uint32_t *)(*field + 7U & 0xfffffff8);
+        *field = (int)(argument_word + 2);
+        value_low = *argument_word;
+        value_high_or_radix = argument_word[1];
+        if ((int)value_high_or_radix < 0)
         {
-            *param_3 = '-';
-            param_1[0xe] = 1;
-            uVar8 = uVar8 & 0x7fffffff;
+            *prefix_buffer = '-';
+            field[0xe] = 1;
+            value_high_or_radix = value_high_or_radix & 0x7fffffff;
         }
         else
         {
-            if (param_1[2] == 0x20)
+            if (field[2] == 0x20)
             {
-                *param_3 = ' ';
+                *prefix_buffer = ' ';
             }
             else
             {
-                if (param_1[2] != 0x2b)
-                    goto LAB_81c1d098;
-                *param_3 = '+';
+                if (field[2] != 0x2b)
+                    goto prepare_float_body;
+                *prefix_buffer = '+';
             }
-            param_1[0xe] = 1;
+            field[0xe] = 1;
         }
-    LAB_81c1d098:
-        param_1[8] = (int)(param_3 + param_1[0xe]);
-        if (*param_2 == 'G')
+    prepare_float_body:
+        field[8] = (int)(prefix_buffer + field[0xe]);
+        if (*conversion == 'G')
         {
-            *param_2 = 'E';
+            *conversion = 'E';
         }
-        else if (*param_2 == 'g')
+        else if (*conversion == 'g')
         {
-            *param_2 = 'e';
+            *conversion = 'e';
         }
-        if (param_1[7] < 0)
+        if (field[7] < 0)
         {
-            param_1[7] = 6;
+            field[7] = 6;
         }
-        sango_crt_format_double_digits((int)param_1, param_2, uVar7, uVar8, param_2);
-        iVar4 = param_1[6];
-        goto LAB_81c1d128;
+        sango_crt_format_double_digits((int)field, conversion, value_low, value_high_or_radix,
+                                       conversion);
+        remaining_width = field[6];
+        goto apply_field_padding;
     case 'X':
     case 'o':
     case 'u':
     case 'x':
-        if (param_1[5] == 0x68)
+        if (field[5] == 0x68)
         {
             sango_legacy_trap();
         }
-        puVar3 = (uint32_t *)(*param_1 + 3U & 0xfffffffc);
-        *param_1 = (int)(puVar3 + 1);
-        uVar7 = *puVar3;
-        if ((param_1[4] == 0x48) && (*param_2 != 'u'))
+        argument_word = (uint32_t *)(*field + 3U & 0xfffffffc);
+        *field = (int)(argument_word + 1);
+        value_low = *argument_word;
+        if ((field[4] == 0x48) && (*conversion != 'u'))
         {
-            param_3[param_1[0xe]] = '0';
-            iVar4 = param_1[0xe];
-            param_1[0xe] = iVar4 + 1;
-            if (*param_2 != 'o')
+            prefix_buffer[field[0xe]] = '0';
+            remaining_width = field[0xe];
+            field[0xe] = remaining_width + 1;
+            if (*conversion != 'o')
             {
-                param_3[iVar4 + 1] = *param_2;
-                param_1[0xe] = param_1[0xe] + 1;
+                prefix_buffer[remaining_width + 1] = *conversion;
+                field[0xe] = field[0xe] + 1;
             }
         }
-        param_1[8] = (int)(param_3 + param_1[0xe]);
-        uVar8 = 8;
-        if ((*param_2 != 'o') && (uVar8 = 10, *param_2 != 'u'))
+        field[8] = (int)(prefix_buffer + field[0xe]);
+        value_high_or_radix = 8;
+        if ((*conversion != 'o') && (value_high_or_radix = 10, *conversion != 'u'))
         {
-            uVar8 = 0x10;
+            value_high_or_radix = 0x10;
         }
-        goto LAB_81c1d014;
+        goto format_integer_digits;
     case 'c':
         /* WARNING: Does not return */
-        pcVar1 = (SangoLegacyCode *)sango_legacy_trap(0);
-        (*pcVar1)();
+        trap_handler = (SangoLegacyCode *)sango_legacy_trap(0);
+        (*trap_handler)();
     case 'd':
     case 'i':
-        if (param_1[5] == 0x68)
+        if (field[5] == 0x68)
         {
             sango_legacy_trap();
         }
-        puVar3 = (uint32_t *)(*param_1 + 3U & 0xfffffffc);
-        *param_1 = (int)(puVar3 + 1);
-        uVar7 = *puVar3;
-        if ((int)uVar7 < 0)
+        argument_word = (uint32_t *)(*field + 3U & 0xfffffffc);
+        *field = (int)(argument_word + 1);
+        value_low = *argument_word;
+        if ((int)value_low < 0)
         {
-            *param_3 = '-';
-            param_1[0xe] = 1;
-            uVar7 = -uVar7;
+            *prefix_buffer = '-';
+            field[0xe] = 1;
+            value_low = -value_low;
         }
         else
         {
-            if (param_1[2] == 0x20)
+            if (field[2] == 0x20)
             {
-                *param_3 = ' ';
+                *prefix_buffer = ' ';
             }
             else
             {
-                if (param_1[2] != 0x2b)
-                    goto LAB_81c1cf50;
-                *param_3 = '+';
+                if (field[2] != 0x2b)
+                    goto prepare_integer_body;
+                *prefix_buffer = '+';
             }
-            param_1[0xe] = 1;
+            field[0xe] = 1;
         }
-    LAB_81c1cf50:
-        param_1[8] = (int)(param_3 + param_1[0xe]);
-        uVar8 = 10;
-    LAB_81c1d014:
-        sango_crt_format_unsigned_digits((int)param_1, uVar7, uVar8, param_2);
-        iVar4 = param_1[6];
-        goto LAB_81c1d128;
+    prepare_integer_body:
+        field[8] = (int)(prefix_buffer + field[0xe]);
+        value_high_or_radix = 10;
+    format_integer_digits:
+        sango_crt_format_unsigned_digits((int)field, value_low, value_high_or_radix, conversion);
+        remaining_width = field[6];
+        goto apply_field_padding;
     case 's':
-        puVar2 = (uint32_t *)(*param_1 + 3U & 0xfffffffc);
-        *param_1 = (int)(puVar2 + 1);
-        pcVar6 = (char *)*puVar2;
-        param_1[8] = (int)pcVar6;
-        iVar4 = sango_crt_strlen(pcVar6);
-        param_1[0xf] = iVar4;
-        iVar5 = param_1[7];
-        if ((-1 < iVar5) && (iVar5 < iVar4))
+        string_argument = (uint32_t *)(*field + 3U & 0xfffffffc);
+        *field = (int)(string_argument + 1);
+        string_value = (char *)*string_argument;
+        field[8] = (int)string_value;
+        remaining_width = sango_crt_strlen(string_value);
+        field[0xf] = remaining_width;
+        precision = field[7];
+        if ((-1 < precision) && (precision < remaining_width))
         {
-            param_1[0xf] = iVar5;
+            field[0xf] = precision;
         }
     }
-    iVar4 = param_1[6];
-LAB_81c1d128:
-    iVar4 =
-        (((((iVar4 - param_1[0xe]) - param_1[10]) - param_1[0xf]) - param_1[0xb]) - param_1[0x10]) -
-        param_1[0xc];
-    param_1[6] = iVar4;
-    if (0 < iVar4)
+    remaining_width = field[6];
+apply_field_padding:
+    remaining_width =
+        (((((remaining_width - field[0xe]) - field[10]) - field[0xf]) - field[0xb]) - field[0x10]) -
+        field[0xc];
+    field[6] = remaining_width;
+    if (0 < remaining_width)
     {
-        if (param_1[1] == 0x4c)
+        if (field[1] == 0x4c)
         {
-            param_1[9] = iVar4;
+            field[9] = remaining_width;
         }
         else
         {
-            param_1[0xd] = param_1[6];
+            field[0xd] = field[6];
         }
     }
-    return param_2 + 1;
+    return conversion + 1;
 }
 
 /* 原函数 0x81c1d198 */
-void sango_crt_format_unsigned_digits(int param_1, uint32_t param_2, uint32_t param_3,
-                                      char *param_4)
+void sango_crt_format_unsigned_digits(int field_address, uint32_t value, uint32_t radix,
+                                      char *conversion)
 {
     unsigned char abi_storage[48] __attribute__((aligned(8)));
-#define acStack_21 (*(char(*)[25])(abi_storage + 7))
+#define reverse_digits (*(char(*)[25])(abi_storage + 7))
 
-    char *pcVar1;
-    int iVar2;
-    int iVar3;
+    char *digit_table;
+    int precision_or_write_index;
+    int first_digit;
 
-    pcVar1 = g_legacy_data_81c20b68;
-    if (*param_4 != 'X')
+    digit_table = g_legacy_data_81c20b68;
+    if (*conversion != 'X')
     {
-        pcVar1 = g_legacy_data_81c20b54;
+        digit_table = g_legacy_data_81c20b54;
     }
-    iVar2 = 0x18;
+    precision_or_write_index = 0x18;
     do
     {
-        iVar3 = iVar2;
-        iVar2 = iVar3 + -1;
-        if (param_3 == 0)
+        first_digit = precision_or_write_index;
+        precision_or_write_index = first_digit + -1;
+        if (radix == 0)
         {
             sango_legacy_trap(7);
         }
-        acStack_21[iVar3] = pcVar1[param_2 % param_3];
-        if (param_3 == 0)
+        reverse_digits[first_digit] = digit_table[value % radix];
+        if (radix == 0)
         {
             sango_legacy_trap(7);
         }
-    } while ((param_2 / param_3 != 0) && (param_2 = param_2 / param_3, 0 < iVar2));
-    *(uint32_t *)(param_1 + 0x3c) = 0x18U - iVar2;
-    crt_memcpy(*(void **)(param_1 + 0x20), acStack_21 + iVar3, 0x18U - iVar2);
-    iVar2 = *(int *)(param_1 + 0x1c);
-    if (iVar2 < 1)
+    } while ((value / radix != 0) && (value = value / radix, 0 < precision_or_write_index));
+    *(uint32_t *)(field_address + 0x3c) = 0x18U - precision_or_write_index;
+    crt_memcpy(*(void **)(field_address + 0x20), reverse_digits + first_digit,
+               0x18U - precision_or_write_index);
+    precision_or_write_index = *(int *)(field_address + 0x1c);
+    if (precision_or_write_index < 1)
     {
-        if (*(int *)(param_1 + 0x1c) == 0)
+        if (*(int *)(field_address + 0x1c) == 0)
         {
-            if (**(char **)(param_1 + 0x20) != '0')
+            if (**(char **)(field_address + 0x20) != '0')
             {
                 return;
             }
-            *(uint32_t *)(param_1 + 0x3c) = 0;
+            *(uint32_t *)(field_address + 0x3c) = 0;
             return;
         }
-        if (*(int *)(param_1 + 0xc) != 0x48)
+        if (*(int *)(field_address + 0xc) != 0x48)
         {
             return;
         }
-        if (*(int *)(param_1 + 4) != 0x4c)
+        if (*(int *)(field_address + 4) != 0x4c)
         {
             return;
         }
-        if (*(int *)(param_1 + 0x18) <= *(int *)(param_1 + 0x3c) + *(int *)(param_1 + 0x38))
+        if (*(int *)(field_address + 0x18) <=
+            *(int *)(field_address + 0x3c) + *(int *)(field_address + 0x38))
         {
             return;
         }
-        iVar2 = (*(int *)(param_1 + 0x18) - *(int *)(param_1 + 0x3c)) - *(int *)(param_1 + 0x38);
+        precision_or_write_index =
+            (*(int *)(field_address + 0x18) - *(int *)(field_address + 0x3c)) -
+            *(int *)(field_address + 0x38);
     }
     else
     {
-        if (iVar2 <= *(int *)(param_1 + 0x3c))
+        if (precision_or_write_index <= *(int *)(field_address + 0x3c))
         {
             return;
         }
-        iVar2 = iVar2 - *(int *)(param_1 + 0x3c);
+        precision_or_write_index = precision_or_write_index - *(int *)(field_address + 0x3c);
     }
-    *(int *)(param_1 + 0x28) = iVar2;
+    *(int *)(field_address + 0x28) = precision_or_write_index;
     return;
 }
-#undef acStack_21
+#undef reverse_digits
 
 /* 原函数 0x81c1d2d4 */
-void sango_crt_format_double_digits(int param_1, uint32_t param_2, uint32_t param_3, int param_4,
-                                    char *param_5)
+void sango_crt_format_double_digits(int field_address, uint32_t abi_alignment_word,
+                                    uint32_t value_low, int value_high, char *conversion)
 {
     unsigned char abi_storage[108] __attribute__((aligned(8)));
-    (*(char **)(abi_storage + 88)) = param_5;
-#define local_48 (*(char(*)[24])(abi_storage + 0))
-#define local_30 (*(uint32_t(*)[2])(abi_storage + 24))
-#define param_5 (*(char **)(abi_storage + 88))
+    (*(char **)(abi_storage + 88)) = conversion;
+#define decimal_digits (*(char(*)[24])(abi_storage + 0))
+#define decimal_exponent (*(uint32_t(*)[2])(abi_storage + 24))
+#define conversion (*(char **)(abi_storage + 88))
 
-    char cVar1;
-    int iVar2;
-    int iVar3;
-    int iVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
-    uint64_t uVar8;
-    uint64_t uVar9;
+    char conversion_character;
+    int digit_count_or_scale_index;
+    int prefix_or_table_offset;
+    int comparison_result;
+    uint32_t threshold_low;
+    uint32_t scaled_low_or_digit_count;
+    uint32_t scaled_high_or_length;
+    uint64_t scaled_value;
+    uint64_t candidate_value;
 
-    uVar8 = CONCAT44(param_4, param_3);
-    if ((param_4 == 0x7ff00000) && (param_3 == 0))
+    scaled_value = CONCAT44(value_high, value_low);
+    if ((value_high == 0x7ff00000) && (value_low == 0))
     {
-        crt_memcpy(*(void **)(param_1 + 0x20), &g_legacy_data_81c20bf8, 3);
-        *(uint32_t *)(param_1 + 0x3c) = 3;
-    LAB_81c1d378:
-        *(uint32_t *)(param_1 + 0xc) = 0x4c;
+        crt_memcpy(*(void **)(field_address + 0x20), &g_legacy_data_81c20bf8, 3);
+        *(uint32_t *)(field_address + 0x3c) = 3;
+    disable_zero_padding:
+        *(uint32_t *)(field_address + 0xc) = 0x4c;
         return;
     }
-    if (0x7fefffff < param_4)
+    if (0x7fefffff < value_high)
     {
-        crt_memcpy(*(void **)(param_1 + 0x20), &g_legacy_data_81c20bfc, 3);
-        *(uint32_t *)(param_1 + 0x3c) = 3;
-        *(uint32_t *)(param_1 + 0x38) = 0;
-        goto LAB_81c1d378;
+        crt_memcpy(*(void **)(field_address + 0x20), &g_legacy_data_81c20bfc, 3);
+        *(uint32_t *)(field_address + 0x3c) = 3;
+        *(uint32_t *)(field_address + 0x38) = 0;
+        goto disable_zero_padding;
     }
-    local_30[0] = 0;
-    iVar2 = sango_soft_compare_f64_nan_low_compat(param_3, param_4, g_legacy_data_81c20c70,
-                                                  g_legacy_data_81c20c74);
-    if (iVar2 < 0)
+    decimal_exponent[0] = 0;
+    digit_count_or_scale_index = sango_soft_compare_f64_nan_low_compat(
+        value_low, value_high, g_legacy_data_81c20c70, g_legacy_data_81c20c74);
+    if (digit_count_or_scale_index < 0)
     {
-        iVar2 = sango_soft_compare_f64_nan_low(param_3, param_4, 0, 0);
-        uVar9 = CONCAT44(param_4, param_3);
-        uVar6 = local_30[0];
-        if (((0 < iVar2) && (iVar2 = sango_soft_compare_f64_nan_high_compat(
-                                 param_3, param_4, g_legacy_data_81c20c78, g_legacy_data_81c20c7c),
-                             uVar9 = CONCAT44(param_4, param_3), uVar6 = local_30[0], iVar2 < 0)) &&
-            (iVar2 = 0, uVar9 = CONCAT44(param_4, param_3), 0 < g_legacy_data_81c20bd0))
+        digit_count_or_scale_index = sango_soft_compare_f64_nan_low(value_low, value_high, 0, 0);
+        candidate_value = CONCAT44(value_high, value_low);
+        scaled_low_or_digit_count = decimal_exponent[0];
+        if (((0 < digit_count_or_scale_index) &&
+             (digit_count_or_scale_index = sango_soft_compare_f64_nan_high_compat(
+                  value_low, value_high, g_legacy_data_81c20c78, g_legacy_data_81c20c7c),
+              candidate_value = CONCAT44(value_high, value_low),
+              scaled_low_or_digit_count = decimal_exponent[0], digit_count_or_scale_index < 0)) &&
+            (digit_count_or_scale_index = 0, candidate_value = CONCAT44(value_high, value_low),
+             0 < g_legacy_data_81c20bd0))
         {
-            cVar1 = *param_5;
+            conversion_character = *conversion;
             do
             {
-                uVar7 = (uint32_t)((uint64_t)uVar8 >> 0x20);
-                if ((cVar1 == 'e') || (cVar1 == 'E'))
+                scaled_high_or_length = (uint32_t)((uint64_t)scaled_value >> 0x20);
+                if ((conversion_character == 'e') || (conversion_character == 'E'))
                 {
-                    uVar9 = sango_soft_mul_f64((uint32_t)uVar8, uVar7,
-                                               (&g_legacy_data_81c20b80)[iVar2 * 2],
-                                               (&g_legacy_data_81c20b84)[iVar2 * 2]);
-                    uVar5 = g_legacy_data_81c20c70;
-                    uVar7 = g_legacy_data_81c20c74;
+                    candidate_value = sango_soft_mul_f64(
+                        (uint32_t)scaled_value, scaled_high_or_length,
+                        (&g_legacy_data_81c20b80)[digit_count_or_scale_index * 2],
+                        (&g_legacy_data_81c20b84)[digit_count_or_scale_index * 2]);
+                    threshold_low = g_legacy_data_81c20c70;
+                    scaled_high_or_length = g_legacy_data_81c20c74;
                 }
                 else
                 {
-                    uVar9 = sango_soft_mul_f64((uint32_t)uVar8, uVar7,
-                                               (&g_legacy_data_81c20b80)[iVar2 * 2],
-                                               (&g_legacy_data_81c20b84)[iVar2 * 2]);
-                    uVar5 = g_legacy_data_81c20c78;
-                    uVar7 = g_legacy_data_81c20c7c;
+                    candidate_value = sango_soft_mul_f64(
+                        (uint32_t)scaled_value, scaled_high_or_length,
+                        (&g_legacy_data_81c20b80)[digit_count_or_scale_index * 2],
+                        (&g_legacy_data_81c20b84)[digit_count_or_scale_index * 2]);
+                    threshold_low = g_legacy_data_81c20c78;
+                    scaled_high_or_length = g_legacy_data_81c20c7c;
                 }
-                iVar3 = sango_soft_compare_f64_nan_high_compat(
-                    (uint32_t)uVar9, (int)((uint64_t)uVar9 >> 0x20), uVar5, uVar7);
-                if (iVar3 < 0)
+                prefix_or_table_offset = sango_soft_compare_f64_nan_high_compat(
+                    (uint32_t)candidate_value, (int)((uint64_t)candidate_value >> 0x20),
+                    threshold_low, scaled_high_or_length);
+                if (prefix_or_table_offset < 0)
                 {
-                    uVar6 = uVar6 - (&g_legacy_data_81c20bd0)[iVar2];
-                    uVar8 = uVar9;
+                    scaled_low_or_digit_count =
+                        scaled_low_or_digit_count -
+                        (&g_legacy_data_81c20bd0)[digit_count_or_scale_index];
+                    scaled_value = candidate_value;
                 }
-                iVar2 = iVar2 + 1;
-                uVar9 = uVar8;
-            } while (0 < (&g_legacy_data_81c20bd0)[iVar2]);
+                digit_count_or_scale_index = digit_count_or_scale_index + 1;
+                candidate_value = scaled_value;
+            } while (0 < (&g_legacy_data_81c20bd0)[digit_count_or_scale_index]);
         }
     }
     else
     {
-        iVar2 = 0;
-        uVar9 = uVar8;
-        uVar6 = local_30[0];
+        digit_count_or_scale_index = 0;
+        candidate_value = scaled_value;
+        scaled_low_or_digit_count = decimal_exponent[0];
         if (0 < g_legacy_data_81c20bd0)
         {
-            iVar3 = 0;
+            prefix_or_table_offset = 0;
             do
             {
-                uVar7 = (uint32_t)((uint64_t)uVar8 >> 0x20);
-                iVar4 = sango_soft_compare_f64_nan_low_compat(
-                    (uint32_t)uVar8, uVar7, *(uint32_t *)((int)&g_legacy_data_81c20b80 + iVar3),
-                    *(uint32_t *)((int)&g_legacy_data_81c20b84 + iVar3));
-                if (-1 < iVar4)
+                scaled_high_or_length = (uint32_t)((uint64_t)scaled_value >> 0x20);
+                comparison_result = sango_soft_compare_f64_nan_low_compat(
+                    (uint32_t)scaled_value, scaled_high_or_length,
+                    *(uint32_t *)((int)&g_legacy_data_81c20b80 + prefix_or_table_offset),
+                    *(uint32_t *)((int)&g_legacy_data_81c20b84 + prefix_or_table_offset));
+                if (-1 < comparison_result)
                 {
-                    uVar8 = sango_soft_div_f64((uint32_t)uVar8, uVar7,
-                                               *(uint32_t *)((int)&g_legacy_data_81c20b80 + iVar3),
-                                               *(uint32_t *)((int)&g_legacy_data_81c20b84 + iVar3));
-                    uVar6 = uVar6 + (&g_legacy_data_81c20bd0)[iVar2];
+                    scaled_value = sango_soft_div_f64(
+                        (uint32_t)scaled_value, scaled_high_or_length,
+                        *(uint32_t *)((int)&g_legacy_data_81c20b80 + prefix_or_table_offset),
+                        *(uint32_t *)((int)&g_legacy_data_81c20b84 + prefix_or_table_offset));
+                    scaled_low_or_digit_count =
+                        scaled_low_or_digit_count +
+                        (&g_legacy_data_81c20bd0)[digit_count_or_scale_index];
                 }
-                iVar2 = iVar2 + 1;
-                iVar3 = iVar2 * 8;
-                uVar9 = uVar8;
-            } while (0 < (&g_legacy_data_81c20bd0)[iVar2]);
+                digit_count_or_scale_index = digit_count_or_scale_index + 1;
+                prefix_or_table_offset = digit_count_or_scale_index * 8;
+                candidate_value = scaled_value;
+            } while (0 < (&g_legacy_data_81c20bd0)[digit_count_or_scale_index]);
         }
     }
-    local_30[0] = uVar6;
-    uVar7 = (uint32_t)((uint64_t)uVar9 >> 0x20);
-    uVar6 = (uint32_t)uVar9;
-    if ((*param_5 == 'e') || (*param_5 == 'E'))
+    decimal_exponent[0] = scaled_low_or_digit_count;
+    scaled_high_or_length = (uint32_t)((uint64_t)candidate_value >> 0x20);
+    scaled_low_or_digit_count = (uint32_t)candidate_value;
+    if ((*conversion == 'e') || (*conversion == 'E'))
     {
-        iVar2 = 0x11;
-        if (*(int *)(param_1 + 0x1c) < 0x11)
+        digit_count_or_scale_index = 0x11;
+        if (*(int *)(field_address + 0x1c) < 0x11)
         {
-            iVar2 = *(int *)(param_1 + 0x1c) + 1;
+            digit_count_or_scale_index = *(int *)(field_address + 0x1c) + 1;
         }
-        iVar2 = sango_crt_scale_double_decimal(uVar6, uVar7, (int *)local_30, iVar2, local_48);
-        **(char **)(param_1 + 0x20) = local_48[0];
-        iVar3 = 1;
-        if (((1 < iVar2) || (*(int *)(param_1 + 0x10) == 0x48)) || (0 < *(int *)(param_1 + 0x1c)))
+        digit_count_or_scale_index = sango_crt_scale_double_decimal(
+            scaled_low_or_digit_count, scaled_high_or_length, (int *)decimal_exponent,
+            digit_count_or_scale_index, decimal_digits);
+        **(char **)(field_address + 0x20) = decimal_digits[0];
+        prefix_or_table_offset = 1;
+        if (((1 < digit_count_or_scale_index) || (*(int *)(field_address + 0x10) == 0x48)) ||
+            (0 < *(int *)(field_address + 0x1c)))
         {
-            *(uint8_t *)(*(int *)(param_1 + 0x20) + 1) = 0x2e;
-            crt_memcpy((void *)(*(int *)(param_1 + 0x20) + 2), local_48 + 1, iVar2 - 1);
-            iVar3 = iVar2 + 1;
+            *(uint8_t *)(*(int *)(field_address + 0x20) + 1) = 0x2e;
+            crt_memcpy((void *)(*(int *)(field_address + 0x20) + 2), decimal_digits + 1,
+                       digit_count_or_scale_index - 1);
+            prefix_or_table_offset = digit_count_or_scale_index + 1;
         }
-        *(int *)(param_1 + 0x3c) = iVar3;
-        if (iVar2 + -1 < *(int *)(param_1 + 0x1c))
+        *(int *)(field_address + 0x3c) = prefix_or_table_offset;
+        if (digit_count_or_scale_index + -1 < *(int *)(field_address + 0x1c))
         {
-            *(int *)(param_1 + 0x2c) = (*(int *)(param_1 + 0x1c) - iVar2) + 1;
+            *(int *)(field_address + 0x2c) =
+                (*(int *)(field_address + 0x1c) - digit_count_or_scale_index) + 1;
         }
-        *(char *)(*(int *)(param_1 + 0x20) + iVar3) = *param_5;
-        if ((int)local_30[0] < 0)
+        *(char *)(*(int *)(field_address + 0x20) + prefix_or_table_offset) = *conversion;
+        if ((int)decimal_exponent[0] < 0)
         {
-            *(uint8_t *)(*(int *)(param_1 + 0x20) + iVar3 + 1) = 0x2d;
-            local_30[0] = -local_30[0];
-        }
-        else
-        {
-            *(uint8_t *)(*(int *)(param_1 + 0x20) + iVar3 + 1) = 0x2b;
-        }
-        iVar3 = iVar3 + 2;
-        if ((int)local_30[0] < 10)
-        {
-            *(uint8_t *)(*(int *)(param_1 + 0x20) + iVar3) = 0x30;
-            *(char *)(iVar3 + *(int *)(param_1 + 0x20) + 1) = (char)local_30[0] + '0';
-            iVar2 = 4;
+            *(uint8_t *)(*(int *)(field_address + 0x20) + prefix_or_table_offset + 1) = 0x2d;
+            decimal_exponent[0] = -decimal_exponent[0];
         }
         else
         {
-            iVar2 = 10;
-            for (; 0 < (int)local_30[0]; local_30[0] = (int)local_30[0] / 10)
+            *(uint8_t *)(*(int *)(field_address + 0x20) + prefix_or_table_offset + 1) = 0x2b;
+        }
+        prefix_or_table_offset = prefix_or_table_offset + 2;
+        if ((int)decimal_exponent[0] < 10)
+        {
+            *(uint8_t *)(*(int *)(field_address + 0x20) + prefix_or_table_offset) = 0x30;
+            *(char *)(prefix_or_table_offset + *(int *)(field_address + 0x20) + 1) =
+                (char)decimal_exponent[0] + '0';
+            digit_count_or_scale_index = 4;
+        }
+        else
+        {
+            digit_count_or_scale_index = 10;
+            for (; 0 < (int)decimal_exponent[0];
+                 decimal_exponent[0] = (int)decimal_exponent[0] / 10)
             {
-                local_48[iVar2] = (char)local_30[0] + (char)((int)local_30[0] / 10) * -10 + '0';
-                iVar2 = iVar2 + -1;
+                decimal_digits[digit_count_or_scale_index] =
+                    (char)decimal_exponent[0] + (char)((int)decimal_exponent[0] / 10) * -10 + '0';
+                digit_count_or_scale_index = digit_count_or_scale_index + -1;
             }
-            crt_memcpy((void *)(iVar3 + *(int *)(param_1 + 0x20)), local_48 + iVar2 + 1,
-                       10 - iVar2);
-            iVar2 = 0xc - iVar2;
+            crt_memcpy((void *)(prefix_or_table_offset + *(int *)(field_address + 0x20)),
+                       decimal_digits + digit_count_or_scale_index + 1,
+                       10 - digit_count_or_scale_index);
+            digit_count_or_scale_index = 0xc - digit_count_or_scale_index;
         }
-        *(int *)(param_1 + 0x40) = iVar2;
-        goto LAB_81c1d99c;
+        *(int *)(field_address + 0x40) = digit_count_or_scale_index;
+        goto apply_zero_padding;
     }
-    if ((int)local_30[0] < 0)
+    if ((int)decimal_exponent[0] < 0)
     {
-        iVar2 = 0;
-        if ((int)~local_30[0] < *(int *)(param_1 + 0x1c))
+        digit_count_or_scale_index = 0;
+        if ((int)~decimal_exponent[0] < *(int *)(field_address + 0x1c))
         {
-            iVar3 = *(int *)(param_1 + 0x1c) + local_30[0] + 1;
-            iVar2 = 0x11;
-            if (iVar3 < 0x12)
+            prefix_or_table_offset = *(int *)(field_address + 0x1c) + decimal_exponent[0] + 1;
+            digit_count_or_scale_index = 0x11;
+            if (prefix_or_table_offset < 0x12)
             {
-                iVar2 = iVar3;
+                digit_count_or_scale_index = prefix_or_table_offset;
             }
         }
-        uVar6 = sango_crt_scale_double_decimal(uVar6, uVar7, (int *)local_30, iVar2, local_48);
-        **(uint8_t **)(param_1 + 0x20) = 0x30;
-        uVar7 = 1;
-        if (((0 < (int)uVar6) || (*(int *)(param_1 + 0x10) == 0x48)) ||
-            (0 < *(int *)(param_1 + 0x1c)))
+        scaled_low_or_digit_count = sango_crt_scale_double_decimal(
+            scaled_low_or_digit_count, scaled_high_or_length, (int *)decimal_exponent,
+            digit_count_or_scale_index, decimal_digits);
+        **(uint8_t **)(field_address + 0x20) = 0x30;
+        scaled_high_or_length = 1;
+        if (((0 < (int)scaled_low_or_digit_count) || (*(int *)(field_address + 0x10) == 0x48)) ||
+            (0 < *(int *)(field_address + 0x1c)))
         {
-            *(uint8_t *)(*(int *)(param_1 + 0x20) + 1) = 0x2e;
-            uVar7 = 2;
-            crt_memcpy((void *)(*(int *)(param_1 + 0x20) + 2), local_48, uVar6);
+            *(uint8_t *)(*(int *)(field_address + 0x20) + 1) = 0x2e;
+            scaled_high_or_length = 2;
+            crt_memcpy((void *)(*(int *)(field_address + 0x20) + 2), decimal_digits,
+                       scaled_low_or_digit_count);
         }
-        *(uint32_t *)(param_1 + 0x3c) = uVar7;
-        *(uint32_t *)(param_1 + 0x40) = uVar6;
-        if (*(int *)(param_1 + 0x1c) < (int)~local_30[0])
+        *(uint32_t *)(field_address + 0x3c) = scaled_high_or_length;
+        *(uint32_t *)(field_address + 0x40) = scaled_low_or_digit_count;
+        if (*(int *)(field_address + 0x1c) < (int)~decimal_exponent[0])
         {
-            *(uint32_t *)(param_1 + 0x2c) = *(uint32_t *)(param_1 + 0x1c);
+            *(uint32_t *)(field_address + 0x2c) = *(uint32_t *)(field_address + 0x1c);
         }
         else
         {
-            *(uint32_t *)(param_1 + 0x2c) = ~local_30[0];
+            *(uint32_t *)(field_address + 0x2c) = ~decimal_exponent[0];
         }
-        if (*(int *)(param_1 + 0x1c) <= *(int *)(param_1 + 0x40) + *(int *)(param_1 + 0x2c))
-            goto LAB_81c1d99c;
-        iVar2 = (*(int *)(param_1 + 0x1c) - *(int *)(param_1 + 0x40)) - *(int *)(param_1 + 0x2c);
+        if (*(int *)(field_address + 0x1c) <=
+            *(int *)(field_address + 0x40) + *(int *)(field_address + 0x2c))
+            goto apply_zero_padding;
+        digit_count_or_scale_index =
+            (*(int *)(field_address + 0x1c) - *(int *)(field_address + 0x40)) -
+            *(int *)(field_address + 0x2c);
     }
     else
     {
-        iVar2 = 0x11;
-        if (*(int *)(param_1 + 0x1c) < (int)(0x10 - local_30[0]))
+        digit_count_or_scale_index = 0x11;
+        if (*(int *)(field_address + 0x1c) < (int)(0x10 - decimal_exponent[0]))
         {
-            iVar2 = *(int *)(param_1 + 0x1c) + local_30[0] + 1;
+            digit_count_or_scale_index = *(int *)(field_address + 0x1c) + decimal_exponent[0] + 1;
         }
-        uVar6 = sango_crt_scale_double_decimal(uVar6, uVar7, (int *)local_30, iVar2, local_48);
-        if ((int)uVar6 <= (int)(local_30[0] + 1))
+        scaled_low_or_digit_count = sango_crt_scale_double_decimal(
+            scaled_low_or_digit_count, scaled_high_or_length, (int *)decimal_exponent,
+            digit_count_or_scale_index, decimal_digits);
+        if ((int)scaled_low_or_digit_count <= (int)(decimal_exponent[0] + 1))
         {
-            crt_memcpy(*(void **)(param_1 + 0x20), local_48, uVar6);
-            *(uint32_t *)(param_1 + 0x3c) = uVar6;
-            if ((*(int *)(param_1 + 0x10) == 0x48) || (0 < *(int *)(param_1 + 0x1c)))
+            crt_memcpy(*(void **)(field_address + 0x20), decimal_digits, scaled_low_or_digit_count);
+            *(uint32_t *)(field_address + 0x3c) = scaled_low_or_digit_count;
+            if ((*(int *)(field_address + 0x10) == 0x48) || (0 < *(int *)(field_address + 0x1c)))
             {
-                *(uint8_t *)(*(int *)(param_1 + 0x20) + uVar6) = 0x2e;
-                *(uint32_t *)(param_1 + 0x40) = 1;
-                *(uint32_t *)(param_1 + 0x30) = *(uint32_t *)(param_1 + 0x1c);
+                *(uint8_t *)(*(int *)(field_address + 0x20) + scaled_low_or_digit_count) = 0x2e;
+                *(uint32_t *)(field_address + 0x40) = 1;
+                *(uint32_t *)(field_address + 0x30) = *(uint32_t *)(field_address + 0x1c);
             }
-            if ((int)uVar6 < (int)(local_30[0] + 1))
+            if ((int)scaled_low_or_digit_count < (int)(decimal_exponent[0] + 1))
             {
-                *(uint32_t *)(param_1 + 0x2c) = (local_30[0] - uVar6) + 1;
+                *(uint32_t *)(field_address + 0x2c) =
+                    (decimal_exponent[0] - scaled_low_or_digit_count) + 1;
             }
-            goto LAB_81c1d99c;
+            goto apply_zero_padding;
         }
-        crt_memcpy(*(void **)(param_1 + 0x20), local_48, local_30[0] + 1);
-        *(uint8_t *)(*(int *)(param_1 + 0x20) + local_30[0] + 1) = 0x2e;
-        crt_memcpy((void *)(*(int *)(param_1 + 0x20) + local_30[0] + 2), local_48 + local_30[0] + 1,
-                   (uVar6 - local_30[0]) - 1);
-        *(uint32_t *)(param_1 + 0x3c) = local_30[0] + 1;
-        *(uint32_t *)(param_1 + 0x40) = uVar6 - local_30[0];
-        if (*(int *)(param_1 + 0x1c) <= (int)((uVar6 - local_30[0]) + -1))
-            goto LAB_81c1d99c;
-        iVar2 = (*(int *)(param_1 + 0x1c) - uVar6) + local_30[0] + 1;
+        crt_memcpy(*(void **)(field_address + 0x20), decimal_digits, decimal_exponent[0] + 1);
+        *(uint8_t *)(*(int *)(field_address + 0x20) + decimal_exponent[0] + 1) = 0x2e;
+        crt_memcpy((void *)(*(int *)(field_address + 0x20) + decimal_exponent[0] + 2),
+                   decimal_digits + decimal_exponent[0] + 1,
+                   (scaled_low_or_digit_count - decimal_exponent[0]) - 1);
+        *(uint32_t *)(field_address + 0x3c) = decimal_exponent[0] + 1;
+        *(uint32_t *)(field_address + 0x40) = scaled_low_or_digit_count - decimal_exponent[0];
+        if (*(int *)(field_address + 0x1c) <=
+            (int)((scaled_low_or_digit_count - decimal_exponent[0]) + -1))
+            goto apply_zero_padding;
+        digit_count_or_scale_index =
+            (*(int *)(field_address + 0x1c) - scaled_low_or_digit_count) + decimal_exponent[0] + 1;
     }
-    *(int *)(param_1 + 0x30) = iVar2;
-LAB_81c1d99c:
-    if (*(int *)(param_1 + 0xc) != 0x48)
+    *(int *)(field_address + 0x30) = digit_count_or_scale_index;
+apply_zero_padding:
+    if (*(int *)(field_address + 0xc) != 0x48)
     {
         return;
     }
-    if (*(int *)(param_1 + 4) != 0x4c)
+    if (*(int *)(field_address + 4) != 0x4c)
     {
         return;
     }
-    iVar2 = *(int *)(param_1 + 0x38) + *(int *)(param_1 + 0x3c) + *(int *)(param_1 + 0x2c) +
-            *(int *)(param_1 + 0x40) + *(int *)(param_1 + 0x30);
-    if (*(int *)(param_1 + 0x18) <= iVar2)
+    digit_count_or_scale_index = *(int *)(field_address + 0x38) + *(int *)(field_address + 0x3c) +
+                                 *(int *)(field_address + 0x2c) + *(int *)(field_address + 0x40) +
+                                 *(int *)(field_address + 0x30);
+    if (*(int *)(field_address + 0x18) <= digit_count_or_scale_index)
     {
         return;
     }
-    *(int *)(param_1 + 0x28) = *(int *)(param_1 + 0x18) - iVar2;
+    *(int *)(field_address + 0x28) = *(int *)(field_address + 0x18) - digit_count_or_scale_index;
     return;
 }
-#undef local_48
-#undef local_30
-#undef param_5
+#undef decimal_digits
+#undef decimal_exponent
+#undef conversion
 
 /* 原函数 0x81c1da28 */
-int sango_crt_scale_double_decimal(uint32_t param_1, uint32_t param_2, int *param_3, int param_4,
-                                   uint8_t *param_5)
+int sango_crt_scale_double_decimal(uint32_t value_low, uint32_t value_high, int *decimal_exponent,
+                                   int requested_digits, uint8_t *output_digits)
 {
     unsigned char abi_storage[20] __attribute__((aligned(8)));
-    (*(uint8_t **)(abi_storage + 0)) = param_5;
-#define param_5 (*(uint8_t **)(abi_storage + 0))
+    (*(uint8_t **)(abi_storage + 0)) = output_digits;
+#define output_digits (*(uint8_t **)(abi_storage + 0))
 
-    uint32_t uVar1;
-    uint32_t uVar2;
-    char cVar3;
-    int iVar4;
-    uint32_t uVar5;
-    char *pcVar6;
-    int iVar7;
-    uint32_t uVar8;
-    uint64_t uVar9;
-    uint64_t uVar10;
+    uint32_t ten_low;
+    uint32_t ten_high;
+    char carried_digit;
+    int digit_index;
+    uint32_t integral_digit;
+    char *rounding_digit;
+    int trimmed_digits;
+    uint32_t scaled_high;
+    uint64_t integral_as_double;
+    uint64_t scaled_value;
 
-    uVar10 = CONCAT44(param_2, param_1);
-    iVar4 = sango_soft_compare_f64_nan_high(param_1, param_2, 0, 0);
-    uVar2 = g_legacy_data_81c20c74;
-    uVar1 = g_legacy_data_81c20c70;
-    if (iVar4 == 0)
+    scaled_value = CONCAT44(value_high, value_low);
+    digit_index = sango_soft_compare_f64_nan_high(value_low, value_high, 0, 0);
+    ten_high = g_legacy_data_81c20c74;
+    ten_low = g_legacy_data_81c20c70;
+    if (digit_index == 0)
     {
-        *param_5 = 0x30;
+        *output_digits = 0x30;
         return 1;
     }
-    if (param_4 == 0)
+    if (requested_digits == 0)
     {
         return 0;
     }
-    iVar4 = 0;
-    if (0 < param_4 + 1)
+    digit_index = 0;
+    if (0 < requested_digits + 1)
     {
         do
         {
-            uVar8 = (uint32_t)((uint64_t)uVar10 >> 0x20);
-            uVar5 = sango_soft_f64_to_int((uint32_t)uVar10, uVar8);
-            param_5[iVar4] = (char)uVar5 + '0';
-            uVar9 = sango_soft_int_to_f64(uVar5);
-            uVar10 = sango_soft_sub_f64((uint32_t)uVar10, uVar8, (uint32_t)uVar9,
-                                        (int)((uint64_t)uVar9 >> 0x20));
-            uVar10 =
-                sango_soft_mul_f64((uint32_t)uVar10, (int)((uint64_t)uVar10 >> 0x20), uVar1, uVar2);
-            iVar4 = iVar4 + 1;
-        } while (iVar4 < param_4 + 1);
+            scaled_high = (uint32_t)((uint64_t)scaled_value >> 0x20);
+            integral_digit = sango_soft_f64_to_int((uint32_t)scaled_value, scaled_high);
+            output_digits[digit_index] = (char)integral_digit + '0';
+            integral_as_double = sango_soft_int_to_f64(integral_digit);
+            scaled_value = sango_soft_sub_f64((uint32_t)scaled_value, scaled_high,
+                                              (uint32_t)integral_as_double,
+                                              (int)((uint64_t)integral_as_double >> 0x20));
+            scaled_value = sango_soft_mul_f64(
+                (uint32_t)scaled_value, (int)((uint64_t)scaled_value >> 0x20), ten_low, ten_high);
+            digit_index = digit_index + 1;
+        } while (digit_index < requested_digits + 1);
     }
-    iVar4 = iVar4 + -1;
-    if ((param_4 - *param_3) + -1 < 0x10)
+    digit_index = digit_index + -1;
+    if (((requested_digits - *decimal_exponent) - 1 < 16) && (*decimal_exponent + 1 <= 15) &&
+        (digit_index >= 16))
+        digit_index = 15;
+    rounding_digit = output_digits + digit_index;
+    if (*rounding_digit < '5')
     {
-        pcVar6 = param_5 + iVar4;
-        if ((0xf < *param_3 + 1) || (pcVar6 = param_5 + iVar4, iVar4 < 0x10))
-            goto LAB_81c1db48;
-        iVar4 = 0xf;
-    }
-    pcVar6 = param_5 + iVar4;
-LAB_81c1db48:
-    if (*pcVar6 < '5')
-    {
-        param_5[iVar4] = 0x30;
+        output_digits[digit_index] = 0x30;
         do
         {
-            iVar7 = iVar4;
-            iVar4 = iVar7 + -1;
-        } while (param_5[iVar7 + -1] == '0');
+            trimmed_digits = digit_index;
+            digit_index = trimmed_digits + -1;
+        } while (output_digits[trimmed_digits + -1] == '0');
     }
     else
     {
         do
         {
-            iVar7 = iVar4;
-            if (iVar7 == 0)
+            trimmed_digits = digit_index;
+            if (trimmed_digits == 0)
             {
-                *param_5 = 0x31;
-                *param_3 = *param_3 + 1;
+                *output_digits = 0x31;
+                *decimal_exponent = *decimal_exponent + 1;
                 return 1;
             }
-            param_5[iVar7] = 0x30;
-            cVar3 = param_5[iVar7 + -1] + '\x01';
-            param_5[iVar7 + -1] = cVar3;
-            iVar4 = iVar7 + -1;
-        } while ('9' < cVar3);
+            output_digits[trimmed_digits] = 0x30;
+            carried_digit = output_digits[trimmed_digits + -1] + '\x01';
+            output_digits[trimmed_digits + -1] = carried_digit;
+            digit_index = trimmed_digits + -1;
+        } while ('9' < carried_digit);
     }
-    return iVar7;
+    return trimmed_digits;
 }
-#undef param_5
+#undef output_digits

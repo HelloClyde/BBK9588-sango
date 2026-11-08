@@ -411,150 +411,97 @@ uint32_t sango_battle_select_active_unit(void)
 
 /* 原函数 0x81c038f4 */
 /* 处理键盘和完整16位触摸坐标；按钮命中后恢复战场HUD。 */
-uint32_t sango_battle_poll_map_action(char param_1)
+uint32_t sango_battle_poll_map_action(char preview_mode)
 {
     unsigned char abi_storage[24] __attribute__((aligned(8)));
-#define local_28 (*(int *)(abi_storage + 0))
-#define local_24 (*(int *)(abi_storage + 4))
+#define event_kind (*(int *)(abi_storage + 0))
+#define key_code (*(int *)(abi_storage + 4))
 
-    uint8_t bVar1;
-    char cVar2;
-    uint32_t uVar3;
-    uint32_t unaff_s0;
-    uint32_t uVar4;
-
-    uVar4 = 0;
-LAB_81c03918:
-    sango_input_next_event(&local_28);
-    if (local_28 == 5)
+    /* 原恢复入口没有给此计数器赋初值；保留当前编译ABI的首拍相位，
+     * 不在可读性重构中加入新的初始化行为。 */
+    uint32_t legacy_timer_ticks;
+    uint32_t blink_phase = 0;
+    while (true)
     {
-        uVar3 = 0;
-        if ((local_24 == 0x1c) || (uVar3 = 0xff, local_24 == 1))
+        sango_input_next_event(&event_kind);
+        if (event_kind == 5)
         {
-            return uVar3;
+            if (key_code == 0x1c)
+                return 0;
+            if (key_code == 1)
+                return 0xff;
+            sango_battle_draw_tile((uint32_t)g_battle_cursor_x, (uint32_t)g_battle_cursor_y, '\0');
         }
-        sango_battle_draw_tile((uint32_t)g_battle_cursor_x, (uint32_t)g_battle_cursor_y, '\0');
-    }
-    if (local_28 == 6)
-        goto LAB_81c03b8c;
-    if (local_28 < 7)
-    {
-        if (local_28 == 5)
+
+        if (event_kind == 6)
         {
-            if (local_24 == 0x67)
+            legacy_timer_ticks = legacy_timer_ticks + 1 & 0xff;
+            if (legacy_timer_ticks % 10 != 0)
+                continue;
+            blink_phase = (uint32_t)(blink_phase == 0);
+        }
+        else if (event_kind == 5)
+        {
+            switch (key_code)
             {
-                bVar1 = g_battle_cursor_y - 1;
+            case 0x67:
                 if (g_battle_cursor_y != 0)
-                {
-                LAB_81c03aac:
-                    g_battle_cursor_y = bVar1;
-                }
-            }
-            else if (local_24 < 0x68)
-            {
-                if (local_24 == 0x1f)
-                {
-                    sango_battle_show_overview();
-                    sango_battle_draw_hud();
-                }
-                else if (local_24 == 0x23)
-                {
-                    sango_battle_show_cursor_info();
-                    sango_battle_draw_hud();
-                }
-            }
-            else if (local_24 == 0x6a)
-            {
-                bVar1 = g_battle_cursor_x + 1;
+                    g_battle_cursor_y = g_battle_cursor_y - 1;
+                break;
+            case 0x69:
+                if (g_battle_cursor_x != 0)
+                    g_battle_cursor_x = g_battle_cursor_x - 1;
+                break;
+            case 0x6a:
                 if ((int)(uint32_t)g_battle_cursor_x < (int)(g_battle_map_width - 1))
-                {
-                LAB_81c03a74:
-                    g_battle_cursor_x = bVar1;
-                }
+                    g_battle_cursor_x = g_battle_cursor_x + 1;
+                break;
+            case 0x6c:
+                if ((int)(uint32_t)g_battle_cursor_y < (int)(g_battle_map_height - 1))
+                    g_battle_cursor_y = g_battle_cursor_y + 1;
+                break;
+            case 0x1f:
+                sango_battle_show_overview();
+                sango_battle_draw_hud();
+                break;
+            case 0x23:
+                sango_battle_show_cursor_info();
+                sango_battle_draw_hud();
+                break;
             }
-            else if (local_24 < 0x6b)
-            {
-                if ((local_24 == 0x69) && (bVar1 = g_battle_cursor_x - 1, g_battle_cursor_x != 0))
-                    goto LAB_81c03a74;
-            }
-            else if ((local_24 == 0x6c) &&
-                     (bVar1 = g_battle_cursor_y + 1,
-                      (int)(uint32_t)g_battle_cursor_y < (int)(g_battle_map_height - 1)))
-                goto LAB_81c03aac;
-            if (param_1 == '\x01')
-            {
-                cVar2 = '\0';
-                if (uVar4 == 0)
-                    goto LAB_81c039e8;
-                sango_battle_draw_target_markers();
-            }
+            /* 按键后先恢复移动/目标预览，再进入共同的部队重画流程。 */
+            if (preview_mode == '\x01')
+                sango_battle_refresh_target_preview((char)blink_phase);
+            else if (preview_mode == '\x02')
+                sango_battle_refresh_move_preview((char)blink_phase);
             else
-            {
-                cVar2 = (char)uVar4;
-                if ((param_1 == '\x02') && (cVar2 = '\0', uVar4 != 0))
-                {
-                    sango_battle_draw_move_range();
-                }
-                else
-                {
-                LAB_81c039e8:
-                    sango_battle_scroll_viewport(cVar2);
-                }
-            }
+                sango_battle_scroll_viewport((char)blink_phase);
         }
+        else if (event_kind == 0xb)
+        {
+            /* 输入包中的完整16位坐标用于底栏命中，不能使用会截断的旧坐标槽。 */
+            enum SangoBattleToolbarAction action = sango_battle_toolbar_hit(
+                *(uint16_t *)(abi_storage + 8), *(uint16_t *)(abi_storage + 10));
+            if (action == SANGO_BATTLE_TOOLBAR_INFO)
+                sango_battle_show_cursor_info();
+            else if (action == SANGO_BATTLE_TOOLBAR_OVERVIEW)
+                sango_battle_show_overview();
+            if (action != SANGO_BATTLE_TOOLBAR_NONE)
+                sango_battle_draw_hud();
+        }
+
+        sango_battle_draw_units(blink_phase);
+        if (preview_mode == '\x01')
+            sango_battle_refresh_target_preview((char)blink_phase);
+        else if (preview_mode == '\x02')
+            sango_battle_refresh_move_preview((char)blink_phase);
+        else
+            sango_battle_scroll_viewport((char)blink_phase);
+        sango_battle_draw_cursor();
     }
-    else if (local_28 == 0xb)
-    {
-        /* Read the original full-width coordinates from the input packet;
-              the legacy uint8_t slots wrap y=300 to 44. */
-        enum SangoBattleToolbarAction action = sango_battle_toolbar_hit(
-            *(uint16_t *)(abi_storage + 8), *(uint16_t *)(abi_storage + 10));
-        if (action == SANGO_BATTLE_TOOLBAR_INFO)
-        {
-            sango_battle_show_cursor_info();
-        }
-        else if (action == SANGO_BATTLE_TOOLBAR_OVERVIEW)
-        {
-            sango_battle_show_overview();
-        }
-        if (action != SANGO_BATTLE_TOOLBAR_NONE)
-        {
-            sango_battle_draw_hud();
-        }
-    }
-    goto LAB_81c03950;
-LAB_81c03b8c:
-    unaff_s0 = unaff_s0 + 1 & 0xff;
-    if (unaff_s0 % 10 != 0)
-        goto LAB_81c03918;
-    uVar4 = (uint32_t)(uVar4 == 0);
-LAB_81c03950:
-    sango_battle_draw_units(uVar4);
-    if (param_1 == '\x01')
-    {
-        cVar2 = '\0';
-        if (uVar4 != 0)
-        {
-            sango_battle_draw_target_markers();
-            goto LAB_81c03970;
-        }
-    }
-    else
-    {
-        cVar2 = (char)uVar4;
-        if ((param_1 == '\x02') && (cVar2 = '\0', uVar4 != 0))
-        {
-            sango_battle_draw_move_range();
-            goto LAB_81c03970;
-        }
-    }
-    sango_battle_scroll_viewport(cVar2);
-LAB_81c03970:
-    sango_battle_draw_cursor();
-    goto LAB_81c03918;
 }
-#undef local_28
-#undef local_24
+#undef event_kind
+#undef key_code
 
 /* 原函数 0x81c03c20 */
 void sango_battle_draw_cursor(void)

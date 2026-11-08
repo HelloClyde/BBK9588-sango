@@ -1,0 +1,11 @@
+{
+  "passed": 1260,
+  "failed": 0,
+  "groups": {
+    "battle": 1260
+  },
+  "baseline_elf_sha256": "647cb6884af3fbe75987e5e2031f54b08744ef435d71a856110df5776bffd9a5",
+  "candidate_elf_sha256": "ddd15b13e1abe4a7178e44ba65e2af447aea94b36840582fc9f5595d31085446",
+  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+  "scope": "The reported groups execute actual MIPS functions against the pre-refactor ELF: city/battle input, decimal input, pagination, animation timing, search outcomes, skill dispatch, attack preparation and soft-float boundary/random cases. Compares return, observable state, input consumption and rendering calls. Rendering/modal boundaries are deterministic models; not native firmware or hardware."
+}
