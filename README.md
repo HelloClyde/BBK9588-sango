@@ -5,7 +5,9 @@
 恢复逻辑已按战斗、战略、存读档、资源、界面和运行库拆成42个模块，函数采用语义名称；
 大型流程和剩余短函数已整理变量名与标签，仍保留部分恢复出的布局和控制流；本项目不是原开发者的工程。
 
-当前版本为 **0.1.0-alpha.1**。本地发布准备已经完成，远程 Actions 和 Release 尚未执行。
+当前版本为 **0.1.0-alpha.1**，源码托管于
+[HelloClyde/BBK9588-sango](https://github.com/HelloClyde/BBK9588-sango)。
+构建状态见 [GitHub Actions](https://github.com/HelloClyde/BBK9588-sango/actions)；版本标签和 Release 尚未发布。
 原游戏恢复代码及改编素材没有已提供的开源许可证；新增独立代码与上游 SDK 的许可范围
 分别记录于 [LICENSE.md](LICENSE.md) 和 [来源声明](THIRD_PARTY_NOTICES.md)，请勿将整仓视为 MIT 授权。
 
