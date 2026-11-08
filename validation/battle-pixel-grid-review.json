@@ -81,5 +81,7 @@
     "assets/color/statusbar/toolbar-240x36.png": "5fd18c109d405097a836c0e817ff6ad4181095f989385e7a354b7c852a4d33a6",
     "assets/color/generated/battle-hud-background.png": "2d158078e3cf4d8d963bdf09e4d2b29c0ed3bde51d4035d85739311f3f04b4c2"
   },
-  "scope": "Compiled MIPS compares every one of 5760 native HUD image pixels, six 1-bit glyph masks on the final LCD grid, region restoration, optional trailer bounds/CRC/source and old-file fallback. Native C200 verifies six masks at exact 1:1 pixels plus retained menus/input/four combat ranges. Exact files staged to bypass synthetic NAND ECC; no physical-device/full-campaign claim."
+  "scope": "Compiled MIPS compares every one of 5760 native HUD image pixels, six 1-bit glyph masks on the final LCD grid, region restoration, optional trailer bounds/CRC/source and old-file fallback. Native C200 verifies six masks at exact 1:1 pixels plus retained menus/input/four combat ranges. Exact files staged to bypass synthetic NAND ECC; no physical-device/full-campaign claim.",
+  "snapshot_commit": "4b5e97a012878c7afb20bedd816f6e252fd892bd",
+  "history_note": "Validated pixel-grid revision. Current icon-only update has identical program payload, ELF, LIB and CLR; see app-icon-validation.json."
 }

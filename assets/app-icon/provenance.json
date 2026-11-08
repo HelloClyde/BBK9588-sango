@@ -20,7 +20,7 @@
     1254,
     1254
   ],
-  "master_sha256": "692ae72fa804c3745da4a23984c7877a7eaae970f6c74ab73f36fb3b5726d15a",
+  "master_sha256": "f351bca6c9ef2a768b46f52dd968dd7669937cb4fbf9bf72f8741bc0305b73fc",
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "encoder": "sdk/bda_packer/vx_icon.py",
   "icons": [
@@ -30,9 +30,8 @@
         80,
         80
       ],
-      "offset": 136,
       "bytes": 12824,
-      "vx_sha256": "e858361273c6a5f46baeefd9f107dddbea62de32d56a41fec1af2138cbf27c26"
+      "vx_sha256": "3f961d39d459e364018ab3c435004432976fac297cb4b65362de5fe218b2fa7a"
     },
     {
       "index": 1,
@@ -40,9 +39,8 @@
         80,
         80
       ],
-      "offset": 12960,
       "bytes": 12824,
-      "vx_sha256": "e858361273c6a5f46baeefd9f107dddbea62de32d56a41fec1af2138cbf27c26"
+      "vx_sha256": "3f961d39d459e364018ab3c435004432976fac297cb4b65362de5fe218b2fa7a"
     },
     {
       "index": 2,
@@ -50,9 +48,8 @@
         54,
         54
       ],
-      "offset": 25784,
       "bytes": 5856,
-      "vx_sha256": "d57ebcc24c70b1053824ebc2c13763507b7e55311b08e815f15120c4fff55f6d"
+      "vx_sha256": "5aad0cbe8d9977d26bc14d0b49bd1be32ee9343a40ef105c7f9b56f5706ce938"
     },
     {
       "index": 3,
@@ -60,11 +57,34 @@
         58,
         58
       ],
-      "offset": 31640,
       "bytes": 6752,
-      "vx_sha256": "406734e0093f5aa5929112177314c64589e853301d56b58ee0698d20d962395e"
+      "vx_sha256": "234f76a4f99bbc10bc41c2095e89b8fb69dc590261a195c66bb60c573e910d17"
     }
   ],
   "scope": "Application launcher icons only; no in-game image replacement.",
-  "original_references_distributed": true
+  "original_references_distributed": true,
+  "previous_master": "icon-gpt-image-master-before-flag.png",
+  "previous_master_sha256": "692ae72fa804c3745da4a23984c7877a7eaae970f6c74ab73f36fb3b5726d15a",
+  "previous_prompt": "imagegen-prompt-before-flag.txt",
+  "restored_detail": "Original composition: Cao Cao in lower-left without gold crown; one large flag fills the entire background, with only part/half of 曹 visible behind the head and frame.",
+  "reviewed_features": [
+    "lower-left Cao Cao portrait and original face direction",
+    "no gold crown",
+    "full-background flag, not a small separate flag",
+    "partially occluded/cropped 曹 mark",
+    "no invented clouds or meander corners"
+  ],
+  "composition_reference": "9288s-icon-reference-zoom.png",
+  "composition_reference_rgb_sha256": "63cb1a239657a3eab2df5937732ecdbad6c7d3decf2f790a219356b84227cb69",
+  "unselected_draft": "icon-gpt-image-master-small-flag-draft.png",
+  "unselected_draft_prompt": "imagegen-prompt-small-flag-draft.txt",
+  "edit_source": "icon-gpt-image-master-before-ink-removal.png",
+  "composition_prompt": "imagegen-prompt-composition.txt",
+  "cleanup_detail": "Removed only the user-circled isolated black ink fragment on the right flag; continued the cloth texture/folds, keeping the upper partial 曹 and lower-left portrait.",
+  "cleanup_region_approximate": [
+    780,
+    550,
+    1215,
+    805
+  ]
 }

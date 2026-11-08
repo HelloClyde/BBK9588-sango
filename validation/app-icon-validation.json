@@ -1,11 +1,16 @@
 {
   "passed": 6,
   "failed": 0,
-  "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
-  "previous_bda_sha256": "709190655867e9b2e07feead56c012c184c8181f52775768db779bbb40e9b549",
-  "payload_unchanged": false,
-  "payload_sha256": "242e108a5eb6025445585006eaf82f4c8fb3b73af9ed2a2626f4dfddb526e1af",
-  "scope": "Four SDK VX icon dimension/pixel checks retained with exact entire icon/header byte equality to previous validated icon revision, and official SDK validation of current BDA. Current game code changes are checked in the day-popup and gameplay reports. No physical-device launcher verification.",
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
+  "previous_bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
+  "baseline_commit": "4b5e97a012878c7afb20bedd816f6e252fd892bd",
+  "payload_unchanged": true,
+  "payload_sha256": "73b4e3707de9ddd1217db28ab0562781c0183bfe91cd66ade1ccab1590c953ea",
+  "elf_unchanged": true,
+  "library_unchanged": true,
+  "color_library_unchanged": true,
+  "icons_unchanged_from_previous": false,
+  "restored_detail": "Original 9288S composition: lower-left Cao Cao, no gold crown, a full-background flag with only half/part of 曹 visible, per explicit user reference.",
   "cases": [
     {
       "icon": 0,
@@ -13,8 +18,12 @@
         80,
         80
       ],
+      "offset": 136,
+      "bytes": 12824,
       "all_rgb565_pixels_equal": true,
-      "non_grayscale_colors": 4560
+      "visual_review": "Cao Cao in the lower-left without gold crown; the whole background is a flag with only a partially visible 曹. No separate small flag, clouds or meander corners. Composition reviewed against original at native size.",
+      "screenshot": "docs/screenshots/app-icon/icon-0-80x80.png",
+      "vx_sha256": "3f961d39d459e364018ab3c435004432976fac297cb4b65362de5fe218b2fa7a"
     },
     {
       "icon": 1,
@@ -22,8 +31,12 @@
         80,
         80
       ],
+      "offset": 12960,
+      "bytes": 12824,
       "all_rgb565_pixels_equal": true,
-      "non_grayscale_colors": 4560
+      "visual_review": "Cao Cao in the lower-left without gold crown; the whole background is a flag with only a partially visible 曹. No separate small flag, clouds or meander corners. Composition reviewed against original at native size.",
+      "screenshot": "docs/screenshots/app-icon/icon-1-80x80.png",
+      "vx_sha256": "3f961d39d459e364018ab3c435004432976fac297cb4b65362de5fe218b2fa7a"
     },
     {
       "icon": 2,
@@ -31,8 +44,12 @@
         54,
         54
       ],
+      "offset": 25784,
+      "bytes": 5856,
       "all_rgb565_pixels_equal": true,
-      "non_grayscale_colors": 2356
+      "visual_review": "Cao Cao in the lower-left without gold crown; the whole background is a flag with only a partially visible 曹. No separate small flag, clouds or meander corners. Composition reviewed against original at native size.",
+      "screenshot": "docs/screenshots/app-icon/icon-2-54x54.png",
+      "vx_sha256": "5aad0cbe8d9977d26bc14d0b49bd1be32ee9343a40ef105c7f9b56f5706ce938"
     },
     {
       "icon": 3,
@@ -40,9 +57,14 @@
         58,
         58
       ],
+      "offset": 31640,
+      "bytes": 6752,
       "all_rgb565_pixels_equal": true,
-      "non_grayscale_colors": 2677
+      "visual_review": "Cao Cao in the lower-left without gold crown; the whole background is a flag with only a partially visible 曹. No separate small flag, clouds or meander corners. Composition reviewed against original at native size.",
+      "screenshot": "docs/screenshots/app-icon/icon-3-58x58.png",
+      "vx_sha256": "234f76a4f99bbc10bc41c2095e89b8fb69dc590261a195c66bb60c573e910d17"
     }
   ],
-  "icons_unchanged_from_previous": true
+  "scope": "Four SDK VX icon dimensions and every RGB565 pixel compared with target PNGs, official SDK BDA validation, exact executable payload/ELF/LIB/CLR equality. Icon art visually reviewed at 80/58/54. Existing MIPS/native game-interface evidence is reused through identical payload; no new physical-device or native launcher claim.",
+  "cleanup": "User-circled isolated black ink fragment to the right of the head removed; continuous flag cloth restored."
 }

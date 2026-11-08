@@ -1,5 +1,5 @@
 {
-  "bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
+  "bda_sha256": "d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2",
   "bda_bytes": 214700,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "GCC 15.2.0",
@@ -11,7 +11,7 @@
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "sango_lib_bytes": 461116,
   "library_validation": "Unchanged 461116-byte LIB; original records preserved. 1204 native PNG/RGB565 byte checks and real compiled-MIPS loading/CRC/index/masks. Native C200 SDK rendering uses exact expanded LIB/CLR borrowed buffers staged to bypass synthetic NAND ECC; filesystem/ownership modeled separately.",
-  "notes": "Six fixed labels are baked as 16x16 single-bit masks into final 240x24 / 240x36 PNGs. Both images copy 1:1 through named SDK pixels; no runtime fixed-text drawing and no 3:2 status-image scaling. SGCOLOR1 retains 1204 indexed frames with optional bounded/CRC-checked SGHUD01 native status image. Original name/terrain switch, combat centering, LIB, initialized/save data remain unchanged. Current 3818 color + 88 strategy + 250 battle color + 113 HUD/dispatch + 21 pixel-grid + 1167 existing MIPS checks; 30 controlled native C200 interface checks. No physical-device/full-campaign claim.",
+  "notes": "Launcher icon restored from original 9288S: Cao Cao in lower-left without gold crown, full-background flag with a partly occluded/cropped 曹. Four native SDK VX sizes/pixels checked. Exact payload/ELF/LIB/CLR match 4b5e97a; its 5457 MIPS and 30 native game-interface checks apply unchanged. No new launcher hardware or complete-campaign claim.",
   "control_flow_differential_checks": 0,
   "runtime_oracle_differential_checks": 60026,
   "mips_existing_regression_checks": 593,
@@ -29,5 +29,9 @@
   "control_flow_differential_evidence_commit": "e3cadecdbd6852108d416c893a1061f9e77f7ea7",
   "mips_battle_color_checks": 250,
   "mips_battle_ui_color_checks": 113,
-  "mips_battle_pixel_grid_checks": 21
+  "mips_battle_pixel_grid_checks": 21,
+  "runtime_payload_sha256": "73b4e3707de9ddd1217db28ab0562781c0183bfe91cd66ade1ccab1590c953ea",
+  "runtime_checks_reused_from_commit": "4b5e97a012878c7afb20bedd816f6e252fd892bd",
+  "runtime_evidence_basis": "Exact byte-identical BDA executable payload and ELF, LIB and CLR to 4b5e97a; only header/icon pixels changed.",
+  "app_icon_checks": 6
 }
