@@ -635,92 +635,94 @@ void sango_display_draw_line(short start_x, short start_y, short end_x, short en
 #undef target_context
 
 /* 原函数 0x81c08e7c */
-void sango_display_draw_rectangle(short param_1, short param_2, short param_3, short param_4,
-                                  uint32_t param_5, uint32_t param_6, int param_7)
+void sango_display_draw_rectangle(short x1, short y1, short x2, short y2, uint32_t gray,
+                                  uint32_t line_style, int context)
 {
     unsigned char abi_storage[28] __attribute__((aligned(8)));
-    (*(uint32_t *)(abi_storage + 0)) = param_5;
-    (*(uint32_t *)(abi_storage + 4)) = param_6;
-    (*(int *)(abi_storage + 8)) = param_7;
-#define param_5 (*(uint32_t *)(abi_storage + 0))
-#define param_6 (*(uint32_t *)(abi_storage + 4))
-#define param_7 (*(int *)(abi_storage + 8))
+    (*(uint32_t *)(abi_storage + 0)) = gray;
+    (*(uint32_t *)(abi_storage + 4)) = line_style;
+    (*(int *)(abi_storage + 8)) = context;
+#define gray (*(uint32_t *)(abi_storage + 0))
+#define line_style (*(uint32_t *)(abi_storage + 4))
+#define context (*(int *)(abi_storage + 8))
 
-    void *pvVar1;
-    short sVar2;
-    uint32_t uVar3;
-    short sVar4;
-    short sVar5;
-    short sVar6;
-    int iVar7;
-    int iVar8;
-    int iVar9;
-    int iVar10;
-    int iVar11;
-    void *unaff_s7;
+    void *previous_draw_object;
+    short edge_left;
+    uint32_t draw_object_id;
+    short edge_y;
+    short edge_right;
+    short edge_bottom;
+    int normalized_bottom;
+    int normalized_right;
+    int original_bottom;
+    int normalized_top;
+    int normalized_left;
+    void *draw_object;
 
-    iVar11 = (int)param_1;
-    iVar10 = (int)param_2;
-    iVar7 = (int)param_3;
-    iVar9 = (int)param_4;
-    if (3 < param_5)
+    normalized_left = (int)x1;
+    normalized_top = (int)y1;
+    normalized_bottom = (int)x2;
+    original_bottom = (int)y2;
+    if (3 < gray)
     {
         return;
     }
-    iVar8 = iVar7;
-    if (iVar7 < iVar11)
+    normalized_right = normalized_bottom;
+    if (normalized_bottom < normalized_left)
     {
-        iVar8 = iVar11;
-        iVar11 = iVar7;
+        normalized_right = normalized_left;
+        normalized_left = normalized_bottom;
     }
-    iVar7 = iVar9;
-    if (iVar9 < iVar10)
+    normalized_bottom = original_bottom;
+    if (original_bottom < normalized_top)
     {
-        iVar7 = iVar10;
-        iVar10 = iVar9;
+        normalized_bottom = normalized_top;
+        normalized_top = original_bottom;
     }
-    uVar3 = 8;
-    if (param_5 != 1)
+    draw_object_id = 8;
+    if (gray != 1)
     {
-        if (param_5 == 0)
+        if (gray == 0)
         {
-            uVar3 = 0xf;
+            draw_object_id = 0xf;
         }
-        else if (param_5 == 2)
+        else if (gray == 2)
         {
-            uVar3 = 7;
+            draw_object_id = 7;
         }
         else
         {
-            uVar3 = 0x10;
-            if (param_5 != 3)
-                goto LAB_81c08f2c;
+            draw_object_id = 0x10;
+            if (gray != 3)
+                goto draw_rectangle_edges;
         }
     }
-    unaff_s7 = bda_sango_gui_draw_object(uVar3);
-LAB_81c08f2c:
-    if (param_7 == 0)
+    draw_object = bda_sango_gui_draw_object(draw_object_id);
+draw_rectangle_edges:
+    if (context == 0)
     {
-        pvVar1 = bda_sango_gui_select_draw_object(g_draw_context, unaff_s7);
+        previous_draw_object = bda_sango_gui_select_draw_object(g_draw_context, draw_object);
         bda_sango_gui_draw_guard(1);
-        bda_sango_gui_rectangle(g_draw_context, iVar11, iVar10, iVar8 + 1, iVar7 + 1);
+        bda_sango_gui_rectangle(g_draw_context, normalized_left, normalized_top,
+                                normalized_right + 1, normalized_bottom + 1);
         bda_sango_gui_draw_guard(0);
         bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-        bda_sango_gui_select_draw_object(g_draw_context, pvVar1);
+        bda_sango_gui_select_draw_object(g_draw_context, previous_draw_object);
     }
-    sVar2 = (short)iVar11;
-    sVar4 = (short)iVar10;
-    sVar5 = (short)iVar8;
-    sango_display_draw_line(sVar2, sVar4, sVar5, sVar4, param_5, param_6, param_7);
-    sVar6 = (short)iVar7;
-    sango_display_draw_line(sVar5, sVar4, sVar5, sVar6, param_5, param_6, param_7);
-    sango_display_draw_line(sVar2, sVar6, sVar5, sVar6, param_5, param_6, param_7);
-    sango_display_draw_line(sVar2, sVar4, sVar2, sVar6, param_5, param_6, param_7);
+    edge_left = (short)normalized_left;
+    edge_y = (short)normalized_top;
+    edge_right = (short)normalized_right;
+    sango_display_draw_line(edge_left, edge_y, edge_right, edge_y, gray, line_style, context);
+    edge_bottom = (short)normalized_bottom;
+    sango_display_draw_line(edge_right, edge_y, edge_right, edge_bottom, gray, line_style, context);
+    sango_display_draw_line(edge_left, edge_bottom, edge_right, edge_bottom, gray, line_style,
+                            context);
+    sango_display_draw_line(edge_left, edge_y, edge_left, edge_bottom, gray, line_style, context);
     return;
 }
-#undef param_5
-#undef param_6
-#undef param_7
+#undef gray
+#undef line_style
+#undef context
 
 /* 原函数 0x81c090c4 */
 void sango_display_draw_circle(short center_x, short center_y, int radius, uint32_t gray_level,
@@ -823,181 +825,185 @@ draw_circle:
 #undef draw_context
 
 /* 原函数 0x81c093c0 */
-void sango_display_draw_polyline(short param_1, short param_2, int param_3, uint32_t param_4,
-                                 int param_5)
+void sango_display_draw_polyline(short center_x, short center_y, int radius, uint32_t gray,
+                                 int context)
 {
     unsigned char abi_storage[20] __attribute__((aligned(8)));
-    (*(int *)(abi_storage + 0)) = param_5;
-#define param_5 (*(int *)(abi_storage + 0))
+    (*(int *)(abi_storage + 0)) = context;
+#define context (*(int *)(abi_storage + 0))
 
-    int iVar1;
-    int iVar2;
-    short sVar3;
-    short sVar4;
-    short sVar5;
-    short sVar6;
-    short sVar7;
-    int iVar8;
-    int iVar9;
-    int iVar10;
-    int iVar11;
-    int iVar12;
+    int coordinate_difference;
+    int decision_accumulator;
+    short inner_right;
+    short outer_right_or_row;
+    short inner_row;
+    short inner_left;
+    short outer_left;
+    int radius_y;
+    int radius_x;
+    int origin_y;
+    int origin_x;
+    int decision_value;
 
-    iVar11 = (int)param_1;
-    iVar10 = (int)param_2;
-    if (((param_3 != 0) && (param_4 < 4)) && (param_5 != 0))
+    origin_x = (int)center_x;
+    origin_y = (int)center_y;
+    if (((radius != 0) && (gray < 4)) && (context != 0))
     {
-        iVar2 = param_3 * -2 + 3;
-        iVar8 = (int)(short)param_3;
-        iVar9 = 0;
-        if (-1 < iVar8)
+        decision_accumulator = radius * -2 + 3;
+        radius_y = (int)(short)radius;
+        radius_x = 0;
+        if (-1 < radius_y)
         {
             do
             {
-                iVar12 = iVar2 * 0x10000 >> 0x10;
-                sVar3 = (short)((uint32_t)((iVar11 + iVar9) * 0x10000) >> 0x10);
-                sVar4 = (short)((uint32_t)((iVar10 + iVar8) * 0x10000) >> 0x10);
-                sVar6 = (short)((uint32_t)((iVar11 - iVar9) * 0x10000) >> 0x10);
-                sango_display_draw_line(sVar3, sVar4, sVar6, sVar4, param_4, 0, param_5);
-                sVar4 = (short)((uint32_t)((iVar11 + iVar8) * 0x10000) >> 0x10);
-                sVar5 = (short)((uint32_t)((iVar10 + iVar9) * 0x10000) >> 0x10);
-                sVar7 = (short)((uint32_t)((iVar11 - iVar8) * 0x10000) >> 0x10);
-                sango_display_draw_line(sVar4, sVar5, sVar7, sVar5, param_4, 0, param_5);
-                sVar5 = (short)((uint32_t)((iVar10 - iVar9) * 0x10000) >> 0x10);
-                sango_display_draw_line(sVar4, sVar5, sVar7, sVar5, param_4, 0, param_5);
-                sVar4 = (short)((uint32_t)((iVar10 - iVar8) * 0x10000) >> 0x10);
-                sango_display_draw_line(sVar3, sVar4, sVar6, sVar4, param_4, 0, param_5);
-                iVar1 = iVar9 - iVar8;
-                iVar2 = iVar12 + iVar9 * 4 + 6;
-                if (-1 < iVar12)
+                decision_value = decision_accumulator * 0x10000 >> 0x10;
+                inner_right = (short)((uint32_t)((origin_x + radius_x) * 0x10000) >> 0x10);
+                outer_right_or_row = (short)((uint32_t)((origin_y + radius_y) * 0x10000) >> 0x10);
+                inner_left = (short)((uint32_t)((origin_x - radius_x) * 0x10000) >> 0x10);
+                sango_display_draw_line(inner_right, outer_right_or_row, inner_left,
+                                        outer_right_or_row, gray, 0, context);
+                outer_right_or_row = (short)((uint32_t)((origin_x + radius_y) * 0x10000) >> 0x10);
+                inner_row = (short)((uint32_t)((origin_y + radius_x) * 0x10000) >> 0x10);
+                outer_left = (short)((uint32_t)((origin_x - radius_y) * 0x10000) >> 0x10);
+                sango_display_draw_line(outer_right_or_row, inner_row, outer_left, inner_row, gray,
+                                        0, context);
+                inner_row = (short)((uint32_t)((origin_y - radius_x) * 0x10000) >> 0x10);
+                sango_display_draw_line(outer_right_or_row, inner_row, outer_left, inner_row, gray,
+                                        0, context);
+                outer_right_or_row = (short)((uint32_t)((origin_y - radius_y) * 0x10000) >> 0x10);
+                sango_display_draw_line(inner_right, outer_right_or_row, inner_left,
+                                        outer_right_or_row, gray, 0, context);
+                coordinate_difference = radius_x - radius_y;
+                decision_accumulator = decision_value + radius_x * 4 + 6;
+                if (-1 < decision_value)
                 {
-                    iVar8 = (iVar8 + -1) * 0x10000 >> 0x10;
-                    iVar2 = iVar12 + iVar1 * 4 + 10;
+                    radius_y = (radius_y + -1) * 0x10000 >> 0x10;
+                    decision_accumulator = decision_value + coordinate_difference * 4 + 10;
                 }
-                iVar9 = (iVar9 + 1) * 0x10000 >> 0x10;
-            } while (iVar9 <= iVar8);
+                radius_x = (radius_x + 1) * 0x10000 >> 0x10;
+            } while (radius_x <= radius_y);
         }
     }
     return;
 }
-#undef param_5
+#undef context
 
 /* 原函数 0x81c095b4 */
-void sango_display_set_brush(int param_1, uint32_t param_2)
+void sango_display_set_brush(int gray, uint32_t context)
 {
-    void *pvVar1;
-    uint32_t uVar2;
+    void *draw_object;
+    uint32_t draw_object_id;
 
-    if (param_1 == 1)
+    if (gray == 1)
     {
-        uVar2 = 8;
+        draw_object_id = 8;
     }
-    else if (param_1 == 0)
+    else if (gray == 0)
     {
-        uVar2 = 0xf;
+        draw_object_id = 0xf;
     }
-    else if (param_1 == 2)
+    else if (gray == 2)
     {
-        uVar2 = 7;
+        draw_object_id = 7;
     }
     else
     {
-        if (param_1 != 3)
+        if (gray != 3)
         {
             return;
         }
-        uVar2 = 0x10;
+        draw_object_id = 0x10;
     }
-    pvVar1 = bda_sango_gui_draw_object(uVar2);
-    if (param_2 == 0)
+    draw_object = bda_sango_gui_draw_object(draw_object_id);
+    if (context == 0)
     {
-        bda_sango_gui_set_fill_object(g_draw_context, (uint32_t)pvVar1);
-        g_legacy_data_81c2b204 = pvVar1;
+        bda_sango_gui_set_fill_object(g_draw_context, (uint32_t)draw_object);
+        g_legacy_data_81c2b204 = draw_object;
     }
     else
     {
-        bda_sango_gui_set_fill_object(param_2, (uint32_t)pvVar1);
+        bda_sango_gui_set_fill_object(context, (uint32_t)draw_object);
     }
     return;
 }
 
 /* 原函数 0x81c09680 */
-void sango_display_set_text_color(int param_1, uint32_t param_2)
+void sango_display_set_text_color(int gray, uint32_t context)
 {
-    void *pvVar1;
-    uint32_t uVar2;
+    void *draw_object;
+    uint32_t draw_object_id;
 
-    if (param_1 == 1)
+    if (gray == 1)
     {
-        uVar2 = 8;
+        draw_object_id = 8;
     }
-    else if (param_1 == 0)
+    else if (gray == 0)
     {
-        uVar2 = 0xf;
+        draw_object_id = 0xf;
     }
-    else if (param_1 == 2)
+    else if (gray == 2)
     {
-        uVar2 = 7;
+        draw_object_id = 7;
     }
     else
     {
-        if (param_1 != 3)
+        if (gray != 3)
         {
             return;
         }
-        uVar2 = 0x10;
+        draw_object_id = 0x10;
     }
-    pvVar1 = bda_sango_gui_draw_object(uVar2);
-    if (param_2 == 0)
+    draw_object = bda_sango_gui_draw_object(draw_object_id);
+    if (context == 0)
     {
-        bda_sango_gui_set_text_color(g_draw_context, (uint32_t)pvVar1);
-        g_legacy_data_81c2b208 = pvVar1;
+        bda_sango_gui_set_text_color(g_draw_context, (uint32_t)draw_object);
+        g_legacy_data_81c2b208 = draw_object;
     }
     else
     {
-        bda_sango_gui_set_text_color(param_2, (uint32_t)pvVar1);
+        bda_sango_gui_set_text_color(context, (uint32_t)draw_object);
     }
     return;
 }
 
 /* 原函数 0x81c0974c */
-uint32_t sango_display_select_font(uint8_t param_1, uint32_t param_2)
+uint32_t sango_display_select_font(uint8_t font_id, uint32_t context)
 {
-    uint32_t uVar1;
-    uint8_t uVar2;
+    uint32_t selected;
+    uint8_t native_font_id;
 
-    uVar1 = 0;
-    switch (param_1)
+    selected = 0;
+    switch (font_id)
     {
     case 0:
     case 1:
     case 2:
-        uVar2 = 0;
+        native_font_id = 0;
         break;
     case 3:
     case 4:
     case 5:
-        uVar2 = 4;
+        native_font_id = 4;
         break;
     case 6:
     case 7:
     case 8:
-        uVar2 = 8;
+        native_font_id = 8;
         break;
     default:
-        goto switchD_81c09778_default;
+        goto return_selection_result;
     }
-    if (param_2 == 0)
+    if (context == 0)
     {
-        bda_sango_gui_select_font(g_draw_context, (uint32_t)uVar2);
-        uVar1 = 1;
-        g_legacy_data_81c2b210 = uVar2;
+        bda_sango_gui_select_font(g_draw_context, (uint32_t)native_font_id);
+        selected = 1;
+        g_legacy_data_81c2b210 = native_font_id;
     }
     else
     {
-        bda_sango_gui_select_font(param_2, (uint32_t)uVar2);
-        uVar1 = 1;
+        bda_sango_gui_select_font(context, (uint32_t)native_font_id);
+        selected = 1;
     }
-switchD_81c09778_default:
-    return uVar1;
+return_selection_result:
+    return selected;
 }

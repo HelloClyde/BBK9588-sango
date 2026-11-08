@@ -163,7 +163,7 @@
         {
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
-          "expression": "in_t0 = 2;"
+          "expression": "resource_id = 2;"
         },
         {
           "source": "src/strategy/map.c",
@@ -614,7 +614,7 @@
         {
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
-          "expression": "in_t0 = 0xd;"
+          "expression": "resource_id = 0xd;"
         },
         {
           "source": "src/battle/ai.c",
@@ -624,7 +624,7 @@
         {
           "source": "src/battle/ai.c",
           "function": "sango_battle_load_range_template",
-          "expression": "unaff_s1 = 9;"
+          "expression": "template_width = 9;"
         }
       ]
     },
@@ -689,7 +689,7 @@
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_draw_damage_digits",
-          "expression": "cVar3 - 0x30"
+          "expression": "digit - 0x30"
         }
       ]
     },
@@ -962,7 +962,7 @@
         {
           "source": "src/battle/combat_math.c",
           "function": "sango_battle_prepare_combatant",
-          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
+          "expression": "(&g_attacker_troop_type)[side_or_troop_offset] = unit_y_or_troop_type;"
         },
         {
           "source": "src/battle/actions.c",
@@ -1170,7 +1170,7 @@
         {
           "source": "src/battle/combat_math.c",
           "function": "sango_battle_prepare_combatant",
-          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
+          "expression": "(&g_attacker_troop_type)[side_or_troop_offset] = unit_y_or_troop_type;"
         },
         {
           "source": "src/battle/actions.c",
@@ -1400,7 +1400,7 @@
         {
           "source": "src/battle/combat_math.c",
           "function": "sango_battle_prepare_combatant",
-          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
+          "expression": "(&g_attacker_troop_type)[side_or_troop_offset] = unit_y_or_troop_type;"
         },
         {
           "source": "src/battle/actions.c",
@@ -1630,7 +1630,7 @@
         {
           "source": "src/battle/combat_math.c",
           "function": "sango_battle_prepare_combatant",
-          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
+          "expression": "(&g_attacker_troop_type)[side_or_troop_offset] = unit_y_or_troop_type;"
         },
         {
           "source": "src/battle/actions.c",
@@ -1871,7 +1871,7 @@
         {
           "source": "src/battle/combat_math.c",
           "function": "sango_battle_prepare_combatant",
-          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
+          "expression": "(&g_attacker_troop_type)[side_or_troop_offset] = unit_y_or_troop_type;"
         },
         {
           "source": "src/battle/actions.c",
@@ -2101,7 +2101,7 @@
         {
           "source": "src/battle/combat_math.c",
           "function": "sango_battle_prepare_combatant",
-          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
+          "expression": "(&g_attacker_troop_type)[side_or_troop_offset] = unit_y_or_troop_type;"
         },
         {
           "source": "src/battle/actions.c",
@@ -2568,12 +2568,12 @@
         {
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_units",
-          "expression": "cVar1 == '\\x02'"
+          "expression": "unit_status == '\\x02'"
         },
         {
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_units",
-          "expression": "iVar4 = 4,"
+          "expression": "unit_offset_or_status_frame = 4,"
         },
         {
           "source": "src/battle/field.c",

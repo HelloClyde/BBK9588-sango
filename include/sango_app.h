@@ -10,6 +10,6 @@ void sango_main(void);
 void sango_game_lifecycle(void);
 void sango_app_free_resource_buffer(void);
 void sango_app_show_initialization_error(char error_kind);
-int sango_resource_prepare_hook(uint32_t param_1, int param_2);
+int sango_resource_prepare_hook(uint32_t unused_callback_argument, int resource_offset);
 
 #endif

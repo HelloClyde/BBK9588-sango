@@ -29,7 +29,12 @@
     "control_flow_27163_mips_differentials": true,
     "runtime_oracle_60026_differentials": true,
     "control_flow_24_native_interface_checks": true,
-    "independent_module_syntax_42": true
+    "independent_module_syntax_42": true,
+    "short_function_identifier_review_249": true,
+    "identifier_only_tokens_all446": true,
+    "all_opaque_local_names_and_labels_removed": true,
+    "short_function_bda_lib_and_elf_byte_identical": true,
+    "recovered_local_and_label_guard": true
   },
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",

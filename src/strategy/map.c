@@ -328,85 +328,86 @@ void sango_strategy_present(void)
 /* 原函数 0x81c134b8 */
 uint32_t sango_city_add_character(uint32_t city_id, uint8_t character_id)
 {
-    uint8_t *puVar1;
-    char cVar2;
-    uint32_t uVar3;
-    uint8_t *puVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
+    uint8_t *previous_roster_entry;
+    char previous_count;
+    uint32_t inserted;
+    uint8_t *destination_entry;
+    uint32_t shift_index;
+    uint32_t insert_position;
+    uint32_t city_index;
 
-    uVar7 = city_id & 0xff;
-    uVar3 = 0;
-    if ((uVar7 < 0x26) && (character_id < 200))
+    city_index = city_id & 0xff;
+    inserted = 0;
+    if ((city_index < 0x26) && (character_id < 200))
     {
-        uVar6 = (uint32_t)(uint8_t)(&g_first_city_character_start)[uVar7 * 0x24] +
-                    (uint32_t)(uint8_t)(&g_first_city_character_count)[uVar7 * 0x24] &
-                0xff;
-        uVar5 = 199;
-        if (uVar6 < 199)
+        insert_position =
+            (uint32_t)(uint8_t)(&g_first_city_character_start)[city_index * 0x24] +
+                (uint32_t)(uint8_t)(&g_first_city_character_count)[city_index * 0x24] &
+            0xff;
+        shift_index = 199;
+        if (insert_position < 199)
         {
             do
             {
-                puVar4 = &g_city_character_roster + uVar5;
-                puVar1 = (uint8_t *)(uVar5 + 0x81c2b30f);
-                uVar5 = uVar5 - 1 & 0xff;
-                *puVar4 = *puVar1;
-            } while (uVar6 < uVar5);
+                destination_entry = &g_city_character_roster + shift_index;
+                previous_roster_entry = (uint8_t *)(shift_index + 0x81c2b30f);
+                shift_index = shift_index - 1 & 0xff;
+                *destination_entry = *previous_roster_entry;
+            } while (insert_position < shift_index);
         }
-        cVar2 = (&g_first_city_character_count)[uVar7 * 0x24];
-        (&g_city_character_roster)[uVar6] = character_id;
-        (&g_first_city_character_count)[uVar7 * 0x24] = cVar2 + '\x01';
-        while (uVar7 = uVar7 + 1 & 0xff, uVar7 < 0x26)
+        previous_count = (&g_first_city_character_count)[city_index * 0x24];
+        (&g_city_character_roster)[insert_position] = character_id;
+        (&g_first_city_character_count)[city_index * 0x24] = previous_count + '\x01';
+        while (city_index = city_index + 1 & 0xff, city_index < 0x26)
         {
-            (&g_first_city_character_start)[uVar7 * 0x24] =
-                (&g_first_city_character_start)[uVar7 * 0x24] + '\x01';
+            (&g_first_city_character_start)[city_index * 0x24] =
+                (&g_first_city_character_start)[city_index * 0x24] + '\x01';
         }
-        uVar3 = 1;
+        inserted = 1;
     }
-    return uVar3;
+    return inserted;
 }
 
 /* 原函数 0x81c135a8 */
 uint32_t sango_city_add_item(uint32_t city_id, uint8_t item_id)
 {
-    uint8_t *puVar1;
-    char cVar2;
-    uint32_t uVar3;
-    uint8_t *puVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
+    uint8_t *previous_roster_entry;
+    char previous_count;
+    uint32_t inserted;
+    uint8_t *destination_entry;
+    uint32_t shift_index;
+    uint32_t insert_position;
+    uint32_t city_index;
 
-    uVar7 = city_id & 0xff;
-    uVar3 = 0;
-    if ((uVar7 < 0x26) && (item_id < 0x21))
+    city_index = city_id & 0xff;
+    inserted = 0;
+    if ((city_index < 0x26) && (item_id < 0x21))
     {
-        uVar6 = (uint32_t)(uint8_t)(&g_first_city_item_start)[uVar7 * 0x24] +
-                    (uint32_t)(uint8_t)(&g_first_city_item_count)[uVar7 * 0x24] &
-                0xff;
-        uVar5 = 0x20;
-        if (uVar6 < 0x20)
+        insert_position = (uint32_t)(uint8_t)(&g_first_city_item_start)[city_index * 0x24] +
+                              (uint32_t)(uint8_t)(&g_first_city_item_count)[city_index * 0x24] &
+                          0xff;
+        shift_index = 0x20;
+        if (insert_position < 0x20)
         {
             do
             {
-                puVar4 = &g_city_item_roster + uVar5;
-                puVar1 = (uint8_t *)(uVar5 + 0x81c2b3df);
-                uVar5 = uVar5 - 1 & 0xff;
-                *puVar4 = *puVar1;
-            } while (uVar6 < uVar5);
+                destination_entry = &g_city_item_roster + shift_index;
+                previous_roster_entry = (uint8_t *)(shift_index + 0x81c2b3df);
+                shift_index = shift_index - 1 & 0xff;
+                *destination_entry = *previous_roster_entry;
+            } while (insert_position < shift_index);
         }
-        cVar2 = (&g_first_city_item_count)[uVar7 * 0x24];
-        (&g_city_item_roster)[uVar6] = item_id;
-        (&g_first_city_item_count)[uVar7 * 0x24] = cVar2 + '\x01';
-        while (uVar7 = uVar7 + 1 & 0xff, uVar7 < 0x26)
+        previous_count = (&g_first_city_item_count)[city_index * 0x24];
+        (&g_city_item_roster)[insert_position] = item_id;
+        (&g_first_city_item_count)[city_index * 0x24] = previous_count + '\x01';
+        while (city_index = city_index + 1 & 0xff, city_index < 0x26)
         {
-            (&g_first_city_item_start)[uVar7 * 0x24] =
-                (&g_first_city_item_start)[uVar7 * 0x24] + '\x01';
+            (&g_first_city_item_start)[city_index * 0x24] =
+                (&g_first_city_item_start)[city_index * 0x24] + '\x01';
         }
-        uVar3 = 1;
+        inserted = 1;
     }
-    return uVar3;
+    return inserted;
 }
 
 /* 原函数 0x81c13698 */
@@ -416,272 +417,276 @@ void sango_city_roster_noop(void)
 }
 
 /* 原函数 0x81c136a0 */
-uint32_t sango_city_adjacent_distance(uint32_t param_1, uint8_t param_2, uint8_t param_3,
-                                      uint32_t param_4, uint8_t param_5, uint8_t param_6)
+uint32_t sango_city_adjacent_distance(uint32_t source_city, uint8_t source_x, uint8_t source_y,
+                                      uint32_t target_city, uint8_t target_x, uint8_t target_y)
 {
     unsigned char abi_storage[21] __attribute__((aligned(8)));
-    (*(uint8_t *)(abi_storage + 0)) = param_5;
-    (*(uint8_t *)(abi_storage + 4)) = param_6;
-#define param_5 (*(uint8_t *)(abi_storage + 0))
-#define param_6 (*(uint8_t *)(abi_storage + 4))
+    (*(uint8_t *)(abi_storage + 0)) = target_x;
+    (*(uint8_t *)(abi_storage + 4)) = target_y;
+#define target_x (*(uint8_t *)(abi_storage + 0))
+#define target_y (*(uint8_t *)(abi_storage + 4))
 
-    char cVar1;
-    uint8_t bVar2;
-    int iVar3;
-    uint8_t *pbVar4;
-    uint32_t uVar5;
-    uint8_t *pbVar6;
+    char distance_y;
+    uint8_t distance;
+    int neighbor_table_address;
+    uint8_t *neighbor_entry;
+    uint32_t direction_index;
+    uint8_t *city_neighbors;
 
-    iVar3 = sango_resource_item(0x3b, '\x01', g_resource_package_address);
-    pbVar6 = (uint8_t *)(iVar3 + (param_1 & 0xff) * 0x10);
-    uVar5 = 0;
-    pbVar4 = pbVar6;
+    neighbor_table_address = sango_resource_item(0x3b, '\x01', g_resource_package_address);
+    city_neighbors = (uint8_t *)(neighbor_table_address + (source_city & 0xff) * 0x10);
+    direction_index = 0;
+    neighbor_entry = city_neighbors;
     do
     {
-        if ((uint32_t)*pbVar4 == (param_4 & 0xff) + 1)
+        if ((uint32_t)*neighbor_entry == (target_city & 0xff) + 1)
         {
-            if (7 < uVar5)
+            if (7 < direction_index)
             {
                 return 0xff;
             }
-            cVar1 = param_3 - param_6;
-            if (param_3 < param_6)
+            distance_y = source_y - target_y;
+            if (source_y < target_y)
             {
-                cVar1 = param_6 - param_3;
+                distance_y = target_y - source_y;
             }
-            if (param_2 < param_5)
+            if (source_x < target_x)
             {
-                bVar2 = (cVar1 + param_5) - param_2;
+                distance = (distance_y + target_x) - source_x;
             }
             else
             {
-                bVar2 = (cVar1 + param_2) - param_5;
+                distance = (distance_y + source_x) - target_x;
             }
-            return (uint32_t)bVar2;
+            return (uint32_t)distance;
         }
-        uVar5 = uVar5 + 1 & 0xff;
-        pbVar4 = pbVar6 + uVar5;
-    } while (uVar5 < 8);
+        direction_index = direction_index + 1 & 0xff;
+        neighbor_entry = city_neighbors + direction_index;
+    } while (direction_index < 8);
     return 0xff;
 }
-#undef param_5
-#undef param_6
+#undef target_x
+#undef target_y
 
 /* 原函数 0x81c13794 */
 uint32_t sango_faction_list_cities(uint32_t ruler_id, int output_city_ids)
 {
-    uint8_t *puVar1;
-    uint32_t uVar2;
-    uint32_t city_index;
+    uint8_t *destination_entry;
+    uint32_t scanned_city;
+    uint32_t city_count;
 
-    city_index = 0;
-    uVar2 = 0;
+    city_count = 0;
+    scanned_city = 0;
     do
     {
-        puVar1 = (uint8_t *)(output_city_ids + city_index);
-        if ((uint32_t)(uint8_t)(&g_first_city_owner)[uVar2 * 0x24] == (ruler_id & 0xff) + 1)
+        destination_entry = (uint8_t *)(output_city_ids + city_count);
+        if ((uint32_t)(uint8_t)(&g_first_city_owner)[scanned_city * 0x24] == (ruler_id & 0xff) + 1)
         {
-            city_index = city_index + 1 & 0xff;
-            *puVar1 = (char)uVar2;
+            city_count = city_count + 1 & 0xff;
+            *destination_entry = (char)scanned_city;
         }
-        uVar2 = uVar2 + 1 & 0xff;
-    } while (uVar2 < 0x26);
-    return city_index;
+        scanned_city = scanned_city + 1 & 0xff;
+    } while (scanned_city < 0x26);
+    return city_count;
 }
 
 /* 原函数 0x81c137f0 */
 uint32_t sango_character_find_city(char character_id)
 {
-    char *pcVar1;
-    uint32_t uVar2;
-    uint8_t bVar3;
-    uint32_t uVar4;
+    char *roster_entry;
+    uint32_t roster_position;
+    uint8_t roster_index;
+    uint32_t city_index;
 
-    uVar4 = 0;
+    city_index = 0;
     do
     {
-        uVar2 = (uint32_t)(uint8_t)(&g_first_city_character_start)[uVar4 * 0x24];
-        bVar3 = 0;
-        if ((&g_first_city_character_count)[uVar4 * 0x24] != 0)
+        roster_position = (uint32_t)(uint8_t)(&g_first_city_character_start)[city_index * 0x24];
+        roster_index = 0;
+        if ((&g_first_city_character_count)[city_index * 0x24] != 0)
         {
             do
             {
-                pcVar1 = &g_city_character_roster + uVar2;
-                bVar3 = bVar3 + 1;
-                uVar2 = uVar2 + 1 & 0xff;
-                if (*pcVar1 == character_id)
+                roster_entry = &g_city_character_roster + roster_position;
+                roster_index = roster_index + 1;
+                roster_position = roster_position + 1 & 0xff;
+                if (*roster_entry == character_id)
                 {
-                    return uVar4;
+                    return city_index;
                 }
-            } while (bVar3 < (uint8_t)(&g_first_city_character_count)[uVar4 * 0x24]);
+            } while (roster_index < (uint8_t)(&g_first_city_character_count)[city_index * 0x24]);
         }
-        uVar4 = uVar4 + 1 & 0xff;
-    } while (uVar4 < 0x26);
+        city_index = city_index + 1 & 0xff;
+    } while (city_index < 0x26);
     return 0xff;
 }
 
 /* 原函数 0x81c13870 */
 uint32_t sango_city_list_idle_characters(uint32_t city_id, int output_character_ids)
 {
-    int iVar1;
-    uint8_t *pbVar2;
-    int iVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
+    int roster_position;
+    uint8_t *destination_entry;
+    int city_offset;
+    uint32_t roster_index;
+    uint32_t idle_count;
 
-    iVar3 = (city_id & 0xff) * 0x24;
-    uVar5 = 0;
-    uVar4 = 0;
-    if ((&g_first_city_character_count)[iVar3] != '\0')
+    city_offset = (city_id & 0xff) * 0x24;
+    idle_count = 0;
+    roster_index = 0;
+    if ((&g_first_city_character_count)[city_offset] != '\0')
     {
         do
         {
-            iVar1 = uVar4 + (uint8_t)(&g_first_city_character_start)[iVar3];
-            uVar4 = uVar4 + 1 & 0xff;
-            pbVar2 = (uint8_t *)(output_character_ids + uVar5);
-            if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[iVar1] * 0x10 +
-                          g_character_table_address + 1) == (&g_first_city_owner)[iVar3])
+            roster_position = roster_index + (uint8_t)(&g_first_city_character_start)[city_offset];
+            roster_index = roster_index + 1 & 0xff;
+            destination_entry = (uint8_t *)(output_character_ids + idle_count);
+            if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[roster_position] * 0x10 +
+                          g_character_table_address + 1) == (&g_first_city_owner)[city_offset])
             {
-                uVar5 = uVar5 + 1 & 0xff;
-                *pbVar2 = (&g_city_character_roster)[iVar1];
+                idle_count = idle_count + 1 & 0xff;
+                *destination_entry = (&g_city_character_roster)[roster_position];
             }
-        } while (uVar4 < (uint8_t)(&g_first_city_character_count)[iVar3]);
+        } while (roster_index < (uint8_t)(&g_first_city_character_count)[city_offset]);
     }
-    return uVar5;
+    return idle_count;
 }
 
 /* 原函数 0x81c13918 */
-uint32_t sango_city_list_available_characters(uint32_t param_1, int param_2)
+uint32_t sango_city_list_available_characters(uint32_t city_id, int destination_address)
 {
-    int iVar1;
-    int iVar2;
-    uint8_t *pbVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
+    int roster_position;
+    int city_offset;
+    uint8_t *destination_entry;
+    uint32_t roster_index;
+    uint32_t character_count;
 
-    iVar2 = (param_1 & 0xff) * 0x24;
-    uVar5 = 0;
-    uVar4 = 0;
-    if ((&g_first_city_character_count)[iVar2] != '\0')
+    city_offset = (city_id & 0xff) * 0x24;
+    character_count = 0;
+    roster_index = 0;
+    if ((&g_first_city_character_count)[city_offset] != '\0')
     {
         do
         {
-            iVar1 = uVar4 + (uint8_t)(&g_first_city_character_start)[iVar2];
-            uVar4 = uVar4 + 1 & 0xff;
-            pbVar3 = (uint8_t *)(param_2 + uVar5);
-            if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[iVar1] * 0x10 +
+            roster_position = roster_index + (uint8_t)(&g_first_city_character_start)[city_offset];
+            roster_index = roster_index + 1 & 0xff;
+            destination_entry = (uint8_t *)(destination_address + character_count);
+            if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[roster_position] * 0x10 +
                           g_character_table_address + 1) == '\0')
             {
-                uVar5 = uVar5 + 1 & 0xff;
-                *pbVar3 = (&g_city_character_roster)[iVar1];
+                character_count = character_count + 1 & 0xff;
+                *destination_entry = (&g_city_character_roster)[roster_position];
             }
-        } while (uVar4 < (uint8_t)(&g_first_city_character_count)[iVar2]);
+        } while (roster_index < (uint8_t)(&g_first_city_character_count)[city_offset]);
     }
-    return uVar5;
+    return character_count;
 }
 
 /* 原函数 0x81c139a8 */
-uint32_t sango_city_list_captives(uint32_t param_1, int param_2)
+uint32_t sango_city_list_captives(uint32_t city_id, int destination_address)
 {
-    int iVar1;
-    int iVar2;
-    uint8_t *pbVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
+    int roster_position;
+    int city_offset;
+    uint8_t *destination_entry;
+    uint32_t roster_index;
+    uint32_t character_count;
 
-    iVar2 = (param_1 & 0xff) * 0x24;
-    uVar5 = 0;
-    uVar4 = 0;
-    if ((&g_first_city_character_count)[iVar2] != '\0')
+    city_offset = (city_id & 0xff) * 0x24;
+    character_count = 0;
+    roster_index = 0;
+    if ((&g_first_city_character_count)[city_offset] != '\0')
     {
         do
         {
-            iVar1 = uVar4 + (uint8_t)(&g_first_city_character_start)[iVar2];
-            uVar4 = uVar4 + 1 & 0xff;
-            pbVar3 = (uint8_t *)(param_2 + uVar5);
-            if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[iVar1] * 0x10 +
+            roster_position = roster_index + (uint8_t)(&g_first_city_character_start)[city_offset];
+            roster_index = roster_index + 1 & 0xff;
+            destination_entry = (uint8_t *)(destination_address + character_count);
+            if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[roster_position] * 0x10 +
                           g_character_table_address + 1) == -1)
             {
-                uVar5 = uVar5 + 1 & 0xff;
-                *pbVar3 = (&g_city_character_roster)[iVar1];
+                character_count = character_count + 1 & 0xff;
+                *destination_entry = (&g_city_character_roster)[roster_position];
             }
-        } while (uVar4 < (uint8_t)(&g_first_city_character_count)[iVar2]);
+        } while (roster_index < (uint8_t)(&g_first_city_character_count)[city_offset]);
     }
-    return uVar5;
+    return character_count;
 }
 
 /* 原函数 0x81c13a40 */
-uint32_t sango_city_list_enemy_rulers(uint32_t param_1, int param_2)
+uint32_t sango_city_list_enemy_rulers(uint32_t ruler_id, int destination_address)
 {
-    uint8_t bVar1;
-    int iVar2;
-    uint32_t uVar3;
-    uint32_t uVar4;
-    char *pcVar5;
-    uint32_t uVar6;
+    uint8_t governor_id;
+    int city_offset;
+    uint32_t city_index;
+    uint32_t owner_id;
+    char *destination_entry;
+    uint32_t governor_count;
 
-    uVar6 = 0;
-    uVar3 = 0;
+    governor_count = 0;
+    city_index = 0;
     do
     {
-        iVar2 = uVar3 * 0x24;
-        uVar4 = (uint32_t)(uint8_t)(&g_first_city_owner)[iVar2];
-        uVar3 = uVar3 + 1 & 0xff;
-        if (uVar4 != 0)
+        city_offset = city_index * 0x24;
+        owner_id = (uint32_t)(uint8_t)(&g_first_city_owner)[city_offset];
+        city_index = city_index + 1 & 0xff;
+        if (owner_id != 0)
         {
-            bVar1 = (&g_first_city_governor)[iVar2];
-            if ((bVar1 != 0) && (uVar4 != (param_1 & 0xff) + 1))
+            governor_id = (&g_first_city_governor)[city_offset];
+            if ((governor_id != 0) && (owner_id != (ruler_id & 0xff) + 1))
             {
-                pcVar5 = (char *)(param_2 + uVar6);
-                if (bVar1 != uVar4)
+                destination_entry = (char *)(destination_address + governor_count);
+                if (governor_id != owner_id)
                 {
-                    uVar6 = uVar6 + 1 & 0xff;
-                    *pcVar5 = bVar1 - 1;
+                    governor_count = governor_count + 1 & 0xff;
+                    *destination_entry = governor_id - 1;
                 }
             }
         }
-    } while (uVar3 < 0x26);
-    return uVar6;
+    } while (city_index < 0x26);
+    return governor_count;
 }
 
 /* 原函数 0x81c13ab8 */
-uint32_t sango_faction_list_characters(uint32_t param_1, int param_2)
+uint32_t sango_faction_list_characters(uint32_t ruler_id, int destination_address)
 {
-    int iVar1;
-    uint8_t *pbVar2;
-    int iVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
-    uint32_t uVar7;
+    int roster_position;
+    uint8_t *destination_entry;
+    int city_offset;
+    uint32_t roster_index;
+    uint32_t city_character_count;
+    uint32_t city_index;
+    uint32_t total_characters;
 
-    uVar7 = 0;
-    uVar6 = 0;
+    total_characters = 0;
+    city_index = 0;
     do
     {
-        iVar3 = uVar6 * 0x24;
-        if ((uint32_t)(uint8_t)(&g_first_city_owner)[iVar3] == (param_1 & 0xff) + 1)
+        city_offset = city_index * 0x24;
+        if ((uint32_t)(uint8_t)(&g_first_city_owner)[city_offset] == (ruler_id & 0xff) + 1)
         {
-            uVar5 = 0;
-            uVar4 = 0;
-            if ((&g_first_city_character_count)[iVar3] != '\0')
+            city_character_count = 0;
+            roster_index = 0;
+            if ((&g_first_city_character_count)[city_offset] != '\0')
             {
                 do
                 {
-                    iVar1 = uVar4 + (uint8_t)(&g_first_city_character_start)[iVar3];
-                    uVar4 = uVar4 + 1 & 0xff;
-                    pbVar2 = (uint8_t *)(param_2 + uVar7 + uVar5);
-                    if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[iVar1] * 0x10 +
-                                  g_character_table_address + 1) == (&g_first_city_owner)[iVar3])
+                    roster_position =
+                        roster_index + (uint8_t)(&g_first_city_character_start)[city_offset];
+                    roster_index = roster_index + 1 & 0xff;
+                    destination_entry =
+                        (uint8_t *)(destination_address + total_characters + city_character_count);
+                    if (*(char *)((uint32_t)(uint8_t)(&g_city_character_roster)[roster_position] *
+                                      0x10 +
+                                  g_character_table_address + 1) ==
+                        (&g_first_city_owner)[city_offset])
                     {
-                        uVar5 = uVar5 + 1 & 0xff;
-                        *pbVar2 = (&g_city_character_roster)[iVar1];
+                        city_character_count = city_character_count + 1 & 0xff;
+                        *destination_entry = (&g_city_character_roster)[roster_position];
                     }
-                } while (uVar4 < (uint8_t)(&g_first_city_character_count)[iVar3]);
+                } while (roster_index < (uint8_t)(&g_first_city_character_count)[city_offset]);
             }
-            uVar7 = uVar7 + uVar5 & 0xff;
+            total_characters = total_characters + city_character_count & 0xff;
         }
-        uVar6 = uVar6 + 1 & 0xff;
-    } while (uVar6 < 0x26);
-    return uVar7;
+        city_index = city_index + 1 & 0xff;
+    } while (city_index < 0x26);
+    return total_characters;
 }

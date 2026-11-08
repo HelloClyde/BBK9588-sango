@@ -12,32 +12,33 @@ uint32_t sango_save_choose_slot(char load_mode)
 
     uint32_t highlight_row;
     uint32_t slot;
-    int iVar3;
-    int iVar4;
+    int highlight_bottom;
+    int highlight_top_or_io_result;
 
     sango_save_draw_slots();
     slot = 0;
     sango_display_invert_rectangle(0x18, 0x74, 0x86, 0x80, 0);
-    iVar4 = 0x74;
-    iVar3 = 0x80;
+    highlight_top_or_io_result = 0x74;
+    highlight_bottom = 0x80;
     do
     {
         do
         {
             sango_input_next_event(&event_kind);
         } while (event_kind != 5);
-        sango_display_invert_rectangle(0x18, (short)iVar4, 0x86, (short)iVar3, 0);
+        sango_display_invert_rectangle(0x18, (short)highlight_top_or_io_result, 0x86,
+                                       (short)highlight_bottom, 0);
         if (key_code == 0x1c)
         {
             if (load_mode == '\0')
             {
-                iVar4 = sango_save_write_slot((char)slot);
+                highlight_top_or_io_result = sango_save_write_slot((char)slot);
             }
             else
             {
-                iVar4 = sango_save_load_slot((char)slot);
+                highlight_top_or_io_result = sango_save_load_slot((char)slot);
             }
-            if (iVar4 != 0)
+            if (highlight_top_or_io_result != 0)
             {
                 return slot & 0xff;
             }
@@ -64,9 +65,10 @@ uint32_t sango_save_choose_slot(char load_mode)
         }
         slot = (int)slot % 3;
         highlight_row = slot * 0x1b + 0x22 & 0xff;
-        iVar3 = highlight_row + 0x5e;
-        iVar4 = highlight_row + 0x52;
-        sango_display_invert_rectangle(0x18, (short)iVar4, 0x86, (short)iVar3, 0);
+        highlight_bottom = highlight_row + 0x5e;
+        highlight_top_or_io_result = highlight_row + 0x52;
+        sango_display_invert_rectangle(0x18, (short)highlight_top_or_io_result, 0x86,
+                                       (short)highlight_bottom, 0);
     } while (true);
 }
 #undef event_kind
@@ -76,44 +78,44 @@ uint32_t sango_save_choose_slot(char load_mode)
 void sango_save_draw_slots(void)
 {
     unsigned char abi_storage[128] __attribute__((aligned(8)));
-#define local_90 (*(uint8_t(*)[8])(abi_storage + 0))
-#define local_71 (*(char *)(abi_storage + 31))
-#define local_49 (*(char *)(abi_storage + 71))
-#define local_28 (*(uint16_t(*)[4])(abi_storage + 104))
-#define acStack_88 (*(char(*)[10])(abi_storage + 8))
-#define auStack_7e (*(uint8_t(*)[13])(abi_storage + 18))
-#define acStack_60 (*(char(*)[23])(abi_storage + 48))
-#define acStack_38 (*(char(*)[16])(abi_storage + 88))
+#define ruler_or_name_length (*(uint8_t(*)[8])(abi_storage + 0))
+#define primary_file_digit (*(char *)(abi_storage + 31))
+#define secondary_file_digit (*(char *)(abi_storage + 71))
+#define saved_year (*(uint16_t(*)[4])(abi_storage + 104))
+#define primary_path_or_summary (*(char(*)[10])(abi_storage + 8))
+#define year_text_start (*(uint8_t(*)[13])(abi_storage + 18))
+#define secondary_path (*(char(*)[23])(abi_storage + 48))
+#define formatted_value (*(char(*)[16])(abi_storage + 88))
 
-    char cVar1;
-    bool bVar2;
-    uint8_t uVar3;
+    char file_pair_offset;
+    bool missing_save_pair;
+    uint8_t original_scenario;
     void *file;
     void *file_00;
-    uint32_t uVar4;
-    uint16_t uVar5;
+    uint32_t text_length;
+    uint16_t slot_index;
 
     sango_bitmap_draw_resource(0x2e, 1, 0, 0, '\x01');
-    uVar3 = g_scenario_id_view2;
-    uVar5 = 0;
+    original_scenario = g_scenario_id_view2;
+    slot_index = 0;
     do
     {
-        cVar1 = (char)uVar5 * '\x02';
-        sango_resource_read_text(1, 0x40, acStack_88);
-        local_71 = cVar1 + '0';
-        file = bbk_fopen(acStack_88, &g_legacy_data_81c205e0);
-        sango_resource_read_text(1, 0x40, acStack_60);
-        local_49 = cVar1 + '1';
-        file_00 = bbk_fopen(acStack_60, &g_legacy_data_81c205e0);
-        bVar2 = false;
+        file_pair_offset = (char)slot_index * '\x02';
+        sango_resource_read_text(1, 0x40, primary_path_or_summary);
+        primary_file_digit = file_pair_offset + '0';
+        file = bbk_fopen(primary_path_or_summary, &g_legacy_data_81c205e0);
+        sango_resource_read_text(1, 0x40, secondary_path);
+        secondary_file_digit = file_pair_offset + '1';
+        file_00 = bbk_fopen(secondary_path, &g_legacy_data_81c205e0);
+        missing_save_pair = false;
         if (file_00 == 0)
         {
             if (file != 0)
             {
                 bbk_fclose(file);
             }
-            sango_resource_read_text(1, 0x42, acStack_88);
-            bVar2 = true;
+            sango_resource_read_text(1, 0x42, primary_path_or_summary);
+            missing_save_pair = true;
         }
         if (file == 0)
         {
@@ -121,155 +123,155 @@ void sango_save_draw_slots(void)
             {
                 bbk_fclose(file_00);
             }
-            sango_resource_read_text(1, 0x42, acStack_88);
-            bVar2 = true;
+            sango_resource_read_text(1, 0x42, primary_path_or_summary);
+            missing_save_pair = true;
         }
-        if (!bVar2)
+        if (!missing_save_pair)
         {
             bbk_fread(&g_scenario_id_view2, 1, 1, file);
-            bbk_fread(local_90, 1, 1, file);
-            bbk_fread(local_28, 1, 2, file);
+            bbk_fread(ruler_or_name_length, 1, 1, file);
+            bbk_fread(saved_year, 1, 2, file);
             bbk_fclose(file);
             bbk_fclose(file_00);
-            sango_resource_read_text(1, 0x41, acStack_88);
-            sango_load_named_text(local_90[0], acStack_38);
-            uVar4 = bbk_strlen(acStack_38);
-            local_90[0] = (uint8_t)uVar4;
-            bbk_memcpy(acStack_88, acStack_38, uVar4 & 0xff);
-            sango_format_integer((uint32_t)local_28[0], acStack_38, 10);
-            uVar4 = bbk_strlen(acStack_38);
-            bbk_memcpy(auStack_7e, acStack_38, uVar4 + 1 & 0xff);
+            sango_resource_read_text(1, 0x41, primary_path_or_summary);
+            sango_load_named_text(ruler_or_name_length[0], formatted_value);
+            text_length = bbk_strlen(formatted_value);
+            ruler_or_name_length[0] = (uint8_t)text_length;
+            bbk_memcpy(primary_path_or_summary, formatted_value, text_length & 0xff);
+            sango_format_integer((uint32_t)saved_year[0], formatted_value, 10);
+            text_length = bbk_strlen(formatted_value);
+            bbk_memcpy(year_text_start, formatted_value, text_length + 1 & 0xff);
         }
-        sango_text_draw_legacy(0x28, uVar5 * 0x1b + 0x74, acStack_88);
-        uVar5 = uVar5 + 1 & 0xff;
-    } while (uVar5 < 3);
-    g_scenario_id_view2 = uVar3;
+        sango_text_draw_legacy(0x28, slot_index * 0x1b + 0x74, primary_path_or_summary);
+        slot_index = slot_index + 1 & 0xff;
+    } while (slot_index < 3);
+    g_scenario_id_view2 = original_scenario;
     return;
 }
-#undef local_90
-#undef local_71
-#undef local_49
-#undef local_28
-#undef acStack_88
-#undef auStack_7e
-#undef acStack_60
-#undef acStack_38
+#undef ruler_or_name_length
+#undef primary_file_digit
+#undef secondary_file_digit
+#undef saved_year
+#undef primary_path_or_summary
+#undef year_text_start
+#undef secondary_path
+#undef formatted_value
 
 /* 原函数 0x81c16704 */
 /* 一个槽位包含两份文件：会话/城市/武将数据及进行中的战略命令。 */
 uint32_t sango_save_load_slot(char slot)
 {
     unsigned char abi_storage[40] __attribute__((aligned(8)));
-#define acStack_38 (*(char(*)[23])(abi_storage + 0))
-#define local_21 (*(char *)(abi_storage + 23))
+#define message_or_path (*(char(*)[23])(abi_storage + 0))
+#define path_slot_digit (*(char *)(abi_storage + 23))
 
-    void *pvVar1;
+    void *file_handle;
 
-    sango_resource_read_text(1, 0x44, acStack_38);
-    sango_ui_show_message(acStack_38, 1);
-    sango_resource_read_text(1, 0x40, acStack_38);
-    local_21 = slot * '\x02' + '0';
-    pvVar1 = bbk_fopen(acStack_38, &g_legacy_data_81c205e0);
-    if (pvVar1 != 0)
+    sango_resource_read_text(1, 0x44, message_or_path);
+    sango_ui_show_message(message_or_path, 1);
+    sango_resource_read_text(1, 0x40, message_or_path);
+    path_slot_digit = slot * '\x02' + '0';
+    file_handle = bbk_fopen(message_or_path, &g_legacy_data_81c205e0);
+    if (file_handle != 0)
     {
-        bbk_fread(&g_scenario_id_view2, 1, 1, pvVar1);
-        bbk_fread(&g_player_character, 1, 1, pvVar1);
-        bbk_fread(&g_current_year, 2, 1, pvVar1);
-        bbk_fread(&g_battle_render_enabled_view2, 1, 1, pvVar1);
-        bbk_fread(&g_battle_show_animations_view2, 1, 1, pvVar1);
-        bbk_fread(&g_battle_animate_movement_view2, 1, 1, pvVar1);
-        bbk_fread(&g_current_month, 1, 1, pvVar1);
-        bbk_fread(&g_strategy_viewport_x, 4, 1, pvVar1);
-        bbk_fread(g_character_table_address_view2, 0x10, 200, pvVar1);
-        bbk_fread(&g_city_character_roster, 1, 200, pvVar1);
-        bbk_fread(&g_city_item_roster, 1, 0x21, pvVar1);
-        bbk_fclose(pvVar1);
-        local_21 = slot * '\x02' + '1';
-        pvVar1 = bbk_fopen(acStack_38, &g_legacy_data_81c205e0);
-        if (pvVar1 != 0)
+        bbk_fread(&g_scenario_id_view2, 1, 1, file_handle);
+        bbk_fread(&g_player_character, 1, 1, file_handle);
+        bbk_fread(&g_current_year, 2, 1, file_handle);
+        bbk_fread(&g_battle_render_enabled_view2, 1, 1, file_handle);
+        bbk_fread(&g_battle_show_animations_view2, 1, 1, file_handle);
+        bbk_fread(&g_battle_animate_movement_view2, 1, 1, file_handle);
+        bbk_fread(&g_current_month, 1, 1, file_handle);
+        bbk_fread(&g_strategy_viewport_x, 4, 1, file_handle);
+        bbk_fread(g_character_table_address_view2, 0x10, 200, file_handle);
+        bbk_fread(&g_city_character_roster, 1, 200, file_handle);
+        bbk_fread(&g_city_item_roster, 1, 0x21, file_handle);
+        bbk_fclose(file_handle);
+        path_slot_digit = slot * '\x02' + '1';
+        file_handle = bbk_fopen(message_or_path, &g_legacy_data_81c205e0);
+        if (file_handle != 0)
         {
-            bbk_fread(g_army_slot_used_address, 1, 0x1e, pvVar1);
-            bbk_fread(g_army_rosters_address, 10, 0x1e, pvVar1);
-            bbk_fread(g_order_queue_address, 0xc, 100, pvVar1);
-            bbk_fread(&g_first_city_status, 0x24, 0x26, pvVar1);
-            bbk_fclose(pvVar1);
+            bbk_fread(g_army_slot_used_address, 1, 0x1e, file_handle);
+            bbk_fread(g_army_rosters_address, 10, 0x1e, file_handle);
+            bbk_fread(g_order_queue_address, 0xc, 100, file_handle);
+            bbk_fread(&g_first_city_status, 0x24, 0x26, file_handle);
+            bbk_fclose(file_handle);
             return 1;
         }
     }
-    sango_resource_read_text(1, 0x46, acStack_38);
-    sango_ui_show_message(acStack_38, 2);
+    sango_resource_read_text(1, 0x46, message_or_path);
+    sango_ui_show_message(message_or_path, 2);
     return 0;
 }
-#undef acStack_38
-#undef local_21
+#undef message_or_path
+#undef path_slot_digit
 
 /* 原函数 0x81c16940 */
 /* 保留原双文件存档路径和布局；不改变武将、城市或命令记录宽度。 */
 uint32_t sango_save_write_slot(char slot)
 {
     unsigned char abi_storage[84] __attribute__((aligned(8)));
-#define local_49 (*(char *)(abi_storage + 23))
-#define local_1d (*(char *)(abi_storage + 67))
-#define acStack_60 (*(char(*)[23])(abi_storage + 0))
-#define auStack_38 (*(uint8_t(*)[27])(abi_storage + 40))
+#define path_slot_digit (*(char *)(abi_storage + 23))
+#define alternate_slot_digit (*(char *)(abi_storage + 67))
+#define message_or_path (*(char(*)[23])(abi_storage + 0))
+#define alternate_path (*(uint8_t(*)[27])(abi_storage + 40))
 
-    int iVar1;
-    void *pvVar2;
-    char cVar3;
+    int directory_access_result;
+    void *file_handle;
+    char file_pair_offset;
 
-    sango_resource_read_text(1, 0x43, acStack_60);
-    sango_ui_show_message(acStack_60, 0);
-    sango_resource_read_text(1, 0x40, acStack_60);
-    sango_resource_read_text(1, 0x47, auStack_38);
-    iVar1 = bda_sango_fs_access((char *)0x81c205e4, 0);
-    if (iVar1 == -1)
+    sango_resource_read_text(1, 0x43, message_or_path);
+    sango_ui_show_message(message_or_path, 0);
+    sango_resource_read_text(1, 0x40, message_or_path);
+    sango_resource_read_text(1, 0x47, alternate_path);
+    directory_access_result = bda_sango_fs_access((char *)0x81c205e4, 0);
+    if (directory_access_result == -1)
     {
         bda_sango_fs_mkdir((char *)0x81c205e4);
     }
-    iVar1 = bda_sango_fs_access((char *)0x81c205f4, 0);
-    if (iVar1 == -1)
+    directory_access_result = bda_sango_fs_access((char *)0x81c205f4, 0);
+    if (directory_access_result == -1)
     {
-        cVar3 = slot << 1;
+        file_pair_offset = slot << 1;
         bda_sango_fs_mkdir((char *)0x81c205f4);
     }
     else
     {
-        cVar3 = slot * '\x02';
+        file_pair_offset = slot * '\x02';
     }
-    local_49 = cVar3 + '0';
-    local_1d = local_49;
-    pvVar2 = bbk_fopen(acStack_60, &g_legacy_data_81c20608);
-    if (pvVar2 != 0)
+    path_slot_digit = file_pair_offset + '0';
+    alternate_slot_digit = path_slot_digit;
+    file_handle = bbk_fopen(message_or_path, &g_legacy_data_81c20608);
+    if (file_handle != 0)
     {
-        bbk_fwrite(&g_scenario_id_view2, 1, 1, pvVar2);
-        bbk_fwrite(&g_player_character, 1, 1, pvVar2);
-        bbk_fwrite(&g_current_year, 2, 1, pvVar2);
-        bbk_fwrite(&g_battle_render_enabled_view2, 1, 1, pvVar2);
-        bbk_fwrite(&g_battle_show_animations_view2, 1, 1, pvVar2);
-        bbk_fwrite(&g_battle_animate_movement_view2, 1, 1, pvVar2);
-        bbk_fwrite(&g_current_month, 1, 1, pvVar2);
-        bbk_fwrite(&g_strategy_viewport_x, 4, 1, pvVar2);
-        bbk_fwrite(g_character_table_address_view2, 0x10, 200, pvVar2);
-        bbk_fwrite(&g_city_character_roster, 1, 200, pvVar2);
-        bbk_fwrite(&g_city_item_roster, 1, 0x21, pvVar2);
-        bbk_fclose(pvVar2);
-        local_49 = cVar3 + '1';
-        pvVar2 = bbk_fopen(acStack_60, &g_legacy_data_81c20608);
-        if (pvVar2 != 0)
+        bbk_fwrite(&g_scenario_id_view2, 1, 1, file_handle);
+        bbk_fwrite(&g_player_character, 1, 1, file_handle);
+        bbk_fwrite(&g_current_year, 2, 1, file_handle);
+        bbk_fwrite(&g_battle_render_enabled_view2, 1, 1, file_handle);
+        bbk_fwrite(&g_battle_show_animations_view2, 1, 1, file_handle);
+        bbk_fwrite(&g_battle_animate_movement_view2, 1, 1, file_handle);
+        bbk_fwrite(&g_current_month, 1, 1, file_handle);
+        bbk_fwrite(&g_strategy_viewport_x, 4, 1, file_handle);
+        bbk_fwrite(g_character_table_address_view2, 0x10, 200, file_handle);
+        bbk_fwrite(&g_city_character_roster, 1, 200, file_handle);
+        bbk_fwrite(&g_city_item_roster, 1, 0x21, file_handle);
+        bbk_fclose(file_handle);
+        path_slot_digit = file_pair_offset + '1';
+        file_handle = bbk_fopen(message_or_path, &g_legacy_data_81c20608);
+        if (file_handle != 0)
         {
-            bbk_fwrite(g_army_slot_used_address, 1, 0x1e, pvVar2);
-            bbk_fwrite(g_army_rosters_address, 10, 0x1e, pvVar2);
-            bbk_fwrite(g_order_queue_address, 0xc, 100, pvVar2);
-            bbk_fwrite(&g_first_city_status, 0x24, 0x26, pvVar2);
-            bbk_fclose(pvVar2);
+            bbk_fwrite(g_army_slot_used_address, 1, 0x1e, file_handle);
+            bbk_fwrite(g_army_rosters_address, 10, 0x1e, file_handle);
+            bbk_fwrite(g_order_queue_address, 0xc, 100, file_handle);
+            bbk_fwrite(&g_first_city_status, 0x24, 0x26, file_handle);
+            bbk_fclose(file_handle);
             return 1;
         }
     }
-    sango_resource_read_text(1, 0x45, acStack_60);
-    sango_ui_show_message(acStack_60, 2);
+    sango_resource_read_text(1, 0x45, message_or_path);
+    sango_ui_show_message(message_or_path, 2);
     return 0;
 }
-#undef local_49
-#undef local_1d
-#undef acStack_60
-#undef auStack_38
+#undef path_slot_digit
+#undef alternate_slot_digit
+#undef message_or_path
+#undef alternate_path

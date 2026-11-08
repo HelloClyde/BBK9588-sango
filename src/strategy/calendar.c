@@ -280,62 +280,66 @@ uint32_t sango_strategy_apply_city_disasters(void)
 /* 原函数 0x81c1740c */
 uint32_t sango_strategy_apply_disaster_losses(void)
 {
-    uint16_t uVar1;
-    uint32_t uVar2;
-    uint8_t *pbVar3;
-    uint16_t *puVar4;
-    uint32_t *puVar5;
-    uint16_t *puVar6;
-    uint16_t *puVar7;
-    uint16_t *puVar8;
-    uint32_t uVar9;
+    uint16_t food_or_agriculture;
+    uint32_t previous_population_limit;
+    uint8_t *loyalty_address;
+    uint16_t *food_address;
+    uint32_t *population_limit_address;
+    uint16_t *commerce_address;
+    uint16_t *reserve_troops_address;
+    uint16_t *money_address;
+    uint32_t city_index;
 
-    uVar9 = 0;
+    city_index = 0;
     do
     {
-        pbVar3 = &g_first_city_loyalty + uVar9 * 0x24;
-        puVar6 = &g_first_city_commerce + uVar9 * 0x12;
-        puVar7 = &g_first_city_reserve_troops + uVar9 * 0x12;
-        puVar4 = &g_first_city_food + uVar9 * 0x12;
-        puVar8 = &g_first_city_money + uVar9 * 0x12;
-        puVar5 = &g_first_city_population_limit + uVar9 * 9;
-        switch ((&g_first_city_status)[uVar9 * 0x24])
+        loyalty_address = &g_first_city_loyalty + city_index * 0x24;
+        commerce_address = &g_first_city_commerce + city_index * 0x12;
+        reserve_troops_address = &g_first_city_reserve_troops + city_index * 0x12;
+        food_address = &g_first_city_food + city_index * 0x12;
+        money_address = &g_first_city_money + city_index * 0x12;
+        population_limit_address = &g_first_city_population_limit + city_index * 9;
+        switch ((&g_first_city_status)[city_index * 0x24])
         {
         case 0:
-            goto switchD_81c17494_caseD_0;
+            goto next_city;
         case 1:
-            *puVar6 = *puVar6 - *puVar6 / 0x14;
-            *pbVar3 = *pbVar3 - *pbVar3 / 0x14;
-            uVar2 = *puVar5;
-            *puVar7 = *puVar7 >> 1;
-            *puVar5 = uVar2 - (uVar2 >> 2);
+            *commerce_address = *commerce_address - *commerce_address / 0x14;
+            *loyalty_address = *loyalty_address - *loyalty_address / 0x14;
+            previous_population_limit = *population_limit_address;
+            *reserve_troops_address = *reserve_troops_address >> 1;
+            *population_limit_address =
+                previous_population_limit - (previous_population_limit >> 2);
             break;
         case 2:
-            uVar1 = *puVar4;
-            *puVar5 = *puVar5 - (*puVar5 >> 2);
-            *puVar4 = uVar1 - uVar1 / 0x14;
-            goto LAB_81c1756c;
+            food_or_agriculture = *food_address;
+            *population_limit_address =
+                *population_limit_address - (*population_limit_address >> 2);
+            *food_address = food_or_agriculture - food_or_agriculture / 0x14;
+            goto reduce_reserve_troops;
         case 3:
-            uVar1 = *puVar4;
-            *puVar5 = *puVar5 - (*puVar5 >> 2);
-            *puVar4 = uVar1 - uVar1 / 0x14;
-            *puVar6 = *puVar6 - *puVar6 / 10;
-            *puVar8 = *puVar8 - *puVar8 / 10;
-        LAB_81c1756c:
-            *puVar7 = *puVar7 - (*puVar7 >> 2);
+            food_or_agriculture = *food_address;
+            *population_limit_address =
+                *population_limit_address - (*population_limit_address >> 2);
+            *food_address = food_or_agriculture - food_or_agriculture / 0x14;
+            *commerce_address = *commerce_address - *commerce_address / 10;
+            *money_address = *money_address - *money_address / 10;
+        reduce_reserve_troops:
+            *reserve_troops_address = *reserve_troops_address - (*reserve_troops_address >> 2);
             break;
         case 4:
-            *puVar4 = *puVar4 - *puVar4 / 0x14;
-            *puVar6 = *puVar6 - *puVar6 / 0x14;
-            *puVar8 = *puVar8 - *puVar8 / 0x14;
-            *pbVar3 = *pbVar3 - *pbVar3 / 10;
-            *puVar7 = *puVar7 >> 1;
+            *food_address = *food_address - *food_address / 0x14;
+            *commerce_address = *commerce_address - *commerce_address / 0x14;
+            *money_address = *money_address - *money_address / 0x14;
+            *loyalty_address = *loyalty_address - *loyalty_address / 10;
+            *reserve_troops_address = *reserve_troops_address >> 1;
         }
-        uVar1 = (&g_first_city_agriculture)[uVar9 * 0x12];
-        (&g_first_city_agriculture)[uVar9 * 0x12] = uVar1 - uVar1 / 0x14;
-    switchD_81c17494_caseD_0:
-        uVar9 = uVar9 + 1 & 0xff;
-        if (0x25 < uVar9)
+        food_or_agriculture = (&g_first_city_agriculture)[city_index * 0x12];
+        (&g_first_city_agriculture)[city_index * 0x12] =
+            food_or_agriculture - food_or_agriculture / 0x14;
+    next_city:
+        city_index = city_index + 1 & 0xff;
+        if (0x25 < city_index)
         {
             return 1;
         }
@@ -345,47 +349,47 @@ uint32_t sango_strategy_apply_disaster_losses(void)
 /* 原函数 0x81c1767c */
 void sango_strategy_collect_commerce_income(void)
 {
-    uint16_t uVar1;
-    int iVar2;
-    uint32_t uVar3;
+    uint16_t previous_money;
+    int city_word_stride;
+    uint32_t city_index;
 
-    uVar3 = 0;
-    iVar2 = 0;
+    city_index = 0;
+    city_word_stride = 0;
     do
     {
-        iVar2 = iVar2 + uVar3;
-        uVar1 = (&g_first_city_money)[iVar2 * 2];
-        uVar3 = uVar3 + 1 & 0xff;
-        if (uVar1 < 30000)
+        city_word_stride = city_word_stride + city_index;
+        previous_money = (&g_first_city_money)[city_word_stride * 2];
+        city_index = city_index + 1 & 0xff;
+        if (previous_money < 30000)
         {
-            (&g_first_city_money)[iVar2 * 2] =
-                uVar1 + ((uint16_t)(&g_first_city_commerce)[iVar2 * 2] >> 1);
+            (&g_first_city_money)[city_word_stride * 2] =
+                previous_money + ((uint16_t)(&g_first_city_commerce)[city_word_stride * 2] >> 1);
         }
-        iVar2 = uVar3 << 3;
-    } while (uVar3 < 0x26);
+        city_word_stride = city_index << 3;
+    } while (city_index < 0x26);
     return;
 }
 
 /* 原函数 0x81c176d8 */
 void sango_strategy_collect_agriculture_income(void)
 {
-    int iVar1;
-    uint32_t uVar2;
+    int city_word_stride;
+    uint32_t city_index;
 
-    uVar2 = 0;
-    iVar1 = 0;
+    city_index = 0;
+    city_word_stride = 0;
     do
     {
-        iVar1 = iVar1 + uVar2;
-        uVar2 = uVar2 + 1 & 0xff;
-        if ((uint16_t)(&g_first_city_food)[iVar1 * 2] < 30000)
+        city_word_stride = city_word_stride + city_index;
+        city_index = city_index + 1 & 0xff;
+        if ((uint16_t)(&g_first_city_food)[city_word_stride * 2] < 30000)
         {
-            (&g_first_city_food)[iVar1 * 2] =
-                (&g_first_city_food)[iVar1 * 2] +
-                ((uint16_t)(&g_first_city_agriculture)[iVar1 * 2] >> 2);
+            (&g_first_city_food)[city_word_stride * 2] =
+                (&g_first_city_food)[city_word_stride * 2] +
+                ((uint16_t)(&g_first_city_agriculture)[city_word_stride * 2] >> 2);
         }
-        iVar1 = uVar2 << 3;
-    } while (uVar2 < 0x26);
+        city_word_stride = city_index << 3;
+    } while (city_index < 0x26);
     return;
 }
 

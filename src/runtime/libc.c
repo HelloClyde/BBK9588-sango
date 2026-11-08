@@ -154,40 +154,40 @@ void sango_crt_heap_shift_forward(uint32_t *descriptor_words, int descriptor_cou
 }
 
 /* 原函数 0x81c1dee0 */
-void sango_crt_zero_bytes(uint8_t *param_1, int param_2)
+void sango_crt_zero_bytes(uint8_t *buffer, int byte_count)
 {
-    uint8_t *puVar1;
-    int iVar2;
+    uint8_t *destination;
+    int byte_index;
 
-    iVar2 = 0;
-    puVar1 = param_1;
-    if (0 < param_2)
+    byte_index = 0;
+    destination = buffer;
+    if (0 < byte_count)
     {
         do
         {
-            *puVar1 = 0;
-            iVar2 = iVar2 + 1;
-            puVar1 = param_1 + iVar2;
-        } while (iVar2 < param_2);
+            *destination = 0;
+            byte_index = byte_index + 1;
+            destination = buffer + byte_index;
+        } while (byte_index < byte_count);
     }
     return;
 }
 
 /* 原函数 0x81c1df08 */
-void sango_crt_heap_shift_backward(uint32_t *param_1, int param_2)
+void sango_crt_heap_shift_backward(uint32_t *destination, int block_count)
 {
-    int iVar1;
+    int block_index;
 
-    iVar1 = 0;
-    if (0 < param_2)
+    block_index = 0;
+    if (0 < block_count)
     {
         do
         {
-            *param_1 = param_1[-2];
-            param_1[1] = param_1[-1];
-            iVar1 = iVar1 + 1;
-            param_1 = param_1 + -2;
-        } while (iVar1 < param_2);
+            *destination = destination[-2];
+            destination[1] = destination[-1];
+            block_index = block_index + 1;
+            destination = destination + -2;
+        } while (block_index < block_count);
     }
     return;
 }

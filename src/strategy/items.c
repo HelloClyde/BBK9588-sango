@@ -3,96 +3,101 @@
 /* 宝物装备属性修改和数量统计。 */
 
 /* 原函数 0x81c17a08 */
-uint32_t sango_item_apply_attributes(uint32_t param_1, uint32_t param_2)
+uint32_t sango_item_apply_attributes(uint32_t item_id, uint32_t character_id)
 {
-    uint8_t bVar1;
-    uint8_t uVar2;
-    int iVar3;
-    int iVar4;
-    int iVar5;
+    uint8_t troop_conversion_kind;
+    uint8_t converted_troop_type;
+    int item_table_address;
+    int item_address;
+    int character_offset;
 
-    iVar3 = sango_resource_item(0x42, '\x01', g_resource_package_address);
-    iVar5 = (param_2 & 0xff) * 0x10;
-    iVar4 = (param_1 & 0xff) * 0x42 + iVar3;
-    *(char *)(iVar5 + g_character_table_address + 3) =
-        *(char *)(iVar5 + g_character_table_address + 3) + *(char *)(iVar4 + 0x3e);
-    *(char *)(iVar5 + g_character_table_address + 4) =
-        *(char *)(iVar5 + g_character_table_address + 4) + *(char *)(iVar4 + 0x3f);
-    bVar1 = *(uint8_t *)(iVar4 + 0x41);
-    if (bVar1 == 2)
+    item_table_address = sango_resource_item(0x42, '\x01', g_resource_package_address);
+    character_offset = (character_id & 0xff) * 0x10;
+    item_address = (item_id & 0xff) * 0x42 + item_table_address;
+    *(char *)(character_offset + g_character_table_address + 3) =
+        *(char *)(character_offset + g_character_table_address + 3) +
+        *(char *)(item_address + 0x3e);
+    *(char *)(character_offset + g_character_table_address + 4) =
+        *(char *)(character_offset + g_character_table_address + 4) +
+        *(char *)(item_address + 0x3f);
+    troop_conversion_kind = *(uint8_t *)(item_address + 0x41);
+    if (troop_conversion_kind == 2)
     {
-        if (*(uint8_t *)(iVar5 + g_character_table_address + 4) < 0x6a)
+        if (*(uint8_t *)(character_offset + g_character_table_address + 4) < 0x6a)
         {
             return 0xff;
         }
-        uVar2 = 5;
+        converted_troop_type = 5;
     }
     else
     {
-        if (bVar1 < 3)
+        if (troop_conversion_kind < 3)
         {
-            if (bVar1 == 1)
+            if (troop_conversion_kind == 1)
             {
-                *(uint8_t *)(iVar5 + g_character_table_address + 9) = 3;
+                *(uint8_t *)(character_offset + g_character_table_address + 9) = 3;
             }
-            goto LAB_81c17ab0;
+            goto return_item_kind;
         }
-        if (bVar1 != 3)
-            goto LAB_81c17ab0;
-        if (*(uint8_t *)(iVar5 + g_character_table_address + 3) < 0x6a)
+        if (troop_conversion_kind != 3)
+            goto return_item_kind;
+        if (*(uint8_t *)(character_offset + g_character_table_address + 3) < 0x6a)
         {
             return 0xff;
         }
-        uVar2 = 4;
+        converted_troop_type = 4;
     }
-    *(uint8_t *)(iVar5 + g_character_table_address + 9) = uVar2;
-LAB_81c17ab0:
-    return (uint32_t) * (uint8_t *)((param_1 & 0xff) * 0x42 + iVar3 + 1);
+    *(uint8_t *)(character_offset + g_character_table_address + 9) = converted_troop_type;
+return_item_kind:
+    return (uint32_t) * (uint8_t *)((item_id & 0xff) * 0x42 + item_table_address + 1);
 }
 
 /* 原函数 0x81c17b3c */
-uint32_t sango_faction_count_characters(uint32_t param_1)
+uint32_t sango_faction_count_characters(uint32_t ruler_id)
 {
-    int iVar1;
-    char *pcVar2;
-    char *pcVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
+    int order_stride_base;
+    char *order_or_army_entry;
+    char *army_roster;
+    uint32_t army_slot;
+    uint32_t order_index_or_idle_count;
+    uint32_t character_count;
 
-    uVar6 = 0;
-    uVar5 = 0;
-    iVar1 = 0;
+    character_count = 0;
+    order_index_or_idle_count = 0;
+    order_stride_base = 0;
     do
     {
-        pcVar2 = (char *)((iVar1 + uVar5) * 4 + g_order_queue_address);
-        if ((*pcVar2 != -1) &&
-            ((uint32_t)(uint8_t)(&g_first_city_owner)[(uint32_t)(uint8_t)pcVar2[2] * 0x24] ==
-             (param_1 & 0xff) + 1))
+        order_or_army_entry =
+            (char *)((order_stride_base + order_index_or_idle_count) * 4 + g_order_queue_address);
+        if ((*order_or_army_entry != -1) &&
+            ((uint32_t)(uint8_t)(&g_first_city_owner)[(uint32_t)(uint8_t)order_or_army_entry[2] *
+                                                      0x24] == (ruler_id & 0xff) + 1))
         {
-            uVar4 = 0;
-            if (*pcVar2 == '\x1b')
+            army_slot = 0;
+            if (*order_or_army_entry == '\x1b')
             {
-                pcVar3 = (char *)(g_army_rosters_address + (uint32_t)(uint8_t)pcVar2[1] * 10);
-                pcVar2 = pcVar3;
+                army_roster = (char *)(g_army_rosters_address +
+                                       (uint32_t)(uint8_t)order_or_army_entry[1] * 10);
+                order_or_army_entry = army_roster;
                 do
                 {
-                    uVar4 = uVar4 + 1 & 0xff;
-                    if (*pcVar2 != '\0')
+                    army_slot = army_slot + 1 & 0xff;
+                    if (*order_or_army_entry != '\0')
                     {
-                        uVar6 = uVar6 + 1 & 0xff;
+                        character_count = character_count + 1 & 0xff;
                     }
-                    pcVar2 = pcVar3 + uVar4;
-                } while (uVar4 < 10);
+                    order_or_army_entry = army_roster + army_slot;
+                } while (army_slot < 10);
             }
             else
             {
-                uVar6 = uVar6 + 1 & 0xff;
+                character_count = character_count + 1 & 0xff;
             }
         }
-        uVar5 = uVar5 + 1 & 0xff;
-        iVar1 = uVar5 << 1;
-    } while (uVar5 < 100);
-    uVar5 = sango_faction_list_characters(param_1 & 0xff, g_scratch_buffer_address);
-    return uVar6 + uVar5 & 0xff;
+        order_index_or_idle_count = order_index_or_idle_count + 1 & 0xff;
+        order_stride_base = order_index_or_idle_count << 1;
+    } while (order_index_or_idle_count < 100);
+    order_index_or_idle_count =
+        sango_faction_list_characters(ruler_id & 0xff, g_scratch_buffer_address);
+    return character_count + order_index_or_idle_count & 0xff;
 }

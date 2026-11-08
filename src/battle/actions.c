@@ -164,51 +164,55 @@ uint32_t sango_battle_execute_skill(int action_address)
 #undef status_suffix_start
 
 /* 原函数 0x81c05cdc */
-uint32_t sango_battle_execute_surround_attack(uint32_t param_1)
+uint32_t sango_battle_execute_surround_attack(uint32_t target_unit)
 {
-    bool bVar1;
-    int iVar2;
-    uint32_t uVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
+    bool more_directions;
+    int direction_offset;
+    uint32_t neighbor_unit_or_experience;
+    uint32_t direction_index;
+    uint32_t target_index;
+    uint32_t experience_total;
 
-    uVar5 = param_1 & 0xff;
-    uVar4 = 0;
-    uVar6 = 0;
-LAB_81c05d0c:
+    target_index = target_unit & 0xff;
+    direction_index = 0;
+    experience_total = 0;
+find_next_attacker:
     do
     {
-        bVar1 = uVar4 < 4;
+        more_directions = direction_index < 4;
         do
         {
             do
             {
-                iVar2 = uVar4 * 2;
-                if (!bVar1)
+                direction_offset = direction_index * 2;
+                if (!more_directions)
                 {
-                    return uVar6 >> 1;
+                    return experience_total >> 1;
                 }
-                uVar4 = uVar4 + 1 & 0xff;
-            } while ((((&g_first_unit_x)[uVar5 * 7] == 0) &&
-                      (bVar1 = uVar4 < 4, 0x80 < (uint8_t)(&g_legacy_data_81c201cc)[iVar2])) ||
-                     (((&g_first_unit_y)[uVar5 * 7] == 0 &&
-                       (bVar1 = uVar4 < 4, 0x80 < (uint8_t)(&g_legacy_data_81c201cd)[iVar2]))));
-            uVar3 = sango_battle_find_unit_at(
-                (uint16_t)(uint8_t)(&g_first_unit_x)[uVar5 * 7] +
-                        (uint16_t)(uint8_t)(&g_legacy_data_81c201cc)[iVar2] &
+                direction_index = direction_index + 1 & 0xff;
+            } while ((((&g_first_unit_x)[target_index * 7] == 0) &&
+                      (more_directions = direction_index < 4,
+                       0x80 < (uint8_t)(&g_legacy_data_81c201cc)[direction_offset])) ||
+                     (((&g_first_unit_y)[target_index * 7] == 0 &&
+                       (more_directions = direction_index < 4,
+                        0x80 < (uint8_t)(&g_legacy_data_81c201cd)[direction_offset]))));
+            neighbor_unit_or_experience = sango_battle_find_unit_at(
+                (uint16_t)(uint8_t)(&g_first_unit_x)[target_index * 7] +
+                        (uint16_t)(uint8_t)(&g_legacy_data_81c201cc)[direction_offset] &
                     0xff,
-                (uint16_t)(uint8_t)(&g_first_unit_y)[uVar5 * 7] +
-                        (uint16_t)(uint8_t)(&g_legacy_data_81c201cd)[iVar2] &
+                (uint16_t)(uint8_t)(&g_first_unit_y)[target_index * 7] +
+                        (uint16_t)(uint8_t)(&g_legacy_data_81c201cd)[direction_offset] &
                     0xff);
-            if (uVar3 == 0xff)
-                goto LAB_81c05d0c;
-        } while (((uVar5 < 10) && (bVar1 = uVar4 < 4, uVar3 < 10)) ||
-                 ((10 < uVar5 && (bVar1 = uVar4 < 4, 10 < uVar3))));
-        sango_battle_blink_unit(uVar3, 2);
-        sango_battle_prepare_combatant(0, uVar3);
-        uVar3 = sango_battle_execute_normal_attack(uVar5);
-        uVar6 = uVar6 + uVar3 & 0xff;
+            if (neighbor_unit_or_experience == 0xff)
+                goto find_next_attacker;
+        } while (((target_index < 10) &&
+                  (more_directions = direction_index < 4, neighbor_unit_or_experience < 10)) ||
+                 ((10 < target_index &&
+                   (more_directions = direction_index < 4, 10 < neighbor_unit_or_experience))));
+        sango_battle_blink_unit(neighbor_unit_or_experience, 2);
+        sango_battle_prepare_combatant(0, neighbor_unit_or_experience);
+        neighbor_unit_or_experience = sango_battle_execute_normal_attack(target_index);
+        experience_total = experience_total + neighbor_unit_or_experience & 0xff;
     } while (true);
 }
 
@@ -268,104 +272,107 @@ uint32_t sango_battle_execute_normal_attack(uint32_t target_unit)
 }
 
 /* 原函数 0x81c05f7c */
-void sango_battle_draw_damage_digits(uint16_t param_1, uint16_t param_2, uint32_t param_3)
+void sango_battle_draw_damage_digits(uint16_t x, uint16_t y, uint32_t damage)
 {
     unsigned char abi_storage[36] __attribute__((aligned(8)));
-#define local_40 (*(char(*)[16])(abi_storage + 0))
-#define local_30 (*(uint32_t *)(abi_storage + 16))
+#define digits (*(char(*)[16])(abi_storage + 0))
+#define digit_count (*(uint32_t *)(abi_storage + 16))
 
-    uint8_t bVar1;
-    uint8_t bVar2;
-    char cVar3;
-    uint8_t *pbVar4;
-    uint16_t uVar5;
-    uint16_t uVar6;
-    uint32_t uVar7;
+    uint8_t glyph_width;
+    uint8_t glyph_height;
+    char digit;
+    uint8_t *number_bitmap;
+    uint16_t revealed_height;
+    uint16_t next_height;
+    uint32_t digit_index;
 
-    sango_format_integer(param_3 & 0xffff, local_40, 10);
-    local_30 = bbk_strlen(local_40);
-    local_30 = local_30 & 0xff;
-    pbVar4 = (uint8_t *)sango_resource_item(0xf, '\x01', g_resource_package_address);
-    bVar1 = *pbVar4;
-    bVar2 = pbVar4[2];
-    uVar7 = 0;
-    if (local_30 != 0)
+    sango_format_integer(damage & 0xffff, digits, 10);
+    digit_count = bbk_strlen(digits);
+    digit_count = digit_count & 0xff;
+    number_bitmap = (uint8_t *)sango_resource_item(0xf, '\x01', g_resource_package_address);
+    glyph_width = *number_bitmap;
+    glyph_height = number_bitmap[2];
+    digit_index = 0;
+    if (digit_count != 0)
     {
         do
         {
-            cVar3 = local_40[uVar7];
+            digit = digits[digit_index];
             sango_input_wait(4, '\0');
-            uVar5 = 0;
-            if (bVar2 != 0)
+            revealed_height = 0;
+            if (glyph_height != 0)
             {
-                uVar6 = 1;
+                next_height = 1;
                 do
                 {
-                    sango_bitmap_draw_frame_screen(param_1 & 0xff, (param_2 & 0xff) - uVar5,
-                                                   (uint16_t)bVar1, uVar6, cVar3 - 0x30, pbVar4);
+                    sango_bitmap_draw_frame_screen(x & 0xff, (y & 0xff) - revealed_height,
+                                                   (uint16_t)glyph_width, next_height, digit - 0x30,
+                                                   number_bitmap);
                     sango_input_wait(1, '\0');
-                    uVar5 = uVar6 & 0xff;
-                    uVar6 = uVar5 + 1;
-                } while (uVar5 < bVar2);
+                    revealed_height = next_height & 0xff;
+                    next_height = revealed_height + 1;
+                } while (revealed_height < glyph_height);
             }
-            uVar7 = uVar7 + 1 & 0xff;
-            param_1 = (param_1 & 0xff) + (uint16_t)bVar1;
-        } while (uVar7 < local_30);
+            digit_index = digit_index + 1 & 0xff;
+            x = (x & 0xff) + (uint16_t)glyph_width;
+        } while (digit_index < digit_count);
     }
     return;
 }
-#undef local_40
-#undef local_30
+#undef digits
+#undef digit_count
 
 /* 原函数 0x81c060c8 */
-void sango_battle_append_stat_value(char *param_1, uint32_t param_2)
+void sango_battle_append_stat_value(char *text, uint32_t value)
 {
     unsigned char abi_storage[32] __attribute__((aligned(8)));
-#define acStack_20 (*(char(*)[16])(abi_storage + 0))
+#define number_text (*(char(*)[16])(abi_storage + 0))
 
-    uint32_t uVar1;
-    uint32_t uVar2;
+    uint32_t text_length;
+    uint32_t character_index;
     char *dst;
 
-    uVar1 = sango_crt_strlen(param_1);
-    uVar2 = 0;
-    if ((uVar1 & 0xffff) != 0)
+    text_length = sango_crt_strlen(text);
+    character_index = 0;
+    if ((text_length & 0xffff) != 0)
     {
         do
         {
-            dst = param_1 + uVar2;
-            uVar2 = uVar2 + 1 & 0xffff;
+            dst = text + character_index;
+            character_index = character_index + 1 & 0xffff;
             if (*dst == '%')
                 break;
             dst = (char *)0x0;
-        } while (uVar2 < (uVar1 & 0xffff));
+        } while (character_index < (text_length & 0xffff));
         if (dst != (char *)0x0)
         {
-            sango_format_integer(param_2 & 0xffff, acStack_20, 10);
-            uVar1 = sango_crt_strlen(acStack_20);
-            bbk_memcpy(dst, acStack_20, uVar1 & 0xffff);
+            sango_format_integer(value & 0xffff, number_text, 10);
+            text_length = sango_crt_strlen(number_text);
+            bbk_memcpy(dst, number_text, text_length & 0xffff);
         }
     }
     return;
 }
-#undef acStack_20
+#undef number_text
 
 /* 原函数 0x81c06168 */
-uint32_t sango_battle_damage_feedback(uint16_t param_1)
+uint32_t sango_battle_damage_feedback(uint16_t damage)
 {
-    uint32_t uVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
+    uint32_t damage_experience;
+    uint32_t adjusted_experience;
+    uint32_t level_difference;
 
-    uVar3 = (uint32_t)*g_attacker_level_address_view3 - (uint32_t)*g_defender_level_address_view2 &
-            0xff;
-    uVar1 = sango_math_sqrt_step_search(param_1);
-    uVar1 = uVar1 >> 2 & 0xff;
-    if ((0x80 < uVar3) || (uVar2 = 0, uVar3 < uVar1))
+    level_difference =
+        (uint32_t)*g_attacker_level_address_view3 - (uint32_t)*g_defender_level_address_view2 &
+        0xff;
+    damage_experience = sango_math_sqrt_step_search(damage);
+    damage_experience = damage_experience >> 2 & 0xff;
+    if ((0x80 < level_difference) ||
+        (adjusted_experience = 0, level_difference < damage_experience))
     {
-        uVar2 = uVar1 - uVar3 & 0xff;
+        adjusted_experience = damage_experience - level_difference & 0xff;
     }
-    return (uVar2 + 2 & 0xff) % 100;
+    return (adjusted_experience + 2 & 0xff) % 100;
 }
 
 /* 原函数 0x81c0620c */
@@ -457,93 +464,96 @@ void sango_battle_change_weather(void)
 uint32_t sango_battle_show_options(void)
 {
     unsigned char abi_storage[80] __attribute__((aligned(8)));
-#define local_30 (*(uint16_t(*)[8])(abi_storage + 48))
-#define acStack_60 (*(char(*)[48])(abi_storage + 0))
+#define menu_boxes (*(uint16_t(*)[8])(abi_storage + 48))
+#define menu_text (*(char(*)[48])(abi_storage + 0))
 
-    uint32_t uVar1;
-    uint32_t uVar2;
-    uint8_t *unaff_s2;
+    uint32_t main_selection;
+    uint32_t option_text_or_selection;
+    uint8_t *option_address;
 
-    local_30[2] = 0x38;
-    local_30[4] = 0x6b;
-    local_30[6] = 0x83;
-    local_30[3] = 0x44;
-    local_30[1] = 8;
-    local_30[5] = 0x93;
-    local_30[7] = 0xab;
-    local_30[0] = 8;
-    uVar2 = 0x9f;
-    uVar1 = 0;
+    menu_boxes[2] = 0x38;
+    menu_boxes[4] = 0x6b;
+    menu_boxes[6] = 0x83;
+    menu_boxes[3] = 0x44;
+    menu_boxes[1] = 8;
+    menu_boxes[5] = 0x93;
+    menu_boxes[7] = 0xab;
+    menu_boxes[0] = 8;
+    option_text_or_selection = 0x9f;
+    main_selection = 0;
     do
     {
-        sango_battle_read_text(9, acStack_60);
-        uVar1 = sango_ui_choose_option(local_30, uVar1, acStack_60);
-        if (uVar1 == 2)
+        sango_battle_read_text(9, menu_text);
+        main_selection = sango_ui_choose_option(menu_boxes, main_selection, menu_text);
+        if (main_selection == 2)
         {
-            unaff_s2 = &g_battle_show_animations_view2;
-            uVar2 = 10;
+            option_address = &g_battle_show_animations_view2;
+            option_text_or_selection = 10;
         }
-        else if ((int)uVar1 < 3)
+        else if ((int)main_selection < 3)
         {
-            if (uVar1 == 0)
+            if (main_selection == 0)
             {
-            LAB_81c06534:
+            return_to_battle:
                 sango_render_present(g_game_context);
                 return 0xff;
             }
-            if (uVar1 == 1)
+            if (main_selection == 1)
             {
                 g_battle_result_view2 = 2;
-                goto LAB_81c06534;
+                goto return_to_battle;
             }
         }
-        else if (uVar1 == 4)
+        else if (main_selection == 4)
         {
-            unaff_s2 = &g_battle_render_enabled_view2;
-            uVar2 = 10;
+            option_address = &g_battle_render_enabled_view2;
+            option_text_or_selection = 10;
         }
-        else if ((int)uVar1 < 4)
+        else if ((int)main_selection < 4)
         {
-            unaff_s2 = &g_battle_animate_movement_view2;
-            uVar2 = 0xb;
+            option_address = &g_battle_animate_movement_view2;
+            option_text_or_selection = 0xb;
         }
-        else if (uVar1 == 0xff)
+        else if (main_selection == 0xff)
         {
             sango_render_present(g_game_context);
             return 1;
         }
-        sango_battle_read_text(uVar2, acStack_60);
-        uVar2 = sango_ui_choose_option(local_30 + 4, (uint32_t)*unaff_s2, acStack_60);
-        if (uVar2 != 0xff)
+        sango_battle_read_text(option_text_or_selection, menu_text);
+        option_text_or_selection =
+            sango_ui_choose_option(menu_boxes + 4, (uint32_t)*option_address, menu_text);
+        if (option_text_or_selection != 0xff)
         {
-            *unaff_s2 = (uint8_t)uVar2;
+            *option_address = (uint8_t)option_text_or_selection;
         }
         sango_render_present(g_game_context);
     } while (true);
 }
-#undef local_30
-#undef acStack_60
+#undef menu_boxes
+#undef menu_text
 
 /* 原函数 0x81c065c4 */
-void sango_battle_draw_unit_damage(char param_1, uint32_t param_2, uint32_t param_3)
+void sango_battle_draw_unit_damage(char sign, uint32_t unit_id, uint32_t amount)
 {
     unsigned char abi_storage[32] __attribute__((aligned(8)));
-#define local_18 (*(char *)(abi_storage + 0))
-#define auStack_17 (*(uint8_t(*)[15])(abi_storage + 1))
+#define message_sign (*(char *)(abi_storage + 0))
+#define amount_text (*(uint8_t(*)[15])(abi_storage + 1))
 
-    int iVar1;
+    int unit_offset;
 
-    local_18 = param_1;
-    sango_format_integer(param_3 & 0xffff, auStack_17, 10);
-    iVar1 = (param_2 & 0xff) * 7;
+    message_sign = sign;
+    sango_format_integer(amount & 0xffff, amount_text, 10);
+    unit_offset = (unit_id & 0xff) * 7;
     sango_text_draw_legacy(
-        ((uint16_t)(uint8_t)(&g_first_unit_x)[iVar1] - (uint16_t)g_battle_viewport_x) * 0x10 & 0xff,
-        ((uint16_t)(uint8_t)(&g_first_unit_y)[iVar1] - (uint16_t)g_battle_viewport_y) * 0x10 & 0xff,
-        &local_18);
+        ((uint16_t)(uint8_t)(&g_first_unit_x)[unit_offset] - (uint16_t)g_battle_viewport_x) * 0x10 &
+            0xff,
+        ((uint16_t)(uint8_t)(&g_first_unit_y)[unit_offset] - (uint16_t)g_battle_viewport_y) * 0x10 &
+            0xff,
+        &message_sign);
     return;
 }
-#undef local_18
-#undef auStack_17
+#undef message_sign
+#undef amount_text
 
 /* 原函数 0x81c06650 */
 uint32_t sango_battle_resolve_character(uint32_t unit_id)
@@ -561,61 +571,63 @@ void sango_battle_read_text(uint32_t text_id, void *output)
 /* 原函数 0x81c06694 */
 uint32_t sango_battle_execute_action(uint8_t *record)
 {
-    uint8_t bVar1;
-    uint8_t bVar2;
-    uint8_t uVar3;
-    uint32_t uVar4;
-    uint32_t unaff_s2;
-    int iVar5;
-    uint32_t uVar6;
+    uint8_t command_or_intelligence;
+    uint8_t current_energy;
+    uint8_t original_y;
+    uint32_t character_or_sqrt_result;
+    uint32_t experience_gain;
+    int unit_or_character_address;
+    uint32_t actor_unit;
 
-    uVar6 = (uint32_t)record[2];
-    iVar5 = uVar6 * 7;
-    (&g_first_unit_has_acted)[iVar5] = 1;
-    sango_battle_prepare_combatant(0, uVar6);
+    actor_unit = (uint32_t)record[2];
+    unit_or_character_address = actor_unit * 7;
+    (&g_first_unit_has_acted)[unit_or_character_address] = 1;
+    sango_battle_prepare_combatant(0, actor_unit);
     sango_battle_prepare_combatant(1, (uint32_t)record[3]);
-    bVar1 = *record;
-    if (bVar1 == 1)
+    command_or_intelligence = *record;
+    if (command_or_intelligence == 1)
     {
-        unaff_s2 = sango_battle_execute_skill((int)record);
+        experience_gain = sango_battle_execute_skill((int)record);
     }
-    else if (bVar1 < 2)
+    else if (command_or_intelligence < 2)
     {
-        if (bVar1 == 0)
+        if (command_or_intelligence == 0)
         {
-            unaff_s2 = sango_battle_execute_normal_attack((uint32_t)record[3]);
+            experience_gain = sango_battle_execute_normal_attack((uint32_t)record[3]);
         }
     }
     else
     {
-        if (bVar1 != 3)
+        if (command_or_intelligence != 3)
         {
-            if (bVar1 != 0xff)
+            if (command_or_intelligence != 0xff)
             {
-                return unaff_s2;
+                return experience_gain;
             }
-            (&g_first_unit_x)[iVar5] = g_legacy_data_81c2b172;
-            uVar3 = g_legacy_data_81c2b148;
-            (&g_first_unit_has_acted)[iVar5] = 0;
-            (&g_first_unit_y)[iVar5] = uVar3;
-            sango_battle_redraw_field(uVar6);
+            (&g_first_unit_x)[unit_or_character_address] = g_legacy_data_81c2b172;
+            original_y = g_legacy_data_81c2b148;
+            (&g_first_unit_has_acted)[unit_or_character_address] = 0;
+            (&g_first_unit_y)[unit_or_character_address] = original_y;
+            sango_battle_redraw_field(actor_unit);
         }
-        uVar4 = sango_battle_resolve_character(uVar6);
-        iVar5 = g_character_table_address + uVar4 * 0x10;
-        bVar1 = *(uint8_t *)(iVar5 + 4);
-        uVar4 = sango_math_sqrt_step_search((uint16_t) * (uint8_t *)(iVar5 + 3));
-        bVar2 = (&g_first_unit_energy)[uVar6 * 7];
-        if ((uint32_t)bVar2 < (((((uint32_t)bVar1 * 0x50) / 100 + (uVar4 >> 1 & 0xff) +
-                                 (uint32_t) * (uint8_t *)(iVar5 + 2)) *
-                                (uint32_t) * (uint8_t *)(iVar5 + 8)) /
-                                   100 &
-                               0xff))
+        character_or_sqrt_result = sango_battle_resolve_character(actor_unit);
+        unit_or_character_address = g_character_table_address + character_or_sqrt_result * 0x10;
+        command_or_intelligence = *(uint8_t *)(unit_or_character_address + 4);
+        character_or_sqrt_result =
+            sango_math_sqrt_step_search((uint16_t) * (uint8_t *)(unit_or_character_address + 3));
+        current_energy = (&g_first_unit_energy)[actor_unit * 7];
+        if ((uint32_t)current_energy < (((((uint32_t)command_or_intelligence * 0x50) / 100 +
+                                          (character_or_sqrt_result >> 1 & 0xff) +
+                                          (uint32_t) * (uint8_t *)(unit_or_character_address + 2)) *
+                                         (uint32_t) * (uint8_t *)(unit_or_character_address + 8)) /
+                                            100 &
+                                        0xff))
         {
-            (&g_first_unit_energy)[uVar6 * 7] = bVar2 + 1;
+            (&g_first_unit_energy)[actor_unit * 7] = current_energy + 1;
         }
-        unaff_s2 = 0;
+        experience_gain = 0;
     }
-    return unaff_s2;
+    return experience_gain;
 }
 
 /* 原函数 0x81c06838 */
@@ -652,25 +664,27 @@ uint32_t sango_battle_unit_sprite_frame(uint32_t unit_id)
 }
 
 /* 原函数 0x81c068f0 */
-void sango_battle_regenerate_unit_energy(uint32_t param_1)
+void sango_battle_regenerate_unit_energy(uint32_t unit_id)
 {
-    uint8_t bVar1;
-    uint8_t bVar2;
-    uint32_t uVar3;
-    int iVar4;
+    uint8_t intelligence;
+    uint8_t current_energy;
+    uint32_t character_or_sqrt_result;
+    int character_address;
 
-    uVar3 = sango_battle_resolve_character(param_1 & 0xff);
-    iVar4 = g_character_table_address + uVar3 * 0x10;
-    bVar1 = *(uint8_t *)(iVar4 + 4);
-    uVar3 = sango_math_sqrt_step_search((uint16_t) * (uint8_t *)(iVar4 + 3));
-    bVar2 = (&g_first_unit_energy)[(param_1 & 0xff) * 7];
-    if ((uint32_t)bVar2 < (((((uint32_t)bVar1 * 0x50) / 100 + (uVar3 >> 1 & 0xff) +
-                             (uint32_t) * (uint8_t *)(iVar4 + 2)) *
-                            (uint32_t) * (uint8_t *)(iVar4 + 8)) /
-                               100 &
-                           0xff))
+    character_or_sqrt_result = sango_battle_resolve_character(unit_id & 0xff);
+    character_address = g_character_table_address + character_or_sqrt_result * 0x10;
+    intelligence = *(uint8_t *)(character_address + 4);
+    character_or_sqrt_result =
+        sango_math_sqrt_step_search((uint16_t) * (uint8_t *)(character_address + 3));
+    current_energy = (&g_first_unit_energy)[(unit_id & 0xff) * 7];
+    if ((uint32_t)current_energy <
+        (((((uint32_t)intelligence * 0x50) / 100 + (character_or_sqrt_result >> 1 & 0xff) +
+           (uint32_t) * (uint8_t *)(character_address + 2)) *
+          (uint32_t) * (uint8_t *)(character_address + 8)) /
+             100 &
+         0xff))
     {
-        (&g_first_unit_energy)[(param_1 & 0xff) * 7] = bVar2 + 1;
+        (&g_first_unit_energy)[(unit_id & 0xff) * 7] = current_energy + 1;
     }
     return;
 }
@@ -678,35 +692,36 @@ void sango_battle_regenerate_unit_energy(uint32_t param_1)
 /* 原函数 0x81c069d4 */
 uint32_t sango_battle_find_actionable_unit_at_cursor(void)
 {
-    char cVar1;
-    int iVar2;
-    uint32_t uVar3;
+    char unit_status;
+    int unit_offset;
+    uint32_t unit_index;
 
-    uVar3 = 0;
+    unit_index = 0;
     while (true)
     {
-        iVar2 = uVar3 * 7;
-        cVar1 = (&g_first_unit_status)[iVar2];
-        if (((cVar1 != '\b') && ((&g_first_unit_x)[iVar2] == g_battle_cursor_x_view2)) &&
-            ((&g_first_unit_y)[iVar2] == g_battle_cursor_y_view2))
+        unit_offset = unit_index * 7;
+        unit_status = (&g_first_unit_status)[unit_offset];
+        if (((unit_status != '\b') &&
+             ((&g_first_unit_x)[unit_offset] == g_battle_cursor_x_view2)) &&
+            ((&g_first_unit_y)[unit_offset] == g_battle_cursor_y_view2))
             break;
-        uVar3 = uVar3 + 1 & 0xff;
-        if (9 < uVar3)
+        unit_index = unit_index + 1 & 0xff;
+        if (9 < unit_index)
         {
             return 0xff;
         }
     }
-    if ((&g_first_unit_has_acted)[iVar2] != '\0')
+    if ((&g_first_unit_has_acted)[unit_offset] != '\0')
     {
         return 0xff;
     }
-    if (cVar1 == '\x01')
+    if (unit_status == '\x01')
     {
         return 0xff;
     }
-    if (cVar1 != '\x06')
+    if (unit_status != '\x06')
     {
-        return uVar3;
+        return unit_index;
     }
     return 0xff;
 }

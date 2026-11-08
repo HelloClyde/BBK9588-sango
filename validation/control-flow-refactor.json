@@ -263,5 +263,7 @@
     "working_tree_clean": true,
     "sdk_working_tree_clean": true,
     "scope": "Existing independent clean checkout updated from local source only; SDK already pinned and toolchain installed. Default README build without private dumps or baseline ELF. No remote Actions or publication."
-  }
+  },
+  "status": "Historical second-phase source/token statistics; source/report paths refer to the snapshot commit. Production artifact hashes remain current after naming-only phase 3.",
+  "snapshot_commit": "301678844b8d283ad8d4fdcfb2ea2bb6dba891ba"
 }

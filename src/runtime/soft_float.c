@@ -3,23 +3,23 @@
 /* 恢复的IEEE754软件浮点实现。 */
 
 /* 原函数 0x81c1df40 */
-uint32_t sango_soft_f32_to_int(uint32_t param_1)
+uint32_t sango_soft_f32_to_int(uint32_t float_bits)
 {
-    int iVar1;
-    uint32_t uVar2;
+    int range_comparison;
+    uint32_t converted_value;
 
-    iVar1 = sango_soft_compare_f32(param_1, g_legacy_data_81c20c60);
-    if (iVar1 < 0)
+    range_comparison = sango_soft_compare_f32(float_bits, g_legacy_data_81c20c60);
+    if (range_comparison < 0)
     {
-        uVar2 = sango_soft_unpack_f32_integer(param_1);
+        converted_value = sango_soft_unpack_f32_integer(float_bits);
     }
     else
     {
-        uVar2 = soft_float_add(param_1, g_legacy_data_81c20c64);
-        uVar2 = sango_soft_unpack_f32_integer(uVar2);
-        uVar2 = uVar2 + 0x80000000;
+        converted_value = soft_float_add(float_bits, g_legacy_data_81c20c64);
+        converted_value = sango_soft_unpack_f32_integer(converted_value);
+        converted_value = converted_value + 0x80000000;
     }
-    return uVar2;
+    return converted_value;
 }
 
 /* 原函数 0x81c1dfb0 */
@@ -182,58 +182,58 @@ uint32_t *sango_soft_add_f32_parts(uint32_t *left, uint32_t *right, uint32_t *ou
 uint32_t soft_float_add(uint32_t left, uint32_t right)
 {
     unsigned char abi_storage[72] __attribute__((aligned(8)));
-#define local_10 (*(uint32_t *)(abi_storage + 48))
-#define local_c (*(uint32_t *)(abi_storage + 52))
-#define auStack_30 (*(uint32_t(*)[4])(abi_storage + 16))
-#define auStack_40 (*(uint32_t(*)[4])(abi_storage + 0))
-#define auStack_20 (*(uint32_t(*)[4])(abi_storage + 32))
+#define left_bits (*(uint32_t *)(abi_storage + 48))
+#define right_bits (*(uint32_t *)(abi_storage + 52))
+#define right_parts (*(uint32_t(*)[4])(abi_storage + 16))
+#define left_parts (*(uint32_t(*)[4])(abi_storage + 0))
+#define sum_parts (*(uint32_t(*)[4])(abi_storage + 32))
 
-    uint32_t *puVar1;
-    uint32_t uVar2;
+    uint32_t *result_parts;
+    uint32_t result_bits;
 
-    local_10 = left;
-    local_c = right;
-    sango_soft_unpack_f32(&local_10, auStack_40);
-    sango_soft_unpack_f32(&local_c, auStack_30);
-    puVar1 = sango_soft_add_f32_parts(auStack_40, auStack_30, auStack_20);
-    uVar2 = sango_soft_pack_f32(puVar1);
-    return uVar2;
+    left_bits = left;
+    right_bits = right;
+    sango_soft_unpack_f32(&left_bits, left_parts);
+    sango_soft_unpack_f32(&right_bits, right_parts);
+    result_parts = sango_soft_add_f32_parts(left_parts, right_parts, sum_parts);
+    result_bits = sango_soft_pack_f32(result_parts);
+    return result_bits;
 }
-#undef local_10
-#undef local_c
-#undef auStack_30
-#undef auStack_40
-#undef auStack_20
+#undef left_bits
+#undef right_bits
+#undef right_parts
+#undef left_parts
+#undef sum_parts
 
 /* 原函数 0x81c1e24c */
 uint32_t soft_float_sub(uint32_t left, uint32_t right)
 {
     unsigned char abi_storage[72] __attribute__((aligned(8)));
-#define auStack_40 (*(uint32_t(*)[4])(abi_storage + 0))
-#define local_2c (*(uint32_t *)(abi_storage + 20))
-#define local_10 (*(uint32_t *)(abi_storage + 48))
-#define local_c (*(uint32_t *)(abi_storage + 52))
-#define uStack_30 (*(uint32_t *)(abi_storage + 16))
-#define auStack_20 (*(uint32_t(*)[4])(abi_storage + 32))
+#define left_parts (*(uint32_t(*)[4])(abi_storage + 0))
+#define right_sign (*(uint32_t *)(abi_storage + 20))
+#define left_bits (*(uint32_t *)(abi_storage + 48))
+#define right_bits (*(uint32_t *)(abi_storage + 52))
+#define right_parts_start (*(uint32_t *)(abi_storage + 16))
+#define difference_parts (*(uint32_t(*)[4])(abi_storage + 32))
 
-    uint32_t *puVar1;
-    uint32_t uVar2;
+    uint32_t *result_parts;
+    uint32_t result_bits;
 
-    local_10 = left;
-    local_c = right;
-    sango_soft_unpack_f32(&local_10, auStack_40);
-    sango_soft_unpack_f32(&local_c, &uStack_30);
-    local_2c = local_2c ^ 1;
-    puVar1 = sango_soft_add_f32_parts(auStack_40, &uStack_30, auStack_20);
-    uVar2 = sango_soft_pack_f32(puVar1);
-    return uVar2;
+    left_bits = left;
+    right_bits = right;
+    sango_soft_unpack_f32(&left_bits, left_parts);
+    sango_soft_unpack_f32(&right_bits, &right_parts_start);
+    right_sign = right_sign ^ 1;
+    result_parts = sango_soft_add_f32_parts(left_parts, &right_parts_start, difference_parts);
+    result_bits = sango_soft_pack_f32(result_parts);
+    return result_bits;
 }
-#undef auStack_40
-#undef local_2c
-#undef local_10
-#undef local_c
-#undef uStack_30
-#undef auStack_20
+#undef left_parts
+#undef right_sign
+#undef left_bits
+#undef right_bits
+#undef right_parts_start
+#undef difference_parts
 
 /* 原函数 0x81c1e2c0 */
 uint32_t soft_float_mul(uint32_t left, uint32_t right)
@@ -355,212 +355,213 @@ pack_product:
 uint32_t soft_float_div(uint32_t left, uint32_t right)
 {
     unsigned char abi_storage[56] __attribute__((aligned(8)));
-#define local_30 (*(uint32_t *)(abi_storage + 0))
-#define local_2c (*(uint32_t *)(abi_storage + 4))
-#define local_28 (*(int *)(abi_storage + 8))
-#define local_24 (*(uint32_t *)(abi_storage + 12))
-#define local_20 (*(uint32_t *)(abi_storage + 16))
-#define local_1c (*(uint32_t *)(abi_storage + 20))
-#define local_18 (*(int *)(abi_storage + 24))
-#define local_14 (*(uint32_t *)(abi_storage + 28))
-#define local_10 (*(uint32_t *)(abi_storage + 32))
-#define local_c (*(uint32_t *)(abi_storage + 36))
+#define left_kind (*(uint32_t *)(abi_storage + 0))
+#define left_sign (*(uint32_t *)(abi_storage + 4))
+#define left_exponent (*(int *)(abi_storage + 8))
+#define left_significand (*(uint32_t *)(abi_storage + 12))
+#define right_kind (*(uint32_t *)(abi_storage + 16))
+#define right_sign (*(uint32_t *)(abi_storage + 20))
+#define right_exponent (*(int *)(abi_storage + 24))
+#define right_significand (*(uint32_t *)(abi_storage + 28))
+#define left_bits (*(uint32_t *)(abi_storage + 32))
+#define right_bits (*(uint32_t *)(abi_storage + 36))
 
-    bool bVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
-    uint32_t *puVar4;
+    bool remainder_below_divisor;
+    uint32_t quotient_or_result_bits;
+    uint32_t quotient_bit;
+    uint32_t *result_parts;
 
-    local_10 = left;
-    local_c = right;
-    sango_soft_unpack_f32(&local_10, &local_30);
-    sango_soft_unpack_f32(&local_c, &local_20);
-    puVar4 = &local_30;
-    if ((local_30 < 2) || (puVar4 = &local_20, local_20 < 2))
-        goto LAB_81c1e548;
-    local_2c = local_2c ^ local_1c;
-    if ((local_30 == 4) || (local_30 == 2))
+    left_bits = left;
+    right_bits = right;
+    sango_soft_unpack_f32(&left_bits, &left_kind);
+    sango_soft_unpack_f32(&right_bits, &right_kind);
+    result_parts = &left_kind;
+    if ((left_kind < 2) || (result_parts = &right_kind, right_kind < 2))
+        goto pack_division_result;
+    left_sign = left_sign ^ right_sign;
+    if ((left_kind == 4) || (left_kind == 2))
     {
-        puVar4 = (uint32_t *)&g_legacy_data_81c20c00;
-        uVar2 = local_24;
-        if (local_30 == local_20)
-            goto LAB_81c1e548;
+        result_parts = (uint32_t *)&g_legacy_data_81c20c00;
+        quotient_or_result_bits = left_significand;
+        if (left_kind == right_kind)
+            goto pack_division_result;
     }
     else
     {
-        if (local_20 == 4)
+        if (right_kind == 4)
         {
-            local_24 = 0;
-            local_28 = 0;
-            puVar4 = &local_30;
-            goto LAB_81c1e548;
+            left_significand = 0;
+            left_exponent = 0;
+            result_parts = &left_kind;
+            goto pack_division_result;
         }
-        if (local_20 == 2)
+        if (right_kind == 2)
         {
-            local_30 = 4;
-            puVar4 = &local_30;
-            goto LAB_81c1e548;
+            left_kind = 4;
+            result_parts = &left_kind;
+            goto pack_division_result;
         }
-        bVar1 = local_24 < local_14;
-        local_28 = local_28 - local_18;
-        if (bVar1)
+        remainder_below_divisor = left_significand < right_significand;
+        left_exponent = left_exponent - right_exponent;
+        if (remainder_below_divisor)
         {
-            local_28 = local_28 + -1;
-            local_24 = local_24 << 1;
-            bVar1 = local_24 < local_14;
+            left_exponent = left_exponent + -1;
+            left_significand = left_significand << 1;
+            remainder_below_divisor = left_significand < right_significand;
         }
-        uVar3 = 0x40000000;
-        uVar2 = 0;
+        quotient_bit = 0x40000000;
+        quotient_or_result_bits = 0;
         do
         {
-            if (!bVar1)
+            if (!remainder_below_divisor)
             {
-                uVar2 = uVar2 | uVar3;
-                local_24 = local_24 - local_14;
+                quotient_or_result_bits = quotient_or_result_bits | quotient_bit;
+                left_significand = left_significand - right_significand;
             }
-            local_24 = local_24 << 1;
-            uVar3 = uVar3 >> 1;
-            bVar1 = local_24 < local_14;
-        } while (uVar3 != 0);
-        if (((uVar2 & 0x7f) == 0x40) && (((uVar2 & 0x80) != 0 || (local_24 != 0))))
+            left_significand = left_significand << 1;
+            quotient_bit = quotient_bit >> 1;
+            remainder_below_divisor = left_significand < right_significand;
+        } while (quotient_bit != 0);
+        if (((quotient_or_result_bits & 0x7f) == 0x40) &&
+            (((quotient_or_result_bits & 0x80) != 0 || (left_significand != 0))))
         {
-            uVar2 = uVar2 + 0x40;
+            quotient_or_result_bits = quotient_or_result_bits + 0x40;
         }
     }
-    local_24 = uVar2;
-    puVar4 = &local_30;
-LAB_81c1e548:
-    uVar2 = sango_soft_pack_f32(puVar4);
-    return uVar2;
+    left_significand = quotient_or_result_bits;
+    result_parts = &left_kind;
+pack_division_result:
+    quotient_or_result_bits = sango_soft_pack_f32(result_parts);
+    return quotient_or_result_bits;
 }
-#undef local_30
-#undef local_2c
-#undef local_28
-#undef local_24
-#undef local_20
-#undef local_1c
-#undef local_18
-#undef local_14
-#undef local_10
-#undef local_c
+#undef left_kind
+#undef left_sign
+#undef left_exponent
+#undef left_significand
+#undef right_kind
+#undef right_sign
+#undef right_exponent
+#undef right_significand
+#undef left_bits
+#undef right_bits
 
 /* 原函数 0x81c1e620 */
-int sango_soft_compare_f32(uint32_t param_1, uint32_t param_2)
+int sango_soft_compare_f32(uint32_t left, uint32_t right)
 {
     unsigned char abi_storage[56] __attribute__((aligned(8)));
-#define local_30 (*(uint32_t(*)[4])(abi_storage + 0))
-#define local_20 (*(uint32_t(*)[4])(abi_storage + 16))
-#define local_10 (*(uint32_t *)(abi_storage + 32))
-#define local_c (*(uint32_t *)(abi_storage + 36))
+#define left_parts (*(uint32_t(*)[4])(abi_storage + 0))
+#define right_parts (*(uint32_t(*)[4])(abi_storage + 16))
+#define left_bits (*(uint32_t *)(abi_storage + 32))
+#define right_bits (*(uint32_t *)(abi_storage + 36))
 
-    int iVar1;
+    int comparison;
 
-    local_10 = param_1;
-    local_c = param_2;
-    sango_soft_unpack_f32(&local_10, local_30);
-    sango_soft_unpack_f32(&local_c, local_20);
-    iVar1 = -1;
-    if ((1 < local_30[0]) && (1 < local_20[0]))
+    left_bits = left;
+    right_bits = right;
+    sango_soft_unpack_f32(&left_bits, left_parts);
+    sango_soft_unpack_f32(&right_bits, right_parts);
+    comparison = -1;
+    if ((1 < left_parts[0]) && (1 < right_parts[0]))
     {
-        iVar1 = sango_soft_compare_f32_parts(local_30, local_20);
+        comparison = sango_soft_compare_f32_parts(left_parts, right_parts);
     }
-    return iVar1;
+    return comparison;
 }
-#undef local_30
-#undef local_20
-#undef local_10
-#undef local_c
+#undef left_parts
+#undef right_parts
+#undef left_bits
+#undef right_bits
 
 /* 原函数 0x81c1e6b0 */
-uint32_t sango_soft_int_to_f32(uint32_t param_1)
+uint32_t sango_soft_int_to_f32(uint32_t integer_value)
 {
     unsigned char abi_storage[32] __attribute__((aligned(8)));
-#define local_10 (*(int *)(abi_storage + 8))
-#define local_c (*(uint32_t *)(abi_storage + 12))
-#define local_18 (*(uint32_t *)(abi_storage + 0))
-#define local_14 (*(int *)(abi_storage + 4))
+#define exponent (*(int *)(abi_storage + 8))
+#define significand (*(uint32_t *)(abi_storage + 12))
+#define kind (*(uint32_t *)(abi_storage + 0))
+#define sign (*(int *)(abi_storage + 4))
 
-    uint32_t uVar1;
+    uint32_t result_bits;
 
-    local_14 = -((int)param_1 >> 0x1f);
-    local_18 = 3;
-    if (param_1 == 0)
+    sign = -((int)integer_value >> 0x1f);
+    kind = 3;
+    if (integer_value == 0)
     {
-        local_18 = 2;
+        kind = 2;
     }
     else
     {
-        local_10 = 0x1e;
-        local_c = param_1;
-        if (local_14 != 0)
+        exponent = 0x1e;
+        significand = integer_value;
+        if (sign != 0)
         {
-            if (param_1 == 0x80000000)
+            if (integer_value == 0x80000000)
             {
                 return g_legacy_data_81c20c64;
             }
-            local_c = -param_1;
+            significand = -integer_value;
         }
-        if (local_c < 0x40000000)
+        if (significand < 0x40000000)
         {
-            local_10 = 0x1e;
+            exponent = 0x1e;
             do
             {
-                local_c = local_c << 1;
-                local_10 = local_10 + -1;
-            } while (local_c < 0x40000000);
+                significand = significand << 1;
+                exponent = exponent + -1;
+            } while (significand < 0x40000000);
         }
     }
-    uVar1 = sango_soft_pack_f32(&local_18);
-    return uVar1;
+    result_bits = sango_soft_pack_f32(&kind);
+    return result_bits;
 }
-#undef local_10
-#undef local_c
-#undef local_18
-#undef local_14
+#undef exponent
+#undef significand
+#undef kind
+#undef sign
 
 /* 原函数 0x81c1e770 */
-uint32_t sango_soft_unpack_f32_integer(uint32_t param_1)
+uint32_t sango_soft_unpack_f32_integer(uint32_t float_bits)
 {
     unsigned char abi_storage[40] __attribute__((aligned(8)));
-#define local_20 (*(uint32_t *)(abi_storage + 0))
-#define local_1c (*(int *)(abi_storage + 4))
-#define local_18 (*(int *)(abi_storage + 8))
-#define local_14 (*(uint32_t *)(abi_storage + 12))
-#define local_10 (*(uint32_t(*)[2])(abi_storage + 16))
+#define kind (*(uint32_t *)(abi_storage + 0))
+#define sign (*(int *)(abi_storage + 4))
+#define exponent (*(int *)(abi_storage + 8))
+#define significand (*(uint32_t *)(abi_storage + 12))
+#define source_bits (*(uint32_t(*)[2])(abi_storage + 16))
 
-    local_10[0] = param_1;
-    sango_soft_unpack_f32(local_10, &local_20);
-    if (local_20 == 2)
+    source_bits[0] = float_bits;
+    sango_soft_unpack_f32(source_bits, &kind);
+    if (kind == 2)
     {
         return 0;
     }
-    if (local_20 < 2)
+    if (kind < 2)
     {
         return 0;
     }
-    if (local_20 != 4)
+    if (kind != 4)
     {
-        if (local_18 < 0)
+        if (exponent < 0)
         {
             return 0;
         }
-        if (local_18 < 0x1f)
+        if (exponent < 0x1f)
         {
-            local_14 = local_14 >> (0x1eU - local_18 & 0x1f);
-            if (local_1c == 0)
+            significand = significand >> (0x1eU - exponent & 0x1f);
+            if (sign == 0)
             {
-                return local_14;
+                return significand;
             }
-            return -local_14;
+            return -significand;
         }
     }
-    return 0x80000000 - (local_1c == 0);
+    return 0x80000000 - (sign == 0);
 }
-#undef local_20
-#undef local_1c
-#undef local_18
-#undef local_14
-#undef local_10
+#undef kind
+#undef sign
+#undef exponent
+#undef significand
+#undef source_bits
 
 /* 原函数 0x81c1e810 */
 uint32_t *sango_soft_add_f64_parts(uint32_t *left, uint32_t *right, uint32_t *output)
@@ -753,73 +754,75 @@ uint32_t *sango_soft_add_f64_parts(uint32_t *left, uint32_t *right, uint32_t *ou
 }
 
 /* 原函数 0x81c1eb70 */
-uint64_t sango_soft_add_f64(uint32_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4)
+uint64_t sango_soft_add_f64(uint32_t left_low, uint32_t left_high, uint32_t right_low,
+                            uint32_t right_high)
 {
     unsigned char abi_storage[104] __attribute__((aligned(8)));
-#define local_10 (*(uint32_t *)(abi_storage + 80))
-#define local_c (*(uint32_t *)(abi_storage + 84))
-#define auStack_48 (*(uint32_t(*)[6])(abi_storage + 24))
-#define auStack_60 (*(uint32_t(*)[6])(abi_storage + 0))
-#define auStack_30 (*(uint32_t(*)[6])(abi_storage + 48))
-#define local_18 (*(uint32_t *)(abi_storage + 72))
-#define local_14 (*(uint32_t *)(abi_storage + 76))
+#define right_bits_low (*(uint32_t *)(abi_storage + 80))
+#define right_bits_high (*(uint32_t *)(abi_storage + 84))
+#define right_parts (*(uint32_t(*)[6])(abi_storage + 24))
+#define left_parts (*(uint32_t(*)[6])(abi_storage + 0))
+#define sum_parts (*(uint32_t(*)[6])(abi_storage + 48))
+#define left_bits_low (*(uint32_t *)(abi_storage + 72))
+#define left_bits_high (*(uint32_t *)(abi_storage + 76))
 
-    uint32_t *puVar1;
-    uint64_t uVar2;
+    uint32_t *result_parts;
+    uint64_t result_bits;
 
-    local_18 = param_1;
-    local_14 = param_2;
-    local_10 = param_3;
-    local_c = param_4;
-    sango_soft_unpack_f64(&local_18, auStack_60);
-    sango_soft_unpack_f64(&local_10, auStack_48);
-    puVar1 = sango_soft_add_f64_parts(auStack_60, auStack_48, auStack_30);
-    uVar2 = sango_soft_pack_f64(puVar1);
-    return uVar2;
+    left_bits_low = left_low;
+    left_bits_high = left_high;
+    right_bits_low = right_low;
+    right_bits_high = right_high;
+    sango_soft_unpack_f64(&left_bits_low, left_parts);
+    sango_soft_unpack_f64(&right_bits_low, right_parts);
+    result_parts = sango_soft_add_f64_parts(left_parts, right_parts, sum_parts);
+    result_bits = sango_soft_pack_f64(result_parts);
+    return result_bits;
 }
-#undef local_10
-#undef local_c
-#undef auStack_48
-#undef auStack_60
-#undef auStack_30
-#undef local_18
-#undef local_14
+#undef right_bits_low
+#undef right_bits_high
+#undef right_parts
+#undef left_parts
+#undef sum_parts
+#undef left_bits_low
+#undef left_bits_high
 
 /* 原函数 0x81c1ebd8 */
-uint64_t sango_soft_sub_f64(uint32_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4)
+uint64_t sango_soft_sub_f64(uint32_t left_low, uint32_t left_high, uint32_t right_low,
+                            uint32_t right_high)
 {
     unsigned char abi_storage[104] __attribute__((aligned(8)));
-#define local_44 (*(uint32_t *)(abi_storage + 28))
-#define local_18 (*(uint32_t *)(abi_storage + 72))
-#define local_14 (*(uint32_t *)(abi_storage + 76))
-#define auStack_60 (*(uint32_t(*)[6])(abi_storage + 0))
-#define local_10 (*(uint32_t *)(abi_storage + 80))
-#define local_c (*(uint32_t *)(abi_storage + 84))
-#define uStack_48 (*(uint32_t *)(abi_storage + 24))
-#define auStack_30 (*(uint32_t(*)[6])(abi_storage + 48))
+#define right_sign (*(uint32_t *)(abi_storage + 28))
+#define left_bits_low (*(uint32_t *)(abi_storage + 72))
+#define left_bits_high (*(uint32_t *)(abi_storage + 76))
+#define left_parts (*(uint32_t(*)[6])(abi_storage + 0))
+#define right_bits_low (*(uint32_t *)(abi_storage + 80))
+#define right_bits_high (*(uint32_t *)(abi_storage + 84))
+#define right_parts_start (*(uint32_t *)(abi_storage + 24))
+#define difference_parts (*(uint32_t(*)[6])(abi_storage + 48))
 
-    uint32_t *puVar1;
-    uint64_t uVar2;
+    uint32_t *result_parts;
+    uint64_t result_bits;
 
-    local_18 = param_1;
-    local_14 = param_2;
-    local_10 = param_3;
-    local_c = param_4;
-    sango_soft_unpack_f64(&local_18, auStack_60);
-    sango_soft_unpack_f64(&local_10, &uStack_48);
-    local_44 = local_44 ^ 1;
-    puVar1 = sango_soft_add_f64_parts(auStack_60, &uStack_48, auStack_30);
-    uVar2 = sango_soft_pack_f64(puVar1);
-    return uVar2;
+    left_bits_low = left_low;
+    left_bits_high = left_high;
+    right_bits_low = right_low;
+    right_bits_high = right_high;
+    sango_soft_unpack_f64(&left_bits_low, left_parts);
+    sango_soft_unpack_f64(&right_bits_low, &right_parts_start);
+    right_sign = right_sign ^ 1;
+    result_parts = sango_soft_add_f64_parts(left_parts, &right_parts_start, difference_parts);
+    result_bits = sango_soft_pack_f64(result_parts);
+    return result_bits;
 }
-#undef local_44
-#undef local_18
-#undef local_14
-#undef auStack_60
-#undef local_10
-#undef local_c
-#undef uStack_48
-#undef auStack_30
+#undef right_sign
+#undef left_bits_low
+#undef left_bits_high
+#undef left_parts
+#undef right_bits_low
+#undef right_bits_high
+#undef right_parts_start
+#undef difference_parts
 
 /* 原函数 0x81c1ec50 */
 uint64_t sango_soft_mul_f64(uint32_t left_low, uint32_t left_high, uint32_t right_low,
@@ -1117,479 +1120,480 @@ uint64_t sango_soft_div_f64(uint32_t left_low, uint32_t left_high, uint32_t righ
 #undef right_bits_high
 
 /* 原函数 0x81c1f210 */
-int sango_soft_compare_f64_nan_high(uint32_t param_1, uint32_t param_2, uint32_t param_3,
-                                    uint32_t param_4)
+int sango_soft_compare_f64_nan_high(uint32_t left_low, uint32_t left_high, uint32_t right_low,
+                                    uint32_t right_high)
 {
     unsigned char abi_storage[80] __attribute__((aligned(8)));
-#define local_48 (*(uint32_t(*)[6])(abi_storage + 0))
-#define local_30 (*(uint32_t(*)[6])(abi_storage + 24))
-#define local_18 (*(uint32_t *)(abi_storage + 48))
-#define local_14 (*(uint32_t *)(abi_storage + 52))
-#define local_10 (*(uint32_t *)(abi_storage + 56))
-#define local_c (*(uint32_t *)(abi_storage + 60))
+#define left_parts (*(uint32_t(*)[6])(abi_storage + 0))
+#define right_parts (*(uint32_t(*)[6])(abi_storage + 24))
+#define left_bits_low (*(uint32_t *)(abi_storage + 48))
+#define left_bits_high (*(uint32_t *)(abi_storage + 52))
+#define right_bits_low (*(uint32_t *)(abi_storage + 56))
+#define right_bits_high (*(uint32_t *)(abi_storage + 60))
 
-    int iVar1;
+    int comparison;
 
-    local_18 = param_1;
-    local_14 = param_2;
-    local_10 = param_3;
-    local_c = param_4;
-    sango_soft_unpack_f64(&local_18, local_48);
-    sango_soft_unpack_f64(&local_10, local_30);
-    iVar1 = 1;
-    if ((1 < local_48[0]) && (1 < local_30[0]))
+    left_bits_low = left_low;
+    left_bits_high = left_high;
+    right_bits_low = right_low;
+    right_bits_high = right_high;
+    sango_soft_unpack_f64(&left_bits_low, left_parts);
+    sango_soft_unpack_f64(&right_bits_low, right_parts);
+    comparison = 1;
+    if ((1 < left_parts[0]) && (1 < right_parts[0]))
     {
-        iVar1 = sango_soft_compare_f64_parts(local_48, local_30);
+        comparison = sango_soft_compare_f64_parts(left_parts, right_parts);
     }
-    return iVar1;
+    return comparison;
 }
-#undef local_48
-#undef local_30
-#undef local_18
-#undef local_14
-#undef local_10
-#undef local_c
+#undef left_parts
+#undef right_parts
+#undef left_bits_low
+#undef left_bits_high
+#undef right_bits_low
+#undef right_bits_high
 
 /* 原函数 0x81c1f2a0 */
-int sango_soft_compare_f64_nan_low(uint32_t param_1, uint32_t param_2, uint32_t param_3,
-                                   uint32_t param_4)
+int sango_soft_compare_f64_nan_low(uint32_t left_low, uint32_t left_high, uint32_t right_low,
+                                   uint32_t right_high)
 {
     unsigned char abi_storage[80] __attribute__((aligned(8)));
-#define local_14 (*(uint32_t *)(abi_storage + 52))
-#define local_10 (*(uint32_t *)(abi_storage + 56))
-#define local_c (*(uint32_t *)(abi_storage + 60))
-#define local_48 (*(uint32_t(*)[6])(abi_storage + 0))
-#define local_30 (*(uint32_t(*)[6])(abi_storage + 24))
-#define local_18 (*(uint32_t *)(abi_storage + 48))
+#define left_bits_high (*(uint32_t *)(abi_storage + 52))
+#define right_bits_low (*(uint32_t *)(abi_storage + 56))
+#define right_bits_high (*(uint32_t *)(abi_storage + 60))
+#define left_parts (*(uint32_t(*)[6])(abi_storage + 0))
+#define right_parts (*(uint32_t(*)[6])(abi_storage + 24))
+#define left_bits_low (*(uint32_t *)(abi_storage + 48))
 
-    int iVar1;
+    int comparison;
 
-    local_18 = param_1;
-    local_14 = param_2;
-    local_10 = param_3;
-    local_c = param_4;
-    sango_soft_unpack_f64(&local_18, local_48);
-    sango_soft_unpack_f64(&local_10, local_30);
-    iVar1 = -1;
-    if ((1 < local_48[0]) && (1 < local_30[0]))
+    left_bits_low = left_low;
+    left_bits_high = left_high;
+    right_bits_low = right_low;
+    right_bits_high = right_high;
+    sango_soft_unpack_f64(&left_bits_low, left_parts);
+    sango_soft_unpack_f64(&right_bits_low, right_parts);
+    comparison = -1;
+    if ((1 < left_parts[0]) && (1 < right_parts[0]))
     {
-        iVar1 = sango_soft_compare_f64_parts(local_48, local_30);
+        comparison = sango_soft_compare_f64_parts(left_parts, right_parts);
     }
-    return iVar1;
+    return comparison;
 }
-#undef local_14
-#undef local_10
-#undef local_c
-#undef local_48
-#undef local_30
-#undef local_18
+#undef left_bits_high
+#undef right_bits_low
+#undef right_bits_high
+#undef left_parts
+#undef right_parts
+#undef left_bits_low
 
 /* 原函数 0x81c1f330 */
-int sango_soft_compare_f64_nan_low_compat(uint32_t param_1, uint32_t param_2, uint32_t param_3,
-                                          uint32_t param_4)
+int sango_soft_compare_f64_nan_low_compat(uint32_t left_low, uint32_t left_high, uint32_t right_low,
+                                          uint32_t right_high)
 {
     unsigned char abi_storage[80] __attribute__((aligned(8)));
-#define local_30 (*(uint32_t(*)[6])(abi_storage + 24))
-#define local_18 (*(uint32_t *)(abi_storage + 48))
-#define local_14 (*(uint32_t *)(abi_storage + 52))
-#define local_10 (*(uint32_t *)(abi_storage + 56))
-#define local_c (*(uint32_t *)(abi_storage + 60))
-#define local_48 (*(uint32_t(*)[6])(abi_storage + 0))
+#define right_parts (*(uint32_t(*)[6])(abi_storage + 24))
+#define left_bits_low (*(uint32_t *)(abi_storage + 48))
+#define left_bits_high (*(uint32_t *)(abi_storage + 52))
+#define right_bits_low (*(uint32_t *)(abi_storage + 56))
+#define right_bits_high (*(uint32_t *)(abi_storage + 60))
+#define left_parts (*(uint32_t(*)[6])(abi_storage + 0))
 
-    int iVar1;
+    int comparison;
 
-    local_18 = param_1;
-    local_14 = param_2;
-    local_10 = param_3;
-    local_c = param_4;
-    sango_soft_unpack_f64(&local_18, local_48);
-    sango_soft_unpack_f64(&local_10, local_30);
-    iVar1 = -1;
-    if ((1 < local_48[0]) && (1 < local_30[0]))
+    left_bits_low = left_low;
+    left_bits_high = left_high;
+    right_bits_low = right_low;
+    right_bits_high = right_high;
+    sango_soft_unpack_f64(&left_bits_low, left_parts);
+    sango_soft_unpack_f64(&right_bits_low, right_parts);
+    comparison = -1;
+    if ((1 < left_parts[0]) && (1 < right_parts[0]))
     {
-        iVar1 = sango_soft_compare_f64_parts(local_48, local_30);
+        comparison = sango_soft_compare_f64_parts(left_parts, right_parts);
     }
-    return iVar1;
+    return comparison;
 }
-#undef local_30
-#undef local_18
-#undef local_14
-#undef local_10
-#undef local_c
-#undef local_48
+#undef right_parts
+#undef left_bits_low
+#undef left_bits_high
+#undef right_bits_low
+#undef right_bits_high
+#undef left_parts
 
 /* 原函数 0x81c1f3c0 */
-int sango_soft_compare_f64_nan_high_compat(uint32_t param_1, uint32_t param_2, uint32_t param_3,
-                                           uint32_t param_4)
+int sango_soft_compare_f64_nan_high_compat(uint32_t left_low, uint32_t left_high,
+                                           uint32_t right_low, uint32_t right_high)
 {
     unsigned char abi_storage[80] __attribute__((aligned(8)));
-#define local_48 (*(uint32_t(*)[6])(abi_storage + 0))
-#define local_30 (*(uint32_t(*)[6])(abi_storage + 24))
-#define local_18 (*(uint32_t *)(abi_storage + 48))
-#define local_14 (*(uint32_t *)(abi_storage + 52))
-#define local_10 (*(uint32_t *)(abi_storage + 56))
-#define local_c (*(uint32_t *)(abi_storage + 60))
+#define left_parts (*(uint32_t(*)[6])(abi_storage + 0))
+#define right_parts (*(uint32_t(*)[6])(abi_storage + 24))
+#define left_bits_low (*(uint32_t *)(abi_storage + 48))
+#define left_bits_high (*(uint32_t *)(abi_storage + 52))
+#define right_bits_low (*(uint32_t *)(abi_storage + 56))
+#define right_bits_high (*(uint32_t *)(abi_storage + 60))
 
-    int iVar1;
+    int comparison;
 
-    local_18 = param_1;
-    local_14 = param_2;
-    local_10 = param_3;
-    local_c = param_4;
-    sango_soft_unpack_f64(&local_18, local_48);
-    sango_soft_unpack_f64(&local_10, local_30);
-    iVar1 = 1;
-    if ((1 < local_48[0]) && (1 < local_30[0]))
+    left_bits_low = left_low;
+    left_bits_high = left_high;
+    right_bits_low = right_low;
+    right_bits_high = right_high;
+    sango_soft_unpack_f64(&left_bits_low, left_parts);
+    sango_soft_unpack_f64(&right_bits_low, right_parts);
+    comparison = 1;
+    if ((1 < left_parts[0]) && (1 < right_parts[0]))
     {
-        iVar1 = sango_soft_compare_f64_parts(local_48, local_30);
+        comparison = sango_soft_compare_f64_parts(left_parts, right_parts);
     }
-    return iVar1;
+    return comparison;
 }
-#undef local_48
-#undef local_30
-#undef local_18
-#undef local_14
-#undef local_10
-#undef local_c
+#undef left_parts
+#undef right_parts
+#undef left_bits_low
+#undef left_bits_high
+#undef right_bits_low
+#undef right_bits_high
 
 /* 原函数 0x81c1f450 */
-uint64_t sango_soft_int_to_f64(uint32_t param_1)
+uint64_t sango_soft_int_to_f64(uint32_t integer_value)
 {
     unsigned char abi_storage[40] __attribute__((aligned(8)));
-#define local_20 (*(uint32_t *)(abi_storage + 0))
-#define local_1c (*(int *)(abi_storage + 4))
-#define local_18 (*(int *)(abi_storage + 8))
-#define local_10 (*(uint32_t *)(abi_storage + 16))
-#define local_c (*(uint32_t *)(abi_storage + 20))
+#define kind (*(uint32_t *)(abi_storage + 0))
+#define sign (*(int *)(abi_storage + 4))
+#define exponent (*(int *)(abi_storage + 8))
+#define significand_low (*(uint32_t *)(abi_storage + 16))
+#define significand_high (*(uint32_t *)(abi_storage + 20))
 
-    uint32_t uVar1;
-    uint64_t uVar2;
+    uint32_t sign_extension;
+    uint64_t result_bits;
 
-    uVar1 = (int)param_1 >> 0x1f;
-    local_1c = -uVar1;
-    local_20 = 3;
-    if (param_1 == 0)
+    sign_extension = (int)integer_value >> 0x1f;
+    sign = -sign_extension;
+    kind = 3;
+    if (integer_value == 0)
     {
-        local_20 = 2;
+        kind = 2;
     }
     else
     {
-        local_18 = 0x3c;
-        if (local_1c != 0)
+        exponent = 0x3c;
+        if (sign != 0)
         {
-            if (param_1 == 0x80000000)
+            if (integer_value == 0x80000000)
             {
                 return CONCAT44(g_legacy_data_81c20c84, g_legacy_data_81c20c80);
             }
-            param_1 = -param_1;
-            uVar1 = (int)param_1 >> 0x1f;
+            integer_value = -integer_value;
+            sign_extension = (int)integer_value >> 0x1f;
         }
-        local_10 = param_1;
-        local_c = uVar1;
-        if (uVar1 < 0x10000000)
+        significand_low = integer_value;
+        significand_high = sign_extension;
+        if (sign_extension < 0x10000000)
         {
-            local_18 = 0x3c;
+            exponent = 0x3c;
             do
             {
-                local_c = local_c << 1 | local_10 >> 0x1f;
-                local_10 = local_10 << 1;
-                local_18 = local_18 + -1;
-            } while (local_c < 0x10000000);
+                significand_high = significand_high << 1 | significand_low >> 0x1f;
+                significand_low = significand_low << 1;
+                exponent = exponent + -1;
+            } while (significand_high < 0x10000000);
         }
     }
-    uVar2 = sango_soft_pack_f64(&local_20);
-    return uVar2;
+    result_bits = sango_soft_pack_f64(&kind);
+    return result_bits;
 }
-#undef local_20
-#undef local_1c
-#undef local_18
-#undef local_10
-#undef local_c
+#undef kind
+#undef sign
+#undef exponent
+#undef significand_low
+#undef significand_high
 
 /* 原函数 0x81c1f540 */
-uint32_t sango_soft_f64_to_int(uint32_t param_1, uint32_t param_2)
+uint32_t sango_soft_f64_to_int(uint32_t float_low, uint32_t float_high)
 {
     unsigned char abi_storage[48] __attribute__((aligned(8)));
-#define local_28 (*(uint32_t *)(abi_storage + 0))
-#define local_24 (*(int *)(abi_storage + 4))
-#define local_20 (*(int *)(abi_storage + 8))
-#define local_18 (*(uint32_t *)(abi_storage + 16))
-#define local_14 (*(uint32_t *)(abi_storage + 20))
-#define local_10 (*(uint32_t *)(abi_storage + 24))
-#define local_c (*(uint32_t *)(abi_storage + 28))
+#define kind (*(uint32_t *)(abi_storage + 0))
+#define sign (*(int *)(abi_storage + 4))
+#define exponent (*(int *)(abi_storage + 8))
+#define significand_low (*(uint32_t *)(abi_storage + 16))
+#define significand_high (*(uint32_t *)(abi_storage + 20))
+#define source_low (*(uint32_t *)(abi_storage + 24))
+#define source_high (*(uint32_t *)(abi_storage + 28))
 
-    uint32_t uVar1;
+    uint32_t right_shift;
 
-    local_10 = param_1;
-    local_c = param_2;
-    sango_soft_unpack_f64(&local_10, &local_28);
-    if (local_28 == 2)
+    source_low = float_low;
+    source_high = float_high;
+    sango_soft_unpack_f64(&source_low, &kind);
+    if (kind == 2)
     {
         return 0;
     }
-    if (local_28 < 2)
+    if (kind < 2)
     {
         return 0;
     }
-    if (local_28 != 4)
+    if (kind != 4)
     {
-        if (local_20 < 0)
+        if (exponent < 0)
         {
             return 0;
         }
-        if (local_20 < 0x1f)
+        if (exponent < 0x1f)
         {
-            uVar1 = 0x3c - local_20;
-            if ((int)(uVar1 * 0x4000000) < 0)
+            right_shift = 0x3c - exponent;
+            if ((int)(right_shift * 0x4000000) < 0)
             {
-                local_18 = local_14 >> (uVar1 & 0x1f);
+                significand_low = significand_high >> (right_shift & 0x1f);
             }
             else
             {
-                local_18 = local_18 >> (uVar1 & 0x1f);
-                if (uVar1 * 0x4000000 != 0)
+                significand_low = significand_low >> (right_shift & 0x1f);
+                if (right_shift * 0x4000000 != 0)
                 {
-                    local_18 = local_18 | local_14 << (-uVar1 & 0x1f);
+                    significand_low = significand_low | significand_high << (-right_shift & 0x1f);
                 }
             }
-            if (local_24 == 0)
+            if (sign == 0)
             {
-                return local_18;
+                return significand_low;
             }
-            return -local_18;
+            return -significand_low;
         }
     }
-    return 0x80000000 - (local_24 == 0);
+    return 0x80000000 - (sign == 0);
 }
-#undef local_28
-#undef local_24
-#undef local_20
-#undef local_18
-#undef local_14
-#undef local_10
-#undef local_c
+#undef kind
+#undef sign
+#undef exponent
+#undef significand_low
+#undef significand_high
+#undef source_low
+#undef source_high
 
 /* 原函数 0x81c1f620 */
-uint32_t sango_soft_pack_f32(uint32_t *param_1)
+uint32_t sango_soft_pack_f32(uint32_t *parts)
 {
-    uint32_t uVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
+    uint32_t kind_or_exponent;
+    uint32_t significand;
+    uint32_t encoded_exponent;
 
-    uVar1 = *param_1;
-    uVar2 = param_1[3];
-    uVar3 = 0;
-    if (uVar1 < 2)
+    kind_or_exponent = *parts;
+    significand = parts[3];
+    encoded_exponent = 0;
+    if (kind_or_exponent < 2)
     {
-        uVar2 = uVar2 | 0x100000;
-        uVar3 = 0xff;
-        goto LAB_81c1f648;
+        significand = significand | 0x100000;
+        encoded_exponent = 0xff;
+        goto assemble_float_bits;
     }
-    if (uVar1 == 4)
+    if (kind_or_exponent == 4)
     {
-    LAB_81c1f740:
-        uVar3 = 0xff;
+    encode_infinity:
+        encoded_exponent = 0xff;
     }
-    else if (uVar1 != 2)
+    else if (kind_or_exponent != 2)
     {
-        if (uVar2 == 0)
-            goto LAB_81c1f648;
-        uVar1 = param_1[2];
-        if ((int)uVar1 < -0x7e)
+        if (significand == 0)
+            goto assemble_float_bits;
+        kind_or_exponent = parts[2];
+        if ((int)kind_or_exponent < -0x7e)
         {
-            uVar1 = -uVar1 - 0x7e;
-            if ((int)uVar1 < 0x1a)
+            kind_or_exponent = -kind_or_exponent - 0x7e;
+            if ((int)kind_or_exponent < 0x1a)
             {
-                uVar2 =
-                    uVar2 >> (uVar1 & 0x1f) | (uint32_t)((uVar2 & (1 << (uVar1 & 0x1f)) - 1U) != 0);
+                significand =
+                    significand >> (kind_or_exponent & 0x1f) |
+                    (uint32_t)((significand & (1 << (kind_or_exponent & 0x1f)) - 1U) != 0);
             }
             else
             {
-                uVar2 = 0;
+                significand = 0;
             }
-            if ((uVar2 & 0x7f) == 0x40)
+            if ((significand & 0x7f) == 0x40)
             {
-                if ((uVar2 & 0x80) != 0)
+                if ((significand & 0x80) != 0)
                 {
-                    uVar2 = uVar2 + 0x40;
+                    significand = significand + 0x40;
                 }
             }
             else
             {
-                uVar2 = uVar2 + 0x3f;
+                significand = significand + 0x3f;
             }
-            if (0x3fffffff < uVar2)
+            if (0x3fffffff < significand)
             {
-                uVar3 = 1;
+                encoded_exponent = 1;
             }
         }
         else
         {
-            if (0x7f < (int)uVar1)
-                goto LAB_81c1f740;
-            uVar3 = uVar1 + 0x7f;
-            if ((uVar2 & 0x7f) == 0x40)
+            if (0x7f < (int)kind_or_exponent)
+                goto encode_infinity;
+            encoded_exponent = kind_or_exponent + 0x7f;
+            if ((significand & 0x7f) == 0x40)
             {
-                if ((uVar2 & 0x80) != 0)
+                if ((significand & 0x80) != 0)
                 {
-                    uVar2 = uVar2 + 0x40;
+                    significand = significand + 0x40;
                 }
             }
             else
             {
-                uVar2 = uVar2 + 0x3f;
+                significand = significand + 0x3f;
             }
-            if ((int)uVar2 < 0)
+            if ((int)significand < 0)
             {
-                uVar2 = uVar2 >> 1;
-                uVar3 = uVar1 + 0x80;
+                significand = significand >> 1;
+                encoded_exponent = kind_or_exponent + 0x80;
             }
         }
-        uVar2 = uVar2 >> 7;
-        goto LAB_81c1f648;
+        significand = significand >> 7;
+        goto assemble_float_bits;
     }
-    uVar2 = 0;
-LAB_81c1f648:
-    return uVar2 & 0x7fffff | (uVar3 & 0xff) << 0x17 | param_1[1] << 0x1f;
+    significand = 0;
+assemble_float_bits:
+    return significand & 0x7fffff | (encoded_exponent & 0xff) << 0x17 | parts[1] << 0x1f;
 }
 
 /* 原函数 0x81c1f790 */
-void sango_soft_unpack_f32(uint32_t *param_1, uint32_t *param_2)
+void sango_soft_unpack_f32(uint32_t *source_bits, uint32_t *parts)
 {
-    uint32_t uVar1;
-    uint32_t uVar2;
-    int iVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
+    uint32_t float_bits;
+    uint32_t kind;
+    int exponent;
+    uint32_t encoded_exponent;
+    uint32_t significand;
 
-    uVar1 = *param_1;
-    uVar4 = uVar1 >> 0x17 & 0xff;
-    param_2[1] = uVar1 >> 0x1f;
-    uVar5 = uVar1 & 0x7fffff;
-    if (uVar4 == 0)
+    float_bits = *source_bits;
+    encoded_exponent = float_bits >> 0x17 & 0xff;
+    parts[1] = float_bits >> 0x1f;
+    significand = float_bits & 0x7fffff;
+    if (encoded_exponent == 0)
     {
-        uVar2 = 2;
-        if (uVar5 != 0)
+        kind = 2;
+        if (significand != 0)
         {
-            uVar5 = uVar5 << 7;
-            iVar3 = -0x7e;
-            param_2[2] = 0xffffff82;
-            *param_2 = 3;
-            if (uVar5 < 0x40000000)
+            significand = significand << 7;
+            exponent = -0x7e;
+            parts[2] = 0xffffff82;
+            *parts = 3;
+            if (significand < 0x40000000)
             {
                 do
                 {
-                    uVar5 = uVar5 << 1;
-                    iVar3 = iVar3 + -1;
-                } while (uVar5 < 0x40000000);
-                param_2[2] = iVar3;
+                    significand = significand << 1;
+                    exponent = exponent + -1;
+                } while (significand < 0x40000000);
+                parts[2] = exponent;
             }
-        LAB_81c1f7fc:
-            param_2[3] = uVar5;
+        store_significand:
+            parts[3] = significand;
             return;
         }
     }
-    else if (uVar4 == 0xff)
+    else if (encoded_exponent == 0xff)
     {
-        uVar2 = 4;
-        if (uVar5 != 0)
+        kind = 4;
+        if (significand != 0)
         {
-            if ((uVar1 & 0x100000) == 0)
+            if ((float_bits & 0x100000) == 0)
             {
-                *param_2 = 0;
+                *parts = 0;
             }
             else
             {
-                *param_2 = 1;
+                *parts = 1;
             }
-            goto LAB_81c1f7fc;
+            goto store_significand;
         }
     }
     else
     {
-        param_2[3] = uVar5 << 7 | 0x40000000;
-        uVar2 = 3;
-        param_2[2] = uVar4 - 0x7f;
+        parts[3] = significand << 7 | 0x40000000;
+        kind = 3;
+        parts[2] = encoded_exponent - 0x7f;
     }
-    *param_2 = uVar2;
+    *parts = kind;
     return;
 }
 
 /* 原函数 0x81c1f860 */
-int sango_soft_compare_f32_parts(uint32_t *param_1, uint32_t *param_2)
+int sango_soft_compare_f32_parts(uint32_t *left_parts, uint32_t *right_parts)
 {
-    int iVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
+    int comparison;
+    uint32_t left_kind_or_sign;
+    uint32_t right_kind;
 
-    uVar2 = *param_1;
-    if (uVar2 < 2)
+    left_kind_or_sign = *left_parts;
+    if (left_kind_or_sign < 2)
     {
         return 1;
     }
-    uVar3 = *param_2;
-    if (uVar3 < 2)
+    right_kind = *right_parts;
+    if (right_kind < 2)
     {
         return 1;
     }
-    if ((uVar2 == 4) && (uVar3 == 4))
+    if ((left_kind_or_sign == 4) && (right_kind == 4))
     {
-        return param_2[1] - param_1[1];
+        return right_parts[1] - left_parts[1];
     }
-    if (uVar2 == 4)
+    if (left_kind_or_sign == 4)
     {
-    LAB_81c1f908:
-        if (param_1[1] != 0)
+    compare_left_sign:
+        if (left_parts[1] != 0)
         {
             return -1;
         }
         return 1;
     }
-    if (uVar3 != 4)
+    if (right_kind != 4)
     {
-        if (uVar2 != 2)
+        if (left_kind_or_sign != 2)
         {
-            if (uVar3 == 2)
-                goto LAB_81c1f908;
-            uVar2 = param_1[1];
-            if (uVar2 == param_2[1])
+            if (right_kind == 2)
+                goto compare_left_sign;
+            left_kind_or_sign = left_parts[1];
+            if (left_kind_or_sign == right_parts[1])
             {
-                if ((int)param_1[2] <= (int)param_2[2])
+                if ((int)left_parts[2] <= (int)right_parts[2])
                 {
-                    if ((int)param_2[2] <= (int)param_1[2])
+                    if ((int)right_parts[2] <= (int)left_parts[2])
                     {
-                        if (param_2[3] < param_1[3])
-                            goto LAB_81c1f934;
-                        if (param_2[3] <= param_1[3])
+                        if (right_parts[3] < left_parts[3])
+                            goto left_magnitude_greater;
+                        if (right_parts[3] <= left_parts[3])
                         {
                             return 0;
                         }
                     }
-                    if (uVar2 != 0)
+                    if (left_kind_or_sign != 0)
                     {
                         return 1;
                     }
                     return -1;
                 }
             }
-        LAB_81c1f934:
-            if (uVar2 != 0)
+        left_magnitude_greater:
+            if (left_kind_or_sign != 0)
             {
                 return -1;
             }
             return 1;
         }
-        if (uVar3 == 2)
+        if (right_kind == 2)
         {
             return 0;
         }
     }
-    iVar1 = 1;
-    if (param_2[1] == 0)
+    comparison = 1;
+    if (right_parts[1] == 0)
     {
-        iVar1 = -1;
+        comparison = -1;
     }
-    return iVar1;
+    return comparison;
 }
 
 /* 原函数 0x81c1f9a0 */
@@ -1711,156 +1715,158 @@ uint64_t sango_soft_pack_f64(uint32_t *parts)
 }
 
 /* 原函数 0x81c1fc40 */
-void sango_soft_unpack_f64(uint32_t *param_1, uint32_t *param_2)
+void sango_soft_unpack_f64(uint32_t *source_bits, uint32_t *parts)
 {
-    uint32_t uVar1;
-    uint32_t uVar2;
-    int iVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
-    uint32_t uVar6;
+    uint32_t float_high;
+    uint32_t kind;
+    int exponent;
+    uint32_t encoded_exponent;
+    uint32_t significand_low;
+    uint32_t significand_high;
 
-    uVar1 = param_1[1];
-    uVar4 = uVar1 >> 0x14 & 0x7ff;
-    uVar5 = *param_1;
-    uVar6 = uVar1 & 0xfffff;
-    param_2[1] = uVar1 >> 0x1f;
-    if (uVar4 == 0)
+    float_high = source_bits[1];
+    encoded_exponent = float_high >> 0x14 & 0x7ff;
+    significand_low = *source_bits;
+    significand_high = float_high & 0xfffff;
+    parts[1] = float_high >> 0x1f;
+    if (encoded_exponent == 0)
     {
-        if (uVar5 != 0 || uVar6 != 0)
+        if (significand_low != 0 || significand_high != 0)
         {
-            uVar6 = uVar6 << 8 | uVar5 >> 0x18;
-            uVar5 = uVar5 << 8;
-            param_2[2] = 0xfffffc02;
-            *param_2 = 3;
-            if (uVar6 < 0x10000000)
+            significand_high = significand_high << 8 | significand_low >> 0x18;
+            significand_low = significand_low << 8;
+            parts[2] = 0xfffffc02;
+            *parts = 3;
+            if (significand_high < 0x10000000)
             {
-                iVar3 = -0x3fe;
+                exponent = -0x3fe;
                 do
                 {
-                    uVar6 = uVar6 << 1 | uVar5 >> 0x1f;
-                    uVar5 = uVar5 << 1;
-                    iVar3 = iVar3 + -1;
-                } while (uVar6 < 0x10000000);
-                param_2[2] = iVar3;
+                    significand_high = significand_high << 1 | significand_low >> 0x1f;
+                    significand_low = significand_low << 1;
+                    exponent = exponent + -1;
+                } while (significand_high < 0x10000000);
+                parts[2] = exponent;
             }
-        LAB_81c1fcdc:
-            param_2[4] = uVar5;
-            param_2[5] = uVar6;
+        store_significand:
+            parts[4] = significand_low;
+            parts[5] = significand_high;
             return;
         }
-        uVar2 = 2;
+        kind = 2;
     }
-    else if (uVar4 == 0x7ff)
+    else if (encoded_exponent == 0x7ff)
     {
-        uVar2 = 4;
-        if (uVar5 != 0 || uVar6 != 0)
+        kind = 4;
+        if (significand_low != 0 || significand_high != 0)
         {
-            if ((uVar1 & 0x80000) == 0)
+            if ((float_high & 0x80000) == 0)
             {
-                *param_2 = 0;
+                *parts = 0;
             }
             else
             {
-                *param_2 = 1;
+                *parts = 1;
             }
-            goto LAB_81c1fcdc;
+            goto store_significand;
         }
     }
     else
     {
-        param_2[4] = uVar5 << 8;
-        param_2[5] = uVar6 << 8 | uVar5 >> 0x18 | 0x10000000;
-        uVar2 = 3;
-        param_2[2] = uVar4 - 0x3ff;
+        parts[4] = significand_low << 8;
+        parts[5] = significand_high << 8 | significand_low >> 0x18 | 0x10000000;
+        kind = 3;
+        parts[2] = encoded_exponent - 0x3ff;
     }
-    *param_2 = uVar2;
+    *parts = kind;
     return;
 }
 
 /* 原函数 0x81c1fd60 */
-int sango_soft_compare_f64_parts(uint32_t *param_1, uint32_t *param_2)
+int sango_soft_compare_f64_parts(uint32_t *left_parts, uint32_t *right_parts)
 {
-    int iVar1;
-    uint32_t uVar2;
-    uint32_t uVar3;
-    uint32_t uVar4;
+    int comparison;
+    uint32_t left_kind_or_sign;
+    uint32_t right_kind_or_significand_high;
+    uint32_t left_significand_high;
 
-    uVar2 = *param_1;
-    if (uVar2 < 2)
+    left_kind_or_sign = *left_parts;
+    if (left_kind_or_sign < 2)
     {
         return 1;
     }
-    uVar3 = *param_2;
-    if (uVar3 < 2)
+    right_kind_or_significand_high = *right_parts;
+    if (right_kind_or_significand_high < 2)
     {
         return 1;
     }
-    if ((uVar2 == 4) && (uVar3 == 4))
+    if ((left_kind_or_sign == 4) && (right_kind_or_significand_high == 4))
     {
-        return param_2[1] - param_1[1];
+        return right_parts[1] - left_parts[1];
     }
-    if (uVar2 == 4)
+    if (left_kind_or_sign == 4)
     {
-    LAB_81c1fe08:
-        if (param_1[1] != 0)
+    compare_left_sign:
+        if (left_parts[1] != 0)
         {
             return -1;
         }
         return 1;
     }
-    if (uVar3 != 4)
+    if (right_kind_or_significand_high != 4)
     {
-        if (uVar2 != 2)
+        if (left_kind_or_sign != 2)
         {
-            if (uVar3 == 2)
-                goto LAB_81c1fe08;
-            uVar2 = param_1[1];
-            if (uVar2 == param_2[1])
+            if (right_kind_or_significand_high == 2)
+                goto compare_left_sign;
+            left_kind_or_sign = left_parts[1];
+            if (left_kind_or_sign == right_parts[1])
             {
-                if ((int)param_1[2] <= (int)param_2[2])
+                if ((int)left_parts[2] <= (int)right_parts[2])
                 {
-                    if ((int)param_2[2] <= (int)param_1[2])
+                    if ((int)right_parts[2] <= (int)left_parts[2])
                     {
-                        uVar4 = param_1[5];
-                        uVar3 = param_2[5];
-                        if ((uVar3 < uVar4) || ((uVar4 == uVar3 && (param_2[4] < param_1[4]))))
-                            goto LAB_81c1fe34;
-                        if (uVar3 <= uVar4)
+                        left_significand_high = left_parts[5];
+                        right_kind_or_significand_high = right_parts[5];
+                        if ((right_kind_or_significand_high < left_significand_high) ||
+                            ((left_significand_high == right_kind_or_significand_high &&
+                              (right_parts[4] < left_parts[4]))))
+                            goto left_magnitude_greater;
+                        if (right_kind_or_significand_high <= left_significand_high)
                         {
-                            if (uVar3 != uVar4)
+                            if (right_kind_or_significand_high != left_significand_high)
                             {
                                 return 0;
                             }
-                            if (param_2[4] <= param_1[4])
+                            if (right_parts[4] <= left_parts[4])
                             {
                                 return 0;
                             }
                         }
                     }
-                    if (uVar2 != 0)
+                    if (left_kind_or_sign != 0)
                     {
                         return 1;
                     }
                     return -1;
                 }
             }
-        LAB_81c1fe34:
-            if (uVar2 != 0)
+        left_magnitude_greater:
+            if (left_kind_or_sign != 0)
             {
                 return -1;
             }
             return 1;
         }
-        if (uVar3 == 2)
+        if (right_kind_or_significand_high == 2)
         {
             return 0;
         }
     }
-    iVar1 = 1;
-    if (param_2[1] == 0)
+    comparison = 1;
+    if (right_parts[1] == 0)
     {
-        iVar1 = -1;
+        comparison = -1;
     }
-    return iVar1;
+    return comparison;
 }

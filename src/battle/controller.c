@@ -236,29 +236,29 @@ void sango_battle_refresh_display(void)
 /* 原函数 0x81c054e4 */
 void sango_battle_focus_viewport(void)
 {
-    uint8_t bVar1;
-    uint8_t bVar2;
+    uint8_t next_viewport_x;
+    uint8_t next_viewport_y;
 
-    bVar1 = g_battle_viewport_x - 1;
-    bVar2 = g_battle_viewport_y;
+    next_viewport_x = g_battle_viewport_x - 1;
+    next_viewport_y = g_battle_viewport_y;
     if ((uint32_t)g_battle_viewport_x <= (uint32_t)g_battle_cursor_x)
     {
-        bVar1 = g_battle_viewport_x;
-        bVar2 = g_battle_viewport_y - 1;
+        next_viewport_x = g_battle_viewport_x;
+        next_viewport_y = g_battle_viewport_y - 1;
         if ((uint32_t)g_battle_viewport_y <= (uint32_t)g_battle_cursor_y)
         {
-            bVar1 = g_battle_viewport_x + 1;
-            bVar2 = g_battle_viewport_y;
+            next_viewport_x = g_battle_viewport_x + 1;
+            next_viewport_y = g_battle_viewport_y;
             if (((uint32_t)g_battle_cursor_x < g_battle_viewport_x + 0xf) &&
-                (bVar1 = g_battle_viewport_x, bVar2 = g_battle_viewport_y + 1,
+                (next_viewport_x = g_battle_viewport_x, next_viewport_y = g_battle_viewport_y + 1,
                  (uint32_t)g_battle_cursor_y < g_battle_viewport_y + 0xf))
             {
                 return;
             }
         }
     }
-    g_battle_viewport_y = bVar2;
-    g_battle_viewport_x = bVar1;
+    g_battle_viewport_y = next_viewport_y;
+    g_battle_viewport_x = next_viewport_x;
     sango_battle_draw_terrain((uint32_t)g_battle_viewport_x, (uint32_t)g_battle_viewport_y);
     return;
 }
@@ -267,27 +267,28 @@ void sango_battle_focus_viewport(void)
 void sango_battle_show_cursor_info(void)
 {
     unsigned char abi_storage[80] __attribute__((aligned(8)));
-#define local_28 (*(uint16_t(*)[8])(abi_storage + 48))
-#define acStack_58 (*(char(*)[16])(abi_storage + 0))
-#define auStack_48 (*(uint8_t(*)[32])(abi_storage + 16))
+#define text_boxes (*(uint16_t(*)[8])(abi_storage + 48))
+#define name_or_status_text (*(char(*)[16])(abi_storage + 0))
+#define troop_type_names (*(uint8_t(*)[32])(abi_storage + 16))
 
     char *destination;
-    uint32_t uVar1;
-    uint8_t *pbVar2;
-    int iVar3;
-    int iVar4;
+    uint32_t unit_or_character_id;
+    uint8_t *portraits;
+    int terrain_or_unit_offset;
+    int character_address;
 
     sango_display_fill_gray_rectangle(5, 5, 0xe9, 0x139, 0, 0);
     sango_display_draw_rectangle(4, 4, 0xea, 0x13a, 3, 0, 0);
     destination = (char *)bbk_alloc(0x96);
     if (destination != (char *)0x0)
     {
-        uVar1 = sango_battle_find_unit_at((uint16_t)g_battle_cursor_x, (uint16_t)g_battle_cursor_y);
-        if (uVar1 == 0xff)
+        unit_or_character_id =
+            sango_battle_find_unit_at((uint16_t)g_battle_cursor_x, (uint16_t)g_battle_cursor_y);
+        if (unit_or_character_id == 0xff)
         {
-            iVar3 =
+            terrain_or_unit_offset =
                 sango_battle_terrain_at((uint32_t)g_battle_cursor_x, (uint32_t)g_battle_cursor_y);
-            sango_battle_read_text(iVar3 + 0xeU & 0xff, destination);
+            sango_battle_read_text(terrain_or_unit_offset + 0xeU & 0xff, destination);
             g_text_top = 8;
             g_text_right = 0xe6;
             g_text_bottom = 0x136;
@@ -296,56 +297,64 @@ void sango_battle_show_cursor_info(void)
         }
         else
         {
-            iVar3 = uVar1 * 7;
+            terrain_or_unit_offset = unit_or_character_id * 7;
             sango_display_draw_rectangle(0xb6, 8, 0xe8, 0x30, 3, 0, 0);
-            local_28[1] = 6;
-            local_28[4] = 0xb4;
-            local_28[3] = 0x138;
-            local_28[5] = 8;
-            local_28[0] = 8;
-            local_28[6] = 0xe8;
-            local_28[2] = 0xe8;
-            local_28[7] = 0x32;
-            sango_battle_prepare_combatant(0, uVar1);
-            uVar1 = sango_battle_resolve_character(uVar1);
-            sango_load_named_text((uint8_t)uVar1, acStack_58);
-            sango_text_draw_centered(0xd0, 0x24, acStack_58);
-            pbVar2 = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
-                                                    g_resource_package_address);
-            sango_bitmap_draw_frame_screen(0xc3, 10, 0x18, 0x18, (uint8_t)uVar1, pbVar2);
+            text_boxes[1] = 6;
+            text_boxes[4] = 0xb4;
+            text_boxes[3] = 0x138;
+            text_boxes[5] = 8;
+            text_boxes[0] = 8;
+            text_boxes[6] = 0xe8;
+            text_boxes[2] = 0xe8;
+            text_boxes[7] = 0x32;
+            sango_battle_prepare_combatant(0, unit_or_character_id);
+            unit_or_character_id = sango_battle_resolve_character(unit_or_character_id);
+            sango_load_named_text((uint8_t)unit_or_character_id, name_or_status_text);
+            sango_text_draw_centered(0xd0, 0x24, name_or_status_text);
+            portraits = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
+                                                       g_resource_package_address);
+            sango_bitmap_draw_frame_screen(0xc3, 10, 0x18, 0x18, (uint8_t)unit_or_character_id,
+                                           portraits);
             sango_battle_read_text(0xd, destination);
-            iVar4 = g_character_table_address + uVar1 * 0x10;
-            if (*(uint8_t *)(iVar4 + 2) < 0x14)
+            character_address = g_character_table_address + unit_or_character_id * 0x10;
+            if (*(uint8_t *)(character_address + 2) < 0x14)
             {
-                sango_battle_append_stat_value(destination, (uint32_t) * (uint8_t *)(iVar4 + 2));
+                sango_battle_append_stat_value(destination,
+                                               (uint32_t) * (uint8_t *)(character_address + 2));
             }
             else
             {
                 destination[5] = 'M';
                 destination[6] = 'X';
             }
-            sango_battle_read_text(0xc, auStack_48);
-            bbk_memcpy(destination + 0xd, auStack_48 + (*(uint8_t *)(iVar4 + 9) & 0x3f) * 4, 4);
-            sango_battle_append_stat_value(destination, (uint32_t) * (uint8_t *)(iVar4 + 3));
-            sango_battle_append_stat_value(destination, (uint32_t) * (uint8_t *)(iVar4 + 4));
-            sango_battle_append_stat_value(destination, (uint32_t) * (uint8_t *)(iVar4 + 7));
+            sango_battle_read_text(0xc, troop_type_names);
+            bbk_memcpy(destination + 0xd,
+                       troop_type_names + (*(uint8_t *)(character_address + 9) & 0x3f) * 4, 4);
             sango_battle_append_stat_value(destination,
-                                           (uint32_t)(uint8_t)(&g_first_unit_life)[iVar3]);
+                                           (uint32_t) * (uint8_t *)(character_address + 3));
             sango_battle_append_stat_value(destination,
-                                           (uint32_t)(uint8_t)(&g_first_unit_energy)[iVar3]);
+                                           (uint32_t) * (uint8_t *)(character_address + 4));
+            sango_battle_append_stat_value(destination,
+                                           (uint32_t) * (uint8_t *)(character_address + 7));
+            sango_battle_append_stat_value(
+                destination, (uint32_t)(uint8_t)(&g_first_unit_life)[terrain_or_unit_offset]);
+            sango_battle_append_stat_value(
+                destination, (uint32_t)(uint8_t)(&g_first_unit_energy)[terrain_or_unit_offset]);
             sango_battle_append_stat_value(destination, (uint32_t)g_attacker_attack_view2);
             sango_battle_append_stat_value(destination, (uint32_t)g_attacker_defense);
-            sango_battle_append_stat_value(destination, (uint32_t) * (uint16_t *)(iVar4 + 10));
-            sango_battle_read_text((uint8_t)(&g_first_unit_status)[iVar3] + 0x1c & 0xff,
-                                   acStack_58);
-            bbk_strcat(destination, acStack_58);
-            sango_text_draw_wrapped_box(local_28, local_28 + 4, destination);
+            sango_battle_append_stat_value(destination,
+                                           (uint32_t) * (uint16_t *)(character_address + 10));
+            sango_battle_read_text((uint8_t)(&g_first_unit_status)[terrain_or_unit_offset] + 0x1c &
+                                       0xff,
+                                   name_or_status_text);
+            bbk_strcat(destination, name_or_status_text);
+            sango_text_draw_wrapped_box(text_boxes, text_boxes + 4, destination);
         }
         sango_input_wait(100, '\x01');
         bbk_free_if_nonnull(destination);
     }
     return;
 }
-#undef local_28
-#undef acStack_58
-#undef auStack_48
+#undef text_boxes
+#undef name_or_status_text
+#undef troop_type_names

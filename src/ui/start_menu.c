@@ -5,25 +5,25 @@
 /* 原函数 0x81c159a0 */
 int sango_allocate_session_state(void)
 {
-    int iVar1;
+    int allocation_failed;
 
     g_battle_load_failed = 0;
     sango_memory_fill(g_army_slot_used_address, 0, 0x1e);
     sango_memory_fill(g_order_queue_address, 0x4b0, 0xff);
     g_viewport_tiles_address_view2 = bbk_alloc(0xe1);
-    iVar1 = 1;
+    allocation_failed = 1;
     if (g_viewport_tiles_address_view2 != 0)
     {
         g_move_costs_address_view2 = bbk_alloc(0xfa);
-        iVar1 = 1;
+        allocation_failed = 1;
         if (g_move_costs_address_view2 != 0)
         {
             g_temp_character_ids_address_view2 = bbk_alloc(0x56);
-            iVar1 = 1;
+            allocation_failed = 1;
             if (g_temp_character_ids_address_view2 != 0)
             {
                 g_character_table_address_view2 = bbk_alloc(0xc84);
-                iVar1 = 1;
+                allocation_failed = 1;
                 if (g_character_table_address_view2 != 0)
                 {
                     g_strategy_cursor_y = 0;
@@ -40,12 +40,12 @@ int sango_allocate_session_state(void)
                     g_current_month = 1;
                     g_battle_render_enabled_view2 = 1;
                     g_battle_show_animations_view2 = 1;
-                    iVar1 = 0;
+                    allocation_failed = 0;
                 }
             }
         }
     }
-    return iVar1;
+    return allocation_failed;
 }
 
 /* 原函数 0x81c15acc */
@@ -164,7 +164,7 @@ uint32_t sango_menu_select_animated(uint16_t background_resource, short selectio
 
     selection = 0;
     sango_bitmap_draw_resource((uint32_t)background_resource, 1, 0, 0, '\0');
-LAB_81c15d5c:
+poll_menu_event:
     sango_input_poll_native_event(&event_kind);
     do
     {
@@ -172,9 +172,9 @@ LAB_81c15d5c:
         {
             if (key_code == 0x67)
             {
-            LAB_81c15e28:
+            select_previous_option:
                 key_or_result = selection - 1;
-            LAB_81c15e2c:
+            store_selection:
                 selection = key_or_result & 0xff;
             }
             else if ((int)key_code < 0x68)
@@ -189,11 +189,11 @@ LAB_81c15d5c:
             {
                 key_or_result = selection + 1;
                 if (key_code == 0x6a)
-                    goto LAB_81c15e2c;
+                    goto store_selection;
                 if ((int)key_code < 0x6b)
                 {
                     if (key_code == 0x69)
-                        goto LAB_81c15e28;
+                        goto select_previous_option;
                 }
                 else if (key_code == 0x6c)
                 {
@@ -205,7 +205,7 @@ LAB_81c15d5c:
         }
         key_or_result = sango_animation_play_resource(selection_animation_base + (short)selection);
         if (key_or_result == 0xff)
-            goto LAB_81c15d5c;
+            goto poll_menu_event;
         event_kind = 5;
         key_code = key_or_result;
     } while (true);
@@ -339,38 +339,40 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
 #undef key_code
 
 /* 原函数 0x81c161c4 */
-void sango_menu_flash_ruler_cities(uint32_t param_1, uint8_t *param_2, int param_3)
+void sango_menu_flash_ruler_cities(uint32_t city_count, uint8_t *city_ids,
+                                   int city_positions_address)
 {
-    uint16_t uVar1;
-    uint16_t uVar2;
-    uint8_t *pbVar3;
-    uint32_t uVar4;
+    uint16_t screen_x;
+    uint16_t screen_y;
+    uint8_t *city_or_position_entry;
+    uint32_t city_index;
 
-    uVar4 = 0;
-    pbVar3 = param_2;
-    if ((param_1 & 0xff) != 0)
+    city_index = 0;
+    city_or_position_entry = city_ids;
+    if ((city_count & 0xff) != 0)
     {
         do
         {
-            pbVar3 = (uint8_t *)(param_3 + (*pbVar3 & 0x7f) * 2);
-            uVar1 = (uint16_t)*pbVar3 * 7 + 0x3f & 0xff;
-            uVar2 = (uint16_t)pbVar3[1] * 7 + 0x17 & 0xff;
-            sango_display_invert_rectangle(uVar1, uVar2, uVar1 + 1, uVar2 + 1, 0);
-            uVar4 = uVar4 + 1 & 0xff;
-            pbVar3 = param_2 + uVar4;
-        } while (uVar4 < (param_1 & 0xff));
+            city_or_position_entry =
+                (uint8_t *)(city_positions_address + (*city_or_position_entry & 0x7f) * 2);
+            screen_x = (uint16_t)*city_or_position_entry * 7 + 0x3f & 0xff;
+            screen_y = (uint16_t)city_or_position_entry[1] * 7 + 0x17 & 0xff;
+            sango_display_invert_rectangle(screen_x, screen_y, screen_x + 1, screen_y + 1, 0);
+            city_index = city_index + 1 & 0xff;
+            city_or_position_entry = city_ids + city_index;
+        } while (city_index < (city_count & 0xff));
     }
     return;
 }
 
 /* 原函数 0x81c16274 */
-void sango_menu_draw_ruler_names(uint32_t param_1)
+void sango_menu_draw_ruler_names(uint32_t first_ruler)
 {
     g_text_left = 0x10;
     g_text_right = 0x34;
     g_text_top = 0xd;
     g_text_bottom = 0x139;
-    sango_text_draw_legacy(0x10, 0xd, (char *)(g_move_costs_address + (param_1 & 0xff) * 6));
+    sango_text_draw_legacy(0x10, 0xd, (char *)(g_move_costs_address + (first_ruler & 0xff) * 6));
     return;
 }
 

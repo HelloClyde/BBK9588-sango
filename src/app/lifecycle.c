@@ -83,7 +83,7 @@ void sango_app_show_initialization_error(char error_kind)
 #undef error_text
 
 /* 原函数 0x81c16de8 */
-int sango_resource_prepare_hook(uint32_t param_1, int param_2)
+int sango_resource_prepare_hook(uint32_t unused_callback_argument, int resource_offset)
 {
-    return g_resource_package_address + param_2;
+    return g_resource_package_address + resource_offset;
 }

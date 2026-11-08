@@ -3,76 +3,79 @@
 /* 城市事件、武将提示、宝物出现与属性消息。 */
 
 /* 原函数 0x81c17c48 */
-void sango_ui_show_city_event(uint8_t param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4)
+void sango_ui_show_city_event(uint8_t city_id, uint32_t unused_event_value,
+                              uint32_t unused_event_aux, uint32_t status_text_fallback)
 {
     unsigned char abi_storage[48] __attribute__((aligned(8)));
-#define acStack_28 (*(char(*)[16])(abi_storage + 16))
-#define local_38 (*(uint16_t(*)[8])(abi_storage + 0))
+#define governor_name (*(char(*)[16])(abi_storage + 16))
+#define text_boxes (*(uint16_t(*)[8])(abi_storage + 0))
 
-    char cVar1;
-    uint8_t *pbVar2;
-    char *pcVar3;
-    uint8_t index;
+    char governor_one_based;
+    uint8_t *portraits;
+    char *status_destination;
+    uint8_t governor_id;
     char *source;
     char *destination;
 
-    cVar1 = (&g_first_city_governor)[(uint32_t)param_1 * 0x24];
-    if (cVar1 != '\0')
+    governor_one_based = (&g_first_city_governor)[(uint32_t)city_id * 0x24];
+    if (governor_one_based != '\0')
     {
         destination = (char *)(g_scratch_buffer_address + 300);
         source = (char *)(g_scratch_buffer_address + 0x154);
-        sango_city_read_name(param_1, destination);
-        pcVar3 = source;
+        sango_city_read_name(city_id, destination);
+        status_destination = source;
         sango_resource_read_text(0x40, 0x6f, source);
         bbk_strcat(destination, source);
-        sango_city_format_status((uint32_t)param_1, source, pcVar3, param_4);
+        sango_city_format_status((uint32_t)city_id, source, status_destination,
+                                 status_text_fallback);
         bbk_strcat(destination, source);
         sango_resource_read_text(0x40, 0x70, source);
         bbk_strcat(destination, source);
-        index = cVar1 - 1;
+        governor_id = governor_one_based - 1;
         sango_strategy_present();
         sango_display_fill_gray_rectangle(4, 0x10b, 0xea, 0x13b, 0, 0);
         sango_display_draw_rectangle(4, 0x10b, 0xea, 0x13a, 3, 0, 0);
-        local_38[0] = 8;
-        local_38[1] = 0x10b;
-        local_38[2] = 0xe8;
-        local_38[3] = 0x138;
-        local_38[4] = 10;
-        local_38[5] = 0x111;
-        local_38[7] = 0x13b;
-        local_38[6] = 0x3e;
-        pbVar2 = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
-                                                g_resource_package_address);
-        sango_bitmap_draw_frame_screen(0x15, 0x111, 0x18, 0x18, index, pbVar2);
-        sango_load_named_text(index, acStack_28);
-        sango_text_draw_centered(0x22, 299, acStack_28);
-        sango_text_draw_wrapped_box(local_38, local_38 + 4, destination);
+        text_boxes[0] = 8;
+        text_boxes[1] = 0x10b;
+        text_boxes[2] = 0xe8;
+        text_boxes[3] = 0x138;
+        text_boxes[4] = 10;
+        text_boxes[5] = 0x111;
+        text_boxes[7] = 0x13b;
+        text_boxes[6] = 0x3e;
+        portraits = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
+                                                   g_resource_package_address);
+        sango_bitmap_draw_frame_screen(0x15, 0x111, 0x18, 0x18, governor_id, portraits);
+        sango_load_named_text(governor_id, governor_name);
+        sango_text_draw_centered(0x22, 299, governor_name);
+        sango_text_draw_wrapped_box(text_boxes, text_boxes + 4, destination);
         sango_input_wait(100, '\x01');
     }
     return;
 }
-#undef acStack_28
-#undef local_38
+#undef governor_name
+#undef text_boxes
 
 /* 原函数 0x81c17e18 */
 /* 按年份向城市宝物列表加入本剧本新出现的宝物。 */
 uint32_t sango_strategy_spawn_items_for_year(void)
 {
-    uint8_t bVar1;
-    int iVar2;
-    int iVar3;
-    uint32_t uVar4;
+    uint8_t item_id;
+    int debut_table_address;
+    int item_added;
+    uint32_t debut_offset;
 
-    iVar2 = sango_resource_item(0x43, g_scenario_id, g_resource_package_address);
-    bVar1 = 0;
-    uVar4 = 0;
-    while ((*(uint8_t *)(iVar2 + uVar4) != g_current_year ||
-            (iVar3 = sango_city_add_item((uint32_t)((uint8_t *)(iVar2 + uVar4))[2], bVar1),
-             iVar3 != 0)))
+    debut_table_address = sango_resource_item(0x43, g_scenario_id, g_resource_package_address);
+    item_id = 0;
+    debut_offset = 0;
+    while ((*(uint8_t *)(debut_table_address + debut_offset) != g_current_year ||
+            (item_added = sango_city_add_item(
+                 (uint32_t)((uint8_t *)(debut_table_address + debut_offset))[2], item_id),
+             item_added != 0)))
     {
-        bVar1 = bVar1 + 1;
-        uVar4 = uVar4 + 3 & 0xffff;
-        if (199 < bVar1)
+        item_id = item_id + 1;
+        debut_offset = debut_offset + 3 & 0xffff;
+        if (199 < item_id)
         {
             return 0;
         }
@@ -81,81 +84,83 @@ uint32_t sango_strategy_spawn_items_for_year(void)
 }
 
 /* 原函数 0x81c17eb4 */
-void sango_item_remove_attributes(uint32_t param_1, uint32_t param_2)
+void sango_item_remove_attributes(uint32_t item_id, uint32_t character_id)
 {
-    int iVar1;
-    int iVar2;
-    int iVar3;
+    int item_table_or_record;
+    int character_address;
+    int character_offset_or_address;
 
-    iVar1 = sango_resource_item(0x42, '\x01', g_resource_package_address);
-    iVar3 = (param_2 & 0xff) * 0x10;
-    iVar1 = (param_1 & 0xff) * 0x42 + iVar1;
-    iVar2 = iVar3 + g_character_table_address;
-    *(char *)(iVar2 + 3) = *(char *)(iVar2 + 3) - *(char *)(iVar1 + 0x3e);
-    iVar3 = iVar3 + g_character_table_address;
-    *(char *)(iVar3 + 4) = *(char *)(iVar3 + 4) - *(char *)(iVar1 + 0x3f);
+    item_table_or_record = sango_resource_item(0x42, '\x01', g_resource_package_address);
+    character_offset_or_address = (character_id & 0xff) * 0x10;
+    item_table_or_record = (item_id & 0xff) * 0x42 + item_table_or_record;
+    character_address = character_offset_or_address + g_character_table_address;
+    *(char *)(character_address + 3) =
+        *(char *)(character_address + 3) - *(char *)(item_table_or_record + 0x3e);
+    character_offset_or_address = character_offset_or_address + g_character_table_address;
+    *(char *)(character_offset_or_address + 4) =
+        *(char *)(character_offset_or_address + 4) - *(char *)(item_table_or_record + 0x3f);
     return;
 }
 
 /* 原函数 0x81c17f44 */
-void sango_ui_show_strategy_text(uint8_t param_1)
+void sango_ui_show_strategy_text(uint8_t text_id)
 {
     unsigned char abi_storage[40] __attribute__((aligned(8)));
-#define acStack_20 (*(char(*)[24])(abi_storage + 0))
+#define message (*(char(*)[24])(abi_storage + 0))
 
-    sango_resource_read_text(0x40, (uint32_t)param_1, acStack_20);
-    sango_ui_show_message(acStack_20, 2);
+    sango_resource_read_text(0x40, (uint32_t)text_id, message);
+    sango_ui_show_message(message, 2);
     return;
 }
-#undef acStack_20
+#undef message
 
 /* 原函数 0x81c17f78 */
-void sango_ui_draw_character_panel(short param_1, short param_2, uint8_t param_3)
+void sango_ui_draw_character_panel(short left, short top, uint8_t character_id)
 {
     unsigned char abi_storage[32] __attribute__((aligned(8)));
-#define acStack_20 (*(char(*)[16])(abi_storage + 0))
+#define character_name (*(char(*)[16])(abi_storage + 0))
 
-    uint8_t *pbVar1;
+    uint8_t *portraits;
 
-    pbVar1 = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
-                                            g_resource_package_address);
-    sango_bitmap_draw_frame_screen(param_1 + 0xd, param_2 + 2, 0x18, 0x18, param_3, pbVar1);
-    sango_load_named_text(param_3, acStack_20);
-    sango_text_draw_centered(param_1 + 0x1a, param_2 + 0x1c, acStack_20);
+    portraits = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
+                                               g_resource_package_address);
+    sango_bitmap_draw_frame_screen(left + 0xd, top + 2, 0x18, 0x18, character_id, portraits);
+    sango_load_named_text(character_id, character_name);
+    sango_text_draw_centered(left + 0x1a, top + 0x1c, character_name);
     return;
 }
-#undef acStack_20
+#undef character_name
 
 /* 原函数 0x81c18024 */
-void sango_ui_show_character_message(uint8_t param_1, char *param_2)
+void sango_ui_show_character_message(uint8_t character_id, char *message)
 {
     unsigned char abi_storage[48] __attribute__((aligned(8)));
-#define acStack_20 (*(char(*)[16])(abi_storage + 16))
-#define local_30 (*(uint16_t(*)[8])(abi_storage + 0))
+#define character_name (*(char(*)[16])(abi_storage + 16))
+#define text_boxes (*(uint16_t(*)[8])(abi_storage + 0))
 
-    uint8_t *pbVar1;
+    uint8_t *portraits;
 
     sango_display_fill_gray_rectangle(4, 0x10b, 0xea, 0x13b, 0, 0);
     sango_display_draw_rectangle(4, 0x10b, 0xea, 0x13a, 3, 0, 0);
-    local_30[0] = 8;
-    local_30[1] = 0x10b;
-    local_30[2] = 0xe8;
-    local_30[3] = 0x138;
-    local_30[4] = 10;
-    local_30[5] = 0x111;
-    local_30[7] = 0x13b;
-    local_30[6] = 0x3e;
-    pbVar1 = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
-                                            g_resource_package_address);
-    sango_bitmap_draw_frame_screen(0x15, 0x111, 0x18, 0x18, param_1, pbVar1);
-    sango_load_named_text(param_1, acStack_20);
-    sango_text_draw_centered(0x22, 299, acStack_20);
-    sango_text_draw_wrapped_box(local_30, local_30 + 4, param_2);
+    text_boxes[0] = 8;
+    text_boxes[1] = 0x10b;
+    text_boxes[2] = 0xe8;
+    text_boxes[3] = 0x138;
+    text_boxes[4] = 10;
+    text_boxes[5] = 0x111;
+    text_boxes[7] = 0x13b;
+    text_boxes[6] = 0x3e;
+    portraits = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
+                                               g_resource_package_address);
+    sango_bitmap_draw_frame_screen(0x15, 0x111, 0x18, 0x18, character_id, portraits);
+    sango_load_named_text(character_id, character_name);
+    sango_text_draw_centered(0x22, 299, character_name);
+    sango_text_draw_wrapped_box(text_boxes, text_boxes + 4, message);
     sango_input_wait(100, '\x01');
     return;
 }
-#undef acStack_20
-#undef local_30
+#undef character_name
+#undef text_boxes
 
 /* 原函数 0x81c18150 */
 void sango_item_mark_discovered(uint8_t item_id)
@@ -185,93 +190,93 @@ void sango_item_mark_discovered(uint8_t item_id)
 }
 
 /* 原函数 0x81c181b8 */
-uint32_t sango_city_list_items(uint32_t param_1, int param_2)
+uint32_t sango_city_list_items(uint32_t city_id, int destination_address)
 {
-    char *pcVar1;
-    uint8_t *pbVar2;
-    uint8_t bVar3;
-    int iVar4;
-    uint32_t uVar5;
-    uint8_t *pbVar6;
-    uint32_t uVar7;
+    char *signed_roster_entry;
+    uint8_t *roster_entry;
+    uint8_t roster_index;
+    int city_offset;
+    uint32_t roster_position;
+    uint8_t *destination_entry;
+    uint32_t discovered_count;
 
-    iVar4 = (param_1 & 0xff) * 0x24;
-    uVar7 = 0;
-    uVar5 = (uint32_t)(uint8_t)(&g_first_city_item_start)[iVar4];
-    bVar3 = 0;
-    if ((&g_first_city_item_count)[iVar4] != '\0')
+    city_offset = (city_id & 0xff) * 0x24;
+    discovered_count = 0;
+    roster_position = (uint32_t)(uint8_t)(&g_first_city_item_start)[city_offset];
+    roster_index = 0;
+    if ((&g_first_city_item_count)[city_offset] != '\0')
     {
         do
         {
-            pcVar1 = &g_city_item_roster + uVar5;
-            bVar3 = bVar3 + 1;
-            pbVar2 = &g_city_item_roster + uVar5;
-            pbVar6 = (uint8_t *)(param_2 + uVar7);
-            uVar5 = uVar5 + 1 & 0xff;
-            if (*pcVar1 < '\0')
+            signed_roster_entry = &g_city_item_roster + roster_position;
+            roster_index = roster_index + 1;
+            roster_entry = &g_city_item_roster + roster_position;
+            destination_entry = (uint8_t *)(destination_address + discovered_count);
+            roster_position = roster_position + 1 & 0xff;
+            if (*signed_roster_entry < '\0')
             {
-                uVar7 = uVar7 + 1 & 0xff;
-                *pbVar6 = *pbVar2 & 0x7f;
+                discovered_count = discovered_count + 1 & 0xff;
+                *destination_entry = *roster_entry & 0x7f;
             }
-        } while (bVar3 < (uint8_t)(&g_first_city_item_count)[iVar4]);
+        } while (roster_index < (uint8_t)(&g_first_city_item_count)[city_offset]);
     }
-    return uVar7;
+    return discovered_count;
 }
 
 /* 原函数 0x81c18248 */
-uint32_t sango_city_find_item(uint32_t param_1, int param_2)
+uint32_t sango_city_find_item(uint32_t city_id, int destination_address)
 {
-    char *pcVar1;
-    uint8_t *puVar2;
-    uint8_t bVar3;
-    int iVar4;
-    uint32_t uVar5;
-    uint8_t *puVar6;
-    uint32_t uVar7;
+    char *signed_roster_entry;
+    uint8_t *roster_entry;
+    uint8_t roster_index;
+    int city_offset;
+    uint32_t roster_position;
+    uint8_t *destination_entry;
+    uint32_t undiscovered_count;
 
-    iVar4 = (param_1 & 0xff) * 0x24;
-    uVar7 = 0;
-    uVar5 = (uint32_t)(uint8_t)(&g_first_city_item_start)[iVar4];
-    bVar3 = 0;
-    if ((&g_first_city_item_count)[iVar4] != '\0')
+    city_offset = (city_id & 0xff) * 0x24;
+    undiscovered_count = 0;
+    roster_position = (uint32_t)(uint8_t)(&g_first_city_item_start)[city_offset];
+    roster_index = 0;
+    if ((&g_first_city_item_count)[city_offset] != '\0')
     {
         do
         {
-            pcVar1 = &g_city_item_roster + uVar5;
-            bVar3 = bVar3 + 1;
-            puVar2 = &g_city_item_roster + uVar5;
-            puVar6 = (uint8_t *)(param_2 + uVar7);
-            uVar5 = uVar5 + 1 & 0xff;
-            if (-1 < *pcVar1)
+            signed_roster_entry = &g_city_item_roster + roster_position;
+            roster_index = roster_index + 1;
+            roster_entry = &g_city_item_roster + roster_position;
+            destination_entry = (uint8_t *)(destination_address + undiscovered_count);
+            roster_position = roster_position + 1 & 0xff;
+            if (-1 < *signed_roster_entry)
             {
-                uVar7 = uVar7 + 1 & 0xff;
-                *puVar6 = *puVar2;
+                undiscovered_count = undiscovered_count + 1 & 0xff;
+                *destination_entry = *roster_entry;
             }
-        } while (bVar3 < (uint8_t)(&g_first_city_item_count)[iVar4]);
+        } while (roster_index < (uint8_t)(&g_first_city_item_count)[city_offset]);
     }
-    return uVar7;
+    return undiscovered_count;
 }
 
 /* 原函数 0x81c182d0 */
-uint32_t sango_city_neighbor_direction(uint32_t param_1, uint32_t param_2)
+uint32_t sango_city_neighbor_direction(uint32_t city_id, uint32_t neighbor_city)
 {
-    int iVar1;
-    uint8_t *pbVar2;
-    uint32_t uVar3;
-    uint8_t *pbVar4;
+    int neighbor_table_address;
+    uint8_t *neighbor_entry;
+    uint32_t direction_index;
+    uint8_t *city_neighbors;
 
-    iVar1 = sango_resource_item(0x3b, '\x01', g_resource_package_address);
-    pbVar4 = (uint8_t *)(iVar1 + (param_1 & 0xff) * 0x10);
-    uVar3 = 0;
-    pbVar2 = pbVar4;
+    neighbor_table_address = sango_resource_item(0x3b, '\x01', g_resource_package_address);
+    city_neighbors = (uint8_t *)(neighbor_table_address + (city_id & 0xff) * 0x10);
+    direction_index = 0;
+    neighbor_entry = city_neighbors;
     do
     {
-        if ((uint32_t)*pbVar2 == (param_2 & 0xff) + 1)
+        if ((uint32_t)*neighbor_entry == (neighbor_city & 0xff) + 1)
         {
-            return uVar3;
+            return direction_index;
         }
-        uVar3 = uVar3 + 1 & 0xff;
-        pbVar2 = pbVar4 + uVar3;
-    } while (uVar3 < 8);
-    return uVar3;
+        direction_index = direction_index + 1 & 0xff;
+        neighbor_entry = city_neighbors + direction_index;
+    } while (direction_index < 8);
+    return direction_index;
 }

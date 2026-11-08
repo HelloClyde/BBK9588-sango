@@ -8,6 +8,15 @@ MAPPING=json.loads((ROOT/'source-map.json').read_text(encoding='utf-8'))
 FUNCTIONS={row['legacy_name']:row for row in MAPPING['functions']}
 FUNCTION_NAMES={old:row['name'] for old,row in FUNCTIONS.items()}
 TOKEN=re.compile(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|\b[A-Za-z_]\w*\b')
+RECOVERED_LOCAL=re.compile(
+    r'\b(?:[A-Za-z]+Var\d+(?:_\d+)?|param_\d+|local_[0-9a-f]+|[a-z]+Stack_[0-9a-f]+|'
+    r'(?:unaff|extraout|in)_(?:[avst]\d+|ra|sp|gp|at|hi|lo)|LAB_[0-9a-f]+|switchD_\w+)\b')
+
+
+def code_only(text):
+    """Mask comments/literals without treating their examples as identifiers."""
+    return re.sub(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|/\*[\s\S]*?\*/|//[^\n]*',
+                  lambda m:re.sub(r'[^\n]',' ',m[0]),text)
 
 def translate(text,identifiers):
     return TOKEN.sub(lambda m:m[0] if m[0][0] in '\"\'' else identifiers.get(m[0],m[0]),text)

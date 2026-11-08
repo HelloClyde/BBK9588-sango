@@ -7,9 +7,9 @@ import re
 from pathlib import Path
 
 try:
-    from .source_map import MAPPING, ROOT, parse_functions
+    from .source_map import MAPPING, ROOT, RECOVERED_LOCAL, code_only, parse_functions
 except ImportError:
-    from source_map import MAPPING, ROOT, parse_functions
+    from source_map import MAPPING, ROOT, RECOVERED_LOCAL, code_only, parse_functions
 
 INDEX = ROOT / 'docs/FUNCTION_INDEX.md'
 
@@ -33,6 +33,9 @@ def validate_layout():
         # Opaque recovered function/global/type identifiers do not belong in C.
         if re.search(r'\b(?:FUN_[0-9a-fA-F]+|DAT_[0-9a-fA-F]+|undefined[1248]?)\b', text):
             raise ValueError('Unmigrated recovered identifier: ' + relative)
+        opaque = RECOVERED_LOCAL.search(code_only(text))
+        if opaque:
+            raise ValueError('Unmigrated local or label: ' + relative + ': ' + opaque[0])
         for name, definition in functions.items():
             if name in definitions:
                 raise ValueError('Duplicate definition: ' + name)

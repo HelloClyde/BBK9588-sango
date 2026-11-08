@@ -35,12 +35,12 @@ uint16_t *sango_bitmap_open_embedded_entry(uint32_t *entry_state, uint32_t acces
                 *entry_state =
                     (uint16_t *)(((int)(width + 3) >> 2) * (uint32_t)height + (int)bitmap);
             }
-            goto LAB_81c09858;
+            goto store_access_mode;
         }
         *entry_state = 0;
     }
     entry_state[1] = 0;
-LAB_81c09858:
+store_access_mode:
     entry_state[2] = access_mode;
     return bitmap;
 }

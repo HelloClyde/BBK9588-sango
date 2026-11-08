@@ -6,39 +6,39 @@
 uint32_t sango_ui_show_system_menu(void)
 {
     unsigned char abi_storage[56] __attribute__((aligned(8)));
-#define local_30 (*(uint16_t(*)[4])(abi_storage + 0))
-#define acStack_28 (*(char(*)[32])(abi_storage + 8))
+#define menu_bounds (*(uint16_t(*)[4])(abi_storage + 0))
+#define menu_text (*(char(*)[32])(abi_storage + 8))
 
-    uint32_t uVar1;
-    uint32_t uVar2;
+    uint32_t selection;
+    uint32_t menu_result;
 
-    sango_resource_read_text(0x40, 0x79, acStack_28);
-    local_30[0] = 0x4f;
-    local_30[2] = 0x7f;
-    local_30[3] = 0x2e;
-    local_30[1] = 10;
-    uVar1 = sango_ui_choose_option(local_30, 0, acStack_28);
-    if (uVar1 == 1)
+    sango_resource_read_text(0x40, 0x79, menu_text);
+    menu_bounds[0] = 0x4f;
+    menu_bounds[2] = 0x7f;
+    menu_bounds[3] = 0x2e;
+    menu_bounds[1] = 10;
+    selection = sango_ui_choose_option(menu_bounds, 0, menu_text);
+    if (selection == 1)
     {
         sango_save_choose_slot('\0');
-        uVar2 = 0;
+        menu_result = 0;
     }
-    else if ((int)uVar1 < 2)
+    else if ((int)selection < 2)
     {
-        uVar2 = 1;
+        menu_result = 1;
     }
     else
     {
-        uVar2 = 2;
-        if (uVar1 != 2)
+        menu_result = 2;
+        if (selection != 2)
         {
-            uVar2 = 0;
+            menu_result = 0;
         }
     }
-    return uVar2;
+    return menu_result;
 }
-#undef local_30
-#undef acStack_28
+#undef menu_bounds
+#undef menu_text
 
 /* 原函数 0x81c1b364 */
 uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
@@ -157,32 +157,33 @@ uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
 /* 原函数 0x81c1b784 */
 void sango_ui_show_ai_progress(void)
 {
-    uint8_t *pbVar1;
-    uint32_t uVar2;
-    uint8_t *pbVar3;
+    uint8_t *scratch_buffer;
+    uint32_t ruler_count;
+    uint8_t *ruler_entry;
     uint8_t *destination;
-    uint32_t uVar4;
+    uint32_t ruler_index;
 
     sango_strategy_present();
-    pbVar1 = g_scratch_buffer_address;
-    uVar4 = 0;
-    uVar2 = sango_strategy_list_rulers((uint32_t)g_player_character, g_scratch_buffer_address);
-    destination = pbVar1 + 200;
-    pbVar3 = pbVar1;
-    if (uVar2 != 0)
+    scratch_buffer = g_scratch_buffer_address;
+    ruler_index = 0;
+    ruler_count =
+        sango_strategy_list_rulers((uint32_t)g_player_character, g_scratch_buffer_address);
+    destination = scratch_buffer + 200;
+    ruler_entry = scratch_buffer;
+    if (ruler_count != 0)
     {
         do
         {
-            sango_load_named_text(*pbVar3, destination);
-            sango_resource_read_text(0x40, 0xa3, pbVar1 + 0xfa);
-            bbk_strcat((char *)destination, (char *)(pbVar1 + 0xfa));
+            sango_load_named_text(*ruler_entry, destination);
+            sango_resource_read_text(0x40, 0xa3, scratch_buffer + 0xfa);
+            bbk_strcat((char *)destination, (char *)(scratch_buffer + 0xfa));
             sango_display_fill_gray_rectangle(0x3c, 0x12f, 0xb2, 0x13d, 0, 0);
             sango_display_draw_rectangle(0x3c, 0x12f, 0xb2, 0x13d, 3, 0, 0);
             sango_text_draw_legacy(0x3e, 0x131, (char *)destination);
             sango_input_wait(0x14, '\0');
-            uVar4 = uVar4 + 1 & 0xff;
-            pbVar3 = pbVar1 + uVar4;
-        } while (uVar4 < uVar2);
+            ruler_index = ruler_index + 1 & 0xff;
+            ruler_entry = scratch_buffer + ruler_index;
+        } while (ruler_index < ruler_count);
     }
     sango_strategy_present();
     return;

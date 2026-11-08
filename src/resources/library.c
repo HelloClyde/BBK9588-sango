@@ -196,91 +196,91 @@ void sango_resource_decode_bytes(int buffer_address, char encoding, uint32_t byt
 }
 
 /* 原函数 0x81c156e0 */
-void sango_debug_draw_integer(uint16_t param_1, uint16_t param_2, int param_3, uint8_t param_4,
-                              char param_5)
+void sango_debug_draw_integer(uint16_t x, uint16_t y, int value, uint8_t radix, char show_sign)
 {
     unsigned char abi_storage[137] __attribute__((aligned(8)));
-    (*(char *)(abi_storage + 120)) = param_5;
-#define acStack_48 (*(char(*)[40])(abi_storage + 32))
-#define abStack_61 (*(uint8_t(*)[25])(abi_storage + 7))
-#define param_5 (*(char *)(abi_storage + 120))
+    (*(char *)(abi_storage + 120)) = show_sign;
+#define digit_text (*(char(*)[40])(abi_storage + 32))
+#define reversed_digits (*(uint8_t(*)[25])(abi_storage + 7))
+#define show_sign (*(char *)(abi_storage + 120))
 
-    uint8_t bVar1;
-    int iVar2;
-    uint8_t *pbVar3;
-    uint32_t uVar4;
-    uint32_t uVar5;
+    uint8_t digit_value;
+    int quotient;
+    uint8_t *digit_entry;
+    uint32_t digit_index;
+    uint32_t digit_count;
 
-    if ((param_5 == '\x01') && (param_3 < 0))
+    if ((show_sign == '\x01') && (value < 0))
     {
-        sango_text_draw_character((uint8_t)param_1, (uint8_t)param_2, 0x2d);
-        param_1 = param_1 + 8;
-        param_3 = -param_3;
+        sango_text_draw_character((uint8_t)x, (uint8_t)y, 0x2d);
+        x = x + 8;
+        value = -value;
     }
-    if (param_4 == 0)
+    if (radix == 0)
     {
         sango_legacy_trap(7);
     }
-    uVar4 = 0;
+    digit_index = 0;
     while (true)
     {
-        iVar2 = param_3 / (int)(uint32_t)param_4;
-        if (iVar2 == 0)
+        quotient = value / (int)(uint32_t)radix;
+        if (quotient == 0)
             break;
-        abStack_61[uVar4 + 1] = (uint8_t)param_3 - (char)iVar2 * param_4;
-        uVar4 = uVar4 + 1 & 0xffff;
-        param_3 = iVar2;
-        if (param_4 == 0)
+        reversed_digits[digit_index + 1] = (uint8_t)value - (char)quotient * radix;
+        digit_index = digit_index + 1 & 0xffff;
+        value = quotient;
+        if (radix == 0)
         {
             sango_legacy_trap(7);
         }
     }
-    uVar5 = uVar4 + 1 & 0xffff;
-    abStack_61[uVar4 + 1] = (uint8_t)param_3;
-    uVar4 = 0;
-    if (uVar5 != 0)
+    digit_count = digit_index + 1 & 0xffff;
+    reversed_digits[digit_index + 1] = (uint8_t)value;
+    digit_index = 0;
+    if (digit_count != 0)
     {
-        pbVar3 = abStack_61 + uVar5;
+        digit_entry = reversed_digits + digit_count;
         do
         {
-            bVar1 = *pbVar3;
-            uVar4 = uVar4 + 1;
-            pbVar3 = pbVar3 + -1;
-            sango_format_integer((uint32_t)(uint8_t)g_legacy_data_81c205c0[bVar1], acStack_48, 10);
-            sango_text_draw_native(param_1, param_2, acStack_48, 0);
-            param_1 = param_1 + 8;
-        } while (uVar4 < uVar5);
+            digit_value = *digit_entry;
+            digit_index = digit_index + 1;
+            digit_entry = digit_entry + -1;
+            sango_format_integer((uint32_t)(uint8_t)g_legacy_data_81c205c0[digit_value], digit_text,
+                                 10);
+            sango_text_draw_native(x, y, digit_text, 0);
+            x = x + 8;
+        } while (digit_index < digit_count);
     }
     return;
 }
-#undef acStack_48
-#undef abStack_61
-#undef param_5
+#undef digit_text
+#undef reversed_digits
+#undef show_sign
 
 /* 原函数 0x81c15834 */
-void sango_debug_show_resource_id(int param_1)
+void sango_debug_show_resource_id(int resource_id)
 {
     unsigned char abi_storage[24] __attribute__((aligned(8)));
-#define local_20 (*(int *)(abi_storage + 0))
-#define local_1c (*(int *)(abi_storage + 4))
+#define event_kind (*(int *)(abi_storage + 0))
+#define event_key (*(int *)(abi_storage + 4))
 
-    uint8_t bVar1;
+    uint8_t column;
 
-    bVar1 = 0;
+    column = 0;
     do
     {
-        sango_text_draw_character(bVar1 << 3, 0, 0x20);
-        bVar1 = bVar1 + 1;
-    } while (bVar1 < 8);
-    sango_debug_draw_integer(0, 0, param_1, 0x10, '\0');
+        sango_text_draw_character(column << 3, 0, 0x20);
+        column = column + 1;
+    } while (column < 8);
+    sango_debug_draw_integer(0, 0, resource_id, 0x10, '\0');
     do
     {
         do
         {
-            sango_input_next_event(&local_20);
-        } while (local_20 != 5);
-    } while ((local_1c != 0x1c) && (local_1c != 1));
+            sango_input_next_event(&event_kind);
+        } while (event_kind != 5);
+    } while ((event_key != 0x1c) && (event_key != 1));
     return;
 }
-#undef local_20
-#undef local_1c
+#undef event_kind
+#undef event_key
