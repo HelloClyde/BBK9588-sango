@@ -19,7 +19,7 @@
     "supplemental_png_and_c_pixels_match": true,
     "resource_codec_10_checks": true,
     "expanded_library_mips_loader_4_checks": true,
-    "clean_checkout_with_resources": false
+    "clean_checkout_with_resources": true
   },
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",
@@ -30,5 +30,13 @@
   "remote_push_performed": false,
   "release_published": false,
   "license_note": "Scoped MIT only for independent new code. Original-game/derived-art licenses not provided. Unpacked LIB records and PNG references included at user request; complete original BDA/EXE, firmware, NAND, system fonts and saves excluded.",
-  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11"
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "resource_clean_build": {
+    "source_commit": "6c7b753f3b88f9487e883be34a18351d764c9c5d",
+    "resource_codec_checks": 10,
+    "release_integrity_checks": true,
+    "all_dist_files_byte_identical": true,
+    "working_tree_clean_after_build": true,
+    "sdk_working_tree_clean": true
+  }
 }
