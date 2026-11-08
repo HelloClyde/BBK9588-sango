@@ -87,5 +87,7 @@
   "other_color_frames_identical": 1201,
   "asset_batches": 21,
   "font_weight": "regular; bold master preserved",
-  "asset_edit_tool": "built-in image_gen.imagegen (GPT Image)"
+  "asset_edit_tool": "built-in image_gen.imagegen (GPT Image)",
+  "snapshot_commit": "7ef3ff109a10d4ab284c6f3c2a9b26e327b4fbdd",
+  "history_note": "Historical 7ef3ff1 image-font update; source/report hashes resolve at snapshot_commit. Current exact pixel-grid rendering is battle-pixel-grid-review.json."
 }

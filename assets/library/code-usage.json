@@ -26,7 +26,7 @@
     "src/runtime/libc.c": "c7ede021266375069338092a07ac3e853b180208163e8a4881e58bb2d6c3f7a6",
     "src/runtime/soft_float.c": "28bf399b38fc0fc8b2da198142194d49f2e212e925cbabdb5d5b267fd348b0ed",
     "src/runtime/strings.c": "462d838a2767248b0598c73ef7f9cc62967e36ba93bf55efa18bddc4e5e9a923",
-    "src/sango_battle_ui.c": "5553db5494af0ab5427959919e52e05bbcbaae5920dff12b3ebaa741bd0b3ce2",
+    "src/sango_battle_ui.c": "0227f9135d4d5466d3d361ac9ab08af45160fe668003ac01bc625c2e6493fcf9",
     "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
     "src/sango_statusbar.c": "5bd6f9fe2736a12b8689f00c8cd8c9f055b7c43bd3e8431064601930433d8d11",
@@ -330,19 +330,19 @@
       "category": "战斗",
       "name": "战斗状态行底图",
       "usage_status": "confirmed",
-      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=224绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
+      "naming_evidence": "资源8保留为灰度兼容底图，按9288S的160像素逻辑宽度采样；当前彩色路径用同源240x24成品图按1:1复制到y=224，再透明叠加粮草、天气和目标姓名/地形，更新文本从同张图片局部恢复。",
       "code_evidence": [
         {
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw",
           "expression": "sango_resource_item(8, 1, g_resource_package_address)",
-          "line": 150
+          "line": 162
         },
         {
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw_description",
           "expression": "draw_status_text(STATUS_DESCRIPTION_X, text, target);",
-          "line": 220
+          "line": 232
         }
       ]
     },
@@ -363,13 +363,13 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw_weather",
           "expression": "sango_resource_item(9, 1, g_resource_package_address)",
-          "line": 138
+          "line": 150
         },
         {
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw_weather",
           "expression": "g_battle_weather - 1",
-          "line": 138
+          "line": 150
         }
       ]
     },
@@ -3183,7 +3183,7 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_day_popup_draw",
           "expression": "sango_resource_item(33,1,",
-          "line": 231
+          "line": 243
         }
       ]
     },
@@ -4332,7 +4332,7 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_summary_draw",
           "expression": "sango_resource_item(69, 1, g_resource_package_address)",
-          "line": 188
+          "line": 200
         }
       ]
     },

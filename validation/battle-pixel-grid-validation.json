@@ -1,0 +1,21 @@
+{
+  "passed": 21,
+  "failed": 0,
+  "native_image": [
+    240,
+    24
+  ],
+  "glyph_cell": [
+    16,
+    16
+  ],
+  "glyph_scale": [
+    1,
+    1
+  ],
+  "rendered_status_pixels_compared": 5760,
+  "fixed_characters": "粮天信息查找",
+  "bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
+  "color_sha256": "055b422e7c845bea94f0d634f967a59a9fe8031f7c66dd3465a174a7c98b72ce",
+  "scope": "Six baked single-bit glyph masks match final PNG pixels exactly at integer positions; compiled MIPS copies all 5760 native HUD pixels without scaling, restores the same image region, checks SGHUD01 trailer bounds/CRC/source, legacy compatibility and unload. SDK pixel/text boundaries modeled; native firmware separately checked."
+}

@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "7ef3ff109a10d4ab284c6f3c2a9b26e327b4fbdd",
+  "baseline_bda_sha256": "4cbb00bfed8413053eb04e99c52e4bedaa628e945e74d7d95d61aa805d8b8bca",
+  "bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
+  "sango_clr_sha256": "055b422e7c845bea94f0d634f967a59a9fe8031f7c66dd3465a174a7c98b72ce",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "native_status_image": [
+    240,
+    24
+  ],
+  "toolbar_image": [
+    240,
+    36
+  ],
+  "glyph_cell": [
+    16,
+    16
+  ],
+  "glyph_scale": [
+    1,
+    1
+  ],
+  "runtime_image_scale": [
+    1,
+    1
+  ],
+  "fixed_glyphs_baked_into_png": true,
+  "runtime_fixed_text_drawing": false,
+  "unchanged_indexed_frames": 1203,
+  "changed_indexed_frames": 1,
+  "extra_native_images": 1,
+  "native_image_bytes": 11520,
+  "trailer_bytes": 32,
+  "asset_batches": 22,
+  "mips_checks": 5457,
+  "pixel_grid_mips_checks": 21,
+  "native_interface_checks": 30,
+  "initialized_bytes_unchanged": 45536,
+  "save_layout_unchanged": true,
+  "source_sha256_lf": {
+    "assets/color/catalog.json": "fb304b0d8ae9736ffede7786571a4c72723c5aa4c3308450406e0710339f2a3f",
+    "assets/color/battle-ui/provenance.json": "a50f84674a0d0d38f6cb2e9381fd06671b70092447947b01030f415f39d69aae",
+    "assets/color/battle-ui/glyphs/provenance.json": "eee5858312a8bcb858568cdda247481ac3df2f1c1edd447aa6bec3e6885699d7",
+    "tools/color_assets.py": "fac0f818816d646b83596c5fb7d79db911a55539e02123ed443954bd89ab638f",
+    "tools/compose_battle_ui.py": "b2ae54950b46acd1fd6c2e6ec77d0b0aa6b8e1e89d60d8ecbc09a932905e07d6",
+    "tools/typeset_battle_ui.ps1": "d7a552dc0ca645c005caaa1291850ef5c949018199bbd6a39633fb75fc8ea953",
+    "src/sango_color.c": "3ab0a66114b0b5b83ca372e59b3fd60412a332561c258a7f584b8edddc63106f",
+    "src/sango_battle_ui.c": "0227f9135d4d5466d3d361ac9ab08af45160fe668003ac01bc625c2e6493fcf9",
+    "include/sango_color.h": "c1ed02c88268df9772581bd3367ef5ceedeba6d0b5f5f092806065532050ce0c",
+    "tools/test_battle_pixel_grid.py": "0ec82076c6187ef6dd1831f0a54b7e120afb682b587da82975f74e90df8e86d0"
+  },
+  "report_sha256_lf": {
+    "validation/color-mips-validation.json": "342971e541d20043b258a85d202cf06202aae0b9bfad17a8628680b6ca3f9950",
+    "validation/strategy-color-validation.json": "bf0e36388699b4d28ef0bf943dc90071e63b49f4a0eda9f2586ee41e09225b0d",
+    "validation/battle-color-validation.json": "07e268f6acc44f86d6461ea8573e010be955ff00ec47e5ac0c2b293c086bfc76",
+    "validation/battle-ui-color-validation.json": "a0b89f91644e045bc743b11eb966156c764eee97c69488867148ac9969fc57e7",
+    "validation/battle-pixel-grid-validation.json": "aef61f988569aa24ba836d710b1e0013ee2f0d2b235dee959c66d2bf6db642ed",
+    "validation/color-firmware-validation.json": "a7bb8bc5bcd43c7124007639ac5e8d3eddd8c3e91706683640090c99ed913bfb",
+    "validation/color-native-staging.json": "7ab963146569e16eaf481aafe650f598a7ecf8f8ec89dab0ba23f91a768b310a",
+    "validation/differential.json": "32c213aef1ba6f25060568687b88eb7310cca284860f5ff33e8b900b6a999448",
+    "validation/statusbar-validation.json": "b36c06c95fe522646951445fb00ca2d7df1adae7cf3893d74a36940e5aab8c45",
+    "validation/port-fixes-validation.json": "85b02b4f74442987f4b7c89c6500970cf610bf991ffbf0e6cbdf02048ad07681",
+    "validation/battle-touch-validation.json": "3c39bc91b95ede1827724d8b685a1c54995c8a66a4a0fed28c29a8793385d51d",
+    "validation/day-popup-validation.json": "362f711bb0e2b463348cae049f22c47167ec8f6c79fbc7d34b09f4c28b40fbad",
+    "validation/battle-hud-validation.json": "0fcbf01aaad832a353c0a31a71bd7fcccc34bad73bf8e848915605683172d51f",
+    "validation/battle-summary-validation.json": "a6114ff0019aef133acc1f447442607519cf57bddcf71347984f50754a26f554",
+    "validation/battle-viewport-validation.json": "5257ef23546a6ae9b54736e353878c846af6d16870475cfc95d568d692b2d479",
+    "validation/library-loader-host.json": "279ff36e77dca47f68560e3006dbcd30a8cd3c307ac16b7dc94fdeaffd163ceb"
+  },
+  "asset_sha256": {
+    "assets/color/battle-ui/status-background-240x24.png": "7127418aaa3c4f98835d55311dc2824dedca4b8771a6c24ef22f6239ab332994",
+    "assets/color/battle-ui/status-row-240x24.png": "3bd831278b45b43d3a6f3bed0033f6dea88e412db6703a9ef0a9c978a04d7886",
+    "assets/color/battle-ui/toolbar-background-240x36.png": "ed08f2e3ad2854b3b9d07f91d1629c7ec7acf0958bd60e7160ce776ca73af7f1",
+    "assets/color/battle-ui/glyphs/信_16x16.png": "f62692fee891d4c0e987f36bf897c7b7a42b9ee032786527c74689eb4b68aaa2",
+    "assets/color/battle-ui/glyphs/天_16x16.png": "018e47fc9bf79dcf2d997d05ba499c3b4fb925470b18c7fa2e7b7407c74bb38d",
+    "assets/color/battle-ui/glyphs/息_16x16.png": "fc5eb6695dca0f5475caeea21d79b13c0bc66fd9df4f0a05aed859a422956656",
+    "assets/color/battle-ui/glyphs/找_16x16.png": "09c021dc68385bd116e6557b7031c96f537c0f19a6dc662a90761777d5267928",
+    "assets/color/battle-ui/glyphs/查_16x16.png": "192ca75da9304fb119ef9ae919db638cab56cc32e4988d8c544213c5503b742b",
+    "assets/color/battle-ui/glyphs/粮_16x16.png": "16bd2f6725136e3101f8a8e47bb85a19d31ffbc58a199ec141bcb1715987a363",
+    "assets/color/statusbar/toolbar-240x36.png": "5fd18c109d405097a836c0e817ff6ad4181095f989385e7a354b7c852a4d33a6",
+    "assets/color/generated/battle-hud-background.png": "2d158078e3cf4d8d963bdf09e4d2b29c0ed3bde51d4035d85739311f3f04b4c2"
+  },
+  "scope": "Compiled MIPS compares every one of 5760 native HUD image pixels, six 1-bit glyph masks on the final LCD grid, region restoration, optional trailer bounds/CRC/source and old-file fallback. Native C200 verifies six masks at exact 1:1 pixels plus retained menus/input/four combat ranges. Exact files staged to bypass synthetic NAND ECC; no physical-device/full-campaign claim."
+}

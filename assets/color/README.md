@@ -1,6 +1,6 @@
 # 游戏内彩色素材
 
-1204帧均有彩色PNG：原库1202帧及补充底栏、竖屏制作群组2帧。原RGBA图案去重后为654种，分21张选用图集通过GPT Image上色（含地形补色、绿色树林和底栏清晰字形图集），再按原坐标裁切到原生尺寸。原始灰度素材和 `../drafts/color9288s/` 三张既有草稿保留。
+1204帧均有彩色PNG：原库1202帧及补充底栏、竖屏制作群组2帧。原RGBA图案去重后为654种，分22张图形美术图集通过GPT Image上色（含地形补色、绿色树林和底栏清晰字形图集），再按原坐标裁切到原生尺寸。原始灰度素材和 `../drafts/color9288s/` 三张既有草稿保留。
 
 | 路径 | 内容 |
 | --- | --- |
@@ -39,7 +39,7 @@ python tools/test_color_assets.py
 
 ## sango.clr 格式和加载
 
-`build/sango.lib` 仍保留全部原资源、透明遮罩和动画时间轴，字节不因上色变化。CLR必须与它一起安装到 `应用/数据/游戏/`。BDA通过SDK命名接口读取同目录的CLR并绘制RGB565，不写GUI表或直接操作帧缓冲。缓存独立于旧存档区，约2.18MiB；缺包、错误大小/索引、LIB大小或CRC32不匹配、内存不足时回退原灰度路径。
+`build/sango.lib` 仍保留全部原资源、透明遮罩和动画时间轴，字节不因上色变化。CLR必须与它一起安装到 `应用/数据/游戏/`。BDA通过SDK命名接口读取同目录的CLR并绘制RGB565，不写GUI表或直接操作帧缓冲。缓存独立于旧存档区，约2.19MiB；缺包、错误大小/索引、LIB大小或CRC32不匹配、内存不足时回退原灰度路径。
 
 所有整数为小端。文件头32字节：
 
@@ -69,4 +69,22 @@ python tools/test_color_assets.py
 
 运行时仍按图片绘制固定标签、分隔线及花纹。粮草数字和右侧单行动态文本用SDK透明文字叠加；右侧沿用原版的切换：光标有部队显示姓名，空地显示地形。更新文本时从原图片局部恢复背景，不填白色矩形。彩色战斗演出框按原130×64尺寸置于战场中间(55,80)，动画、提示及伤害数字共用相同位移。
 
-最新底栏采用常规字重：[选用母图](generated/battle-hud-sharp.png)、[减细提示词](prompts/battle-hud-regular.txt)。此前[粗体母图](generated/battle-hud-sharp-bold.png)与[初次清晰化提示词](prompts/battle-hud-sharp.txt)均保留。全部通过内置GPT Image编辑，导入脚本仅裁切和缩放。
+上一版底栏采用常规字重（保留作对照）：[选用母图](generated/battle-hud-sharp.png)、[减细提示词](prompts/battle-hud-regular.txt)。此前[粗体母图](generated/battle-hud-sharp-bold.png)与[初次清晰化提示词](prompts/battle-hud-sharp.txt)均保留。全部通过内置GPT Image编辑，导入脚本仅裁切和缩放。
+
+## 最终像素网格与1:1状态图
+
+当前状态图是[240×24 PNG](battle-ui/status-row-240x24.png)，按钮是[240×36 PNG](statusbar/toolbar-240x36.png)。GPT Image只生成[无文字的美术底图](generated/battle-hud-background.png)，[提示词](prompts/battle-hud-background.txt)保留；固定的粮、天、信、息、查、找使用[6张16×16单比特字形](battle-ui/glyphs/)在导出PNG时按整数坐标贴入，字形不经过任何缩放或抗锯齿。程序只复制整张成品图，不按字形绘制固定标签，状态图不再走旧3:2采样。
+
+```powershell
+# 使用已入库的背景和字形，重新烘焙两张最终PNG；无需安装字体
+python tools/compose_battle_ui.py
+# 仅重新排字时在Windows上运行；字体和文件哈希须匹配来源记录
+pwsh -File tools/typeset_battle_ui.ps1
+python tools/compose_battle_ui.py
+python build.py
+python tools/test_battle_pixel_grid.py
+```
+
+PNG为可编辑素材，合成脚本只在素材制作时使用。正常构建只编码已入库的PNG，不依赖Windows字体或图像生成服务。上一版粗体、常规字重母图均保留。
+
+SGCOLOR1的1204条原索引保持不变，可选的原尺寸状态图追加在索引像素区之后，文件末尾32字节为`<8sIIIIII>`：`SGHUD01\0`、像素偏移、像素字节数11520、宽240、高24、原资源008帧偏移、该像素区CRC32。原尺寸图为RGB565小端，不计入原1204条索引。读取时核对边界、尺寸、来源索引及CRC；没有此尾部的旧CLR继续按原路径显示。

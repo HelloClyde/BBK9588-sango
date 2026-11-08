@@ -1,0 +1,108 @@
+{
+  "artwork_generator": "built-in GPT Image",
+  "font_masks": "glyphs/provenance.json",
+  "master": "generated/battle-hud-background.png",
+  "master_sha256": "2d158078e3cf4d8d963bdf09e4d2b29c0ed3bde51d4035d85739311f3f04b4c2",
+  "prompt": "prompts/battle-hud-background.txt",
+  "ink_rgb": [
+    24,
+    20,
+    8
+  ],
+  "runtime_scale": [
+    1,
+    1
+  ],
+  "placements": [
+    {
+      "character": "粮",
+      "mask": "glyphs/粮_16x16.png",
+      "target": "status-row-240x24.png",
+      "rectangle": [
+        2,
+        4,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "天",
+      "mask": "glyphs/天_16x16.png",
+      "target": "status-row-240x24.png",
+      "rectangle": [
+        80,
+        4,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "信",
+      "mask": "glyphs/信_16x16.png",
+      "target": "toolbar-240x36.png",
+      "rectangle": [
+        71,
+        10,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "息",
+      "mask": "glyphs/息_16x16.png",
+      "target": "toolbar-240x36.png",
+      "rectangle": [
+        87,
+        10,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "查",
+      "mask": "glyphs/查_16x16.png",
+      "target": "toolbar-240x36.png",
+      "rectangle": [
+        139,
+        10,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "找",
+      "mask": "glyphs/找_16x16.png",
+      "target": "toolbar-240x36.png",
+      "rectangle": [
+        155,
+        10,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    }
+  ]
+}

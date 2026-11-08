@@ -32,7 +32,7 @@ RULES={
        ref('FUN_81c15e44','sango_credits_draw(credits_draw_target);'),status='historical'),
 7:rule('战斗','移动范围与目标光标','移动范围绘制直接使用帧0；选目标使用第2项（帧1），当前战场光标使用第5项（帧4）。其他帧未定位调用。',
        ref('FUN_81c027f0',"FUN_81c152f0(7,'\\x01',"),ref('FUN_81c0343c','FUN_81c04fb4(7,2,'),ref('FUN_81c03c20','FUN_81c04fb4(7,5,')),
-8:rule('战斗','战斗状态行底图','战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=224绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。',
+8:rule('战斗','战斗状态行底图','资源8保留为灰度兼容底图，按9288S的160像素逻辑宽度采样；当前彩色路径用同源240x24成品图按1:1复制到y=224，再透明叠加粮草、天气和目标姓名/地形，更新文本从同张图片局部恢复。',
        ref('sango_battle_status_draw','sango_resource_item(8, 1, g_resource_package_address)','src/sango_battle_ui.c'),
        ref('sango_battle_status_draw_description','draw_status_text(STATUS_DESCRIPTION_X, text, target);','src/sango_battle_ui.c')),
 9:rule('天气','战斗天气状态图标','天气状态值为1到5；绘制前转零基帧号，并按3:2放大到18x18。未找到代码内的逐状态中文天气名，保留状态编号。',

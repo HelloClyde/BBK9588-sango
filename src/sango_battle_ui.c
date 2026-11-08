@@ -53,6 +53,18 @@ static void draw_status_bitmap_region(const SangoBitmapHeader *bitmap, unsigned 
     plane_bytes = row_bytes * bitmap->height;
     plane_count = (bitmap->flags & 1) ? 2 : 1;
     mask = (const uint8_t *)(bitmap + 1) + frame * plane_bytes * plane_count;
+    /* Final-size artwork already contains its fixed labels on the LCD grid.
+     * Only copy image pixels here; neither text nor image is scaled. */
+    rgb = reference_width == STATUS_REFERENCE_WIDTH ? sango_color_native_status((uint32_t)mask)
+                                                    : NULL;
+    if (rgb)
+    {
+        for (y = 0; y < 24; ++y)
+            for (x = 0; x < 240; ++x)
+                if (left + x >= clip_left && left + x < clip_right)
+                    sango_color_put_pixel(left + x, top + y, rgb[y * 240 + x], target);
+        return;
+    }
     colors = mask + ((bitmap->flags & 1) ? plane_bytes : 0);
     rgb = sango_color_pixels((uint32_t)mask, bitmap->width, bitmap->height, bitmap->flags & 1);
     keyed_alpha = rgb && (sango_color_frame_flags((uint32_t)mask, bitmap->width, bitmap->height,

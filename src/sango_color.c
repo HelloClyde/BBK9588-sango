@@ -7,6 +7,8 @@ static uint8_t *color_file;
 static uint32_t color_entries, color_library_bytes;
 static bool color_file_owned;
 static uint32_t strategy_map_context;
+static const uint16_t *native_status;
+static uint32_t native_status_source;
 
 static uint32_t color_read32(const uint8_t *bytes)
 {
@@ -42,6 +44,8 @@ void sango_color_unload(void)
     if (color_file_owned && color_file)
         bbk_free_if_nonnull(color_file);
     color_file = NULL;
+    native_status = NULL;
+    native_status_source = 0;
     strategy_map_context = 0;
     color_entries = color_library_bytes = 0;
     color_file_owned = false;
@@ -53,7 +57,7 @@ int sango_color_use_buffer(void *buffer, uint32_t bytes, uint32_t library_bytes)
 {
     const uint8_t magic[] = {'S', 'G', 'C', 'O', 'L', 'O', 'R', '1'};
     uint8_t *data = (uint8_t *)buffer;
-    uint32_t count, payload, index, previous = 0;
+    uint32_t count, payload, index, previous = 0, indexed_end = 0;
     sango_color_unload();
     if (!data || bytes < 32 || bytes > 16u * 1024u * 1024u)
         return 0;
@@ -86,11 +90,51 @@ int sango_color_use_buffer(void *buffer, uint32_t bytes, uint32_t library_bytes)
             pixels > bytes || width * height * 2 > bytes - pixels)
             return 0;
         previous = source;
+        if (pixels + width * height * 2 > indexed_end)
+            indexed_end = pixels + width * height * 2;
+    }
+    /* Optional native-size image trailer; older SGCOLOR1 files remain valid.
+     * No original indexed frame, mask, LIB record or saved state is changed. */
+    if (bytes >= 64)
+    {
+        const uint8_t tag[] = {'S', 'G', 'H', 'U', 'D', '0', '1', 0};
+        const uint8_t *trailer = data + bytes - 32;
+        for (index = 0; index < sizeof(tag) && trailer[index] == tag[index]; ++index)
+            ;
+        if (index == sizeof(tag))
+        {
+            uint32_t offset = color_read32(trailer + 8), source = color_read32(trailer + 24);
+            bool found = false;
+            if ((offset & 1) || offset < indexed_end || offset > bytes - 32 ||
+                color_read32(trailer + 12) != 11520 || bytes - 32 - offset != 11520 ||
+                color_read32(trailer + 16) != 240 || color_read32(trailer + 20) != 24 ||
+                color_crc32(data + offset, 11520) != color_read32(trailer + 28))
+                return 0;
+            for (index = 0; index < count; ++index)
+            {
+                const uint8_t *entry = data + 32 + index * 16;
+                if (color_read32(entry) == source && color_read16(entry + 8) == 240 &&
+                    color_read16(entry + 10) == 16)
+                    found = true;
+            }
+            if (!found)
+                return 0;
+            native_status = (const uint16_t *)(data + offset);
+            native_status_source = source;
+        }
     }
     color_file = data;
     color_entries = count;
     color_library_bytes = library_bytes;
     return 1;
+}
+
+const uint16_t *sango_color_native_status(uint32_t original_pixels)
+{
+    return color_file && original_pixels >= g_resource_package_address &&
+                   original_pixels - g_resource_package_address == native_status_source
+               ? native_status
+               : NULL;
 }
 
 void sango_color_load(const char *library_path, uint32_t library_bytes)

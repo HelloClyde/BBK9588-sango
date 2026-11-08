@@ -26,6 +26,8 @@ def write_catalog(data):
 def import_atlas(slug, source):
     catalog = read_catalog()
     batch = next(b for b in catalog['batches'] if b['id'] == slug)
+    if batch.get('composition') == 'native-pixel-font':
+        raise ValueError('Use tools/compose_battle_ui.py to preserve the 1:1 glyph grid')
     destination = COLOR/'generated'/f'{slug}.png'
     if source.resolve() != destination.resolve():
         shutil.copy2(source, destination)
@@ -205,6 +207,18 @@ def build(output, allow_partial=False):
         positions[digest] = start+len(data); data.extend(pixels)
     index = b''.join(struct.pack('<IIHHI',offset,positions[digest],width,height,flags)
                      for offset,width,height,flags,digest in entries)
+    native_status = catalog.get('native_status_image')
+    if native_status:
+        image = Image.open(COLOR/native_status['path']).convert('RGB')
+        if image.size != (240,24):
+            raise ValueError('Native status image must be exactly 240x24')
+        resource = resources[native_status['source_resource']]
+        source = struct.unpack_from('<I',library,(native_status['source_resource']-1)*4)[0]+resource['images'][0].get('offset',12)+6
+        if any(e[0]==source for e in entries):
+            pixels = rgb565(image)
+            offset = start+len(data)
+            data.extend(pixels)
+            data.extend(struct.pack('<8sIIIIII',b'SGHUD01\0',offset,len(pixels),240,24,source,zlib.crc32(pixels)))
     header = struct.pack('<8sIIIIII',b'SGCOLOR1',start+len(data),len(entries),32,start,
                          len(library),zlib.crc32(library))
     result = header+index+data
@@ -214,6 +228,9 @@ def build(output, allow_partial=False):
             'library_sha256':hashlib.sha256(library).hexdigest(),
             'library_crc32':f'{zlib.crc32(library):08x}',
             'format':'SGCOLOR1: 32-byte header, sorted <IIHHI> source-offset index, RGB565 LE pixels; masks stay in sango.lib'}
+    if native_status:
+        info['native_status_size']=[240,24]
+        info['format'] += '; optional SGHUD01 native image trailer'
     (output.parent/'color-build.json').write_text(json.dumps(info,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(info))
     return info

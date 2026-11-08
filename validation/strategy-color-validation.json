@@ -29,7 +29,7 @@
   "cursor_legacy_hidden_pixels_restored": 37,
   "cursor_legacy_white_pixels_removed": 79,
   "cursor_grid_positions_checked": 49,
-  "bda_sha256": "4cbb00bfed8413053eb04e99c52e4bedaa628e945e74d7d95d61aa805d8b8bca",
-  "color_sha256": "d1be1b39364d16b0cdb824481bc7b99ee679d511c5a76bf028b4c33ea567d20e",
+  "bda_sha256": "25c531c9cd78c65bf226a761fa25f24c50e2f364bc566cd670c65d49e2b50fe2",
+  "color_sha256": "055b422e7c845bea94f0d634f967a59a9fe8031f7c66dd3465a174a7c98b72ce",
   "scope": "Real compiled strategy painter, all camera bounds, all ten city frames, white-detail preservation, full map pixel coverage, incremental/full redraw equality, scope and gray fallback. SDK pixels/strings, footer text/count boundaries modeled; native firmware separately checked."
 }
