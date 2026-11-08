@@ -20,6 +20,13 @@ void sango_raster_draw_screen(uint32_t x, short y, uint32_t width, uint32_t heig
 
     origin_x = x & 0xffff;
     sango_display_present_context(g_message_context_view2, 0);
+    if (sango_color_draw_raster(x, y, width, height, pixel_data_address, g_message_context_view2,
+                                0))
+    {
+        sango_display_present_context(0, g_message_context_view2);
+        sango_display_noop();
+        return;
+    }
     aligned_width_or_plane_bytes = width & 0xffff;
     /* Two-bit pixels occupy four pixels per uint8_t, as in the image header's
           frame stride. Rounding to eight pixels overreads 84-pixel-wide maps. */
@@ -89,6 +96,8 @@ void sango_raster_draw_opaque(uint32_t x, short y, uint32_t width, uint32_t heig
     uint32_t aligned_width_or_plane_bytes;
     uint32_t origin_x;
 
+    if (sango_color_draw_raster(x, y, width, height, pixel_data_address, context, 0))
+        return;
     origin_x = x & 0xffff;
     aligned_width_or_plane_bytes = width & 0xffff;
     if ((width & 3) != 0)
@@ -155,6 +164,8 @@ void sango_raster_draw_masked(uint32_t x, short y, uint32_t width, uint32_t heig
     uint32_t aligned_width_or_plane_bytes;
     uint32_t origin_x;
 
+    if (sango_color_draw_raster(x, y, width, height, pixel_data_address, context, 1))
+        return;
     origin_x = x & 0xffff;
     aligned_width_or_plane_bytes = width & 0xffff;
     if ((width & 3) != 0)
@@ -238,6 +249,8 @@ void sango_raster_draw_masked_screen(uint32_t x, short y, uint32_t width, uint32
     uint32_t aligned_width_or_plane_bytes;
     uint32_t origin_x;
 
+    if (sango_color_draw_raster(x, y, width, height, pixel_data_address, 0, 1))
+        return;
     origin_x = x & 0xffff;
     aligned_width_or_plane_bytes = width & 0xffff;
     if ((width & 3) != 0)

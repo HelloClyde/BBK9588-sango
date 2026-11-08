@@ -12,8 +12,9 @@
     "attack": 540,
     "float": 4974
   },
-  "baseline_elf_sha256": "6f629790099ccc2b58d3b251a876245c84600e6514257c236f2fc9a711a72079",
-  "candidate_elf_sha256": "0b7831b8fc2a08b46c001cf34582c6fcdc6157b3a1ac3ada998acc4e639959c1",
-  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
-  "scope": "The reported groups execute actual MIPS functions against the pre-refactor ELF: city/battle input, decimal input, pagination, animation timing, search outcomes, skill dispatch, attack preparation and soft-float boundary/random cases. Compares return, observable state, input consumption and rendering calls. Rendering/modal boundaries are deterministic models; not native firmware or hardware. Intentional viewport/HUD presentation changes use common modeled drawing boundaries; display scrolling, clipping and footer pixels are checked separately."
+  "baseline_elf_sha256": "0b7831b8fc2a08b46c001cf34582c6fcdc6157b3a1ac3ada998acc4e639959c1",
+  "candidate_elf_sha256": "fe2bb9137d1af3f1c4cf48fe4a8ce05cf58842e160a0bfa549b120335d25b0c1",
+  "bda_sha256": "5193aaf0db29ca7eeef367456541bfa39781c36c9f4849fb116d97245b1c59a0",
+  "scope": "The reported groups execute actual MIPS functions against the provided baseline ELF: city/battle input, decimal input, pagination, animation timing, search outcomes, skill dispatch, attack preparation and soft-float boundary/random cases. Compares return, observable state, input consumption and rendering calls. Rendering/modal boundaries are deterministic models; not native firmware or hardware.",
+  "baseline_commit": "b37442db21bc9bd11178efbba7c7a2f170ce721c"
 }

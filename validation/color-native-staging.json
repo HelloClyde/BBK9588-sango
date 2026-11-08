@@ -1,0 +1,19 @@
+{
+  "entry": true,
+  "package": true,
+  "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
+  "payload_sha256": "752e5460366b5a3532c743ab1ef98f04adbfa346cfb07421041830ceff4f937e",
+  "color": {
+    "bytes": 2282488,
+    "sha256": "ed6a96a375249e4a0b104301c7ed35ca5d819f467d0e826814ababbaa0e39ca4",
+    "scope": "Exact expanded LIB/CLR borrowed buffers staged for native SDK rendering; production CRC/parser executes in separate bootstrap. Storage loader/ownership tested separately in compiled MIPS."
+  },
+  "package_address": "0x81000000",
+  "package_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "battle_fixture": {
+    "sha256": "614dcddcdc2dad78f1d3f36c649f5c010c8d47771fd605331696a09fafa45e16",
+    "entry": "0x81c30000",
+    "trigger": "0x81c031c8",
+    "scope": "Controlled terrain-only battle UI entered at normal credits call; production battle functions and native hardware input. Fixture excluded from delivered BDA."
+  }
+}

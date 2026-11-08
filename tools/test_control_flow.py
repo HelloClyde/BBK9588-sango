@@ -91,14 +91,14 @@ class Machine:
     def record(self, name, count):
         self.intercept(name, count, lambda args: self.trace.append([name, args]))
 
-    def call(self, name, *values):
+    def call(self, name, *values, instruction_limit=2000000):
         for index, register in enumerate(ARGUMENTS):
             self.u.reg_write(register, values[index] if index < len(values) else 0)
         for index, value in enumerate(values[4:]):
             self.word(STACK + 16 + 4 * index, value)
         self.u.reg_write(UC_MIPS_REG_SP, STACK)
         self.u.reg_write(UC_MIPS_REG_RA, STOP)
-        self.u.emu_start(self.symbols[name], STOP, count=2000000)
+        self.u.emu_start(self.symbols[name], STOP, count=instruction_limit)
         if self.u.reg_read(UC_MIPS_REG_PC) != STOP:
             raise AssertionError('Input loop did not terminate: ' + name)
         return self.u.reg_read(UC_MIPS_REG_V0)
@@ -593,7 +593,7 @@ def main():
               'baseline_elf_sha256': hashlib.sha256(before).hexdigest(),
               'candidate_elf_sha256': hashlib.sha256(after).hexdigest(),
               'bda_sha256': hashlib.sha256((ROOT / 'build/三国霸业.bda').read_bytes()).hexdigest(),
-              'scope': 'The reported groups execute actual MIPS functions against the pre-refactor ELF: '
+              'scope': 'The reported groups execute actual MIPS functions against the provided baseline ELF: '
                        'city/battle input, decimal input, pagination, animation timing, search outcomes, '
                        'skill dispatch, attack preparation and soft-float boundary/random cases. '
                        'Compares return, observable state, input consumption and rendering calls. '

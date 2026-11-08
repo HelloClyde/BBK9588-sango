@@ -1,0 +1,94 @@
+{
+  "passed": 14,
+  "failed": 0,
+  "bda_sha256": "5193aaf0db29ca7eeef367456541bfa39781c36c9f4849fb116d97245b1c59a0",
+  "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "color_sha256": "ed6a96a375249e4a0b104301c7ed35ca5d819f467d0e826814ababbaa0e39ca4",
+  "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled terrain-only battle fixture. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
+  "cases": [
+    {
+      "name": "Native menu displays colored frame and panels",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/main-menu.png",
+      "screenshot_sha256": "3b29c568761eb0c489e034cee9524e2d2a69c50a35dfcf2dc4036beac53358f7"
+    },
+    {
+      "name": "Native colored day-1 frame is centered and exact",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/day-1.png",
+      "screenshot_sha256": "d3f49dc89242bba53d0cc6f5369d0fe23bb2165aca81d50a8f61505d5a05919e"
+    },
+    {
+      "name": "Native colored day-10 frame is centered and exact",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/day-10.png",
+      "screenshot_sha256": "30432f61dc5781139d03abc2424df6cb8a3be336b5cb775bdbf4f03617fc47be"
+    },
+    {
+      "name": "Battle toolbar preserves full 240x36 RGB565 source",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/battle.png",
+      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+    },
+    {
+      "name": "Battle status borders/weather retain original 3:2 geometry with RGB color",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/battle.png",
+      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+    },
+    {
+      "name": "Battle terrain and portrait summary both display color",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/battle.png",
+      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+    },
+    {
+      "name": "Native colored info opens at retained touch position",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/info.png",
+      "screenshot_sha256": "4d2e2bd0f708980193f104a1db372fa593d9988f768f7d5e1a8806a46fd38a70"
+    },
+    {
+      "name": "Native info return preserves colored toolbar and summary",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/info-return.png",
+      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+    },
+    {
+      "name": "Native colored find opens at retained touch position",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/find.png",
+      "screenshot_sha256": "ab78c6886968e5ad91a6faccca8927f145245d63c28891870840683fc2f663b0"
+    },
+    {
+      "name": "Native find return preserves colored toolbar and summary",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/find-return.png",
+      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+    },
+    {
+      "name": "Battle cursor movement preserves colored footer",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/battle-move.png",
+      "screenshot_sha256": "d22364d34396b6ba204e5c58e7c449b179ecedc80077a70612ff5f87a85689a3"
+    },
+    {
+      "name": "Native credits match all 76800 compiled RGB565 pixels",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/credits.png",
+      "screenshot_sha256": "db31925356b0ef90931c0cf704e10c90ace8e82e3ee9794e879d56c48ca80a85"
+    },
+    {
+      "name": "Native strategy toolbar matches color source and retained layout",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy.png",
+      "screenshot_sha256": "3cc055c8d858a47ace246334eb0809b71ae79a9587c0b95f4c0caf67648e782d"
+    },
+    {
+      "name": "Native strategy map and ruler portrait are colored",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy.png",
+      "screenshot_sha256": "3cc055c8d858a47ace246334eb0809b71ae79a9587c0b95f4c0caf67648e782d"
+    }
+  ]
+}

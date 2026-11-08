@@ -449,7 +449,7 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c13d80` | [`sango_load_package_and_buffers`](../src/app/memory.c#L7) |
-| `0x81c13f64` | [`sango_release_package_and_buffers`](../src/app/memory.c#L69) |
+| `0x81c13f64` | [`sango_release_package_and_buffers`](../src/app/memory.c#L71) |
 
 ## src/platform/event_loop.c
 
@@ -471,21 +471,21 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c14350` | [`sango_raster_draw_screen`](../src/render/raster.c#L6) |
-| `0x81c14504` | [`sango_raster_draw_opaque`](../src/render/raster.c#L75) |
-| `0x81c14690` | [`sango_raster_draw_masked`](../src/render/raster.c#L142) |
-| `0x81c14838` | [`sango_raster_draw_masked_screen`](../src/render/raster.c#L227) |
-| `0x81c149dc` | [`sango_text_draw_legacy`](../src/render/raster.c#L309) |
-| `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L422) |
-| `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L465) |
-| `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L472) |
-| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L500) |
-| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L507) |
-| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L544) |
-| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L586) |
-| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L594) |
-| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L607) |
-| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L615) |
-| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L627) |
+| `0x81c14504` | [`sango_raster_draw_opaque`](../src/render/raster.c#L82) |
+| `0x81c14690` | [`sango_raster_draw_masked`](../src/render/raster.c#L151) |
+| `0x81c14838` | [`sango_raster_draw_masked_screen`](../src/render/raster.c#L238) |
+| `0x81c149dc` | [`sango_text_draw_legacy`](../src/render/raster.c#L322) |
+| `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L435) |
+| `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L478) |
+| `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L485) |
+| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L513) |
+| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L520) |
+| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L557) |
+| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L599) |
+| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L607) |
+| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L620) |
+| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L628) |
+| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L640) |
 
 ## src/resources/library.c
 

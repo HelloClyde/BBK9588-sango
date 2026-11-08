@@ -55,6 +55,8 @@ int sango_load_package_and_buffers(void)
                         g_aux_context = bbk_compatible_context_create();
                         g_scratch_buffer_address = bbk_alloc(0x1000);
                         failed = (uint32_t)(g_scratch_buffer_address == 0);
+                        if (!failed)
+                            sango_color_load(library_path, library_bytes);
                     }
                 }
             }
@@ -68,6 +70,7 @@ int sango_load_package_and_buffers(void)
 /* 原函数 0x81c13f64 */
 int sango_release_package_and_buffers(void)
 {
+    sango_color_unload();
     if (g_resource_package_address != 0)
     {
         bbk_free_if_nonnull(g_resource_package_address);

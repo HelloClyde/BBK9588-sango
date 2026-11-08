@@ -2,7 +2,7 @@
   "cases": 190,
   "passed": 190,
   "failed": 0,
-  "scope": "Original MIPS versus rebuilt C machine code with deterministic modeled SDK file/heap/GUI boundaries. Not complete firmware or hardware validation.",
+  "scope": "Original MIPS versus rebuilt C machine code with deterministic modeled SDK file/heap/GUI boundaries. Not complete firmware or hardware validation. Optional color loader disabled only for this original-gameplay comparison; real loader tested by color-mips-validation.json.",
   "skipped_cases": [
     {
       "function": "bbk_rand",
@@ -3711,6 +3711,5 @@
       "original_calls": 6,
       "rebuilt_calls": 6
     }
-  ],
-  "bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a"
+  ]
 }

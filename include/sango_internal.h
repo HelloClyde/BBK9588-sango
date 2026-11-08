@@ -14,5 +14,6 @@
 #include "sango_runtime.h"
 #include "sango_statusbar.h"
 #include "sango_credits.h"
+#include "sango_color.h"
 #include "sango_battle_ui.h"
 #endif

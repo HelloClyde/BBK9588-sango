@@ -3,7 +3,7 @@
 本仓库不是整仓统一许可证。只有下列新增、独立编写的构建与适配代码采用 MIT：
 
 - `build.py`、`tools/*.py` 和 `.github/workflows/release.yml`；
-- `src/sango_entry.c`、`src/sango_statusbar.c`、`src/sango_credits.c`、`src/sango_battle_ui.c`；
+- `src/sango_entry.c`、`src/sango_statusbar.c`、`src/sango_credits.c`、`src/sango_battle_ui.c`、`src/sango_color.c`、`src/sango_color_sdk.c`；
 - 与上述新模块对应的头文件，新增类型/内部接口组织头文件，以及项目私有
   `include/bda_sango_compat.h`、`include/sango_sdk_bindings.h`。其中恢复的原接口、结构布局及地址信息不因此取得额外授权。
 

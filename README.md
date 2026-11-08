@@ -14,8 +14,9 @@
 ## 快速开始
 
 发布前可按下方命令本地构建。正式发布后，从本仓库 Releases 选择同一版本的 `-update.zip`，
-或同时下载独立 BDA 和 `sango.lib`。
-仅更换应用图标为 9288S 原图的彩色高清重绘，游戏内仍使用原灰度资源及已恢复的底栏。
+或同时下载同版本 BDA、`sango.lib` 和 `sango.clr`。
+游戏内全部1204帧素材已用 GPT Image 上色，包括头像、地图、兵种、动画、菜单和补充界面；
+原灰度素材和此前三张彩色草稿保留。彩色目录与格式见 [彩色素材](assets/color/README.md)。
 
 适用于此前验证的 **9588/C200 固件环境**；不宣称适配所有 BBK 机型。
 升级 ZIP 中的目录与设备内置存储根目录对应：
@@ -25,11 +26,13 @@
 ├── 程序/
 │   └── 三国霸业.bda
 └── 数据/游戏/
-    └── sango.lib
+    ├── sango.lib
+    └── sango.clr
 ```
 
 源码包含原 `sango.LIB` 完整解包素材与新增素材，构建时重新生成 `sango.lib`。
-新版资源库为 461116 字节，包含原 87 条资源和补充底栏、制作群组两条资源，随升级包安装。
+原索引资源库为461116字节，包含原87条资源及补充底栏、制作群组；
+`sango.clr` 为2282488字节 RGB565 彩色包，覆盖1204帧，重复图案共用654份像素。两库随升级包一起安装。
 文件名沿用原来的 **sango.lib**，不是 sanguo.lib；Windows/设备中的旧拼写 `sango.LIB` 是同名文件。
 本包不包含系统固件、原版 BDA、字库转储或个人存档。
 
@@ -59,9 +62,9 @@ python tools/verify_artifacts.py --require-validated
 已有编译器时可指定路径：`python build.py --cc PATH/TO/mipsel-none-elf-gcc.exe`，
 或设置 `SANGO_CC`。构建需要 Pillow 编码仓库中的图片，无需图像生成服务或原版 BDA/LIB 文件。
 
-输出 `build/三国霸业.bda` 和 `build/sango.lib`；打包输出在 `dist/`，包括独立 BDA、`sango.lib`、升级 ZIP、`BUILD_INFO.json`
+输出 `build/三国霸业.bda`、`build/sango.lib`、`build/sango.clr`；打包输出在 `dist/`，包括这三份文件、升级 ZIP、`BUILD_INFO.json`
 及逐文件 `SHA256SUMS.txt`。普通构建不会发布任何远程内容。
-`--require-validated` 要求 BDA 与运行证据、LIB 与资源验证记录分别相符；修改代码或素材后，须重新验证并更新参考记录。
+`--require-validated` 要求 BDA、LIB 和 CLR 分别与当前验证记录相符；修改代码或素材后，须重新验证并更新参考记录。
 
 ### 阅读与修改源码
 
@@ -89,18 +92,25 @@ python tools/verify_artifacts.py --require-validated
 python tools/sango_lib.py pack
 python tools/sango_lib.py pack --original-only -o build/sango-original.lib
 python tools/test_sango_lib.py
+python tools/color_assets.py build
+python -m pip install -r requirements-validation.txt
+python tools/test_color_assets.py
 ```
 
 默认输出 `build/sango.lib`。原库未修改时，`--original-only` 可逐字节还原 439720 字节原文件。
 已导出 1202 张 PNG、27 组动画指令及 7 张战场地图；包括100～107号菜单选中动画。
 其余24条原资源保留二进制记录，无遗漏回包。
 新增底栏/制作群组以同一份 PNG 生成 LIB 条目和当前 C 内嵌数据；应用图标由 SDK 打入 BDA。
-详细格式、编辑约束及解包命令见 [资源说明](assets/library/README.md)。
+彩色PNG使用相同语义目录和帧名；`assets/color/catalog.json` 记录原资源、帧号、母图裁切和目标文件。
+彩色绘制通过固定SDK的命名 RGB565 接口，透明遮罩、动画指令及存档布局沿用原数据。
+缺少彩色包或其LIB校验不符时回退灰度。修改彩色PNG后运行 `python tools/color_assets.py refresh` 再完整构建。
+详细格式、编辑约束及解包命令见 [原库说明](assets/library/README.md) 和 [彩色包说明](assets/color/README.md)。
 `python tools/audit_resource_usage.py --check` 可检查89项资源的命名依据、调用表达式和选择表是否仍与代码相符。
 
 ## 截图
 
-以下均为计划发布的确切 BDA 在本地 C200 固件模拟器中的真实截图，非真机截图或设计稿。
+以下为当前彩色 BDA 在本地 C200 固件模拟器中的真实截图，非真机截图或设计稿。
+验证以准确 BDA、扩展LIB及CLR的RAM装载隔离合成NAND的ECC差异；文件加载另由编译MIPS检查。
 战斗图片来自受控战场界面夹具；未宣称完整战斗或战役已验证。
 
 | 主菜单 | 战略地图 | 战斗界面 |
@@ -115,7 +125,7 @@ python tools/test_sango_lib.py
 
 ## 依赖
 
-- **使用成品**：9588/C200 环境，安装同一版本的 BDA 与 `sango.lib`，不需要 SDK 或 Python。
+- **使用成品**：9588/C200 环境，安装同一版本的 BDA、`sango.lib` 与 `sango.clr`，不需要 SDK 或 Python。
 - **SDK**：[HelloClyde/BBK9588-bda-sdk](https://github.com/HelloClyde/BBK9588-bda-sdk)，
   子模块固定 `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，没有自动升级。
 - **工具链**：MIPS O32 小端、soft-float，已验证 GCC 15.2.0；SDK 安装脚本校验工具链 ZIP 的 SHA-256。
@@ -132,6 +142,6 @@ python tools/test_sango_lib.py
 - 原游戏制作群组：策划 **BBK gamegroup**；程序 **通宵虫、南方小鬼**；美工 **Sunday**。
 - **HelloClyde / BBK9588-bda-sdk**：SDK、BDA 编码与校验工具。
 - 提供原文件、9588 真机反馈、9288S 对照及修复需求的使用者。
-- 应用图标、恢复底栏和制作群组母图通过 GPT Image 生成；来源和提示词在 `assets/` 中保存。
+- 应用图标、恢复底栏、制作群组及全部游戏内彩色母图通过 GPT Image 生成；来源和提示词在 `assets/` 中保存。
 
 致谢不改变原作、SDK 或素材的许可范围。发布步骤见 [发布说明](docs/RELEASING.md)。

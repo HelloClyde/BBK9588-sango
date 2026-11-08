@@ -46,6 +46,19 @@ jobs:
         run: |
           python build.py
           if ($LASTEXITCODE -ne 0) { throw 'Build or BDA validation failed' }
+      - name: Check compiled RGB565 resource path and retained battle layout
+        shell: pwsh
+        run: |
+          python -m pip install -r requirements-validation.txt
+          if ($LASTEXITCODE -ne 0) { throw 'MIPS validation dependency setup failed' }
+          python tools/test_color_assets.py
+          if ($LASTEXITCODE -ne 0) { throw 'Compiled RGB565 checks failed' }
+          python tools/test_battle_hud.py
+          if ($LASTEXITCODE -ne 0) { throw 'Battle HUD checks failed' }
+          python tools/test_battle_summary.py
+          if ($LASTEXITCODE -ne 0) { throw 'Battle summary checks failed' }
+          python tools/test_battle_viewport.py
+          if ($LASTEXITCODE -ne 0) { throw 'Battle viewport checks failed' }
       - name: Package update assets
         shell: pwsh
         env:

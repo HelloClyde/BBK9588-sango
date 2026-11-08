@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "b37442db21bc9bd11178efbba7c7a2f170ce721c",
+  "baseline_bda_sha256": "8593e3ebccdcc9997f1a80e1aa8bfea0452952d6e7636da36473c74997c1c66a",
+  "bda_sha256": "5193aaf0db29ca7eeef367456541bfa39781c36c9f4849fb116d97245b1c59a0",
+  "elf_sha256": "fe2bb9137d1af3f1c4cf48fe4a8ce05cf58842e160a0bfa549b120335d25b0c1",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "sango_clr_sha256": "ed6a96a375249e4a0b104301c7ed35ca5d819f467d0e826814ababbaa0e39ca4",
+  "frames": 1204,
+  "unique_rgb_frames": 654,
+  "selected_atlases": 18,
+  "color_bytes": 2282488,
+  "mips_color_checks": 3818,
+  "combat_sprite_masks_checked": 140,
+  "existing_mips_checks": 1167,
+  "mips_logic_comparisons": 27163,
+  "native_c200_color_interface_checks": 14,
+  "initialized_bytes_identical": 45536,
+  "initialized_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "gameplay_and_save_sources_unchanged": true,
+  "library_and_animation_data_unchanged": true,
+  "battle_rectangles": {
+    "map": [
+      0,
+      0,
+      240,
+      224
+    ],
+    "status": [
+      0,
+      224,
+      240,
+      24
+    ],
+    "toolbar": [
+      0,
+      248,
+      240,
+      36
+    ],
+    "summary": [
+      0,
+      284,
+      240,
+      36
+    ]
+  },
+  "source_sha256_lf": {
+    "src/sango_color.c": "5a11c214863b881ea2304b493e213e04ffd35a9064d062c8dfc0558813ff8b8f",
+    "src/sango_color_sdk.c": "56f89596330bac563ecf5f1f36e17174f672bee40e990f11a83b12d26eb319a9",
+    "include/sango_color.h": "153229572aacb99f42a798343e8b0b006d607f536d5132673de5ae1155d57152",
+    "src/app/memory.c": "f99f1ca6affcfdc31457b286506b0b59415ea4b5683fbf840e3c58c55994edc0",
+    "src/render/raster.c": "5e544010e46bb312b357695850e40376df476e3442070c0c7e3eed0ecb604b48",
+    "src/sango_battle_ui.c": "361695314d5a69fcfb8124543aab24c333a9c12f9bfbb500ae76b7221a8ee3b3",
+    "src/sango_statusbar.c": "5bd6f9fe2736a12b8689f00c8cd8c9f055b7c43bd3e8431064601930433d8d11",
+    "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
+    "tools/color_assets.py": "aea7f3d81b50f31ed35fd53ec8f5a76bdf50bcbb716c32bebc6fe55226e97ff7",
+    "tools/test_color_assets.py": "e674ca5a544b8c5d7d5e71c576dc135fbd57fa889d6d4053385fd5db78f94bf8",
+    "assets/color/catalog.json": "ad5595fdb8d38db775c86891647ea10e3d455b6c7fbca252e0f3e75f1b572d96",
+    "build.py": "f831ad30f0ecc1da15c6f3a753cde267b09466d9a0c7ca58913d724532372f50"
+  },
+  "report_sha256_lf": {
+    "validation/color-mips-validation.json": "c40fc9def833dc4e9a09aeeead163c1fb07a84f983704f242f7b87acfd1790da",
+    "validation/color-firmware-validation.json": "5c3efdd00781dfc05986d6aeb6c163e675d2e5716c28a1d10b38246cbf129dac",
+    "validation/control-flow-validation.json": "f71a6c72ca4ef486ae7adc531230473b6edf3cbdab40db62f41ea7f3cc4832c5",
+    "validation/differential.json": "85808b16f8434d74dd694f9c2b77fa83192b06ca9c718e076783fd55ac2e3146",
+    "validation/statusbar-validation.json": "7014185d16959d5321610f6c94dbb4fcdbd7e78df790f40f38ae5728816f8164",
+    "validation/port-fixes-validation.json": "8174a6f825c7f91e07cbfc416f9d78f63a2c826499421b259c6fd3d9b3ebc833",
+    "validation/battle-touch-validation.json": "56e3c1b15cce77fc92cf3930f8aa3461bf2345e87942a091aaf566d4a38656cf",
+    "validation/day-popup-validation.json": "8def0440e73f79580f790b778beb5c494de8b709f7667580eaaa2630d1c20bda",
+    "validation/battle-hud-validation.json": "cf2868be94f45dbe3430ef1809329daad920e378f78bcb25ff5b78fa8b6c8b19",
+    "validation/battle-summary-validation.json": "86281b02d676a60387b264fe76d56794da85362717c7df31752042ef86f6b228",
+    "validation/battle-viewport-validation.json": "7362e66f13fbd5e1882493bc403f6c3ce1c3ad9b6e94d03c5bfef64f6b65e90e",
+    "validation/library-loader-host.json": "c403a979ace2ee43b61f6b1badb99dba5f2854a3e6c344e8ab1f0a848a7ab9ed"
+  },
+  "scope": "RGB565 companion adds color through named SDK APIs with original masks and source-offset indices. MIPS file lifecycle is modeled; native exact BDA/LIB/CLR staged in controlled RAM, production CRC/parser/rendering and hardware input execute. Controlled battle UI, not full battle/campaign or physical-device proof."
+}

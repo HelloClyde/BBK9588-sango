@@ -1,0 +1,208 @@
+#include "sango_internal.h"
+#include "sango_color.h"
+
+/* Optional RGB565 companion for the unmodified indexed sango.lib. This cache
+ * lives outside the legacy saved state. All display calls use named SDK APIs. */
+static uint8_t *color_file;
+static uint32_t color_entries, color_library_bytes;
+static bool color_file_owned;
+
+static uint32_t color_read32(const uint8_t *bytes)
+{
+    return (uint32_t)bytes[0] | ((uint32_t)bytes[1] << 8) | ((uint32_t)bytes[2] << 16) |
+           ((uint32_t)bytes[3] << 24);
+}
+
+static uint16_t color_read16(const uint8_t *bytes)
+{
+    return (uint16_t)((uint16_t)bytes[0] | ((uint16_t)bytes[1] << 8));
+}
+
+static uint32_t color_crc32(const uint8_t *bytes, uint32_t size)
+{
+    uint32_t crc = 0xffffffffu, offset, bit;
+    for (offset = 0; offset < size; ++offset)
+    {
+        crc ^= bytes[offset];
+        for (bit = 0; bit < 8; ++bit)
+            crc = (crc >> 1) ^ ((0u - (crc & 1u)) & 0xedb88320u);
+    }
+    return ~crc;
+}
+
+void sango_color_unload(void)
+{
+    if (color_file_owned && color_file)
+        bbk_free_if_nonnull(color_file);
+    color_file = NULL;
+    color_entries = color_library_bytes = 0;
+    color_file_owned = false;
+}
+
+/* The file loader owns its allocation; a verifier may also lend an exact
+ * buffer. Bounds and LIB identity are validated before any colored rendering. */
+int sango_color_use_buffer(void *buffer, uint32_t bytes, uint32_t library_bytes)
+{
+    const uint8_t magic[] = {'S', 'G', 'C', 'O', 'L', 'O', 'R', '1'};
+    uint8_t *data = (uint8_t *)buffer;
+    uint32_t count, payload, index, previous = 0;
+    sango_color_unload();
+    if (!data || bytes < 32 || bytes > 16u * 1024u * 1024u)
+        return 0;
+    for (index = 0; index < sizeof(magic); ++index)
+        if (data[index] != magic[index])
+            return 0;
+    count = color_read32(data + 12);
+    payload = color_read32(data + 20);
+    if (color_read32(data + 8) != bytes || color_read32(data + 16) != 32 || !count ||
+        count > 4096 || payload != 32 + count * 16 || payload > bytes ||
+        color_read32(data + 24) != library_bytes ||
+        color_read32(data + 28) !=
+            color_crc32((const uint8_t *)g_resource_package_address, library_bytes))
+        return 0;
+    for (index = 0; index < count; ++index)
+    {
+        const uint8_t *entry = data + 32 + index * 16;
+        uint32_t source = color_read32(entry), pixels = color_read32(entry + 4);
+        uint32_t width = color_read16(entry + 8), height = color_read16(entry + 10);
+        uint32_t flags = color_read32(entry + 12), raw_bytes;
+        if (!width || width > 320 || !height || height > 320 ||
+            (flags != 0 && flags != 1 && flags != 32 && flags != 33))
+            return 0;
+        raw_bytes = ((width + 3) / 4) * height * ((flags & 1) ? 2 : 1);
+        if ((index && source <= previous) || source > library_bytes ||
+            raw_bytes > library_bytes - source || (pixels & 1) || pixels < payload ||
+            pixels > bytes || width * height * 2 > bytes - pixels)
+            return 0;
+        previous = source;
+    }
+    color_file = data;
+    color_entries = count;
+    color_library_bytes = library_bytes;
+    return 1;
+}
+
+void sango_color_load(const char *library_path, uint32_t library_bytes)
+{
+    char path[256];
+    uint32_t length, size;
+    void *file, *buffer;
+    sango_color_unload();
+    length = bbk_strlen((char *)library_path);
+    if (length < 4 || length >= sizeof(path))
+        return;
+    bbk_memcpy(path, (void *)library_path, length + 1);
+    path[length - 3] = 'c';
+    path[length - 2] = 'l';
+    path[length - 1] = 'r';
+    file = bbk_fopen(path, "rb");
+    if (!file)
+        return;
+    bbk_fseek(file, 0, 2);
+    size = bbk_ftell(file);
+    if (size < 32 || size > 16u * 1024u * 1024u)
+    {
+        bbk_fclose(file);
+        return;
+    }
+    buffer = bbk_alloc(size);
+    if (!buffer)
+    {
+        bbk_fclose(file);
+        return;
+    }
+    bbk_fseek(file, 0, 0);
+    if (bbk_fread(buffer, size, 1, file) != 1)
+    {
+        bbk_fclose(file);
+        bbk_free_if_nonnull(buffer);
+        return;
+    }
+    bbk_fclose(file);
+    if (sango_color_use_buffer(buffer, size, library_bytes))
+        color_file_owned = true;
+    else
+        bbk_free_if_nonnull(buffer);
+}
+
+const uint16_t *sango_color_pixels(uint32_t original_pixels, uint32_t width, uint32_t height,
+                                   int masked)
+{
+    uint32_t offset, first = 0, last = color_entries;
+    if (!color_file || original_pixels < g_resource_package_address)
+        return NULL;
+    offset = original_pixels - g_resource_package_address;
+    if (offset >= color_library_bytes)
+        return NULL;
+    while (first < last)
+    {
+        uint32_t middle = first + (last - first) / 2;
+        const uint8_t *entry = color_file + 32 + middle * 16;
+        uint32_t source = color_read32(entry);
+        if (source < offset)
+            first = middle + 1;
+        else if (source > offset)
+            last = middle;
+        else
+        {
+            if (color_read16(entry + 8) != width || color_read16(entry + 10) != height ||
+                (color_read32(entry + 12) & 1) != (uint32_t)(masked != 0))
+                return NULL;
+            return (const uint16_t *)(color_file + color_read32(entry + 4));
+        }
+    }
+    return NULL;
+}
+
+void sango_color_put_pixel(short x, short y, uint16_t color, unsigned int target)
+{
+    bda_handle_t context = (bda_handle_t)(target ? target : g_draw_context);
+    if (x < 0 || x >= 240 || y < 0 || y >= 320)
+        return;
+    if (!target)
+        sango_color_sdk_guard(1);
+    sango_color_sdk_pixel((uint32_t)context, x, y, bda_gui_rgb565_avoid_black_key(color));
+    if (!target)
+        sango_color_sdk_guard(0);
+}
+
+int sango_color_draw_raster(uint32_t x, short y, uint32_t width, uint32_t height,
+                            uint32_t original_pixels, uint32_t target, int masked)
+{
+    uint32_t column, row, stride = (width + 3) / 4;
+    const uint8_t *mask = (const uint8_t *)original_pixels;
+    const uint16_t *pixels = sango_color_pixels(original_pixels, width, height, masked);
+    bda_handle_t context = (bda_handle_t)(target ? target : g_draw_context);
+    if (!pixels)
+        return 0;
+    if (!target)
+        sango_color_sdk_guard(1);
+    for (row = 0; row < height; ++row)
+        for (column = 0; column < width; ++column)
+        {
+            int screen_x = (short)((x + column) & 0xffffu);
+            int screen_y = (int)y + row;
+            if (screen_x < 0 || screen_x >= 240 || screen_y < 0 || screen_y >= 320)
+                continue;
+            if (masked && ((mask[row * stride + column / 4] >> (6 - (column % 4) * 2)) & 1))
+                continue;
+            sango_color_sdk_pixel((uint32_t)context, screen_x, screen_y,
+                                  bda_gui_rgb565_avoid_black_key(pixels[row * width + column]));
+        }
+    if (!target)
+        sango_color_sdk_guard(0);
+    return 1;
+}
+
+int sango_color_draw_resource(unsigned int resource, int x, short y, unsigned int target)
+{
+    const SangoBitmapHeader *bitmap;
+    if (!color_file)
+        return 0;
+    bitmap =
+        (const SangoBitmapHeader *)sango_resource_item(resource, 1, g_resource_package_address);
+    if (!bitmap)
+        return 0;
+    return sango_color_draw_raster(x, y, bitmap->width, bitmap->height, (uint32_t)(bitmap + 1),
+                                   target, bitmap->flags & 1);
+}

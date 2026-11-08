@@ -23,6 +23,7 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
 {
     unsigned int row_bytes, plane_bytes, plane_count, width, height, x, y;
     const uint8_t *mask, *colors;
+    const uint16_t *rgb;
     if (!bitmap || !reference_width || reference_width > bitmap->width || bitmap->width > 240 ||
         !bitmap->height || bitmap->height > 16 || frame >= bitmap->frames)
         return;
@@ -31,6 +32,7 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
     plane_count = (bitmap->flags & 1) ? 2 : 1;
     mask = (const uint8_t *)(bitmap + 1) + frame * plane_bytes * plane_count;
     colors = mask + ((bitmap->flags & 1) ? plane_bytes : 0);
+    rgb = sango_color_pixels((uint32_t)mask, bitmap->width, bitmap->height, bitmap->flags & 1);
     width = reference_width * 3 / 2;
     height = bitmap->height * 3 / 2;
     for (y = 0; y < height; ++y)
@@ -46,6 +48,12 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
             shift = 6 - (source_x % 4) * 2;
             if ((bitmap->flags & 1) && ((mask[offset] >> shift) & 1))
                 continue;
+            if (rgb)
+            {
+                sango_color_put_pixel(left + x, top + y, rgb[source_y * bitmap->width + source_x],
+                                      target);
+                continue;
+            }
             gray = (colors[offset] >> shift) & 3;
             sango_display_put_gray_pixel((short)(left + x), (short)(top + y), gray, target);
         }

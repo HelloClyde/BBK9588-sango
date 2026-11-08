@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
 SDK_COMMIT='ef3bf3b7328a3a8fa9ba48593c63285300725fb7'
-SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui']
+SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk']
 
 def command(args,**kwargs):
     return subprocess.run([str(x) for x in args],check=True,**kwargs)
@@ -63,6 +63,8 @@ def main():
     library=pack(ROOT/'assets/library')
     (out/'sango.lib').write_bytes(library)
     generate_includes(ROOT/'assets/library',ROOT/'include')
+    from tools.color_assets import build as build_color
+    color = build_color(out/'sango.clr')
     from tools.build_engine import write_unity,add_legacy_debug_symbols
     write_unity(out/'sango_engine.c')
     flags=['-std=gnu99','-EL','-march=mips32','-mabi=32','-msoft-float','-mno-abicalls',
@@ -87,9 +89,12 @@ def main():
     reference=json.loads((ROOT/'validation/reference-build.json').read_text(encoding='utf-8'))
     result={'bda':'build/三国霸业.bda','bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),
         'library':'build/sango.lib','library_bytes':len(library),'library_sha256':hashlib.sha256(library).hexdigest(),
+        'color':'build/sango.clr','color_bytes':color['bytes'],'color_sha256':color['sha256'],
+        'color_frames':color['frames'],
         'sdk_commit':revision,'compiler':subprocess.check_output([str(cc),'--version'],text=True).splitlines()[0],
         'matches_runtime_reference':hashlib.sha256(data).hexdigest()==reference['bda_sha256'],
-        'matches_library_reference':hashlib.sha256(library).hexdigest()==reference.get('sango_lib_sha256')}
+        'matches_library_reference':hashlib.sha256(library).hexdigest()==reference.get('sango_lib_sha256'),
+        'matches_color_reference':color['sha256']==reference.get('sango_clr_sha256')}
     (out/'build-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     # JSON escapes keep redirected Windows logs valid under non-Chinese locales.
     print(json.dumps(result,indent=2))
