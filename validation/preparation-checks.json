@@ -40,5 +40,16 @@
     "all_dist_files_byte_identical": true,
     "working_tree_clean_after_build": true,
     "sdk_working_tree_clean": true
+  },
+  "code_usage_clean_build": {
+    "source_commit": "559c6fd",
+    "resource_code_rules": 89,
+    "code_usage_check": true,
+    "resource_codec_checks": 10,
+    "menu_frames_exported": 16,
+    "exact_bda_and_lib_hashes_preserved": true,
+    "release_integrity_checks": true,
+    "working_tree_clean": true,
+    "sdk_working_tree_clean": true
   }
 }
