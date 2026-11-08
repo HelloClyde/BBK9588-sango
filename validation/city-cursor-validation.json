@@ -37,5 +37,7 @@
     "validation/battle-viewport-validation.json": "a49f331752a6cab4d859d70a3ed1a45a81e787a62b0947e146c2ed9dd57071d0",
     "validation/library-loader-host.json": "b74affbba2e988e3eabbbbbb8e2242ff55f07c52a9630da436fa264687012b13"
   },
-  "scope": "Real compiled MIPS keyed-alpha decoding and native C200 exact arrow silhouette, down/up input, transparent background equality and old-glyph restoration. Only resource056 color entry/pixels changed; native borrowed-buffer staging bypasses synthetic NAND ECC, file lifecycle modeled separately. No physical-device/full-campaign verification."
+  "scope": "Real compiled MIPS keyed-alpha decoding and native C200 exact arrow silhouette, down/up input, transparent background equality and old-glyph restoration. Only resource056 color entry/pixels changed; native borrowed-buffer staging bypasses synthetic NAND ECC, file lifecycle modeled separately. No physical-device/full-campaign verification.",
+  "snapshot_commit": "2502778ef87057667984798a10f7c94980fab931",
+  "history_note": "Historical cursor-only update. Source/report hashes resolve at snapshot_commit; current battle-color update is battle-color-review.json."
 }

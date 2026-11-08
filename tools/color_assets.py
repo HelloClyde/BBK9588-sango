@@ -105,7 +105,7 @@ def transparent_background(image, policy):
     independent of illustration generation and the original LIB mask planes.
     """
     if not policy:return set()
-    if policy.get('mode')!='edge-connected-white':
+    if policy.get('mode') not in ('edge-connected-white','all-near-white'):
         raise ValueError('Unsupported color transparency policy')
     width,height=image.size
     pixels=list(image.convert('RGB').get_flattened_data())
@@ -113,6 +113,8 @@ def transparent_background(image, policy):
     def background(index):
         color=pixels[index]
         return min(color)>=minimum and max(color)-min(color)<=chroma
+    if policy['mode']=='all-near-white':
+        return {index for index in range(width*height) if background(index)}
     pending=[x for x in range(width)]+[(height-1)*width+x for x in range(width)]
     pending += [y*width for y in range(height)]+[y*width+width-1 for y in range(height)]
     seen=set();transparent=set()

@@ -24,6 +24,7 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
     unsigned int row_bytes, plane_bytes, plane_count, width, height, x, y;
     const uint8_t *mask, *colors;
     const uint16_t *rgb;
+    bool keyed_alpha;
     if (!bitmap || !reference_width || reference_width > bitmap->width || bitmap->width > 240 ||
         !bitmap->height || bitmap->height > 16 || frame >= bitmap->frames)
         return;
@@ -33,6 +34,9 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
     mask = (const uint8_t *)(bitmap + 1) + frame * plane_bytes * plane_count;
     colors = mask + ((bitmap->flags & 1) ? plane_bytes : 0);
     rgb = sango_color_pixels((uint32_t)mask, bitmap->width, bitmap->height, bitmap->flags & 1);
+    keyed_alpha = rgb && (sango_color_frame_flags((uint32_t)mask, bitmap->width, bitmap->height,
+                                                  bitmap->flags & 1) &
+                          SANGO_COLOR_TRANSPARENT_ZERO);
     width = reference_width * 3 / 2;
     height = bitmap->height * 3 / 2;
     for (y = 0; y < height; ++y)
@@ -46,10 +50,12 @@ static void draw_status_bitmap(const SangoBitmapHeader *bitmap, unsigned int fra
                 source_x = bitmap->width - 1;
             offset = source_y * row_bytes + source_x / 4;
             shift = 6 - (source_x % 4) * 2;
-            if ((bitmap->flags & 1) && ((mask[offset] >> shift) & 1))
+            if (!keyed_alpha && (bitmap->flags & 1) && ((mask[offset] >> shift) & 1))
                 continue;
             if (rgb)
             {
+                if (keyed_alpha && !rgb[source_y * bitmap->width + source_x])
+                    continue;
                 sango_color_put_pixel(left + x, top + y, rgb[source_y * bitmap->width + source_x],
                                       target);
                 continue;

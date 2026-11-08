@@ -1,10 +1,10 @@
 {
-  "passed": 20,
+  "passed": 26,
   "failed": 0,
-  "bda_sha256": "45038b93b611b44426cb6e0377454f4e62ad8cb908bad16ffca5cf9012082402",
+  "bda_sha256": "1b02eb5e7807ba3d5230cb4a6bae732ec43ffd42e959bf90b16949340a7a3386",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
-  "color_sha256": "9d5fda527c01a4e9364ccc0089d9f10f57bf7ef3a8eb57fcdad738fdfed114de",
-  "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled terrain-only battle fixture. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
+  "color_sha256": "785de7fe0a575b05406da637eea26ab6e89dfdf9cdb47bbd219b5ffab80dedd4",
+  "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled 20-unit battle fixture, backdrop probe and four production timeline ranges. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
   "cases": [
     {
       "name": "Native menu displays colored frame and panels",
@@ -16,61 +16,97 @@
       "name": "Native colored day-1 frame is centered and exact",
       "passed": true,
       "screenshot": "docs/screenshots/color/day-1.png",
-      "screenshot_sha256": "d3f49dc89242bba53d0cc6f5369d0fe23bb2165aca81d50a8f61505d5a05919e"
+      "screenshot_sha256": "705f207604e7da2a6c63a25fcace54db619542b8dc387901caf051166a44d844"
     },
     {
       "name": "Native colored day-10 frame is centered and exact",
       "passed": true,
       "screenshot": "docs/screenshots/color/day-10.png",
-      "screenshot_sha256": "30432f61dc5781139d03abc2424df6cb8a3be336b5cb775bdbf4f03617fc47be"
+      "screenshot_sha256": "05e25a507c05eccee4672bdbc00c12cbb58fdbcfad34cb9caac984b190a54338"
     },
     {
       "name": "Battle toolbar preserves full 240x36 RGB565 source",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+      "screenshot_sha256": "acebc72b2a5c883afa1a04e0c3bd71d9ed9799c9106e1fbc73ce9b7426032c2a"
     },
     {
       "name": "Battle status borders/weather retain original 3:2 geometry with RGB color",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+      "screenshot_sha256": "acebc72b2a5c883afa1a04e0c3bd71d9ed9799c9106e1fbc73ce9b7426032c2a"
     },
     {
       "name": "Battle terrain and portrait summary both display color",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+      "screenshot_sha256": "acebc72b2a5c883afa1a04e0c3bd71d9ed9799c9106e1fbc73ce9b7426032c2a"
     },
     {
       "name": "Native colored info opens at retained touch position",
       "passed": true,
       "screenshot": "docs/screenshots/color/info.png",
-      "screenshot_sha256": "4d2e2bd0f708980193f104a1db372fa593d9988f768f7d5e1a8806a46fd38a70"
+      "screenshot_sha256": "788ec43b3c2b834ef6947dfc6e18fcfdd4b790f93847b88dd39be33f4e2ac452"
     },
     {
       "name": "Native info return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/info-return.png",
-      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+      "screenshot_sha256": "acebc72b2a5c883afa1a04e0c3bd71d9ed9799c9106e1fbc73ce9b7426032c2a"
     },
     {
       "name": "Native colored find opens at retained touch position",
       "passed": true,
       "screenshot": "docs/screenshots/color/find.png",
-      "screenshot_sha256": "ab78c6886968e5ad91a6faccca8927f145245d63c28891870840683fc2f663b0"
+      "screenshot_sha256": "b11e69f1a7e83c01670911fb97ffee3cd5235e3933cbe10a830f1a1d370b0a3c"
     },
     {
       "name": "Native find return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/find-return.png",
-      "screenshot_sha256": "c68cc010f5419ae3aa3ac16f7ea3e895c6bb8c3c67d070be3e878e6ae0f7d941"
+      "screenshot_sha256": "acebc72b2a5c883afa1a04e0c3bd71d9ed9799c9106e1fbc73ce9b7426032c2a"
     },
     {
       "name": "Battle cursor movement preserves colored footer",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "d22364d34396b6ba204e5c58e7c449b179ecedc80077a70612ff5f87a85689a3"
+      "screenshot_sha256": "87158152dab9d5c25a67a88fa434315e27f74fd92117fe841d20991562aad824"
+    },
+    {
+      "name": "Native sprite overlay changes the colored backdrop",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/animation-overlay.png",
+      "screenshot_sha256": "f3e2f23272f138c080a79392b06f2925b692fc3f2415f2f6ed0db1638b498eca"
+    },
+    {
+      "name": "Native SDK snapshot restores all 76800 pixels including black and white",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/animation-restored.png",
+      "screenshot_sha256": "1df2b302e46cfee801eb9302036bb33f66f053f2f2063e7911ece961a12a7d93"
+    },
+    {
+      "name": "Native animation 19 matches compiled timeline and retains colored background",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/animation-19-final.png",
+      "screenshot_sha256": "81c18912f3c0399528f0b6c2297d55dc5d2ed7fcdf99c286a33828beaba87802"
+    },
+    {
+      "name": "Native animation 27 matches compiled timeline and retains colored background",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/animation-27-final.png",
+      "screenshot_sha256": "673c2499508f4b4138c0190b013a9d0e2cdfd286508af878cf71666e9446e8a7"
+    },
+    {
+      "name": "Native animation 35 matches compiled timeline and retains colored background",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/animation-35-final.png",
+      "screenshot_sha256": "6b21c88a361ca36c392956ecb1ed5891d4d9128ee0fc84acb91e4e12d438a1d5"
+    },
+    {
+      "name": "Native animation 38 matches compiled timeline and retains colored background",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/animation-38-final.png",
+      "screenshot_sha256": "50487bf0dcdab68e684a89e8e3038ff7a634fd164b8dde38dbbb0d389a875b3c"
     },
     {
       "name": "Native credits match all 76800 compiled RGB565 pixels",

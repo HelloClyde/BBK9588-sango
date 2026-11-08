@@ -31,8 +31,8 @@
       "source_rgba_sha256": "c820738edcc88fb773cb00723ae720f1079a8423e3cba4787a900e6f0a9b8670",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/平原_图块000.png",
-      "batch": "small-00",
-      "color_sha256": "decc908fb5794373aea2739aaab9b87e5fadc9d9a097c5b271a31402e995fce6"
+      "batch": "battle-terrain-00",
+      "color_sha256": "4d0bd0683287539be8493964fe3de2362df5942fc81034876c8bfe3f1ffc07ea"
     },
     {
       "resource": 4,
@@ -47,8 +47,8 @@
       "source_rgba_sha256": "14792bdc37d771494f86de7648947ee20f479598c78d92d6340b752c56015b62",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/平原_图块001.png",
-      "batch": "small-00",
-      "color_sha256": "9962a5cd7d1c80651b53c24b8ac81dc9927b4c10c7bd7862052327f67d6b75c9"
+      "batch": "battle-terrain-00",
+      "color_sha256": "0b3f4adaaf856227b4bf61ccccb71718933a1b92d000741a83f7556d7623aaac"
     },
     {
       "resource": 4,
@@ -63,8 +63,8 @@
       "source_rgba_sha256": "4eeb603e33ca96a136defd0fb455ae04e1367d9ab76710c723139ee28e360e08",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/草地_图块002.png",
-      "batch": "small-00",
-      "color_sha256": "dae9775a22f075aa4b243074e869392a45cbd52edfb804afa0984cd0c5ea2439"
+      "batch": "battle-terrain-00",
+      "color_sha256": "fbed4e7a4cd17075ab91f49c8803b00c50d5299e07402ec28d3fd7ac75331be4"
     },
     {
       "resource": 4,
@@ -79,8 +79,8 @@
       "source_rgba_sha256": "acc072fdc179dce6c8779e61ecc245f93e39f998d0cec1142c9f66be5babaa4b",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/城池_图块003.png",
-      "batch": "small-00",
-      "color_sha256": "fffa1d22c0dc6402473d9e9353a5a43a83253760ff4b639c34079d2910b2bc66"
+      "batch": "battle-terrain-00",
+      "color_sha256": "f3ecb512c22450f5f9b1facf64f72b77dca2d71ffdc880b37ee4872359985ae6"
     },
     {
       "resource": 4,
@@ -95,8 +95,8 @@
       "source_rgba_sha256": "88db3ee2db07e13239204cb9883e73a094596c2e013b60f93c2c0da9fd42c58b",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/村庄_图块004.png",
-      "batch": "small-00",
-      "color_sha256": "3a8146bc5f1e0f81b56e8326b8dac5129fd598ea9c1dec55b590318e9773873a"
+      "batch": "battle-terrain-00",
+      "color_sha256": "a99a2cd684135000860724e2178edd0fed5a43f3061b9a2dc7df8a829bfe3d4a"
     },
     {
       "resource": 4,
@@ -111,8 +111,8 @@
       "source_rgba_sha256": "1f69bc5360a622e93402b474e79f4d9c0b5bf23c4040adc2c35c3efaafd20292",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/森林_图块005.png",
-      "batch": "small-00",
-      "color_sha256": "a8cb7f60af401b31c86ed04a139912bb04042e796ef0f757d3ece09d0dccba95"
+      "batch": "battle-terrain-00",
+      "color_sha256": "53cc507c99be82f13b0a845c32632cc8734d3f1e17715fe5782e5d47acfa40cc"
     },
     {
       "resource": 4,
@@ -127,8 +127,8 @@
       "source_rgba_sha256": "c2166e0b6c68394606068128cce76f78602c6852e4eacd8361017270c5c5cfee",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块006.png",
-      "batch": "small-00",
-      "color_sha256": "6465f3a561458d9393bed4c189d901266ed8b1734c68e1c14b7b058a38afbf0a"
+      "batch": "battle-terrain-00",
+      "color_sha256": "ce77cfe7738448d227eba585c32398173cc49cfd3246aac81b5ca6ac6b26535c"
     },
     {
       "resource": 4,
@@ -143,8 +143,8 @@
       "source_rgba_sha256": "14b662e77b881912bffe2ce269df776f263ab6ebc45b3c05b6b70270f39826aa",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块007.png",
-      "batch": "small-00",
-      "color_sha256": "d7f34a962829aca1ee0cf597a873cba016aca9d2ab7dbad4b06e79cb1bb5c4c6"
+      "batch": "battle-terrain-00",
+      "color_sha256": "6c37201e7bb689e941612ce3e119f722ff38f1cf6af4328d150f626bef915fa2"
     },
     {
       "resource": 4,
@@ -159,8 +159,8 @@
       "source_rgba_sha256": "fb4d312a7b80013a893d33c5da086652f3d56f24e2ed6c8b6bcc50b845ad7082",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块008.png",
-      "batch": "small-00",
-      "color_sha256": "cb247fbfd0c2e080f57f31dbe22f9deee8e74b5f8cf141fd7f354634cc3d8027"
+      "batch": "battle-terrain-00",
+      "color_sha256": "e3895f40beca5305daeb44dbd982472355a2d4fe69e3c302ed7196d684b793e3"
     },
     {
       "resource": 4,
@@ -175,8 +175,8 @@
       "source_rgba_sha256": "c1a09afc9630694e7a660e0a6a1f3bf0b2417c6d5f76f2a822f20ed82a1a20f9",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块009.png",
-      "batch": "small-00",
-      "color_sha256": "60f5b2a56e42df8c3854509d09232d8c00599fe0972a24a1614b0d360d3c8a87"
+      "batch": "battle-terrain-00",
+      "color_sha256": "e2e511787f6741ef21dc00708df7f4d7d9a4845277fef2f8c705c7d61af132ff"
     },
     {
       "resource": 4,
@@ -191,8 +191,8 @@
       "source_rgba_sha256": "efedf37c81036df0ae47ff9430700a00314e6303ea946902897982e52259cf86",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块010.png",
-      "batch": "small-00",
-      "color_sha256": "c2af89b12cf67963217b4945709b4c9ed521ca9ece829a20b489f54282dcbb84"
+      "batch": "battle-terrain-00",
+      "color_sha256": "82941aebe69630143b200a94007c1b57a3fe6d5bb5b8ffb96bc797397ae7c54a"
     },
     {
       "resource": 4,
@@ -207,8 +207,8 @@
       "source_rgba_sha256": "b43db8f294ae5de8ccdff7461f3649fdb0666fb12f2bf58e5646af6cdf6941bd",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块011.png",
-      "batch": "small-00",
-      "color_sha256": "6f57f9eb98497ae764fc539431e1d19c08c13a042159aafb8793d2ea259b2766"
+      "batch": "battle-terrain-00",
+      "color_sha256": "26e1b9509e1f981819358b8509cfdcbfe706de00fe01cef7e666da82dfe57277"
     },
     {
       "resource": 4,
@@ -223,8 +223,8 @@
       "source_rgba_sha256": "f4e36058dfcfb61b8f82cb008be0bf2c0c1691f0a9eb324bc2d00f57bdc30d36",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块012.png",
-      "batch": "small-00",
-      "color_sha256": "d426f717363d876937f8b4dc164c4077ddca7f334990db5833493647d7526df2"
+      "batch": "battle-terrain-00",
+      "color_sha256": "104c4343f995912c37d1b58a719e62a59b601325837456178f193af3b48e1114"
     },
     {
       "resource": 4,
@@ -239,8 +239,8 @@
       "source_rgba_sha256": "a97cb2883a8fa3daad98cac97cc6a6a745dfba941c4fc91c8643dc1355368a65",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块013.png",
-      "batch": "small-00",
-      "color_sha256": "b0b36985ccb6551248a9562baa03f8549aa707667e6263043e40ea856f57e67d"
+      "batch": "battle-terrain-00",
+      "color_sha256": "54d2286ae0b9cc2f2d8186176b81940e4610b4dcf6283911991d71831274beaf"
     },
     {
       "resource": 4,
@@ -255,8 +255,8 @@
       "source_rgba_sha256": "79ea61fb64b0b890da47c76ffaa6cd3777877c6ed66e6a99b8e415aedefa1802",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块014.png",
-      "batch": "small-00",
-      "color_sha256": "cc5e0dcb20a439b46e9e850f11364657d8475a1aa647688c447a86a631514742"
+      "batch": "battle-terrain-00",
+      "color_sha256": "f77897f3a643397c0df7d82ff5ed938e08a35db2db7970bd2e6c086e635cfd81"
     },
     {
       "resource": 4,
@@ -271,8 +271,8 @@
       "source_rgba_sha256": "dbcf9290e40604a8c1fa81ef55a76fdd27f0150a903e3b44bfadd2ef5a7b009f",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/山地_图块015.png",
-      "batch": "small-00",
-      "color_sha256": "10566fd0880f9bdef4acdc4960b3a9ada94c5e04bea12cc31d1996da597c809e"
+      "batch": "battle-terrain-00",
+      "color_sha256": "0d7ccddf74f1d09328f18fa1b51c8757f07796cd2a263ef59c439c93237c17cc"
     },
     {
       "resource": 4,
@@ -287,8 +287,8 @@
       "source_rgba_sha256": "7a6289c92328183b5deafe4d579f7ab3cac3d31635a1bed63678da048c7a6c85",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块016.png",
-      "batch": "small-00",
-      "color_sha256": "89b2f9a71ab774c53059d03d0747272bcbf257b0b6716d0f97ce3951fd047c25"
+      "batch": "battle-terrain-00",
+      "color_sha256": "fbfcef48ee170c75b8bacd5f8622d69743de6363f48f3ed9023e5de3cbe4d196"
     },
     {
       "resource": 4,
@@ -303,8 +303,8 @@
       "source_rgba_sha256": "a451904f0edebdc37272bba4a7181d2815a519d782e87a25beddba96fd6260e6",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块017.png",
-      "batch": "small-00",
-      "color_sha256": "0e5e2aa5427e9b9d7af42d45c81b26363e8be6e709e71ac00d224f3c487bdb94"
+      "batch": "battle-terrain-00",
+      "color_sha256": "a267de82c81c2dd6422d5ffbc925a4cca65eb88ef2d9b3363ec609c5c0c65f02"
     },
     {
       "resource": 4,
@@ -319,8 +319,8 @@
       "source_rgba_sha256": "f5df3b25129f1d576868fadba3ef6fc73243f2fe2cf3c6ddfd49034e48804c08",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块018.png",
-      "batch": "small-00",
-      "color_sha256": "05917ee0c329e7bedbaadcb3e022d1844e3d42d543bfa26df362e34f736c339f"
+      "batch": "battle-terrain-00",
+      "color_sha256": "827e1421e92df5e7678d8d3f24187c4a518e4dd06c5b2925007c808a2c39922e"
     },
     {
       "resource": 4,
@@ -335,8 +335,8 @@
       "source_rgba_sha256": "8d00d1252e8c8da205b6755c6f7dbdc2462690b3b785296b13fbd1f97a134597",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块019.png",
-      "batch": "small-00",
-      "color_sha256": "d50ae26a1fa41577d93a5a3746449032f3208c0e09d744ab10398c52b09703f7"
+      "batch": "battle-terrain-00",
+      "color_sha256": "b7c7359d3ed9268a603d887000f07fa2d88dba47fcb5b72bb7464baa171cca09"
     },
     {
       "resource": 4,
@@ -351,8 +351,8 @@
       "source_rgba_sha256": "31daffb0fc206a0cfadc2ad3c3f400d39789551094422b87b5a26c77fae26fc0",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块020.png",
-      "batch": "small-00",
-      "color_sha256": "82faf96bb07bbaf7d1bc71e91fb0ec8ba70aba8f698d6192f3aafcf9eff13d77"
+      "batch": "battle-terrain-00",
+      "color_sha256": "3a7d389ee1f74dcbbeb8fecc7f785d24f5648206d8175f09584ca1d2b949ce27"
     },
     {
       "resource": 4,
@@ -367,8 +367,8 @@
       "source_rgba_sha256": "7b07b4744a62d00e2cbb9a99af0170e885d8b511488fb2d6fd43677e819b8006",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块021.png",
-      "batch": "small-00",
-      "color_sha256": "afb1dfa2e84ed2283e9eb4acbff50c872931930f2ad2ab09744ac8f638767c4f"
+      "batch": "battle-terrain-00",
+      "color_sha256": "031c9177bc283d71a205df3c93ff4ec2e02af23ac24cb0367da61183bca101fd"
     },
     {
       "resource": 4,
@@ -383,8 +383,8 @@
       "source_rgba_sha256": "7eb7ee10ed37302121247975ea025ca4482438a4ef35159d6ba7995087035438",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块022.png",
-      "batch": "small-00",
-      "color_sha256": "f85af0975f9994640262e0cf0a4c7e43a7be56f177b43709b9dede7b1f2e2963"
+      "batch": "battle-terrain-00",
+      "color_sha256": "0e36d751c7d5bbd0d8b6b1e6e06dd6e72ed05ba46c58c677b5b31b094cd9daec"
     },
     {
       "resource": 4,
@@ -399,8 +399,8 @@
       "source_rgba_sha256": "b8ffb5c80828950ae1097face2822247806fb5dcf43bd4391b0ea11d0d277262",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块023.png",
-      "batch": "small-00",
-      "color_sha256": "d28a8db9c858b4a5fa4342d4ee1934b4ed2a451f17841851f0f3a9e074355666"
+      "batch": "battle-terrain-00",
+      "color_sha256": "f86dbced2758dd8f82f983badc623fc2a21a8990205aa171e4fd7338200d31e0"
     },
     {
       "resource": 4,
@@ -415,8 +415,8 @@
       "source_rgba_sha256": "1a8dc730c15e4df659ad2c088af8c6921a5a40196a89d57205b55a9d3042c08b",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块024.png",
-      "batch": "small-00",
-      "color_sha256": "a162a62cd33476074113c27f83204210d6ade1d2d967f770004182f1ab5dd11c"
+      "batch": "battle-terrain-00",
+      "color_sha256": "a4896f947b66414df4ebda7935cb5e818412d27eecab36070e7d581f075f8f7b"
     },
     {
       "resource": 4,
@@ -431,8 +431,8 @@
       "source_rgba_sha256": "742fd33355056370b1ee86e1fb81733550d427c01e57d0cf439828f8a9b028fd",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块025.png",
-      "batch": "small-00",
-      "color_sha256": "b5ca8beac4a3f9e311e83bb100aab3ab053589a5a2aebc75e5beb0c031e8b19a"
+      "batch": "battle-terrain-00",
+      "color_sha256": "604ad478f021930c438973337e623598d4bbd613618c098715a3e72f0072d7ca"
     },
     {
       "resource": 4,
@@ -447,8 +447,8 @@
       "source_rgba_sha256": "b192c206e6dea04e8f77bc33a237f056c3c7c7181c49625ea18e68298562f8e7",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块026.png",
-      "batch": "small-00",
-      "color_sha256": "79fab9c1ac3643fd2d752b26c5cf42e4b65deb5410ef639e134a7d381240d063"
+      "batch": "battle-terrain-00",
+      "color_sha256": "6585da52006f9d738480893cd620a671c3db1c6a6266e3e4d70671e4660c3240"
     },
     {
       "resource": 4,
@@ -463,8 +463,8 @@
       "source_rgba_sha256": "0117c978b8411333d30f6aff5f7cd0850e792402ca5af16dffc6126dfef3e08a",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块027.png",
-      "batch": "small-00",
-      "color_sha256": "dfb9fcad7f98413c33f99cc7eb0afd5fd92d02f201c61641dc51a2b0b0e0a2bc"
+      "batch": "battle-terrain-00",
+      "color_sha256": "016ff7b106b57984beaf2df66b7b79fc7ebdbebca703f4d48c7f9855a02d1995"
     },
     {
       "resource": 4,
@@ -479,8 +479,8 @@
       "source_rgba_sha256": "6d3819cf8e98fae9d43c25524f6bfee9c06cf48b0a986b30fc459fe78e8219ab",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块028.png",
-      "batch": "small-00",
-      "color_sha256": "a3d2b8ab99cb14f4036a65312305a0f5824629d5af688271225c75907c5d5a26"
+      "batch": "battle-terrain-00",
+      "color_sha256": "009a69876ced952241dc440fffb077e7bb96c560e4149030e10fc5f9d4507d1b"
     },
     {
       "resource": 4,
@@ -495,8 +495,8 @@
       "source_rgba_sha256": "9732db7aa602bc7e45572cf0e83e3170ad7801ba374612391c8625e5e2bca65e",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块029.png",
-      "batch": "small-00",
-      "color_sha256": "2ec2c9845024d623cad1b8b25e8bf7572d5343fe202e996e267906b3c0f3565c"
+      "batch": "battle-terrain-00",
+      "color_sha256": "64c244f33d0f887d6998717fbdcf275e9648ea64cee00c2997213e28f55bf192"
     },
     {
       "resource": 4,
@@ -511,8 +511,8 @@
       "source_rgba_sha256": "c23b4cf83f18099d98496b252a271a250cca36d68a17ee27156c19c1c7aaa30a",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块030.png",
-      "batch": "small-00",
-      "color_sha256": "7bf9e94ddc1f9e18fd09e190da776b86429b56611cba5d938f31d3ddaa86b2c8"
+      "batch": "battle-terrain-00",
+      "color_sha256": "ce302173442571d7a11a49b17b86ffb11cf5f99211c9c68094d2084434f9741c"
     },
     {
       "resource": 4,
@@ -527,8 +527,8 @@
       "source_rgba_sha256": "e416579d75e646bae8a8350ec24f302f7e01d04409a18b339202783a9bd906cb",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块031.png",
-      "batch": "small-00",
-      "color_sha256": "5c95354f9f2e468d3082df48424f8857ce5001014b4d47c9e8fe49af72d11423"
+      "batch": "battle-terrain-00",
+      "color_sha256": "c6f3b59df69a7cc031157b4bebb3ddc7c02eaa8de5b5b13c388305f9316d1c1c"
     },
     {
       "resource": 4,
@@ -543,8 +543,8 @@
       "source_rgba_sha256": "173e2bdb74e0e83de821c99e78b425722f1610ef15ff953a8ae7c251f496760a",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块032.png",
-      "batch": "small-00",
-      "color_sha256": "e40e027ecc67ae6c89462ef80e5692cfbac2cb8495d3fbb17dd8752264526f5e"
+      "batch": "battle-terrain-00",
+      "color_sha256": "d32173ccf6767a7db71532c8cacceb9a473abb9d58e0e3e747a8ec0d91382c85"
     },
     {
       "resource": 4,
@@ -559,8 +559,8 @@
       "source_rgba_sha256": "5298e506bc0aa7552242fd3513a5da8a42cf528363858f9df2cc7546e8183281",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块033.png",
-      "batch": "small-00",
-      "color_sha256": "65ce66a8344185f0b94b08b9a7d590d3d50fa7d29bd59ddcb36a2b0f028b4189"
+      "batch": "battle-terrain-00",
+      "color_sha256": "8f03f2d1effb9d8de05056d74aa2102953ecede5ae234a9dddf056123be86487"
     },
     {
       "resource": 4,
@@ -575,8 +575,8 @@
       "source_rgba_sha256": "3ae23c42587d9f1276cb31f2f83bde4ef288de157af33d03d808626f6e54214e",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块034.png",
-      "batch": "small-00",
-      "color_sha256": "5ef934d32c91dd431e26733fb34de91578da04de16e5d1600e1d171ad1dd6871"
+      "batch": "battle-terrain-00",
+      "color_sha256": "27993ff5c261ac9c2c06e87ac3abca42efe04b3e39ea225a3dec75fe4cab4345"
     },
     {
       "resource": 4,
@@ -591,8 +591,8 @@
       "source_rgba_sha256": "b80909c4de744708a5ef5b26fb8999114a5e02a02d5c109c1b2ea4a8a296ee0e",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块035.png",
-      "batch": "small-00",
-      "color_sha256": "525954dea7bd0f9f3d9c29772a5ad75227e2f91cefcb877f8944e0cac273c144"
+      "batch": "battle-terrain-00",
+      "color_sha256": "7a029baac1afae168a6ffb872e84e0c868ff138c1a18d8dd6a77ed0a90b471fd"
     },
     {
       "resource": 4,
@@ -607,8 +607,8 @@
       "source_rgba_sha256": "568539b82627f0185919cafc616795d4c6b901d1d716977f8e63d5758968cb74",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块036.png",
-      "batch": "small-00",
-      "color_sha256": "47ed25d64c65b9c946a7b6d99b29079485d9bcb4d8998fd02e90b703def42cc6"
+      "batch": "battle-terrain-00",
+      "color_sha256": "fb1a30226a41485199a6b359f70307f07ee91fd7661a49adebd43858d08c7690"
     },
     {
       "resource": 4,
@@ -623,8 +623,8 @@
       "source_rgba_sha256": "d248ed3a0d2cbd9a4438d101213b9d993c0d85a8f38dac67530f653d8e87e7d5",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块037.png",
-      "batch": "small-00",
-      "color_sha256": "a202dde13dd22bcf111ec23ca5fb37a8666d4b22da0fbbca75e35d5d03703c9e"
+      "batch": "battle-terrain-00",
+      "color_sha256": "addb655eed93ac44f1e77b1eebd45ff73b7daf0f046078033feb2be01687c069"
     },
     {
       "resource": 4,
@@ -639,8 +639,8 @@
       "source_rgba_sha256": "aa59a40381a31cf111b2cec856f52ed278f100e998670b15bd6e4f79b1f51aa3",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块038.png",
-      "batch": "small-00",
-      "color_sha256": "2fabce2f0ee4768f2fb3b8b5dbddb688783f77d455ba0a6c1a172cc6c682693b"
+      "batch": "battle-terrain-00",
+      "color_sha256": "58b6985d0246a148c53a4c845b6fba2bb2496f4391a9f4d192bd476c569f0773"
     },
     {
       "resource": 4,
@@ -655,8 +655,8 @@
       "source_rgba_sha256": "f64077c9d7e19d0d3b8b985a6a5e3846e3c2f94b56d56f4ed76a1cee8bff0071",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块039.png",
-      "batch": "small-00",
-      "color_sha256": "d9e25c50b200bbc8a45ce185fe6712a78595f6f875bc2b4e8a3ac52c0f143443"
+      "batch": "battle-terrain-00",
+      "color_sha256": "e94768ad32e6a4f6dc52fd3352160cab102dd8c00d2348a0428bebe6d19d3512"
     },
     {
       "resource": 4,
@@ -671,8 +671,8 @@
       "source_rgba_sha256": "5c041e665435304f6d3001848f10ab19b669b1cd70e90dab5d70849215aba047",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块040.png",
-      "batch": "small-00",
-      "color_sha256": "3645267b9bf55e2512fa0bf0b512930a95b9c9cde4e5da5a0c812e3412e55247"
+      "batch": "battle-terrain-00",
+      "color_sha256": "91589395e285ea82493e9d754d4dd107c2f582ed1a4d9b56bf40822d7f3b5fc2"
     },
     {
       "resource": 4,
@@ -687,8 +687,8 @@
       "source_rgba_sha256": "99e71600233f8df9baa94fcadf130842c1e820c3a11e1657ba65f7b09700a8eb",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/营寨_图块041.png",
-      "batch": "small-00",
-      "color_sha256": "69e4a36af910dcd0188f8892f1fd40f656a1997c4e553c4f2adae5e0744f92e7"
+      "batch": "battle-terrain-00",
+      "color_sha256": "c2e74c1df529aaa4c90b1628b0aacaedf36949e6bccb0dacd50a80ad6e7ccee9"
     },
     {
       "resource": 4,
@@ -703,8 +703,8 @@
       "source_rgba_sha256": "8b65f0c9f906655340723d860b8aad2193d6aa2d9b215d00b3da5bc9a910b600",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块042.png",
-      "batch": "small-00",
-      "color_sha256": "84e2177acd5e6b4a247c0119f550233a87dfc647989f52f950c3776010076864"
+      "batch": "battle-terrain-00",
+      "color_sha256": "329b8e277ad8252971cbc7fb4efe4cdfcb8493726c5fbbee2ae455123189da41"
     },
     {
       "resource": 4,
@@ -719,8 +719,8 @@
       "source_rgba_sha256": "07f42dcf9867eaae313cada58f1141669e600b9a504356b19bd2097563611919",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块043.png",
-      "batch": "small-00",
-      "color_sha256": "7676747a2822af6cb20a2e5e2cc807810c4741a75c3c19b0880c412f981e92ec"
+      "batch": "battle-terrain-00",
+      "color_sha256": "f37582419c627bf9918f1d05ff101f95423709603991ce4ddf9900c684e87899"
     },
     {
       "resource": 4,
@@ -735,8 +735,8 @@
       "source_rgba_sha256": "2ef4869a73d2bbba2854d76fdd02ad0081058c2b7c246c326dc4e649c2661e2b",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块044.png",
-      "batch": "small-00",
-      "color_sha256": "20de8cf73aa49473d6ba4c2cc36f48cd2f1946e3b83711cdb00198f750cf5979"
+      "batch": "battle-terrain-00",
+      "color_sha256": "67d59a9d06abb305a54c85f4e6ece34610d7bc1913173b1a07a1a6eab114464b"
     },
     {
       "resource": 4,
@@ -751,8 +751,8 @@
       "source_rgba_sha256": "701c389aa5cb1110afdae583b9869025d8370554d0b628d27972b28320266841",
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块045.png",
-      "batch": "small-00",
-      "color_sha256": "6ecd20804089cbb2aba21a00a0e9b28627c303a048bc2e0e07851f85859c60c2"
+      "batch": "battle-terrain-00",
+      "color_sha256": "a5d0557181787ffa33725b6b189d38ca82d6f3e3ba28efc2c06eeaace0141562"
     },
     {
       "resource": 5,
@@ -1408,7 +1408,12 @@
       "flags": 32,
       "color": "library/天气/战斗天气状态图标_资源009/天气状态01_图标.png",
       "batch": "small-01",
-      "color_sha256": "7da3b7a4a081f9105576febf39e6a1ca9999d77a3369a5c4883010797eb3a77c"
+      "color_sha256": "7da3b7a4a081f9105576febf39e6a1ca9999d77a3369a5c4883010797eb3a77c",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 9,
@@ -1424,7 +1429,12 @@
       "flags": 32,
       "color": "library/天气/战斗天气状态图标_资源009/天气状态02_图标.png",
       "batch": "small-01",
-      "color_sha256": "e16767c9ab5ec50a2fae453f134f8a6c4c1d5c1b940ae2a64ca12fe2d8efdb63"
+      "color_sha256": "e16767c9ab5ec50a2fae453f134f8a6c4c1d5c1b940ae2a64ca12fe2d8efdb63",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 9,
@@ -1440,7 +1450,12 @@
       "flags": 32,
       "color": "library/天气/战斗天气状态图标_资源009/天气状态03_图标.png",
       "batch": "small-01",
-      "color_sha256": "278489aa3e1a96602a262a92d839dd9194a3d511832c9ea64f614d7d03e362ea"
+      "color_sha256": "278489aa3e1a96602a262a92d839dd9194a3d511832c9ea64f614d7d03e362ea",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 9,
@@ -1456,7 +1471,12 @@
       "flags": 32,
       "color": "library/天气/战斗天气状态图标_资源009/天气状态04_图标.png",
       "batch": "small-01",
-      "color_sha256": "e49b868652d7b40e6b3d4494cfeb3d4b312da290e89b49b3dd10493f4c2967d6"
+      "color_sha256": "e49b868652d7b40e6b3d4494cfeb3d4b312da290e89b49b3dd10493f4c2967d6",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 9,
@@ -1472,7 +1492,12 @@
       "flags": 32,
       "color": "library/天气/战斗天气状态图标_资源009/天气状态05_图标.png",
       "batch": "small-01",
-      "color_sha256": "d7e79b62d80ee7e136d5e313eea572b8ce8e88100c8b84c886e6aa0731a0c2d8"
+      "color_sha256": "d7e79b62d80ee7e136d5e313eea572b8ce8e88100c8b84c886e6aa0731a0c2d8",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1488,7 +1513,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_0.png",
       "batch": "small-01",
-      "color_sha256": "7e3adf76a1befe1e93e7fe975ccf815fd03593890b99ccf166e9067f21338c38"
+      "color_sha256": "7e3adf76a1befe1e93e7fe975ccf815fd03593890b99ccf166e9067f21338c38",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1504,7 +1534,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_1.png",
       "batch": "small-01",
-      "color_sha256": "f0ef481e3b37f8b059d3c92b176a39d30053435c774708de1d834655bc04cfab"
+      "color_sha256": "f0ef481e3b37f8b059d3c92b176a39d30053435c774708de1d834655bc04cfab",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1520,7 +1555,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_2.png",
       "batch": "small-01",
-      "color_sha256": "83312e7530506a87b47ca4f3f6fbec26e9c9f3620245324b46bf7cf97189fd6c"
+      "color_sha256": "83312e7530506a87b47ca4f3f6fbec26e9c9f3620245324b46bf7cf97189fd6c",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1536,7 +1576,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_3.png",
       "batch": "small-01",
-      "color_sha256": "a287cc6ce8b3c13b11a5edb1479973f5bf4827419ff852440707ac205a8bc18c"
+      "color_sha256": "a287cc6ce8b3c13b11a5edb1479973f5bf4827419ff852440707ac205a8bc18c",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1552,7 +1597,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_4.png",
       "batch": "small-01",
-      "color_sha256": "5129af0c0922b595176ee518f7f6a42ea67ac8cb0d072dffc4aeab7a37a63f8e"
+      "color_sha256": "5129af0c0922b595176ee518f7f6a42ea67ac8cb0d072dffc4aeab7a37a63f8e",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1568,7 +1618,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_5.png",
       "batch": "small-01",
-      "color_sha256": "a3a6a042e5e9bbd0058bf631ed33d9b93ac6d49b602ffe981f95088baed548f4"
+      "color_sha256": "a3a6a042e5e9bbd0058bf631ed33d9b93ac6d49b602ffe981f95088baed548f4",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1584,7 +1639,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_6.png",
       "batch": "small-01",
-      "color_sha256": "b8e848d40705650e823f1340d89353978198d5aabf826e15c919a070309f4ac0"
+      "color_sha256": "b8e848d40705650e823f1340d89353978198d5aabf826e15c919a070309f4ac0",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1600,7 +1660,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_7.png",
       "batch": "small-01",
-      "color_sha256": "7a1c79c5462684bde0919fcf18bcdf2d66c046c406de1ea1ef3d31bbae31100b"
+      "color_sha256": "7a1c79c5462684bde0919fcf18bcdf2d66c046c406de1ea1ef3d31bbae31100b",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1616,7 +1681,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_8.png",
       "batch": "small-01",
-      "color_sha256": "f6018a6f3a33f12c2eafb0448fa9076f4b46527fe948eac05bf54d21dce984ec"
+      "color_sha256": "f6018a6f3a33f12c2eafb0448fa9076f4b46527fe948eac05bf54d21dce984ec",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 15,
@@ -1632,7 +1702,12 @@
       "flags": 32,
       "color": "library/战斗/战斗伤害数字字形_资源015/数字_9.png",
       "batch": "small-01",
-      "color_sha256": "12a2db00ada3282a7f06e3953a127501dcebc2d8b3280fcc0a76ae929b0da644"
+      "color_sha256": "12a2db00ada3282a7f06e3953a127501dcebc2d8b3280fcc0a76ae929b0da644",
+      "transparency": {
+        "mode": "all-near-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 16,
@@ -34729,6 +34804,443 @@
       ],
       "master_sha256": "8dbe9fe6bf0e3f2d80eea86da4562dd5ad3161c190ebb7edc5723fdef5e30c84",
       "imported_frames": 2
+    },
+    {
+      "id": "battle-terrain-00",
+      "reference": "references/battle-terrain-color.png",
+      "geometry_reference": "references/battle-terrain-gray.png",
+      "canvas": [
+        1280,
+        960
+      ],
+      "items": [
+        {
+          "key": "c820738edcc88fb773cb00723ae720f1079a8423e3cba4787a900e6f0a9b8670",
+          "box": [
+            16,
+            24,
+            144,
+            152
+          ]
+        },
+        {
+          "key": "14792bdc37d771494f86de7648947ee20f479598c78d92d6340b752c56015b62",
+          "box": [
+            176,
+            24,
+            304,
+            152
+          ]
+        },
+        {
+          "key": "4eeb603e33ca96a136defd0fb455ae04e1367d9ab76710c723139ee28e360e08",
+          "box": [
+            336,
+            24,
+            464,
+            152
+          ]
+        },
+        {
+          "key": "acc072fdc179dce6c8779e61ecc245f93e39f998d0cec1142c9f66be5babaa4b",
+          "box": [
+            496,
+            24,
+            624,
+            152
+          ]
+        },
+        {
+          "key": "88db3ee2db07e13239204cb9883e73a094596c2e013b60f93c2c0da9fd42c58b",
+          "box": [
+            656,
+            24,
+            784,
+            152
+          ]
+        },
+        {
+          "key": "1f69bc5360a622e93402b474e79f4d9c0b5bf23c4040adc2c35c3efaafd20292",
+          "box": [
+            816,
+            24,
+            944,
+            152
+          ]
+        },
+        {
+          "key": "c2166e0b6c68394606068128cce76f78602c6852e4eacd8361017270c5c5cfee",
+          "box": [
+            976,
+            24,
+            1104,
+            152
+          ]
+        },
+        {
+          "key": "14b662e77b881912bffe2ce269df776f263ab6ebc45b3c05b6b70270f39826aa",
+          "box": [
+            1136,
+            24,
+            1264,
+            152
+          ]
+        },
+        {
+          "key": "fb4d312a7b80013a893d33c5da086652f3d56f24e2ed6c8b6bcc50b845ad7082",
+          "box": [
+            16,
+            184,
+            144,
+            312
+          ]
+        },
+        {
+          "key": "c1a09afc9630694e7a660e0a6a1f3bf0b2417c6d5f76f2a822f20ed82a1a20f9",
+          "box": [
+            176,
+            184,
+            304,
+            312
+          ]
+        },
+        {
+          "key": "efedf37c81036df0ae47ff9430700a00314e6303ea946902897982e52259cf86",
+          "box": [
+            336,
+            184,
+            464,
+            312
+          ]
+        },
+        {
+          "key": "b43db8f294ae5de8ccdff7461f3649fdb0666fb12f2bf58e5646af6cdf6941bd",
+          "box": [
+            496,
+            184,
+            624,
+            312
+          ]
+        },
+        {
+          "key": "f4e36058dfcfb61b8f82cb008be0bf2c0c1691f0a9eb324bc2d00f57bdc30d36",
+          "box": [
+            656,
+            184,
+            784,
+            312
+          ]
+        },
+        {
+          "key": "a97cb2883a8fa3daad98cac97cc6a6a745dfba941c4fc91c8643dc1355368a65",
+          "box": [
+            816,
+            184,
+            944,
+            312
+          ]
+        },
+        {
+          "key": "79ea61fb64b0b890da47c76ffaa6cd3777877c6ed66e6a99b8e415aedefa1802",
+          "box": [
+            976,
+            184,
+            1104,
+            312
+          ]
+        },
+        {
+          "key": "dbcf9290e40604a8c1fa81ef55a76fdd27f0150a903e3b44bfadd2ef5a7b009f",
+          "box": [
+            1136,
+            184,
+            1264,
+            312
+          ]
+        },
+        {
+          "key": "7a6289c92328183b5deafe4d579f7ab3cac3d31635a1bed63678da048c7a6c85",
+          "box": [
+            16,
+            344,
+            144,
+            472
+          ]
+        },
+        {
+          "key": "a451904f0edebdc37272bba4a7181d2815a519d782e87a25beddba96fd6260e6",
+          "box": [
+            176,
+            344,
+            304,
+            472
+          ]
+        },
+        {
+          "key": "f5df3b25129f1d576868fadba3ef6fc73243f2fe2cf3c6ddfd49034e48804c08",
+          "box": [
+            336,
+            344,
+            464,
+            472
+          ]
+        },
+        {
+          "key": "8d00d1252e8c8da205b6755c6f7dbdc2462690b3b785296b13fbd1f97a134597",
+          "box": [
+            496,
+            344,
+            624,
+            472
+          ]
+        },
+        {
+          "key": "31daffb0fc206a0cfadc2ad3c3f400d39789551094422b87b5a26c77fae26fc0",
+          "box": [
+            656,
+            344,
+            784,
+            472
+          ]
+        },
+        {
+          "key": "7b07b4744a62d00e2cbb9a99af0170e885d8b511488fb2d6fd43677e819b8006",
+          "box": [
+            816,
+            344,
+            944,
+            472
+          ]
+        },
+        {
+          "key": "7eb7ee10ed37302121247975ea025ca4482438a4ef35159d6ba7995087035438",
+          "box": [
+            976,
+            344,
+            1104,
+            472
+          ]
+        },
+        {
+          "key": "b8ffb5c80828950ae1097face2822247806fb5dcf43bd4391b0ea11d0d277262",
+          "box": [
+            1136,
+            344,
+            1264,
+            472
+          ]
+        },
+        {
+          "key": "1a8dc730c15e4df659ad2c088af8c6921a5a40196a89d57205b55a9d3042c08b",
+          "box": [
+            16,
+            504,
+            144,
+            632
+          ]
+        },
+        {
+          "key": "742fd33355056370b1ee86e1fb81733550d427c01e57d0cf439828f8a9b028fd",
+          "box": [
+            176,
+            504,
+            304,
+            632
+          ]
+        },
+        {
+          "key": "b192c206e6dea04e8f77bc33a237f056c3c7c7181c49625ea18e68298562f8e7",
+          "box": [
+            336,
+            504,
+            464,
+            632
+          ]
+        },
+        {
+          "key": "0117c978b8411333d30f6aff5f7cd0850e792402ca5af16dffc6126dfef3e08a",
+          "box": [
+            496,
+            504,
+            624,
+            632
+          ]
+        },
+        {
+          "key": "6d3819cf8e98fae9d43c25524f6bfee9c06cf48b0a986b30fc459fe78e8219ab",
+          "box": [
+            656,
+            504,
+            784,
+            632
+          ]
+        },
+        {
+          "key": "9732db7aa602bc7e45572cf0e83e3170ad7801ba374612391c8625e5e2bca65e",
+          "box": [
+            816,
+            504,
+            944,
+            632
+          ]
+        },
+        {
+          "key": "c23b4cf83f18099d98496b252a271a250cca36d68a17ee27156c19c1c7aaa30a",
+          "box": [
+            976,
+            504,
+            1104,
+            632
+          ]
+        },
+        {
+          "key": "e416579d75e646bae8a8350ec24f302f7e01d04409a18b339202783a9bd906cb",
+          "box": [
+            1136,
+            504,
+            1264,
+            632
+          ]
+        },
+        {
+          "key": "173e2bdb74e0e83de821c99e78b425722f1610ef15ff953a8ae7c251f496760a",
+          "box": [
+            16,
+            664,
+            144,
+            792
+          ]
+        },
+        {
+          "key": "5298e506bc0aa7552242fd3513a5da8a42cf528363858f9df2cc7546e8183281",
+          "box": [
+            176,
+            664,
+            304,
+            792
+          ]
+        },
+        {
+          "key": "3ae23c42587d9f1276cb31f2f83bde4ef288de157af33d03d808626f6e54214e",
+          "box": [
+            336,
+            664,
+            464,
+            792
+          ]
+        },
+        {
+          "key": "b80909c4de744708a5ef5b26fb8999114a5e02a02d5c109c1b2ea4a8a296ee0e",
+          "box": [
+            496,
+            664,
+            624,
+            792
+          ]
+        },
+        {
+          "key": "568539b82627f0185919cafc616795d4c6b901d1d716977f8e63d5758968cb74",
+          "box": [
+            656,
+            664,
+            784,
+            792
+          ]
+        },
+        {
+          "key": "d248ed3a0d2cbd9a4438d101213b9d993c0d85a8f38dac67530f653d8e87e7d5",
+          "box": [
+            816,
+            664,
+            944,
+            792
+          ]
+        },
+        {
+          "key": "aa59a40381a31cf111b2cec856f52ed278f100e998670b15bd6e4f79b1f51aa3",
+          "box": [
+            976,
+            664,
+            1104,
+            792
+          ]
+        },
+        {
+          "key": "f64077c9d7e19d0d3b8b985a6a5e3846e3c2f94b56d56f4ed76a1cee8bff0071",
+          "box": [
+            1136,
+            664,
+            1264,
+            792
+          ]
+        },
+        {
+          "key": "5c041e665435304f6d3001848f10ab19b669b1cd70e90dab5d70849215aba047",
+          "box": [
+            16,
+            824,
+            144,
+            952
+          ]
+        },
+        {
+          "key": "99e71600233f8df9baa94fcadf130842c1e820c3a11e1657ba65f7b09700a8eb",
+          "box": [
+            176,
+            824,
+            304,
+            952
+          ]
+        },
+        {
+          "key": "8b65f0c9f906655340723d860b8aad2193d6aa2d9b215d00b3da5bc9a910b600",
+          "box": [
+            336,
+            824,
+            464,
+            952
+          ]
+        },
+        {
+          "key": "07f42dcf9867eaae313cada58f1141669e600b9a504356b19bd2097563611919",
+          "box": [
+            496,
+            824,
+            624,
+            952
+          ]
+        },
+        {
+          "key": "2ef4869a73d2bbba2854d76fdd02ad0081058c2b7c246c326dc4e649c2661e2b",
+          "box": [
+            656,
+            824,
+            784,
+            952
+          ]
+        },
+        {
+          "key": "701c389aa5cb1110afdae583b9869025d8370554d0b628d27972b28320266841",
+          "box": [
+            816,
+            824,
+            944,
+            952
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/battle-terrain-00-river-fix.txt",
+      "master": "generated/battle-terrain-00.png",
+      "master_size": [
+        1448,
+        1086
+      ],
+      "master_sha256": "ada8abf2d9bc1c829bebb1bf2a4e19014047ee9a34274e8a61e4579afb0b312d",
+      "imported_frames": 46,
+      "initial_master": "generated/battle-terrain-00-initial.png",
+      "initial_master_sha256": "8d3f395e401c52472116e67b5154e66017d531aff7985db06392470fad114cd5",
+      "initial_prompt": "prompts/battle-terrain-00.txt"
     }
   ],
   "native_frames": 1204,

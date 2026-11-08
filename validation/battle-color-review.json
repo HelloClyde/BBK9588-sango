@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "2502778ef87057667984798a10f7c94980fab931",
+  "baseline_bda_sha256": "45038b93b611b44426cb6e0377454f4e62ad8cb908bad16ffca5cf9012082402",
+  "bda_sha256": "1b02eb5e7807ba3d5230cb4a6bae732ec43ffd42e959bf90b16949340a7a3386",
+  "sango_clr_sha256": "785de7fe0a575b05406da637eea26ab6e89dfdf9cdb47bbd219b5ffab80dedd4",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "changed_color_resources": [
+    4,
+    9,
+    15
+  ],
+  "terrain_frames_recolored": 46,
+  "weather_digit_keyed_frames": 15,
+  "battle_overlay_original_masks_audited": 168,
+  "mips_checks": 5323,
+  "mips_battle_color_checks": 250,
+  "native_color_interface_checks": 26,
+  "native_animation_ranges": [
+    [
+      19,
+      0,
+      6
+    ],
+    [
+      27,
+      12,
+      17
+    ],
+    [
+      35,
+      0,
+      7
+    ],
+    [
+      38,
+      0,
+      14
+    ]
+  ],
+  "native_snapshot_restore_pixels": 76800,
+  "initialized_bytes_identical": 45536,
+  "initialized_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "save_layout_unchanged": true,
+  "source_sha256_lf": {
+    "assets/color/catalog.json": "e746081cc9a5aad6fcc44c2dba23b2887c2b1af8601762b265468df54320b6d0",
+    "tools/color_assets.py": "0126bb8acf319d1e463aa10a6d6f5e6f289c82d81bfe83756d80ea0be0ed9c98",
+    "src/sango_color.c": "01ca6705da3a0c734d218ab415121864c5a751b1ec0d0c5150b2e87b653f54c4",
+    "src/sango_color_sdk.c": "852cbf78a149ed74472d8fdb6467e7e0aa66af5a5ab80da6ef176c42bfe6f2ed",
+    "src/sango_color_animation.c": "542a4ae9926965755821ff7d1d03bbd60141a6b2f3480b85be6c3c2464b18f9f",
+    "src/render/animation.c": "9092e157319367296fde98ef3aa0269a8ccca19456fc771f740849690e964de0",
+    "src/sango_battle_ui.c": "961d690446689132b5112620dd8306f08add008c1ab1ab3cebf58fb049a82839",
+    "tools/test_battle_color.py": "e179ecd07efe3c62940c8eefbec4070d6992705184e8ea19265d47a9aff8a1ed",
+    "tools/test_color_assets.py": "fff48ac101d1b1d72d664c66617406b63a4224ed31adaa0c997f776e3d91b1d3",
+    "tools/test_strategy_color_map.py": "f5befecc1d8e906f516efb3eecbce43be8908850eabc21fd7eceacc61d3ec0d9"
+  },
+  "report_sha256_lf": {
+    "validation/color-mips-validation.json": "13424f06457f19b4f4b14ea0bcae5db03c942ebd46e69820586d84ea0b406092",
+    "validation/strategy-color-validation.json": "4457c62a333bb9b756d7ee1dc0463d1df9cd923b92224808ffc058c84f3ca8eb",
+    "validation/battle-color-validation.json": "ae5a984f86280446b8d316181d24ed3bccc268ddaac8c45e89d1bd580292d8a0",
+    "validation/color-firmware-validation.json": "08d788502ac0862c4ed0cfc8b216a18e59ca2ae07a17ccafb1d1acdf183078ae",
+    "validation/color-native-staging.json": "6a1a83b46bef6215fb671c3e1e6cca30c401dddc3a7d376265f45b143325ef72",
+    "validation/differential.json": "32c213aef1ba6f25060568687b88eb7310cca284860f5ff33e8b900b6a999448",
+    "validation/statusbar-validation.json": "6acaa3f4dd202eaf6a7f2969245e399082b8cfc1d3752d24160695fd489f2c51",
+    "validation/port-fixes-validation.json": "0e34bda121d0293d52b16b1e36a03fc9f6402cf18518f4442f501b1b335eb4f6",
+    "validation/battle-touch-validation.json": "57b772236fe5bee028c8d5d74345ed9a97a9ca2abea7edd21d610fd2e1f97583",
+    "validation/day-popup-validation.json": "3245a9c4daed50a5623e4a2ea72dbc8e346d51e9976ebebf2d35dd34eeb11ae4",
+    "validation/battle-hud-validation.json": "2e94fb860b857d5dd9d43096e8dc387d2876a338749a0466df51f4e7992d0cde",
+    "validation/battle-summary-validation.json": "012212c65b5e42079fb71feca47ced856373df6d917eeef5dce47143797d3bb4",
+    "validation/battle-viewport-validation.json": "308601873531d502ba34e6a6b24eb6f956f7975180c989c12c873e1673ae8af9",
+    "validation/library-loader-host.json": "4f0954e5b82d789256e023d2bb9bd947c9ed0b34a40685f06009020809d1c1d4"
+  },
+  "scope": "Real compiled 17 battle timelines with modeled SDK pixel/capture/timer boundaries; native SDK compatible snapshot/restore including black/white, four ranges match compiled final pixels, 20-unit controlled UI and native input. Exact BDA/LIB/CLR staged to bypass synthetic NAND ECC. No physical-device, native file loading, complete battle/AI/campaign claim."
+}

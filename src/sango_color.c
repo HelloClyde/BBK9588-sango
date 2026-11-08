@@ -31,8 +31,14 @@ static uint32_t color_crc32(const uint8_t *bytes, uint32_t size)
     return ~crc;
 }
 
+int sango_color_is_loaded(void)
+{
+    return color_file != NULL;
+}
+
 void sango_color_unload(void)
 {
+    sango_color_animation_end(0);
     if (color_file_owned && color_file)
         bbk_free_if_nonnull(color_file);
     color_file = NULL;
@@ -164,6 +170,13 @@ const uint16_t *sango_color_pixels(uint32_t original_pixels, uint32_t width, uin
 {
     const uint8_t *entry = color_find_entry(original_pixels, width, height, masked);
     return entry ? (const uint16_t *)(color_file + color_read32(entry + 4)) : NULL;
+}
+
+uint32_t sango_color_frame_flags(uint32_t original_pixels, uint32_t width, uint32_t height,
+                                 int masked)
+{
+    const uint8_t *entry = color_find_entry(original_pixels, width, height, masked);
+    return entry ? color_read32(entry + 12) : 0;
 }
 
 /* Keep the original 7x7 logical grid and camera/selection rules. Only colored

@@ -28,6 +28,8 @@ uint32_t sango_animation_play_range(uint32_t resource_id, uint32_t first_command
         return 0xff;
     }
 
+    sango_color_animation_begin(g_game_context);
+
     int commands_address = animation_address + 6;
     uint8_t sprite_count = *(uint8_t *)(animation_address + 3);
     int delays_address = g_scratch_buffer_address + 400;
@@ -86,7 +88,7 @@ uint32_t sango_animation_play_range(uint32_t resource_id, uint32_t first_command
             {
                 uint32_t key = sango_input_peek_key();
                 if (key != 0xff)
-                    return key;
+                    return sango_color_animation_end(key);
             }
 
             /* 先擦除本拍到期的精灵，再减少计数；禁用擦除也要触发后续重绘。 */
@@ -101,7 +103,7 @@ uint32_t sango_animation_play_range(uint32_t resource_id, uint32_t first_command
                     {
                         uint8_t *bitmap =
                             *(uint8_t **)((uint32_t)command[4] * 4 + sprite_table_address);
-                        sango_render_clear_rectangle(
+                        sango_color_animation_erase(
                             origin_x + *command, origin_y + (uint16_t)command[1],
                             origin_x + *command + (uint16_t)bitmap[1] * 0x100 + (uint16_t)*bitmap -
                                 1,
@@ -185,7 +187,7 @@ uint32_t sango_animation_play_range(uint32_t resource_id, uint32_t first_command
             {
                 uint32_t input_result = sango_input_wait(1, '\x01');
                 if (input_result != 0)
-                    return input_result;
+                    return sango_color_animation_end(input_result);
             }
 
             uint8_t *delay = (uint8_t *)(delays_address + active_end_index);
@@ -217,10 +219,10 @@ uint32_t sango_animation_play_range(uint32_t resource_id, uint32_t first_command
             command_index = command_index + 1 & 0xff;
             lifetime_cursor = lifetimes + command_index;
             if (active_end_index < command_index)
-                return 0xff;
+                return sango_color_animation_end(0xff);
         }
     } while (command_index <= active_end_index);
-    return 0xff;
+    return sango_color_animation_end(0xff);
 }
 #undef last_drawn_index
 #undef origin_x
