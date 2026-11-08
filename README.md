@@ -61,6 +61,7 @@ python tools/verify_artifacts.py --require-validated
 
 [assets/](assets/README.md) 统一保存解包资源、GPT Image 母图、目标尺寸图片、提示词和原图参考，
 包括此前保留的三张彩色草稿。`assets/library/manifest.json` 是 LIB 打包入口。
+解包素材使用中文分类与用途名称；头像按各剧本的原姓名表命名，见 [资源目录](assets/library/资源目录.md)。
 
 ```powershell
 python tools/sango_lib.py pack

@@ -3,6 +3,10 @@ from __future__ import annotations
 import argparse,hashlib,json,struct
 from pathlib import Path
 from PIL import Image
+try:
+    from . import sango_resource_names as names
+except ImportError:
+    import sango_resource_names as names
 
 ANIMATIONS={3,6,19,20,21,22,23,24,25,27,35,36,37,38,39,40,41,42,43}
 ROOT=Path(__file__).resolve().parents[1]
@@ -107,8 +111,64 @@ def unpack(data,root):
     manifest={'schema':1,'format':'Sango 9588 indexed 2bpp library','index_slots':slots,
         'original_bytes':len(data),'original_sha256':sha(data),'original_index':list(struct.unpack_from(f'<{slots}I',data)),
         'png_frames':png_count,'records':sorted(entries,key=lambda r:r['id']),'layout':layout,'supplements':[]}
+    semantic_names(data,root,manifest)
     write_json(root/'manifest.json',manifest)
     return manifest
+
+def semantic_names(data,root,manifest):
+    """Rename source files without touching their bytes, IDs or frame ordering."""
+    root=root.resolve();moves=[]
+    for entry in manifest['records']:
+        rid=entry['id'];info=names.identity(rid);folder=names.folder_name(rid)
+        def plan(old,new):
+            moves.append((root/old,root/new))
+            return new
+        entry.update(info)
+        entry['record']=plan(entry['record'],f"{folder}/{info['name']}_原始记录.bin")
+        if 'timeline' in entry:
+            entry['timeline']=plan(entry['timeline'],f"{folder}/{info['name']}_播放指令.json")
+        if 'map' in entry:
+            entry['map']=plan(entry['map'],f"{folder}/{info['name']}_地形.json")
+        people=names.portrait_names(data,rid) if 48<=rid<=51 else ()
+        for i,spec in enumerate(entry.get('images',[])):
+            spec['pngs']=[plan(path,f"{folder}/"+names.image_filename(rid,i,f,spec['frames'],entry['kind']=='animation',people))
+                          for f,path in enumerate(spec['pngs'])]
+    # Validate the complete move plan before moving any Windows file. Every
+    # absolute source and destination must stay inside this library directory.
+    destinations=set()
+    for old,new in moves:
+        old=old.resolve();new=new.resolve()
+        if not old.is_relative_to(root) or not new.is_relative_to(root):raise ValueError('Rename escapes library directory')
+        if new in destinations:raise ValueError('Duplicate semantic filename')
+        if not old.is_file():raise ValueError(f'Missing resource source: {old}')
+        if new!=old and new.exists():raise ValueError(f'Semantic destination already exists: {new}')
+        destinations.add(new)
+    old_folders={old.parent for old,new in moves}
+    for old,new in moves:
+        if old!=new:
+            new.parent.mkdir(parents=True,exist_ok=True)
+            old.rename(new)
+    for folder in old_folders:
+        if folder!=root and folder.exists() and not any(folder.iterdir()):folder.rmdir()
+    manifest['naming_schema']=1
+    write_resource_index(root,manifest)
+
+def write_resource_index(root,manifest):
+    lines=['# 资源目录','',
+        '按实际画面和调用用途命名；资源 ID 与帧序保持原值。点击名称进入对应目录。',
+        '头像姓名取自同剧本的原游戏姓名表；`字码XXXX` 表示不能直接解码的游戏专用字，未猜写人名。',
+        '动作编号、地图编号和部分样式编号表示原序号，不代表已确认某次历史战役或某个具体招式。','',
+        '| ID | 分类 | 素材 | 类型 | 图片数 |','| --- | --- | --- | --- | --- |']
+    kinds={'raw':'原始数据','bitmap':'多帧位图','animation':'动画与指令','map':'地形矩阵'}
+    for entry in manifest['records']:
+        folder=Path(entry['record']).parent.as_posix();count=sum(len(s['pngs']) for s in entry.get('images',[]))
+        lines.append(f"| {entry['id']:03d} | {entry['category']} | [{entry['name']}]({folder}/) | {kinds[entry['kind']]} | {count} |")
+    if manifest.get('supplements'):
+        lines.extend(['','## 补充素材','', '| ID | 素材 | 目标 PNG |','| --- | --- | --- |'])
+        for entry in manifest['supplements']:
+            label=names.identity(entry['id'])['name'];png=entry['image']['pngs'][0]
+            lines.append(f"| {entry['id']:03d} | {label} | [{Path(png).name}]({png}) |")
+    (root/'资源目录.md').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
 
 def encode_bitmap(root,spec,seed=b''):
     w,h=spec['width'],spec['height'];frames=spec['frames'];flags=spec['flags']

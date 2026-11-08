@@ -26,5 +26,16 @@
   "exported_png_frames": 1186,
   "map_json_files": 7,
   "animation_timelines": 19,
-  "native_or_hardware_test": false
+  "native_or_hardware_test": false,
+  "semantic_names": {
+    "resources": 87,
+    "renamed_files": 1299,
+    "png_frames": 1186,
+    "portraits_named_from_scenario_text": 800,
+    "portraits_retaining_special_character_codes": 22,
+    "file_contents_unchanged": true,
+    "bda_and_lib_hashes_unchanged": true,
+    "reunpack_uses_same_naming_scheme": true,
+    "index": "assets/library/资源目录.md"
+  }
 }
