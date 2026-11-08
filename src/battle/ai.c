@@ -344,7 +344,7 @@ uint32_t sango_battle_choose_skill(uint32_t unit_id, uint16_t *menu_bounds, uint
         if (character_count_or_selection == 0)
             break;
         sango_battle_load_overview_text(character_count_or_selection, error_text);
-        sango_text_draw_legacy(0x6a, 0xf3, error_text);
+        sango_battle_status_draw_description(error_text, 0);
     }
     return (uint32_t)skill_id;
 }

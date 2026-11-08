@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-08",
+  "source": "Original 9288S 三国霸业.exe, inspected locally; original executable excluded from repository.",
+  "source_exe_sha256": "4eafbd3c59b64bf56fb810e47de43cb9d1075530801a8f991cf007f510954f9c",
+  "evidence_kind": "Static original code and decoded bitmaps; not a 9288S runtime screenshot.",
+  "original_status": {
+    "resource_id": 8,
+    "rectangle": [
+      0,
+      160,
+      160,
+      16
+    ],
+    "food_xy": [
+      14,
+      163
+    ],
+    "weather_xy": [
+      75,
+      162
+    ],
+    "description_xy": [
+      106,
+      162
+    ],
+    "hud_exe_file_offsets": [
+      "0x1dec",
+      "0x1e4e"
+    ]
+  },
+  "original_toolbar": {
+    "resource_id": 17,
+    "rectangle": [
+      2,
+      176,
+      160,
+      24
+    ],
+    "draw_exe_file_offsets": [
+      "0xb80c",
+      "0xb83a"
+    ],
+    "battle_touch_exe_file_offsets": [
+      "0x1ab2",
+      "0x1b0a"
+    ],
+    "information_x_inclusive": [
+      42,
+      71
+    ],
+    "find_x_inclusive": [
+      88,
+      117
+    ],
+    "y_inclusive": [
+      177,
+      199
+    ]
+  },
+  "port_resource_8": {
+    "original_library_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
+    "size": [
+      240,
+      16
+    ],
+    "first_159_columns_match_9288s": true,
+    "logical_right_border_source_x": 239,
+    "unscaled_port_x159_differing_rows": 14,
+    "finding": "9588 extended the canvas before the right border; labels retained original 160-pixel coordinates."
+  },
+  "reference_png": "assets/battle-toolbar/status-row-9288s-reference.png",
+  "reference_png_sha256": "8cec92b344e7ff84378e6ae9e6373e59f1846008e7d44ee41af7c2cc2eadda6c",
+  "new_layout": {
+    "scale": "3:2 integer pixel-center nearest",
+    "status_rectangle": [
+      0,
+      240,
+      240,
+      24
+    ],
+    "toolbar_rectangle": [
+      0,
+      264,
+      240,
+      36
+    ],
+    "food_xy": [
+      21,
+      244
+    ],
+    "weather_rectangle": [
+      112,
+      243,
+      18,
+      18
+    ],
+    "description_xy": [
+      159,
+      244
+    ],
+    "native_text_font_id": 4,
+    "text_note": "Existing SDK binding maps logical font 3 to native font 4, verified in native C200 firmware. Text baseline centered in the scaled row.",
+    "toolbar_note": "Reviewed GPT Image 240x36 toolbar retained and fitted within screen width. Both touch regions follow the shared toolbar top."
+  }
+}

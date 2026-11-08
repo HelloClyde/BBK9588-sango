@@ -2,14 +2,14 @@
   "entry": true,
   "package": true,
   "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
-  "payload_sha256": "007651209a87406a4087e56bdbc891250663f812d05061df74f5336b5380476f",
+  "payload_sha256": "22ac2230ff3411b039eb4a9cb59d53194c1acae66deef6f42e3ffee7280f3d4c",
   "package_address": "0x80df5598",
   "package_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
   "battle_fixture": {
-    "sha256": "df3745117a0e8ef46a51be30a1d4fd9e59437997621fb28e9af98c779216407c",
+    "sha256": "521f0c99e918914acdb74b2d69228ddc5cabd9942a726245384ecabf1b86c817",
     "entry": "0x81c30000",
-    "trigger": "0x81c030dc",
+    "trigger": "0x81c030cc",
     "scope": "Controlled terrain-only battle UI entered at normal credits call; production battle functions and native hardware input. Fixture excluded from delivered BDA."
   },
-  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8"
+  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e"
 }

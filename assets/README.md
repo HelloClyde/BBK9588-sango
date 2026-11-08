@@ -9,7 +9,7 @@
 | `library/` | 从 9588 `sango.LIB` 完整解包的 87 条资源、1202 张 PNG、27 组动画指令及 7 张战场地图 | 重新生成 `build/sango.lib` |
 | `statusbar/` | “信息／查找”底栏的原图参考、GPT Image 母图和 240×36 四灰度目标图 | LIB 资源 17，同时生成战略/战斗 C 内嵌位图 |
 | `credits/` | 制作群组参考、母图和 240×320 四灰度目标图 | LIB 资源 18，同时生成 C 内嵌位图 |
-| `battle-toolbar/` | 战斗按钮栏的提示词、布局及同源图片 | 当前与 `statusbar/` 共用图片；位置为 y=257 |
+| `battle-toolbar/` | 战斗按钮栏、9288S 状态行参考、提示词及同源图片 | 当前与 `statusbar/` 共用图片；按钮栏位置为 y=264；状态行为 y=240、高24像素 |
 | `app-icon/` | 9288S 原图参考、GPT Image 彩色母图及四种原生尺寸 PNG | SDK 编码为 BDA 容器的彩色 VX 图标 |
 | `drafts/color9288s/` | 此前保留的三张彩色母图、提示词及原始参考图集 | 草稿，不打入 LIB 或当前 BDA |
 

@@ -1,9 +1,9 @@
 {
-  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
   "bda_bytes": 214700,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "GCC 15.2.0",
-  "mips_checks": 593,
+  "mips_checks": 651,
   "native_firmware_interface_checks": 24,
   "physical_device_verified": false,
   "complete_campaign_verified": false,
@@ -11,7 +11,9 @@
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "sango_lib_bytes": 461116,
   "library_validation": "Host lossless roundtrip; 87 original records identical, 2 supplemental records appended. Native runtime evidence uses original 439720-byte library with the same BDA.",
-  "notes": "Native battle UI uses a controlled fixture and exact payload/LIB staging to isolate synthetic NAND ECC artifacts. Historical save comparisons are not current-release regression tests.",
+  "notes": "Battle footer rescaled from static 9288S code/bitmap reference. 593 existing MIPS checks, 58 new HUD checks, 27163 production-MIPS comparisons and 24 native UI checks rerun for this BDA. Native battle UI uses a controlled RAM fixture and original LIB; expanded LIB uses host checks. Runtime-oracle 60026 comparisons are historical unchanged-runtime evidence. No physical-device or full-campaign verification.",
   "control_flow_differential_checks": 27163,
-  "runtime_oracle_differential_checks": 60026
+  "runtime_oracle_differential_checks": 60026,
+  "mips_existing_regression_checks": 593,
+  "mips_battle_layout_checks": 58
 }

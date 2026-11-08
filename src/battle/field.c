@@ -131,21 +131,9 @@ uint32_t sango_battle_spawn_origin(char axis)
 /* 原函数 0x81c03f6c */
 void sango_battle_draw_hud(void)
 {
-    unsigned char abi_storage[32] __attribute__((aligned(8)));
-#define food_text (*(char(*)[16])(abi_storage + 0))
-
-    uint32_t digit_count;
-
-    sango_battle_draw_bitmap(8, 1, 0, 0xf1);
-    sango_format_integer((uint32_t)g_battle_attacker_food, food_text, 10);
-    digit_count = sango_crt_strlen(food_text);
-    sango_text_draw_padded_number(0xe, 0xf4, (uint32_t)g_battle_attacker_food, digit_count & 0xff,
-                                  g_game_context_view2);
-    sango_battle_draw_bitmap(9, (uint32_t)g_battle_weather, 0x4b, 0xf3);
-    sango_battle_toolbar_draw(g_game_context_view2);
+    sango_battle_status_draw();
     return;
 }
-#undef food_text
 
 /* 原函数 0x81c03ff8 */
 uint32_t sango_battle_target_side_allowed(void)
@@ -667,7 +655,6 @@ void sango_battle_draw_cursor_description(void)
 
     uint32_t unit_or_terrain;
 
-    sango_render_clear_rectangle(0x6a, 0xf3, 0x9a, 0xff, g_game_context);
     unit_or_terrain =
         sango_battle_find_unit_at((uint16_t)g_battle_cursor_x, (uint16_t)g_battle_cursor_y);
     if (unit_or_terrain == 0xff)
@@ -683,7 +670,7 @@ void sango_battle_draw_cursor_description(void)
         unit_or_terrain = sango_battle_unit_character(unit_or_terrain);
         sango_load_named_text((uint8_t)unit_or_terrain, description);
     }
-    sango_battle_draw_text(0x6a, 0xf3, description);
+    sango_battle_status_draw_description(description, g_game_context);
     return;
 }
 #undef terrain_names

@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "8b8a3181f01265635c6e17a38fe5916ce1126330",
+  "baseline_bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
+  "bda_bytes": 214700,
+  "elf_sha256": "1263c9c3714d2da4516fdc7af7ccd024ee482dc256d297f3a8f04db59d86b8a3",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "library_unchanged": true,
+  "initialized_data_bytes_identical": 45536,
+  "status_rectangle": [
+    0,
+    240,
+    240,
+    24
+  ],
+  "toolbar_rectangle": [
+    0,
+    264,
+    240,
+    36
+  ],
+  "reference": "9288s-battle-layout-reference.json",
+  "compiled_mips_hud": {
+    "passed": 58,
+    "failed": 0,
+    "report": "battle-hud-validation.json"
+  },
+  "existing_mips_regression": {
+    "passed": 593,
+    "failed": 0
+  },
+  "production_mips_logic_comparison": {
+    "passed": 27163,
+    "failed": 0,
+    "report": "control-flow-validation.json",
+    "rendering_boundary_note": "Intentional HUD changes are normalized to the shared painter boundary; pixel layout checked independently."
+  },
+  "native_firmware_ui": {
+    "passed": 24,
+    "failed": 0,
+    "battle": 12,
+    "strategy": 6,
+    "credits": 2,
+    "day_popup": 4
+  },
+  "host_resource_checks": {
+    "lossless_codec": 10,
+    "expanded_library_loader": 4,
+    "code_usage_rules": 89
+  },
+  "limits": "Native C200/QEMU, controlled battle UI fixture and original 439720-byte LIB. No 9288S runtime capture, physical-device or full-battle/campaign verification; original 9288S static code/bitmap reference used. Expanded 461116-byte LIB uses host preservation/load evidence. Historical runtime-oracle/identifier-refactor results are not newly executed tests.",
+  "source_sha256_lf": {
+    "src/sango_battle_ui.c": "bfb2600fb63e97c94120006e59d5592d01fc93d270b57c98599d44e8a34619b8",
+    "include/sango_battle_ui.h": "6480137edc78d5d85029780dbb194a833c67f928d509296ce325bdeb0160bfcd",
+    "include/sango_statusbar.h": "8b40b88ec1ad45064eba92b412f8581c13025635e758bb563e939f16d7da7589",
+    "src/battle/field.c": "e7eca6f9ce1ce1e38daad8310ddf9e88dd894076f900e08ad0134a68d8017dbf",
+    "src/battle/actions.c": "aee745446f6167fd7085b8fba34d327a83c06937f555a1faf27d88587709b42a",
+    "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
+    "src/battle/player_turn.c": "8b52ef3703712a2f893c953dd0c69841d1b91518034c76cfae2c38ac6f713280",
+    "src/sango_statusbar.c": "abf71cb0b4a81e6b0380745330b19de3d1c1146b76ae496f98b3e41a4298bc85",
+    "tools/test_battle_hud.py": "a8df2cdef26a10f9cf4925fa4d93e870aede71d01a0b3da24513c127beb1749e",
+    "tools/test_control_flow.py": "a45a0c08bd33b54b649791f4c1c0a814b8e1620fc69b68b801eea977892eab75",
+    "tools/sango_resource_usage.py": "31847420128cb72130540e09344ef273146ae37d55fe88cd51b40252b49af04d"
+  },
+  "report_sha256_lf": {
+    "differential.json": "be67658f773186bd4b3fea94d5d894e5dc68ecca66f76354b746bf3684a68ee2",
+    "statusbar-validation.json": "885e7401e1697c3f115d772dd725bd7b3ba4bcd79df0c3edec82005204a5f6f6",
+    "port-fixes-validation.json": "3f0aaea8dcfabe4a9a760c094f80107c2648bc4e9743cb1c5546fe48ffc31eee",
+    "battle-touch-validation.json": "1a129d71d1e03a6784959a4b7a8f1e48c0246a36c023f9a2be9daf7e506cca05",
+    "day-popup-validation.json": "27a4a6c60d8a90c31b2dc2b875559f5965243573b3eb46c77492b5499cc31b90",
+    "statusbar-firmware-validation.json": "6f35f05cff0a0329a45f8190f187136620892b1f5dd62696836b7a15f9ceeb85",
+    "port-firmware-validation.json": "d4a3d649cf54da8145f02fa978660fb9ad1838faf73c190deaf2bf2f81e0ea10",
+    "battle-touch-firmware-validation.json": "a94520f93ff0763e41168c88db2a69b7000c45b73948d54dcae007344b807763",
+    "day-popup-firmware-validation.json": "7dd9f2cadfb2778c0ee6b26bb26d63c3eecdd378a00fccb12e325d55c13b4c3c",
+    "battle-hud-validation.json": "6b87ad2ce8b36e5754e9e0582a568d4da3c34f20e6e60b2cda212c45d8bdfcd6",
+    "control-flow-validation.json": "b0082e42ae0aa5010dbe7e9138b25f3f472ef6abf317b6928027fe26b7a0de4a"
+  }
+}

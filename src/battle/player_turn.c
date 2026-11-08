@@ -213,7 +213,7 @@ uint32_t sango_battle_select_target(char action_kind, char selected_skill, uint3
                     }
                 }
             }
-            sango_battle_draw_text(0x6a, 0xf3, error_text);
+            sango_battle_status_draw_description(error_text, g_game_context);
         }
         sango_battle_redraw_field(actor_or_cancel_result);
         actor_or_cancel_result = 0xff;
@@ -387,7 +387,7 @@ uint32_t sango_battle_select_move_destination(uint32_t unit_id)
                 sango_battle_redraw_field(unit_index);
                 return 0;
             }
-            sango_battle_draw_text(0x6a, 0xf3, invalid_move_text);
+            sango_battle_status_draw_description(invalid_move_text, g_game_context);
         }
         sango_battle_redraw_field(unit_index);
     }

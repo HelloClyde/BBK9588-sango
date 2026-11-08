@@ -6,15 +6,15 @@
     "src/app/boot.c": "dae47ac3bada542fac7057690cf34a30af0166b40b2e41cd2eff26668b5ed71f",
     "src/app/lifecycle.c": "ede064910035bfdf073ba04491c8272d779bbeb126ea26ce7dc6be1b358cebfc",
     "src/app/memory.c": "32d2b7f0f4651e7160dde9fdc9de15e208a2d31ba518c888af732c0cd122ab9c",
-    "src/battle/actions.c": "f06feb47fcf378b26bc21528dd6ead891b72c48857c47934d12e7da29ae356bc",
-    "src/battle/ai.c": "a52aa946f477d32e3e70f581a0ea7a103ee0925a1763d6f1af8aa15f4e331cbb",
+    "src/battle/actions.c": "aee745446f6167fd7085b8fba34d327a83c06937f555a1faf27d88587709b42a",
+    "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
     "src/battle/combat_math.c": "5a239d0d3ca4effb833d4fda82b7c56c42581a7f3da352839173bb74593c2099",
     "src/battle/controller.c": "d065507a40efd8a1594090cd8e7e85bfbad49620c57fbdfc16a2152ab34a436c",
-    "src/battle/field.c": "fbf4d927db83ac36eebb9f087d25409815bc47e3b28ad368166503e30a07dcf3",
+    "src/battle/field.c": "e7eca6f9ce1ce1e38daad8310ddf9e88dd894076f900e08ad0134a68d8017dbf",
     "src/battle/movement.c": "3e8e81140ce51fd648b59c970c06f349ad1ef7abacb9692db28da8a5ab2a2b56",
     "src/battle/overview.c": "45dc16cbe084c407cae30643457acfeb267d257b59044eb37c5a3eb9b174b26a",
-    "src/battle/player_turn.c": "3058b388d05645bcbc4e989dc6e7cab9c21ee869f530d3ef62d1c6217185b000",
+    "src/battle/player_turn.c": "8b52ef3703712a2f893c953dd0c69841d1b91518034c76cfae2c38ac6f713280",
     "src/platform/event_loop.c": "f8b9bd7312107f45da940ed3c51e87c82c4cd14fce34516405fd08a00b34577a",
     "src/platform/input_dialog.c": "3f20f477df4b9b4f4056e853cca59d2d8fe821aee9ccd2b8b2b252680cfc42ee",
     "src/platform/sdk_bindings.c": "ab2d0c5ac7c492639de582e4ef546e9b1ec40d80d08ee9add7b4e1fe0b9dbddd",
@@ -26,10 +26,10 @@
     "src/runtime/libc.c": "c7ede021266375069338092a07ac3e853b180208163e8a4881e58bb2d6c3f7a6",
     "src/runtime/soft_float.c": "28bf399b38fc0fc8b2da198142194d49f2e212e925cbabdb5d5b267fd348b0ed",
     "src/runtime/strings.c": "462d838a2767248b0598c73ef7f9cc62967e36ba93bf55efa18bddc4e5e9a923",
-    "src/sango_battle_ui.c": "5ca1e0e241b262b87294012af2a6cbf327fe76c8dff66fbf98f02d84dc0fe974",
+    "src/sango_battle_ui.c": "bfb2600fb63e97c94120006e59d5592d01fc93d270b57c98599d44e8a34619b8",
     "src/sango_credits.c": "d6c65d6e7ae35a89085c8fc2338d9c2d42b9aa78a53b247a1635176f58fdd53b",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
-    "src/sango_statusbar.c": "fb7c1c99af3c2d32af2adca4b799e8fb7097f6760ecb3ed08f83d4ed5ec18884",
+    "src/sango_statusbar.c": "abf71cb0b4a81e6b0380745330b19de3d1c1146b76ae496f98b3e41a4298bc85",
     "src/save/savegame.c": "04c04ed53a18f951504ffafcd5138475096b2fa9092eed97ff4a7514a5e3285f",
     "src/strategy/aftermath.c": "59ea738c5c2563e6ce1a30dd1144a009b214133483239f88ca4fe830fbb2eaa4",
     "src/strategy/ai.c": "eadc3db74a2ca965d29c6e2d4be95f807a4480324039e0b595007702931d5432",
@@ -156,7 +156,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_terrain",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_tileset_resource,",
-          "line": 601
+          "line": 589
         },
         {
           "source": "src/battle/actions.c",
@@ -189,7 +189,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_units",
           "expression": "sango_battle_draw_bitmap(5,",
-          "line": 420
+          "line": 408
         }
       ]
     },
@@ -330,19 +330,19 @@
       "category": "战斗",
       "name": "战斗状态行底图",
       "usage_status": "confirmed",
-      "naming_evidence": "战斗HUD在y=241绘制资源8，随后填粮草数、天气和当前目标姓名/地形。",
+      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=240绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
       "code_evidence": [
         {
-          "source": "src/battle/field.c",
-          "function": "sango_battle_draw_hud",
-          "expression": "sango_battle_draw_bitmap(8,1,0,0xf1);",
-          "line": 132
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw",
+          "expression": "sango_resource_item(8, 1, g_resource_package_address)",
+          "line": 91
         },
         {
-          "source": "src/battle/field.c",
-          "function": "sango_battle_draw_cursor_description",
-          "expression": "sango_battle_draw_text(0x6a,0xf3,",
-          "line": 661
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw_description",
+          "expression": "draw_status_text(STATUS_DESCRIPTION_X, text, target);",
+          "line": 104
         }
       ]
     },
@@ -351,7 +351,7 @@
       "category": "天气",
       "name": "战斗天气状态图标",
       "usage_status": "confirmed",
-      "naming_evidence": "天气状态值为1到5，位图条目使用1基索引；未找到代码内的逐状态中文天气名，保留状态编号。",
+      "naming_evidence": "天气状态值为1到5；绘制前转零基帧号，并按3:2放大到18x18。未找到代码内的逐状态中文天气名，保留状态编号。",
       "code_evidence": [
         {
           "source": "src/battle/actions.c",
@@ -360,10 +360,16 @@
           "line": 449
         },
         {
-          "source": "src/battle/field.c",
-          "function": "sango_battle_draw_hud",
-          "expression": "sango_battle_draw_bitmap(9,",
-          "line": 132
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw_weather",
+          "expression": "sango_resource_item(9, 1, g_resource_package_address)",
+          "line": 81
+        },
+        {
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw_weather",
+          "expression": "g_battle_weather - 1",
+          "line": 81
         }
       ]
     },
@@ -2925,13 +2931,13 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_check_level_and_retreat",
           "expression": "sango_battle_play_unit_effect(0,5,",
-          "line": 517
+          "line": 505
         },
         {
           "source": "src/battle/field.c",
           "function": "sango_battle_check_level_and_retreat",
           "expression": "sango_battle_play_unit_effect(6,0xb,",
-          "line": 517
+          "line": 505
         },
         {
           "source": "src/battle/player_turn.c",
@@ -3177,7 +3183,7 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_day_popup_draw",
           "expression": "sango_resource_item(33,1,",
-          "line": 4
+          "line": 111
         }
       ]
     },
@@ -3192,19 +3198,19 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_units",
           "expression": "unit_status == '\\x02'",
-          "line": 420
+          "line": 408
         },
         {
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_units",
           "expression": "unit_offset_or_status_frame = 4,",
-          "line": 420
+          "line": 408
         },
         {
           "source": "src/battle/field.c",
           "function": "sango_battle_draw_units",
           "expression": "sango_battle_draw_bitmap(0x22,",
-          "line": 420
+          "line": 408
         }
       ]
     },
@@ -4978,7 +4984,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -5025,7 +5031,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -5096,7 +5102,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -5155,7 +5161,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -5226,7 +5232,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -5285,7 +5291,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -5332,7 +5338,7 @@
           "source": "src/battle/field.c",
           "function": "sango_battle_copy_viewport_tiles",
           "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,",
-          "line": 625
+          "line": 613
         }
       ],
       "cities": [
@@ -6011,14 +6017,6 @@
       "line": "spawn_x = sango_battle_resource_item(2, '\\x05');"
     },
     {
-      "function": "sango_battle_draw_hud",
-      "line": "sango_battle_draw_bitmap(8, 1, 0, 0xf1);"
-    },
-    {
-      "function": "sango_battle_draw_hud",
-      "line": "sango_battle_draw_bitmap(9, (uint32_t)g_battle_weather, 0x4b, 0xf3);"
-    },
-    {
       "function": "sango_battle_draw_units",
       "line": "sango_battle_draw_bitmap(5, sprite_frame + 1 & 0xff, screen_x, screen_y);"
     },
@@ -6101,14 +6099,6 @@
     {
       "function": "sango_battle_change_weather",
       "line": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b, 1, 0x14, 0x31, '\\x01');"
-    },
-    {
-      "function": "sango_battle_change_weather",
-      "line": "sango_bitmap_draw_resource(9, (uint32_t)g_battle_weather, 0x4b, 0xf3, '\\x01');"
-    },
-    {
-      "function": "sango_battle_change_weather",
-      "line": "sango_bitmap_draw_resource(9, (uint32_t)g_battle_weather, 0x4b, 0xf3, '\\0');"
     },
     {
       "function": "sango_battle_read_text",

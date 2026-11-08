@@ -30,7 +30,7 @@ enum SangoStatusbarAction sango_statusbar_hit(unsigned int x, unsigned int y)
 
 void sango_battle_toolbar_draw(unsigned int target)
 {
-    /* 9288S stacks its 16-pixel status row directly above the toolbar.
+    /* The 9288S 16-pixel row becomes 24 pixels at the same 3:2 scale as its toolbar.
        Clear the remaining footer so strategy UI and old button rows cannot
        survive below the relocated battle controls. */
     sango_render_clear_rectangle(0, SANGO_BATTLE_TOOLBAR_TOP, 239, 319, target);

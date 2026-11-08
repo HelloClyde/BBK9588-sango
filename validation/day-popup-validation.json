@@ -1,7 +1,7 @@
 {
   "passed": 38,
   "failed": 0,
-  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
   "scope": "Compiled MIPS popup rasterization for all 30 days and actual turn dispatch; text coordinates and timer calls recorded through modeled SDK. Native firmware checks recorded separately.",
   "cases": [
     {

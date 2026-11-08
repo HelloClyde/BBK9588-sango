@@ -4,7 +4,7 @@
   "preserved_initialized_data_bytes": 45536,
   "recovered_c_functions": 446,
   "bda_bytes": 214700,
-  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
-  "code_rodata_end": "0x81c1d696",
-  "free_before_original_data": 10330
+  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
+  "code_rodata_end": "0x81c1d8d2",
+  "free_before_original_data": 9758
 }

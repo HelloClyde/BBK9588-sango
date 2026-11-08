@@ -454,8 +454,8 @@ void sango_battle_change_weather(void)
     weather = (int)weather % 5 + 1;
     g_battle_weather = (uint8_t)weather;
     sango_bitmap_draw_resource((weather & 0xff) + 0x1b, 1, 0x14, 0x31, '\x01');
-    sango_bitmap_draw_resource(9, (uint32_t)g_battle_weather, 0x4b, 0xf3, '\x01');
-    sango_bitmap_draw_resource(9, (uint32_t)g_battle_weather, 0x4b, 0xf3, '\0');
+    sango_battle_status_draw_weather(0);
+    sango_battle_status_draw_weather(g_game_context);
     sango_input_wait(0x32, '\0');
     return;
 }

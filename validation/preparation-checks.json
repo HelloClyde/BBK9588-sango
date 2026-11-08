@@ -34,10 +34,13 @@
     "identifier_only_tokens_all446": true,
     "all_opaque_local_names_and_labels_removed": true,
     "short_function_bda_lib_and_elf_byte_identical": true,
-    "recovered_local_and_label_guard": true
+    "recovered_local_and_label_guard": true,
+    "battle_layout_58_compiled_mips_checks": true,
+    "battle_layout_24_native_interface_checks": true,
+    "battle_layout_27163_logic_differentials": true
   },
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
-  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+  "bda_sha256": "1c70a95ad148132795ed4c24c2b50ac55abc0e1c2dd9ab4b162870a5f678039e",
   "toolchain_archive_sha256": "8ba866e25c9826ee04ab4310365d264e3e73769e3738bb58ae38fd6740b7ee8d",
   "actionlint_archive_sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9",
   "github_actions_executed": true,

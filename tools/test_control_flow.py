@@ -365,7 +365,12 @@ def run_battle_input(image, mode, cursor, events, register_seed):
                         ('sango_battle_draw_units', 1), ('sango_battle_draw_target_markers', 0),
                         ('sango_battle_draw_move_range', 0), ('sango_battle_scroll_viewport', 1),
                         ('sango_battle_draw_cursor', 0)]:
-        machine.record(name, count)
+        if name == 'sango_battle_draw_hud' and name not in machine.symbols:
+            # The layout wrapper is inlined; compare its shared HUD boundary.
+            machine.intercept('sango_battle_status_draw', 0,
+                lambda args: machine.trace.append(['sango_battle_draw_hud', []]))
+        else:
+            machine.record(name, count)
     # GCC outlines the hint==0 branch when the small preview wrappers are
     # reused. It has no argument; compare it with the same scroll boundary.
     if 'sango_battle_scroll_viewport.part.0' in machine.symbols:

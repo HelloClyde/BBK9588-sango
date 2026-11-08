@@ -477,18 +477,18 @@
       ],
       "category": "战斗",
       "name": "战斗状态行底图",
-      "naming_evidence": "战斗HUD在y=241绘制资源8，随后填粮草数、天气和当前目标姓名/地形。",
+      "naming_evidence": "战斗HUD把资源8按9288S的160像素逻辑宽度放大为240x24，在y=240绘制，再填粮草、天气和目标姓名/地形。9588资源右侧追加的空白列不参与缩放。",
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/battle/field.c",
-          "function": "sango_battle_draw_hud",
-          "expression": "sango_battle_draw_bitmap(8,1,0,0xf1);"
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw",
+          "expression": "sango_resource_item(8, 1, g_resource_package_address)"
         },
         {
-          "source": "src/battle/field.c",
-          "function": "sango_battle_draw_cursor_description",
-          "expression": "sango_battle_draw_text(0x6a,0xf3,"
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw_description",
+          "expression": "draw_status_text(STATUS_DESCRIPTION_X, text, target);"
         }
       ]
     },
@@ -518,7 +518,7 @@
       ],
       "category": "天气",
       "name": "战斗天气状态图标",
-      "naming_evidence": "天气状态值为1到5，位图条目使用1基索引；未找到代码内的逐状态中文天气名，保留状态编号。",
+      "naming_evidence": "天气状态值为1到5；绘制前转零基帧号，并按3:2放大到18x18。未找到代码内的逐状态中文天气名，保留状态编号。",
       "usage_status": "confirmed",
       "code_evidence": [
         {
@@ -527,9 +527,14 @@
           "expression": "weather = (int)weather % 5 + 1;"
         },
         {
-          "source": "src/battle/field.c",
-          "function": "sango_battle_draw_hud",
-          "expression": "sango_battle_draw_bitmap(9,"
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw_weather",
+          "expression": "sango_resource_item(9, 1, g_resource_package_address)"
+        },
+        {
+          "source": "src/sango_battle_ui.c",
+          "function": "sango_battle_status_draw_weather",
+          "expression": "g_battle_weather - 1"
         }
       ]
     },
