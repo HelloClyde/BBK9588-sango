@@ -137,14 +137,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c0666c",
-          "expression": "FUN_81c154d8(1,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_read_text",
+          "expression": "sango_resource_read_text(1,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c164c8",
-          "expression": "FUN_81c154d8(1,0x40,"
+          "source": "src/save/savegame.c",
+          "function": "sango_save_draw_slots",
+          "expression": "sango_resource_read_text(1,0x40,"
         }
       ]
     },
@@ -161,19 +161,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c02524",
+          "source": "src/battle/ai.c",
+          "function": "sango_battle_load_range_template",
           "expression": "in_t0 = 2;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "FUN_81c152f0(2,'\\x0e',"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "sango_resource_item(2,'\\x0e',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         }
       ]
     },
@@ -204,9 +204,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/app/lifecycle.c",
           "function": "sango_game_lifecycle",
-          "expression": "FUN_81c162e0(3);"
+          "expression": "sango_animation_play_resource(3);"
         }
       ]
     },
@@ -281,19 +281,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c03c98",
-          "expression": "DAT_81c2b13e = 4;"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_initialize_field",
+          "expression": "g_battle_tileset_resource = 4;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04b9c",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b13e,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_terrain",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_tileset_resource,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c0620c",
-          "expression": "bVar1 != 0x29"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_terrain_at",
+          "expression": "tile != 0x29"
         }
       ]
     },
@@ -354,19 +354,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06838",
-          "expression": "uVar3 = 0xe;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_unit_sprite_frame",
+          "expression": "frame = 0xe;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06838",
-          "expression": "uVar3 = 0xc;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_unit_sprite_frame",
+          "expression": "frame = 0xc;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04630",
-          "expression": "FUN_81c04fb4(5,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_units",
+          "expression": "sango_battle_draw_bitmap(5,"
         }
       ]
     },
@@ -402,9 +402,9 @@
           "expression": "FUN_81c162e0(6);"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15e44",
-          "expression": "sango_credits_draw(credits_draw_target);"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_show_credits",
+          "expression": "sango_credits_draw(g_game_context);"
         }
       ]
     },
@@ -439,19 +439,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c027f0",
-          "expression": "FUN_81c152f0(7,'\\x01',"
+          "source": "src/battle/overview.c",
+          "function": "sango_battle_draw_move_range",
+          "expression": "sango_resource_item(7,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c0343c",
-          "expression": "FUN_81c04fb4(7,2,"
+          "source": "src/battle/player_turn.c",
+          "function": "sango_battle_draw_target_markers",
+          "expression": "sango_battle_draw_bitmap(7,2,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c03c20",
-          "expression": "FUN_81c04fb4(7,5,"
+          "source": "src/battle/player_turn.c",
+          "function": "sango_battle_draw_cursor",
+          "expression": "sango_battle_draw_bitmap(7,5,"
         }
       ]
     },
@@ -481,14 +481,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c03f6c",
-          "expression": "FUN_81c04fb4(8,1,0,0xf1);"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_hud",
+          "expression": "sango_battle_draw_bitmap(8,1,0,0xf1);"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04d58",
-          "expression": "FUN_81c04f8c(0x6a,0xf3,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_cursor_description",
+          "expression": "sango_battle_draw_text(0x6a,0xf3,"
         }
       ]
     },
@@ -522,14 +522,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06384",
-          "expression": "uVar1 = (int)uVar1 % 5 + 1;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_change_weather",
+          "expression": "weather = (int)weather % 5 + 1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c03f6c",
-          "expression": "FUN_81c04fb4(9,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_hud",
+          "expression": "sango_battle_draw_bitmap(9,"
         }
       ]
     },
@@ -546,19 +546,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c062d0",
-          "expression": "FUN_81c152f0(10,'\\x01',"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_skill_parameters",
+          "expression": "sango_resource_item(10,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c062d0",
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_skill_parameters",
           "expression": "* 0x22"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "pcVar4 = (char *)FUN_81c062d0(uVar8);"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "pcVar4 = (char *)sango_battle_skill_parameters(uVar8);"
         }
       ]
     },
@@ -575,14 +575,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c021d4",
-          "expression": "FUN_81c154d8(0xb,"
+          "source": "src/battle/ai.c",
+          "function": "sango_battle_load_skill_names",
+          "expression": "sango_resource_read_text(0xb,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "FUN_81c154d8(0xb,uVar8,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "sango_resource_read_text(0xb,uVar8,"
         }
       ]
     },
@@ -612,18 +612,18 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c02524",
+          "source": "src/battle/ai.c",
+          "function": "sango_battle_load_range_template",
           "expression": "in_t0 = 0xd;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c02524",
+          "source": "src/battle/ai.c",
+          "function": "sango_battle_load_range_template",
           "expression": "* 0x51"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c02524",
+          "source": "src/battle/ai.c",
+          "function": "sango_battle_load_range_template",
           "expression": "unaff_s1 = 9;"
         }
       ]
@@ -641,9 +641,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c0205c",
-          "expression": "FUN_81c152f0(0xe,DAT_81c2b161,"
+          "source": "src/battle/ai.c",
+          "function": "sango_battle_collect_unit_skills",
+          "expression": "sango_resource_item(0xe,g_scenario_id,"
         }
       ]
     },
@@ -682,13 +682,13 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05f7c",
-          "expression": "FUN_81c152f0(0xf,'\\x01',"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_draw_damage_digits",
+          "expression": "sango_resource_item(0xf,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05f7c",
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_draw_damage_digits",
           "expression": "cVar3 - 0x30"
         }
       ]
@@ -719,14 +719,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "FUN_81c077bc(0x10,1,0x14,0x31,'\\0');"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "sango_bitmap_draw_resource(0x10,1,0x14,0x31,'\\0');"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "(&DAT_81c201ac)[uVar5]"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "(&g_skill_animation_background_flag)[uVar5]"
         }
       ]
     },
@@ -955,19 +955,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = DAT_81c2b237 + 0x13;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = g_attacker_troop_type + 0x13;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c01278",
-          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;"
+          "source": "src/battle/combat_math.c",
+          "function": "sango_battle_prepare_combatant",
+          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -1163,19 +1163,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = DAT_81c2b237 + 0x13;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = g_attacker_troop_type + 0x13;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c01278",
-          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;"
+          "source": "src/battle/combat_math.c",
+          "function": "sango_battle_prepare_combatant",
+          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -1393,19 +1393,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = DAT_81c2b237 + 0x13;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = g_attacker_troop_type + 0x13;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c01278",
-          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;"
+          "source": "src/battle/combat_math.c",
+          "function": "sango_battle_prepare_combatant",
+          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -1623,19 +1623,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = DAT_81c2b237 + 0x13;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = g_attacker_troop_type + 0x13;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c01278",
-          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;"
+          "source": "src/battle/combat_math.c",
+          "function": "sango_battle_prepare_combatant",
+          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -1864,19 +1864,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = DAT_81c2b237 + 0x13;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = g_attacker_troop_type + 0x13;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c01278",
-          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;"
+          "source": "src/battle/combat_math.c",
+          "function": "sango_battle_prepare_combatant",
+          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2094,19 +2094,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = DAT_81c2b237 + 0x13;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = g_attacker_troop_type + 0x13;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c01278",
-          "expression": "(&DAT_81c2b237)[iVar6] = bVar1;"
+          "source": "src/battle/combat_math.c",
+          "function": "sango_battle_prepare_combatant",
+          "expression": "(&g_attacker_troop_type)[iVar6] = bVar1;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2159,19 +2159,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "uVar5 = 0x19;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "animation_resource = 0x19;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c05e0c",
-          "expression": "DAT_81c2b249 != '\\a'"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_normal_attack",
+          "expression": "g_defender_terrain_view2 != '\\a'"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c0620c",
-          "expression": "uVar3 = 7;"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_terrain_at",
+          "expression": "terrain = 7;"
         }
       ]
     },
@@ -2201,14 +2201,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c07bc0",
-          "expression": "FUN_81c152f0(0x1a,'\\x01',"
+          "source": "src/ui/menu_and_text.c",
+          "function": "sango_battle_show_short_message",
+          "expression": "sango_resource_item(0x1a,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "FUN_81c07bc0(acStack_48,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "sango_battle_show_short_message(acStack_48,"
         }
       ]
     },
@@ -2327,19 +2327,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04920",
-          "expression": "FUN_81c04ae8(0,5,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_check_level_and_retreat",
+          "expression": "sango_battle_play_unit_effect(0,5,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04920",
-          "expression": "FUN_81c04ae8(6,0xb,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_check_level_and_retreat",
+          "expression": "sango_battle_play_unit_effect(6,0xb,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c02f4c",
-          "expression": "FUN_81c06a70(0x1b,0xc,0x11,"
+          "source": "src/battle/player_turn.c",
+          "function": "sango_battle_plan_ai_action",
+          "expression": "sango_animation_play_range(0x1b,0xc,0x11,"
         }
       ]
     },
@@ -2369,9 +2369,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06384",
-          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_change_weather",
+          "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,"
         }
       ]
     },
@@ -2401,9 +2401,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06384",
-          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_change_weather",
+          "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,"
         }
       ]
     },
@@ -2433,9 +2433,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06384",
-          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_change_weather",
+          "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,"
         }
       ]
     },
@@ -2465,9 +2465,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06384",
-          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_change_weather",
+          "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,"
         }
       ]
     },
@@ -2497,9 +2497,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c06384",
-          "expression": "FUN_81c077bc((uVar1 & 0xff) + 0x1b,"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_change_weather",
+          "expression": "sango_bitmap_draw_resource((weather & 0xff) + 0x1b,"
         }
       ]
     },
@@ -2531,7 +2531,7 @@
         {
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_day_popup_draw",
-          "expression": "FUN_81c152f0(33,1,"
+          "expression": "sango_resource_item(33,1,"
         }
       ]
     },
@@ -2566,19 +2566,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04630",
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_units",
           "expression": "cVar1 == '\\x02'"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04630",
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_units",
           "expression": "iVar4 = 4,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04630",
-          "expression": "FUN_81c04fb4(0x22,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_draw_units",
+          "expression": "sango_battle_draw_bitmap(0x22,"
         }
       ]
     },
@@ -2620,9 +2620,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2664,9 +2664,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2708,9 +2708,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2774,9 +2774,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2818,9 +2818,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2862,9 +2862,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2906,9 +2906,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2950,9 +2950,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -2994,9 +2994,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c058b8",
-          "expression": "&DAT_81c20110 + uVar5 * 2"
+          "source": "src/battle/actions.c",
+          "function": "sango_battle_execute_skill",
+          "expression": "&g_skill_animation_resource_bytes + uVar5 * 2"
         }
       ]
     },
@@ -3026,9 +3026,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2c,100)"
+          "expression": "sango_menu_select_animated(0x2c,100)"
         }
       ]
     },
@@ -3058,14 +3058,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2d,0x68)"
+          "expression": "sango_menu_select_animated(0x2d,0x68)"
         },
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c1b91c((char)uVar2 + '\\x01'"
+          "expression": "sango_scenario_load((char)selection + '\\x01'"
         }
       ]
     },
@@ -3095,14 +3095,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c164c8",
-          "expression": "FUN_81c077bc(0x2e,1,"
+          "source": "src/save/savegame.c",
+          "function": "sango_save_draw_slots",
+          "expression": "sango_bitmap_draw_resource(0x2e,1,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c16330",
-          "expression": "FUN_81c164c8();"
+          "source": "src/save/savegame.c",
+          "function": "sango_save_choose_slot",
+          "expression": "sango_save_draw_slots();"
         }
       ]
     },
@@ -3132,14 +3132,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15e6c",
-          "expression": "FUN_81c077bc(0x2f,1,"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_choose_ruler",
+          "expression": "sango_bitmap_draw_resource(0x2f,1,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15e6c",
-          "expression": "FUN_81c161c4("
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_choose_ruler",
+          "expression": "sango_menu_flash_ruler_cities("
         }
       ]
     },
@@ -3368,19 +3368,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c14fb8(0xc3,10,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
         },
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x3e;"
+          "expression": "name_resource = 0x3e;"
         }
       ]
     },
@@ -3609,19 +3609,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c14fb8(0xc3,10,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
         },
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x46;"
+          "expression": "name_resource = 0x46;"
         }
       ]
     },
@@ -3850,19 +3850,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c14fb8(0xc3,10,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
         },
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x47;"
+          "expression": "name_resource = 0x47;"
         }
       ]
     },
@@ -4091,19 +4091,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c152f0(DAT_81c2b161 + 0x2f,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c055b0",
-          "expression": "FUN_81c14fb8(0xc3,10,"
+          "source": "src/battle/controller.c",
+          "function": "sango_battle_show_cursor_info",
+          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
         },
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x48;"
+          "expression": "name_resource = 0x48;"
         }
       ]
     },
@@ -4240,14 +4240,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "FUN_81c152f0(0x36,'\\x01',"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "sango_resource_item(0x36,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "* 0xc + (uint)*param_1) * 0x100"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "* 0xc + (uint32_t)*map_state) * 0x100"
         }
       ]
     },
@@ -4286,19 +4286,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "FUN_81c152f0(0x37,'\\x01',"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "sango_resource_item(0x37,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "bVar7 = 8;"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "city_marker_frame = 8;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "bVar7 = 7,"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "city_marker_frame = 7,"
         }
       ]
     },
@@ -4328,9 +4328,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "FUN_81c152f0(0x38,'\\x01',"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "sango_resource_item(0x38,'\\x01',"
         }
       ]
     },
@@ -4347,9 +4347,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c1add4",
-          "expression": "FUN_81c152f0(0x39,param_1,"
+          "source": "src/strategy/turns.c",
+          "function": "sango_scenario_initialize",
+          "expression": "sango_resource_item(0x39,scenario_id,"
         }
       ]
     },
@@ -4366,9 +4366,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c1971c",
-          "expression": "FUN_81c154d8(0x3a,"
+          "source": "src/ui/city_details.c",
+          "function": "sango_city_read_name",
+          "expression": "sango_resource_read_text(0x3a,"
         }
       ]
     },
@@ -4385,14 +4385,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c136a0",
-          "expression": "FUN_81c152f0(0x3b,'\\x01',"
+          "source": "src/strategy/map.c",
+          "function": "sango_city_adjacent_distance",
+          "expression": "sango_resource_item(0x3b,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c128b4",
-          "expression": "FUN_81c152f0(0x3b,'\\x01',"
+          "source": "src/strategy/rosters.c",
+          "function": "sango_city_find_neighbor_position",
+          "expression": "sango_resource_item(0x3b,'\\x01',"
         }
       ]
     },
@@ -4422,9 +4422,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c1add4",
-          "expression": "FUN_81c152f0(0x3d,param_1,"
+          "source": "src/strategy/turns.c",
+          "function": "sango_scenario_initialize",
+          "expression": "sango_resource_item(0x3d,scenario_id,"
         }
       ]
     },
@@ -4441,9 +4441,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x3e;"
+          "expression": "name_resource = 0x3e;"
         }
       ]
     },
@@ -4460,19 +4460,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17734",
-          "expression": "FUN_81c152f0(0x3f,DAT_81c2b161,"
+          "source": "src/strategy/calendar.c",
+          "function": "sango_strategy_update_character_ages_and_debut",
+          "expression": "sango_resource_item(0x3f,g_scenario_id,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17734",
-          "expression": "+ 0x10) == DAT_81c2b140"
+          "source": "src/strategy/calendar.c",
+          "function": "sango_strategy_update_character_ages_and_debut",
+          "expression": "+ 0x10) == g_current_year_view2"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17734",
-          "expression": "FUN_81c134b8(uVar5,(byte)uVar7)"
+          "source": "src/strategy/calendar.c",
+          "function": "sango_strategy_update_character_ages_and_debut",
+          "expression": "sango_city_add_character(uVar5,(uint8_t)uVar7)"
         }
       ]
     },
@@ -4489,14 +4489,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c19748",
-          "expression": "FUN_81c154d8(0x40,"
+          "source": "src/ui/city_details.c",
+          "function": "sango_city_format_attribute",
+          "expression": "sango_resource_read_text(0x40,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12058",
-          "expression": "FUN_81c154d8(0x40,0x5b,"
+          "source": "src/strategy/aftermath.c",
+          "function": "sango_strategy_show_battle_victory",
+          "expression": "sango_resource_read_text(0x40,0x5b,"
         }
       ]
     },
@@ -4513,14 +4513,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c1add4",
-          "expression": "FUN_81c152f0(0x41,param_1,"
+          "source": "src/strategy/turns.c",
+          "function": "sango_scenario_initialize",
+          "expression": "sango_resource_item(0x41,scenario_id,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c13870",
-          "expression": "DAT_81c2b310"
+          "source": "src/strategy/map.c",
+          "function": "sango_city_list_idle_characters",
+          "expression": "g_city_character_roster"
         }
       ]
     },
@@ -4537,18 +4537,18 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17a08",
-          "expression": "FUN_81c152f0(0x42,'\\x01',"
+          "source": "src/strategy/items.c",
+          "function": "sango_item_apply_attributes",
+          "expression": "sango_resource_item(0x42,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17eb4",
+          "source": "src/ui/info_panels.c",
+          "function": "sango_item_remove_attributes",
           "expression": "0x3e"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c185cc",
+          "source": "src/ui/lists.c",
+          "function": "sango_item_format_attribute",
           "expression": "0x41"
         }
       ]
@@ -4566,19 +4566,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17e18",
-          "expression": "FUN_81c152f0(0x43,DAT_81c2b161,"
+          "source": "src/ui/info_panels.c",
+          "function": "sango_strategy_spawn_items_for_year",
+          "expression": "sango_resource_item(0x43,g_scenario_id,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17e18",
-          "expression": "FUN_81c135a8("
+          "source": "src/ui/info_panels.c",
+          "function": "sango_strategy_spawn_items_for_year",
+          "expression": "sango_city_add_item("
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c135a8",
-          "expression": "param_2 < 0x21"
+          "source": "src/strategy/map.c",
+          "function": "sango_city_add_item",
+          "expression": "item_id < 0x21"
         }
       ]
     },
@@ -4595,19 +4595,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c1add4",
-          "expression": "FUN_81c152f0(0x44,param_1,"
+          "source": "src/strategy/turns.c",
+          "function": "sango_scenario_initialize",
+          "expression": "sango_resource_item(0x44,scenario_id,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c135a8",
-          "expression": "DAT_81c2b3e0"
+          "source": "src/strategy/map.c",
+          "function": "sango_city_add_item",
+          "expression": "g_city_item_roster"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12504",
-          "expression": "DAT_81c2b3e0"
+          "source": "src/strategy/rosters.c",
+          "function": "sango_city_remove_item",
+          "expression": "g_city_item_roster"
         }
       ]
     },
@@ -4638,19 +4638,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "FUN_81c152f0(0x45,'\\x01',"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "sango_resource_item(0x45,'\\x01',"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12e18",
-          "expression": "FUN_81c15070(0x35,0x10f,7,9,1,"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_draw_map",
+          "expression": "sango_bitmap_draw_frame(0x35,0x10f,7,9,1,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c17b3c",
-          "expression": "FUN_81c13ab8("
+          "source": "src/strategy/items.c",
+          "function": "sango_faction_count_characters",
+          "expression": "sango_faction_list_characters("
         }
       ]
     },
@@ -4667,9 +4667,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x46;"
+          "expression": "name_resource = 0x46;"
         }
       ]
     },
@@ -4686,9 +4686,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x47;"
+          "expression": "name_resource = 0x47;"
         }
       ]
     },
@@ -4705,9 +4705,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/city_details.c",
           "function": "sango_load_named_text",
-          "expression": "in_a3 = 0x48;"
+          "expression": "name_resource = 0x48;"
         }
       ]
     },
@@ -4724,9 +4724,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c18c80",
-          "expression": "FUN_81c154d8(0x49,"
+          "source": "src/ui/lists.c",
+          "function": "sango_item_read_name",
+          "expression": "sango_resource_read_text(0x49,"
         }
       ]
     },
@@ -4769,9 +4769,9 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12b18",
-          "expression": "FUN_81c152f0(0x4b,'\\x01',"
+          "source": "src/strategy/map.c",
+          "function": "sango_strategy_select_city",
+          "expression": "sango_resource_item(0x4b,'\\x01',"
         }
       ]
     },
@@ -4850,24 +4850,24 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c11d98",
-          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,0,"
+          "source": "src/strategy/aftermath.c",
+          "function": "sango_strategy_show_army_attack",
+          "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,0,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c11f18",
-          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,1,"
+          "source": "src/strategy/aftermath.c",
+          "function": "sango_strategy_show_armies_engage",
+          "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,1,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12058",
-          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,2,"
+          "source": "src/strategy/aftermath.c",
+          "function": "sango_strategy_show_battle_victory",
+          "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,2,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c12188",
-          "expression": "FUN_81c14fb8(0x4d,0x77,0x54,0x40,3,"
+          "source": "src/strategy/aftermath.c",
+          "function": "sango_strategy_show_battle_defeat",
+          "expression": "sango_bitmap_draw_frame_screen(0x4d,0x77,0x54,0x40,3,"
         }
       ]
     },
@@ -4909,14 +4909,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2c,100)"
+          "expression": "sango_menu_select_animated(0x2c,100)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -4958,14 +4958,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2c,100)"
+          "expression": "sango_menu_select_animated(0x2c,100)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5007,14 +5007,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2c,100)"
+          "expression": "sango_menu_select_animated(0x2c,100)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5056,14 +5056,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2c,100)"
+          "expression": "sango_menu_select_animated(0x2c,100)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5105,14 +5105,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2d,0x68)"
+          "expression": "sango_menu_select_animated(0x2d,0x68)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5154,14 +5154,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2d,0x68)"
+          "expression": "sango_menu_select_animated(0x2d,0x68)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5203,14 +5203,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2d,0x68)"
+          "expression": "sango_menu_select_animated(0x2d,0x68)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5252,14 +5252,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
+          "source": "src/ui/start_menu.c",
           "function": "sango_select_session",
-          "expression": "FUN_81c15d18(0x2d,0x68)"
+          "expression": "sango_menu_select_animated(0x2d,0x68)"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15d18",
-          "expression": "FUN_81c162e0(param_2 + (short)uVar2)"
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_select_animated",
+          "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)"
         }
       ]
     },
@@ -5277,19 +5277,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     },
@@ -5307,19 +5307,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     },
@@ -5337,19 +5337,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     },
@@ -5367,19 +5367,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     },
@@ -5397,19 +5397,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     },
@@ -5427,19 +5427,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     },
@@ -5457,19 +5457,19 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "FUN_81c154d8(2,0xf,"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "sango_resource_read_text(2,0xf,"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c10394",
-          "expression": "DAT_81c2b262 = pbVar7[uVar13] + 0x6e;"
+          "source": "src/strategy/military.c",
+          "function": "sango_strategy_resolve_attack",
+          "expression": "g_battle_map_resource_view2 = pbVar7[uVar13] + 0x6e;"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c04c60",
-          "expression": "FUN_81c04f40((uint)DAT_81c2b262,"
+          "source": "src/battle/field.c",
+          "function": "sango_battle_copy_viewport_tiles",
+          "expression": "sango_battle_resource_item((uint32_t)g_battle_map_resource,"
         }
       ]
     }
@@ -5847,8 +5847,8 @@
           "expression": "credits_bitmap"
         },
         {
-          "source": "src/sango_game.c",
-          "function": "FUN_81c15e44",
+          "source": "src/ui/start_menu.c",
+          "function": "sango_menu_show_credits",
           "expression": "sango_credits_draw("
         }
       ]

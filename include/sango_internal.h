@@ -1,0 +1,18 @@
+#ifndef SANGO_INTERNAL_H
+#define SANGO_INTERNAL_H
+#include "sango_types.h"
+#include "sango_state.h"
+#include "sango_resource_format.h"
+#include "sango_app.h"
+#include "sango_battle.h"
+#include "sango_render.h"
+#include "sango_ui.h"
+#include "sango_platform.h"
+#include "sango_strategy.h"
+#include "sango_resources.h"
+#include "sango_save.h"
+#include "sango_runtime.h"
+#include "sango_statusbar.h"
+#include "sango_credits.h"
+#include "sango_battle_ui.h"
+#endif

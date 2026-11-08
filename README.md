@@ -2,7 +2,8 @@
 
 面向步步高 9588/C200 环境，将提供的《三国霸业》BDA 整理为可重新编译的 MIPS C 工程，
 共 446 个恢复函数，并修复原 9588 移植中的状态栏、战斗动画、制作群组和战斗界面布局问题。
-函数、变量仍包含恢复名称，本项目不是原开发者的工程。
+恢复逻辑已按战斗、战略、存读档、资源、界面和运行库拆成42个模块，函数采用语义名称；
+复杂函数仍有待整理的临时变量和控制流，本项目不是原开发者的工程。
 
 当前版本为 **0.1.0-alpha.1**。本地发布准备已经完成，远程 Actions 和 Release 尚未执行。
 原游戏恢复代码及改编素材没有已提供的开源许可证；新增独立代码与上游 SDK 的许可范围
@@ -56,6 +57,18 @@ python tools/verify_artifacts.py --require-validated
 输出 `build/三国霸业.bda` 和 `build/sango.lib`；打包输出在 `dist/`，包括独立 BDA、`sango.lib`、升级 ZIP、`BUILD_INFO.json`
 及逐文件 `SHA256SUMS.txt`。普通构建不会发布任何远程内容。
 `--require-validated` 要求 BDA 与运行证据、LIB 与资源验证记录分别相符；修改代码或素材后，须重新验证并更新参考记录。
+
+### 阅读与修改源码
+
+从 [源码导航](docs/SOURCE_GUIDE.md) 开始，入口流程在 `src/app/lifecycle.c`，
+战略月份循环在 `src/strategy/turns.c`，战斗日循环在 `src/battle/controller.c`。
+[函数索引](docs/FUNCTION_INDEX.md) 列出全部446个函数的新名称、原地址及文件位置；
+`python tools/source_index.py --find battle_run` 可从命令行查询。
+武将、城市和部队结构见 `include/sango_state.h`，旧状态区地址集中在 `include/sango_legacy_memory.h`。
+
+修改模块后运行 `python tools/source_index.py --check` 和资源用途检查，再重新构建。
+构建生成的 `build/sango_engine.c` 仅按固定顺序包含各模块，以保持原布局和优化；日常编辑直接修改功能模块。
+本次可读性重构前后，BDA与资源库均逐字节一致。
 
 ### 素材编辑与 LIB 回包
 

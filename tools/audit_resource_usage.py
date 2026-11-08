@@ -5,22 +5,13 @@ from pathlib import Path
 import sango_lib as lib
 import sango_resource_names as names
 from sango_resource_usage import RULES
+from source_map import parse_functions,contains_expression,FUNCTION_NAMES,MAPPING
 
 ROOT=Path(__file__).resolve().parents[1]
 LIBRARY=ROOT/'assets/library'
 
 def functions(path):
-    text=path.read_text(encoding='utf-8');result={}
-    pattern=r'(?m)^(?:[\w]+[ \t*]+)+([A-Za-z_]\w*)\([^;{}]*\)\s*\n\{'
-    for match in re.finditer(pattern,text):
-        end=match.end();depth=1
-        while depth and end<len(text):
-            if text[end]=='{':depth+=1
-            elif text[end]=='}':depth-=1
-            end+=1
-        result[match[1]]={'source':text[match.start():end],
-                         'line':text.count('\n',0,match.start())+1}
-    return result
+    return parse_functions(path)
 
 def initialized_data():
     text=(ROOT/'src/sango_data.c').read_text(encoding='utf-8')
@@ -107,7 +98,7 @@ def audit(manifest):
             source=citation['source'];source_paths.add(source)
             if source not in source_cache:source_cache[source]=functions(ROOT/source)
             function=source_cache[source].get(citation['function'])
-            if not function or citation['expression'] not in function['source']:
+            if not function or not contains_expression(function['source'],citation['expression']):
                 raise ValueError(f'Code evidence no longer matches resource {rid}: {citation}')
             evidence.append({**citation,'line':function['line']})
         if not evidence and identity['usage_status']!='unresolved':raise ValueError(f'Missing code evidence for {rid}')
@@ -131,8 +122,11 @@ def audit(manifest):
     # These helpers are the complete current routes into the library. Record
     # variable arguments too: absence of a literal does not prove dead data.
     unresolved=[]
-    helper_names=['FUN_81c152f0','FUN_81c04f40','FUN_81c154d8','FUN_81c077bc','FUN_81c06a70','FUN_81c162e0','FUN_81c04fb4']
-    game=source_cache['src/sango_game.c']
+    helper_names=[FUNCTION_NAMES.get(name,name) for name in ['FUN_81c152f0','FUN_81c04f40','FUN_81c154d8','FUN_81c077bc','FUN_81c06a70','FUN_81c162e0','FUN_81c04fb4']]
+    game={}
+    for module in MAPPING['modules']:
+        source_paths.add(module['file'])
+        game.update(functions(ROOT/module['file']))
     for function,body in game.items():
         for text in body['source'].splitlines():
             if any(helper+'(' in text for helper in helper_names) and not text.startswith(('int ','uint ','void ','undefined4 ')):
@@ -156,12 +150,12 @@ def markdown(report):
         lines.append(f"| {entry['id']:03d} | {entry['name']} | {statuses[entry['usage_status']]} | {'、'.join(refs) or '未定位，保留待确认标记'} |")
     lines.extend(['','## 计谋动画选择表','',
         '从 `src/sango_data.c` 原初始化区 0x81c20110、0x81c2014c、0x81c2016c 读取，名称从资源011解码。',
-        '`FUN_81c058b8` 实际用这些值选择动画及指令区间。零资源和特殊处理分支不推定为动画。','',
+        '`sango_battle_execute_skill` 实际用这些值选择动画及指令区间。零资源和特殊处理分支不推定为动画。','',
         '| 计谋ID | 原名称 | 资源ID | 指令范围 |','| --- | --- | --- | --- |'])
     for row in report['selectors']['skills']:
         if row['resource']:lines.append(f"| {row['skill_id']} | {row['name']} | {row['resource']:03d} | {row['first_command']}～{row['last_command']} |")
     lines.extend(['','## 城市战场选择','',
-        '`FUN_81c10394` 读取资源002第15子表：战场ID=城市对应类型+110。城市名由资源058解码。','',
+        '`sango_strategy_resolve_attack` 读取资源002第15子表：战场ID=城市对应类型+110。城市名由资源058解码。','',
         '| 战场资源 | 适用城市 |','| --- | --- |'])
     for rid in range(110,117):
         cities='、'.join(row['city'] for row in report['selectors']['city_maps'] if row['resource']==rid)

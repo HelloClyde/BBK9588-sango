@@ -1,19 +1,22 @@
 #ifndef SANGO_STATUSBAR_H
 #define SANGO_STATUSBAR_H
 
-enum SangoStatusbarAction {
+enum SangoStatusbarAction
+{
     SANGO_STATUSBAR_NONE,
     SANGO_STATUSBAR_INFO,
     SANGO_STATUSBAR_FIND
 };
 
-enum SangoBattleToolbarAction {
+enum SangoBattleToolbarAction
+{
     SANGO_BATTLE_TOOLBAR_NONE,
     SANGO_BATTLE_TOOLBAR_INFO,
     SANGO_BATTLE_TOOLBAR_OVERVIEW
 };
 
-enum {
+enum
+{
     SANGO_STATUSBAR_TOP = 232,
     SANGO_STATUSBAR_WIDTH = 240,
     SANGO_STATUSBAR_HEIGHT = 36,

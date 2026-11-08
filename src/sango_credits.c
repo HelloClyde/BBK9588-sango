@@ -1,4 +1,4 @@
-#include "sango_recovered.h"
+#include "sango_internal.h"
 #include "sango_credits.h"
 
 static const unsigned char credits_bitmap[] = {
@@ -7,6 +7,6 @@ static const unsigned char credits_bitmap[] = {
 
 void sango_credits_draw(unsigned int target)
 {
-    FUN_81c15070(0,0,240,320,0,(byte *)credits_bitmap,target);
-    FUN_81c14f98(target);
+    sango_bitmap_draw_frame(0, 0, 240, 320, 0, (uint8_t *)credits_bitmap, target);
+    sango_render_present(target);
 }

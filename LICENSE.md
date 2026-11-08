@@ -4,11 +4,14 @@
 
 - `build.py`、`tools/*.py` 和 `.github/workflows/release.yml`；
 - `src/sango_entry.c`、`src/sango_statusbar.c`、`src/sango_credits.c`、`src/sango_battle_ui.c`；
-- 与上述新模块对应的头文件，以及项目私有 `include/bda_sango_compat.h`、`include/sango_sdk_bindings.h`。
+- 与上述新模块对应的头文件，新增类型/内部接口组织头文件，以及项目私有
+  `include/bda_sango_compat.h`、`include/sango_sdk_bindings.h`。其中恢复的原接口、结构布局及地址信息不因此取得额外授权。
 
 MIT 正文见 [LICENSES/MIT.txt](LICENSES/MIT.txt)。版权人为 2026 BBK9588-sango contributors。
 
-原游戏恢复部分 `src/sango_game.c`、`src/sango_data.c`、`include/sango_recovered.h`，
+原游戏恢复部分包括 `src/app/`、`src/battle/`、`src/strategy/`、`src/ui/`、`src/render/`、
+`src/resources/`、`src/save/`、`src/platform/`、`src/runtime/` 的42个功能模块（由原 `sango_game.c` 拆分），
+以及 `src/sango_data.c` 和头文件中的恢复布局信息；
 原作布局/接口材料及原作派生图像，不包含在上述 MIT 授权中。本次没有提供原游戏的源码开源或
 素材再分发许可，因此这里不替原作者授予额外权利。新增修复不能使原游戏整体自动获得 MIT 许可。
 `assets/library/` 的原始记录种子、导出 PNG/动画/地图，以及由其重新打包的 `sango.lib`，

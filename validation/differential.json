@@ -2673,11 +2673,11 @@
       ],
       "passed": true,
       "original_return": [
-        4294967295,
+        439720,
         2176839668
       ],
       "rebuilt_return": [
-        4294967295,
+        439720,
         4
       ],
       "original_calls": 0,
@@ -2690,11 +2690,11 @@
       ],
       "passed": true,
       "original_return": [
-        4294967295,
+        441898,
         2176839668
       ],
       "rebuilt_return": [
-        4294967295,
+        441898,
         4
       ],
       "original_calls": 0,
@@ -3230,7 +3230,7 @@
       ],
       "rebuilt_return": [
         0,
-        2164701231
+        2164722623
       ],
       "original_calls": 4,
       "rebuilt_calls": 4

@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
 SDK_COMMIT='ef3bf3b7328a3a8fa9ba48593c63285300725fb7'
-SOURCES=['sango_game','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui']
+SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui']
 
 def command(args,**kwargs):
     return subprocess.run([str(x) for x in args],check=True,**kwargs)
@@ -63,18 +63,22 @@ def main():
     library=pack(ROOT/'assets/library')
     (out/'sango.lib').write_bytes(library)
     generate_includes(ROOT/'assets/library',ROOT/'include')
+    from tools.build_engine import write_unity,add_legacy_debug_symbols
+    write_unity(out/'sango_engine.c')
     flags=['-std=gnu99','-EL','-march=mips32','-mabi=32','-msoft-float','-mno-abicalls',
         '-G0','-fno-pic','-ffreestanding','-fno-builtin','-fno-strict-aliasing','-fwrapv',
         '-Os','-ffunction-sections','-fdata-sections','-Wno-incompatible-pointer-types',
         '-Wno-int-conversion','-I',ROOT/'include','-I',ROOT/'sdk/sdk/include']
     objects=[]
     for name in SOURCES:
-        obj=out/(name+'.o');command([cc,*flags,'-c',ROOT/'src'/(name+'.c'),'-o',obj]);objects.append(obj)
+        source=out/'sango_engine.c' if name=='sango_engine' else ROOT/'src'/(name+'.c')
+        obj=out/(name+'.o');command([cc,*flags,'-c',source,'-o',obj]);objects.append(obj)
     elf=out/'sango.elf'
     command([cc,'-EL','-march=mips32','-mabi=32','-msoft-float','-mno-abicalls','-fno-pic',
         '-nostdlib','-Wl,--gc-sections','-Wl,--build-id=none','-Wl,-Map,'+str(out/'sango.map'),
         '-Wl,-T,'+str(ROOT/'sango.ld'),*objects,'-lgcc','-o',elf])
     raw=out/'sango.bin';objcopy=cc.with_name(cc.name.replace('gcc','objcopy'))
+    add_legacy_debug_symbols(cc,elf)
     command([objcopy,'-O','binary',elf,raw])
     data=make_header(raw.read_bytes());bda=out/'三国霸业.bda';bda.write_bytes(data)
     validation=validate_bda(bda);validation['path']='build/三国霸业.bda'

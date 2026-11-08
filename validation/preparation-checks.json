@@ -21,7 +21,11 @@
     "expanded_library_mips_loader_4_checks": true,
     "clean_checkout_with_resources": true,
     "resource_code_usage_89_reviewed": true,
-    "menu_animations_exported": true
+    "menu_animations_exported": true,
+    "modular_source_layout_42_modules_446_functions": true,
+    "readability_refactor_593_mips_checks": true,
+    "readability_refactor_byte_identical": true,
+    "source_function_index_current": true
   },
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "bda_sha256": "7cd1b1fbb1cb3ede3ad9a6ec3f1a3f840b1134b46f74f1f3fc5422cb9a11c98a",

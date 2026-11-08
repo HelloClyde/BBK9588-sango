@@ -5,9 +5,13 @@ meaning deliberately remain numbered. audit_resource_usage.py checks the cited
 source expressions and reconstructs the skill/resource and city/map selectors.
 """
 from copy import deepcopy
+try:
+    from .source_map import resolve_reference
+except ImportError:
+    from source_map import resolve_reference
 
 def ref(function,expression,source='src/sango_game.c'):
-    return {'source':source,'function':function,'expression':expression}
+    return resolve_reference(function,expression,source)
 
 def rule(category,name,reason,*evidence,status='confirmed'):
     return {'category':category,'name':name,'usage_status':status,
