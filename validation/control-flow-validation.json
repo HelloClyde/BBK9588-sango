@@ -12,9 +12,9 @@
     "attack": 540,
     "float": 4974
   },
-  "baseline_elf_sha256": "0b7831b8fc2a08b46c001cf34582c6fcdc6157b3a1ac3ada998acc4e639959c1",
-  "candidate_elf_sha256": "fe2bb9137d1af3f1c4cf48fe4a8ce05cf58842e160a0bfa549b120335d25b0c1",
-  "bda_sha256": "5193aaf0db29ca7eeef367456541bfa39781c36c9f4849fb116d97245b1c59a0",
+  "baseline_elf_sha256": "fe2bb9137d1af3f1c4cf48fe4a8ce05cf58842e160a0bfa549b120335d25b0c1",
+  "candidate_elf_sha256": "c8088726659e2ea20420928c9579b404217c9e827f49097988a7774b01242e2c",
+  "bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
   "scope": "The reported groups execute actual MIPS functions against the provided baseline ELF: city/battle input, decimal input, pagination, animation timing, search outcomes, skill dispatch, attack preparation and soft-float boundary/random cases. Compares return, observable state, input consumption and rendering calls. Rendering/modal boundaries are deterministic models; not native firmware or hardware.",
-  "baseline_commit": "b37442db21bc9bd11178efbba7c7a2f170ce721c"
+  "baseline_commit": "58afd1a9703ecc5afd5e9896f7ea2c25cbeffcf8"
 }

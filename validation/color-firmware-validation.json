@@ -1,9 +1,9 @@
 {
-  "passed": 14,
+  "passed": 16,
   "failed": 0,
-  "bda_sha256": "5193aaf0db29ca7eeef367456541bfa39781c36c9f4849fb116d97245b1c59a0",
+  "bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
-  "color_sha256": "ed6a96a375249e4a0b104301c7ed35ca5d819f467d0e826814ababbaa0e39ca4",
+  "color_sha256": "7da764ba1f77867bbb56f3515e6b58368ffcbe64312c9e8ba7aaaf6cad52ca3b",
   "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled terrain-only battle fixture. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
   "cases": [
     {
@@ -82,13 +82,25 @@
       "name": "Native strategy toolbar matches color source and retained layout",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "3cc055c8d858a47ace246334eb0809b71ae79a9587c0b95f4c0caf67648e782d"
+      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
     },
     {
       "name": "Native strategy map and ruler portrait are colored",
       "passed": true,
       "screenshot": "docs/screenshots/color/strategy.png",
-      "screenshot_sha256": "3cc055c8d858a47ace246334eb0809b71ae79a9587c0b95f4c0caf67648e782d"
+      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
+    },
+    {
+      "name": "Right map edge has no white padding",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy.png",
+      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
+    },
+    {
+      "name": "Lower map edge reaches toolbar without a white gap",
+      "passed": true,
+      "screenshot": "docs/screenshots/color/strategy.png",
+      "screenshot_sha256": "2ebdc07d999660eb0ac9269dd5c9749a3a7a8ecdd27ae1f5052e382824abb55b"
     }
   ]
 }

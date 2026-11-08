@@ -18704,7 +18704,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/无归属城市_帧000.png",
       "batch": "small-01",
-      "color_sha256": "430bde5cea81674b1e6d9426098f97eb7933a6a4f3e1dc2e3f6434972d0139c6"
+      "color_sha256": "430bde5cea81674b1e6d9426098f97eb7933a6a4f3e1dc2e3f6434972d0139c6",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18720,7 +18725,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧001.png",
       "batch": "small-01",
-      "color_sha256": "e9c7c043787aae970ca80f05f5caab52739b8d2cf32a7406354a2013b884bbcb"
+      "color_sha256": "e9c7c043787aae970ca80f05f5caab52739b8d2cf32a7406354a2013b884bbcb",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18736,7 +18746,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧002.png",
       "batch": "small-01",
-      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329"
+      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18752,7 +18767,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧003.png",
       "batch": "small-01",
-      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329"
+      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18768,7 +18788,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧004.png",
       "batch": "small-01",
-      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329"
+      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18784,7 +18809,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧005.png",
       "batch": "small-01",
-      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329"
+      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18800,7 +18830,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧006.png",
       "batch": "small-01",
-      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329"
+      "color_sha256": "0b66eba5742730cb934a19b426d641ae30b07ba5d0a569ba99904b0d6d630329",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18816,7 +18851,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/其他势力城市_帧007.png",
       "batch": "small-01",
-      "color_sha256": "c9803acc7a3e937017fbff1c6cbd35e1cbd3e522d3369be4506ea4c2b0595acc"
+      "color_sha256": "c9803acc7a3e937017fbff1c6cbd35e1cbd3e522d3369be4506ea4c2b0595acc",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18832,7 +18872,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/当前玩家城市_帧008.png",
       "batch": "small-01",
-      "color_sha256": "0302df8de1bc94494a17fd8c77276c28125bf59eefb652e4a3e374ce4ea2a9a9"
+      "color_sha256": "0302df8de1bc94494a17fd8c77276c28125bf59eefb652e4a3e374ce4ea2a9a9",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 55,
@@ -18848,7 +18893,12 @@
       "flags": 0,
       "color": "library/战略地图/城市归属图标_资源055/未定位调用_帧义待确认_帧009.png",
       "batch": "small-01",
-      "color_sha256": "5f4b5f75b4db7da05e332e7e989970cac63b0383da12dd6e9aca531bf053d648"
+      "color_sha256": "5f4b5f75b4db7da05e332e7e989970cac63b0383da12dd6e9aca531bf053d648",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 224,
+        "maximum_chroma": 20
+      }
     },
     {
       "resource": 56,

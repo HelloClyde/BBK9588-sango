@@ -92,6 +92,56 @@ def rgb565(image):
                     for r,g,b in pixels)
 
 
+
+# Index-only extension. The original LIB flags and bitmap bytes stay intact.
+TRANSPARENT_ZERO=0x100
+
+
+def transparent_background(image, policy):
+    """Decode the explicitly declared white matte around an opaque city sprite.
+
+    Only edge-connected near-white pixels are transparent. Enclosed white
+    windows/roof details remain opaque. This is resource alpha metadata,
+    independent of illustration generation and the original LIB mask planes.
+    """
+    if not policy:return set()
+    if policy.get('mode')!='edge-connected-white':
+        raise ValueError('Unsupported color transparency policy')
+    width,height=image.size
+    pixels=list(image.convert('RGB').get_flattened_data())
+    minimum=policy['minimum_channel'];chroma=policy['maximum_chroma']
+    def background(index):
+        color=pixels[index]
+        return min(color)>=minimum and max(color)-min(color)<=chroma
+    pending=[x for x in range(width)]+[(height-1)*width+x for x in range(width)]
+    pending += [y*width for y in range(height)]+[y*width+width-1 for y in range(height)]
+    seen=set();transparent=set()
+    while pending:
+        index=pending.pop()
+        if index in seen:continue
+        seen.add(index)
+        if not background(index):continue
+        transparent.add(index)
+        x,y=index%width,index//width
+        if x:pending.append(index-1)
+        if x+1<width:pending.append(index+1)
+        if y:pending.append(index-width)
+        if y+1<height:pending.append(index+width)
+    return transparent
+
+
+def encode_frame(image, frame):
+    encoded=bytearray(rgb565(image));flags=frame['flags']
+    policy=frame.get('transparency')
+    if policy:
+        transparent=transparent_background(image,policy)
+        for index in range(image.width*image.height):
+            value=struct.unpack_from('<H',encoded,index*2)[0]
+            struct.pack_into('<H',encoded,index*2,0 if index in transparent else value or 1)
+        flags |= TRANSPARENT_ZERO
+    return bytes(encoded),flags
+
+
 def build(output, allow_partial=False):
     catalog = read_catalog()
     if not allow_partial and any('color' not in f for f in catalog['frames']):
@@ -119,10 +169,10 @@ def build(output, allow_partial=False):
         image = Image.open(path)
         if image.size != (width,height):
             raise ValueError('Native frame dimensions changed: '+frame['color'])
-        encoded = rgb565(image)
+        encoded, flags = encode_frame(image, frame)
         digest = hashlib.sha256(encoded).hexdigest()
         payloads.setdefault(digest, encoded)
-        entries.append((source_offset,width,height,spec['flags'],digest))
+        entries.append((source_offset,width,height,flags,digest))
     entries.sort()
     if len({e[0] for e in entries}) != len(entries):
         raise ValueError('Duplicate original frame offsets')

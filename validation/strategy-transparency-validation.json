@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-08",
+  "baseline_commit": "58afd1a9703ecc5afd5e9896f7ea2c25cbeffcf8",
+  "baseline_bda_sha256": "5193aaf0db29ca7eeef367456541bfa39781c36c9f4849fb116d97245b1c59a0",
+  "bda_sha256": "ebb0f1a19ce5ad91a47515f1c3e558dd4d1497d73e320d42cb1d34b272d6e991",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "sango_clr_sha256": "7da764ba1f77867bbb56f3515e6b58368ffcbe64312c9e8ba7aaaf6cad52ca3b",
+  "mips_checks": 5019,
+  "color_checks": 3818,
+  "strategy_checks": 34,
+  "existing_mips_checks": 1167,
+  "logic_comparisons": 27163,
+  "native_color_interface_checks": 16,
+  "strategy_map_rectangle": [
+    0,
+    0,
+    240,
+    232
+  ],
+  "logical_grid_unchanged": [
+    7,
+    7
+  ],
+  "camera_positions": 18,
+  "city_frames": 10,
+  "original_library_and_animation_data_unchanged": true,
+  "initialized_bytes_identical": 45536,
+  "initialized_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "save_layout_unchanged": true,
+  "source_sha256_lf": {
+    "src/sango_color.c": "39cd1640c80b43e77e5382fd38ceb69a5c61c7c3a693ffae9dc0393af83953af",
+    "include/sango_color.h": "969d813cd409cf582234df2da560653367f99086a34c54e723c8b29c6fe22dc5",
+    "src/strategy/map.c": "0d8ab037c088fd652d4ae4b68103866350d4aa9e74d7f86920b37da07f6c1c6c",
+    "tools/color_assets.py": "dfe8716b0d1f8502dacbdf010229df3cac50060fc2d714e4d2bed231f3227845",
+    "tools/test_color_assets.py": "dd2ef5594bb266734cddd1daeb6640fe25cd5e9bfd3a35804381145450bbc330",
+    "tools/test_strategy_color_map.py": "d532376136611c93e326a583f018f8f4de095d25dd3297f9e87a22b482a16f1e",
+    "assets/color/catalog.json": "29729ce662a33a18152143fc64695da98ba9f04b50fc58cbd43e539c4fecd290",
+    ".github/workflows/release.yml": "93012713c684824d86516a57f193d163a22599c8543eeecb7f1a568047d68c70"
+  },
+  "report_sha256_lf": {
+    "validation/color-mips-validation.json": "988a851a41abe8da3e07256621db99f051264eec9ca09fe357fdb30fd1a4748e",
+    "validation/strategy-color-validation.json": "75fc0f972721cc7c461e9f51e521f088b56949018f1e7a3d1e5c43b17bba867d",
+    "validation/color-firmware-validation.json": "d5d148114b92e4a4f56ce28b28c07b0d2ae360462ff0a46b26bdd29e0993abc8",
+    "validation/control-flow-validation.json": "22c20ae69b3fd1013427510f4a18324dadee0ec76b0da707f04332a8efbc2662",
+    "validation/differential.json": "9e69545bd2586e61613ed244b460b0df7da7e498208d66164c4ac814b5ca2eab",
+    "validation/statusbar-validation.json": "92558cbb56e616cd81d43ff6bb8bf9abfa9da8e792f1e077d418555712fb3c3c",
+    "validation/port-fixes-validation.json": "d72b1f7f3da744c305ea507190f91f052e5d0cee54edca12a36855978a32f758",
+    "validation/battle-touch-validation.json": "27a9c49e0c0beb91637596b888452b78e893bac5823b68611622a817d5268a94",
+    "validation/day-popup-validation.json": "883507e4eedda56810ad79389f6bbcb271359581d39c687e99ca7a2b90f941bf",
+    "validation/battle-hud-validation.json": "c63d92df928053538caddec8a57992ca8e879264f82826da43877e2b88ed790b",
+    "validation/battle-summary-validation.json": "34fd8790c647ceb994e372a3daec0fb65801a2d4becad6d05b0877ea89d04b30",
+    "validation/battle-viewport-validation.json": "e3617c51646dff10e97bc93ad6b7272ef49595409ad1cc3a39abc24f3621d585",
+    "validation/library-loader-host.json": "d8d7ed1e4392ea989c8793724a724488747a34f2044d27ace873691e467065dd"
+  },
+  "scope": "Explicit CLR city alpha-key metadata from border-connected white matte; enclosed white details preserved. Named SDK color output fills 240x232 while logical selection/camera remains 7x7. Real MIPS and native C200 UI; native exact buffer staging bypasses synthetic NAND ECC, filesystem modeled separately. No full battle/campaign or physical-device claim."
+}

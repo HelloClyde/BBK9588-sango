@@ -53,6 +53,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'MIPS validation dependency setup failed' }
           python tools/test_color_assets.py
           if ($LASTEXITCODE -ne 0) { throw 'Compiled RGB565 checks failed' }
+          python tools/test_strategy_color_map.py
+          if ($LASTEXITCODE -ne 0) { throw 'City transparency or strategy viewport checks failed' }
           python tools/test_battle_hud.py
           if ($LASTEXITCODE -ne 0) { throw 'Battle HUD checks failed' }
           python tools/test_battle_summary.py

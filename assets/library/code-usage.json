@@ -36,7 +36,7 @@
     "src/strategy/calendar.c": "4313a38e2f2437fdc4c0e92860c200f730fea1707a906b1a00fbec9f01178594",
     "src/strategy/domestic.c": "99d20e5e24c1400bd4b00fc6a02407d8325b65352407f165f16c6157cbdfbb09",
     "src/strategy/items.c": "d1bbce7708da783f7fe292537d814f9c804fefbbbf4ddb63403df71cbcc088e5",
-    "src/strategy/map.c": "de8cc4bc3186fa9283725fb8503062c05a549ab6f9655978654729064cf41ad1",
+    "src/strategy/map.c": "0d8ab037c088fd652d4ae4b68103866350d4aa9e74d7f86920b37da07f6c1c6c",
     "src/strategy/military.c": "5b135b69419190b27d50abcb1a4890d54794a6ba5a61c91df3974d91a8470f51",
     "src/strategy/orders.c": "aa9222a0c64f3ee683cdd3934c6e4ce35b4024178c2c2c47bf95e6261ea377ac",
     "src/strategy/rosters.c": "90d99d4b717511c69725722a19750b74efe897c20dc720a2c776fc1cbdfd1e36",
@@ -4105,7 +4105,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_adjacent_distance",
           "expression": "sango_resource_item(0x3b,'\\x01',",
-          "line": 421
+          "line": 423
         },
         {
           "source": "src/strategy/rosters.c",
@@ -4218,7 +4218,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_list_idle_characters",
           "expression": "g_city_character_roster",
-          "line": 526
+          "line": 528
         }
       ]
     },
@@ -4272,7 +4272,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_add_item",
           "expression": "item_id < 0x21",
-          "line": 373
+          "line": 375
         }
       ]
     },
@@ -4293,7 +4293,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_add_item",
           "expression": "g_city_item_roster",
-          "line": 373
+          "line": 375
         },
         {
           "source": "src/strategy/rosters.c",

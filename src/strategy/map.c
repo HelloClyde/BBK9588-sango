@@ -163,6 +163,7 @@ uint32_t sango_strategy_draw_map(uint8_t *map_state, uint8_t scroll_mode)
     cursor_row = (uint32_t)map_state[3] - (uint32_t)map_state[1] & 0xff;
     cursor_column = (uint32_t)map_state[2] - (uint32_t)*map_state & 0xff;
     resource_address = sango_resource_item(0x36, '\x01', g_resource_package_address);
+    uint16_t footer_top = sango_color_strategy_map_begin(g_game_context) ? SANGO_STATUSBAR_TOP : 224;
     /* 全图重画或仅恢复光标离开的那一块，随后共用底栏绘制。 */
     if (scroll_mode == 0)
     {
@@ -271,7 +272,8 @@ draw_cursor_and_status:
                              resource_address + 6, g_game_context);
     text_part = (char *)(g_scratch_buffer_address + 0x154);
     status_text = (char *)(g_scratch_buffer_address + 300);
-    sango_render_clear_rectangle(0, 0xe0, 0xef, 0x13f, g_game_context);
+    sango_color_strategy_map_end();
+    sango_render_clear_rectangle(0, footer_top, 0xef, 0x13f, g_game_context);
     sango_statusbar_draw(g_game_context);
     bitmap = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\x01',
                                             g_resource_package_address);

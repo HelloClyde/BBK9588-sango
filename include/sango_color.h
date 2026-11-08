@@ -1,6 +1,9 @@
 #ifndef SANGO_COLOR_H
 #define SANGO_COLOR_H
 #include "sango_types.h"
+#define SANGO_COLOR_TRANSPARENT_ZERO 0x100u
+int sango_color_strategy_map_begin(uint32_t target);
+void sango_color_strategy_map_end(void);
 void sango_color_load(const char *library_path, uint32_t library_bytes);
 void sango_color_unload(void);
 int sango_color_use_buffer(void *buffer, uint32_t bytes, uint32_t library_bytes);

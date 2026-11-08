@@ -6,6 +6,7 @@
 static uint8_t *color_file;
 static uint32_t color_entries, color_library_bytes;
 static bool color_file_owned;
+static uint32_t strategy_map_context;
 
 static uint32_t color_read32(const uint8_t *bytes)
 {
@@ -35,6 +36,7 @@ void sango_color_unload(void)
     if (color_file_owned && color_file)
         bbk_free_if_nonnull(color_file);
     color_file = NULL;
+    strategy_map_context = 0;
     color_entries = color_library_bytes = 0;
     color_file_owned = false;
 }
@@ -67,7 +69,10 @@ int sango_color_use_buffer(void *buffer, uint32_t bytes, uint32_t library_bytes)
         uint32_t width = color_read16(entry + 8), height = color_read16(entry + 10);
         uint32_t flags = color_read32(entry + 12), raw_bytes;
         if (!width || width > 320 || !height || height > 320 ||
-            (flags != 0 && flags != 1 && flags != 32 && flags != 33))
+            ((flags & ~SANGO_COLOR_TRANSPARENT_ZERO) != 0 &&
+             (flags & ~SANGO_COLOR_TRANSPARENT_ZERO) != 1 &&
+             (flags & ~SANGO_COLOR_TRANSPARENT_ZERO) != 32 &&
+             (flags & ~SANGO_COLOR_TRANSPARENT_ZERO) != 33))
             return 0;
         raw_bytes = ((width + 3) / 4) * height * ((flags & 1) ? 2 : 1);
         if ((index && source <= previous) || source > library_bytes ||
@@ -125,8 +130,8 @@ void sango_color_load(const char *library_path, uint32_t library_bytes)
         bbk_free_if_nonnull(buffer);
 }
 
-const uint16_t *sango_color_pixels(uint32_t original_pixels, uint32_t width, uint32_t height,
-                                   int masked)
+static const uint8_t *color_find_entry(uint32_t original_pixels, uint32_t width, uint32_t height,
+                                       int masked)
 {
     uint32_t offset, first = 0, last = color_entries;
     if (!color_file || original_pixels < g_resource_package_address)
@@ -148,10 +153,48 @@ const uint16_t *sango_color_pixels(uint32_t original_pixels, uint32_t width, uin
             if (color_read16(entry + 8) != width || color_read16(entry + 10) != height ||
                 (color_read32(entry + 12) & 1) != (uint32_t)(masked != 0))
                 return NULL;
-            return (const uint16_t *)(color_file + color_read32(entry + 4));
+            return entry;
         }
     }
     return NULL;
+}
+
+const uint16_t *sango_color_pixels(uint32_t original_pixels, uint32_t width, uint32_t height,
+                                   int masked)
+{
+    const uint8_t *entry = color_find_entry(original_pixels, width, height, masked);
+    return entry ? (const uint16_t *)(color_file + color_read32(entry + 4)) : NULL;
+}
+
+/* Keep the original 7x7 logical grid and camera/selection rules. Only colored
+ * map output fills the 240x232 area above the toolbar; footer and battle
+ * painters remain outside this scope. Global pixel edges avoid tile seams. */
+int sango_color_strategy_map_begin(uint32_t target)
+{
+    strategy_map_context = color_file ? target : 0;
+    return strategy_map_context != 0;
+}
+
+void sango_color_strategy_map_end(void)
+{
+    strategy_map_context = 0;
+}
+
+static void color_write_pixel(uint32_t context, int x, int y, uint16_t color)
+{
+    color = bda_gui_rgb565_avoid_black_key(color);
+    if (strategy_map_context && context == strategy_map_context && x >= 0 && x < 224 && y >= 0 &&
+        y < 224)
+    {
+        int left = x * 15 / 14, right = (x + 1) * 15 / 14;
+        int top = y * 29 / 28, bottom = (y + 1) * 29 / 28;
+        int screen_x, screen_y;
+        for (screen_y = top; screen_y < bottom; ++screen_y)
+            for (screen_x = left; screen_x < right; ++screen_x)
+                sango_color_sdk_pixel(context, screen_x, screen_y, color);
+    }
+    else
+        sango_color_sdk_pixel(context, x, y, color);
 }
 
 void sango_color_put_pixel(short x, short y, uint16_t color, unsigned int target)
@@ -161,7 +204,7 @@ void sango_color_put_pixel(short x, short y, uint16_t color, unsigned int target
         return;
     if (!target)
         sango_color_sdk_guard(1);
-    sango_color_sdk_pixel((uint32_t)context, x, y, bda_gui_rgb565_avoid_black_key(color));
+    color_write_pixel((uint32_t)context, x, y, color);
     if (!target)
         sango_color_sdk_guard(0);
 }
@@ -171,10 +214,14 @@ int sango_color_draw_raster(uint32_t x, short y, uint32_t width, uint32_t height
 {
     uint32_t column, row, stride = (width + 3) / 4;
     const uint8_t *mask = (const uint8_t *)original_pixels;
-    const uint16_t *pixels = sango_color_pixels(original_pixels, width, height, masked);
+    const uint8_t *entry = color_find_entry(original_pixels, width, height, masked);
+    const uint16_t *pixels;
+    uint32_t flags;
     bda_handle_t context = (bda_handle_t)(target ? target : g_draw_context);
-    if (!pixels)
+    if (!entry)
         return 0;
+    pixels = (const uint16_t *)(color_file + color_read32(entry + 4));
+    flags = color_read32(entry + 12);
     if (!target)
         sango_color_sdk_guard(1);
     for (row = 0; row < height; ++row)
@@ -186,8 +233,9 @@ int sango_color_draw_raster(uint32_t x, short y, uint32_t width, uint32_t height
                 continue;
             if (masked && ((mask[row * stride + column / 4] >> (6 - (column % 4) * 2)) & 1))
                 continue;
-            sango_color_sdk_pixel((uint32_t)context, screen_x, screen_y,
-                                  bda_gui_rgb565_avoid_black_key(pixels[row * width + column]));
+            if ((flags & SANGO_COLOR_TRANSPARENT_ZERO) && !pixels[row * width + column])
+                continue;
+            color_write_pixel((uint32_t)context, screen_x, screen_y, pixels[row * width + column]);
         }
     if (!target)
         sango_color_sdk_guard(0);

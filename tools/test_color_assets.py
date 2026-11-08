@@ -8,7 +8,7 @@ import hashlib,json,struct,zlib
 from pathlib import Path
 from PIL import Image
 from test_control_flow import Machine,STATE,ROOT,BUFFER
-from color_assets import read_catalog,rgb565
+from color_assets import read_catalog,rgb565,encode_frame,TRANSPARENT_ZERO
 
 LIB_ADDRESS=0x81000000
 COLOR_ADDRESS=0x81200000
@@ -49,6 +49,7 @@ def expected_pixels(library,colors,entry,x,y,target):
             sx=((x+col+32768)%65536)-32768;sy=y+row
             if not(0<=sx<240 and 0<=sy<320):continue
             if flags&1 and (library[offset+row*((w+3)//4)+col//4]>>(6-(col%4)*2))&1:continue
+            if flags&TRANSPARENT_ZERO and not values[row*w+col]:continue
             expected.append((target,sx,sy,values[row*w+col] or 1))
     return expected
 
@@ -70,10 +71,11 @@ def main():
         r=records[f['resource']];spec=r['images'][f['image']] if 'images' in r else r['image']
         w,h=f['size'];stride=((w+3)//4)*h*(2 if spec['flags']&1 else 1)
         offset=struct.unpack_from('<I',lib,(f['resource']-1)*4)[0]+spec.get('offset',12)+6+f['frame']*stride
-        entry=by_offset[offset];assert entry[2:]==(w,h,spec['flags'])
+        entry=by_offset[offset];assert entry[2:4]==(w,h) and entry[4]&~TRANSPARENT_ZERO==spec['flags']
         png=ROOT/'assets/color'/f['color'];image=Image.open(png)
         assert image.size==(w,h) and hashlib.sha256(png.read_bytes()).hexdigest()==f['color_sha256']
-        assert colors[entry[1]:entry[1]+w*h*2]==rgb565(image)
+        encoded,flags=encode_frame(image,f)
+        assert entry[4]==flags and colors[entry[1]:entry[1]+w*h*2]==encoded
         assert m.call('sango_color_pixels',LIB_ADDRESS+offset,w,h,spec['flags']&1)==COLOR_ADDRESS+entry[1]
         assert m.call('sango_color_pixels',LIB_ADDRESS+offset,w+1,h,spec['flags']&1)==0
         assert m.call('sango_color_pixels',LIB_ADDRESS+offset,w,h,not(spec['flags']&1))==0

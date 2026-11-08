@@ -73,5 +73,7 @@
     "validation/battle-viewport-validation.json": "7362e66f13fbd5e1882493bc403f6c3ce1c3ad9b6e94d03c5bfef64f6b65e90e",
     "validation/library-loader-host.json": "c403a979ace2ee43b61f6b1badb99dba5f2854a3e6c344e8ab1f0a848a7ab9ed"
   },
-  "scope": "RGB565 companion adds color through named SDK APIs with original masks and source-offset indices. MIPS file lifecycle is modeled; native exact BDA/LIB/CLR staged in controlled RAM, production CRC/parser/rendering and hardware input execute. Controlled battle UI, not full battle/campaign or physical-device proof."
+  "scope": "RGB565 companion adds color through named SDK APIs with original masks and source-offset indices. MIPS file lifecycle is modeled; native exact BDA/LIB/CLR staged in controlled RAM, production CRC/parser/rendering and hardware input execute. Controlled battle UI, not full battle/campaign or physical-device proof.",
+  "snapshot_commit": "58afd1a9703ecc5afd5e9896f7ea2c25cbeffcf8",
+  "history_note": "Source and report hashes in this historical record resolve at snapshot_commit; current strategy transparency update has a separate summary."
 }

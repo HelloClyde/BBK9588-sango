@@ -33,6 +33,8 @@ python -m pip install -r requirements-assets.txt -r requirements-validation.txt
 python tools/test_color_assets.py
 ```
 
+`python tools/test_strategy_color_map.py` 另检验10帧城市透明键、18个视口的240×232完整覆盖、增量重画及灰度回退。彩色地图仅在绘图时把原7×7逻辑格映射到240×232，底栏仍在y=232，城市选择/滚动规则不变。
+
 编译MIPS检查覆盖全部1204帧查找、RGB565字节、140张战斗精灵的原遮罩、屏幕/上下文绘制、裁切、缺包和损坏包、分配失败及文件清理。固件界面范围见根目录验证记录。
 
 ## sango.clr 格式和加载
@@ -51,6 +53,6 @@ python tools/test_color_assets.py
 | 24 | uint32 | 配套LIB字节数 |
 | 28 | uint32 | 配套LIB完整CRC32 |
 
-每个16字节索引项是 `<IIHHI>`：原LIB帧像素偏移、CLR像素偏移、宽、高、原flags；按原LIB偏移严格递增。像素是逐行RGB565、每像素2字节，完全相同的帧共享像素区。原flags的mask位决定是否继续读取原LIB的2bpp透明遮罩。RGBA的透明轮廓不交给生成模型重定，运行时以原LIB为准。原生上下文复制使用0作为透明键，因此不透明纯黑通过SDK助手转换为0x0001。
+每个16字节索引项是 `<IIHHI>`：原LIB帧像素偏移、CLR像素偏移、宽、高、原flags；按原LIB偏移严格递增。像素是逐行RGB565、每像素2字节，完全相同的帧共享像素区。flags低位保留原flags，mask位继续读取原LIB的2bpp透明遮罩；新增0x100位表示RGB565的0值为透明像素，不写入目标。带此位的帧将不透明纯黑编码为0x0001，避免混淆。原有RGBA遮罩仍以原LIB为准。资源055原本没有透明遮罩，彩色版在catalog中另声明edge-connected-white：只将与边缘连通的近白背景编码为透明键，保留封闭的白色窗户/屋顶细节。原PNG及原LIB不变。原生上下文复制使用0作为透明键，因此不透明纯黑通过SDK助手转换为0x0001。
 
 来源和许可边界见 [声明](../../THIRD_PARTY_NOTICES.md)。
