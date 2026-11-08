@@ -84,7 +84,7 @@ def main():
                     'or establish a stronger meaning for unresolved legacy arguments.'}
     args.report.parent.mkdir(parents=True,exist_ok=True)
     args.report.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(json.dumps({key:value for key,value in report.items() if key not in ('source_sha256_lf','changed_functions')},ensure_ascii=False))
+    print(json.dumps({key:value for key,value in report.items() if key not in ('source_sha256_lf','changed_functions')}))
 
 
 if __name__=='__main__':

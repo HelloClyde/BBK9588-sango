@@ -91,6 +91,7 @@ def main():
         'matches_runtime_reference':hashlib.sha256(data).hexdigest()==reference['bda_sha256'],
         'matches_library_reference':hashlib.sha256(library).hexdigest()==reference.get('sango_lib_sha256')}
     (out/'build-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(json.dumps(result,ensure_ascii=False,indent=2))
+    # JSON escapes keep redirected Windows logs valid under non-Chinese locales.
+    print(json.dumps(result,indent=2))
 
 if __name__=='__main__':main()

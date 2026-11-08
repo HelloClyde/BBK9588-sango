@@ -142,5 +142,7 @@
     "working_tree_clean": true,
     "sdk_working_tree_clean": true,
     "scope": "Independent existing checkout updated from local source only; pinned SDK and cached compiler. No remote Actions or publication."
-  }
+  },
+  "snapshot_commit": "d850045030c163138819de625140e3e971c49669",
+  "status": "Naming-cleanup source hashes refer to the snapshot commit; subsequent console-encoding changes only affect host build/report scripts, with identical production ELF/BDA/LIB."
 }

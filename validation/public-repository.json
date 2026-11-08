@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-08",
+  "repository": "HelloClyde/BBK9588-sango",
+  "url": "https://github.com/HelloClyde/BBK9588-sango",
+  "visibility": "public",
+  "default_branch": "main",
+  "initial_pushed_commit": "f67ec3eac3be778c38fcc58a69bdcd5338c4a640",
+  "initial_push_verified": true,
+  "initial_actions_run": {
+    "id": 42457981201,
+    "url": "https://github.com/HelloClyde/BBK9588-sango/actions/runs/42457981201",
+    "conclusion": "failure",
+    "cause": "Windows cp1252 stdout could not encode the Chinese BDA filename after compilation and SDK validation completed."
+  },
+  "followup_fix": "Build/report console JSON uses ASCII escapes. Full build and identifier comparison pass locally with PYTHONIOENCODING=cp1252; production artifacts unchanged.",
+  "actions_status_url": "https://github.com/HelloClyde/BBK9588-sango/actions",
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
+  "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "scope": "Public source repository and main branch push. No version tag or Release created."
+}

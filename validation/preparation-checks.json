@@ -40,9 +40,9 @@
   "bda_sha256": "3f193d6e2f9a345b55f595ad7dbb93f4173dbc938088b42b744b5a6362c58de8",
   "toolchain_archive_sha256": "8ba866e25c9826ee04ab4310365d264e3e73769e3738bb58ae38fd6740b7ee8d",
   "actionlint_archive_sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9",
-  "github_actions_executed": false,
-  "remote_repository_created": false,
-  "remote_push_performed": false,
+  "github_actions_executed": true,
+  "remote_repository_created": true,
+  "remote_push_performed": true,
   "release_published": false,
   "license_note": "Scoped MIT only for independent new code. Original-game/derived-art licenses not provided. Unpacked LIB records and PNG references included at user request; complete original BDA/EXE, firmware, NAND, system fonts and saves excluded.",
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
@@ -104,5 +104,7 @@
     "working_tree_clean": true,
     "sdk_working_tree_clean": true,
     "scope": "Independent existing checkout updated from local source only; pinned SDK and cached compiler. No remote Actions or publication."
-  }
+  },
+  "public_repository": "https://github.com/HelloClyde/BBK9588-sango",
+  "publication_record": "validation/public-repository.json"
 }
