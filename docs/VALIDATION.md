@@ -1,6 +1,6 @@
 # 验证记录
 
-当前触摸版BDA：221688字节，SHA-256 `7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d`。
+当前音乐版BDA：227196字节，SHA-256 `c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d`。
 LIB：461116字节，SHA-256 `01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11`。
 CLR：2297312字节，SHA-256 `77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793`。
 固定SDK `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，GCC15.2.0。
@@ -21,21 +21,34 @@ CLR：2297312字节，SHA-256 `77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d
 | 原生C200彩色界面 | 61 | 七地图21个视口、29帧原生图集； 同y=232处的两栏全部8640像素一致；菜单/制作群组、战略地图/箭头、战场/透明文字/信息/查找、天数居中、背景恢复和四段真实动画 |
 | 战斗选项MIPS | 26 | 真实文本解码和选择器；五行映射、两值/取消、触摸/实体键及连续操作；旧ELF另重现两处错误 |
 | 原生C200触摸流程 | 33 | 全部五项战斗菜单、三项设置和撤退返回值； 菜单→剧本→君主→正常开局；武将→合法目的地→攻击菜单→目标；数值修改/确认、战略横纵拖动与上下边界、战斗三种选择状态拖动/反向恢复/松手不确认、边缘轻点不滚动、触摸后实体键、城池ID |
+| 背景音乐MIPS | 63 | 三首全部样本与独立FFmpeg解码SHA校验；24块真实MIPS解码及播放器场景、循环、短读短写、反压、损坏、退出、定时器输入隔离 |
+| 原生C200背景音乐 | 6 | 真实播放器/解码与SDK音频、计时和窗口定时器；压缩文件从校验过的RAM文件边界读取以隔离合成NAND错误；音频数据包采样对比及关闭清理 |
 | 资源回包 | 10 | 原87条/空槽保留、原库逐字节还原、89条扩展库往返、遮罩/行填充/动画/地图/索引约束 |
 | 源码结构 | 42模块/446恢复函数 | 模块独立编译、函数索引、89项资源用途依据；新增触摸模块独立于恢复模块 |
 
-当前确切BDA新跑5139项编译MIPS检查及94项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
+当前确切BDA新跑5202项编译MIPS检查及100项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
 此前593项既有回归、27163项控制流对照及60026项运行库对照保留为历史证据，没有计为本轮新跑检查。
-本轮仅菜单函数的编译代码改变；LIB和CLR与alpha.4完全一致，河流轮廓、天气、原生状态图及全部素材保持不变。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
-新增触摸代码/状态位于原固定状态区之后的受限区间，链接器检查其末端不超过0x81c30000。
+本轮新增独立音乐模块和场景、输入/绘图泵接入；LIB和CLR与alpha.5完全一致，图像素材不变。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
+新增触摸、信息页和音乐代码/状态位于原固定状态区之后的受限区间，链接器检查其末端不超过0x81c30000。
 alpha.1把战斗光标闪烁计数器从未初始化改为0；该轮历史按键对照排除这一绘制相位/次数差异，比较游戏决策、状态、命令及输入消耗。
 
-汇总及源码/报告哈希：[战斗菜单修复记录](../validation/battle-options-review.json)，[9288S/9588静态对照](../validation/battle-options-reference.json)与[具体菜单语义](BATTLE_OPTIONS.md)。前轮河流、信息页记录按alpha.4/alpha.3快照追溯。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
+本轮汇总及源码/报告哈希见[背景音乐验证](../validation/music-review.json)、[音乐MIPS](../validation/music-validation.json)和[音乐原生输出](../validation/music-native-validation.json)。
+
+前轮战斗菜单修复记录按alpha.5快照追溯：[战斗菜单修复记录](../validation/battle-options-review.json)，[9288S/9588静态对照](../validation/battle-options-reference.json)与[具体菜单语义](BATTLE_OPTIONS.md)。前轮河流、信息页记录按alpha.4/alpha.3快照追溯。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
 问号按16×16单比特字形烘焙，天气按原生18×18绘制；信息页后台一次画完整页并提交，保持到点击或按键返回。新信息页不进入逐行直接绘屏路径，临时攻防计算视图读出后恢复，原游戏状态与战场缓冲不改。
 独立干净检出构建及安装包检查见 [干净构建记录](../validation/release-clean-build.json)。
-发行包由 `reference-build.json` 分别校验BDA/LIB/CLR；升级ZIP和外部文件均有逐文件SHA-256。
+发行包由 `reference-build.json` 分别校验BDA/LIB/CLR和三首音乐；升级ZIP和外部文件均有逐文件SHA-256。
 
 沿用alpha.2按钮栏y=232、高36，与战略界面一致；粮草／天气行y=208，摘要y=268。原六张字形及1204帧图片未改，新增问号字形和五张原生天气图，战场显示区保持15×13；移动/AI/技能的15×15规则窗口不变。
+
+## 音乐验证范围
+
+三首完整曲目共11,509,218个样本，主机逐样本解码SHA与转换时保存的独立FFmpeg结果一致；24个选定块同时执行真实MIPS解码。
+真实播放器在MIPS中检查逐曲切换、精确曲尾与跨块循环、部分读写、队列反压、失败静音和退出。生产入口分别覆盖主菜单、战略、玩家战斗和电脑自动战斗。
+
+C200原生检查执行同一播放器、解码器和真实SDK音频/时间/定时器。原生SDK读取合成NAND时已测得音乐头/数据与原文件不同，因此原生播放检查将四个命名文件边界换为校验过的RAM文件；这项诊断适配不进入BDA，也不宣称原生文件播放全链路通过。
+本地旧Python前端未接收新版QEMU的PCM数据包，验证适配器只补充接收和记录，不修改SDK音频。音频采样与已知解码样本对照；具体变换和采样位置在原生报告中列明。
+真机音质、持续播放性能和完整战役仍需实际设备确认。
 
 ## 触摸范围与限制
 
@@ -67,6 +80,7 @@ python tools/test_battle_viewport.py
 python tools/test_touch_input.py
 python tools/test_battle_info.py
 python tools/test_battle_options.py
+python tools/test_music.py
 python tools/package_release.py --require-validated
 python tools/verify_artifacts.py --require-validated
 python tools/test_release_pipeline.py

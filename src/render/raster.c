@@ -65,6 +65,8 @@ void sango_raster_draw_screen(uint32_t x, short y, uint32_t width, uint32_t heig
                 if ((int)(origin_x + (width & 0xffff) + -1) < (int)pixel_x)
                 {
                     y = y + 1;
+                    if ((y & 7) == 0)
+                        sango_music_poll();
                     pixel_x = origin_x;
                     break;
                 }
@@ -135,6 +137,8 @@ void sango_raster_draw_opaque(uint32_t x, short y, uint32_t width, uint32_t heig
                 if ((int)(origin_x + (width & 0xffff) + -1) < (int)pixel_x)
                 {
                     y = y + 1;
+                    if ((y & 7) == 0)
+                        sango_music_poll();
                     pixel_x = origin_x;
                     break;
                 }
@@ -222,6 +226,8 @@ void sango_raster_draw_masked(uint32_t x, short y, uint32_t width, uint32_t heig
                 if ((int)(origin_x + (width & 0xffff) + -1) < (int)pixel_x)
                 {
                     y = y + 1;
+                    if ((y & 7) == 0)
+                        sango_music_poll();
                     pixel_x = origin_x;
                     break;
                 }
@@ -307,6 +313,8 @@ void sango_raster_draw_masked_screen(uint32_t x, short y, uint32_t width, uint32
                 if ((int)(origin_x + (width & 0xffff) + -1) < (int)pixel_x)
                 {
                     y = y + 1;
+                    if ((y & 7) == 0)
+                        sango_music_poll();
                     pixel_x = origin_x;
                     break;
                 }
@@ -512,6 +520,7 @@ void sango_ui_show_message(char *text, uint32_t wait_units)
 /* 原函数 0x81c14f98 */
 void sango_render_present(uint32_t context)
 {
+    sango_music_poll();
     sango_display_present_context(0, context);
     return;
 }

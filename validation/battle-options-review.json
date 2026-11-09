@@ -61,5 +61,7 @@
     "path": "docs/screenshots/touch/battle-options-parent.png",
     "sha256": "3e281db571c2a7f498c0c4853443e49206a6463960ddc1a091bbf4f5997872b6"
   },
-  "clean_build_tested_commit": "8b4044d2d1958d4684b821c7d6ed61ec6459cad1"
+  "clean_build_tested_commit": "8b4044d2d1958d4684b821c7d6ed61ec6459cad1",
+  "snapshot_commit": "922e0071f27f92d49598a3432134f9a6e0ad2024",
+  "history_note": "Historical alpha.5 snapshot. Digests refer to that commit. Current alpha.6 music and fresh reports are in music-review.json."
 }

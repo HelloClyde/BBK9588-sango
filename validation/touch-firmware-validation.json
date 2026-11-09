@@ -1,7 +1,7 @@
 {
   "passed": 33,
   "failed": 0,
-  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
   "scope": "Native C200 with exact BDA/LIB/CLR staging. A controlled 20-unit fixture calls all five battle-option rows, actionable-unit, movement, command, target, number and strategic-city controllers; markers record returned values only. All choices are native touch input. Also normal main/scenario/ruler session flow and touch/key mixing. No filesystem save or complete campaign/physical-device claim.",
   "limitations": [
     "Continuous drags are verified with native C200 smooth hardware-input trajectories; no physical-device test. The earlier three large coordinate jumps did not represent a continuous drag and are superseded by these traces."
@@ -89,19 +89,19 @@
       "name": "Continuous drag moves battle view while selecting-destination",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
-      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
+      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
     },
     {
       "name": "Releasing battle drag does not select or execute while selecting-destination",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
-      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
+      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
     },
     {
       "name": "Reverse drag restores battle view while selecting-destination",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
-      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
+      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
     },
     {
       "name": "Tap a legal destination opens the production unit command menu",
@@ -113,31 +113,31 @@
       "name": "Tap attack menu row enters target selection without confirming a target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "f133c002b40d8378bbe707455d5bc67613e8b7b1d7d46649e0438d6df458256a"
+      "screenshot_sha256": "c943a68f318dbcbe1e92da5c1997db982e52a855a52e3dc98e97da260c274659"
     },
     {
       "name": "Continuous drag moves battle view while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Releasing battle drag does not select or execute while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Reverse drag restores battle view while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Tap an enemy selects the validated original attack target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "f133c002b40d8378bbe707455d5bc67613e8b7b1d7d46649e0438d6df458256a"
+      "screenshot_sha256": "c943a68f318dbcbe1e92da5c1997db982e52a855a52e3dc98e97da260c274659"
     },
     {
       "name": "Touch plus and confirm return the edited number through production code",

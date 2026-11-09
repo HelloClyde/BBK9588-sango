@@ -1,6 +1,6 @@
 {
   "passed": 132,
   "failed": 0,
-  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
   "scope": "Actual compiled MIPS window callback, gesture recognizer, event normalization, full 16-bit coordinates, duplicate/up/cancel/bounds/timer sampling, image menu hitboxes/controllers, popup rows, strategy clicks, battle mode1/2/3 taps, drag clamps, numeric and roster selection. SDK queue/coordinate/pixel boundaries modeled. Initialized legacy/save data unchanged; touch extension outside legacy state. Native firmware tested separately."
 }

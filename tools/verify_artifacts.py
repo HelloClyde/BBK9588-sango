@@ -15,6 +15,8 @@ def main():
     if args.require_validated and not info['matches_runtime_reference']:raise SystemExit('Artifact lacks matching runtime evidence')
     if args.require_validated and not info['matches_library_reference']:raise SystemExit('Library lacks matching resource validation')
     if args.require_validated and not info['matches_color_reference']:raise SystemExit('Color lacks matching runtime validation')
+    if args.require_validated and not info.get('matches_music_reference'):raise SystemExit('Music lacks matching audio validation')
+    if [t['id'] for t in info.get('music',[])]!=['menu','strategy','battle']:raise SystemExit('Missing music scenes')
     prefix='BBK9588-sango-'+info['version'];bda=(args.dir/(prefix+'.bda')).read_bytes()
     library=(args.dir/'sango.lib').read_bytes()
     color=(args.dir/'sango.clr').read_bytes()
@@ -34,15 +36,24 @@ def main():
         if hashlib.sha256(library).hexdigest()!=reference['sango_lib_sha256']:
             raise SystemExit('Release differs from resource validation reference')
     if args.require_validated and hashlib.sha256(color).hexdigest()!=reference['sango_clr_sha256']:raise SystemExit('Release differs from color validation reference')
+    if args.require_validated and info['music']!=reference.get('music_tracks'):raise SystemExit('Release music differs from audio reference')
     with zipfile.ZipFile(args.dir/(prefix+'-update.zip')) as z:
         if z.testzip() is not None:raise SystemExit('Corrupt installation ZIP')
         expected={'应用/程序/三国霸业.bda','应用/数据/游戏/sango.lib','应用/数据/游戏/sango.clr','README.txt','LICENSE.md','LICENSES/MIT.txt',
             'LICENSES/SDK-Apache-2.0.txt','SDK-NOTICE.txt','THIRD_PARTY_NOTICES.md','SHA256SUMS.txt'}
+        expected.update('应用/数据/游戏/sango-music/'+t['file'] for t in info['music'])
         if set(z.namelist())!=expected or len(z.namelist())!=len(expected):raise SystemExit('Unexpected installation ZIP contents')
         if z.read('应用/程序/三国霸业.bda')!=bda:raise SystemExit('Installed BDA differs from released BDA')
         if z.read('应用/数据/游戏/sango.lib')!=library:raise SystemExit('Installed library differs from released library')
         if z.read('应用/数据/游戏/sango.clr')!=color:raise SystemExit('Installed color differs from released color')
         expected_sums=digest+'  应用/程序/三国霸业.bda\n'+hashlib.sha256(library).hexdigest()+'  应用/数据/游戏/sango.lib\n'+hashlib.sha256(color).hexdigest()+'  应用/数据/游戏/sango.clr\n'
+        for track in info['music']:
+            if track['file']!=track['id']+'.wav':raise SystemExit('Invalid music filename')
+            path='应用/数据/游戏/sango-music/'+track['file'];data=z.read(path)
+            if len(data)!=track['bytes'] or hashlib.sha256(data).hexdigest()!=track['sha256']:raise SystemExit('Music checksum mismatch: '+path)
+            # Keep verification usable standalone in the Linux release job.
+            if data[:4]!=b'RIFF' or data[8:12]!=b'WAVE' or struct.unpack_from('<I',data,4)[0]+8!=len(data):raise SystemExit('Invalid music WAV')
+            expected_sums+=track['sha256']+'  '+path+'\n'
         if z.read('SHA256SUMS.txt')!=expected_sums.encode('utf-8'):raise SystemExit('Installation checksum manifest mismatch')
     print(json.dumps({'passed':True,'verified_files':files,'resource_included':True,'runtime_reference_matches':info['matches_runtime_reference']},ensure_ascii=False))
 if __name__=='__main__':main()

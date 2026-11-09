@@ -138,6 +138,7 @@ uint32_t sango_input_poll_native_event(uint32_t *event_result)
 
     int event_available;
 
+    sango_music_poll();
     event_available =
         bda_gui_event_pump_frame_once((bda_gui_message_t *)native_event, (bda_handle_t)g_app_frame);
     if (event_available != 0)

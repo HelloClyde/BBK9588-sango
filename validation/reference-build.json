@@ -1,17 +1,17 @@
 {
-  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
-  "bda_bytes": 221688,
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
+  "bda_bytes": 227196,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "GCC 15.2.0",
-  "mips_checks": 5139,
-  "native_firmware_interface_checks": 94,
+  "mips_checks": 5202,
+  "native_firmware_interface_checks": 100,
   "physical_device_verified": false,
   "complete_campaign_verified": false,
   "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
   "sango_lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "sango_lib_bytes": 461116,
   "library_validation": "Unchanged 461116-byte LIB; original records preserved. 1204 native PNG/RGB565 byte checks and real compiled-MIPS loading/CRC/index/masks. Native C200 SDK rendering uses exact expanded LIB/CLR borrowed buffers staged to bypass synthetic NAND ECC; filesystem/ownership modeled separately.",
-  "notes": "Alpha.5 fixes original9588 swapped enemy-movement/retreat menu branches to match original9288S static code and identical decoded text. Only compiled sango_battle_show_options changes; LIB/CLR/initialized data remain alpha.4 bytes.5139 fresh MIPS +94 native C200 checks, including all five menu rows. Prior15857 keyboard checks remain historical alpha.1.",
+  "notes": "Alpha.6 adds three full user-supplied music tracks using fixed-buffer IMA decode and named SDK PCM/file/timer APIs. LIB/CLR/original initialized data retain alpha.5 bytes.5202 fresh MIPS checks plus94 native interface/touch checks and separately recorded native music checks. Prior15857 keyboard checks remain historical alpha.1.",
   "control_flow_differential_checks": 0,
   "runtime_oracle_differential_checks": 60026,
   "mips_existing_regression_checks": 0,
@@ -30,8 +30,8 @@
   "mips_battle_color_checks": 250,
   "mips_battle_ui_color_checks": 113,
   "mips_battle_pixel_grid_checks": 22,
-  "runtime_payload_sha256": "7364a4155447c9a239dd8e602d85a6f0b9edb14e820360574d0e17976221c0be",
-  "runtime_evidence_basis": "Fresh exact BDA/LIB/CLR compiled-MIPS and native C200 reports. Original9288S comparison is static disassembly/resource evidence, not native9288S execution. Native C200 uses exact-byte RAM staging and excluded fixtures; no physical-device or complete-campaign claim.",
+  "runtime_payload_sha256": "de35ea0e4838653e49da5da697dd3d7275aadfb62e427bf3001ae9d9028509c8",
+  "runtime_evidence_basis": "Fresh exact BDA/LIB/CLR MIPS and native C200 evidence. Native game payloads and compressed music bytes use diagnostic staging to bypass observed synthetic NAND ECC. Actual music player/decoder and SDK audio/time/timer run natively; four file boundaries are RAM-backed. Direct native FS prefix probes expose fixture corruption. No physical-device or complete-campaign claim.",
   "app_icon_checks": 6,
   "mips_touch_checks": 132,
   "keyboard_compatibility_checks": 0,
@@ -42,5 +42,34 @@
   "keyboard_comparison_snapshot_commit": "4d2b58920fdc1f011c9d7eb55ea99054ca06a368",
   "mips_battle_info_weather_checks": 27,
   "mips_river_geometry_checks": 88,
-  "mips_battle_options_checks": 26
+  "mips_battle_options_checks": 26,
+  "mips_music_checks": 63,
+  "music_bytes": 5834932,
+  "music_tracks": [
+    {
+      "id": "menu",
+      "file": "menu.wav",
+      "bytes": 2932796,
+      "sha256": "eab0b2fa27827e60343186bb211bfa744875736d637f5d204ba33f25024aa4a7",
+      "samples": 5785038,
+      "duration_seconds": 262.36
+    },
+    {
+      "id": "strategy",
+      "file": "strategy.wav",
+      "bytes": 1229628,
+      "sha256": "b03814c7b795994fe2b513932b1466921d20f3a9c48b8e2374b148d49e72e3cd",
+      "samples": 2425500,
+      "duration_seconds": 110.0
+    },
+    {
+      "id": "battle",
+      "file": "battle.wav",
+      "bytes": 1672508,
+      "sha256": "7bcb7c43295ec7c3f397377c3d0d92065f86c0bae4ab9febb801b7868cf09bd8",
+      "samples": 3298680,
+      "duration_seconds": 149.6
+    }
+  ],
+  "native_music_checks": 6
 }

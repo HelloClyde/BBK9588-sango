@@ -17,4 +17,5 @@
 #include "sango_color.h"
 #include "sango_battle_ui.h"
 #include "sango_touch.h"
+#include "sango_music.h"
 #endif

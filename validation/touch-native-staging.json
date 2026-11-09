@@ -2,7 +2,7 @@
   "entry": true,
   "package": true,
   "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
-  "payload_sha256": "7364a4155447c9a239dd8e602d85a6f0b9edb14e820360574d0e17976221c0be",
+  "payload_sha256": "de35ea0e4838653e49da5da697dd3d7275aadfb62e427bf3001ae9d9028509c8",
   "color": {
     "bytes": 2297312,
     "sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
@@ -11,9 +11,9 @@
   "package_address": "0x81000000",
   "package_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "battle_fixture": {
-    "sha256": "306ca87916e79de3f149f61b404250d3f8880b07c561aa4f1c48fd1522c80c14",
+    "sha256": "406bd03926e7a39307b8cd7ad6f20bbb61cf2114d89e7d1f6fe474707b8bfa8c",
     "entry": "0x81c30000",
-    "trigger": "0x81c03290",
+    "trigger": "0x81c032f8",
     "scope": "Controlled battle UI fixture entered at normal credits call; exact fixture source is saved locally with its compile invocation; production battle functions and native hardware input. Fixture excluded from delivered BDA.",
     "source_sha256": "64a0736c1364ba2eb69cc4b4d4f64c8763d35ae39d1de62e997c806b02d2f2ea"
   }

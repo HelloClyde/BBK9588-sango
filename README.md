@@ -5,7 +5,7 @@
 恢复逻辑已按战斗、战略、存读档、资源、界面和运行库拆成42个模块，函数采用语义名称；
 大型流程和剩余短函数已整理变量名与标签，仍保留部分恢复出的布局和控制流；本项目不是原开发者的工程。
 
-当前版本为 **0.1.0-alpha.5**，源码托管于
+当前版本为 **0.1.0-alpha.6**，源码托管于
 [HelloClyde/BBK9588-sango](https://github.com/HelloClyde/BBK9588-sango)。
 构建状态见 [GitHub Actions](https://github.com/HelloClyde/BBK9588-sango/actions)；
 预发布安装包见 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases)。
@@ -15,7 +15,7 @@
 ## 快速开始
 
 从本仓库 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases) 选择同一版本的 `-update.zip`，
-或同时下载同版本 BDA、`sango.lib` 和 `sango.clr`。
+建议直接使用升级 ZIP，其中包含同版本 BDA、`sango.lib`、`sango.clr` 和三首背景音乐。
 游戏内全部1204帧素材已用 GPT Image 上色，包括头像、地图、兵种、动画、菜单和补充界面；
 原灰度素材和此前三张彩色草稿保留。启动图标按9288S原图恢复左下曹操、无金冠、铺满背景的整面旗帜及部分可见的“曹”字；旧母图和未采用草稿均保留。城市图标使用透明底，彩色战略地图铺满240×232，消除右侧和下方留白；
 逻辑仍为原7×7格，底栏位置不变。彩色目录与格式见 [彩色素材](assets/color/README.md)。
@@ -29,7 +29,11 @@
 │   └── 三国霸业.bda
 └── 数据/游戏/
     ├── sango.lib
-    └── sango.clr
+    ├── sango.clr
+    └── sango-music/
+        ├── menu.wav
+        ├── strategy.wav
+        └── battle.wav
 ```
 
 源码包含原 `sango.LIB` 完整解包素材与新增素材，构建时重新生成 `sango.lib`。
@@ -57,6 +61,10 @@
 战斗菜单按9288S原版对应：敌军移动设置“不看／观看”，全军撤退直接结束本场战斗；修正9588原版接反的两个分支，见[菜单对照](docs/BATTLE_OPTIONS.md)。
 树林改为绿色，演出框在战场区域居中，提示和伤害数字保持原相对位置。坐标与依据见 [战斗底栏布局](docs/BATTLE_LAYOUT.md)。
 
+背景音乐按场景切换：主菜单《谈笑风云·史诗主题V2》、策略《帷幄清风·策略谋划》、战斗《铁甲冲阵·器乐返修V7》。
+三首保留完整时长并循环播放，压缩为22050Hz单声道IMA ADPCM，合计约5.8MB。
+请连同 `sango-music` 目录一起安装；缺少音乐时游戏静音运行。转换和播放细节见 [音乐素材](assets/music/README.md)。
+
 ### 开发者构建
 
 在仓库根目录执行（Windows PowerShell，Python 3.11+）：
@@ -73,9 +81,9 @@ python tools/verify_artifacts.py --require-validated
 已有编译器时可指定路径：`python build.py --cc PATH/TO/mipsel-none-elf-gcc.exe`，
 或设置 `SANGO_CC`。构建需要 Pillow 编码仓库中的图片，无需图像生成服务或原版 BDA/LIB 文件。
 
-输出 `build/三国霸业.bda`、`build/sango.lib`、`build/sango.clr`；打包输出在 `dist/`，包括这三份文件、升级 ZIP、`BUILD_INFO.json`
+输出 `build/三国霸业.bda`、`build/sango.lib`、`build/sango.clr` 和 `build/music/*.wav`；打包输出在 `dist/`，包括BDA、两库、内含音乐目录的升级 ZIP、`BUILD_INFO.json`
 及逐文件 `SHA256SUMS.txt`。普通构建不会发布任何远程内容。
-`--require-validated` 要求 BDA、LIB 和 CLR 分别与当前验证记录相符；修改代码或素材后，须重新验证并更新参考记录。
+`--require-validated` 要求 BDA、LIB、CLR 和三首音乐分别与当前验证记录相符；修改代码或素材后，须重新验证并更新参考记录。
 
 ### 阅读与修改源码
 
@@ -140,7 +148,8 @@ python tools/test_color_assets.py
 
 ## 依赖
 
-- **使用成品**：9588/C200 环境，安装同一版本的 BDA、`sango.lib` 与 `sango.clr`，不需要 SDK 或 Python。
+- **使用成品**：9588/C200 环境，安装同一版本的 BDA、`sango.lib`、`sango.clr` 和 `sango-music` 目录，不需要 SDK 或 Python。
+- **音乐转换**：运行包已包含转换结果；常规构建无需FFmpeg或母带。重新转换使用FFmpeg/ffprobe 5.1.2及用户原始FLAC。
 - **SDK**：[HelloClyde/BBK9588-bda-sdk](https://github.com/HelloClyde/BBK9588-bda-sdk)，
   子模块固定 `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，没有自动升级。
 - **工具链**：MIPS O32 小端、soft-float，已验证 GCC 15.2.0；SDK 安装脚本校验工具链 ZIP 的 SHA-256。

@@ -145,14 +145,14 @@
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c04fe0` | [`sango_battle_run`](../src/battle/controller.c#L7) |
-| `0x81c051e8` | [`sango_battle_begin`](../src/battle/controller.c#L95) |
-| `0x81c052cc` | [`sango_battle_run_ai_turn`](../src/battle/controller.c#L132) |
-| `0x81c053c4` | [`sango_battle_refresh_target_preview`](../src/battle/controller.c#L180) |
-| `0x81c05400` | [`sango_battle_refresh_move_preview`](../src/battle/controller.c#L194) |
-| `0x81c0543c` | [`sango_battle_reset_session`](../src/battle/controller.c#L208) |
-| `0x81c054a0` | [`sango_battle_refresh_display`](../src/battle/controller.c#L226) |
-| `0x81c054e4` | [`sango_battle_focus_viewport`](../src/battle/controller.c#L237) |
-| `0x81c055b0` | [`sango_battle_show_cursor_info`](../src/battle/controller.c#L267) |
+| `0x81c051e8` | [`sango_battle_begin`](../src/battle/controller.c#L97) |
+| `0x81c052cc` | [`sango_battle_run_ai_turn`](../src/battle/controller.c#L134) |
+| `0x81c053c4` | [`sango_battle_refresh_target_preview`](../src/battle/controller.c#L182) |
+| `0x81c05400` | [`sango_battle_refresh_move_preview`](../src/battle/controller.c#L196) |
+| `0x81c0543c` | [`sango_battle_reset_session`](../src/battle/controller.c#L210) |
+| `0x81c054a0` | [`sango_battle_refresh_display`](../src/battle/controller.c#L228) |
+| `0x81c054e4` | [`sango_battle_focus_viewport`](../src/battle/controller.c#L239) |
+| `0x81c055b0` | [`sango_battle_show_cursor_info`](../src/battle/controller.c#L269) |
 
 ## src/battle/actions.c
 
@@ -211,18 +211,18 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c07e70` | [`sango_window_proc`](../src/platform/window_graphics.c#L6) |
-| `0x81c07fd4` | [`sango_display_copy_and_refresh`](../src/platform/window_graphics.c#L53) |
-| `0x81c08100` | [`sango_display_fill_rectangle`](../src/platform/window_graphics.c#L86) |
-| `0x81c082fc` | [`sango_display_blit_palette_bitmap`](../src/platform/window_graphics.c#L144) |
-| `0x81c0863c` | [`sango_display_capture_bitmap`](../src/platform/window_graphics.c#L272) |
-| `0x81c0886c` | [`sango_display_put_gray_pixel`](../src/platform/window_graphics.c#L371) |
-| `0x81c089c4` | [`sango_display_draw_line`](../src/platform/window_graphics.c#L432) |
-| `0x81c08e7c` | [`sango_display_draw_rectangle`](../src/platform/window_graphics.c#L646) |
-| `0x81c090c4` | [`sango_display_draw_circle`](../src/platform/window_graphics.c#L736) |
-| `0x81c093c0` | [`sango_display_draw_polyline`](../src/platform/window_graphics.c#L836) |
-| `0x81c095b4` | [`sango_display_set_brush`](../src/platform/window_graphics.c#L900) |
-| `0x81c09680` | [`sango_display_set_text_color`](../src/platform/window_graphics.c#L939) |
-| `0x81c0974c` | [`sango_display_select_font`](../src/platform/window_graphics.c#L978) |
+| `0x81c07fd4` | [`sango_display_copy_and_refresh`](../src/platform/window_graphics.c#L57) |
+| `0x81c08100` | [`sango_display_fill_rectangle`](../src/platform/window_graphics.c#L90) |
+| `0x81c082fc` | [`sango_display_blit_palette_bitmap`](../src/platform/window_graphics.c#L148) |
+| `0x81c0863c` | [`sango_display_capture_bitmap`](../src/platform/window_graphics.c#L276) |
+| `0x81c0886c` | [`sango_display_put_gray_pixel`](../src/platform/window_graphics.c#L375) |
+| `0x81c089c4` | [`sango_display_draw_line`](../src/platform/window_graphics.c#L436) |
+| `0x81c08e7c` | [`sango_display_draw_rectangle`](../src/platform/window_graphics.c#L650) |
+| `0x81c090c4` | [`sango_display_draw_circle`](../src/platform/window_graphics.c#L740) |
+| `0x81c093c0` | [`sango_display_draw_polyline`](../src/platform/window_graphics.c#L840) |
+| `0x81c095b4` | [`sango_display_set_brush`](../src/platform/window_graphics.c#L904) |
+| `0x81c09680` | [`sango_display_set_text_color`](../src/platform/window_graphics.c#L943) |
+| `0x81c0974c` | [`sango_display_select_font`](../src/platform/window_graphics.c#L982) |
 
 ## src/platform/input_dialog.c
 
@@ -249,57 +249,57 @@ SDK窗口消息及基础绘图适配。
 | `0x81c0a4a4` | [`sango_run_event_loop_and_close`](../src/platform/sdk_bindings.c#L86) |
 | `0x81c0a578` | [`sango_platform_init_window_descriptor`](../src/platform/sdk_bindings.c#L112) |
 | `0x81c0a5fc` | [`sango_input_poll_native_event`](../src/platform/sdk_bindings.c#L134) |
-| `0x81c0a6a0` | [`bbk_post_message`](../src/platform/sdk_bindings.c#L155) |
-| `0x81c0a704` | [`bbk_alloc`](../src/platform/sdk_bindings.c#L176) |
-| `0x81c0a72c` | [`bbk_free_if_nonnull`](../src/platform/sdk_bindings.c#L185) |
-| `0x81c0a774` | [`bbk_strcat`](../src/platform/sdk_bindings.c#L195) |
-| `0x81c0a790` | [`bbk_strlen`](../src/platform/sdk_bindings.c#L204) |
-| `0x81c0a7ac` | [`bbk_memcpy`](../src/platform/sdk_bindings.c#L213) |
-| `0x81c0a7c8` | [`sango_memory_fill`](../src/platform/sdk_bindings.c#L222) |
-| `0x81c0a7e4` | [`sango_format_integer`](../src/platform/sdk_bindings.c#L229) |
-| `0x81c0a86c` | [`bbk_zero_time_stub`](../src/platform/sdk_bindings.c#L257) |
-| `0x81c0a890` | [`bbk_srand`](../src/platform/sdk_bindings.c#L271) |
-| `0x81c0a8ac` | [`bbk_rand`](../src/platform/sdk_bindings.c#L278) |
-| `0x81c0a8c8` | [`sango_timer_start`](../src/platform/sdk_bindings.c#L287) |
-| `0x81c0a904` | [`sango_timer_stop`](../src/platform/sdk_bindings.c#L294) |
-| `0x81c0a938` | [`bbk_compatible_context_create`](../src/platform/sdk_bindings.c#L301) |
-| `0x81c0a964` | [`bbk_compatible_context_free`](../src/platform/sdk_bindings.c#L310) |
-| `0x81c0a990` | [`sango_display_present_context`](../src/platform/sdk_bindings.c#L317) |
-| `0x81c0aadc` | [`sango_display_noop`](../src/platform/sdk_bindings.c#L347) |
-| `0x81c0aae4` | [`sango_display_invert_rectangle`](../src/platform/sdk_bindings.c#L353) |
-| `0x81c0abcc` | [`sango_platform_noop`](../src/platform/sdk_bindings.c#L382) |
-| `0x81c0ac00` | [`sango_bitmap_query_dimensions`](../src/platform/sdk_bindings.c#L391) |
-| `0x81c0ac48` | [`sango_display_fill_gray_rectangle`](../src/platform/sdk_bindings.c#L412) |
-| `0x81c0ad1c` | [`sango_text_get_font_metrics`](../src/platform/sdk_bindings.c#L428) |
-| `0x81c0addc` | [`sango_text_draw_native`](../src/platform/sdk_bindings.c#L443) |
-| `0x81c0aeb0` | [`bbk_clearerr`](../src/platform/sdk_bindings.c#L459) |
-| `0x81c0aed8` | [`bbk_ferror`](../src/platform/sdk_bindings.c#L466) |
-| `0x81c0af00` | [`bbk_fclose`](../src/platform/sdk_bindings.c#L475) |
-| `0x81c0af28` | [`bbk_feof`](../src/platform/sdk_bindings.c#L484) |
-| `0x81c0af50` | [`sango_platform_stub_0af50`](../src/platform/sdk_bindings.c#L493) |
-| `0x81c0af58` | [`sango_platform_stub_0af58`](../src/platform/sdk_bindings.c#L499) |
-| `0x81c0af60` | [`bbk_fopen`](../src/platform/sdk_bindings.c#L505) |
-| `0x81c0af88` | [`sango_platform_stub_0af88`](../src/platform/sdk_bindings.c#L514) |
-| `0x81c0af90` | [`sango_platform_stub_0af90`](../src/platform/sdk_bindings.c#L520) |
-| `0x81c0af98` | [`bbk_fread`](../src/platform/sdk_bindings.c#L526) |
-| `0x81c0afdc` | [`bbk_fseek`](../src/platform/sdk_bindings.c#L536) |
-| `0x81c0b004` | [`bbk_ftell`](../src/platform/sdk_bindings.c#L545) |
-| `0x81c0b02c` | [`bbk_fwrite`](../src/platform/sdk_bindings.c#L554) |
-| `0x81c0b070` | [`sango_platform_stub_0b070`](../src/platform/sdk_bindings.c#L564) |
-| `0x81c0b078` | [`sango_platform_stub_0b078`](../src/platform/sdk_bindings.c#L570) |
-| `0x81c0b080` | [`sango_platform_stub_0b080`](../src/platform/sdk_bindings.c#L576) |
-| `0x81c0b088` | [`sango_platform_stub_0b088`](../src/platform/sdk_bindings.c#L582) |
-| `0x81c0b090` | [`sango_platform_stub_0b090`](../src/platform/sdk_bindings.c#L588) |
-| `0x81c0b098` | [`bbk_rename`](../src/platform/sdk_bindings.c#L594) |
-| `0x81c0b0c0` | [`sango_platform_stub_0b0c0`](../src/platform/sdk_bindings.c#L603) |
-| `0x81c0b0c8` | [`bbk_load_file_with_progress`](../src/platform/sdk_bindings.c#L609) |
-| `0x81c0b2c4` | [`sango_platform_stub_0b2c4`](../src/platform/sdk_bindings.c#L656) |
-| `0x81c0b2cc` | [`sango_platform_stub_0b2cc`](../src/platform/sdk_bindings.c#L662) |
-| `0x81c0b2d4` | [`sango_platform_stub_0b2d4`](../src/platform/sdk_bindings.c#L668) |
-| `0x81c0b404` | [`sango_input_dispatch_pending_events`](../src/platform/sdk_bindings.c#L674) |
-| `0x81c0b500` | [`graphics_init_stub`](../src/platform/sdk_bindings.c#L713) |
-| `0x81c0b508` | [`sango_platform_stub_0b508`](../src/platform/sdk_bindings.c#L719) |
-| `0x81c0b510` | [`bbk_message_box`](../src/platform/sdk_bindings.c#L725) |
+| `0x81c0a6a0` | [`bbk_post_message`](../src/platform/sdk_bindings.c#L156) |
+| `0x81c0a704` | [`bbk_alloc`](../src/platform/sdk_bindings.c#L177) |
+| `0x81c0a72c` | [`bbk_free_if_nonnull`](../src/platform/sdk_bindings.c#L186) |
+| `0x81c0a774` | [`bbk_strcat`](../src/platform/sdk_bindings.c#L196) |
+| `0x81c0a790` | [`bbk_strlen`](../src/platform/sdk_bindings.c#L205) |
+| `0x81c0a7ac` | [`bbk_memcpy`](../src/platform/sdk_bindings.c#L214) |
+| `0x81c0a7c8` | [`sango_memory_fill`](../src/platform/sdk_bindings.c#L223) |
+| `0x81c0a7e4` | [`sango_format_integer`](../src/platform/sdk_bindings.c#L230) |
+| `0x81c0a86c` | [`bbk_zero_time_stub`](../src/platform/sdk_bindings.c#L258) |
+| `0x81c0a890` | [`bbk_srand`](../src/platform/sdk_bindings.c#L272) |
+| `0x81c0a8ac` | [`bbk_rand`](../src/platform/sdk_bindings.c#L279) |
+| `0x81c0a8c8` | [`sango_timer_start`](../src/platform/sdk_bindings.c#L288) |
+| `0x81c0a904` | [`sango_timer_stop`](../src/platform/sdk_bindings.c#L295) |
+| `0x81c0a938` | [`bbk_compatible_context_create`](../src/platform/sdk_bindings.c#L302) |
+| `0x81c0a964` | [`bbk_compatible_context_free`](../src/platform/sdk_bindings.c#L311) |
+| `0x81c0a990` | [`sango_display_present_context`](../src/platform/sdk_bindings.c#L318) |
+| `0x81c0aadc` | [`sango_display_noop`](../src/platform/sdk_bindings.c#L348) |
+| `0x81c0aae4` | [`sango_display_invert_rectangle`](../src/platform/sdk_bindings.c#L354) |
+| `0x81c0abcc` | [`sango_platform_noop`](../src/platform/sdk_bindings.c#L383) |
+| `0x81c0ac00` | [`sango_bitmap_query_dimensions`](../src/platform/sdk_bindings.c#L392) |
+| `0x81c0ac48` | [`sango_display_fill_gray_rectangle`](../src/platform/sdk_bindings.c#L413) |
+| `0x81c0ad1c` | [`sango_text_get_font_metrics`](../src/platform/sdk_bindings.c#L429) |
+| `0x81c0addc` | [`sango_text_draw_native`](../src/platform/sdk_bindings.c#L444) |
+| `0x81c0aeb0` | [`bbk_clearerr`](../src/platform/sdk_bindings.c#L460) |
+| `0x81c0aed8` | [`bbk_ferror`](../src/platform/sdk_bindings.c#L467) |
+| `0x81c0af00` | [`bbk_fclose`](../src/platform/sdk_bindings.c#L476) |
+| `0x81c0af28` | [`bbk_feof`](../src/platform/sdk_bindings.c#L485) |
+| `0x81c0af50` | [`sango_platform_stub_0af50`](../src/platform/sdk_bindings.c#L494) |
+| `0x81c0af58` | [`sango_platform_stub_0af58`](../src/platform/sdk_bindings.c#L500) |
+| `0x81c0af60` | [`bbk_fopen`](../src/platform/sdk_bindings.c#L506) |
+| `0x81c0af88` | [`sango_platform_stub_0af88`](../src/platform/sdk_bindings.c#L515) |
+| `0x81c0af90` | [`sango_platform_stub_0af90`](../src/platform/sdk_bindings.c#L521) |
+| `0x81c0af98` | [`bbk_fread`](../src/platform/sdk_bindings.c#L527) |
+| `0x81c0afdc` | [`bbk_fseek`](../src/platform/sdk_bindings.c#L537) |
+| `0x81c0b004` | [`bbk_ftell`](../src/platform/sdk_bindings.c#L546) |
+| `0x81c0b02c` | [`bbk_fwrite`](../src/platform/sdk_bindings.c#L555) |
+| `0x81c0b070` | [`sango_platform_stub_0b070`](../src/platform/sdk_bindings.c#L565) |
+| `0x81c0b078` | [`sango_platform_stub_0b078`](../src/platform/sdk_bindings.c#L571) |
+| `0x81c0b080` | [`sango_platform_stub_0b080`](../src/platform/sdk_bindings.c#L577) |
+| `0x81c0b088` | [`sango_platform_stub_0b088`](../src/platform/sdk_bindings.c#L583) |
+| `0x81c0b090` | [`sango_platform_stub_0b090`](../src/platform/sdk_bindings.c#L589) |
+| `0x81c0b098` | [`bbk_rename`](../src/platform/sdk_bindings.c#L595) |
+| `0x81c0b0c0` | [`sango_platform_stub_0b0c0`](../src/platform/sdk_bindings.c#L604) |
+| `0x81c0b0c8` | [`bbk_load_file_with_progress`](../src/platform/sdk_bindings.c#L610) |
+| `0x81c0b2c4` | [`sango_platform_stub_0b2c4`](../src/platform/sdk_bindings.c#L657) |
+| `0x81c0b2cc` | [`sango_platform_stub_0b2cc`](../src/platform/sdk_bindings.c#L663) |
+| `0x81c0b2d4` | [`sango_platform_stub_0b2d4`](../src/platform/sdk_bindings.c#L669) |
+| `0x81c0b404` | [`sango_input_dispatch_pending_events`](../src/platform/sdk_bindings.c#L675) |
+| `0x81c0b500` | [`graphics_init_stub`](../src/platform/sdk_bindings.c#L714) |
+| `0x81c0b508` | [`sango_platform_stub_0b508`](../src/platform/sdk_bindings.c#L720) |
+| `0x81c0b510` | [`bbk_message_box`](../src/platform/sdk_bindings.c#L726) |
 
 ## src/strategy/domestic.c
 
@@ -449,7 +449,7 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c13d80` | [`sango_load_package_and_buffers`](../src/app/memory.c#L7) |
-| `0x81c13f64` | [`sango_release_package_and_buffers`](../src/app/memory.c#L71) |
+| `0x81c13f64` | [`sango_release_package_and_buffers`](../src/app/memory.c#L74) |
 
 ## src/platform/event_loop.c
 
@@ -471,21 +471,21 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c14350` | [`sango_raster_draw_screen`](../src/render/raster.c#L6) |
-| `0x81c14504` | [`sango_raster_draw_opaque`](../src/render/raster.c#L82) |
-| `0x81c14690` | [`sango_raster_draw_masked`](../src/render/raster.c#L151) |
-| `0x81c14838` | [`sango_raster_draw_masked_screen`](../src/render/raster.c#L238) |
-| `0x81c149dc` | [`sango_text_draw_legacy`](../src/render/raster.c#L322) |
-| `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L435) |
-| `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L478) |
-| `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L485) |
-| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L513) |
-| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L520) |
-| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L557) |
-| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L599) |
-| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L607) |
-| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L620) |
-| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L628) |
-| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L640) |
+| `0x81c14504` | [`sango_raster_draw_opaque`](../src/render/raster.c#L84) |
+| `0x81c14690` | [`sango_raster_draw_masked`](../src/render/raster.c#L155) |
+| `0x81c14838` | [`sango_raster_draw_masked_screen`](../src/render/raster.c#L244) |
+| `0x81c149dc` | [`sango_text_draw_legacy`](../src/render/raster.c#L330) |
+| `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L443) |
+| `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L486) |
+| `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L493) |
+| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L521) |
+| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L529) |
+| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L566) |
+| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L608) |
+| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L616) |
+| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L629) |
+| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L637) |
+| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L649) |
 
 ## src/resources/library.c
 
@@ -509,12 +509,12 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c159a0` | [`sango_allocate_session_state`](../src/ui/start_menu.c#L6) |
 | `0x81c15acc` | [`sango_select_session`](../src/ui/start_menu.c#L52) |
-| `0x81c15d18` | [`sango_menu_select_animated`](../src/ui/start_menu.c#L156) |
-| `0x81c15e44` | [`sango_menu_show_credits`](../src/ui/start_menu.c#L230) |
-| `0x81c15e6c` | [`sango_menu_choose_ruler`](../src/ui/start_menu.c#L238) |
-| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L365) |
-| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L392) |
-| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L403) |
+| `0x81c15d18` | [`sango_menu_select_animated`](../src/ui/start_menu.c#L157) |
+| `0x81c15e44` | [`sango_menu_show_credits`](../src/ui/start_menu.c#L231) |
+| `0x81c15e6c` | [`sango_menu_choose_ruler`](../src/ui/start_menu.c#L239) |
+| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L366) |
+| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L393) |
+| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L404) |
 
 ## src/save/savegame.c
 
@@ -535,9 +535,9 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c16c24` | [`sango_main`](../src/app/lifecycle.c#L6) |
 | `0x81c16c80` | [`sango_game_lifecycle`](../src/app/lifecycle.c#L21) |
-| `0x81c16d68` | [`sango_app_free_resource_buffer`](../src/app/lifecycle.c#L64) |
-| `0x81c16db0` | [`sango_app_show_initialization_error`](../src/app/lifecycle.c#L74) |
-| `0x81c16de8` | [`sango_resource_prepare_hook`](../src/app/lifecycle.c#L86) |
+| `0x81c16d68` | [`sango_app_free_resource_buffer`](../src/app/lifecycle.c#L65) |
+| `0x81c16db0` | [`sango_app_show_initialization_error`](../src/app/lifecycle.c#L75) |
+| `0x81c16de8` | [`sango_resource_prepare_hook`](../src/app/lifecycle.c#L87) |
 
 ## src/strategy/calendar.c
 
@@ -629,11 +629,11 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c1aab4` | [`sango_strategy_run_months`](../src/strategy/turns.c#L7) |
-| `0x81c1abd4` | [`sango_strategy_player_is_only_ruler`](../src/strategy/turns.c#L58) |
-| `0x81c1ac04` | [`sango_strategy_player_has_no_cities`](../src/strategy/turns.c#L68) |
-| `0x81c1ac34` | [`sango_strategy_refresh_city_governors`](../src/strategy/turns.c#L78) |
-| `0x81c1ad30` | [`sango_scenario_collect_rulers`](../src/strategy/turns.c#L146) |
-| `0x81c1add4` | [`sango_scenario_initialize`](../src/strategy/turns.c#L198) |
+| `0x81c1abd4` | [`sango_strategy_player_is_only_ruler`](../src/strategy/turns.c#L59) |
+| `0x81c1ac04` | [`sango_strategy_player_has_no_cities`](../src/strategy/turns.c#L69) |
+| `0x81c1ac34` | [`sango_strategy_refresh_city_governors`](../src/strategy/turns.c#L79) |
+| `0x81c1ad30` | [`sango_scenario_collect_rulers`](../src/strategy/turns.c#L147) |
+| `0x81c1add4` | [`sango_scenario_initialize`](../src/strategy/turns.c#L199) |
 
 ## src/ui/system_menu.c
 

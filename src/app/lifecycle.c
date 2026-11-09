@@ -44,6 +44,7 @@ void sango_game_lifecycle(void)
             sango_resource_read_text(1, 0x2f, session_error_text);
             sango_ui_show_message(session_error_text, 2);
         }
+        sango_music_shutdown();
         bbk_free_if_nonnull(g_viewport_tiles_address_view2);
         bbk_free_if_nonnull(g_move_costs_address_view2);
         bbk_free_if_nonnull(g_temp_character_ids_address_view2);

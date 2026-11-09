@@ -20,9 +20,15 @@ def main():
     verified=sha(bda)==reference['bda_sha256']
     library_verified=sha(library)==reference.get('sango_lib_sha256')
     color_verified=sha(color)==reference.get('sango_clr_sha256')
+    music_files={track['file']:(ROOT/'build/music'/track['file']).read_bytes() for track in built['music']}
+    for track in built['music']:
+        if len(music_files[track['file']])!=track['bytes'] or sha(music_files[track['file']])!=track['sha256']:
+            raise SystemExit('Music differs from build metadata: '+track['file'])
+    music_verified=built['music']==reference.get('music_tracks')
     if (args.require_validated or args.tag) and not verified:raise SystemExit('No matching runtime validation evidence for this BDA')
     if (args.require_validated or args.tag) and not library_verified:raise SystemExit('Library differs from resource validation reference')
     if (args.require_validated or args.tag) and not color_verified:raise SystemExit('Color companion differs from runtime validation reference')
+    if (args.require_validated or args.tag) and not music_verified:raise SystemExit('Music differs from audio validation reference')
     dist=ROOT/'dist';dist.mkdir(exist_ok=True)
     name=f'BBK9588-sango-{version}';(dist/(name+'.bda')).write_bytes(bda)
     (dist/'sango.lib').write_bytes(library)
@@ -35,14 +41,20 @@ def main():
         'LICENSES/SDK-Apache-2.0.txt':(ROOT/'sdk/LICENSE').read_bytes(),'SDK-NOTICE.txt':(ROOT/'sdk/NOTICE').read_bytes(),
         'THIRD_PARTY_NOTICES.md':(ROOT/'THIRD_PARTY_NOTICES.md').read_bytes(),
         'SHA256SUMS.txt':sums.encode('utf-8')}
+    music_instructions='\n背景音乐目录：应用/数据/游戏/sango-music/，包含menu.wav、strategy.wav、battle.wav，分别对应主菜单、策略和战斗，完整曲目自动循环。请连同该目录一起复制；音乐缺失时游戏静音运行。\n'
+    contents['README.txt']+=music_instructions.encode('utf8')
+    for music_name,data in music_files.items():
+        path='应用/数据/游戏/sango-music/'+music_name;contents[path]=data;sums+=sha(data)+'  '+path+'\n'
+    contents['SHA256SUMS.txt']=sums.encode('utf8')
     with zipfile.ZipFile(dist/(name+'-update.zip'),'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for n,data in contents.items():
             item=zipfile.ZipInfo(n,(1980,1,1,0,0,0));item.compress_type=zipfile.ZIP_DEFLATED;item.external_attr=0o100644<<16;z.writestr(item,data)
     commit=subprocess.run(['git','-C',str(ROOT),'rev-parse','HEAD'],capture_output=True,text=True)
     info={'version':version,'source_commit':commit.stdout.strip() if commit.returncode==0 else None,
         **built,'matches_runtime_reference':verified,'matches_library_reference':library_verified,'matches_color_reference':color_verified,
+        'matches_music_reference':music_verified,
         'runtime_evidence':{'mips_checks':reference['mips_checks'],'native_firmware_interface_checks':reference['native_firmware_interface_checks']} if verified else None,
-        'ci_scope':'Build, SDK static validation, compiled MIPS color/HUD/summary/viewport/touch/info-weather/river-geometry/battle-options checks and packaging; no firmware emulator is run by Actions.',
+        'ci_scope':'Build, SDK static validation, compiled MIPS color/HUD/summary/viewport/touch/info-weather/river-geometry/battle-options/music checks and packaging; no firmware emulator is run by Actions.',
         'resource_included':True,'color_included':True,'original_resource_sha256':reference['original_sango_lib_sha256'],
         'library_validation_scope':'Host lossless LIB rebuild and all 1204 native PNG/RGB565 frames checked; real compiled-MIPS loader/CRC/index/raster checks; native C200 RGB SDK rendering with exact expanded LIB/CLR staged in controlled RAM. No native filesystem or full-campaign claim.'}
     (dist/'BUILD_INFO.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

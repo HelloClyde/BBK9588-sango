@@ -1,0 +1,24 @@
+{
+  "passed": 63,
+  "failed": 0,
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
+  "music_bytes": 5834932,
+  "full_track_ffmpeg_oracles": [
+    {
+      "id": "menu",
+      "all_samples_match_ffmpeg_sha256": true,
+      "samples": 5785038
+    },
+    {
+      "id": "strategy",
+      "all_samples_match_ffmpeg_sha256": true,
+      "samples": 2425500
+    },
+    {
+      "id": "battle",
+      "all_samples_match_ffmpeg_sha256": true,
+      "samples": 3298680
+    }
+  ],
+  "scope": "All bundled music samples match saved independent FFmpeg decoder hashes. Selected real MIPS blocks plus full real-MIPS streaming/header/loop/scene/short-write/backpressure/failure/close paths. SDK file/audio/time boundaries modeled; native audio checked separately. Music timer cannot replace pending input or become a game tick."
+}

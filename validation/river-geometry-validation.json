@@ -1,7 +1,7 @@
 {
   "passed": 88,
   "failed": 0,
-  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
   "color_sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
   "river_tiles": 29,
   "exact_original_bank_pixels": 1263,

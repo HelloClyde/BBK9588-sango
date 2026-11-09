@@ -328,6 +328,9 @@ int sango_color_draw_raster(uint32_t x, short y, uint32_t width, uint32_t height
     if (!target)
         sango_color_sdk_guard(1);
     for (row = 0; row < height; ++row)
+    {
+        if ((row & 7u) == 0)
+            sango_music_poll();
         for (column = 0; column < width; ++column)
         {
             int screen_x = (short)((x + column) & 0xffffu);
@@ -343,6 +346,7 @@ int sango_color_draw_raster(uint32_t x, short y, uint32_t width, uint32_t height
                 continue;
             color_write_pixel((uint32_t)context, screen_x, screen_y, pixels[row * width + column]);
         }
+    }
     if (!target)
         sango_color_sdk_guard(0);
     return 1;

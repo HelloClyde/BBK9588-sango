@@ -14,6 +14,7 @@ uint32_t sango_battle_run(void)
     int status_offset;
     uint32_t unit_index;
 
+    sango_music_set_scene(g_battle_control_mode == 2 ? SANGO_MUSIC_STRATEGY : SANGO_MUSIC_BATTLE);
     g_battle_weather = 3;
     g_battle_result = '\0';
     g_battle_day = 0;
@@ -49,6 +50,7 @@ uint32_t sango_battle_run(void)
     {
         if (g_battle_result != '\0')
         {
+            sango_music_set_scene(SANGO_MUSIC_STRATEGY);
             return 0;
         }
         sango_battle_advance_day();

@@ -58,6 +58,7 @@ int sango_select_session(void)
     uint32_t character_count;
     uint32_t character_index;
 
+    sango_music_set_scene(SANGO_MUSIC_MENU);
     do
     {
         while (true)

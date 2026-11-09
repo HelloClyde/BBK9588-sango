@@ -1,0 +1,39 @@
+{
+  "entry": true,
+  "package": true,
+  "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
+  "payload_sha256": "de35ea0e4838653e49da5da697dd3d7275aadfb62e427bf3001ae9d9028509c8",
+  "music_file_boundary": {
+    "tracks": [
+      {
+        "id": "menu",
+        "address": "0x85000000",
+        "bytes": 2932796,
+        "sha256": "eab0b2fa27827e60343186bb211bfa744875736d637f5d204ba33f25024aa4a7"
+      },
+      {
+        "id": "strategy",
+        "address": "0x852cc03c",
+        "bytes": 1229628,
+        "sha256": "b03814c7b795994fe2b513932b1466921d20f3a9c48b8e2374b148d49e72e3cd"
+      },
+      {
+        "id": "battle",
+        "address": "0x853f8378",
+        "bytes": 1672508,
+        "sha256": "7bcb7c43295ec7c3f397377c3d0d92065f86c0bae4ab9febb801b7868cf09bd8"
+      }
+    ],
+    "adapter_sha256": "6b0761e1dedeafcde252840bcf00212f45200692c9b93c4fc00758f9761710b4",
+    "scope": "Diagnostic RAM-backed file adapter at four named SDK file boundaries only. Exact compressed files staged to bypass observed synthetic NAND ECC corruption. Production player/decoder/scene/timer and native SDK audio remain unchanged. Adapter excluded from delivered BDA."
+  },
+  "color": {
+    "bytes": 2297312,
+    "sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
+    "scope": "Exact expanded LIB/CLR borrowed buffers staged for native SDK rendering; production CRC/parser executes in separate bootstrap. Storage loader/ownership tested separately in compiled MIPS."
+  },
+  "package_address": "0x81000000",
+  "package_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "bootstrap_source_sha256": "b2da1a24d78088f9485f16158f614991810e984170bb95c28d05525c339171b1",
+  "file_adapter_source_sha256": "2b4e5dd9361d19b667fb25ccb8888b2a100ee80125aefa158ee8f4e9783f38ef"
+}

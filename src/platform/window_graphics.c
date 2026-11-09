@@ -7,6 +7,9 @@ uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32
 {
     uint32_t message_result;
 
+    /* Audio wakeups never replace input or advance the legacy game clock. */
+    if (message == BDA_MSG_WINDOW_TIMER && wparam == SANGO_MUSIC_TIMER_ID)
+        return 1;
     g_native_event_kind = message;
     if (message < 0x13)
     {
@@ -29,6 +32,7 @@ uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32
     {
         if (message == 0x66)
         {
+            sango_music_shutdown();
             bda_sango_gui_end_draw(g_draw_context);
             bda_sango_gui_frame_stop(g_app_frame);
             bda_sango_gui_frame_release(g_app_frame);

@@ -1,0 +1,85 @@
+{
+  "passed": 6,
+  "failed": 0,
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
+  "scope": "Native C200 SDK audio/time/timer and production player/decoder. Exact BDA/LIB/CLR staging; four RAM-backed file boundaries bypass observed synthetic NAND ECC corruption. Direct native FS prefix probes retained separately. Fixtures/adapters excluded from delivery; no physical-device claim.",
+  "cases": [
+    {
+      "name": "Native production BDA and intro reached",
+      "passed": true
+    },
+    {
+      "name": "Native all scenes finish and shutdown closes file, timer and stream",
+      "passed": true
+    },
+    {
+      "name": "Native menu post-SDK PCM matches oracle plus existing attenuation",
+      "passed": true
+    },
+    {
+      "name": "Native strategy post-SDK PCM matches oracle plus existing attenuation",
+      "passed": true
+    },
+    {
+      "name": "Native battle post-SDK PCM matches oracle plus existing attenuation",
+      "passed": true
+    },
+    {
+      "name": "Native AIC emits nonzero22050Hz PCM with all scenes and no format change",
+      "passed": true
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "menu",
+      "decoded_samples": 54784,
+      "compared_start_sample": 54272,
+      "compared_samples": 512,
+      "pcm_before_sdk_sha256": "84d9e48308526215328f1549a35b40e5787a78a7cc13cf34cae037889c1192d7",
+      "pcm_after_sdk_sha256": "cf6a2cf1e71ae524117b6b84f34acaaa44b733c6bc88bff31f6bf992e7a18aea",
+      "sdk_attenuation": 42,
+      "sdk_inplace_gain": [
+        144,
+        256
+      ]
+    },
+    {
+      "id": "strategy",
+      "decoded_samples": 55808,
+      "compared_start_sample": 55296,
+      "compared_samples": 512,
+      "pcm_before_sdk_sha256": "9b2c0f2e0eb57881470a88d4d358c7c964d2a23510a50bd187094c0723f6067b",
+      "pcm_after_sdk_sha256": "47da124379d490e53a977fe43cd173218d79d7eac7ea16fb6ff96fe57c1ab603",
+      "sdk_attenuation": 42,
+      "sdk_inplace_gain": [
+        144,
+        256
+      ]
+    },
+    {
+      "id": "battle",
+      "decoded_samples": 55808,
+      "compared_start_sample": 55296,
+      "compared_samples": 512,
+      "pcm_before_sdk_sha256": "0fad6400a7e3a295c50dd03d1b8d3ff62e48618b5918198d5dfaeeb15ed7090d",
+      "pcm_after_sdk_sha256": "6cdffd0eb5d1903be94d59974f4137eeee53baa792964c3898f6327885ea315b",
+      "sdk_attenuation": 42,
+      "sdk_inplace_gain": [
+        144,
+        256
+      ]
+    }
+  ],
+  "capture": {
+    "sha256": "2f9ab258ca8a8da4d9801b0885a6c557b1b242972000da849f607b20c4f7ef1b",
+    "format": [
+      [
+        22050
+      ],
+      1,
+      2
+    ],
+    "pcm_bytes": 1146290,
+    "comparison_scope": "512 post-write PCM samples per scene exactly match oracle with getter-measured existing firmware attenuation (firmware scales input in place). AIC stream checked for22050Hz and signal only; not claimed bit-exact after codec/DMA."
+  }
+}

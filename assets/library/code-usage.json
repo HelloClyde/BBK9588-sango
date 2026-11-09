@@ -4,23 +4,23 @@
   "source_sha256_lf": {
     "docs/original-credits-call.c.txt": "8007364b97eed193ec0d2eae90c0d5acb24e34682f081484db2099e5d5ea861e",
     "src/app/boot.c": "dae47ac3bada542fac7057690cf34a30af0166b40b2e41cd2eff26668b5ed71f",
-    "src/app/lifecycle.c": "ede064910035bfdf073ba04491c8272d779bbeb126ea26ce7dc6be1b358cebfc",
-    "src/app/memory.c": "f99f1ca6affcfdc31457b286506b0b59415ea4b5683fbf840e3c58c55994edc0",
+    "src/app/lifecycle.c": "97ed15deaf4a4374d2b8d22b173dffb4459c79db0f0cc00a242814dbed318130",
+    "src/app/memory.c": "0b753073a594350fba17ee1b3907079bf9690236325ea01aba9e1eba24a529df",
     "src/battle/actions.c": "5130479e5efe320d3f655e75b69e47d712d2bd95e3b531daf10020a78a50fa34",
     "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
     "src/battle/combat_math.c": "5a239d0d3ca4effb833d4fda82b7c56c42581a7f3da352839173bb74593c2099",
-    "src/battle/controller.c": "1afd677735885c7bd69a456135aaf9a96d1d05a6f0c28ddbfc4290245da33edd",
+    "src/battle/controller.c": "451e9f67508bc0976b77622b3cdf59c790b32d716b6ff9d7aeec22ad05f371a4",
     "src/battle/field.c": "5d0fd20608cb9788f78c66f212375cb932e504823af714be0d3b7253ac2b8890",
     "src/battle/movement.c": "3e8e81140ce51fd648b59c970c06f349ad1ef7abacb9692db28da8a5ab2a2b56",
     "src/battle/overview.c": "7defe53dcd5cfd355c0785251735c1ec0c1c88f70bfe10fbd0882d8e03056a06",
     "src/battle/player_turn.c": "e5a70e7a764040993306b840ddfbdd3928fc55414998f27cb0e2f206837f9c9d",
     "src/platform/event_loop.c": "2e23260dd843cfbd30ec5caf3c7770093694dce7ba7f616d0efd1fcb3c785acb",
     "src/platform/input_dialog.c": "3f20f477df4b9b4f4056e853cca59d2d8fe821aee9ccd2b8b2b252680cfc42ee",
-    "src/platform/sdk_bindings.c": "1d9b9065b54c77903ef6306cdfd2c1688a463d362a1ded8fa01ec8edd5f96523",
-    "src/platform/window_graphics.c": "03c77c840972d70e2a92c134bc536e59f7154e55633f6d4ac593fc3f8ddcf449",
+    "src/platform/sdk_bindings.c": "5d96f8a79e9732278c0d197a85bf14f908990166b73d12fcbe74f471b0efe5b3",
+    "src/platform/window_graphics.c": "4df61660c990609eaad125f8508fa2fecca22a1f2e75e71a8230f9e5c3d1579f",
     "src/render/animation.c": "9092e157319367296fde98ef3aa0269a8ccca19456fc771f740849690e964de0",
-    "src/render/raster.c": "5e544010e46bb312b357695850e40376df476e3442070c0c7e3eed0ecb604b48",
+    "src/render/raster.c": "ad31a1f310e10ef3e68da6d849006760ae0808a3ea83553d78132226e5f14c00",
     "src/resources/library.c": "0b6adc33e399856d13a1a2b72c00b43ed213952fd60b6c538f65347f49f82210",
     "src/runtime/format.c": "bfc7988a1d3bc4d5907b1cee71092457ed1e752a30d91447f704ff091af61daa",
     "src/runtime/libc.c": "c7ede021266375069338092a07ac3e853b180208163e8a4881e58bb2d6c3f7a6",
@@ -42,13 +42,13 @@
     "src/strategy/orders.c": "aa9222a0c64f3ee683cdd3934c6e4ce35b4024178c2c2c47bf95e6261ea377ac",
     "src/strategy/rosters.c": "90d99d4b717511c69725722a19750b74efe897c20dc720a2c776fc1cbdfd1e36",
     "src/strategy/session.c": "a24876f87471b314709682ce019e1801de10d743cfa09a0c3cf1790d7b7b0890",
-    "src/strategy/turns.c": "c5b0b61ae7a3d3f377eafb3654c9092ee4f54078868977cba4d51684a6f6920e",
+    "src/strategy/turns.c": "6739d8d53c5212e1f7046034efeea6297e337f1d077469241810a249450f4b5c",
     "src/ui/city_details.c": "f8db7542ab7bf7a831df3512febbdcd767b5640888d7b8b2195396109bc80f11",
     "src/ui/info_panels.c": "6a59c62ac3eb809e2e8cbede65416c66c993e6deb588b9cfae7dbebb573222cb",
     "src/ui/lists.c": "878b27f37e270cb7711217c834c129de11afc4bed31b5e7a0760243fc5f43c9a",
     "src/ui/menu_and_text.c": "e73bac2db17eb840eedc56c71baaa501700dceb967abf4368d01580866f3fb31",
     "src/ui/numeric.c": "313be7ba71d58bc8951714b060477701eeb1b400b9da60531cc6a70f8c095acf",
-    "src/ui/start_menu.c": "4fca1398bc27fe2c8307270e35079bed8bba4983ab50675dc1d6f709a5e5b729",
+    "src/ui/start_menu.c": "9fe782db56131eaf9c7cca9fbd639c587e25cd0c00c1a82e73e2dc285e8f2c92",
     "src/ui/system_menu.c": "f9d08f029248a685041b29692e7923698cb5f4ec855af861df522c4870b00cdc"
   },
   "resources": [
@@ -211,7 +211,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_show_credits",
           "expression": "sango_credits_draw(g_game_context);",
-          "line": 230
+          "line": 231
         }
       ],
       "animation_usage": {
@@ -3884,13 +3884,13 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_choose_ruler",
           "expression": "sango_bitmap_draw_resource(0x2f,1,",
-          "line": 238
+          "line": 239
         },
         {
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_choose_ruler",
           "expression": "sango_menu_flash_ruler_cities(",
-          "line": 238
+          "line": 239
         }
       ]
     },
@@ -4076,7 +4076,7 @@
           "source": "src/strategy/turns.c",
           "function": "sango_scenario_initialize",
           "expression": "sango_resource_item(0x39,scenario_id,",
-          "line": 198
+          "line": 199
         }
       ]
     },
@@ -4135,7 +4135,7 @@
           "source": "src/strategy/turns.c",
           "function": "sango_scenario_initialize",
           "expression": "sango_resource_item(0x3d,scenario_id,",
-          "line": 198
+          "line": 199
         }
       ]
     },
@@ -4213,7 +4213,7 @@
           "source": "src/strategy/turns.c",
           "function": "sango_scenario_initialize",
           "expression": "sango_resource_item(0x41,scenario_id,",
-          "line": 198
+          "line": 199
         },
         {
           "source": "src/strategy/map.c",
@@ -4288,7 +4288,7 @@
           "source": "src/strategy/turns.c",
           "function": "sango_scenario_initialize",
           "expression": "sango_resource_item(0x44,scenario_id,",
-          "line": 198
+          "line": 199
         },
         {
           "source": "src/strategy/map.c",
@@ -4521,7 +4521,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4579,7 +4579,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4637,7 +4637,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4695,7 +4695,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4753,7 +4753,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4811,7 +4811,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4869,7 +4869,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -4927,7 +4927,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 156
+          "line": 157
         }
       ],
       "animation_usage": {
@@ -5437,7 +5437,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_show_credits",
           "expression": "sango_credits_draw(",
-          "line": 230
+          "line": 231
         }
       ]
     }

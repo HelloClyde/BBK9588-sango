@@ -21,6 +21,6 @@
   ],
   "text_font_logical_id": 3,
   "reference_status_sha256": "8cec92b344e7ff84378e6ae9e6373e59f1846008e7d44ee41af7c2cc2eadda6c",
-  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+  "bda_sha256": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
   "scope": "Compiled MIPS HUD/scaling/text preparation; SDK pixel/text boundaries modeled. Compares original 9288S status bitmap, all five weather frames, six food values, GBK names/errors on screen/context and full-width touch boundaries. Native fonts checked separately."
 }

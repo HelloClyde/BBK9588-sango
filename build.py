@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
 SDK_COMMIT='ef3bf3b7328a3a8fa9ba48593c63285300725fb7'
-SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk','sango_color_animation','sango_touch','sango_battle_info']
+SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk','sango_color_animation','sango_touch','sango_battle_info','sango_music','sango_music_sdk']
 
 def command(args,**kwargs):
     return subprocess.run([str(x) for x in args],check=True,**kwargs)
@@ -65,6 +65,16 @@ def main():
     generate_includes(ROOT/'assets/library',ROOT/'include')
     from tools.color_assets import build as build_color
     color = build_color(out/'sango.clr')
+    from tools.music_assets import validate as validate_music
+    music=validate_music();(out/'music').mkdir(exist_ok=True)
+    music_files=[]
+    for track in music['tracks']:
+        name=track['id']+'.wav'
+        shutil.copy2(ROOT/'assets/music'/track['path'],out/'music'/name)
+        music_files.append({'id':track['id'],'file':name,'bytes':track['bytes'],
+                            'sha256':track['sha256'],'samples':track['samples'],
+                            'duration_seconds':track['duration_seconds']})
+    (out/'music-build.json').write_text(json.dumps(music,ensure_ascii=False,indent=2)+'\n',encoding='utf8',newline='\n')
     from tools.build_engine import write_unity,add_legacy_debug_symbols
     write_unity(out/'sango_engine.c')
     flags=['-std=gnu99','-EL','-march=mips32','-mabi=32','-msoft-float','-mno-abicalls',
@@ -91,6 +101,7 @@ def main():
         'library':'build/sango.lib','library_bytes':len(library),'library_sha256':hashlib.sha256(library).hexdigest(),
         'color':'build/sango.clr','color_bytes':color['bytes'],'color_sha256':color['sha256'],
         'color_frames':color['frames'],
+        'music_bytes':music['bytes'],'music':music_files,
         'sdk_commit':revision,'compiler':subprocess.check_output([str(cc),'--version'],text=True).splitlines()[0],
         'matches_runtime_reference':hashlib.sha256(data).hexdigest()==reference['bda_sha256'],
         'matches_library_reference':hashlib.sha256(library).hexdigest()==reference.get('sango_lib_sha256'),

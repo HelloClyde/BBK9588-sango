@@ -67,6 +67,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Battle info sheet or native weather checks failed' }
           python tools/test_battle_options.py
           if ($LASTEXITCODE -ne 0) { throw 'Battle options differ from original 9288S row actions' }
+          python tools/test_music.py
+          if ($LASTEXITCODE -ne 0) { throw 'Music decoder, streaming lifecycle or timer isolation failed' }
           python tools/test_battle_ui_color.py
           if ($LASTEXITCODE -ne 0) { throw 'Image HUD or centered combat UI checks failed' }
           python tools/test_battle_hud.py

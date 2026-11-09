@@ -56,7 +56,10 @@ int sango_load_package_and_buffers(void)
                         g_scratch_buffer_address = bbk_alloc(0x1000);
                         failed = (uint32_t)(g_scratch_buffer_address == 0);
                         if (!failed)
+                        {
+                            sango_music_set_library_path(library_path);
                             sango_color_load(library_path, library_bytes);
+                        }
                     }
                 }
             }

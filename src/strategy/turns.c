@@ -9,6 +9,7 @@ uint32_t sango_strategy_run_months(void)
     uint32_t end_condition;
     int system_action;
 
+    sango_music_set_scene(SANGO_MUSIC_STRATEGY);
     while (true)
     {
         end_condition = sango_strategy_player_has_no_cities();
