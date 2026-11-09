@@ -10,8 +10,8 @@ from pathlib import Path
 from PIL import Image
 from test_control_flow import Machine,STATE,ROOT,BUFFER
 
-TOP=224
-TOOLBAR_TOP=248
+TOP=208
+TOOLBAR_TOP=232
 CONTEXT=0x81300100
 GRAY=(255,170,85,0)
 
@@ -25,7 +25,7 @@ def machine():
     text=[];fonts=[];clears=[]
     def pixel(args):
         x,y,gray,target=args
-        assert target==CONTEXT and 0<=x<240 and 224<=y<284,(x,y,gray,target)
+        assert target==CONTEXT and 0<=x<240 and 208<=y<268,(x,y,gray,target)
         image.putpixel((x,y),GRAY[gray])
     def clear(args):
         left,top,right,bottom,target=args
@@ -59,6 +59,11 @@ def main():
     expected_row=scale_reference(reference)
     toolbar=Image.open(ROOT/'assets/battle-toolbar/toolbar-240x36.png').convert('L')
     count=0
+    check=Machine((ROOT/'build/sango.elf').read_bytes())
+    for y in (207,208,231,232,233,234,249,265,266,267,268,319):
+        for x in (0,59,60,113,114,127,128,181,182,239):
+            assert check.call('sango_statusbar_hit',x,y)==check.call('sango_battle_toolbar_hit',x,y)
+    count+=1
     for food in (0,1,9,10,9999,65535):
         for weather in range(1,6):
             m,image,text,fonts,clears=machine()
@@ -68,10 +73,10 @@ def main():
             expected=expected_row.copy()
             expected.paste(scale_reference(weather_image(weather-1)),(112,3))
             assert image.crop((0,TOP,240,TOOLBAR_TOP)).tobytes()==expected.tobytes(),(food,weather)
-            assert image.crop((0,TOOLBAR_TOP,240,284)).tobytes()==toolbar.tobytes()
-            assert image.crop((0,284,240,320)).getextrema()==(255,255)
+            assert image.crop((0,TOOLBAR_TOP,240,268)).tobytes()==toolbar.tobytes()
+            assert image.crop((0,268,240,320)).getextrema()==(255,255)
             assert clears==[[0,TOOLBAR_TOP,239,319,CONTEXT]],clears
-            assert text==[[21,228,str(food).encode().hex(),CONTEXT]],text
+            assert text==[[21,212,str(food).encode().hex(),CONTEXT]],text
             assert fonts==[[3,CONTEXT],[0,CONTEXT]],fonts
             count+=1
     for target in (0,CONTEXT):
@@ -82,19 +87,19 @@ def main():
             m.call('sango_battle_status_draw_description',BUFFER,target)
             # Real names/errors fit four GBK characters; a fifth is truncated.
             # Skill-menu errors draw directly to the screen, map labels to context.
-            assert text==[[159,228,encoded[:8].hex(),target]],text
-            assert clears==[[159,226,237,245,target]],clears
+            assert text==[[159,212,encoded[:8].hex(),target]],text
+            assert clears==[[159,210,237,229,target]],clears
             assert fonts==[[3,target],[0,target]],fonts
             count+=1
-    for x,y,expected in ((60,250,1),(113,281,1),(128,250,2),(181,281,2),
-                          (85,249,0),(85,282,0),(85,244,0),(85,300,0),
-                          (59,282,0),(114,282,0),(127,282,0),(182,282,0),
-                          (356,282,0),(85,538,0)):
+    for x,y,expected in ((60,234,1),(113,265,1),(128,234,2),(181,265,2),
+                          (85,233,0),(85,266,0),(85,228,0),(85,300,0),
+                          (59,266,0),(114,266,0),(127,266,0),(182,266,0),
+                          (356,266,0),(85,522,0)):
         m=Machine((ROOT/'build/sango.elf').read_bytes())
         assert m.call('sango_battle_toolbar_hit',x,y)==expected,(x,y)
         count+=1
-    report={'passed':count,'failed':0,'status_rectangle':[0,224,240,24],
-            'toolbar_rectangle':[0,248,240,36],'summary_rectangle':[0,284,240,36],'text_font_logical_id':3,
+    report={'passed':count,'failed':0,'status_rectangle':[0,208,240,24],
+            'toolbar_rectangle':[0,232,240,36],'summary_rectangle':[0,268,240,52],'text_font_logical_id':3,
             'reference_status_sha256':hashlib.sha256((ROOT/'assets/battle-toolbar/status-row-9288s-reference.png').read_bytes()).hexdigest(),
             'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
             'scope':'Compiled MIPS HUD/scaling/text preparation; SDK pixel/text boundaries modeled. '

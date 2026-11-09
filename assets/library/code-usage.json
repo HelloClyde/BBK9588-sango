@@ -14,7 +14,7 @@
     "src/battle/field.c": "5d0fd20608cb9788f78c66f212375cb932e504823af714be0d3b7253ac2b8890",
     "src/battle/movement.c": "3e8e81140ce51fd648b59c970c06f349ad1ef7abacb9692db28da8a5ab2a2b56",
     "src/battle/overview.c": "7defe53dcd5cfd355c0785251735c1ec0c1c88f70bfe10fbd0882d8e03056a06",
-    "src/battle/player_turn.c": "dfadb7a596ab1a34a1bffedd5f0d6885b1ab60619462f3a286d5567c19d050fa",
+    "src/battle/player_turn.c": "e5a70e7a764040993306b840ddfbdd3928fc55414998f27cb0e2f206837f9c9d",
     "src/platform/event_loop.c": "2e23260dd843cfbd30ec5caf3c7770093694dce7ba7f616d0efd1fcb3c785acb",
     "src/platform/input_dialog.c": "3f20f477df4b9b4f4056e853cca59d2d8fe821aee9ccd2b8b2b252680cfc42ee",
     "src/platform/sdk_bindings.c": "1d9b9065b54c77903ef6306cdfd2c1688a463d362a1ded8fa01ec8edd5f96523",
@@ -29,7 +29,7 @@
     "src/sango_battle_ui.c": "0227f9135d4d5466d3d361ac9ab08af45160fe668003ac01bc625c2e6493fcf9",
     "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
-    "src/sango_statusbar.c": "5bd6f9fe2736a12b8689f00c8cd8c9f055b7c43bd3e8431064601930433d8d11",
+    "src/sango_statusbar.c": "0ff71941e03ccc2d2c8842f9cbf7f5b39e22d42e2a78b2107bcaff510daabf87",
     "src/save/savegame.c": "745735021a07912ff1bea3b362f57779dfa654b1004d0277054f3c9843b0734f",
     "src/strategy/aftermath.c": "59ea738c5c2563e6ce1a30dd1144a009b214133483239f88ca4fe830fbb2eaa4",
     "src/strategy/ai.c": "eadc3db74a2ca965d29c6e2d4be95f807a4480324039e0b595007702931d5432",
@@ -321,7 +321,7 @@
           "source": "src/battle/player_turn.c",
           "function": "sango_battle_draw_cursor",
           "expression": "sango_battle_draw_bitmap(7,5,",
-          "line": 557
+          "line": 558
         }
       ]
     },
@@ -330,7 +330,7 @@
       "category": "战斗",
       "name": "战斗状态行底图",
       "usage_status": "confirmed",
-      "naming_evidence": "资源8保留为灰度兼容底图，按9288S的160像素逻辑宽度采样；当前彩色路径用同源240x24成品图按1:1复制到y=224，再透明叠加粮草、天气和目标姓名/地形，更新文本从同张图片局部恢复。",
+      "naming_evidence": "资源8保留为灰度兼容底图，按9288S的160像素逻辑宽度采样；当前彩色路径用同源240x24成品图按1:1复制到y=208，再透明叠加粮草、天气和目标姓名/地形，更新文本从同张图片局部恢复。",
       "code_evidence": [
         {
           "source": "src/sango_battle_ui.c",
@@ -502,7 +502,7 @@
       "category": "战斗",
       "name": "战斗演出背景框",
       "usage_status": "confirmed",
-      "naming_evidence": "普通攻击演出前绘制；计谋演出依初始化数据中的背景框标记决定是否绘制。彩色版按资源16的130x64尺寸在战场240x224内居中，原子图、文字与伤害数字保持相对偏移。",
+      "naming_evidence": "普通攻击演出前绘制；计谋演出依初始化数据中的背景框标记决定是否绘制。彩色版按资源16的130x64尺寸在战场240x208内居中，原子图、文字与伤害数字保持相对偏移。",
       "code_evidence": [
         {
           "source": "src/battle/actions.c",
@@ -5403,19 +5403,19 @@
       "category": "补充界面",
       "name": "信息查找补充底栏",
       "usage_status": "confirmed",
-      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时按240x36原尺寸绘制；战场显示15列14行，底部保留36行势力摘要。灰度路径用C内嵌位图，彩色路径以17号源偏移定位CLR图片；固定文字随图片绘制，不用代码覆盖字形。",
+      "naming_evidence": "LIB补充条目和当前战略/战斗C内嵌位图共用240x36目标PNG；战斗显示时按240x36原尺寸绘制；战斗/战略按钮同在y=232；战场显示15列13行，底部保留52行势力摘要。灰度路径用C内嵌位图，彩色路径以17号源偏移定位CLR图片；固定文字随图片绘制，不用代码覆盖字形。",
       "code_evidence": [
         {
           "source": "src/sango_statusbar.c",
           "function": "sango_statusbar_draw",
           "expression": "toolbar_bitmap",
-          "line": 12
+          "line": 16
         },
         {
           "source": "src/sango_statusbar.c",
           "function": "sango_battle_toolbar_draw",
           "expression": "battle_toolbar_bitmap",
-          "line": 33
+          "line": 37
         }
       ]
     },

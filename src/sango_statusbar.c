@@ -1,6 +1,10 @@
 #include "sango_internal.h"
 #include "sango_statusbar.h"
 
+/* Both scenes share the same native-size toolbar and screen baseline. */
+_Static_assert(SANGO_BATTLE_STATUS_TOP + SANGO_BATTLE_STATUS_HEIGHT == SANGO_BATTLE_TOOLBAR_TOP,
+               "Battle terrain and status must end at the shared toolbar");
+
 static const unsigned char toolbar_bitmap[] = {
 #include "sango_statusbar_bitmap.inc"
 };

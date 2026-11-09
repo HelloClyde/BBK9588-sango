@@ -3,13 +3,13 @@
   "failed": 0,
   "viewport_tiles": [
     15,
-    14
+    13
   ],
   "map_rectangle": [
     0,
     0,
     240,
-    224
+    208
   ],
   "rules_window_unchanged": [
     15,
@@ -24,6 +24,6 @@
     115,
     116
   ],
-  "bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
-  "scope": "Compiled MIPS real-map viewport copies, edge clamps, 210-tile painting, top-to-bottom scrolling/reachability, overlays and sprite/effect clipping; SDK rendering boundaries modeled. Not complete battle or hardware proof."
+  "bda_sha256": "db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41",
+  "scope": "Compiled MIPS real-map viewport copies, edge clamps, 195-tile painting, top-to-bottom scrolling/reachability, overlays and sprite/effect clipping; SDK rendering boundaries modeled. Not complete battle or hardware proof."
 }

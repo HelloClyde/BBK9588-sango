@@ -124,7 +124,7 @@ def main():
     # Actual supplemental toolbar/credits dispatch retains native dimensions.
     m.intercept('sango_render_clear_rectangle',5,lambda a:None)
     m.intercept('sango_render_present',1,lambda a:None)
-    for name,rid,y in [('sango_statusbar_draw',17,232),('sango_battle_toolbar_draw',17,248),('sango_credits_draw',18,0)]:
+    for name,rid,y in [('sango_statusbar_draw',17,232),('sango_battle_toolbar_draw',17,232),('sango_credits_draw',18,0)]:
         m.pixels.clear();m.texts.clear();m.call(name,CONTEXT+8,instruction_limit=25_000_000)
         expected=expected_pixels(lib,colors,frame_entries[(rid,0,0)],0,y,CONTEXT+8)
         assert m.pixels==expected

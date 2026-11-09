@@ -137,7 +137,7 @@ def main():
     # Direct battle taps select a unit/destination/target through the original
     # command paths; none of these tests bypasses the production input loop.
     for mode in (1,2,3):
-        for x,y in [(0,0),(239,223),(120,112)]:
+        for x,y in [(0,0),(239,207),(120,112)]:
             events=[event(11,x,y)]
             result,trace,state,pending=run_battle_input(IMAGE,mode,(7,7),events,None)
             assert result==0 and pending==0
@@ -149,7 +149,7 @@ def main():
         assert state[STATE['g_battle_viewport_x']-0x81c2b0e4]==1
         assert state[STATE['g_battle_cursor_x']-0x81c2b0e4]==2;checks+=1
     # Panning never emits confirmation and cannot start in footer/summary.
-    for world,grid,screen in [((12,9),(7,7),(240,232)),((12,9),(7,7),(224,224)),((30,30),(15,14),(240,224))]:
+    for world,grid,screen in [((12,9),(7,7),(240,232)),((12,9),(7,7),(224,224)),((30,30),(15,13),(240,208))]:
         for dx,dy in [(-120,0),(120,0),(0,-100),(0,100),(-80,-80)]:
             m.call('sango_touch_cancel');raw(2,0,0);raw(1,120,110);emit,p=raw(1,120+dx,110+dy)
             if not emit:

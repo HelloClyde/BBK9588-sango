@@ -1,4 +1,4 @@
-"""Check the 15-column/14-row display viewport against all seven real maps.
+"""Check the 15-column/13-row display viewport against all seven real maps.
 
 Runs compiled MIPS copy/scroll/painters. SDK drawing boundaries are recorded;
 movement/AI windows remain 15x15 and are not resized by these display checks.
@@ -11,7 +11,7 @@ from test_control_flow import Machine, ROOT, STATE, BUFFER
 
 PACKAGE = 0x81000000
 CONTEXT = 0x81300100
-COLS, ROWS, TILE = 15, 14, 16
+COLS, ROWS, TILE = 15, 13, 16
 
 
 def machine(resource):
@@ -47,7 +47,7 @@ def main():
             assert m.read(STATE['g_battle_viewport_x'], 1) == bytes([left])
             assert m.read(STATE['g_battle_viewport_y'], 1) == bytes([top])
             assert m.read(BUFFER, COLS*ROWS) == expected
-            assert m.read(BUFFER+COLS*ROWS, 15) == bytes([0xa5])*15
+            assert m.read(BUFFER+COLS*ROWS, 225-COLS*ROWS) == bytes([0xa5])*(225-COLS*ROWS)
             count += 1
         for left, top in ((0, 0), (width-COLS, height-ROWS)):
             draws.clear()
@@ -55,7 +55,7 @@ def main():
             assert len(draws) == COLS*ROWS
             for index, args in enumerate(draws):
                 assert args[:4] == [(index % COLS)*TILE, (index//COLS)*TILE, TILE, TILE]
-                assert args[5] == CONTEXT and args[1]+args[3] <= 224
+                assert args[5] == CONTEXT and args[1]+args[3] <= 208
             count += 1
         # Traverse every row down and back up: the last map row stays reachable.
         m.write(STATE['g_battle_viewport_x'], b'\0')
@@ -75,14 +75,14 @@ def main():
             count += 1
         assert top == 0
     # Movement overlays still iterate the original 225-cell rule window;
-    # only the visible 210 cells may paint into the map area.
+    # only the visible 195 cells may paint into the map area.
     m, _, _, _, _ = machine(110)
     marks = []
     m.word(STATE['g_move_costs_address'], BUFFER+512)
     m.write(BUFFER+512, bytes([1])*225)
     m.intercept('sango_raster_draw_masked', 6, lambda args: marks.append(args))
     m.call('sango_battle_draw_move_range')
-    assert len(marks) == 210 and all(row[1]+row[3] <= 224 for row in marks)
+    assert len(marks) == 195 and all(row[1]+row[3] <= 208 for row in marks)
     assert m.read(BUFFER+512, 225) == bytes([1])*225
     count += 1
     # Blinking/restoring an offscreen tile must not read stale cache rows or
@@ -91,8 +91,8 @@ def main():
     m.call('sango_battle_copy_viewport_tiles', 0, 0)
     m.intercept('sango_raster_draw_screen', 5, lambda args: tiles.append(args))
     for target in (0, 1):
-        for column, row, visible in ((0, 13, True), (14, 13, True),
-                                      (0, 14, False), (15, 0, False)):
+        for column, row, visible in ((0, 12, True), (14, 12, True),
+                                      (0, 13, False), (15, 0, False)):
             tiles.clear()
             m.call('sango_battle_draw_tile', column, row, target)
             assert bool(tiles) == visible, (column, row, target, tiles)
@@ -102,15 +102,15 @@ def main():
     sprites, effects = [], []
     m.intercept('sango_bitmap_draw_resource', 5, lambda args: sprites.append(args))
     m.intercept('sango_animation_play_range', 6, lambda args: effects.append(args))
-    for x, y, visible in ((0, 208, True), (224, 208, True), (0, 224, False),
+    for x, y, visible in ((0, 192, True), (224, 192, True), (0, 208, False),
                            (240, 0, False), (0, 65535, False)):
         sprites.clear()
         m.call('sango_battle_draw_bitmap', 7, 5, x, y)
         assert bool(sprites) == visible, (x, y, sprites)
         count += 1
-    for row, visible in ((13, True), (14, False), (15, False)):
+    for row, visible in ((12, True), (13, False), (15, False)):
         sprites.clear()
-        if row == 13:
+        if row == 12:
             m.intercept('sango_battle_present', 0, lambda args: 0)
         m.write(STATE['g_battle_cursor_y'], bytes([row]))
         m.call('sango_battle_draw_cursor')
@@ -119,11 +119,11 @@ def main():
         m.call('sango_battle_play_unit_effect', 0, 5, 0, row)
         assert bool(effects) == visible
         count += 1
-    report = {'passed': count, 'failed': 0, 'viewport_tiles': [15, 14],
-              'map_rectangle': [0, 0, 240, 224], 'rules_window_unchanged': [15, 15],
+    report = {'passed': count, 'failed': 0, 'viewport_tiles': [15, 13],
+              'map_rectangle': [0, 0, 240, 208], 'rules_window_unchanged': [15, 15],
               'resources_checked': list(range(110, 117)),
               'bda_sha256': hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
-              'scope': 'Compiled MIPS real-map viewport copies, edge clamps, 210-tile painting, '
+              'scope': 'Compiled MIPS real-map viewport copies, edge clamps, 195-tile painting, '
                        'top-to-bottom scrolling/reachability, overlays and sprite/effect clipping; '
                        'SDK rendering boundaries modeled. Not complete battle or hardware proof.'}
     (ROOT/'build/battle-viewport-validation.json').write_text(

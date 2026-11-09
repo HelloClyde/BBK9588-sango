@@ -32,7 +32,7 @@ def main():
     m.write(STATE['g_battle_weather'],b'\0')
     m.call('sango_battle_status_draw',instruction_limit=20_000_000)
     pixels=struct.unpack('<5760H',clr[offset:offset+size])
-    expected=[(CONTEXT+8,x,224+y,pixels[y*240+x] or 1) for y in range(24) for x in range(240)]
+    expected=[(CONTEXT+8,x,208+y,pixels[y*240+x] or 1) for y in range(24) for x in range(240)]
     assert m.pixels==expected,'Native status was scaled or sampled instead of copied 1:1';count+=1
     # Restoration must copy the same native image's field, including its art.
     m.pixels.clear();m.write(BUFFER,'平原'.encode('gbk')+b'\0')

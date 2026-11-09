@@ -1,20 +1,20 @@
 {
   "passed": 113,
   "failed": 0,
-  "bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
+  "bda_sha256": "db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41",
   "color_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
   "status_field": {
     "switch": "unit name or empty-tile terrain",
     "rectangle": [
       159,
-      228,
+      212,
       78,
       16
     ]
   },
   "animation_frame": [
     55,
-    80,
+    72,
     130,
     64
   ],

@@ -2,7 +2,7 @@
   "entry": true,
   "package": true,
   "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
-  "payload_sha256": "3bb6695e0c7b06d4edec6b278a41b9f4b0a4fbad89acb56c7c1514624ded36de",
+  "payload_sha256": "d2c6f40ff35ffcef15dd84d36684a98e2b412d527bcf25bc310364555d48302c",
   "color": {
     "bytes": 2294040,
     "sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
@@ -11,11 +11,10 @@
   "package_address": "0x81000000",
   "package_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "battle_fixture": {
-    "sha256": "7a5fe12396bf8ef7992e17f4337aa48b871f760ee85b1c2155a574291eee77bb",
+    "sha256": "89b0d55ee5ffe902a765f50e650382fe5afe20adfab6206250fc52602192a79c",
     "entry": "0x81c30000",
     "trigger": "0x81c03260",
     "scope": "Controlled battle UI fixture entered at normal credits call; exact fixture source is saved locally with its compile invocation; production battle functions and native hardware input. Fixture excluded from delivered BDA.",
-    "source_sha256": "6d2c9508221592954913a62e9d6af3d7005957de5799cd02057c0daded4d7872",
-    "description": "Controlled 20-unit battlefield, backing-context restore and four actual animation ranges; fixture excluded from delivered BDA."
+    "source_sha256": "6d2c9508221592954913a62e9d6af3d7005957de5799cd02057c0daded4d7872"
   }
 }

@@ -25,7 +25,7 @@
   "packed_bytes": 2166,
   "display_rectangle": [
     0,
-    248,
+    232,
     240,
     36
   ],
@@ -40,5 +40,5 @@
     255
   ],
   "original_references_distributed": true,
-  "runtime_sampling": "None: full 240x36 source drawn at native size. Display viewport 240x224; summary uses y=284..319."
+  "runtime_sampling": "None: full 240x36 source drawn at native size. Display viewport 240x208; toolbar aligns with strategy at y=232; summary uses y=268..319."
 }

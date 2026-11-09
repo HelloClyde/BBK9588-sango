@@ -527,7 +527,8 @@ uint32_t sango_battle_poll_map_action(char preview_mode)
                 return 0;
             }
             if (sango_touch_x(&event_kind) >= 28 && sango_touch_x(&event_kind) < 60 &&
-                sango_touch_y(&event_kind) >= 284 && sango_touch_y(&event_kind) < 320)
+                sango_touch_y(&event_kind) >= SANGO_BATTLE_SUMMARY_TOP &&
+                sango_touch_y(&event_kind) < SANGO_BATTLE_SUMMARY_TOP + 36)
                 return 0xff;
             /* 输入包中的完整16位坐标用于底栏命中，不能使用会截断的旧坐标槽。 */
             enum SangoBattleToolbarAction action = sango_battle_toolbar_hit(

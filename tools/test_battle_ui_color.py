@@ -28,7 +28,7 @@ def main():
         for unit in (255,0):
             m.texts.clear();m.pixels.clear()
             m.call('sango_battle_draw_cursor_description',instruction_limit=5_000_000)
-            assert len(m.texts)==1 and m.texts[0][1:4]==[3,159,228]
+            assert len(m.texts)==1 and m.texts[0][1:4]==[3,159,212]
             label=m.texts[0][4].decode('gbk')
             if unit==255:assert len(label)==2;names.append(label)
             else:assert label==name
@@ -39,24 +39,24 @@ def main():
             m.write(STATE['g_battle_attacker_food'],struct.pack('<H',food))
             m.write(STATE['g_battle_weather'],bytes([weather]))
             m.texts.clear();m.pixels.clear();m.call('sango_battle_status_draw',instruction_limit=15_000_000)
-            assert m.texts==[[color.CONTEXT+8,3,21,228,str(food).encode()]]
+            assert m.texts==[[color.CONTEXT+8,3,21,212,str(food).encode()]]
             canvas=Image.new('I',(240,320))
             for ctx,x,y,v in m.pixels:canvas.putpixel((x,y),v)
-            assert 0xffff not in canvas.crop((21,228,69,244)).get_flattened_data()
-            assert 0xffff not in canvas.crop((159,228,237,244)).get_flattened_data()
+            assert 0xffff not in canvas.crop((21,212,69,228)).get_flattened_data()
+            assert 0xffff not in canvas.crop((159,212,237,228)).get_flattened_data()
             count+=1
     # Error text shares the original single-line field and stays inside it.
     for value in ['没有目标','无法到达','诸葛亮孔明','司马懿仲达的一段长名字']:
         m.texts.clear();m.pixels.clear();m.write(BUFFER,value.encode('gbk')+b'\0')
         m.call('sango_battle_status_draw_description',BUFFER,0,instruction_limit=5_000_000)
-        assert m.texts[0][:4]==[0,3,159,228] and len(m.texts[0][4])<=9
+        assert m.texts[0][:4]==[0,3,159,212] and len(m.texts[0][4])<=9
         m.texts[0][4].decode('gbk')
-        assert all(x>=159 and 224<=y<248 for _,x,y,v in m.pixels);count+=1
+        assert all(x>=159 and 208<=y<232 for _,x,y,v in m.pixels);count+=1
     left=m.call('sango_battle_animation_left');top=m.call('sango_battle_animation_top')
     start=struct.unpack_from('<I',lib,15*4)[0]+12
     width,height=struct.unpack_from('<HH',lib,start)
-    assert left*2+width==240 and top*2+height==224
-    assert (left,top)==(55,80);count+=1
+    assert left*2+width==240 and top*2+height==208
+    assert (left,top)==(55,72);count+=1
     # The real skill dispatcher must apply the same translation to backgrounds,
     # relative effect offsets, text and damage values. Compare all 30 skills to
     # a companion-disabled execution of the SAME ELF, including state/results.
@@ -79,8 +79,8 @@ def main():
                 if e[0] in ('sango_bitmap_draw_resource','sango_animation_play_range','sango_battle_draw_damage_digits'):
                     e[1]=list(e[1])
                     x,y={'sango_bitmap_draw_resource':(2,3),'sango_animation_play_range':(4,5),'sango_battle_draw_damage_digits':(0,1)}[e[0]]
-                    e[1][x]-=35;e[1][y]-=31
-                if e[0]=='text':e[1]-=35;e[2]-=31
+                    e[1][x]-=35;e[1][y]-=23
+                if e[0]=='text':e[1]-=35;e[2]-=23
                 normalized.append(e)
             assert before==(after[0],normalized,*after[2:]),skill
             count+=1
@@ -101,12 +101,12 @@ def main():
             draws.clear();timelines.clear();digits.clear();m.write(BUFFER+32,struct.pack('<H',500))
             m.write(STATE['g_attacker_troop_type'],bytes([attacker]));m.write(STATE['g_defender_troop_type'],bytes([defender]))
             assert m.call('sango_battle_execute_normal_attack',10,instruction_limit=5_000_000)==7
-            assert draws==[[16,1,55,80,0]] and timelines[0][-2:]==[55,80] and digits==[[95,120,123]]
+            assert draws==[[16,1,55,72,0]] and timelines[0][-2:]==[55,72] and digits==[[95,112,123]]
             count+=1
     gray=color.machine(lib)
     assert gray.call('sango_battle_animation_left')==20 and gray.call('sango_battle_animation_top')==49;count+=1
     report={'passed':count,'failed':0,'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
-            'color_sha256':hashlib.sha256(clr).hexdigest(),'status_field':{'switch':'unit name or empty-tile terrain','rectangle':[159,228,78,16]},
+            'color_sha256':hashlib.sha256(clr).hexdigest(),'status_field':{'switch':'unit name or empty-tile terrain','rectangle':[159,212,78,16]},
             'animation_frame':[left,top,width,height],
             'scope':'Real compiled MIPS image-based HUD, dynamic transparent text/terrain decoding, food/weather limits, complete GBK clipping, empty/occupied tiles, one-line name/terrain switch; all 30 skill and 36 normal attack dispatches retain gameplay state/results and relative coordinates while centering the modal. SDK font pixels modeled; native sharp/transparent font pixels separately checked.'}
     (ROOT/'build/battle-ui-color-validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')

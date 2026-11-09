@@ -1,12 +1,12 @@
 {
   "passed": 9,
   "failed": 0,
-  "bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
+  "bda_sha256": "db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41",
   "summary_rectangle": [
     0,
-    284,
+    268,
     240,
-    36
+    52
   ],
   "scope": "Compiled MIPS caches last strategic ruler/scenario/counts/date/city; validates portrait resource/frame, two native text rows, empty city, redraw stability and unchanged legacy state/shared scratch. SDK text/bitmap boundaries modeled; native appearance checked separately."
 }

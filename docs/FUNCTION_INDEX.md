@@ -104,7 +104,7 @@
 | `0x81c03708` | [`sango_battle_select_move_destination`](../src/battle/player_turn.c#L348) |
 | `0x81c03874` | [`sango_battle_select_active_unit`](../src/battle/player_turn.c#L400) |
 | `0x81c038f4` | [`sango_battle_poll_map_action`](../src/battle/player_turn.c#L426) |
-| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L557) |
+| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L558) |
 
 ## src/battle/field.c
 

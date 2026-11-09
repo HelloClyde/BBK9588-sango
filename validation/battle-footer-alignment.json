@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-09",
+  "baseline_commit": "4d2b58920fdc1f011c9d7eb55ea99054ca06a368",
+  "baseline_bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
+  "bda_sha256": "db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41",
+  "bda_bytes": 219492,
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "clr_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
+  "layout": {
+    "status": [
+      0,
+      208,
+      240,
+      24
+    ],
+    "battle_toolbar": [
+      0,
+      232,
+      240,
+      36
+    ],
+    "strategy_toolbar": [
+      0,
+      232,
+      240,
+      36
+    ],
+    "summary": [
+      0,
+      268,
+      240,
+      52
+    ],
+    "viewport_tiles": [
+      15,
+      13
+    ],
+    "rule_window": [
+      15,
+      15
+    ],
+    "animation": [
+      55,
+      72,
+      130,
+      64
+    ]
+  },
+  "artwork": "All1204 indexed color PNG frames and LIB/CLR bytes unchanged. Native-size artwork is moved, not scaled. Metadata descriptions updated to the actual current positions.",
+  "initialized_data_bytes": 45536,
+  "initialized_data_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "fresh_mips_checks": 4997,
+  "native_firmware_checks": 56,
+  "keyboard_comparison": "Prior15857-key comparison is historical alpha.1 evidence. Current display viewport/cursor-scroll state intentionally differs; not claimed unchanged.",
+  "scope": "Native C200 compares all8640 toolbar pixels at the exact same y232 in strategy/battle; new-position touch/info/find/return, 1:1 glyphs/transparent numbers/name, four centered animation ranges and25 real touch-flow/drag checks. MIPS checks seven maps with13-row cache and clipping; original rule windows and save state unchanged.",
+  "limitations": [
+    "Controlled exact-byte RAM staging bypasses synthetic NAND ECC;20-unit state fixtures excluded from delivery. File lifecycle modeled separately.",
+    "No physical-device, full campaign or complete native save/load verification."
+  ],
+  "source_sha256": {
+    "include/sango_battle.h": "1d93124286f355df3c55b2d0eb1e3d364f52b66a527ed5c7f51be32c50e332c5",
+    "include/sango_statusbar.h": "227f868ed802eadf88f4896cdf96de90ae70bb631a4c60cdf7242971b9f82e3e",
+    "src/sango_statusbar.c": "0ff71941e03ccc2d2c8842f9cbf7f5b39e22d42e2a78b2107bcaff510daabf87",
+    "src/sango_battle_ui.c": "0227f9135d4d5466d3d361ac9ab08af45160fe668003ac01bc625c2e6493fcf9",
+    "src/battle/player_turn.c": "e5a70e7a764040993306b840ddfbdd3928fc55414998f27cb0e2f206837f9c9d",
+    "tools/test_battle_hud.py": "0b3ed84ae847e90141354d06d9d4a5cbfa1e30d1705bab2b56ab8fe91b18c9a7",
+    "tools/test_battle_summary.py": "ad0c5454aedc574e7cfe7773a29e6b80e7df62e155d8131d1a8d64f396ac01b2",
+    "tools/test_battle_viewport.py": "40c185c7e13c666cebf3e8ff80786dc117aa353837734f784f6d64512e57fcc9",
+    "tools/test_battle_ui_color.py": "5a3af3a11a4e81b2bc5b099f90e5e944a67f1ad79fc00929d1061c4ad042ed9b",
+    "tools/test_touch_input.py": "47d23bed5cdf09e537ae3e45c91cd16e293e471531fe5cf16b0b801f2ca32f67"
+  },
+  "report_sha256": {
+    "validation/color-mips-validation.json": "5166e81394b5a58b8734c95f708045c3d2317defc75fac83ca2671ff9ce15895",
+    "validation/strategy-color-validation.json": "b58ee8dd52d76613d464237f325aeff2012cfb320e2b00845028bcf597e1a326",
+    "validation/battle-color-validation.json": "130ffacbcc26f99f1bf9206bc3873d4e952be27ae58549c344d865b3e255bee0",
+    "validation/battle-ui-color-validation.json": "7c17e4a3beeffe78b5bd3b8246fd34898eb272c799b7ba1de3569c7ca416b77f",
+    "validation/battle-pixel-grid-validation.json": "9f811d3e4a9ea1fc7454f966d9111cf1a982aebcc7ac67d97243ff035604db28",
+    "validation/battle-hud-validation.json": "bb4abacb3c7a7ea5a74c0fd28a96381c6b64cbaaf7da3a810d2744aebd872a06",
+    "validation/battle-summary-validation.json": "dfb71c90d13d0a89a5fbb6c48ee2cca00d6a8335efb8ef34bc0fb83c12fa3223",
+    "validation/battle-viewport-validation.json": "288fa918cbcf04c2f7b49441f764b191643580801d343acd4ecc0adcfdae73db",
+    "validation/touch-input-validation.json": "e098abf62def1fe18f2da1cd10efc3764fc122eba9843e6ab489d97d51b299ee",
+    "validation/color-firmware-validation.json": "56d99a4926fec02c996e5b7edf3f55d026692e7447be738df36066853f6e485d",
+    "validation/touch-firmware-validation.json": "2a752c4d8a9c76c8321fc474a969cd724f40059b988c2a89d12577d8fd112530",
+    "validation/color-native-staging.json": "27b25e3db49d5f53f52f9fed9930c62a12201b72ef9627f52a4bc4ee28da11fa",
+    "validation/touch-native-staging.json": "fb5f4447f3e64425a7e36202f600bf967a45717ad34f1fd068144ffad42e9271",
+    "validation/touch-drag-trajectories.json": "3c0801914ec0bb029750446c377449621e14d637f3742ad92ead336184e42a7b",
+    "validation/sdk-bda-validation.json": "c401bbfe8cfe7ff9bd818ff13de1f386e347f8147f0bc88f7035de08d160003f",
+    "validation/release-clean-build.json": "73ccc8b7765497f09e100425b214721bee4d9dc1dc385d95a4a4a0e6c14e7880"
+  },
+  "clean_rebuild": "validation/release-clean-build.json"
+}

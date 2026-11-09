@@ -1,13 +1,14 @@
 {
-  "tested_commit": "e002e2f307ed4e701a18d55332d4b67ee01c0a8b",
+  "tested_commit": "fb85292afe11cfda3fda05b96fee649c8535ba79",
+  "version": "0.1.0-alpha.2",
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "clean_checkout": true,
   "local_object_cache_only": true,
   "exact_bda_lib_clr_match": {
-    "三国霸业.bda": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
+    "三国霸业.bda": "db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41",
     "sango.lib": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
     "sango.clr": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e"
   },
   "package_and_integrity_checks": "passed",
-  "scope": "Independent clean local clone and pinned SDK checkout, no untracked generated game inputs. Configurable external GCC15.2.0; asset encoding, SDK static validation, source/resource indexes, packaging and integrity checks. Native and MIPS runtime evidence is separate."
+  "scope": "Independent clean local source clone and pinned SDK checkout, no untracked game inputs. Configurable GCC15.2.0; asset encoding, SDK static validation, source/resource indexes, packaging and integrity checks. Runtime checks recorded separately."
 }

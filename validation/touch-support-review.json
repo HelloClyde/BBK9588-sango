@@ -68,5 +68,7 @@
   "reproducible_build": {
     "clean_checkout_report": "validation/release-clean-build.json",
     "same_bda_lib_clr": true
-  }
+  },
+  "snapshot_commit": "4d2b58920fdc1f011c9d7eb55ea99054ca06a368",
+  "history_note": "Historical alpha.1 touch/drag verification, with14 visible battle rows and toolbar y248. Current13-row shared-y232 layout and fresh reports are in battle-footer-alignment.json. Report digests refer to this snapshot, not overwritten current report files."
 }
