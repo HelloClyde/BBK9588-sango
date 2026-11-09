@@ -1,17 +1,18 @@
 {
-  "tested_commit": "946dbc7eaa1cdb14dc129b5abd671bc404c5def7",
-  "version": "0.1.0-alpha.4",
+  "tested_commit": "8b4044d2d1958d4684b821c7d6ed61ec6459cad1",
+  "version": "0.1.0-alpha.5",
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "clean_checkout": true,
   "local_object_cache_only": true,
   "exact_bda_lib_clr_match": {
-    "三国霸业.bda": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
+    "三国霸业.bda": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
     "sango.lib": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
     "sango.clr": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793"
   },
   "package_and_integrity_checks": "passed",
   "compiled_info_weather_checks": 27,
   "compiled_river_geometry_checks": 88,
+  "compiled_battle_options_checks": 26,
   "resource_roundtrip_checks": 10,
   "scope": "Independent clean local source clone and pinned SDK checkout, no untracked game inputs. Configurable GCC15.2.0; asset encoding, SDK static validation, source/resource indexes, resource roundtrips, compiled info/weather checks, packaging and integrity. All three produced binaries exactly match the separately runtime-tested build. Runtime checks recorded separately."
 }

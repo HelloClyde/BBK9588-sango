@@ -54,6 +54,12 @@
     "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d",
     "validation/battle-options-reference.json": "54e5e54130e4a9cb43cb6885c16cdd61e1582dea371910d4506523dafb92e594",
     "validation/battle-options-baseline.json": "c7b12c9c177411791a2c89f566d1fdc253535d390a9ea20af0a7e0f786764c56",
-    "validation/battle-options-code-diff.json": "ffa47ca3cef29c8151bd2f5ab9ae8cc8d861f36ca7a8a61b63e51036e76cff4c"
-  }
+    "validation/battle-options-code-diff.json": "ffa47ca3cef29c8151bd2f5ab9ae8cc8d861f36ca7a8a61b63e51036e76cff4c",
+    "validation/release-clean-build.json": "7f633f2a1be0b034bdee2e6d552bbdb362fa6a1b4dfd21b8bb3dc935133b84eb"
+  },
+  "parent_menu_screenshot": {
+    "path": "docs/screenshots/touch/battle-options-parent.png",
+    "sha256": "3e281db571c2a7f498c0c4853443e49206a6463960ddc1a091bbf4f5997872b6"
+  },
+  "clean_build_tested_commit": "8b4044d2d1958d4684b821c7d6ed61ec6459cad1"
 }
