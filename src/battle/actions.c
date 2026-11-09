@@ -510,14 +510,17 @@ uint32_t sango_battle_show_options(void)
             }
             if (main_selection == 1)
             {
-                g_battle_result_view2 = 2;
-                goto return_to_battle;
+                /* Resource001/9 row1 is enemy movement. The 9588 port
+                 * swapped this with retreat; original 9288S 0x782e uses
+                 * row1 for the view flag and row4 for battle result2. */
+                option_address = &g_battle_render_enabled_view2;
+                option_text_or_selection = 10;
             }
         }
         else if (main_selection == 4)
         {
-            option_address = &g_battle_render_enabled_view2;
-            option_text_or_selection = 10;
+            g_battle_result_view2 = 2;
+            goto return_to_battle;
         }
         else if ((int)main_selection < 4)
         {

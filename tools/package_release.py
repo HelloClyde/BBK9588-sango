@@ -42,7 +42,7 @@ def main():
     info={'version':version,'source_commit':commit.stdout.strip() if commit.returncode==0 else None,
         **built,'matches_runtime_reference':verified,'matches_library_reference':library_verified,'matches_color_reference':color_verified,
         'runtime_evidence':{'mips_checks':reference['mips_checks'],'native_firmware_interface_checks':reference['native_firmware_interface_checks']} if verified else None,
-        'ci_scope':'Build, SDK static validation, compiled MIPS color/HUD/summary/viewport/touch/info-weather/river-geometry checks and packaging; no firmware emulator is run by Actions.',
+        'ci_scope':'Build, SDK static validation, compiled MIPS color/HUD/summary/viewport/touch/info-weather/river-geometry/battle-options checks and packaging; no firmware emulator is run by Actions.',
         'resource_included':True,'color_included':True,'original_resource_sha256':reference['original_sango_lib_sha256'],
         'library_validation_scope':'Host lossless LIB rebuild and all 1204 native PNG/RGB565 frames checked; real compiled-MIPS loader/CRC/index/raster checks; native C200 RGB SDK rendering with exact expanded LIB/CLR staged in controlled RAM. No native filesystem or full-campaign claim.'}
     (dist/'BUILD_INFO.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

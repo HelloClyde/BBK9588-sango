@@ -6,7 +6,7 @@
     "src/app/boot.c": "dae47ac3bada542fac7057690cf34a30af0166b40b2e41cd2eff26668b5ed71f",
     "src/app/lifecycle.c": "ede064910035bfdf073ba04491c8272d779bbeb126ea26ce7dc6be1b358cebfc",
     "src/app/memory.c": "f99f1ca6affcfdc31457b286506b0b59415ea4b5683fbf840e3c58c55994edc0",
-    "src/battle/actions.c": "9cae99de23a6e01a29953987e7b2b297176d7f18fea8f2acda8bbe84d414e8bf",
+    "src/battle/actions.c": "5130479e5efe320d3f655e75b69e47d712d2bd95e3b531daf10020a78a50fa34",
     "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
     "src/battle/combat_math.c": "5a239d0d3ca4effb833d4fda82b7c56c42581a7f3da352839173bb74593c2099",
@@ -63,7 +63,7 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_read_text",
           "expression": "sango_resource_read_text(1,",
-          "line": 575
+          "line": 578
         },
         {
           "source": "src/save/savegame.c",
@@ -178,13 +178,13 @@
           "source": "src/battle/actions.c",
           "function": "sango_battle_unit_sprite_frame",
           "expression": "frame = 0xe;",
-          "line": 644
+          "line": 647
         },
         {
           "source": "src/battle/actions.c",
           "function": "sango_battle_unit_sprite_frame",
           "expression": "frame = 0xc;",
-          "line": 644
+          "line": 647
         },
         {
           "source": "src/battle/field.c",

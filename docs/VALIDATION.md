@@ -1,6 +1,6 @@
 # 验证记录
 
-当前触摸版BDA：221688字节，SHA-256 `2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea`。
+当前触摸版BDA：221688字节，SHA-256 `7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d`。
 LIB：461116字节，SHA-256 `01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11`。
 CLR：2297312字节，SHA-256 `77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793`。
 固定SDK `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，GCC15.2.0。
@@ -19,17 +19,18 @@ CLR：2297312字节，SHA-256 `77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d
 | 新增触摸MIPS | 132 | 原生窗口回调、完整16位坐标、按下/抬起/取消、8像素阈值、重复释放、SDK采样定时器、菜单、列表、存档槽、数值、城池与三种战斗选择模式、拖动、边界及边缘轻点不滚动 |
 | 河流原始轮廓MIPS | 88 | 29帧1263个岸线、656个水纹像素直接对比原LIB；七地图2039个水域格和117种邻接；87项真实绘制/裁切加照片对应完整视口 |
 | 原生C200彩色界面 | 61 | 七地图21个视口、29帧原生图集； 同y=232处的两栏全部8640像素一致；菜单/制作群组、战略地图/箭头、战场/透明文字/信息/查找、天数居中、背景恢复和四段真实动画 |
-| 原生C200触摸流程 | 25 | 菜单→剧本→君主→正常开局；武将→合法目的地→攻击菜单→目标；数值修改/确认、战略横纵拖动与上下边界、战斗三种选择状态拖动/反向恢复/松手不确认、边缘轻点不滚动、触摸后实体键、城池ID |
+| 战斗选项MIPS | 26 | 真实文本解码和选择器；五行映射、两值/取消、触摸/实体键及连续操作；旧ELF另重现两处错误 |
+| 原生C200触摸流程 | 33 | 全部五项战斗菜单、三项设置和撤退返回值； 菜单→剧本→君主→正常开局；武将→合法目的地→攻击菜单→目标；数值修改/确认、战略横纵拖动与上下边界、战斗三种选择状态拖动/反向恢复/松手不确认、边缘轻点不滚动、触摸后实体键、城池ID |
 | 资源回包 | 10 | 原87条/空槽保留、原库逐字节还原、89条扩展库往返、遮罩/行填充/动画/地图/索引约束 |
 | 源码结构 | 42模块/446恢复函数 | 模块独立编译、函数索引、89项资源用途依据；新增触摸模块独立于恢复模块 |
 
-当前确切BDA新跑5113项编译MIPS检查及86项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
+当前确切BDA新跑5139项编译MIPS检查及94项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
 此前593项既有回归、27163项控制流对照及60026项运行库对照保留为历史证据，没有计为本轮新跑检查。
-原始PNG、LIB及BDA保持不变；CLR仅重编码29张水域图块，其余1175帧、原生状态图和天气块与alpha.3完全一致。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
+本轮仅菜单函数的编译代码改变；LIB和CLR与alpha.4完全一致，河流轮廓、天气、原生状态图及全部素材保持不变。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
 新增触摸代码/状态位于原固定状态区之后的受限区间，链接器检查其末端不超过0x81c30000。
 alpha.1把战斗光标闪烁计数器从未初始化改为0；该轮历史按键对照排除这一绘制相位/次数差异，比较游戏决策、状态、命令及输入消耗。
 
-汇总及源码/报告哈希：[河流轮廓修复记录](../validation/river-geometry-review.json)，前轮信息页见alpha.3历史记录。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
+汇总及源码/报告哈希：[战斗菜单修复记录](../validation/battle-options-review.json)，[9288S/9588静态对照](../validation/battle-options-reference.json)与[具体菜单语义](BATTLE_OPTIONS.md)。前轮河流、信息页记录按alpha.4/alpha.3快照追溯。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
 问号按16×16单比特字形烘焙，天气按原生18×18绘制；信息页后台一次画完整页并提交，保持到点击或按键返回。新信息页不进入逐行直接绘屏路径，临时攻防计算视图读出后恢复，原游戏状态与战场缓冲不改。
 独立干净检出构建及安装包检查见 [干净构建记录](../validation/release-clean-build.json)。
 发行包由 `reference-build.json` 分别校验BDA/LIB/CLR；升级ZIP和外部文件均有逐文件SHA-256。
@@ -65,6 +66,7 @@ python tools/test_battle_summary.py
 python tools/test_battle_viewport.py
 python tools/test_touch_input.py
 python tools/test_battle_info.py
+python tools/test_battle_options.py
 python tools/package_release.py --require-validated
 python tools/verify_artifacts.py --require-validated
 python tools/test_release_pipeline.py
@@ -85,7 +87,11 @@ SDK文件加载、分配失败与资源释放由编译MIPS模型另测；未将R
 
 本轮河流检查以原LIB的2bpp字节为轮廓依据，逐坐标核对0/85岸线与170水纹；显式河岸方向/陆地角规则是经原图核对的元数据。照片区域对应资源113、视口(0,6)，22个山地/树林/营寨位置一致，完整240×208绘制经真实MIPS对比。原生另外比较七地图21个视口及29张水域图块的全部像素。更早仅检查尺寸与蓝色像素数，不能证明上色没有改变岸线，已由新增检查补齐。
 
+本轮对照原始9288S EXE静态代码及两版资源001文字，确认9588原版将“敌军移动”和“全军撤退”分支接反；恢复C此前保留了该移植错误。26项真实MIPS菜单检查和8项新增原生断言验证了五行、设置、取消及返回值。原始9288S对照为静态证据，不计作本轮9288S运行验证；新原生操作在9588/C200完成。
+
 ## 历史阶段
+
+alpha.4（1cf768d）的河流轮廓与86项原生验证记录保留在[river-geometry-review.json](../validation/river-geometry-review.json)，报告哈希按该提交追溯。
 
 alpha.3（71a2d93）的问号、天气与信息页记录保留在[battle-hud-info-sharp.json](../validation/battle-hud-info-sharp.json)，报告哈希按该提交追溯。
 

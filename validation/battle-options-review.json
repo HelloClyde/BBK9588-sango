@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-10",
+  "version": "0.1.0-alpha.5",
+  "baseline_commit": "1cf768dfbfd2b89db23b248eecfae56083fccd88",
+  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+  "bda_bytes": 221688,
+  "lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "clr_sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "fresh_mips_checks": 5139,
+  "native_firmware_checks": 94,
+  "new_battle_option_mips_checks": 26,
+  "new_native_option_checks": 8,
+  "finding": "Original9288S menu row1 sets enemy-movement viewing; row4 directly sets result2 and returns255. Original9588 retained identical text but swapped these two actions; reconstructed C preserved that port error.",
+  "fix": "Swap only the two incorrect dispatch branches. Row1 now opens resource001/10 not-view/view settings; row4 sets battle result2 and returns255 without a submenu. Other rows, cancel/keyboard/touch behavior, resources, saved flags/layout and initialized data remain unchanged.",
+  "reference_kind": "Original9288S static S1C33 disassembly and decoded text compared with original9588 MIPS/decoded text. No new native9288S execution claim.",
+  "compiled_functions_changed": [
+    "sango_battle_show_options"
+  ],
+  "initialized_data_bytes": 45536,
+  "initialized_data_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "scope": "Real compiled MIPS text/resource decode, option controller, touch hits and key selection cover all five rows, both setting values, cancellation and repeated/mixed input. Native C200 actually taps all five rows and reads only returned state/flag markers; also61 color/layout/river/animation checks and25 previous native touch-flow/drag cases rerun.",
+  "limitations": [
+    "Native SDK I/O boundaries modeled in MIPS; separately exercised in C200.",
+    "Exact-byte RAM staging bypasses synthetic NAND ECC. Controlled diagnostic markers record results only and are excluded from delivery. File lifecycle modeled separately.",
+    "No current physical-device, full campaign or complete native save/load verification."
+  ],
+  "source_sha256": {
+    "src/battle/actions.c": "5130479e5efe320d3f655e75b69e47d712d2bd95e3b531daf10020a78a50fa34",
+    "tools/test_battle_options.py": "f4d51d1bc5062a0381d7a47e5fe01dc78c2ff91e27d0157c2370f002a45dc3fc",
+    "tools/compare_battle_options_reference.py": "d6d78018163c0b881faa77d77ba92df3ad2b23d44351e9efea38065f853e4cf9",
+    ".github/workflows/release.yml": "e6cfc71553236d397ca2bca6d92c704541e605b2308994baf43851c48aafb27d",
+    "tools/package_release.py": "6178ee00ae091a68ca84eb3682df5b92fdf63a4955c6fe5ae2f66641f5fe114b",
+    "source-map.json": "0c4ee78aa58124835325923688cbc48e6e934e430161818d96597c08a5122d00"
+  },
+  "report_sha256": {
+    "validation/color-mips-validation.json": "acc2b0deb141c3a8796e643663b7ab7aa1880083a0d5a44eb69d6602a7c5e247",
+    "validation/strategy-color-validation.json": "4a8f4fc23f0069313fb77f49d35a36221e87fe5c36a82493d611e0c1b44c2d99",
+    "validation/battle-color-validation.json": "7fa699ee7d618a5af1c9e0bfb528afd6a805763bf357e267c1d2a6d57f15ec15",
+    "validation/battle-ui-color-validation.json": "1a13ae267693cda8cd71fb7fda3739a2a9f6b721d7536e071049dad7e4ddea53",
+    "validation/battle-pixel-grid-validation.json": "47228868c5208ae2d449b1ffebba029ff6c9c87504b6db776ab23d804229040f",
+    "validation/battle-hud-validation.json": "42dad5180d4b8dcb280ebf2c3a39b09a25e196abef600223c15b385e4697a496",
+    "validation/battle-summary-validation.json": "aec40401d9fff2ffe03b2c557f1d6fc3137fb63edcdfa2644881c84fd511cddd",
+    "validation/battle-viewport-validation.json": "f90236aaa6882a2de388f7bd0057156345227334a4fe1e615141f6928ea9e808",
+    "validation/touch-input-validation.json": "05eb007e6391c36b43578f052302fb031fb0011ca29d568b135c5f40cff21705",
+    "validation/battle-info-validation.json": "ccbd85270fa7a9bf76b45367e7320d4d1289a14a02d5d9a4b5a1ba017cf32e05",
+    "validation/river-geometry-validation.json": "c39ad223769326b76c22b16711bf24cd5fa55188b59986a78417fcd27a0e9a26",
+    "validation/battle-options-validation.json": "fca1df4fa3ec822dcb140738897bad0c1480f2270bade6611f0e38ad2c21f6ee",
+    "validation/color-firmware-validation.json": "d1745d55349ac9b05864f2b0330990c62c6cebfcfca296a1b0750576081ab113",
+    "validation/touch-firmware-validation.json": "02643e6d14ac969e28d7f3e72c22cf5685630bb9bf1fa0ad4dacce4d64924374",
+    "validation/color-native-staging.json": "f04be4fbdeb976f3b590289ca20ed9b85c2b818b558ed69ef8a1fe44bd2c2704",
+    "validation/touch-native-staging.json": "4724a475f5531ad3bd3fd3ecc7bf8b57b9ecf0d9e377627e4338d36205e2ea89",
+    "validation/touch-drag-trajectories.json": "07014f25878ac8cf91e2a97aeb68ec9f0f60918b68c9f12195fe6e767a7974b8",
+    "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d",
+    "validation/battle-options-reference.json": "54e5e54130e4a9cb43cb6885c16cdd61e1582dea371910d4506523dafb92e594",
+    "validation/battle-options-baseline.json": "c7b12c9c177411791a2c89f566d1fdc253535d390a9ea20af0a7e0f786764c56",
+    "validation/battle-options-code-diff.json": "ffa47ca3cef29c8151bd2f5ab9ae8cc8d861f36ca7a8a61b63e51036e76cff4c"
+  }
+}

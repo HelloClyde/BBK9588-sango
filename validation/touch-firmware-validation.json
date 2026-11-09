@@ -1,12 +1,60 @@
 {
-  "passed": 25,
+  "passed": 33,
   "failed": 0,
-  "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
-  "scope": "Native C200 with exact BDA/LIB/CLR staging. A controlled 20-unit fixture calls real actionable-unit, movement, command, target, number and strategic-city controllers; markers record returned values only. All choices are native touch input. Also normal main/scenario/ruler session flow and touch/key mixing. No filesystem save or complete campaign/physical-device claim.",
+  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+  "scope": "Native C200 with exact BDA/LIB/CLR staging. A controlled 20-unit fixture calls all five battle-option rows, actionable-unit, movement, command, target, number and strategic-city controllers; markers record returned values only. All choices are native touch input. Also normal main/scenario/ruler session flow and touch/key mixing. No filesystem save or complete campaign/physical-device claim.",
   "limitations": [
     "Continuous drags are verified with native C200 smooth hardware-input trajectories; no physical-device test. The earlier three large coordinate jumps did not represent a continuous drag and are superseded by these traces."
   ],
   "cases": [
+    {
+      "name": "Native menu row0 has original9288S turn/setting/retreat result",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row0-return.png",
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
+    },
+    {
+      "name": "Native menu row1 opens the correct submenu and changes only its setting",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row1-submenu.png",
+      "screenshot_sha256": "7f2de0ce8b1451cf9b8bcd865438776b492da60039ecd0a9dff4315f9eeb74f4"
+    },
+    {
+      "name": "Native menu row1 has original9288S turn/setting/retreat result",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row1-return.png",
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
+    },
+    {
+      "name": "Native menu row2 opens the correct submenu and changes only its setting",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row2-submenu.png",
+      "screenshot_sha256": "7f2de0ce8b1451cf9b8bcd865438776b492da60039ecd0a9dff4315f9eeb74f4"
+    },
+    {
+      "name": "Native menu row2 has original9288S turn/setting/retreat result",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row2-return.png",
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
+    },
+    {
+      "name": "Native menu row3 opens the correct submenu and changes only its setting",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row3-submenu.png",
+      "screenshot_sha256": "68a8af41706bfd8824d4b1069ba921fc60498315b1ffc0f61c5471c6134af453"
+    },
+    {
+      "name": "Native menu row3 has original9288S turn/setting/retreat result",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row3-return.png",
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
+    },
+    {
+      "name": "Native menu row4 has original9288S turn/setting/retreat result",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-options-row4-return.png",
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
+    },
     {
       "name": "Tap an unselected main-menu row activates it once",
       "passed": true,
@@ -35,7 +83,7 @@
       "name": "Tap a player unit selects the real actionable unit",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-move-range.png",
-      "screenshot_sha256": "a2fddaf9fcda705987aa9e60646f0f69196c67c6f7af4b1739862ca6ae85f88b"
+      "screenshot_sha256": "99fc2efbccb907edb1e30c0c9c8307b2813cbdc13baa573bb54660b7d1288a23"
     },
     {
       "name": "Continuous drag moves battle view while selecting-destination",
@@ -65,31 +113,31 @@
       "name": "Tap attack menu row enters target selection without confirming a target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "c943a68f318dbcbe1e92da5c1997db982e52a855a52e3dc98e97da260c274659"
+      "screenshot_sha256": "f133c002b40d8378bbe707455d5bc67613e8b7b1d7d46649e0438d6df458256a"
     },
     {
       "name": "Continuous drag moves battle view while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
+      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
     },
     {
       "name": "Releasing battle drag does not select or execute while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
+      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
     },
     {
       "name": "Reverse drag restores battle view while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
+      "screenshot_sha256": "a55930fcf951f04476e4c63bff7bda16a1a7f1c2c444b05d287f924cd1572cd1"
     },
     {
       "name": "Tap an enemy selects the validated original attack target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "c943a68f318dbcbe1e92da5c1997db982e52a855a52e3dc98e97da260c274659"
+      "screenshot_sha256": "f133c002b40d8378bbe707455d5bc67613e8b7b1d7d46649e0438d6df458256a"
     },
     {
       "name": "Touch plus and confirm return the edited number through production code",
@@ -149,7 +197,7 @@
       "name": "Tap scenario opens original ruler selector",
       "passed": true,
       "screenshot": "docs/screenshots/touch/ruler-list.png",
-      "screenshot_sha256": "3e1d831f722280da6bd024c9a47b1076f10f3ed014f697c7c5a153931b6bbeb5"
+      "screenshot_sha256": "c1b0858df98e0365401650b7de241d13edd31eab6300b0413d4ff647d682a561"
     },
     {
       "name": "Tap ruler completes normal new-game selection and displays strategy",

@@ -2,7 +2,7 @@
   "entry": true,
   "package": true,
   "method": "Exact-byte staging after normal firmware load; synthetic NAND ECC bypass for validation only.",
-  "payload_sha256": "a3f4715ce4bc615268e39aac06c2bb82850355abdceb44a68c46aab65aac9dbd",
+  "payload_sha256": "7364a4155447c9a239dd8e602d85a6f0b9edb14e820360574d0e17976221c0be",
   "color": {
     "bytes": 2297312,
     "sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",

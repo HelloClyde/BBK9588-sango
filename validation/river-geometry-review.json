@@ -66,5 +66,7 @@
     "validation/river-payload-diff.json": "72f1bfbbd92a162280281396025c2a297f3aafb239f3f243557505552c7ab135",
     "validation/release-clean-build.json": "385b9ff41f01b6213db93692126fca54aa07a2809964901c4fcfa50bd5cd1fc6"
   },
-  "clean_build_tested_commit": "946dbc7eaa1cdb14dc129b5abd671bc404c5def7"
+  "clean_build_tested_commit": "946dbc7eaa1cdb14dc129b5abd671bc404c5def7",
+  "snapshot_commit": "1cf768dfbfd2b89db23b248eecfae56083fccd88",
+  "history_note": "Historical alpha.4 snapshot. Report digests refer to this commit. Current alpha.5 menu correction and fresh reports are in battle-options-review.json."
 }

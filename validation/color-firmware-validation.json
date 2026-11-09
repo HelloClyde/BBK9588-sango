@@ -1,7 +1,7 @@
 {
   "passed": 61,
   "failed": 0,
-  "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
+  "bda_sha256": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "color_sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
   "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; 21 real-map viewports,29-tile native atlas, controlled 20-unit battle fixture, backdrop probe and four production timeline ranges. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
@@ -190,37 +190,37 @@
       "name": "Battle toolbar preserves full 240x36 RGB565 source",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Native 240x24 status image and weather match compiled RGB pixels",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Battle terrain and portrait summary both display color",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Native transparent food-number preserves image background",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Native transparent unit-name preserves image background",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Native seven fixed glyph masks land on the exact 1:1 LCD grid",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Native colored info opens at retained touch position",
@@ -238,7 +238,7 @@
       "name": "Native info return preserves colored toolbar and summary",
       "passed": true,
       "screenshot": "docs/screenshots/color/info-return.png",
-      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
+      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
     },
     {
       "name": "Native colored find opens at retained touch position",
@@ -274,7 +274,7 @@
       "name": "Terrain info dismissal restores the complete battlefield footer",
       "passed": true,
       "screenshot": "docs/screenshots/color/terrain-info-return.png",
-      "screenshot_sha256": "d8be5d80c84ea78ebe9ed68872aea7f87d79e407318b565b3a77deb90d4cb53a"
+      "screenshot_sha256": "84fbba70e842ba9d392b053bf5c70d2f6052d9b602799050fe1fab1aecaaaa27"
     },
     {
       "name": "Native sprite overlay changes the colored backdrop",
@@ -328,7 +328,7 @@
       "name": "Battle and strategy use identical toolbar pixels at the same screen height",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle.png",
-      "screenshot_sha256": "fbf8036342a5216e6cbd26fa4953e21c828c4c8974758ae054af7611d540b4b7"
+      "screenshot_sha256": "224c4794293f552d218d1084871353225810d3e3b61f74fee26538530166e803"
     },
     {
       "name": "Native strategy map and ruler portrait are colored",

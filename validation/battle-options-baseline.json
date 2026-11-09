@@ -1,0 +1,5 @@
+{
+  "elf_sha256": "07d22e55d4acdd12490703a4e9dbefd146e76605056921218ee72c74a57f2bfe",
+  "enemy_movement_wrongly_retreats": true,
+  "retreat_wrongly_changes_view_flag": true
+}

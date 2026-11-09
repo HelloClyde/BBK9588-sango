@@ -171,13 +171,13 @@
 | `0x81c06318` | [`sango_battle_find_unit_at`](../src/battle/actions.c#L435) |
 | `0x81c06384` | [`sango_battle_change_weather`](../src/battle/actions.c#L458) |
 | `0x81c06440` | [`sango_battle_show_options`](../src/battle/actions.c#L474) |
-| `0x81c065c4` | [`sango_battle_draw_unit_damage`](../src/battle/actions.c#L546) |
-| `0x81c06650` | [`sango_battle_resolve_character`](../src/battle/actions.c#L569) |
-| `0x81c0666c` | [`sango_battle_read_text`](../src/battle/actions.c#L575) |
-| `0x81c06694` | [`sango_battle_execute_action`](../src/battle/actions.c#L582) |
-| `0x81c06838` | [`sango_battle_unit_sprite_frame`](../src/battle/actions.c#L644) |
-| `0x81c068f0` | [`sango_battle_regenerate_unit_energy`](../src/battle/actions.c#L677) |
-| `0x81c069d4` | [`sango_battle_find_actionable_unit_at_cursor`](../src/battle/actions.c#L703) |
+| `0x81c065c4` | [`sango_battle_draw_unit_damage`](../src/battle/actions.c#L549) |
+| `0x81c06650` | [`sango_battle_resolve_character`](../src/battle/actions.c#L572) |
+| `0x81c0666c` | [`sango_battle_read_text`](../src/battle/actions.c#L578) |
+| `0x81c06694` | [`sango_battle_execute_action`](../src/battle/actions.c#L585) |
+| `0x81c06838` | [`sango_battle_unit_sprite_frame`](../src/battle/actions.c#L647) |
+| `0x81c068f0` | [`sango_battle_regenerate_unit_energy`](../src/battle/actions.c#L680) |
+| `0x81c069d4` | [`sango_battle_find_actionable_unit_at_cursor`](../src/battle/actions.c#L706) |
 
 ## src/render/animation.c
 
