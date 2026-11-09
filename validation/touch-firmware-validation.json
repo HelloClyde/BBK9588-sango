@@ -1,10 +1,10 @@
 {
-  "passed": 13,
+  "passed": 25,
   "failed": 0,
-  "bda_sha256": "aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b",
+  "bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
   "scope": "Native C200 with exact BDA/LIB/CLR staging. A controlled 20-unit fixture calls real actionable-unit, movement, command, target, number and strategic-city controllers; markers record returned values only. All choices are native touch input. Also normal main/scenario/ruler session flow and touch/key mixing. No filesystem save or complete campaign/physical-device claim.",
   "limitations": [
-    "Continuous drag remains unverified on hardware: diagnostic C200/QEMU motion delivered the initial coordinate for down/up and no changing coordinate during hold; MIPS tests cover the SDK gesture path. Native tests verify the edge-tap viewport fallback."
+    "Continuous drags are verified with native C200 smooth hardware-input trajectories; no physical-device test. The earlier three large coordinate jumps did not represent a continuous drag and are superseded by these traces."
   ],
   "cases": [
     {
@@ -14,10 +14,46 @@
       "screenshot_sha256": "39e7656827c36dc35f22be38678b122434781a6fd86d937fd8cc0b964fcf2927"
     },
     {
+      "name": "Continuous drag moves battle view while selecting-unit",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-unit.png",
+      "screenshot_sha256": "759c31faeab3e2f276fd025e0e633f6e8de05208c43ea4bb29a43e0652b4e721"
+    },
+    {
+      "name": "Releasing battle drag does not select or execute while selecting-unit",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-unit.png",
+      "screenshot_sha256": "759c31faeab3e2f276fd025e0e633f6e8de05208c43ea4bb29a43e0652b4e721"
+    },
+    {
+      "name": "Reverse drag restores battle view while selecting-unit",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-unit.png",
+      "screenshot_sha256": "759c31faeab3e2f276fd025e0e633f6e8de05208c43ea4bb29a43e0652b4e721"
+    },
+    {
       "name": "Tap a player unit selects the real actionable unit",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-move-range.png",
-      "screenshot_sha256": "b38080fe7d203a04792dfa196a895d21aa6cdb9e7ee0140243c908b4c0d0ee0c"
+      "screenshot_sha256": "f5b75ff7bb684ea43e42babb787a70a72bb094201c0e322c71fab1fc3af73385"
+    },
+    {
+      "name": "Continuous drag moves battle view while selecting-destination",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
+      "screenshot_sha256": "b3e0a4928eb66c0429f27dd5a0e69d06e65835999edc6e5826e9a4298347aef1"
+    },
+    {
+      "name": "Releasing battle drag does not select or execute while selecting-destination",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
+      "screenshot_sha256": "b3e0a4928eb66c0429f27dd5a0e69d06e65835999edc6e5826e9a4298347aef1"
+    },
+    {
+      "name": "Reverse drag restores battle view while selecting-destination",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
+      "screenshot_sha256": "b3e0a4928eb66c0429f27dd5a0e69d06e65835999edc6e5826e9a4298347aef1"
     },
     {
       "name": "Tap a legal destination opens the production unit command menu",
@@ -29,13 +65,31 @@
       "name": "Tap attack menu row enters target selection without confirming a target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "648d5c9e21a439a477ddc58cc789b6e3e2ec9d107a40341dc3c17f29c4b9dc3c"
+      "screenshot_sha256": "226b882d9887a8f9cfab74d974277ce71182d77c9cb522a2d1e85bd0d0b46632"
+    },
+    {
+      "name": "Continuous drag moves battle view while selecting-target",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
+      "screenshot_sha256": "b3e0a4928eb66c0429f27dd5a0e69d06e65835999edc6e5826e9a4298347aef1"
+    },
+    {
+      "name": "Releasing battle drag does not select or execute while selecting-target",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
+      "screenshot_sha256": "b3e0a4928eb66c0429f27dd5a0e69d06e65835999edc6e5826e9a4298347aef1"
+    },
+    {
+      "name": "Reverse drag restores battle view while selecting-target",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
+      "screenshot_sha256": "b3e0a4928eb66c0429f27dd5a0e69d06e65835999edc6e5826e9a4298347aef1"
     },
     {
       "name": "Tap an enemy selects the validated original attack target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "648d5c9e21a439a477ddc58cc789b6e3e2ec9d107a40341dc3c17f29c4b9dc3c"
+      "screenshot_sha256": "226b882d9887a8f9cfab74d974277ce71182d77c9cb522a2d1e85bd0d0b46632"
     },
     {
       "name": "Touch plus and confirm return the edited number through production code",
@@ -44,28 +98,46 @@
       "screenshot_sha256": "4e3a14e0c0a33d433aff151806307677aa26e685bb31985e2ae3da232ef41656"
     },
     {
-      "name": "Tap empty map edge moves strategic viewport and clamps cursor into view",
+      "name": "Continuous horizontal drag moves strategic view while the pen is down",
       "passed": true,
-      "screenshot": "docs/screenshots/touch/strategy-edge-pan.png",
-      "screenshot_sha256": "c037eb7b305b1362148acb72ad06e400f41151f81fa4d1381ffdc629ca830513"
+      "screenshot": "docs/screenshots/touch/strategy-drag.png",
+      "screenshot_sha256": "1d902a3e533b1ccc6c42ac5237121caeae9fcb46515cf64614c13d5a2ff667cb"
     },
     {
-      "name": "Viewport scrolling does not select a city or activate a command",
+      "name": "Releasing strategic drag never selects a city or command",
       "passed": true,
-      "screenshot": "docs/screenshots/touch/strategy-edge-pan.png",
-      "screenshot_sha256": "c037eb7b305b1362148acb72ad06e400f41151f81fa4d1381ffdc629ca830513"
+      "screenshot": "docs/screenshots/touch/strategy-drag.png",
+      "screenshot_sha256": "1d902a3e533b1ccc6c42ac5237121caeae9fcb46515cf64614c13d5a2ff667cb"
     },
     {
-      "name": "Physical up key changes the cursor row after touch edge scrolling",
+      "name": "Continuous vertical drag reaches and clamps the strategic lower edge",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-vertical-drag.png",
+      "screenshot_sha256": "dc0134ab8bfedfd0f7ec24e48af7b8e318f4d5f219346a1c3fa7e73609565678"
+    },
+    {
+      "name": "Reverse vertical drag clamps the strategic upper edge",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-vertical-drag.png",
+      "screenshot_sha256": "dc0134ab8bfedfd0f7ec24e48af7b8e318f4d5f219346a1c3fa7e73609565678"
+    },
+    {
+      "name": "Empty edge tap moves only the cursor and never scrolls the map",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-edge-tap.png",
+      "screenshot_sha256": "c734b870f17b2ac48a0f982e4b486cba46d7dc99b94ac4c91231bcb1bbcaaaf8"
+    },
+    {
+      "name": "Physical up key changes the cursor row after dragging",
       "passed": true,
       "screenshot": "docs/screenshots/touch/strategy-key-after-touch.png",
-      "screenshot_sha256": "da6f263dc21e495fef31d89c0b60f7346209cf81c37112313adfb42e9b7fbae7"
+      "screenshot_sha256": "280a778db631b157b5720f8c5de9d632a91c79a36d4d0bcc47a0328c8d026050"
     },
     {
       "name": "Tap a visible city returns the matching original city ID",
       "passed": true,
       "screenshot": "docs/screenshots/touch/strategy-key-after-touch.png",
-      "screenshot_sha256": "da6f263dc21e495fef31d89c0b60f7346209cf81c37112313adfb42e9b7fbae7"
+      "screenshot_sha256": "280a778db631b157b5720f8c5de9d632a91c79a36d4d0bcc47a0328c8d026050"
     },
     {
       "name": "Tap new game opens scenario menu through normal session code",

@@ -139,7 +139,6 @@ def main():
     for mode in (1,2,3):
         for x,y in [(0,0),(239,223),(120,112)]:
             events=[event(11,x,y)]
-            if mode==3 and (x,y)==(239,223):events.append(event(5,key=0x1c))
             result,trace,state,pending=run_battle_input(IMAGE,mode,(7,7),events,None)
             assert result==0 and pending==0
             assert state[STATE['g_battle_cursor_x']-0x81c2b0e4]==x//16
@@ -163,14 +162,16 @@ def main():
             assert 0<=state[0]<=world[0]-grid[0] and 0<=state[1]<=world[1]-grid[1]
             assert state[0]<=state[2]<state[0]+grid[0] and state[1]<=state[3]<state[1]+grid[1]
             assert raw(2,120+dx,110+dy)[1][0]==13;checks+=1
-    for x,y,expected in [(0,100,[1,1]),(239,100,[3,1]),(100,0,[2,0]),(100,231,[2,2]),(100,100,[2,1])]:
-        m.write(BUFFER,struct.pack('<IIHH',*event(11,x,y)));m.write(BUFFER+40,bytes([2,1,4,3]))
-        changed=m.call('sango_touch_edge_pan',BUFFER,BUFFER+40,12,9,7,7,240,232)
-        assert list(m.read(BUFFER+40,2))==expected and bool(changed)==(expected!=[2,1]);checks+=1
-    for state,point,expected in [([0,0,0,0],(0,0),[0,0]),([5,2,11,8],(239,231),[5,2]),([4,1,10,7],(239,231),[5,2]),([2,1,4,3],(100,232),[2,1])]:
-        m.write(BUFFER,struct.pack('<IIHH',*event(11,*point)));m.write(BUFFER+40,bytes(state))
-        m.call('sango_touch_edge_pan',BUFFER,BUFFER+40,12,9,7,7,240,232)
-        assert list(m.read(BUFFER+40,2))==expected;checks+=1
+    # An empty edge tap moves only the cursor, never the viewport.
+    for color in (0,1):
+        mm=Machine(IMAGE);mm.write(BUFFER,bytes([2,1,4,3]));draws=[]
+        mm.intercept('sango_color_is_loaded',0,lambda a:color)
+        mm.intercept('sango_strategy_draw_map',2,lambda a:draws.append(list(mm.read(a[0],4))) or 0)
+        mm.record('sango_render_clear_rectangle',5)
+        width,height=(240,232) if color else (224,224)
+        pending=install_events(mm,[event(11,width-1,height//2),event(5,key=1)])
+        assert mm.call('sango_strategy_select_city',BUFFER)==255 and not pending
+        assert list(mm.read(BUFFER,4))==[2,1,8,4];checks+=1
     # Exact numeric values match keyboard entry, with touch digit selection,
     # plus/minus/confirm/cancel and upper/lower bounds.
     for initial,maximum,events,expected in [(10,99,[event(11,100,192),event(11,140,192)],11),(0,99,[event(11,50,192),event(11,140,192)],0),(99,99,[event(11,100,192),event(11,140,192)],99),(10,99,[event(11,126,159),event(11,100,192),event(11,140,192)],20),(10,99,[event(11,182,192)],65535)]:

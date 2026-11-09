@@ -1,6 +1,6 @@
 {
   "path": "build/三国霸业.bda",
-  "size": 219808,
+  "size": 219492,
   "title": "三国霸业",
   "category": 4,
   "decoded_words": [
@@ -8,7 +8,7 @@
     1562662242,
     16777474,
     4,
-    219804,
+    219488,
     38392,
     136,
     12824,
@@ -20,8 +20,8 @@
   "entry_va": 2176843808,
   "runtime_file_base": 2176805416,
   "entry_code_word": 666763240,
-  "file_size_minus_4": 219804,
-  "expected_file_size_minus_4": 219804,
+  "file_size_minus_4": 219488,
+  "expected_file_size_minus_4": 219488,
   "checksum_ok": true,
   "expected_magic": 4932162,
   "expected_word04": 1562662242,

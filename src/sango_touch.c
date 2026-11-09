@@ -239,26 +239,6 @@ int sango_touch_pan_map(const int *event, uint8_t *state, int world_width, int w
     return changed;
 }
 
-int sango_touch_edge_pan(const int *event, uint8_t *state, int world_width, int world_height,
-                         int columns, int rows, int screen_width, int screen_height)
-{
-    int x = sango_touch_x(event), y = sango_touch_y(event);
-    int next_x, next_y;
-    if (event[0] != SANGO_TOUCH_TAP || x < 0 || x >= screen_width || y < 0 || y >= screen_height)
-        return 0;
-    next_x = clamp(state[0] + (x >= screen_width - 12) - (x < 12), 0,
-                   world_width > columns ? world_width - columns : 0);
-    next_y = clamp(state[1] + (y >= screen_height - 12) - (y < 12), 0,
-                   world_height > rows ? world_height - rows : 0);
-    if (next_x == state[0] && next_y == state[1])
-        return 0;
-    state[0] = (uint8_t)next_x;
-    state[1] = (uint8_t)next_y;
-    state[2] = (uint8_t)clamp(state[2], next_x, next_x + columns - 1);
-    state[3] = (uint8_t)clamp(state[3], next_y, next_y + rows - 1);
-    return 1;
-}
-
 void sango_touch_draw_number_controls(void)
 {
     static const char *const labels[4] = {"\xbc\xf5\xc9\xd9", "\xd4\xf6\xbc\xd3",

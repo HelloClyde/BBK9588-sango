@@ -1,7 +1,7 @@
 {
   "passed": 30,
   "failed": 0,
-  "bda_sha256": "aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b",
+  "bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
   "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "color_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
   "scope": "Native C200 QEMU with exact BDA/expanded LIB/CLR RAM staging to bypass synthetic NAND ECC. Production RGB CRC/index/parser, rendering, contexts, font calls, menus, touch and hardware input; controlled 20-unit battle fixture, backdrop probe and four production timeline ranges. File loading/ownership separately tested in compiled MIPS. No physical-device or full-battle/campaign claim.",
@@ -88,13 +88,13 @@
       "name": "Battle cursor movement preserves colored footer",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "7a5c03cff64457b5d74ff8d5ae6e80d11cc58519e5d6ea1a4ca0362f62bc5cd4"
+      "screenshot_sha256": "7f3c93c810522293389290786df65ad2a41231da62456492519622606cdf12d4"
     },
     {
       "name": "Native empty tile switches name to terrain on original single line",
       "passed": true,
       "screenshot": "docs/screenshots/color/battle-move.png",
-      "screenshot_sha256": "7a5c03cff64457b5d74ff8d5ae6e80d11cc58519e5d6ea1a4ca0362f62bc5cd4"
+      "screenshot_sha256": "7f3c93c810522293389290786df65ad2a41231da62456492519622606cdf12d4"
     },
     {
       "name": "Native sprite overlay changes the colored backdrop",

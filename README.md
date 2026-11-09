@@ -7,13 +7,14 @@
 
 当前版本为 **0.1.0-alpha.1**，源码托管于
 [HelloClyde/BBK9588-sango](https://github.com/HelloClyde/BBK9588-sango)。
-构建状态见 [GitHub Actions](https://github.com/HelloClyde/BBK9588-sango/actions)；版本标签和 Release 尚未发布。
+构建状态见 [GitHub Actions](https://github.com/HelloClyde/BBK9588-sango/actions)；
+预发布安装包见 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases)。
 原游戏恢复代码及改编素材没有已提供的开源许可证；新增独立代码与上游 SDK 的许可范围
 分别记录于 [LICENSE.md](LICENSE.md) 和 [来源声明](THIRD_PARTY_NOTICES.md)，请勿将整仓视为 MIT 授权。
 
 ## 快速开始
 
-发布前可按下方命令本地构建。正式发布后，从本仓库 Releases 选择同一版本的 `-update.zip`，
+从本仓库 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases) 选择同一版本的 `-update.zip`，
 或同时下载同版本 BDA、`sango.lib` 和 `sango.clr`。
 游戏内全部1204帧素材已用 GPT Image 上色，包括头像、地图、兵种、动画、菜单和补充界面；
 原灰度素材和此前三张彩色草稿保留。启动图标按9288S原图恢复左下曹操、无金冠、铺满背景的整面旗帜及部分可见的“曹”字；旧母图和未采用草稿均保留。城市图标使用透明底，彩色战略地图铺满240×232，消除右侧和下方留白；
@@ -41,7 +42,7 @@
 安全弹出设备、退出 USB 存储模式后，从“娱乐天地”打开《三国霸业》。不要把整个源码目录复制进设备。
 程序沿用 `系统/数据/游戏/sango0.sav`、`sango1.sav` 等原存档路径，升级包不覆盖它们。
 
-方向键选择／移动，确定执行，返回取消；也可直接触摸菜单、城池、武将、目的地和操作选项，点击地图空白边缘滚动视野。连续拖动已接入SDK手势采样，仍待真机验证。
+方向键选择／移动，确定执行，返回取消；也可直接触摸菜单、城池、武将、目的地和操作选项，按住地图拖动移动视野。拖动松手不会确认城池、人物或命令，轻点空地只移动光标。
 点击底部君主头像可进入原有返回键菜单流程；数值面板提供“减少／增加／确定／返回”。触摸与按键可混用，详见 [触摸操作](docs/TOUCH_CONTROLS.md)。
 战斗底栏按9288S比例重排：粮草、天气、人物／地形分栏铺满整行，下接“信息／查找”按钮，
 再下方保留君主头像、城池／武将数、年月和城市名；

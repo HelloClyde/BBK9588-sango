@@ -104,7 +104,7 @@
 | `0x81c03708` | [`sango_battle_select_move_destination`](../src/battle/player_turn.c#L348) |
 | `0x81c03874` | [`sango_battle_select_active_unit`](../src/battle/player_turn.c#L400) |
 | `0x81c038f4` | [`sango_battle_poll_map_action`](../src/battle/player_turn.c#L426) |
-| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L572) |
+| `0x81c03c20` | [`sango_battle_draw_cursor`](../src/battle/player_turn.c#L557) |
 
 ## src/battle/field.c
 
@@ -418,19 +418,19 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c12b18` | [`sango_strategy_select_city`](../src/strategy/map.c#L7) |
-| `0x81c12e18` | [`sango_strategy_draw_map`](../src/strategy/map.c#L166) |
-| `0x81c13494` | [`sango_strategy_present`](../src/strategy/map.c#L354) |
-| `0x81c134b8` | [`sango_city_add_character`](../src/strategy/map.c#L361) |
-| `0x81c135a8` | [`sango_city_add_item`](../src/strategy/map.c#L404) |
-| `0x81c13698` | [`sango_city_roster_noop`](../src/strategy/map.c#L446) |
-| `0x81c136a0` | [`sango_city_adjacent_distance`](../src/strategy/map.c#L452) |
-| `0x81c13794` | [`sango_faction_list_cities`](../src/strategy/map.c#L504) |
-| `0x81c137f0` | [`sango_character_find_city`](../src/strategy/map.c#L526) |
-| `0x81c13870` | [`sango_city_list_idle_characters`](../src/strategy/map.c#L557) |
-| `0x81c13918` | [`sango_city_list_available_characters`](../src/strategy/map.c#L587) |
-| `0x81c139a8` | [`sango_city_list_captives`](../src/strategy/map.c#L617) |
-| `0x81c13a40` | [`sango_city_list_enemy_rulers`](../src/strategy/map.c#L647) |
-| `0x81c13ab8` | [`sango_faction_list_characters`](../src/strategy/map.c#L681) |
+| `0x81c12e18` | [`sango_strategy_draw_map`](../src/strategy/map.c#L163) |
+| `0x81c13494` | [`sango_strategy_present`](../src/strategy/map.c#L351) |
+| `0x81c134b8` | [`sango_city_add_character`](../src/strategy/map.c#L358) |
+| `0x81c135a8` | [`sango_city_add_item`](../src/strategy/map.c#L401) |
+| `0x81c13698` | [`sango_city_roster_noop`](../src/strategy/map.c#L443) |
+| `0x81c136a0` | [`sango_city_adjacent_distance`](../src/strategy/map.c#L449) |
+| `0x81c13794` | [`sango_faction_list_cities`](../src/strategy/map.c#L501) |
+| `0x81c137f0` | [`sango_character_find_city`](../src/strategy/map.c#L523) |
+| `0x81c13870` | [`sango_city_list_idle_characters`](../src/strategy/map.c#L554) |
+| `0x81c13918` | [`sango_city_list_available_characters`](../src/strategy/map.c#L584) |
+| `0x81c139a8` | [`sango_city_list_captives`](../src/strategy/map.c#L614) |
+| `0x81c13a40` | [`sango_city_list_enemy_rulers`](../src/strategy/map.c#L644) |
+| `0x81c13ab8` | [`sango_faction_list_characters`](../src/strategy/map.c#L678) |
 
 ## src/ui/numeric.c
 

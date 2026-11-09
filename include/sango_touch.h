@@ -29,7 +29,5 @@ int sango_touch_map_point(const int *event, uint8_t *state, int columns, int row
                           int screen_height);
 int sango_touch_pan_map(const int *event, uint8_t *state, int world_width, int world_height,
                         int columns, int rows, int screen_width, int screen_height, int *remainder);
-int sango_touch_edge_pan(const int *event, uint8_t *state, int world_width, int world_height,
-                         int columns, int rows, int screen_width, int screen_height);
 void sango_touch_draw_number_controls(void);
 #endif

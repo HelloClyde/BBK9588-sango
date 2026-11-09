@@ -8,6 +8,6 @@
     "battle": 1260
   },
   "baseline_elf_sha256": "d1fad32bcd71846cca3668bb839c859a28a41ae801383033e621dc93416c00ba",
-  "bda_sha256": "aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b",
+  "bda_sha256": "6d0100c45f7e2be42cea5f1045fdc6af553bce6344d745173e56bd5d9ec34fe8",
   "scope": "Actual compiled MIPS comparison with pre-touch ELF: exact strategy, decimal and roster return/state/input/render boundaries; battle decisions, legacy state and input consumption match, excluding paint-only phase/count from the old uninitialized cursor blink counter. New touch-only behavior is separately tested. Modeled SDK boundaries; not firmware or complete campaign."
 }

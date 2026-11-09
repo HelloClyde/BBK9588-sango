@@ -60,9 +60,6 @@ uint32_t sango_strategy_select_city(uint8_t *map_state)
                 selected_city_plus_one = sango_strategy_draw_map(map_state, 0);
                 if (selected_city_plus_one)
                     return selected_city_plus_one - 1;
-                /* A city under the pen takes precedence over edge scrolling. */
-                if (sango_touch_edge_pan(&event_kind, map_state, 12, 9, 7, 7, width, height))
-                    redraw_map = true;
                 continue;
             }
             if (sango_touch_x(&event_kind) >= 16 && sango_touch_x(&event_kind) < 48 &&

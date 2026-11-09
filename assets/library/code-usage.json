@@ -14,7 +14,7 @@
     "src/battle/field.c": "5d0fd20608cb9788f78c66f212375cb932e504823af714be0d3b7253ac2b8890",
     "src/battle/movement.c": "3e8e81140ce51fd648b59c970c06f349ad1ef7abacb9692db28da8a5ab2a2b56",
     "src/battle/overview.c": "7defe53dcd5cfd355c0785251735c1ec0c1c88f70bfe10fbd0882d8e03056a06",
-    "src/battle/player_turn.c": "79bf51741fa3e864e6906535a680cd2bbd3ac2d82a5c7365b4ddb0bf57484933",
+    "src/battle/player_turn.c": "dfadb7a596ab1a34a1bffedd5f0d6885b1ab60619462f3a286d5567c19d050fa",
     "src/platform/event_loop.c": "2e23260dd843cfbd30ec5caf3c7770093694dce7ba7f616d0efd1fcb3c785acb",
     "src/platform/input_dialog.c": "3f20f477df4b9b4f4056e853cca59d2d8fe821aee9ccd2b8b2b252680cfc42ee",
     "src/platform/sdk_bindings.c": "1d9b9065b54c77903ef6306cdfd2c1688a463d362a1ded8fa01ec8edd5f96523",
@@ -36,7 +36,7 @@
     "src/strategy/calendar.c": "4313a38e2f2437fdc4c0e92860c200f730fea1707a906b1a00fbec9f01178594",
     "src/strategy/domestic.c": "99d20e5e24c1400bd4b00fc6a02407d8325b65352407f165f16c6157cbdfbb09",
     "src/strategy/items.c": "d1bbce7708da783f7fe292537d814f9c804fefbbbf4ddb63403df71cbcc088e5",
-    "src/strategy/map.c": "5eddc8fd34bd5540b6e03c657a73159e9c4e717dbadaaa066771c23a52d64904",
+    "src/strategy/map.c": "c73b7865d3046f81ac72b2bb4bb1c61d1f6efe210b9fce356f9c3060ac3ee861",
     "src/strategy/military.c": "5b135b69419190b27d50abcb1a4890d54794a6ba5a61c91df3974d91a8470f51",
     "src/strategy/orders.c": "aa9222a0c64f3ee683cdd3934c6e4ce35b4024178c2c2c47bf95e6261ea377ac",
     "src/strategy/rosters.c": "90d99d4b717511c69725722a19750b74efe897c20dc720a2c776fc1cbdfd1e36",
@@ -89,7 +89,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(2,'\\x0e',",
-          "line": 166
+          "line": 163
         },
         {
           "source": "src/strategy/military.c",
@@ -321,7 +321,7 @@
           "source": "src/battle/player_turn.c",
           "function": "sango_battle_draw_cursor",
           "expression": "sango_battle_draw_bitmap(7,5,",
-          "line": 572
+          "line": 557
         }
       ]
     },
@@ -4012,13 +4012,13 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x36,'\\x01',",
-          "line": 166
+          "line": 163
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "* 0xc + (uint32_t)*map_state) * 0x100",
-          "line": 166
+          "line": 163
         }
       ]
     },
@@ -4033,19 +4033,19 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x37,'\\x01',",
-          "line": 166
+          "line": 163
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "city_marker_frame = 8;",
-          "line": 166
+          "line": 163
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "city_marker_frame = 7,",
-          "line": 166
+          "line": 163
         }
       ]
     },
@@ -4060,7 +4060,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x38,'\\x01',",
-          "line": 166
+          "line": 163
         }
       ]
     },
@@ -4105,7 +4105,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_adjacent_distance",
           "expression": "sango_resource_item(0x3b,'\\x01',",
-          "line": 452
+          "line": 449
         },
         {
           "source": "src/strategy/rosters.c",
@@ -4218,7 +4218,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_list_idle_characters",
           "expression": "g_city_character_roster",
-          "line": 557
+          "line": 554
         }
       ]
     },
@@ -4272,7 +4272,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_add_item",
           "expression": "item_id < 0x21",
-          "line": 404
+          "line": 401
         }
       ]
     },
@@ -4293,7 +4293,7 @@
           "source": "src/strategy/map.c",
           "function": "sango_city_add_item",
           "expression": "g_city_item_roster",
-          "line": 404
+          "line": 401
         },
         {
           "source": "src/strategy/rosters.c",
@@ -4314,13 +4314,13 @@
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_resource_item(0x45,'\\x01',",
-          "line": 166
+          "line": 163
         },
         {
           "source": "src/strategy/map.c",
           "function": "sango_strategy_draw_map",
           "expression": "sango_bitmap_draw_frame(0x35,0x10f,7,9,1,",
-          "line": 166
+          "line": 163
         },
         {
           "source": "src/strategy/items.c",

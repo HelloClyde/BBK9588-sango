@@ -516,21 +516,6 @@ uint32_t sango_battle_poll_map_action(char preview_mode)
                 sango_battle_draw_tile(g_battle_cursor_x, g_battle_cursor_y, 0);
                 g_battle_cursor_x = map_state[2];
                 g_battle_cursor_y = map_state[3];
-                if (preview_mode == 3 &&
-                    sango_battle_find_unit_at(g_battle_cursor_x, g_battle_cursor_y) == 0xff &&
-                    sango_touch_edge_pan(&event_kind, map_state, g_battle_map_width,
-                                         g_battle_map_height, SANGO_BATTLE_VIEW_COLUMNS,
-                                         SANGO_BATTLE_VIEW_ROWS, SANGO_BATTLE_MAP_WIDTH,
-                                         SANGO_BATTLE_MAP_HEIGHT))
-                {
-                    g_battle_cursor_x = map_state[2];
-                    g_battle_cursor_y = map_state[3];
-                    sango_battle_draw_terrain(map_state[0], map_state[1]);
-                    sango_battle_draw_units(blink_phase);
-                    sango_battle_scroll_viewport(0);
-                    sango_battle_draw_cursor();
-                    continue;
-                }
                 if (preview_mode == 1)
                     sango_battle_refresh_target_preview(0);
                 else if (preview_mode == 2)
