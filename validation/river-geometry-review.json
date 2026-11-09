@@ -63,6 +63,8 @@
     "validation/touch-native-staging.json": "0602ccad90f6ba169e271c9e6bb384df2ab6fa0f62261594ef76dbb40bf14fd5",
     "validation/touch-drag-trajectories.json": "2e78bd3bddc5049502a7f45096729a44d0f2db5597001bbadaa0849bd1d739ef",
     "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d",
-    "validation/river-payload-diff.json": "72f1bfbbd92a162280281396025c2a297f3aafb239f3f243557505552c7ab135"
-  }
+    "validation/river-payload-diff.json": "72f1bfbbd92a162280281396025c2a297f3aafb239f3f243557505552c7ab135",
+    "validation/release-clean-build.json": "385b9ff41f01b6213db93692126fca54aa07a2809964901c4fcfa50bd5cd1fc6"
+  },
+  "clean_build_tested_commit": "946dbc7eaa1cdb14dc129b5abd671bc404c5def7"
 }
