@@ -6,7 +6,7 @@ It is not a runtime drawing system and needs no installed font to reproduce.
 """
 from pathlib import Path
 import hashlib,json
-from PIL import Image
+from PIL import Image,ImageDraw
 from color_assets import COLOR,read_catalog,write_catalog
 
 INK=(24,20,8)
@@ -24,18 +24,25 @@ def compose():
     for y in range(24):
         for x in range(240):status.putpixel((x,y),legacy.getpixel((239 if x==239 else (x*2+1)//3,(y*2+1)//3)))
     toolbar=crop((0,200,960,344),(240,36))
+    # Replace the blurry painted question marker with an integer-grid frame.
+    # The replacement is baked artwork, never a runtime text overlay.
+    status.paste(status.crop((162,3,183,21)),(137,3))
+    pen=ImageDraw.Draw(status)
+    pen.rectangle((138,3,156,20),outline=(112,79,22),width=1)
+    pen.line((139,4,155,4),fill=(251,228,163),width=1)
     status.save(root/'status-background-240x24.png')
     toolbar.save(root/'toolbar-background-240x36.png')
     placements=[]
     def text(image,value,left,top,output):
         for i,char in enumerate(value):
-            path=root/'glyphs'/f'{char}_16x16.png'
+            path=root/'glyphs'/('question_16x16.png' if char=='?' else f'{char}_16x16.png')
             mask=Image.open(path).convert('RGBA').getchannel('A')
             assert mask.size==(16,16) and set(mask.get_flattened_data())=={0,255}
             image.paste(INK,(left+i*16,top,left+(i+1)*16,top+16),mask)
-            placements.append({'character':char,'mask':f'glyphs/{char}_16x16.png','target':output,'rectangle':[left+i*16,top,16,16],'scale':[1,1]})
+            placements.append({'character':char,'mask':path.relative_to(root).as_posix(),'target':output,'rectangle':[left+i*16,top,16,16],'scale':[1,1]})
     text(status,'粮',4,4,'status-row-240x24.png')
     text(status,'天',82,4,'status-row-240x24.png')
+    text(status,'?',138,4,'status-row-240x24.png')
     text(toolbar,'信息',71,10,'toolbar-240x36.png')
     text(toolbar,'查找',139,10,'toolbar-240x36.png')
     status.save(root/'status-row-240x24.png')
@@ -53,6 +60,6 @@ def compose():
     (root/'provenance.json').write_text(json.dumps({'artwork_generator':'built-in GPT Image','font_masks':'glyphs/provenance.json',
         'master':batch['master'],'master_sha256':batch['master_sha256'],'prompt':batch['prompt'],'ink_rgb':INK,
         'runtime_scale':[1,1],'placements':placements},ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-    print('Baked 240x24 status and 240x36 toolbar; all six glyph masks copied at 1:1.')
+    print('Baked 240x24 status and 240x36 toolbar; all seven glyph masks copied at 1:1.')
 
 if __name__=='__main__':compose()

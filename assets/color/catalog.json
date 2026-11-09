@@ -35366,6 +35366,20 @@
       240,
       24
     ],
-    "sha256": "1f430fe9f91720c4b69375fd88e35798190e6ed918363d79720b280717d5440f"
+    "sha256": "285b61ff1ce98c19379ad796f7879670261c2e026442601b8d7aea603c72c060"
+  },
+  "native_weather_images": {
+    "source_resource": 9,
+    "size": [
+      18,
+      18
+    ],
+    "frames": [
+      "battle-ui/weather/weather-01-18x18.png",
+      "battle-ui/weather/weather-02-18x18.png",
+      "battle-ui/weather/weather-03-18x18.png",
+      "battle-ui/weather/weather-04-18x18.png",
+      "battle-ui/weather/weather-05-18x18.png"
+    ]
   }
 }

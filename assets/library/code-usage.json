@@ -10,7 +10,7 @@
     "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
     "src/battle/combat_math.c": "5a239d0d3ca4effb833d4fda82b7c56c42581a7f3da352839173bb74593c2099",
-    "src/battle/controller.c": "697c304bcd8a890aa41ff5f11ff628b5653517bbc49ca050cce959d9228c6b16",
+    "src/battle/controller.c": "1afd677735885c7bd69a456135aaf9a96d1d05a6f0c28ddbfc4290245da33edd",
     "src/battle/field.c": "5d0fd20608cb9788f78c66f212375cb932e504823af714be0d3b7253ac2b8890",
     "src/battle/movement.c": "3e8e81140ce51fd648b59c970c06f349ad1ef7abacb9692db28da8a5ab2a2b56",
     "src/battle/overview.c": "7defe53dcd5cfd355c0785251735c1ec0c1c88f70bfe10fbd0882d8e03056a06",
@@ -26,7 +26,8 @@
     "src/runtime/libc.c": "c7ede021266375069338092a07ac3e853b180208163e8a4881e58bb2d6c3f7a6",
     "src/runtime/soft_float.c": "28bf399b38fc0fc8b2da198142194d49f2e212e925cbabdb5d5b267fd348b0ed",
     "src/runtime/strings.c": "462d838a2767248b0598c73ef7f9cc62967e36ba93bf55efa18bddc4e5e9a923",
-    "src/sango_battle_ui.c": "0227f9135d4d5466d3d361ac9ab08af45160fe668003ac01bc625c2e6493fcf9",
+    "src/sango_battle_info.c": "377b53f28354f8b6b1513d30f0d408b025c40f5e4104bfd3ff1aec23dd1314c8",
+    "src/sango_battle_ui.c": "e918a6f2c8232d37f6064a1a83074f2b2aba789a94f11d2a1ba74ad8e1833da4",
     "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
     "src/sango_statusbar.c": "0ff71941e03ccc2d2c8842f9cbf7f5b39e22d42e2a78b2107bcaff510daabf87",
@@ -336,13 +337,13 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw",
           "expression": "sango_resource_item(8, 1, g_resource_package_address)",
-          "line": 162
+          "line": 167
         },
         {
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw_description",
           "expression": "draw_status_text(STATUS_DESCRIPTION_X, text, target);",
-          "line": 232
+          "line": 237
         }
       ]
     },
@@ -351,7 +352,7 @@
       "category": "天气",
       "name": "战斗天气状态图标",
       "usage_status": "confirmed",
-      "naming_evidence": "天气状态值为1到5；绘制前转零基帧号，并按3:2放大到18x18。未找到代码内的逐状态中文天气名，保留状态编号。",
+      "naming_evidence": "天气状态值为1到5，绘制前转零基帧号；当前彩色包另存同源18x18成品，以1:1透明绘制，不再运行时放大12x12；旧包和灰度回退保留3:2路径。未找到逐状态中文天气名，保留原编号和图形。",
       "code_evidence": [
         {
           "source": "src/battle/actions.c",
@@ -363,13 +364,13 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw_weather",
           "expression": "sango_resource_item(9, 1, g_resource_package_address)",
-          "line": 150
+          "line": 155
         },
         {
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_status_draw_weather",
           "expression": "g_battle_weather - 1",
-          "line": 150
+          "line": 155
         }
       ]
     },
@@ -3183,7 +3184,7 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_day_popup_draw",
           "expression": "sango_resource_item(33,1,",
-          "line": 243
+          "line": 248
         }
       ]
     },
@@ -3901,16 +3902,16 @@
       "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,",
+          "line": 75
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,",
+          "line": 75
         },
         {
           "source": "src/ui/city_details.c",
@@ -3928,16 +3929,16 @@
       "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,",
+          "line": 75
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,",
+          "line": 75
         },
         {
           "source": "src/ui/city_details.c",
@@ -3955,16 +3956,16 @@
       "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,",
+          "line": 75
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,",
+          "line": 75
         },
         {
           "source": "src/ui/city_details.c",
@@ -3982,16 +3983,16 @@
       "naming_evidence": "头像ID=剧本+47，头像帧号与同剧本姓名表使用同一武将索引。",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,",
+          "line": 75
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,",
-          "line": 267
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,",
+          "line": 75
         },
         {
           "source": "src/ui/city_details.c",
@@ -4332,7 +4333,7 @@
           "source": "src/sango_battle_ui.c",
           "function": "sango_battle_summary_draw",
           "expression": "sango_resource_item(69, 1, g_resource_package_address)",
-          "line": 200
+          "line": 205
         }
       ]
     },
@@ -6061,10 +6062,6 @@
     {
       "function": "sango_battle_draw_bitmap",
       "line": "sango_bitmap_draw_resource(resource_id & 0xffff, frame_number & 0xff, x & 0xffff, y, '\\0');"
-    },
-    {
-      "function": "sango_battle_show_cursor_info",
-      "line": "portraits = (uint8_t *)sango_resource_item(g_scenario_id_view2 + 0x2f, '\\x01',"
     },
     {
       "function": "sango_battle_execute_skill",

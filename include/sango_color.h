@@ -8,6 +8,7 @@ void sango_color_load(const char *library_path, uint32_t library_bytes);
 void sango_color_unload(void);
 int sango_color_is_loaded(void);
 const uint16_t *sango_color_native_status(uint32_t original_pixels);
+const uint16_t *sango_color_native_weather(uint32_t original_pixels, unsigned int frame);
 uint32_t sango_color_frame_flags(uint32_t original_pixels, uint32_t width, uint32_t height,
                                  int masked);
 void sango_color_animation_begin(uint32_t target);

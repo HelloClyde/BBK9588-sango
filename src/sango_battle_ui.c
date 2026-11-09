@@ -56,13 +56,18 @@ static void draw_status_bitmap_region(const SangoBitmapHeader *bitmap, unsigned 
     /* Final-size artwork already contains its fixed labels on the LCD grid.
      * Only copy image pixels here; neither text nor image is scaled. */
     rgb = reference_width == STATUS_REFERENCE_WIDTH ? sango_color_native_status((uint32_t)mask)
-                                                    : NULL;
+              : reference_width == 12 && bitmap->width == 12 && bitmap->height == 12
+                  ? sango_color_native_weather((uint32_t)(bitmap + 1), frame)
+                  : NULL;
     if (rgb)
     {
-        for (y = 0; y < 24; ++y)
-            for (x = 0; x < 240; ++x)
-                if (left + x >= clip_left && left + x < clip_right)
-                    sango_color_put_pixel(left + x, top + y, rgb[y * 240 + x], target);
+        width = reference_width == STATUS_REFERENCE_WIDTH ? 240 : 18;
+        height = reference_width == STATUS_REFERENCE_WIDTH ? 24 : 18;
+        for (y = 0; y < height; ++y)
+            for (x = 0; x < width; ++x)
+                if (left + x >= clip_left && left + x < clip_right &&
+                    (width == 240 || rgb[y * width + x]))
+                    sango_color_put_pixel(left + x, top + y, rgb[y * width + x], target);
         return;
     }
     colors = mask + ((bitmap->flags & 1) ? plane_bytes : 0);

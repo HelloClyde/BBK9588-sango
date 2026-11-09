@@ -1,18 +1,18 @@
 {
-  "antialiasing": false,
-  "characters": "粮天信息查找",
-  "rasterizer": "System.Drawing SingleBitPerPixelGridFit",
-  "runtime_font_dependency": false,
+  "font": "SimSun",
+  "font_file": "simsun.ttc",
+  "font_file_sha256": "120a51d2b14eb588700a21e15fc301f0ea55d7c1a4e1f3ae61db83b7c8d42cd6",
   "size_pixels": 16,
   "cell": [
     16,
     16
   ],
-  "font": "SimSun",
   "common_crop_origin": [
     0,
     0
   ],
-  "font_file": "simsun.ttc",
-  "font_file_sha256": "120a51d2b14eb588700a21e15fc301f0ea55d7c1a4e1f3ae61db83b7c8d42cd6"
+  "rasterizer": "System.Drawing SingleBitPerPixelGridFit",
+  "antialiasing": false,
+  "runtime_font_dependency": false,
+  "characters": "粮天信息查找?"
 }

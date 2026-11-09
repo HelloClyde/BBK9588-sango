@@ -54,6 +54,7 @@ flowchart TD
 `src/sango_statusbar.c`（战略底栏）、`src/sango_credits.c`（制作群组）、
 `src/sango_battle_ui.c`（战斗按钮、触摸及居中弹窗）。
 `src/sango_touch.c` 与 `include/sango_touch.h` 负责完整触摸手势、菜单命中、地图坐标换算与数值按钮；业务合法性仍由原来的城市/战斗控制器判断。
+`src/sango_battle_info.c` 负责16像素信息页、原始数据读取、离屏整页绘制与关闭恢复；不调用旧的逐行屏幕文字布局。
 素材入口仍为 `assets/library/manifest.json`；[用途核对](../assets/library/代码用途核对.md)
 已同步指向新的语义函数和模块位置。
 

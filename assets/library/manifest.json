@@ -518,7 +518,7 @@
       ],
       "category": "天气",
       "name": "战斗天气状态图标",
-      "naming_evidence": "天气状态值为1到5；绘制前转零基帧号，并按3:2放大到18x18。未找到代码内的逐状态中文天气名，保留状态编号。",
+      "naming_evidence": "天气状态值为1到5，绘制前转零基帧号；当前彩色包另存同源18x18成品，以1:1透明绘制，不再运行时放大12x12；旧包和灰度回退保留3:2路径。未找到逐状态中文天气名，保留原编号和图形。",
       "usage_status": "confirmed",
       "code_evidence": [
         {
@@ -3373,14 +3373,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,"
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,"
         },
         {
           "source": "src/ui/city_details.c",
@@ -3614,14 +3614,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,"
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,"
         },
         {
           "source": "src/ui/city_details.c",
@@ -3855,14 +3855,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,"
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,"
         },
         {
           "source": "src/ui/city_details.c",
@@ -4096,14 +4096,14 @@
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_resource_item(g_scenario_id_view2 + 0x2f,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_resource_item(g_scenario_id_view2 + 47, 1,"
         },
         {
-          "source": "src/battle/controller.c",
-          "function": "sango_battle_show_cursor_info",
-          "expression": "sango_bitmap_draw_frame_screen(0xc3,10,"
+          "source": "src/sango_battle_info.c",
+          "function": "info_unit",
+          "expression": "sango_bitmap_draw_frame(196, 14, 24, 24, character_id,"
         },
         {
           "source": "src/ui/city_details.c",

@@ -1,0 +1,120 @@
+{
+  "generator": "built-in GPT Image",
+  "master": "generated/weather-native-sharp.png",
+  "master_sha256": "85ca5f5d87130c7073aa0fedbade379e1314eef9282a929626a12eb666b67075",
+  "reference": "references/weather-original-five.png",
+  "prompt": "prompts/weather-native-sharp.txt",
+  "original_order_and_motifs_preserved": true,
+  "runtime_scale": [
+    1,
+    1
+  ],
+  "export": "Final-size nearest sampling, four RGB colors, binary alpha. Original generated master retained.",
+  "frames": [
+    {
+      "frame": 0,
+      "path": "battle-ui/weather/weather-01-18x18.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "crop": [
+        56,
+        69,
+        456,
+        475
+      ],
+      "size": [
+        18,
+        18
+      ],
+      "sha256": "113df47a1e82aaa95ff6815bef0c0d2146a25af93a5b2f7f012f01e1367267e9"
+    },
+    {
+      "frame": 1,
+      "path": "battle-ui/weather/weather-02-18x18.png",
+      "source_cell": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "crop": [
+        66,
+        149,
+        445,
+        416
+      ],
+      "size": [
+        18,
+        18
+      ],
+      "sha256": "762b8dee5e17498cdb4e3fc7d0a0d6aceaaf47b0f581f28f3e8141316008bc67"
+    },
+    {
+      "frame": 2,
+      "path": "battle-ui/weather/weather-03-18x18.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "crop": [
+        131,
+        84,
+        412,
+        450
+      ],
+      "size": [
+        18,
+        18
+      ],
+      "sha256": "a33fb9cbd3af7820c0fedbb19a2c99f00ba306097e788711f7fefb2f563c23d2"
+    },
+    {
+      "frame": 3,
+      "path": "battle-ui/weather/weather-04-18x18.png",
+      "source_cell": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "crop": [
+        64,
+        84,
+        447,
+        446
+      ],
+      "size": [
+        18,
+        18
+      ],
+      "sha256": "05a4809026d9b16c0598dab19d5e0328205dd214de7b5678e1e0b643c36b856f"
+    },
+    {
+      "frame": 4,
+      "path": "battle-ui/weather/weather-05-18x18.png",
+      "source_cell": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "crop": [
+        73,
+        76,
+        440,
+        449
+      ],
+      "size": [
+        18,
+        18
+      ],
+      "sha256": "f0dbf4e7c289aa8a060eab1c7dd33fd87bdb6373ea4a23e509fc57ac429e0ff1"
+    }
+  ]
+}

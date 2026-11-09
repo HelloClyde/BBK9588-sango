@@ -1,5 +1,5 @@
 {
-  "passed": 21,
+  "passed": 22,
   "failed": 0,
   "native_image": [
     240,
@@ -14,8 +14,8 @@
     1
   ],
   "rendered_status_pixels_compared": 5760,
-  "fixed_characters": "粮天信息查找",
-  "bda_sha256": "db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41",
-  "color_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
-  "scope": "Six baked single-bit glyph masks match final PNG pixels exactly at integer positions; compiled MIPS copies all 5760 native HUD pixels without scaling, restores the same image region, checks SGHUD01 trailer bounds/CRC/source, legacy compatibility and unload. SDK pixel/text boundaries modeled; native firmware separately checked."
+  "fixed_characters": "粮天?信息查找",
+  "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
+  "color_sha256": "13fda841e8ff7ea63c087b4a7c3fd5f76b1586b51b30a91272903fd0f69e6c68",
+  "scope": "Seven baked single-bit glyph masks match final PNG pixels exactly at integer positions; compiled MIPS copies all 5760 native HUD pixels without scaling, restores the same image region, checks SGHUD01 trailer bounds/CRC/source, legacy compatibility and unload. SDK pixel/text boundaries modeled; native firmware separately checked."
 }

@@ -88,5 +88,7 @@
     "validation/sdk-bda-validation.json": "c401bbfe8cfe7ff9bd818ff13de1f386e347f8147f0bc88f7035de08d160003f",
     "validation/release-clean-build.json": "73ccc8b7765497f09e100425b214721bee4d9dc1dc385d95a4a4a0e6c14e7880"
   },
-  "clean_rebuild": "validation/release-clean-build.json"
+  "clean_rebuild": "validation/release-clean-build.json",
+  "snapshot_commit": "9b9a66744a5b46581e2963b6d0ea839cd7249e60",
+  "history_note": "Historical alpha.2 footer-alignment snapshot. Its report digests refer to that commit. Current alpha.3 reports and artwork/info changes are in battle-hud-info-sharp.json."
 }

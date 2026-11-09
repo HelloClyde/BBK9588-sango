@@ -102,7 +102,7 @@ void sango_battle_refresh_move_preview(char redraw_range);
 uint32_t sango_battle_reset_session(void);
 void sango_battle_refresh_display(void);
 void sango_battle_focus_viewport(void);
-void sango_battle_show_cursor_info(void);
+void sango_battle_show_cursor_info(void) __attribute__((noinline));
 uint32_t sango_battle_execute_skill(int action_address);
 uint32_t sango_battle_execute_surround_attack(uint32_t target_unit);
 uint32_t sango_battle_execute_normal_attack(uint32_t target_unit);

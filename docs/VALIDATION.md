@@ -1,8 +1,8 @@
 # 验证记录
 
-当前触摸版BDA：219492字节，SHA-256 `db8e7145e3a940d156e4797974c51597d082bfed5317424c617c5fff575fbb41`。
+当前触摸版BDA：221688字节，SHA-256 `2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea`。
 LIB：461116字节，SHA-256 `01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11`。
-CLR：2294040字节，SHA-256 `ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e`。
+CLR：2297312字节，SHA-256 `13fda841e8ff7ea63c087b4a7c3fd5f76b1586b51b30a91272903fd0f69e6c68`。
 固定SDK `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，GCC15.2.0。
 
 ## 当前执行文件的检查
@@ -13,25 +13,27 @@ CLR：2294040字节，SHA-256 `ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa0
 | 战略地图/选择箭头 | 88 | 城市透明、18个视口、240×232覆盖、四向重画、68像素箭头与49格完整轮廓 |
 | 战斗彩色/背景恢复 | 250 | 地形分类、168帧遮罩、天气/数字透明、17组真实时间轴、恢复/裁切/中断/失败 |
 | 图片底栏与居中 | 113 | 原图底色、透明文字、姓名/地形单行切换、30种计谋与36种攻击坐标/状态 |
-| 最终像素网格 | 21 | 六张16×16单比特字形1:1烘焙；真实MIPS完整5760像素复制、恢复、CRC/边界和旧文件兼容 |
+| 最终像素网格 | 22 | 七张16×16单比特字形1:1烘焙；真实MIPS完整5760像素复制、恢复、CRC/边界和旧文件兼容 |
 | 战斗底栏、摘要、可视区 | 575 | 分别59、9、507项；保留布局、天气、底部摘要、15×13绘制、滚动/边界/覆盖层 |
+| 信息页与天气MIPS | 27 | 真实信息页字段、16像素排版、GBK换行、极值/无效值、分配失败/释放、战斗计算视图恢复；天气18×18透明复制、源索引/CRC/边界及卸载 |
 | 新增触摸MIPS | 132 | 原生窗口回调、完整16位坐标、按下/抬起/取消、8像素阈值、重复释放、SDK采样定时器、菜单、列表、存档槽、数值、城池与三种战斗选择模式、拖动、边界及边缘轻点不滚动 |
-| 原生C200彩色界面 | 31 | 同y=232处的两栏全部8640像素一致；菜单/制作群组、战略地图/箭头、战场/透明文字/信息/查找、天数居中、背景恢复和四段真实动画 |
+| 原生C200彩色界面 | 39 | 同y=232处的两栏全部8640像素一致；菜单/制作群组、战略地图/箭头、战场/透明文字/信息/查找、天数居中、背景恢复和四段真实动画 |
 | 原生C200触摸流程 | 25 | 菜单→剧本→君主→正常开局；武将→合法目的地→攻击菜单→目标；数值修改/确认、战略横纵拖动与上下边界、战斗三种选择状态拖动/反向恢复/松手不确认、边缘轻点不滚动、触摸后实体键、城池ID |
 | 资源回包 | 10 | 原87条/空槽保留、原库逐字节还原、89条扩展库往返、遮罩/行填充/动画/地图/索引约束 |
 | 源码结构 | 42模块/446恢复函数 | 模块独立编译、函数索引、89项资源用途依据；新增触摸模块独立于恢复模块 |
 
-当前确切BDA新跑4997项编译MIPS检查及56项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
+当前确切BDA新跑5025项编译MIPS检查及64项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
 此前593项既有回归、27163项控制流对照及60026项运行库对照保留为历史证据，没有计为本轮新跑检查。
-全部1204帧彩色PNG、LIB和CLR与01a990f相同；45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
+原1204条索引PNG与LIB保持不变；CLR更新原生状态图问号并追加五张18×18天气图。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
 新增触摸代码/状态位于原固定状态区之后的受限区间，链接器检查其末端不超过0x81c30000。
 alpha.1把战斗光标闪烁计数器从未初始化改为0；该轮历史按键对照排除这一绘制相位/次数差异，比较游戏决策、状态、命令及输入消耗。
 
-汇总及源码/报告哈希：[战斗底栏对齐记录](../validation/battle-footer-alignment.json)。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
+汇总及源码/报告哈希：[问号、天气与信息页记录](../validation/battle-hud-info-sharp.json)。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
+问号按16×16单比特字形烘焙，天气按原生18×18绘制；信息页后台一次画完整页并提交，保持到点击或按键返回。新信息页不进入逐行直接绘屏路径，临时攻防计算视图读出后恢复，原游戏状态与战场缓冲不改。
 独立干净检出构建及安装包检查见 [干净构建记录](../validation/release-clean-build.json)。
 发行包由 `reference-build.json` 分别校验BDA/LIB/CLR；升级ZIP和外部文件均有逐文件SHA-256。
 
-本轮按钮栏y=232、高36，与战略界面一致；粮草／天气行y=208，摘要y=268。字体与1204帧图片未改，战场显示区变为15×13；移动/AI/技能的15×15规则窗口不变。
+沿用alpha.2按钮栏y=232、高36，与战略界面一致；粮草／天气行y=208，摘要y=268。原六张字形及1204帧图片未改，新增问号字形和五张原生天气图，战场显示区保持15×13；移动/AI/技能的15×15规则窗口不变。
 
 ## 触摸范围与限制
 
@@ -60,6 +62,7 @@ python tools/test_battle_hud.py
 python tools/test_battle_summary.py
 python tools/test_battle_viewport.py
 python tools/test_touch_input.py
+python tools/test_battle_info.py
 python tools/package_release.py --require-validated
 python tools/verify_artifacts.py --require-validated
 python tools/test_release_pipeline.py

@@ -45,6 +45,21 @@
       ]
     },
     {
+      "character": "?",
+      "mask": "glyphs/question_16x16.png",
+      "target": "status-row-240x24.png",
+      "rectangle": [
+        138,
+        4,
+        16,
+        16
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
       "character": "信",
       "mask": "glyphs/信_16x16.png",
       "target": "toolbar-240x36.png",

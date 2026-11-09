@@ -56,10 +56,10 @@ def main():
     assert m.call('sango_color_use_buffer',COLOR_ADDRESS,len(clr),len(lib),instruction_limit=80_000_000)==1
     m.call('sango_color_unload');assert m.call('sango_color_native_status',LIB_ADDRESS+source)==0;count+=1
     report={'passed':count,'failed':0,'native_image':[240,24],'glyph_cell':[16,16],'glyph_scale':[1,1],
-            'rendered_status_pixels_compared':5760,'fixed_characters':'粮天信息查找',
+            'rendered_status_pixels_compared':5760,'fixed_characters':'粮天?信息查找',
             'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
             'color_sha256':hashlib.sha256(clr).hexdigest(),
-            'scope':'Six baked single-bit glyph masks match final PNG pixels exactly at integer positions; compiled MIPS copies all 5760 native HUD pixels without scaling, restores the same image region, checks SGHUD01 trailer bounds/CRC/source, legacy compatibility and unload. SDK pixel/text boundaries modeled; native firmware separately checked.'}
+            'scope':'Seven baked single-bit glyph masks match final PNG pixels exactly at integer positions; compiled MIPS copies all 5760 native HUD pixels without scaling, restores the same image region, checks SGHUD01 trailer bounds/CRC/source, legacy compatibility and unload. SDK pixel/text boundaries modeled; native firmware separately checked.'}
     (ROOT/'build/battle-pixel-grid-validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8');print(json.dumps(report))
 
 if __name__=='__main__':main()

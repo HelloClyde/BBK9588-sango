@@ -94,3 +94,18 @@ SGCOLOR1的1204条原索引保持不变，可选的原尺寸状态图追加在�
 当前选用金色边框、浅金纸底和深金/铜色纹饰。该配色依据用户偏好，原灰度素材不能证明历史原版颜色。主菜单、剧本、存读档、制作群组和共享底栏的5张GPT Image编辑母图与提示词记录在 [gold-ui-provenance.json](gold-ui-provenance.json)。固定字形仍按1:1烘焙，位置保持“粮”x=4、“天”x=82。人物/地图/战斗图标不做统一色调处理，选中菜单的深色对比保留。此前红绿母图、提示词、原生PNG和排版记录位于 `variants/red-green-ui/`，也可按提交2519f33追溯。
 
 当前UI美术以连续曲线/明暗重绘，去除此前母图中放大的像素块；固定文字仍使用已入库的16×16单比特掩码按1:1导出。该细化覆盖菜单、剧本、存读档、制作群组和共享底栏，未对小头像/城市/战斗精灵批量滤波或换色。选用5张母图及6份提示词见 `gold-ui-provenance.json`；原金色颗粒版本在 `variants/gold-pixel-ui/`。
+
+## 原生问号与天气图（alpha.3）
+
+问号用同套SimSun16单比特字形排入240×24状态图，文件为 `battle-ui/glyphs/question_16x16.png`；图框也在素材导出时对齐整数像素。运行时只复制图片。
+天气5态由内置GPT Image按原图形与编号重制，保留原12×12索引供旧包/灰度回退；新成品位于 `battle-ui/weather/`，均18×18、四种RGB颜色、二值alpha，运行时不缩放。母图 `generated/weather-native-sharp.png`、[提示词](prompts/weather-native-sharp.txt)、[来源与导出记录](battle-ui/weather/provenance.json)均入库；旧状态图保留在 `variants/alpha2-hud/`。
+
+```powershell
+python tools/import_native_weather.py
+python tools/compose_battle_ui.py
+python build.py
+python tools/test_battle_info.py
+python tools/test_battle_pixel_grid.py
+```
+
+CLR的SGHUD01状态像素前追加天气像素3240字节及32字节`<8sIIIIII>`描述：`SGWTH01\0`、像素偏移、3240、18、18、原资源009首帧像素偏移、CRC32。五帧按原编号顺序，每帧648字节，RGB565零值表示透明。加载时核对边界、尺寸、源索引与CRC。没有该块的旧CLR继续走原兼容路径；升级请将BDA与两个资源包一起安装。

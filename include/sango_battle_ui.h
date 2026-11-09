@@ -9,4 +9,6 @@ void sango_battle_summary_remember(unsigned int cities, unsigned int characters,
 void sango_battle_summary_draw(unsigned int target);
 unsigned int sango_battle_animation_left(void);
 short sango_battle_animation_top(void);
+void sango_battle_info_show(void);
+void sango_battle_info_prepare_canvas(unsigned int target);
 #endif

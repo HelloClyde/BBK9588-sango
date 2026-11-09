@@ -61,6 +61,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Native HUD image or glyph grid checks failed' }
           python tools/test_touch_input.py
           if ($LASTEXITCODE -ne 0) { throw 'Touch input or menu/map interaction checks failed' }
+          python tools/test_battle_info.py
+          if ($LASTEXITCODE -ne 0) { throw 'Battle info sheet or native weather checks failed' }
           python tools/test_battle_ui_color.py
           if ($LASTEXITCODE -ne 0) { throw 'Image HUD or centered combat UI checks failed' }
           python tools/test_battle_hud.py

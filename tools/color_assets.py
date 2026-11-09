@@ -208,6 +208,8 @@ def build(output, allow_partial=False):
     index = b''.join(struct.pack('<IIHHI',offset,positions[digest],width,height,flags)
                      for offset,width,height,flags,digest in entries)
     native_status = catalog.get('native_status_image')
+    if catalog.get('native_weather_images') and not native_status:
+        raise ValueError('Native weather requires the native status trailer')
     if native_status:
         image = Image.open(COLOR/native_status['path']).convert('RGB')
         if image.size != (240,24):
@@ -215,6 +217,21 @@ def build(output, allow_partial=False):
         resource = resources[native_status['source_resource']]
         source = struct.unpack_from('<I',library,(native_status['source_resource']-1)*4)[0]+resource['images'][0].get('offset',12)+6
         if any(e[0]==source for e in entries):
+            weather=catalog.get('native_weather_images')
+            if weather:
+                if weather['size']!=[18,18] or len(weather['frames'])!=5:
+                    raise ValueError('Native weather must contain five 18x18 images')
+                weather_pixels=bytearray()
+                for path in weather['frames']:
+                    icon=Image.open(COLOR/path).convert('RGBA')
+                    if icon.size!=(18,18):raise ValueError('Native weather size changed')
+                    for red,green,blue,alpha in icon.get_flattened_data():
+                        if alpha not in (0,255):raise ValueError('Native weather alpha must be binary')
+                        value=(((red>>3)<<11)|((green>>2)<<5)|(blue>>3)) or 1
+                        weather_pixels.extend(struct.pack('<H',value if alpha else 0))
+                weather_source=struct.unpack_from('<I',library,(weather['source_resource']-1)*4)[0]+6+resources[weather['source_resource']]['images'][0].get('offset',12)
+                weather_offset=start+len(data);data.extend(weather_pixels)
+                data.extend(struct.pack('<8sIIIIII',b'SGWTH01\0',weather_offset,len(weather_pixels),18,18,weather_source,zlib.crc32(weather_pixels)))
             pixels = rgb565(image)
             offset = start+len(data)
             data.extend(pixels)
@@ -231,6 +248,10 @@ def build(output, allow_partial=False):
     if native_status:
         info['native_status_size']=[240,24]
         info['format'] += '; optional SGHUD01 native image trailer'
+    if catalog.get('native_weather_images'):
+        info['native_weather_size']=[18,18]
+        info['native_weather_frames']=5
+        info['format'] += '; optional SGWTH01 five-frame native weather block'
     (output.parent/'color-build.json').write_text(json.dumps(info,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(info))
     return info

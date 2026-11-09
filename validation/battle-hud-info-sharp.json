@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-10",
+  "version": "0.1.0-alpha.3",
+  "baseline_commit": "9b9a66744a5b46581e2963b6d0ea839cd7249e60",
+  "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
+  "bda_bytes": 221688,
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "clr_sha256": "13fda841e8ff7ea63c087b4a7c3fd5f76b1586b51b30a91272903fd0f69e6c68",
+  "clr_bytes": 2297312,
+  "runtime_payload_sha256": "a3f4715ce4bc615268e39aac06c2bb82850355abdceb44a68c46aab65aac9dbd",
+  "fresh_mips_checks": 5025,
+  "native_firmware_checks": 64,
+  "layout": {
+    "status": [
+      0,
+      208,
+      240,
+      24
+    ],
+    "toolbar": [
+      0,
+      232,
+      240,
+      36
+    ],
+    "summary": [
+      0,
+      268,
+      240,
+      52
+    ],
+    "viewport_tiles": [
+      15,
+      13
+    ],
+    "weather": [
+      112,
+      211,
+      18,
+      18
+    ],
+    "info_page": [
+      240,
+      320
+    ],
+    "info_font_pixels": 16
+  },
+  "artwork": "Seven16x16 single-bit glyph placements include the new question mark. Weather masters generated with built-in GPT Image using original numbered silhouettes; deterministic binary-alpha18x18 exports drawn1:1. Existing1204 indexed color PNG frames and LIB remain unchanged. CLR native status question updated and optional SGWTH01 weather block appended; alpha.2 HUD originals preserved.",
+  "info_presentation": "Uses named SDK/isolated compatibility APIs and the existing off-screen message context, draws the complete16px double-column sheet, publishes once, waits for click/key, restores battlefield. Temporary derived-combat view saved/restored; g_game_context not modified. Allocation failure and borrowed/owned lifecycle tested.",
+  "initialized_data_bytes": 45536,
+  "initialized_data_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "extension_end": "0x81c2cc1c",
+  "scope": "Compiled MIPS tests cover actual fields/resources/GBK wrapping, value bounds, modal ownership/state restoration and native weather source/CRC/bounds/alpha. Native C200 tests5 exact18x18 weather frames,7 baked glyphs, complete info page retained3.2s, terrain page, explicit dismissal/battlefield restore, existing animation/UI/touch/drag cases.",
+  "limitations": [
+    "Native SDK canvas/font/present and derived-stat boundaries modeled by MIPS tests, exercised separately in C200.",
+    "Exact-byte RAM staging bypasses synthetic NAND ECC; controlled20-unit fixtures excluded from delivery. File lifecycle modeled separately.",
+    "No physical-device, full campaign or complete native save/load verification."
+  ],
+  "source_sha256": {
+    "build.py": "68c7584a985c7230735bded2715c1f14c9a0eb9fa443f1eeb5658bf3e8425bdc",
+    "sango.ld": "46070043dbec5e8ae1d56769d0425c2832781b0f45bc10e9342bad842343443d",
+    "src/sango_battle_info.c": "377b53f28354f8b6b1513d30f0d408b025c40f5e4104bfd3ff1aec23dd1314c8",
+    "src/battle/controller.c": "1afd677735885c7bd69a456135aaf9a96d1d05a6f0c28ddbfc4290245da33edd",
+    "src/sango_battle_ui.c": "e918a6f2c8232d37f6064a1a83074f2b2aba789a94f11d2a1ba74ad8e1833da4",
+    "src/sango_color.c": "e1e33c1054f092cd2415e3cbe383a9bc37e7bfeb9e944671255f255377b313ee",
+    "include/sango_battle.h": "b256269592c684f459b496fd5919d40fa5510842bf8c66eeafae9392b9c04454",
+    "include/sango_battle_ui.h": "921ef55f88afeae18a2f21f80d64786df590d29b1a884b0ab46c2f2da3cc394b",
+    "include/sango_color.h": "32cb137a33d757c948cc447cc49360f75bc14bbb7575cc28dcfc01189317381d",
+    "tools/color_assets.py": "f8ac6bf2931f0bc8555eeb9ff3e4b6cad6c1be5c9acdc093e2d6ee1cb0b6d9a9",
+    "tools/import_native_weather.py": "7db4b0ed6f0142278c27eea3e92ab7e0d7b7d92e6677b2b2a875650f6099baa7",
+    "tools/compose_battle_ui.py": "b988aaecaa6c5c5ae5173c79961131818c62d35e258fd5344785b768e7d9bb57",
+    "tools/typeset_battle_ui.ps1": "b5322b36e639b1c3609b36bcefd898a33b115a8814e377426ece0b667c1a9382",
+    "tools/test_battle_pixel_grid.py": "c2768c96df97fbba6ff927f8ec09841bc5db473c2f0e2e50b11285171bdd3e80",
+    "tools/test_battle_info.py": "93eb4d85195c1ce440f2af485fbb1af7eae8a515ff0fdc792d7042363084b571"
+  },
+  "artwork_sha256": {
+    "assets/color/battle-ui/status-row-240x24.png": "285b61ff1ce98c19379ad796f7879670261c2e026442601b8d7aea603c72c060",
+    "assets/color/battle-ui/status-background-240x24.png": "5cc7c94fdd3eb102b5c2432311bd5270e1ccbd8ec59aab004deed49015e202ac",
+    "assets/color/battle-ui/glyphs/question_16x16.png": "c71d3832c36b00a59d63e84b90b5e5627f4539507cdc7bfe3827bf4f3957df58",
+    "assets/color/battle-ui/glyphs/provenance.json": "2fbd89f07f47eeb550f31855122b2474f41f1d0f2cfa69d8d4a40ffc9c31c161",
+    "assets/color/battle-ui/weather/provenance.json": "93c8ab11bb061d36a4fb0c969ae405ef43944c22a2de9f28447b679a6de95717",
+    "assets/color/generated/weather-native-sharp.png": "85ca5f5d87130c7073aa0fedbade379e1314eef9282a929626a12eb666b67075",
+    "assets/color/prompts/weather-native-sharp.txt": "e0243b0c9b0422533fa1b15818aefd3f12b475215b37f816334be862b95d0271",
+    "assets/color/references/weather-original-five.png": "53b20205593c62f3221078aed30b18be05375b2bee840d95a718061d7d1395a5",
+    "assets/color/battle-ui/weather/weather-01-18x18.png": "113df47a1e82aaa95ff6815bef0c0d2146a25af93a5b2f7f012f01e1367267e9",
+    "assets/color/battle-ui/weather/weather-02-18x18.png": "762b8dee5e17498cdb4e3fc7d0a0d6aceaaf47b0f581f28f3e8141316008bc67",
+    "assets/color/battle-ui/weather/weather-03-18x18.png": "a33fb9cbd3af7820c0fedbb19a2c99f00ba306097e788711f7fefb2f563c23d2",
+    "assets/color/battle-ui/weather/weather-04-18x18.png": "05a4809026d9b16c0598dab19d5e0328205dd214de7b5678e1e0b643c36b856f",
+    "assets/color/battle-ui/weather/weather-05-18x18.png": "f0dbf4e7c289aa8a060eab1c7dd33fd87bdb6373ea4a23e509fc57ac429e0ff1"
+  },
+  "report_sha256": {
+    "validation/color-mips-validation.json": "d30c197b4512ca4e33b7fb1de27c4f148c431de4fe83b32e887c556deefd358d",
+    "validation/strategy-color-validation.json": "492347734ff38f4bf48469f7434b000888bd3651559fd1ec669bffa3b8c9e79a",
+    "validation/battle-color-validation.json": "008b24bc3ab724b394be44a55659a7fc81c36616f9692621ff5408b02245cd9d",
+    "validation/battle-ui-color-validation.json": "e9c299ec79589ec92f2f7a5eb6d7beda2e0eb095b5139f5ca0f94a9616a91c97",
+    "validation/battle-pixel-grid-validation.json": "cd587f2b4401e0103ccbbdf8ef46c1ed08111005233e9bb03ca39537df07f37f",
+    "validation/battle-hud-validation.json": "ca52fd8b13121c2db5b0dc70850e2673ccd95f4db4d2f800b5098944cd7005e5",
+    "validation/battle-summary-validation.json": "7ecc9efaeb89bb32bec93345a3569b6c967d6ff790c73211396f7ec01bde1abe",
+    "validation/battle-viewport-validation.json": "b8bc125de62dafe285f76f44db27be70018b7aec21c9d442c0f1a1828901d5db",
+    "validation/touch-input-validation.json": "ba8e567eb70f3aebb6b35fe5db60772631c0234ff3ae564f1d8ec8ab2aca27ff",
+    "validation/battle-info-validation.json": "915f0025d93cf9b079aaf82443f25db142a1998e3622e66e380281893059aa9e",
+    "validation/color-firmware-validation.json": "49eab865bcd2285d8d5806687903ed975cb60c444bafeb347986b659de0d7599",
+    "validation/touch-firmware-validation.json": "1c667e9ffccc9193261152ade8d4f4cbbcf7dc88d5d9586ac39d8454f7297499",
+    "validation/color-native-staging.json": "0a07a14f8423b29968e9e9f92a814308aba977783736f64f0734fe852e8243c7",
+    "validation/touch-native-staging.json": "a726a78ea5ff89415cefd5b0cb4c99387485c2cebc73fae42ffacceb90762b3b",
+    "validation/touch-drag-trajectories.json": "8e43157dc49ac1000f268653abf2d422215c780000fbcc83bafe3b7117748a2b",
+    "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d"
+  }
+}

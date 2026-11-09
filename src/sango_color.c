@@ -9,6 +9,8 @@ static bool color_file_owned;
 static uint32_t strategy_map_context;
 static const uint16_t *native_status;
 static uint32_t native_status_source;
+static const uint16_t *native_weather;
+static uint32_t native_weather_source;
 
 static uint32_t color_read32(const uint8_t *bytes)
 {
@@ -46,6 +48,8 @@ void sango_color_unload(void)
     color_file = NULL;
     native_status = NULL;
     native_status_source = 0;
+    native_weather = NULL;
+    native_weather_source = 0;
     strategy_map_context = 0;
     color_entries = color_library_bytes = 0;
     color_file_owned = false;
@@ -121,6 +125,39 @@ int sango_color_use_buffer(void *buffer, uint32_t bytes, uint32_t library_bytes)
                 return 0;
             native_status = (const uint16_t *)(data + offset);
             native_status_source = source;
+            /* Optional five-frame weather block precedes the native HUD.
+             * Alpha.1/2 readers simply ignore this extra, non-indexed block. */
+            if (offset >= indexed_end + 32)
+            {
+                const uint8_t weather_tag[] = {'S','G','W','T','H','0','1',0};
+                const uint8_t *weather = data + offset - 32;
+                uint32_t pos, weather_offset, weather_source;
+                for (pos = 0; pos < 8 && weather[pos] == weather_tag[pos]; ++pos)
+                    ;
+                if (pos == 8)
+                {
+                    weather_offset = color_read32(weather + 8);
+                    weather_source = color_read32(weather + 24);
+                    if ((weather_offset & 1) || weather_offset < indexed_end ||
+                        weather_offset > offset - 32 || offset - 32 - weather_offset != 3240 ||
+                        color_read32(weather + 12) != 3240 || color_read32(weather + 16) != 18 ||
+                        color_read32(weather + 20) != 18 ||
+                        color_crc32(data + weather_offset, 3240) != color_read32(weather + 28))
+                        return 0;
+                    found = false;
+                    for (pos = 0; pos < count; ++pos)
+                    {
+                        const uint8_t *entry = data + 32 + pos * 16;
+                        if (color_read32(entry) == weather_source &&
+                            color_read16(entry + 8) == 12 && color_read16(entry + 10) == 12)
+                            found = true;
+                    }
+                    if (!found)
+                        return 0;
+                    native_weather = (const uint16_t *)(data + weather_offset);
+                    native_weather_source = weather_source;
+                }
+            }
         }
     }
     color_file = data;
@@ -134,6 +171,15 @@ const uint16_t *sango_color_native_status(uint32_t original_pixels)
     return color_file && original_pixels >= g_resource_package_address &&
                    original_pixels - g_resource_package_address == native_status_source
                ? native_status
+               : NULL;
+}
+
+const uint16_t *sango_color_native_weather(uint32_t original_pixels, unsigned int frame)
+{
+    return color_file && native_weather && frame < 5 &&
+                   original_pixels >= g_resource_package_address &&
+                   original_pixels - g_resource_package_address == native_weather_source
+               ? native_weather + frame * 324
                : NULL;
 }
 
