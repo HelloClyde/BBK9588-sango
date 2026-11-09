@@ -105,6 +105,8 @@
     "validation/color-native-staging.json": "0a07a14f8423b29968e9e9f92a814308aba977783736f64f0734fe852e8243c7",
     "validation/touch-native-staging.json": "a726a78ea5ff89415cefd5b0cb4c99387485c2cebc73fae42ffacceb90762b3b",
     "validation/touch-drag-trajectories.json": "8e43157dc49ac1000f268653abf2d422215c780000fbcc83bafe3b7117748a2b",
-    "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d"
-  }
+    "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d",
+    "validation/release-clean-build.json": "20bade8e5fbc3bb84dfed20dbe7159549676b1280c4c99d7432d227fab4e6559"
+  },
+  "clean_build_tested_commit": "ca7cb204319f9e353b64153b6cb2c72fbc8b9ce8"
 }
