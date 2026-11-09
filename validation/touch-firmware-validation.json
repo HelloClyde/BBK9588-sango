@@ -17,85 +17,85 @@
       "name": "Continuous drag moves battle view while selecting-unit",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-unit.png",
-      "screenshot_sha256": "b3c3058c37ae91de71de603f0aa45353e98c9523547bf558e848a650d87c02f9"
+      "screenshot_sha256": "8f100b85d9cb86e2b7699a25c27abf640b11cacaa320fc71d3839b239547d9c0"
     },
     {
       "name": "Releasing battle drag does not select or execute while selecting-unit",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-unit.png",
-      "screenshot_sha256": "b3c3058c37ae91de71de603f0aa45353e98c9523547bf558e848a650d87c02f9"
+      "screenshot_sha256": "8f100b85d9cb86e2b7699a25c27abf640b11cacaa320fc71d3839b239547d9c0"
     },
     {
       "name": "Reverse drag restores battle view while selecting-unit",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-unit.png",
-      "screenshot_sha256": "b3c3058c37ae91de71de603f0aa45353e98c9523547bf558e848a650d87c02f9"
+      "screenshot_sha256": "8f100b85d9cb86e2b7699a25c27abf640b11cacaa320fc71d3839b239547d9c0"
     },
     {
       "name": "Tap a player unit selects the real actionable unit",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-move-range.png",
-      "screenshot_sha256": "afaf06cb954a2330587436df71618f4961a5556281a4495cd59b100fc4013932"
+      "screenshot_sha256": "a2fddaf9fcda705987aa9e60646f0f69196c67c6f7af4b1739862ca6ae85f88b"
     },
     {
       "name": "Continuous drag moves battle view while selecting-destination",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
-      "screenshot_sha256": "c2c7ae5ca1585d7cd7a2a98cfc7a7bf440c55149201bc4e13029cd4c7408a19c"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Releasing battle drag does not select or execute while selecting-destination",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
-      "screenshot_sha256": "c2c7ae5ca1585d7cd7a2a98cfc7a7bf440c55149201bc4e13029cd4c7408a19c"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Reverse drag restores battle view while selecting-destination",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-destination.png",
-      "screenshot_sha256": "c2c7ae5ca1585d7cd7a2a98cfc7a7bf440c55149201bc4e13029cd4c7408a19c"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Tap a legal destination opens the production unit command menu",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-commands.png",
-      "screenshot_sha256": "df07a022029ef3751c98cf1c375369f16907c96958b69b9fb567d051e86a33f3"
+      "screenshot_sha256": "9aaccc2782e9d43f09dbe5c0cdba8c14d17a7e9ca3f5b9ed1ab5c0c7607e7f74"
     },
     {
       "name": "Tap attack menu row enters target selection without confirming a target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "f6e90437ff4cefa53e21aacbd73483cd17d2a8ea7ce196c67912a649dd4bb217"
+      "screenshot_sha256": "c943a68f318dbcbe1e92da5c1997db982e52a855a52e3dc98e97da260c274659"
     },
     {
       "name": "Continuous drag moves battle view while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "904b6f0f188d54c6049b0a3d4977af20c16a23ac92ce5bd56fff750fc3609dd8"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Releasing battle drag does not select or execute while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "904b6f0f188d54c6049b0a3d4977af20c16a23ac92ce5bd56fff750fc3609dd8"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Reverse drag restores battle view while selecting-target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-drag-selecting-target.png",
-      "screenshot_sha256": "904b6f0f188d54c6049b0a3d4977af20c16a23ac92ce5bd56fff750fc3609dd8"
+      "screenshot_sha256": "c8c1aa08350ed48550158b4d3cc14013a7d56313a5c91ed53ef6c2686c7723ca"
     },
     {
       "name": "Tap an enemy selects the validated original attack target",
       "passed": true,
       "screenshot": "docs/screenshots/touch/battle-target.png",
-      "screenshot_sha256": "f6e90437ff4cefa53e21aacbd73483cd17d2a8ea7ce196c67912a649dd4bb217"
+      "screenshot_sha256": "c943a68f318dbcbe1e92da5c1997db982e52a855a52e3dc98e97da260c274659"
     },
     {
       "name": "Touch plus and confirm return the edited number through production code",
       "passed": true,
       "screenshot": "docs/screenshots/touch/numeric-plus.png",
-      "screenshot_sha256": "62a5202717b016a928ec3070591c0684ef09b34de1365c57dc862524be36401c"
+      "screenshot_sha256": "0979276120463c42e523ce4bea1e6e05615a673338da5dac19b55f3bc00dc81a"
     },
     {
       "name": "Continuous horizontal drag moves strategic view while the pen is down",
@@ -149,7 +149,7 @@
       "name": "Tap scenario opens original ruler selector",
       "passed": true,
       "screenshot": "docs/screenshots/touch/ruler-list.png",
-      "screenshot_sha256": "c1b0858df98e0365401650b7de241d13edd31eab6300b0413d4ff647d682a561"
+      "screenshot_sha256": "3e1d831f722280da6bd024c9a47b1076f10f3ed014f697c7c5a153931b6bbeb5"
     },
     {
       "name": "Tap ruler completes normal new-game selection and displays strategy",

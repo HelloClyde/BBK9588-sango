@@ -5,16 +5,16 @@
   "payload_sha256": "a3f4715ce4bc615268e39aac06c2bb82850355abdceb44a68c46aab65aac9dbd",
   "color": {
     "bytes": 2297312,
-    "sha256": "13fda841e8ff7ea63c087b4a7c3fd5f76b1586b51b30a91272903fd0f69e6c68",
+    "sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
     "scope": "Exact expanded LIB/CLR borrowed buffers staged for native SDK rendering; production CRC/parser executes in separate bootstrap. Storage loader/ownership tested separately in compiled MIPS."
   },
   "package_address": "0x81000000",
   "package_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
   "battle_fixture": {
-    "sha256": "380509d1a2bd1e47d16e90a039653aa070d506e156cfb186b361eb7c1b31d297",
+    "sha256": "775cba86bf7e6bbe223533ee033e811708c2d60055ccf304876b358319ce8217",
     "entry": "0x81c30000",
     "trigger": "0x81c03290",
     "scope": "Controlled battle UI fixture entered at normal credits call; exact fixture source is saved locally with its compile invocation; production battle functions and native hardware input. Fixture excluded from delivered BDA.",
-    "source_sha256": "8cb680bc2062ecf970a4aa23a1592b2de3a86947bf5a623b16a51c6d7d0bce1b"
+    "source_sha256": "3014bdd5419d2d1c771071b3294e9b94d36974362e7acdad5dc8b2c65aea26b1"
   }
 }

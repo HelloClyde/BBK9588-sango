@@ -1,0 +1,317 @@
+{
+  "schema": 1,
+  "source_resource": 4,
+  "size": [
+    16,
+    16
+  ],
+  "geometry": "Original 2bpp plane: 0=outline,85=bank shade,170=ripple,255=water or outside land. All nonwhite pixels retain exact original coordinates. Outside white land is bounded by reviewed bank sides/corners.",
+  "palette_rgb": {
+    "land": [
+      188,
+      204,
+      120
+    ],
+    "water": [
+      37,
+      122,
+      149
+    ],
+    "ripple": [
+      90,
+      161,
+      180
+    ],
+    "bank_outline": [
+      33,
+      29,
+      23
+    ],
+    "bank_shade": [
+      184,
+      160,
+      68
+    ]
+  },
+  "palette_samples": {
+    "land": {
+      "path": "library/战斗/战场地形图块_资源004/平原_图块001.png",
+      "pixel": [
+        8,
+        8
+      ],
+      "sha256": "0b3f4adaaf856227b4bf61ccccb71718933a1b92d000741a83f7556d7623aaac"
+    },
+    "water": {
+      "path": "library/战斗/战场地形图块_资源004/河流_图块022.png",
+      "pixel": [
+        8,
+        8
+      ],
+      "sha256": "0e36d751c7d5bbd0d8b6b1e6e06dd6e72ed05ba46c58c677b5b31b094cd9daec"
+    },
+    "ripple": {
+      "path": "library/战斗/战场地形图块_资源004/河流_图块022.png",
+      "pixel": [
+        6,
+        1
+      ],
+      "sha256": "0e36d751c7d5bbd0d8b6b1e6e06dd6e72ed05ba46c58c677b5b31b094cd9daec"
+    },
+    "bank_outline": {
+      "path": "library/战斗/战场地形图块_资源004/河流_图块031.png",
+      "pixel": [
+        2,
+        0
+      ],
+      "sha256": "c6f3b59df69a7cc031157b4bebb3ddc7c02eaa8de5b5b13c388305f9316d1c1c"
+    },
+    "bank_shade": {
+      "path": "library/战斗/战场地形图块_资源004/河流_图块031.png",
+      "pixel": [
+        1,
+        1
+      ],
+      "sha256": "c6f3b59df69a7cc031157b4bebb3ddc7c02eaa8de5b5b13c388305f9316d1c1c"
+    }
+  },
+  "frames": {
+    "16": {
+      "bank_sides": [
+        "N",
+        "S"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "c9a1364a7f9e88b8b4784c9cbc7df0c37219863321b8d50f4b87a3e9b7222e03"
+    },
+    "17": {
+      "bank_sides": [
+        "W",
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "c67f397eb9d0e8a785a25f54de9254cb861466702d9183976c049c2595849874"
+    },
+    "18": {
+      "bank_sides": [
+        "N",
+        "W"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "648a8d1f564774fb4fc70d29f8bb01e093c13d311565ca2144c5f5cf8ec078c8"
+    },
+    "19": {
+      "bank_sides": [
+        "N",
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "fb268978d03dd4c5b9a5d939a60c7ad0e10da7643d96dff84e906065ecff569b"
+    },
+    "20": {
+      "bank_sides": [
+        "N",
+        "W"
+      ],
+      "land_corners": [
+        "SE"
+      ],
+      "source_png_sha256": "a523345484fd62889bb3b5d6e9af11a399cc7163fadeab49463049912ecc8868"
+    },
+    "21": {
+      "bank_sides": [
+        "S",
+        "E"
+      ],
+      "land_corners": [
+        "NW"
+      ],
+      "source_png_sha256": "6574516bc93f9de410eb763e0997ce5bc71157d57cf466c94b1c2862319f046b"
+    },
+    "22": {
+      "bank_sides": [],
+      "land_corners": [],
+      "source_png_sha256": "1b8cd7d875e9bc24f7a91ac16ec9a65206b1c660e01b08db4769c5acc715f578"
+    },
+    "23": {
+      "bank_sides": [
+        "S",
+        "W"
+      ],
+      "land_corners": [
+        "NE"
+      ],
+      "source_png_sha256": "d88f4df79b5feb6f97224695b4742486a48bacc2b90123a311191ef146352f5f"
+    },
+    "24": {
+      "bank_sides": [
+        "N",
+        "E"
+      ],
+      "land_corners": [
+        "SW"
+      ],
+      "source_png_sha256": "60767b2ad9b97bb6b4b5ca2cf572a2b1d2095f7fd0ffe5f87f1a4c54f37c1b30"
+    },
+    "25": {
+      "bank_sides": [
+        "N",
+        "W",
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "bb95591b28170d5ef1c4c996811905b9e44f6e415938412f4469c293f541cd45"
+    },
+    "26": {
+      "bank_sides": [
+        "S",
+        "W",
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "9bd0ec8d55277d7629536acfe715c6d8676f55e78b1243798d454d536edfd6ce"
+    },
+    "27": {
+      "bank_sides": [
+        "N"
+      ],
+      "land_corners": [
+        "SW",
+        "SE"
+      ],
+      "source_png_sha256": "1c56ba6a9636e1a6bc5f8ffeab36897f0efb6ae17f8d5687c16bd245606dc3ec"
+    },
+    "28": {
+      "bank_sides": [
+        "S"
+      ],
+      "land_corners": [
+        "NW",
+        "NE"
+      ],
+      "source_png_sha256": "779711a913784d35e8559adfd56ebbc5049fb42767373a8ef07371879eeb372b"
+    },
+    "29": {
+      "bank_sides": [
+        "S",
+        "W"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "e5fbe46ab78feff33037a187ff686904c64bde00c74327223c041a71690156a2"
+    },
+    "30": {
+      "bank_sides": [
+        "S",
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "bcdf0ffa0785020cd55a6462d7a593177e0c61e4dd9c965b779dd6f053d11186"
+    },
+    "31": {
+      "bank_sides": [
+        "N"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "b83b0cf8fb23932dac5b5c6fbefe5fab2fb7fa2a8f524881fdd59f7ad0229884"
+    },
+    "32": {
+      "bank_sides": [
+        "S"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "87633d2c53f516f9270bb9a3ab6ff346cc6d6ceff492e7e401b36d6366fcdea4"
+    },
+    "33": {
+      "bank_sides": [
+        "W"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "7b929f9fbd95cb3d3dae933ce16f5ec0f5e487485a3b4174ef9df9fd3645cafa"
+    },
+    "34": {
+      "bank_sides": [
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "f3daa809033a8050118aa053f89a11730565f49d45bd4469411a85eb57fb76ea"
+    },
+    "35": {
+      "bank_sides": [],
+      "land_corners": [
+        "NW"
+      ],
+      "source_png_sha256": "0279591995308a43dbb60e55aa6f178d25dc0ce38b356cac16fa6b453a05edd0"
+    },
+    "36": {
+      "bank_sides": [],
+      "land_corners": [
+        "SE"
+      ],
+      "source_png_sha256": "df6477af97907b7ee4ad55e8760af8b06c7963c9676ad4445bc17d604d5026c0"
+    },
+    "37": {
+      "bank_sides": [],
+      "land_corners": [
+        "NW",
+        "SE"
+      ],
+      "source_png_sha256": "07fcceae4ad6994cbcaed0c23df90b6a288b4b92120d352e0510e48407eec10c"
+    },
+    "38": {
+      "bank_sides": [],
+      "land_corners": [
+        "NE",
+        "SW"
+      ],
+      "source_png_sha256": "292957e4d3c142de85070a3bf48d0801586df21acbc78f17b3666d7cd2db7711"
+    },
+    "39": {
+      "bank_sides": [],
+      "land_corners": [
+        "NE"
+      ],
+      "source_png_sha256": "fee39e55f5b3dc4f9fd1fef98a3b0d27af3ce2983f41ac50557cb7eea3a43bad"
+    },
+    "40": {
+      "bank_sides": [],
+      "land_corners": [
+        "SW"
+      ],
+      "source_png_sha256": "6679f03530ef21b8484e542900202f35911239af2d3633c0f734c47a59baba79"
+    },
+    "42": {
+      "bank_sides": [],
+      "land_corners": [
+        "SW",
+        "SE"
+      ],
+      "source_png_sha256": "5e91e557f5194d0d49d4aba21e82c48e3e52f2fbf44698b81f9739a1fc47e409"
+    },
+    "43": {
+      "bank_sides": [],
+      "land_corners": [
+        "NW",
+        "NE"
+      ],
+      "source_png_sha256": "170b65be67ae508045140ae47f63e777eb4b577776049f53afbcd91a05260728"
+    },
+    "44": {
+      "bank_sides": [
+        "N",
+        "S",
+        "W"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "50e191771da8f3e630eed8f2d0871be7d26de7e4ff0078c0c745b224dcaef1fe"
+    },
+    "45": {
+      "bank_sides": [
+        "N",
+        "S",
+        "E"
+      ],
+      "land_corners": [],
+      "source_png_sha256": "645c7e57d1cb1ccceba12d04aea9fb05956ae09d00b9d3f4e761dd4f26b67d9a"
+    }
+  }
+}

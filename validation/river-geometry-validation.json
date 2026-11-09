@@ -1,0 +1,63 @@
+{
+  "passed": 88,
+  "failed": 0,
+  "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
+  "color_sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
+  "river_tiles": 29,
+  "exact_original_bank_pixels": 1263,
+  "exact_original_ripple_pixels": 656,
+  "real_map_count": 7,
+  "mapped_river_tiles": 2039,
+  "actual_river_adjacency_pairs": 117,
+  "map_previews": [
+    {
+      "resource": 110,
+      "screenshot": "docs/screenshots/river/map-110.png",
+      "sha256": "f1715017964653406b1a21fe3f6c06024453adef473bc86bdebcc62cafc7f100"
+    },
+    {
+      "resource": 111,
+      "screenshot": "docs/screenshots/river/map-111.png",
+      "sha256": "80135c7c1dd47cee4dfcb73b94a4d3a0fa7f51af6a23bf5f893d83e931876fd4"
+    },
+    {
+      "resource": 112,
+      "screenshot": "docs/screenshots/river/map-112.png",
+      "sha256": "8117d30d251adba5a19c75332e7366cd544b44cb59f3015b4370a8ce655e6879"
+    },
+    {
+      "resource": 113,
+      "screenshot": "docs/screenshots/river/map-113.png",
+      "sha256": "713a4eba31902e4f833900e89a0e80ff80b542d0ccd66d5cf7555cde8b47a647"
+    },
+    {
+      "resource": 114,
+      "screenshot": "docs/screenshots/river/map-114.png",
+      "sha256": "defe60fc90ab6172aed9a1cab1c56ef82740f9e57b8342dd2699e9e9752a36cf"
+    },
+    {
+      "resource": 115,
+      "screenshot": "docs/screenshots/river/map-115.png",
+      "sha256": "b2daab4f363637043efa163edac4e05ef5b23faf8fbd0db676412ee0fcf4508f"
+    },
+    {
+      "resource": 116,
+      "screenshot": "docs/screenshots/river/map-116.png",
+      "sha256": "2bd1399678e995a4a6b45e4c86a5f3be63abc5e1d4d2c28ac343a615868b0076"
+    }
+  ],
+  "user_photo_viewport": {
+    "resource": 113,
+    "origin": [
+      0,
+      6
+    ],
+    "size": [
+      240,
+      208
+    ],
+    "matched_landmark_samples": 22,
+    "compiled_viewport_pixel_comparison": true
+  },
+  "scope": "87 real compiled-MIPS raster/clip cases plus one complete production viewport matching the user photo.29 CLR tiles checked directly against original LIB2bpp line/ripple coordinates. All seven original map matrices assembled with resulting native pixels. Original outline/shade/ripple coordinates are preserved; explicit outside-land bank topology is reviewed metadata. No map or gameplay rule change."
+}

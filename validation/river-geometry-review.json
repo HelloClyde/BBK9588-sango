@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-10",
+  "version": "0.1.0-alpha.4",
+  "baseline_commit": "71a2d93fcef6e1653b629528018637c399ca8360",
+  "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
+  "lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "clr_sha256": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
+  "clr_bytes": 2297312,
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "fresh_mips_checks": 5113,
+  "native_firmware_checks": 86,
+  "river_mips_checks": 88,
+  "native_map_viewports": 21,
+  "native_river_tiles": 29,
+  "problem": "Generated16x16 terrain art preserved file dimensions but shifted/rounded river banks, added an internal bank inT27 and moved/enlarged ripples. Earlier dimension/blue-count checks did not verify geometry.",
+  "fix": "Pack-time palette decode from the original four-gray resource004 planes, with explicit reviewed outside-land bank topology. Preserve every original0/85/170 pixel at its source coordinate. Existing GPT Image palette colors sampled at recorded coordinates; source and color PNGs/masters retained. No C/game/SDK/render/viewport/map/save change.",
+  "original_bank_pixels": 1263,
+  "original_ripple_pixels": 656,
+  "real_map_count": 7,
+  "mapped_water_tiles": 2039,
+  "river_adjacency_pairs": 117,
+  "user_photo_viewport": {
+    "resource": 113,
+    "origin": [
+      0,
+      6
+    ],
+    "landmark_samples_matched": 22,
+    "compiled_full_viewport_pixels": 49920
+  },
+  "initialized_data_bytes": 45536,
+  "initialized_data_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "scope": "All11 compiled MIPS suites rerun for current CLR. Native SDK output matches actual MIPS RGB565 across21 map views and all29 tiles; original39 UI/weather/info/animation cases plus25 touch/drag cases rerun. Host previews of seven full maps and matched user-photo region.",
+  "limitations": [
+    "Exact-byte RAM staging bypasses synthetic NAND ECC. Diagnostic map/battle/input fixtures are excluded from delivery. File lifecycle is modeled separately.",
+    "The outside-land bank directions/corners are reviewed resource metadata; direct LIB tests prove outline/shade/ripple coordinates.",
+    "No current physical-device, full campaign or complete native save/load verification."
+  ],
+  "source_sha256": {
+    "tools/river_geometry.py": "2f09753ceb04cfddc8038f336827f77c20d92e9bdc7874405c1cf7f96d985482",
+    "tools/color_assets.py": "a9454a38554ba0c2ee56fc22c754d7581acf949cadea4e1dde33eb513c247f32",
+    "tools/test_river_geometry.py": "29df4755b22e1ae157213fc77b3450f38a6ddd440b23874433bfb91caf26ae81",
+    ".github/workflows/release.yml": "cfc0db8d41db35828848bee30e6782a2bac391d93e3103748db565fd69f3594a",
+    "tools/package_release.py": "8a4fd6339b44963956224e6ebf7d5924e8b9dfac2958ebfc164adac525feb2be"
+  },
+  "definition_sha256": "8025182b819ad33a80ca5e405968b0505670bd790e3f1cc03ac5752069d0a1e8",
+  "catalog_sha256": "13a04b41047b0c250589c0b13180c98dd5d4b3104c5a1b3be033bf1261ed38f9",
+  "report_sha256": {
+    "validation/color-mips-validation.json": "db048a06a056286178204bada6598b4a7e98dbb28a6cb39bfd2dec8b3d93061d",
+    "validation/strategy-color-validation.json": "3f76e01e34651d8091385806f2a72ad016a6c06aa279bc364970c81509579b6c",
+    "validation/battle-color-validation.json": "16b52becad10e25bdad87add62be46c6a7779f3516eda75482e8622bc979b7d6",
+    "validation/battle-ui-color-validation.json": "f6f2b7ef4bb48e148397ee2586b598d64392084a3782c849d95068ade3bf04d3",
+    "validation/battle-pixel-grid-validation.json": "b3484c1ee20430ebab23a0f502de8bcb0b064de09dc9782227452b01f21b8914",
+    "validation/battle-hud-validation.json": "ca52fd8b13121c2db5b0dc70850e2673ccd95f4db4d2f800b5098944cd7005e5",
+    "validation/battle-summary-validation.json": "7ecc9efaeb89bb32bec93345a3569b6c967d6ff790c73211396f7ec01bde1abe",
+    "validation/battle-viewport-validation.json": "b8bc125de62dafe285f76f44db27be70018b7aec21c9d442c0f1a1828901d5db",
+    "validation/touch-input-validation.json": "ba8e567eb70f3aebb6b35fe5db60772631c0234ff3ae564f1d8ec8ab2aca27ff",
+    "validation/battle-info-validation.json": "6bb83bd36010c1f00235ead444fe90ded1318cee70621464b051bcbb8d96080a",
+    "validation/river-geometry-validation.json": "861f1b12b00d0f49d99ce7ffa19b8b07415b08c162efe43852ffd45df309e48e",
+    "validation/color-firmware-validation.json": "e230f3c9fb0b710dbd2a1b72a273d6016a0febbb73f66436e9ef36f1a010dc48",
+    "validation/touch-firmware-validation.json": "9a82a145d69e70fc993f559af085f436d09796b401c9d7f75ddde77be07a85a9",
+    "validation/color-native-staging.json": "3325534d48f2b89b0f8106e2d705bf01047f335761092a922ab05b32ee4043d4",
+    "validation/touch-native-staging.json": "0602ccad90f6ba169e271c9e6bb384df2ab6fa0f62261594ef76dbb40bf14fd5",
+    "validation/touch-drag-trajectories.json": "2e78bd3bddc5049502a7f45096729a44d0f2db5597001bbadaa0849bd1d739ef",
+    "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d",
+    "validation/river-payload-diff.json": "72f1bfbbd92a162280281396025c2a297f3aafb239f3f243557505552c7ab135"
+  }
+}

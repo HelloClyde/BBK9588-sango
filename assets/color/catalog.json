@@ -288,7 +288,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块016.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "fbfcef48ee170c75b8bacd5f8622d69743de6363f48f3ed9023e5de3cbe4d196"
+      "color_sha256": "fbfcef48ee170c75b8bacd5f8622d69743de6363f48f3ed9023e5de3cbe4d196",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -304,7 +305,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块017.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "a267de82c81c2dd6422d5ffbc925a4cca65eb88ef2d9b3363ec609c5c0c65f02"
+      "color_sha256": "a267de82c81c2dd6422d5ffbc925a4cca65eb88ef2d9b3363ec609c5c0c65f02",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -320,7 +322,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块018.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "827e1421e92df5e7678d8d3f24187c4a518e4dd06c5b2925007c808a2c39922e"
+      "color_sha256": "827e1421e92df5e7678d8d3f24187c4a518e4dd06c5b2925007c808a2c39922e",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -336,7 +339,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块019.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "b7c7359d3ed9268a603d887000f07fa2d88dba47fcb5b72bb7464baa171cca09"
+      "color_sha256": "b7c7359d3ed9268a603d887000f07fa2d88dba47fcb5b72bb7464baa171cca09",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -352,7 +356,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块020.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "3a7d389ee1f74dcbbeb8fecc7f785d24f5648206d8175f09584ca1d2b949ce27"
+      "color_sha256": "3a7d389ee1f74dcbbeb8fecc7f785d24f5648206d8175f09584ca1d2b949ce27",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -368,7 +373,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块021.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "031c9177bc283d71a205df3c93ff4ec2e02af23ac24cb0367da61183bca101fd"
+      "color_sha256": "031c9177bc283d71a205df3c93ff4ec2e02af23ac24cb0367da61183bca101fd",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -384,7 +390,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块022.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "0e36d751c7d5bbd0d8b6b1e6e06dd6e72ed05ba46c58c677b5b31b094cd9daec"
+      "color_sha256": "0e36d751c7d5bbd0d8b6b1e6e06dd6e72ed05ba46c58c677b5b31b094cd9daec",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -400,7 +407,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块023.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "f86dbced2758dd8f82f983badc623fc2a21a8990205aa171e4fd7338200d31e0"
+      "color_sha256": "f86dbced2758dd8f82f983badc623fc2a21a8990205aa171e4fd7338200d31e0",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -416,7 +424,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块024.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "a4896f947b66414df4ebda7935cb5e818412d27eecab36070e7d581f075f8f7b"
+      "color_sha256": "a4896f947b66414df4ebda7935cb5e818412d27eecab36070e7d581f075f8f7b",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -432,7 +441,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块025.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "604ad478f021930c438973337e623598d4bbd613618c098715a3e72f0072d7ca"
+      "color_sha256": "604ad478f021930c438973337e623598d4bbd613618c098715a3e72f0072d7ca",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -448,7 +458,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块026.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "6585da52006f9d738480893cd620a671c3db1c6a6266e3e4d70671e4660c3240"
+      "color_sha256": "6585da52006f9d738480893cd620a671c3db1c6a6266e3e4d70671e4660c3240",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -464,7 +475,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块027.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "016ff7b106b57984beaf2df66b7b79fc7ebdbebca703f4d48c7f9855a02d1995"
+      "color_sha256": "016ff7b106b57984beaf2df66b7b79fc7ebdbebca703f4d48c7f9855a02d1995",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -480,7 +492,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块028.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "009a69876ced952241dc440fffb077e7bb96c560e4149030e10fc5f9d4507d1b"
+      "color_sha256": "009a69876ced952241dc440fffb077e7bb96c560e4149030e10fc5f9d4507d1b",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -496,7 +509,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块029.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "64c244f33d0f887d6998717fbdcf275e9648ea64cee00c2997213e28f55bf192"
+      "color_sha256": "64c244f33d0f887d6998717fbdcf275e9648ea64cee00c2997213e28f55bf192",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -512,7 +526,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块030.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "ce302173442571d7a11a49b17b86ffb11cf5f99211c9c68094d2084434f9741c"
+      "color_sha256": "ce302173442571d7a11a49b17b86ffb11cf5f99211c9c68094d2084434f9741c",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -528,7 +543,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块031.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "c6f3b59df69a7cc031157b4bebb3ddc7c02eaa8de5b5b13c388305f9316d1c1c"
+      "color_sha256": "c6f3b59df69a7cc031157b4bebb3ddc7c02eaa8de5b5b13c388305f9316d1c1c",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -544,7 +560,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块032.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "d32173ccf6767a7db71532c8cacceb9a473abb9d58e0e3e747a8ec0d91382c85"
+      "color_sha256": "d32173ccf6767a7db71532c8cacceb9a473abb9d58e0e3e747a8ec0d91382c85",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -560,7 +577,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块033.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "8f03f2d1effb9d8de05056d74aa2102953ecede5ae234a9dddf056123be86487"
+      "color_sha256": "8f03f2d1effb9d8de05056d74aa2102953ecede5ae234a9dddf056123be86487",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -576,7 +594,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块034.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "27993ff5c261ac9c2c06e87ac3abca42efe04b3e39ea225a3dec75fe4cab4345"
+      "color_sha256": "27993ff5c261ac9c2c06e87ac3abca42efe04b3e39ea225a3dec75fe4cab4345",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -592,7 +611,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块035.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "7a029baac1afae168a6ffb872e84e0c868ff138c1a18d8dd6a77ed0a90b471fd"
+      "color_sha256": "7a029baac1afae168a6ffb872e84e0c868ff138c1a18d8dd6a77ed0a90b471fd",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -608,7 +628,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块036.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "fb1a30226a41485199a6b359f70307f07ee91fd7661a49adebd43858d08c7690"
+      "color_sha256": "fb1a30226a41485199a6b359f70307f07ee91fd7661a49adebd43858d08c7690",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -624,7 +645,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块037.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "addb655eed93ac44f1e77b1eebd45ff73b7daf0f046078033feb2be01687c069"
+      "color_sha256": "addb655eed93ac44f1e77b1eebd45ff73b7daf0f046078033feb2be01687c069",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -640,7 +662,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块038.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "58b6985d0246a148c53a4c845b6fba2bb2496f4391a9f4d192bd476c569f0773"
+      "color_sha256": "58b6985d0246a148c53a4c845b6fba2bb2496f4391a9f4d192bd476c569f0773",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -656,7 +679,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块039.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "e94768ad32e6a4f6dc52fd3352160cab102dd8c00d2348a0428bebe6d19d3512"
+      "color_sha256": "e94768ad32e6a4f6dc52fd3352160cab102dd8c00d2348a0428bebe6d19d3512",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -672,7 +696,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块040.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "91589395e285ea82493e9d754d4dd107c2f582ed1a4d9b56bf40822d7f3b5fc2"
+      "color_sha256": "91589395e285ea82493e9d754d4dd107c2f582ed1a4d9b56bf40822d7f3b5fc2",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -704,7 +729,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块042.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "329b8e277ad8252971cbc7fb4efe4cdfcb8493726c5fbbee2ae455123189da41"
+      "color_sha256": "329b8e277ad8252971cbc7fb4efe4cdfcb8493726c5fbbee2ae455123189da41",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -720,7 +746,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块043.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "f37582419c627bf9918f1d05ff101f95423709603991ce4ddf9900c684e87899"
+      "color_sha256": "f37582419c627bf9918f1d05ff101f95423709603991ce4ddf9900c684e87899",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -736,7 +763,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块044.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "67d59a9d06abb305a54c85f4e6ece34610d7bc1913173b1a07a1a6eab114464b"
+      "color_sha256": "67d59a9d06abb305a54c85f4e6ece34610d7bc1913173b1a07a1a6eab114464b",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 4,
@@ -752,7 +780,8 @@
       "flags": 32,
       "color": "library/战斗/战场地形图块_资源004/河流_图块045.png",
       "batch": "battle-terrain-00",
-      "color_sha256": "a5d0557181787ffa33725b6b189d38ca82d6f3e3ba28efc2c06eeaace0141562"
+      "color_sha256": "a5d0557181787ffa33725b6b189d38ca82d6f3e3ba28efc2c06eeaace0141562",
+      "geometry": "original-river-plane"
     },
     {
       "resource": 5,

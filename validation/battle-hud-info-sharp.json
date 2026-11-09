@@ -108,5 +108,7 @@
     "validation/sdk-bda-validation.json": "a6d798384668beadc414d82d57e28b963278dcbfeb16b7223d0fc464ad49821d",
     "validation/release-clean-build.json": "20bade8e5fbc3bb84dfed20dbe7159549676b1280c4c99d7432d227fab4e6559"
   },
-  "clean_build_tested_commit": "ca7cb204319f9e353b64153b6cb2c72fbc8b9ce8"
+  "clean_build_tested_commit": "ca7cb204319f9e353b64153b6cb2c72fbc8b9ce8",
+  "snapshot_commit": "71a2d93fcef6e1653b629528018637c399ca8360",
+  "history_note": "Historical alpha.3 snapshot. Report hashes refer to this commit. Current alpha.4 reports and29-frame CLR river geometry change are in river-geometry-review.json."
 }

@@ -1,6 +1,6 @@
 {
   "bda_sha256": "2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea",
-  "input": "Native QEMU hardware input chardev, 2 pixel steps and .025s pumping. Read-only observation of production controller state; no guest input-state replacement.",
+  "input": "Native QEMU hardware input chardev,2 pixel steps and.025s pumping; production controller state observed read-only.",
   "traces": {
     "battle_unit": [
       {

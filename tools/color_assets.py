@@ -136,6 +136,12 @@ def transparent_background(image, policy):
 
 
 def encode_frame(image, frame):
+    if frame.get('geometry') == 'original-river-plane':
+        if __package__:
+            from .river_geometry import encode
+        else:
+            from river_geometry import encode
+        return encode(frame),frame['flags']
     encoded=bytearray(rgb565(image));flags=frame['flags']
     policy=frame.get('transparency')
     if policy and policy.get('mode')=='original-color-plane':

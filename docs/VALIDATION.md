@@ -2,7 +2,7 @@
 
 当前触摸版BDA：221688字节，SHA-256 `2c9fc07dc4f7b50805270b8445d4883819405bfe9156914f7ca20840ea1792ea`。
 LIB：461116字节，SHA-256 `01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11`。
-CLR：2297312字节，SHA-256 `13fda841e8ff7ea63c087b4a7c3fd5f76b1586b51b30a91272903fd0f69e6c68`。
+CLR：2297312字节，SHA-256 `77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793`。
 固定SDK `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，GCC15.2.0。
 
 ## 当前执行文件的检查
@@ -17,18 +17,19 @@ CLR：2297312字节，SHA-256 `13fda841e8ff7ea63c087b4a7c3fd5f76b1586b51b30a9127
 | 战斗底栏、摘要、可视区 | 575 | 分别59、9、507项；保留布局、天气、底部摘要、15×13绘制、滚动/边界/覆盖层 |
 | 信息页与天气MIPS | 27 | 真实信息页字段、16像素排版、GBK换行、极值/无效值、分配失败/释放、战斗计算视图恢复；天气18×18透明复制、源索引/CRC/边界及卸载 |
 | 新增触摸MIPS | 132 | 原生窗口回调、完整16位坐标、按下/抬起/取消、8像素阈值、重复释放、SDK采样定时器、菜单、列表、存档槽、数值、城池与三种战斗选择模式、拖动、边界及边缘轻点不滚动 |
-| 原生C200彩色界面 | 39 | 同y=232处的两栏全部8640像素一致；菜单/制作群组、战略地图/箭头、战场/透明文字/信息/查找、天数居中、背景恢复和四段真实动画 |
+| 河流原始轮廓MIPS | 88 | 29帧1263个岸线、656个水纹像素直接对比原LIB；七地图2039个水域格和117种邻接；87项真实绘制/裁切加照片对应完整视口 |
+| 原生C200彩色界面 | 61 | 七地图21个视口、29帧原生图集； 同y=232处的两栏全部8640像素一致；菜单/制作群组、战略地图/箭头、战场/透明文字/信息/查找、天数居中、背景恢复和四段真实动画 |
 | 原生C200触摸流程 | 25 | 菜单→剧本→君主→正常开局；武将→合法目的地→攻击菜单→目标；数值修改/确认、战略横纵拖动与上下边界、战斗三种选择状态拖动/反向恢复/松手不确认、边缘轻点不滚动、触摸后实体键、城池ID |
 | 资源回包 | 10 | 原87条/空槽保留、原库逐字节还原、89条扩展库往返、遮罩/行填充/动画/地图/索引约束 |
 | 源码结构 | 42模块/446恢复函数 | 模块独立编译、函数索引、89项资源用途依据；新增触摸模块独立于恢复模块 |
 
-当前确切BDA新跑5025项编译MIPS检查及64项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
+当前确切BDA新跑5113项编译MIPS检查及86项原生固件检查，均0失败。前轮15857项按键对照属于alpha.1的14行视口，不计为本轮新跑结果；当前卷动状态会按13行显示区有意变化。
 此前593项既有回归、27163项控制流对照及60026项运行库对照保留为历史证据，没有计为本轮新跑检查。
-原1204条索引PNG与LIB保持不变；CLR更新原生状态图问号并追加五张18×18天气图。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
+原始PNG、LIB及BDA保持不变；CLR仅重编码29张水域图块，其余1175帧、原生状态图和天气块与alpha.3完全一致。45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
 新增触摸代码/状态位于原固定状态区之后的受限区间，链接器检查其末端不超过0x81c30000。
 alpha.1把战斗光标闪烁计数器从未初始化改为0；该轮历史按键对照排除这一绘制相位/次数差异，比较游戏决策、状态、命令及输入消耗。
 
-汇总及源码/报告哈希：[问号、天气与信息页记录](../validation/battle-hud-info-sharp.json)。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
+汇总及源码/报告哈希：[河流轮廓修复记录](../validation/river-geometry-review.json)，前轮信息页见alpha.3历史记录。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
 问号按16×16单比特字形烘焙，天气按原生18×18绘制；信息页后台一次画完整页并提交，保持到点击或按键返回。新信息页不进入逐行直接绘屏路径，临时攻防计算视图读出后恢复，原游戏状态与战场缓冲不改。
 独立干净检出构建及安装包检查见 [干净构建记录](../validation/release-clean-build.json)。
 发行包由 `reference-build.json` 分别校验BDA/LIB/CLR；升级ZIP和外部文件均有逐文件SHA-256。
@@ -56,6 +57,7 @@ python tools/test_sango_lib.py
 python tools/test_color_assets.py
 python tools/test_strategy_color_map.py
 python tools/test_battle_color.py
+python tools/test_river_geometry.py
 python tools/test_battle_ui_color.py
 python tools/test_battle_pixel_grid.py
 python tools/test_battle_hud.py
@@ -81,7 +83,11 @@ SDK文件加载、分配失败与资源释放由编译MIPS模型另测；未将R
 
 本版未系统验证真机、完整战斗/AI/战役或完整原生存读档。旧版本设备反馈不计为本版通过。
 
+本轮河流检查以原LIB的2bpp字节为轮廓依据，逐坐标核对0/85岸线与170水纹；显式河岸方向/陆地角规则是经原图核对的元数据。照片区域对应资源113、视口(0,6)，22个山地/树林/营寨位置一致，完整240×208绘制经真实MIPS对比。原生另外比较七地图21个视口及29张水域图块的全部像素。更早仅检查尺寸与蓝色像素数，不能证明上色没有改变岸线，已由新增检查补齐。
+
 ## 历史阶段
+
+alpha.3（71a2d93）的问号、天气与信息页记录保留在[battle-hud-info-sharp.json](../validation/battle-hud-info-sharp.json)，报告哈希按该提交追溯。
 
 
 前一版未压扁底栏的BDA是 `8593e3…`，见 [battle-toolbar-aspect-validation.json](../validation/battle-toolbar-aspect-validation.json)，源码快照b37442d。

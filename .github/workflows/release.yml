@@ -57,6 +57,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'City transparency or strategy viewport checks failed' }
           python tools/test_battle_color.py
           if ($LASTEXITCODE -ne 0) { throw 'Battle color/timeline checks failed' }
+          python tools/test_river_geometry.py
+          if ($LASTEXITCODE -ne 0) { throw 'River tiles changed original bank/ripple geometry' }
           python tools/test_battle_pixel_grid.py
           if ($LASTEXITCODE -ne 0) { throw 'Native HUD image or glyph grid checks failed' }
           python tools/test_touch_input.py
