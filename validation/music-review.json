@@ -91,7 +91,10 @@
     "validation/touch-native-staging.json": "6c8d3b5893637a9c09199caf68813735ef1765464f022e028ad7864c3942d1dd",
     "validation/touch-drag-trajectories.json": "e1e3c158d67d385f0070e1653b1e35ccb24faebe71a140f362d47d77c0fcde96",
     "validation/sdk-bda-validation.json": "56b1675a838dac3db6d81e0a9e0f756c466c40433d94b277cd5f112dda0e0f73",
-    "validation/music-native-validation.json": "20caa4dec719271b6b48f8bf75f0bf8bea877e91009a1828fea079a0886744f7",
-    "validation/music-native-staging.json": "650962ccbaadf4da1105ac970117a4d224f4b05787888fe5ddb0801393fd7ba7"
-  }
+    "validation/music-native-validation.json": "0f24ff17122323a403fa65f7653ff10c46c005eee822edd6d2410184062b6103",
+    "validation/music-native-staging.json": "650962ccbaadf4da1105ac970117a4d224f4b05787888fe5ddb0801393fd7ba7",
+    "validation/release-clean-build.json": "5e4102cf27abab059176975b0d3dd3e622cb519d481d3f6d70b9dfd7bddc7173"
+  },
+  "clean_build_record": "validation/release-clean-build.json",
+  "clean_build_tested_commit": "db19a28bfcee078ebca5f09b6b860292c841e42c"
 }

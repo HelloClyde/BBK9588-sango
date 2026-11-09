@@ -1,18 +1,22 @@
 {
-  "tested_commit": "8b4044d2d1958d4684b821c7d6ed61ec6459cad1",
-  "version": "0.1.0-alpha.5",
+  "tested_commit": "db19a28bfcee078ebca5f09b6b860292c841e42c",
+  "version": "0.1.0-alpha.6",
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "clean_checkout": true,
   "local_object_cache_only": true,
   "exact_bda_lib_clr_match": {
-    "三国霸业.bda": "7040e31c29eb8bb8ba4582fbad12c4e20dba7c88472de91564a13c6d2865cc9d",
+    "三国霸业.bda": "c5149aab1220dacff32377b93e7f8864670a424f55aeab21b5033d09ee72489d",
     "sango.lib": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
-    "sango.clr": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793"
+    "sango.clr": "77c1b58d85d95765be331a5d91c61d0a6545ee39a6712b05d09916cb2f8dd793",
+    "music/menu.wav": "eab0b2fa27827e60343186bb211bfa744875736d637f5d204ba33f25024aa4a7",
+    "music/strategy.wav": "b03814c7b795994fe2b513932b1466921d20f3a9c48b8e2374b148d49e72e3cd",
+    "music/battle.wav": "7bcb7c43295ec7c3f397377c3d0d92065f86c0bae4ab9febb801b7868cf09bd8"
   },
   "package_and_integrity_checks": "passed",
   "compiled_info_weather_checks": 27,
   "compiled_river_geometry_checks": 88,
   "compiled_battle_options_checks": 26,
+  "compiled_music_checks": 63,
   "resource_roundtrip_checks": 10,
-  "scope": "Independent clean local source clone and pinned SDK checkout, no untracked game inputs. Configurable GCC15.2.0; asset encoding, SDK static validation, source/resource indexes, resource roundtrips, compiled info/weather checks, packaging and integrity. All three produced binaries exactly match the separately runtime-tested build. Runtime checks recorded separately."
+  "scope": "Independent clean local source clone and pinned SDK checkout, no untracked game inputs or FLAC/FFmpeg dependency. Configurable GCC15.2.0; asset encoding, SDK static validation, source/resource indexes, resource roundtrips, compiled info/weather, river, option and music checks, packaging and integrity. BDA/LIB/CLR and all three compressed tracks exactly match the separately runtime-tested build. Runtime checks recorded separately."
 }

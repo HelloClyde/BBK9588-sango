@@ -81,5 +81,51 @@
     ],
     "pcm_bytes": 1146290,
     "comparison_scope": "512 post-write PCM samples per scene exactly match oracle with getter-measured existing firmware attenuation (firmware scales input in place). AIC stream checked for22050Hz and signal only; not claimed bit-exact after codec/DMA."
-  }
+  },
+  "synthetic_nand_probes": [
+    {
+      "id": "menu",
+      "native_open_valid": true,
+      "native_seek_end": 2932796,
+      "expected_size": 2932796,
+      "native_read_bytes": 316,
+      "prefix_bytes": 316,
+      "prefix_matches": true,
+      "actual_prefix_sha256": "d0f4ee5120f637a8ea3bf9cb9f1a1ad527594996e7b88b8a50b529c4937a8f5c",
+      "expected_prefix_sha256": "d0f4ee5120f637a8ea3bf9cb9f1a1ad527594996e7b88b8a50b529c4937a8f5c",
+      "first_differing_offsets": []
+    },
+    {
+      "id": "strategy",
+      "native_open_valid": true,
+      "native_seek_end": 1229628,
+      "expected_size": 1229628,
+      "native_read_bytes": 316,
+      "prefix_bytes": 316,
+      "prefix_matches": false,
+      "actual_prefix_sha256": "3bd946a52f75e309c0b6594db7604292e3290bb60c6a54f2467889aef052376d",
+      "expected_prefix_sha256": "6f1b64163d793bef588946041e190e9dbbcb641dbbf3e18c77c53a8ccc2857b4",
+      "first_differing_offsets": [
+        25,
+        26,
+        235,
+        236,
+        286,
+        287
+      ]
+    },
+    {
+      "id": "battle",
+      "native_open_valid": true,
+      "native_seek_end": 1672508,
+      "expected_size": 1672508,
+      "native_read_bytes": 316,
+      "prefix_bytes": 316,
+      "prefix_matches": true,
+      "actual_prefix_sha256": "dc53266dee6e398015347b0e0bb7d007966a010cb478a451721c2b39731456dd",
+      "expected_prefix_sha256": "dc53266dee6e398015347b0e0bb7d007966a010cb478a451721c2b39731456dd",
+      "first_differing_offsets": []
+    }
+  ],
+  "probe_scope": "Direct native SDK file operations in dedicated synthetic NAND, independent of the RAM-backed music wrapper. Observed fixture errors are not treated as native filesystem success."
 }
