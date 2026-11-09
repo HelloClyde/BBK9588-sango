@@ -25,6 +25,13 @@ uint32_t sango_save_choose_slot(char load_mode)
         do
         {
             sango_input_next_event(&event_kind);
+            int tapped = sango_touch_choose_row(&event_kind, 24, 116, 216, 27, 3, 0, 3);
+            if (tapped >= 0)
+            {
+                slot = (uint32_t)tapped;
+                event_kind = 5;
+                key_code = BDA_KEY_ENTER;
+            }
         } while (event_kind != 5);
         sango_display_invert_rectangle(0x18, (short)highlight_top_or_io_result, 0x86,
                                        (short)highlight_bottom, 0);

@@ -165,11 +165,24 @@ uint32_t sango_menu_select_animated(uint16_t background_resource, short selectio
     selection = 0;
     sango_bitmap_draw_resource((uint32_t)background_resource, 1, 0, 0, '\0');
 poll_menu_event:
-    sango_input_poll_native_event(&event_kind);
+    sango_input_next_event(&event_kind);
     do
     {
+        if (event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD)
+        {
+            int tapped = sango_touch_menu_row(background_resource, &event_kind);
+            if (tapped >= 0)
+                return (uint32_t)tapped;
+        }
         if (event_kind == 5)
         {
+            if (key_code == SANGO_TOUCH_ANIMATION_KEY)
+            {
+                int tapped = sango_touch_last_menu_row(background_resource);
+                if (tapped >= 0)
+                    return (uint32_t)tapped;
+                goto poll_menu_event;
+            }
             if (key_code == 0x67)
             {
             select_previous_option:
@@ -277,6 +290,16 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
     {
         while (sango_input_next_event(&event_kind), event_kind != 5)
         {
+            int tapped = sango_touch_choose_row(&event_kind, 16, 13, 52, 12, 25, first_visible,
+                                                total_rulers);
+            if (tapped >= 0)
+                return (uint32_t)g_temp_character_ids_address[tapped];
+            key_code = sango_touch_swipe_key(&event_kind);
+            if (key_code)
+            {
+                event_kind = 5;
+                break;
+            }
             cities_flash_on = (bool)(cities_flash_on ^ 1);
             sango_menu_flash_ruler_cities(city_count, city_ids_or_title, city_coordinates_address);
         }

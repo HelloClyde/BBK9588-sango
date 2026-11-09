@@ -307,6 +307,17 @@ uint32_t sango_ui_select_item(int item_ids_address, uint32_t item_count, uint32_
         }
 
         sango_input_next_event(&event_kind);
+        int tapped =
+            sango_touch_choose_row(&event_kind, (int)content_left, (int)content_top + 12,
+                                   (int)content_right, 12, visible_rows, top_row, total_rows);
+        if (tapped >= 0)
+            return (uint32_t)tapped;
+        if (event_kind == SANGO_TOUCH_PAN_END)
+        {
+            key_code = sango_touch_swipe_key(&event_kind);
+            if (key_code)
+                event_kind = 5;
+        }
         if (event_kind != 5)
             continue;
         if (key_code == 1)
@@ -723,6 +734,17 @@ uint32_t sango_ui_select_character(int character_ids_address, uint32_t character
         }
 
         sango_input_next_event(&event_kind);
+        int tapped =
+            sango_touch_choose_row(&event_kind, (int)content_left, (int)content_top + 12,
+                                   (int)content_right, 12, visible_rows, top_row, total_rows);
+        if (tapped >= 0)
+            return (uint32_t)tapped;
+        if (event_kind == SANGO_TOUCH_PAN_END)
+        {
+            key_code = sango_touch_swipe_key(&event_kind);
+            if (key_code)
+                event_kind = 5;
+        }
         if (event_kind != 5)
             continue;
         if (key_code == 1)

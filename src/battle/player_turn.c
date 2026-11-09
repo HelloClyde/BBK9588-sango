@@ -429,10 +429,11 @@ uint32_t sango_battle_poll_map_action(char preview_mode)
 #define event_kind (*(int *)(abi_storage + 0))
 #define key_code (*(int *)(abi_storage + 4))
 
-    /* 原恢复入口没有给此计数器赋初值；保留当前编译ABI的首拍相位，
-     * 不在可读性重构中加入新的初始化行为。 */
-    uint32_t legacy_timer_ticks;
+    /* Cursor blinking must not depend on an uninitialized register when the
+     * same input loop is entered through either keys or touch. */
+    uint32_t legacy_timer_ticks = 0;
     uint32_t blink_phase = 0;
+    int pan_remainder[3] = {0, 0, 0};
     while (true)
     {
         sango_input_next_event(&event_kind);
@@ -489,8 +490,60 @@ uint32_t sango_battle_poll_map_action(char preview_mode)
             else
                 sango_battle_scroll_viewport((char)blink_phase);
         }
-        else if (event_kind == 0xb)
+        else if (event_kind == SANGO_TOUCH_PAN || event_kind == SANGO_TOUCH_PAN_END)
         {
+            uint8_t map_state[4] = {g_battle_viewport_x, g_battle_viewport_y, g_battle_cursor_x,
+                                    g_battle_cursor_y};
+            if (sango_touch_pan_map(&event_kind, map_state, g_battle_map_width, g_battle_map_height,
+                                    SANGO_BATTLE_VIEW_COLUMNS, SANGO_BATTLE_VIEW_ROWS,
+                                    SANGO_BATTLE_MAP_WIDTH, SANGO_BATTLE_MAP_HEIGHT, pan_remainder))
+            {
+                g_battle_cursor_x = map_state[2];
+                g_battle_cursor_y = map_state[3];
+                sango_battle_draw_terrain(map_state[0], map_state[1]);
+            }
+        }
+        else if (event_kind == SANGO_TOUCH_HOLD)
+            continue;
+        else if (event_kind == SANGO_TOUCH_TAP)
+        {
+            uint8_t map_state[4] = {g_battle_viewport_x, g_battle_viewport_y, g_battle_cursor_x,
+                                    g_battle_cursor_y};
+            if (sango_touch_map_point(&event_kind, map_state, SANGO_BATTLE_VIEW_COLUMNS,
+                                      SANGO_BATTLE_VIEW_ROWS, SANGO_BATTLE_MAP_WIDTH,
+                                      SANGO_BATTLE_MAP_HEIGHT))
+            {
+                sango_battle_draw_tile(g_battle_cursor_x, g_battle_cursor_y, 0);
+                g_battle_cursor_x = map_state[2];
+                g_battle_cursor_y = map_state[3];
+                if (preview_mode == 3 &&
+                    sango_battle_find_unit_at(g_battle_cursor_x, g_battle_cursor_y) == 0xff &&
+                    sango_touch_edge_pan(&event_kind, map_state, g_battle_map_width,
+                                         g_battle_map_height, SANGO_BATTLE_VIEW_COLUMNS,
+                                         SANGO_BATTLE_VIEW_ROWS, SANGO_BATTLE_MAP_WIDTH,
+                                         SANGO_BATTLE_MAP_HEIGHT))
+                {
+                    g_battle_cursor_x = map_state[2];
+                    g_battle_cursor_y = map_state[3];
+                    sango_battle_draw_terrain(map_state[0], map_state[1]);
+                    sango_battle_draw_units(blink_phase);
+                    sango_battle_scroll_viewport(0);
+                    sango_battle_draw_cursor();
+                    continue;
+                }
+                if (preview_mode == 1)
+                    sango_battle_refresh_target_preview(0);
+                else if (preview_mode == 2)
+                    sango_battle_refresh_move_preview(0);
+                else
+                    sango_battle_scroll_viewport(0);
+                sango_battle_draw_units(blink_phase);
+                sango_battle_draw_cursor();
+                return 0;
+            }
+            if (sango_touch_x(&event_kind) >= 28 && sango_touch_x(&event_kind) < 60 &&
+                sango_touch_y(&event_kind) >= 284 && sango_touch_y(&event_kind) < 320)
+                return 0xff;
             /* 输入包中的完整16位坐标用于底栏命中，不能使用会截断的旧坐标槽。 */
             enum SangoBattleToolbarAction action = sango_battle_toolbar_hit(
                 *(uint16_t *)(abi_storage + 8), *(uint16_t *)(abi_storage + 10));

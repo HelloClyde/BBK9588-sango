@@ -63,6 +63,7 @@ uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
     sango_resource_read_text(0x40, 0x2d, prompt_text);
     sango_format_integer(limit, maximum_text, 10);
     sango_text_draw_legacy(0x53, 0xa5, prompt_text);
+    sango_touch_draw_number_controls();
 
     uint32_t last_digit_index = bbk_strlen(maximum_text) - 1 & 0xff;
     uint32_t digit_index = last_digit_index;
@@ -108,6 +109,26 @@ uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
         }
 
         sango_input_next_event(&event_kind);
+        if (event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD)
+        {
+            int x = sango_touch_x(&event_kind), y = sango_touch_y(&event_kind);
+            if (x >= 125 && x < 125 + (int)(last_digit_index + 1) * 6 && y >= 153 && y < 165)
+            {
+                digit_index = (uint32_t)(x - 125) / 6;
+                step = 1;
+                for (uint32_t place = digit_index; place < last_digit_index; ++place)
+                    step *= 10;
+                redraw_digits = true;
+                continue;
+            }
+            if (y >= 183 && y <= 205 && x >= 40 && x < 204 && (x - 40) % 42 < 38)
+            {
+                static const int button_keys[4] = {BDA_KEY_DOWN, BDA_KEY_UP, BDA_KEY_ENTER,
+                                                   BDA_KEY_ESCAPE};
+                key_code = button_keys[(x - 40) / 42];
+                event_kind = 5;
+            }
+        }
         if (event_kind != 5)
             continue;
         switch (key_code)

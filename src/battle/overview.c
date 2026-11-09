@@ -117,6 +117,8 @@ void sango_battle_show_overview(void)
                 marker_color = 0;
             }
             input_or_count = sango_input_wait(0x32, '\x01');
+            if (input_or_count == SANGO_TOUCH_ANIMATION_KEY)
+                return;
         } while (input_or_count == 0);
         visible_side = (char)selected_side;
         if (input_or_count == 0x67)

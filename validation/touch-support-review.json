@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-09",
+  "baseline_commit": "01a990f41aea93fa40c22cda35aaf934907b4374",
+  "baseline_elf_sha256": "d1fad32bcd71846cca3668bb839c859a28a41ae801383033e621dc93416c00ba",
+  "bda_sha256": "aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b",
+  "bda_bytes": 219808,
+  "runtime_payload_sha256": "6853630eb4e4e8eeda2f60c8663e4eeaa9d9285ae56952690ca4398f78faca5a",
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "lib_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "clr_sha256": "ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e",
+  "indexed_art_frames_unchanged": 1204,
+  "layout": {
+    "legacy_initialized_bytes": 45536,
+    "legacy_initialized_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+    "touch_start": "0x81c2bb00",
+    "touch_end": "0x81c2c4c4",
+    "limit": "0x81c30000"
+  },
+  "fresh_mips_checks": 5003,
+  "touch_mips_checks": 139,
+  "keyboard_comparison_checks": 15857,
+  "native_firmware_checks": 43,
+  "sdk_boundary": "Named bda_gui touch_position/tick_count_25ms/window_timer/event_pump_frame_once APIs; window messages own lifetime, no global raw queue mixing or direct GUI pointers. Timer2 is independent from game timer1. Full signed16-bit coordinates; release taps once, drag never confirms, held-map input ignored.",
+  "keyboard_scope": "Exact decisions/state/input for strategy, decimal, rosters and battle selection; battle painting phase/count excluded because the old uninitialized blink counter is now initialized to0. No gameplay rule or save-format change.",
+  "limitations": [
+    "Continuous drag SDK path passes compiled-MIPS gesture tests. C200/QEMU diagnostic motion did not update coordinates while held, so native/hardware continuous dragging is not verified. Empty-edge tap scrolling is native verified.",
+    "Native C200 uses exact-byte BDA/LIB/CLR RAM staging to isolate synthetic NAND ECC; controlled20-unit state fixtures are excluded from delivery. File IO/ownership tested in compiled MIPS, not native save/campaign.",
+    "No physical-device or complete campaign verification."
+  ],
+  "source_sha256": {
+    "src/sango_touch.c": "2a217389368da7adac025181c5ae9dd5e0e1bdb266fa7354a39c60039690d5a1",
+    "include/sango_touch.h": "6d958c43b0ad07d4d79517b88427b167854aad85bffc9b02225ab24ba4b59540",
+    "src/platform/event_loop.c": "2e23260dd843cfbd30ec5caf3c7770093694dce7ba7f616d0efd1fcb3c785acb",
+    "src/platform/window_graphics.c": "03c77c840972d70e2a92c134bc536e59f7154e55633f6d4ac593fc3f8ddcf449",
+    "src/platform/sdk_bindings.c": "1d9b9065b54c77903ef6306cdfd2c1688a463d362a1ded8fa01ec8edd5f96523",
+    "src/ui/start_menu.c": "4fca1398bc27fe2c8307270e35079bed8bba4983ab50675dc1d6f709a5e5b729",
+    "src/ui/menu_and_text.c": "e73bac2db17eb840eedc56c71baaa501700dceb967abf4368d01580866f3fb31",
+    "src/ui/lists.c": "878b27f37e270cb7711217c834c129de11afc4bed31b5e7a0760243fc5f43c9a",
+    "src/ui/system_menu.c": "f9d08f029248a685041b29692e7923698cb5f4ec855af861df522c4870b00cdc",
+    "src/strategy/map.c": "5eddc8fd34bd5540b6e03c657a73159e9c4e717dbadaaa066771c23a52d64904",
+    "src/battle/player_turn.c": "79bf51741fa3e864e6906535a680cd2bbd3ac2d82a5c7365b4ddb0bf57484933",
+    "src/battle/overview.c": "7defe53dcd5cfd355c0785251735c1ec0c1c88f70bfe10fbd0882d8e03056a06",
+    "src/save/savegame.c": "745735021a07912ff1bea3b362f57779dfa654b1004d0277054f3c9843b0734f",
+    "sango.ld": "c0435d3b5d4c70537edf883cdb750e3576b2b671d0cddb9b36df2483422aedde",
+    "build.py": "e8381ab6d0b06858a9241aa9a4eee4451359475db811284d28eca00d0bf61cb0",
+    "tools/test_touch_input.py": "d3c226c91b792cffd16966cea1b45c041ee6a2ffea4cbf10f2462a26060639ca",
+    "tools/test_touch_keyboard_compat.py": "f59d60f822cda05445ea1bf68641dfa01928139beda44305feffd2ac0e0fcfbe"
+  },
+  "report_sha256": {
+    "validation/color-mips-validation.json": "81965639560f0095d854dd8d3d2bfbe197f114db46bf21642a0c131b041f8a6b",
+    "validation/strategy-color-validation.json": "4ae7ba98e34e28d066494c228dbd60666992d7a0de90bff3cfcb8eef1e72a296",
+    "validation/battle-color-validation.json": "649def1612f504bf2e158dba3d9928ead9e3769a5096fe2d3ad44e94ec0e02a0",
+    "validation/battle-ui-color-validation.json": "227883a2e5aac3844cc2c407c431dce22661813ea7ab65bdada9014c1a336ee2",
+    "validation/battle-pixel-grid-validation.json": "703c5d95b02ff727d5b626870100570d7051dbf971f18dd7b278e79b2f872e2f",
+    "validation/battle-hud-validation.json": "6b5309833088f59494aa53f5c98e0917360de05be57b6175941bca9da7969c3b",
+    "validation/battle-summary-validation.json": "680b895f0f9a103c0ded03ff307747dce26cdc4df254d2242713fbee34ed3df8",
+    "validation/battle-viewport-validation.json": "1b49398e334bb6448e1e7d7470af4832ea57b6f09e3bb30e664824359e2f19a8",
+    "validation/touch-input-validation.json": "d93e771995dbd32c08bd2f304c5cf91a0289702b7913b7da2ec5f71b319bd634",
+    "validation/touch-keyboard-validation.json": "c2835e836569518f9c07b474be2a253137e340d7fefe43784dd66c1196af7d0f",
+    "validation/color-firmware-validation.json": "a7e1fa230b24932965eed309d8075f7a105f77911d7543d471cdae22d5aa1950",
+    "validation/touch-firmware-validation.json": "ae1018a154938ed2986eda2628e798645f1f4303a63eae68e86df3bbacea1347",
+    "validation/color-native-staging.json": "6ae7b77862f927571d5f9525dd7ead44f4b557376a4ab65bfe2e6562ac66fcbb",
+    "validation/touch-native-staging.json": "116b102bca20409a518c7673d408ee1e2af1455586be994a6ada8491f33be13c",
+    "validation/sdk-bda-validation.json": "6280df474104aebb61f03feab0fa873fce2bad0fde497932d4f0e697affce5a5"
+  },
+  "reproducible_build": {
+    "second_build_sha256": "aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b",
+    "same_bda_lib_clr": true
+  }
+}

@@ -5,45 +5,37 @@
 /* 原函数 0x81c1408c */
 uint32_t sango_input_next_event(int *event)
 {
-    int native_event_kind;
-    int normalized_event_kind;
-
-    if (g_legacy_data_81c2b9a8 == 0)
-    {
-        do
-        {
-            while (true)
-            {
-                sango_input_poll_native_event(event);
-                native_event_kind = *event;
-                if (native_event_kind == 0x10)
-                {
-                    normalized_event_kind = 5;
-                    goto store_normalized_kind;
-                }
-                if (0x10 < native_event_kind)
-                    break;
-                if (native_event_kind == 1)
-                {
-                    *event = 0xb;
-                    g_battle_map_width_aux_view2 = (char)event[2];
-                    g_legacy_touch_y_byte = (char)*(uint16_t *)((int)event + 10);
-                    return 0;
-                }
-            }
-            normalized_event_kind = 6;
-        } while (native_event_kind != 0x144);
-    store_normalized_kind:
-        *event = normalized_event_kind;
-    }
-    else
+    if (g_legacy_data_81c2b9a8 != 0)
     {
         *event = g_legacy_data_81c2b9a8;
         event[1] = g_legacy_data_81c2b9ac;
         event[2] = g_legacy_data_81c2b9b0;
         g_legacy_data_81c2b9a8 = 0;
+        return 0;
     }
-    return 0;
+    while (true)
+    {
+        if (!sango_input_poll_native_event(event))
+            continue;
+        int native_kind = event[0];
+        if (sango_touch_process(event))
+            return 0;
+        if (native_kind == 0x10)
+        {
+            sango_touch_cancel();
+            event[0] = 5;
+            return 0;
+        }
+        if (native_kind == 0x144)
+        {
+            /* Sampling touches must not advance game/animation time. */
+            if (event[1] == SANGO_TOUCH_TIMER_ID)
+                continue;
+            event[0] = 6;
+            event[1] = 0;
+            return 0;
+        }
+    }
 }
 
 /* 原函数 0x81c14164 */
@@ -60,7 +52,9 @@ uint32_t sango_input_wait(short ticks, char allow_key)
     sango_timer_stop(1);
     if (ticks == 0)
     {
-        sango_input_next_event((int *)&event_kind);
+        do
+            sango_input_next_event((int *)&event_kind);
+        while (event_kind != 5 && event_kind != SANGO_TOUCH_TAP && event_kind != SANGO_TOUCH_HOLD);
     }
     else
     {
@@ -68,19 +62,16 @@ uint32_t sango_input_wait(short ticks, char allow_key)
         while (ticks != 0)
         {
             sango_input_next_event((int *)&event_kind);
-            if (event_kind == 0xb)
+            if (event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD)
             {
-                if (restore_draw_timer != '\0')
-                {
-                    sango_timer_stop(1);
-                    sango_timer_start(1, 1);
-                    return event_kind & 0xff;
-                }
-                return 0xb;
+                if (allow_key)
+                    break;
             }
             remaining_ticks = ticks + -1;
-            if ((event_kind != 6) && (remaining_ticks = ticks, allow_key != '\0'))
+            if (event_kind == 5 && (remaining_ticks = ticks, allow_key != '\0'))
                 break;
+            if (event_kind != 6)
+                remaining_ticks = ticks;
             ticks = remaining_ticks;
             event_key = 0;
         }
@@ -90,7 +81,9 @@ uint32_t sango_input_wait(short ticks, char allow_key)
         sango_timer_stop(1);
         sango_timer_start(1, 1);
     }
-    return event_key & 0xff;
+    return event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD
+               ? SANGO_TOUCH_ANIMATION_KEY
+               : event_key & 0xff;
 }
 #undef event_kind
 #undef event_key
@@ -110,6 +103,8 @@ uint32_t sango_input_peek_key(void)
     {
         key_code = (uint32_t)event_key;
     }
+    else if (event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD)
+        key_code = SANGO_TOUCH_ANIMATION_KEY;
     return key_code;
 }
 #undef event_key

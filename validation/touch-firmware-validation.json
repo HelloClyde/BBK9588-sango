@@ -1,0 +1,89 @@
+{
+  "passed": 13,
+  "failed": 0,
+  "bda_sha256": "aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b",
+  "scope": "Native C200 with exact BDA/LIB/CLR staging. A controlled 20-unit fixture calls real actionable-unit, movement, command, target, number and strategic-city controllers; markers record returned values only. All choices are native touch input. Also normal main/scenario/ruler session flow and touch/key mixing. No filesystem save or complete campaign/physical-device claim.",
+  "limitations": [
+    "Continuous drag remains unverified on hardware: diagnostic C200/QEMU motion delivered the initial coordinate for down/up and no changing coordinate during hold; MIPS tests cover the SDK gesture path. Native tests verify the edge-tap viewport fallback."
+  ],
+  "cases": [
+    {
+      "name": "Tap an unselected main-menu row activates it once",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/main-menu.png",
+      "screenshot_sha256": "39e7656827c36dc35f22be38678b122434781a6fd86d937fd8cc0b964fcf2927"
+    },
+    {
+      "name": "Tap a player unit selects the real actionable unit",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-move-range.png",
+      "screenshot_sha256": "b38080fe7d203a04792dfa196a895d21aa6cdb9e7ee0140243c908b4c0d0ee0c"
+    },
+    {
+      "name": "Tap a legal destination opens the production unit command menu",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-commands.png",
+      "screenshot_sha256": "aff1fc07b6a276567cc59ab4e881563e2ea7c3b4112ba91740432d7d272a9f40"
+    },
+    {
+      "name": "Tap attack menu row enters target selection without confirming a target",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-target.png",
+      "screenshot_sha256": "648d5c9e21a439a477ddc58cc789b6e3e2ec9d107a40341dc3c17f29c4b9dc3c"
+    },
+    {
+      "name": "Tap an enemy selects the validated original attack target",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/battle-target.png",
+      "screenshot_sha256": "648d5c9e21a439a477ddc58cc789b6e3e2ec9d107a40341dc3c17f29c4b9dc3c"
+    },
+    {
+      "name": "Touch plus and confirm return the edited number through production code",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/numeric-plus.png",
+      "screenshot_sha256": "4e3a14e0c0a33d433aff151806307677aa26e685bb31985e2ae3da232ef41656"
+    },
+    {
+      "name": "Tap empty map edge moves strategic viewport and clamps cursor into view",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-edge-pan.png",
+      "screenshot_sha256": "c037eb7b305b1362148acb72ad06e400f41151f81fa4d1381ffdc629ca830513"
+    },
+    {
+      "name": "Viewport scrolling does not select a city or activate a command",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-edge-pan.png",
+      "screenshot_sha256": "c037eb7b305b1362148acb72ad06e400f41151f81fa4d1381ffdc629ca830513"
+    },
+    {
+      "name": "Physical up key changes the cursor row after touch edge scrolling",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-key-after-touch.png",
+      "screenshot_sha256": "da6f263dc21e495fef31d89c0b60f7346209cf81c37112313adfb42e9b7fbae7"
+    },
+    {
+      "name": "Tap a visible city returns the matching original city ID",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-key-after-touch.png",
+      "screenshot_sha256": "da6f263dc21e495fef31d89c0b60f7346209cf81c37112313adfb42e9b7fbae7"
+    },
+    {
+      "name": "Tap new game opens scenario menu through normal session code",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/scenario-menu.png",
+      "screenshot_sha256": "3e51b747fb03f66020537a3c5d09dd282e8acc45eee50b7d88df827571dcc748"
+    },
+    {
+      "name": "Tap scenario opens original ruler selector",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/ruler-list.png",
+      "screenshot_sha256": "3e1d831f722280da6bd024c9a47b1076f10f3ed014f697c7c5a153931b6bbeb5"
+    },
+    {
+      "name": "Tap ruler completes normal new-game selection and displays strategy",
+      "passed": true,
+      "screenshot": "docs/screenshots/touch/strategy-new-session.png",
+      "screenshot_sha256": "5d1083af87f61b71fa9c2a27f96fde3283982966edf56648e0f02d5b6aae1cee"
+    }
+  ]
+}

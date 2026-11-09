@@ -1,34 +1,43 @@
 # 验证记录
 
-当前彩色BDA：214700字节，SHA-256 `d3265323f961463418b41dcc739c9bd6d88e84a905adff3993f5fcdb4a0befc2`。
+当前触摸版BDA：219808字节，SHA-256 `aa4ecdb4a1adc92870a1084e728be72aba0f766b0b2a74a110f0820af882371b`。
 LIB：461116字节，SHA-256 `01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11`。
 CLR：2294040字节，SHA-256 `ecbe9aa3b2eeb554d5cf645293c140510a3de79a2c410baa00aa7b298f45978e`。
 固定SDK `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，GCC15.2.0。
 
-## 游戏载荷验证（与4b5e97a逐字节相同）
+## 当前执行文件的检查
 
 | 检查 | 通过数 | 实际范围 |
 | --- | ---: | --- |
-| 彩色生产MIPS | 3818 | 全1204帧的原偏移查找、PNG/RGB565字节、尺寸及mask类型；140张战斗精灵逐像素；原遮罩、裁切、屏幕/上下文、补充底栏/制作群组；真实CRC/解析/SDK文件生命周期、缺包/损坏包/分配失败/清理 |
-| 既有MIPS回归 | 1167 | 593既有回归、58底栏/天气/文字/触摸、9摘要、507实际地图可视区；使用灰度兼容配置，原机器码对照单独禁用可选彩色加载，加载和RGB路径由上一行实际执行 |
-| 历史生产MIPS新旧对照（e3cadec） | 27163 | 与上轮58afd1a确切ELF比较地图/战斗输入、数值、列表、动画时间轴、搜索、计谋、出征和软浮点；绘制/模态边界建模 |
-| 战斗彩色/背景恢复 | 250 | 实际地形分类、168帧原遮罩核对、天气/数字透明、17组真实时间轴、背景恢复/裁切/中断/分配失败和末帧保留 |
-| 最终像素网格 | 21 | 6张单比特字形按1:1烘焙，真实MIPS完整5760像素复制、局部恢复、尾部CRC/边界及旧文件兼容 |
-| 图片底栏与居中 | 113 | 原图片底色恢复、数字/姓名透明、8类地形与姓名单行切换、30种计谋和36种普通攻击坐标/状态对照 |
-| 战略地图/选择箭头 | 88 | 10帧城市透明键和封闭白色细节；18个视口；完整240×232像素覆盖；四向重画；选择箭头68像素及49格完整轮廓/透明背景；作用域与灰度回退 |
-| 原生C200彩色界面 | 30 | 主菜单、全76800像素制作群组、战略地图/头像、底栏8640像素、战斗状态行/天气/摘要、天数1/10居中、信息/查找及返回和移动；选择箭头原轮廓、下移、背景恢复和返回 |
-| 资源回包 | 10 | 87原条目及空槽保留、原库逐字节还原、89条扩展库往返、遮罩/行填充/动画/地图/尺寸/索引约束 |
-| 扩展LIB加载模型 | 4 | 实际生产MIPS完整分配和读入461116字节，定位17/18/33资源 |
-| 源码结构 | 42模块/446恢复函数 | 独立编译、函数索引和89项代码用途依据检查 |
+| 彩色生产MIPS | 3818 | 全1204帧索引、PNG/RGB565字节、尺寸与遮罩；真实CRC、解析、文件生命周期、缺包/损坏/分配失败；140张战斗精灵逐像素 |
+| 战略地图/选择箭头 | 88 | 城市透明、18个视口、240×232覆盖、四向重画、68像素箭头与49格完整轮廓 |
+| 战斗彩色/背景恢复 | 250 | 地形分类、168帧遮罩、天气/数字透明、17组真实时间轴、恢复/裁切/中断/失败 |
+| 图片底栏与居中 | 113 | 原图底色、透明文字、姓名/地形单行切换、30种计谋与36种攻击坐标/状态 |
+| 最终像素网格 | 21 | 六张16×16单比特字形1:1烘焙；真实MIPS完整5760像素复制、恢复、CRC/边界和旧文件兼容 |
+| 战斗底栏、摘要、可视区 | 574 | 分别58、9、507项；保留布局、天气、底部摘要、15×14绘制、滚动/边界/覆盖层 |
+| 新增触摸MIPS | 139 | 原生窗口回调、完整16位坐标、按下/抬起/取消、8像素阈值、重复释放、SDK采样定时器、菜单、列表、存档槽、数值、城池与三种战斗选择模式、拖动与边缘滚动 |
+| 按键兼容对照 | 15857 | 对照01a990f确切ELF；战略3565、数值520、列表10512、战斗1260，比较返回值、状态和输入消耗；绘制/SDK边界建模 |
+| 原生C200彩色界面 | 30 | 菜单/制作群组、战略地图/箭头、战场/透明文字/底栏/信息/查找、天数居中、背景恢复和四段真实动画 |
+| 原生C200触摸流程 | 13 | 菜单→剧本→君主→正常开局；武将→合法目的地→攻击菜单→目标；数值修改/确认、边缘滚动、触摸后实体键、城池ID |
+| 资源回包 | 10 | 原87条/空槽保留、原库逐字节还原、89条扩展库往返、遮罩/行填充/动画/地图/索引约束 |
+| 源码结构 | 42模块/446恢复函数 | 模块独立编译、函数索引、89项资源用途依据；新增触摸模块独立于恢复模块 |
 
-彩色及既有MIPS共5457项，均0失败。全部1204帧已上色，重复帧共用654份RGB像素，22张图形美术母图及提示词随仓库保存。
-原LIB、动画指令和45536字节初始化数据逐字节保持一致。战略绘图函数增加彩色视口映射，其城市选择、滚动和存档规则不变；战斗底栏保持原比例。
-当前BDA和CLR已分别重建并得到相同SHA-256。新增RGB缓存约2.18MiB，独立于原存档状态区。
+当前确切BDA新跑5003项编译MIPS检查、15857项按键对照及43项原生固件检查，均0失败。按键对照单独列出，未重复计入5003。
+此前593项既有回归、27163项控制流对照及60026项运行库对照保留为历史证据，没有计为本轮新跑检查。
+全部1204帧彩色PNG、LIB和CLR与01a990f相同；45536字节初始化数据的SHA-256仍为 `970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f`，原存档布局未改。
+新增触摸代码/状态位于原固定状态区之后的受限区间，链接器检查其末端不超过0x81c30000。
+战斗光标闪烁计数器从原来的未初始化状态改为0；按键对照只排除这一绘制相位/次数差异，仍比较游戏决策、状态、命令及输入消耗。
 
-前轮箭头修复：[city-cursor-validation.json](../validation/city-cursor-validation.json)；前轮地图修复：[strategy-transparency-validation.json](../validation/strategy-transparency-validation.json)，地图专项：[strategy-color-validation.json](../validation/strategy-color-validation.json)。
-上一轮全彩更新汇总：[color-resource-validation.json](../validation/color-resource-validation.json)，按其中snapshot_commit追溯。
-原始报告：[彩色MIPS](../validation/color-mips-validation.json)、[固件界面](../validation/color-firmware-validation.json)、[新旧逻辑](../validation/control-flow-validation.json)。
-`reference-build.json`用于发行包的BDA/LIB/CLR三份独立校验，升级ZIP及外部文件均有逐文件SHA-256。
+汇总及源码/报告哈希：[触摸支持记录](../validation/touch-support-review.json)。原始报告：[触摸MIPS](../validation/touch-input-validation.json)、[按键对照](../validation/touch-keyboard-validation.json)、[触摸固件](../validation/touch-firmware-validation.json)、[彩色MIPS](../validation/color-mips-validation.json)、[彩色固件](../validation/color-firmware-validation.json)。
+发行包由 `reference-build.json` 分别校验BDA/LIB/CLR；升级ZIP和外部文件均有逐文件SHA-256。
+
+## 触摸范围与限制
+
+[触摸操作](TOUCH_CONTROLS.md)列出菜单、城池、人物、移动/攻击目标、信息/查找、列表、数值和存档槽的具体操作。
+按下/抬起使用SDK窗口消息，坐标使用命名SDK接口；独立20ms定时器不推进游戏时钟，不混用全局原始输入队列或直接访问GUI指针。
+轻点在抬笔时触发一次，拖动不会确认人物或命令；长按地图不确认；实体按键取消尚未释放的触摸。
+
+**连续拖动尚未通过原生/真机验证。** 当前C200/QEMU移动诊断只收到起点坐标，按住期间没有持续更新。SDK采样、位移累计和边界逻辑已通过编译MIPS模型检查；点击地图空白边缘12像素逐格滚动已在原生固件流程通过，可用于移动视野。城池/人物优先于边缘滚动，选目的地/目标时仍按原规则确认。
 
 ## 如何复验
 
@@ -46,28 +55,27 @@ python tools/test_battle_pixel_grid.py
 python tools/test_battle_hud.py
 python tools/test_battle_summary.py
 python tools/test_battle_viewport.py
+python tools/test_touch_input.py
 python tools/package_release.py --require-validated
 python tools/verify_artifacts.py --require-validated
 python tools/test_release_pipeline.py
 ```
 
-新旧逻辑对照另需保留上轮58afd1a的ELF：`python tools/test_control_flow.py --baseline PATH/TO/previous/sango.elf`。
-CI执行资源/源码检查、编译、彩色及五项战场MIPS检查、打包和完整性检查；不运行私有固件。
+触摸前后按键对照另需保留01a990f的ELF（SHA-256 `d1fad32bcd71846cca3668bb839c859a28a41ae801383033e621dc93416c00ba`）：`python tools/test_touch_keyboard_compat.py --baseline PATH/TO/baseline/sango.elf`。
+CI执行源码/资源检查、编译、彩色/战场/触摸MIPS、打包和完整性检查；不运行私有固件，也不下载历史ELF进行按键对照。
 
 ## 原生证据的范围
 
-截图位于 [docs/screenshots/color](screenshots/color/)，README展示同一次运行的菜单、战略、战斗、天数和制作群组。
-原生检查使用本地C200固件、QEMU bbk9588/24Kf和硬件输入字符设备。合成NAND的ECC读取存在差异，
-因此在正常入口/加载点装入准确BDA、扩展LIB和CLR；单独RAM启动夹具执行生产CRC/索引解析，再回正常片头/菜单。
-战场由另一个只用于验证的RAM夹具准备双方20支部队、地形和摘要状态，绘制、原生字体、触摸和输入处理仍执行生产代码。
-这些夹具没有编入交付BDA；[装载记录](../validation/color-native-staging.json)给出准确文件和夹具哈希。
-SDK文件加载、分配失败和资源释放由编译MIPS模型另测，不将RAM装载证据声称为原生文件系统或真机验证。
+彩色截图位于 [screenshots/color](screenshots/color/)，新增触摸流程截图位于 [screenshots/touch](screenshots/touch/)。
+检查使用本地C200固件、QEMU bbk9588/24Kf和硬件输入字符设备。合成NAND存在ECC差异，因此在正常入口/加载点装入准确BDA、LIB及CLR；RAM启动夹具执行生产CRC/索引解析，再回正常片头/菜单。
+战场夹具准备双方20支部队、地形和摘要状态；触摸夹具依次调用生产人物、移动、指令、目标、数值及城池选择控制器，标记仅记录返回值。正常开局另走真实主菜单、剧本、君主和会话流程。
+绘制、原生字体、窗口消息及触摸/按键处理均执行生产代码。夹具没有编入交付BDA；[彩色装载记录](../validation/color-native-staging.json)与[触摸装载记录](../validation/touch-native-staging.json)给出准确载荷、资源及夹具哈希。
+SDK文件加载、分配失败与资源释放由编译MIPS模型另测；未将RAM装载声称为原生文件系统或真机验证。
 
-这30项包含既有29项界面检查，并验证6个固定字形的每个前景像素严格落在原生LCD网格。状态图及按钮图按1:1复制，四段演出框/时间轴保持居中。旧版27项灰度固件报告按其中BDA哈希及历史提交追溯。
-当前全彩BDA未完成真机、完整战斗/AI/战役、完整原生存读档、长按和全部触摸合成ESC分支验证。
-不把旧版本的设备反馈计为本版真机通过。
+本版未系统验证真机、完整战斗/AI/战役或完整原生存读档。旧版本设备反馈不计为本版通过。
 
 ## 历史阶段
+
 
 前一版未压扁底栏的BDA是 `8593e3…`，见 [battle-toolbar-aspect-validation.json](../validation/battle-toolbar-aspect-validation.json)，源码快照b37442d。
 更早的布局、底部摘要、可读性重构和原库解包证据分别保留在各历史摘要及对应提交中。
@@ -93,4 +101,4 @@ CLR格式、语义素材及编辑流程见 [彩色资源说明](../assets/color/
 
 前轮（19d7ea3）UI采用用户确认的金色方案：金色边框、浅金纸底、深金/铜色纹饰，覆盖主菜单、剧本、存读档、制作群组及战斗/地图共用底栏。原红绿母图、提示词和目标PNG保存在 `assets/color/variants/red-green-ui/`。这是一种上色选择，不代表已证实的9288S历史配色。固定字形/坐标、BDA执行载荷、ELF和LIB不变，仅5帧UI及原生状态图更新，其余1199帧PNG不变。3952项相关MIPS及30项原生C200界面检查重新通过，详见 [金色UI记录](../validation/gold-ui-validation.json)。
 
-当前菜单/底栏去除母图中放大的像素块与颗粒纹理，改为连续金色纹饰和细腻明暗；实际输出尺寸保持240×320、240×24及240×36，固定标签仍以1:1点阵显示。原金色颗粒版母图、提示词和原生PNG保存在 `assets/color/variants/gold-pixel-ui/`。仅5帧UI及原生状态图改变，头像、城市、战斗人物/地形等其余1199帧未改；设备像素上限仍存在。3952项相关MIPS和30项原生C200界面检查通过，详见 [UI细化记录](../validation/smooth-ui-validation.json)。
+前轮（01a990f）菜单/底栏去除母图中放大的像素块与颗粒纹理，改为连续金色纹饰和细腻明暗；实际输出尺寸保持240×320、240×24及240×36，固定标签仍以1:1点阵显示。原金色颗粒版母图、提示词和原生PNG保存在 `assets/color/variants/gold-pixel-ui/`。仅5帧UI及原生状态图改变，头像、城市、战斗人物/地形等其余1199帧未改；设备像素上限仍存在。3952项相关MIPS和30项原生C200界面检查通过，详见 [UI细化记录](../validation/smooth-ui-validation.json)。

@@ -14,6 +14,7 @@ uint32_t sango_strategy_select_city(uint8_t *map_state)
     bool showing_find_map = false;
     uint8_t scroll_mode = 0;
     uint32_t selected_city_plus_one;
+    int pan_remainder[3] = {0, 0, 0};
 
     sango_render_clear_rectangle(0, 0, 0xef, 0x13f, g_game_context);
     while (true)
@@ -26,7 +27,8 @@ uint32_t sango_strategy_select_city(uint8_t *map_state)
         }
 
         sango_input_next_event(&event_kind);
-        if ((event_kind != 5) && (event_kind != 0xb))
+        if (event_kind != 5 && event_kind != SANGO_TOUCH_TAP && event_kind != SANGO_TOUCH_HOLD &&
+            event_kind != SANGO_TOUCH_PAN && event_kind != SANGO_TOUCH_PAN_END)
             continue;
 
         /* 任意按键或触摸先关闭查找图，不同时执行该输入的地图命令。 */
@@ -38,8 +40,34 @@ uint32_t sango_strategy_select_city(uint8_t *map_state)
         }
 
         bool open_find_map = event_kind == 5 && key_code == 0x1f;
-        if (event_kind == 0xb)
+        if (event_kind == SANGO_TOUCH_PAN || event_kind == SANGO_TOUCH_PAN_END)
         {
+            int width = sango_color_is_loaded() ? 240 : 224;
+            int height = sango_color_is_loaded() ? SANGO_STATUSBAR_TOP : 224;
+            if (sango_touch_pan_map(&event_kind, map_state, 12, 9, 7, 7, width, height,
+                                    pan_remainder))
+                redraw_map = true;
+            continue;
+        }
+        if (event_kind == SANGO_TOUCH_HOLD)
+            continue;
+        if (event_kind == SANGO_TOUCH_TAP)
+        {
+            int width = sango_color_is_loaded() ? 240 : 224;
+            int height = sango_color_is_loaded() ? SANGO_STATUSBAR_TOP : 224;
+            if (sango_touch_map_point(&event_kind, map_state, 7, 7, width, height))
+            {
+                selected_city_plus_one = sango_strategy_draw_map(map_state, 0);
+                if (selected_city_plus_one)
+                    return selected_city_plus_one - 1;
+                /* A city under the pen takes precedence over edge scrolling. */
+                if (sango_touch_edge_pan(&event_kind, map_state, 12, 9, 7, 7, width, height))
+                    redraw_map = true;
+                continue;
+            }
+            if (sango_touch_x(&event_kind) >= 16 && sango_touch_x(&event_kind) < 48 &&
+                sango_touch_y(&event_kind) >= 268 && sango_touch_y(&event_kind) < 304)
+                return 0xff;
             /* 直接读取完整16位坐标，旧全局坐标会把255之后的行截断。 */
             enum SangoStatusbarAction action = sango_statusbar_hit(*(uint16_t *)(abi_storage + 8),
                                                                    *(uint16_t *)(abi_storage + 10));
@@ -163,7 +191,8 @@ uint32_t sango_strategy_draw_map(uint8_t *map_state, uint8_t scroll_mode)
     cursor_row = (uint32_t)map_state[3] - (uint32_t)map_state[1] & 0xff;
     cursor_column = (uint32_t)map_state[2] - (uint32_t)*map_state & 0xff;
     resource_address = sango_resource_item(0x36, '\x01', g_resource_package_address);
-    uint16_t footer_top = sango_color_strategy_map_begin(g_game_context) ? SANGO_STATUSBAR_TOP : 224;
+    uint16_t footer_top =
+        sango_color_strategy_map_begin(g_game_context) ? SANGO_STATUSBAR_TOP : 224;
     /* 全图重画或仅恢复光标离开的那一块，随后共用底栏绘制。 */
     if (scroll_mode == 0)
     {

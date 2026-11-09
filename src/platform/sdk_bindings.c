@@ -138,11 +138,10 @@ uint32_t sango_input_poll_native_event(uint32_t *event_result)
 
     int event_available;
 
-    event_available = bda_sango_gui_event_poll(native_event, 0);
+    event_available =
+        bda_gui_event_pump_frame_once((bda_gui_message_t *)native_event, (bda_handle_t)g_app_frame);
     if (event_available != 0)
     {
-        bda_sango_gui_event_step(native_event);
-        bda_sango_gui_event_dispatch(native_event);
         *event_result = g_native_event_kind_view2;
         event_result[1] = g_native_event_key;
         event_result[2] = g_native_event_data;

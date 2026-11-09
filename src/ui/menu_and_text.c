@@ -109,6 +109,32 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
                                                thumb_bottom, 0);
             }
             sango_input_next_event(&event_kind);
+            if (event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD)
+            {
+                int tapped =
+                    sango_touch_choose_row(&event_kind, g_text_left, g_text_top, g_text_right, 12,
+                                           visible_rows, top_option, option_count);
+                if (tapped >= 0)
+                {
+                    selected_option = (uint32_t)tapped;
+                    event_kind = 5;
+                    key_code = BDA_KEY_ENTER;
+                }
+                else if (sango_touch_x(&event_kind) < g_text_left - 3 ||
+                         sango_touch_x(&event_kind) > g_text_right + 6 ||
+                         sango_touch_y(&event_kind) < g_text_top - 3 ||
+                         sango_touch_y(&event_kind) > g_text_bottom + 2)
+                {
+                    event_kind = 5;
+                    key_code = BDA_KEY_ESCAPE;
+                }
+            }
+            else if (event_kind == SANGO_TOUCH_PAN_END)
+            {
+                key_code = sango_touch_swipe_key(&event_kind);
+                if (key_code)
+                    event_kind = 5;
+            }
         } while (event_kind != 5);
         sango_display_invert_rectangle(g_text_left, (short)highlight_top, g_text_right,
                                        (short)highlight_bottom, 0);

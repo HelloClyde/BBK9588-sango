@@ -186,6 +186,9 @@ def run_number_selection(image, initial, maximum, events):
     machine.intercept('sango_format_integer', 3, format_integer)
     machine.intercept('bbk_strlen', 1, lambda args: len(machine.text(args[0])))
     machine.intercept('sango_text_draw_legacy', 3, draw_text)
+    if 'sango_touch_draw_number_controls' in machine.symbols:
+        # New touch affordances do not change the existing decimal/key model.
+        machine.intercept('sango_touch_draw_number_controls', 0, lambda args: None)
     machine.record('sango_display_invert_rectangle', 5)
     result = machine.call('sango_ui_select_number', initial, maximum)
     return result, machine.trace, len(pending)
@@ -371,6 +374,11 @@ def run_battle_input(image, mode, cursor, events, register_seed):
                 lambda args: machine.trace.append(['sango_battle_draw_hud', []]))
         else:
             machine.record(name, count)
+    def terrain(args):
+        machine.trace.append(['sango_battle_draw_terrain',args])
+        machine.write(STATE['g_battle_viewport_x'],bytes((args[0],)))
+        machine.write(STATE['g_battle_viewport_y'],bytes((args[1],)))
+    machine.intercept('sango_battle_draw_terrain',2,terrain)
     # GCC outlines the hint==0 branch when the small preview wrappers are
     # reused. It has no argument; compare it with the same scroll boundary.
     if 'sango_battle_scroll_viewport.part.0' in machine.symbols:

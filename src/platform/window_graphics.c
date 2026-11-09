@@ -20,6 +20,9 @@ uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32
         {
             g_native_event_key = wparam & 0xffff;
             g_native_event_data = lparam;
+            /* Consumed touch must not reach the firmware default procedure,
+             * which can turn the same gesture into a second key/ESC action. */
+            return 1;
         }
     }
     else
@@ -36,6 +39,11 @@ uint32_t sango_window_proc(uint32_t handle, int message, uint32_t wparam, uint32
             g_app_frame = handle;
             g_draw_context = bda_sango_gui_current_draw(handle);
         }
+    }
+    if (message == BDA_MSG_WINDOW_TIMER)
+    {
+        g_native_event_key = wparam;
+        g_native_event_data = lparam;
     }
     message_result = bda_sango_gui_default_proc(handle, message, wparam, lparam);
     return message_result;
