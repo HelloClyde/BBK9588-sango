@@ -512,9 +512,9 @@ SDK窗口消息及基础绘图适配。
 | `0x81c15d18` | [`sango_menu_select_animated`](../src/ui/start_menu.c#L160) |
 | `0x81c15e44` | [`sango_menu_show_credits`](../src/ui/start_menu.c#L236) |
 | `0x81c15e6c` | [`sango_menu_choose_ruler`](../src/ui/start_menu.c#L244) |
-| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L349) |
-| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L376) |
-| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L383) |
+| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L339) |
+| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L347) |
+| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L354) |
 
 ## src/save/savegame.c
 

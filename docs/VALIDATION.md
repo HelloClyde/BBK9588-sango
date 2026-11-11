@@ -2,15 +2,15 @@
 
 ## 当前开发版 alpha.8
 
-游戏设置、木色补齐及新增署名的BDA为237124字节，SHA-256 `796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3`；LIB为518848字节，SHA-256 `a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c`；CLR为2759168字节，SHA-256 `4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e`。
+当前BDA为239476字节，SHA-256 `16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9`；LIB为518848字节，SHA-256 `a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c`；CLR为2759168字节，SHA-256 `4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e`。
 
-设置版通过4482项编译MIPS检查：设置32、彩色3926、音乐65、存档104、菜单44、触摸132、开门41、势力页138；另有2项本地旧版问题重现不计入本数。原87条资源和45536字节初始化数据保持原字节，93项资源语义核对和10项LIB回包检查通过。逐项报告见 `validation/alpha8-*-validation.json` 及 [当前参考](../validation/reference-build.json)。
+本轮修改势力页绘制路径，复用游戏/辅助画布，以SDK原尺寸RGB565整块绘制图片，首次完整组页后才提交；切换仅提交局部，城市闪烁也在同一地图事务内完成。没有修改素材、游戏规则、存档格式或初始化数据。LIB、CLR及三首音乐与前次白边修复逐字节一致。
 
-19项原生C200检查覆盖设置底图全静态区域、实际开关/音量/返回、制作群组完整像素与新增署名、历史时期整页及8张选中帧、实际剧本选择和木色读档取消。截图和精确范围见 [设置界面](GAME_SETTINGS.md) 与 [原生记录](../validation/wood-settings-validation.json)。使用独立合成NAND和精确字节RAM载入，不表示真机音量表现、原生配置文件持久化或完整战役通过。
+当前确切BDA通过4550项编译MIPS/主机检查：设置32、彩色3926、音乐65、存档104、菜单44、触摸132、开门41、势力页138、菜单透明34、势力响应34。另有2项旧版问题重现不计入总数。原87条资源和45536字节初始化数据保持原字节，93项资源语义核对通过。逐项报告见 `validation/alpha8-*-validation.json` 与 [当前参考](../validation/reference-build.json)。
 
-固定SDK与编译器保持alpha.7版本；设置独立保存在资源目录的`sango.cfg`，升级包不覆盖该文件。此前alpha.7的更广战斗/战略检查保留原哈希，未计为alpha.8本轮新跑。
+21项原生C200检查覆盖四剧本姓名/头像、底图、触摸预览与确定/返回、快速按键滚动及首次页面检查后立即发送80ms触摸。观察到首个预览在1秒内完成；截图采样耗时约0.266秒包含手势、模拟器和HTTP开销，不是硬件测时。工作量检查确认相邻切换的窗口更新为13117像素，非76800像素整屏；不作真机帧率声明。方法、截图、哈希见 [势力页](RULER_SELECTION.md)、[MIPS响应记录](../validation/ruler-response-validation.json)和 [原生响应记录](../validation/ruler-response-firmware-validation.json)。
 
-菜单白边修复另有34项透明导入/真实MIPS检查和10项原生菜单检查，验证四个选项的两种状态及按键/触摸；本轮新CLR的3926项彩色检查通过。仅八张菜单PNG与CLR改变，BDA、LIB、其余1232帧保持原字节。设置版的相关代码检查沿用相同BDA，旧报告保留其原CLR哈希；前述19项原生设置页验证不计作新CLR的新跑结果。新原生记录见 `validation/menu-alpha-firmware-validation.json`，导入来源见 `assets/color/menu-alpha-provenance.json`。
+固件验证使用独立合成NAND和精确字节RAM装载，不表示原生文件系统、真机音量/性能或完整战役通过。此前19项设置页与10项菜单原生报告保留旧BDA哈希，没有计为本轮结果。固定SDK仍为 `ef3bf3b7328a3a8fa9ba48593c63285300725fb7`，GCC15.2.0。
 
 ## alpha.7历史记录
 

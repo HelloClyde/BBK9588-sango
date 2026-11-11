@@ -30,7 +30,7 @@
     "src/sango_battle_ui.c": "e918a6f2c8232d37f6064a1a83074f2b2aba789a94f11d2a1ba74ad8e1833da4",
     "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
-    "src/sango_ruler.c": "8b59fc2a137380b0611e3128ed1362512cc505d5f6ee23283f97aca825e2ae64",
+    "src/sango_ruler.c": "1841c33514decc945e97a86cf9ad10b1c4dc19602ca84260bc31307d401411a7",
     "src/sango_settings.c": "3179181588d97749c4f88c1575bad7474754011df10a3f2fd5974a18c560c7b4",
     "src/sango_statusbar.c": "0ff71941e03ccc2d2c8842f9cbf7f5b39e22d42e2a78b2107bcaff510daabf87",
     "src/save/savegame.c": "9387e2ef010f1683abd9018ced38c64fe4c71912ce7517b5b73d11e1bca85358",
@@ -50,7 +50,7 @@
     "src/ui/lists.c": "a6d2bd8e550e444ef2de5604268a06734b02384ae2425dc37e1b9f4c6b0bb9c0",
     "src/ui/menu_and_text.c": "97deca205cbe7f84882a9f8458b84425cfb494430afb20d7f5769d7b8423a1b9",
     "src/ui/numeric.c": "313be7ba71d58bc8951714b060477701eeb1b400b9da60531cc6a70f8c095acf",
-    "src/ui/start_menu.c": "d4b62342accb671a47aed73613b048536b565da688bb52c866c4545ee6fbd771",
+    "src/ui/start_menu.c": "4c3f7478269fa559220b93ae243ac91d77bf937afcab55eb987676f42e5d593c",
     "src/ui/system_menu.c": "f9d08f029248a685041b29692e7923698cb5f4ec855af861df522c4870b00cdc"
   },
   "resources": [
@@ -3886,7 +3886,7 @@
           "source": "src/sango_ruler.c",
           "function": "sango_ruler_begin",
           "expression": "draw_picture(47,",
-          "line": 68
+          "line": 146
         },
         {
           "source": "src/ui/start_menu.c",
@@ -5454,7 +5454,7 @@
           "source": "src/sango_ruler.c",
           "function": "sango_ruler_begin",
           "expression": "draw_picture(52,",
-          "line": 68
+          "line": 146
         }
       ]
     },
@@ -5469,13 +5469,13 @@
           "source": "src/sango_ruler.c",
           "function": "sango_ruler_update",
           "expression": "ruler_portrait_frames",
-          "line": 80
+          "line": 176
         },
         {
           "source": "src/sango_ruler.c",
           "function": "sango_ruler_update",
           "expression": "draw_picture(53,",
-          "line": 80
+          "line": 176
         }
       ]
     },
@@ -5490,7 +5490,7 @@
           "source": "src/sango_ruler.c",
           "function": "draw_row",
           "expression": "draw_picture(77,",
-          "line": 42
+          "line": 113
         }
       ]
     },

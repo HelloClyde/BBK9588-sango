@@ -25,6 +25,8 @@ def controller(count, events):
     m.intercept('sango_ruler_select',4,lambda a:trace.append(('select',a)))
     m.intercept('sango_ruler_draw_names',1,lambda a:trace.append(('names',a)))
     m.intercept('sango_ruler_end',1,lambda a:trace.append(('end',a)) or a[0])
+    m.intercept('sango_ruler_present',0,lambda a:trace.append(('present',)))
+    m.intercept('sango_menu_flash_ruler_cities',3,lambda a:trace.append(('flash',a)))
     m.intercept('sango_display_invert_rectangle',5,lambda a:trace.append(('marker',a)))
     def cities(a):m.write(a[1],b'\x00\x01');return 2
     m.intercept('sango_faction_list_cities',2,cities)
@@ -65,9 +67,9 @@ def main():
     check('Ten visible rows scroll to keep row30 previewed',
           result==30 and [t for t in trace if t[0]=='select'][-1][1]==[29,20,30,21])
     result,trace,_=controller(4,[event(6),event(11,230,200),event(12,80,60),key(1)])
-    markers=[t[1] for t in trace if t[0]=='marker']
-    check('Map flashing uses translated map coordinates only',
-          result==255 and len(markers)==2 and markers[0][:4]==[121,74,122,75])
+    flashes=[t for t in trace if t[0]=='flash']
+    check('Timer redraw is delegated to one map-only flash transaction',
+          result==255 and len(flashes)==1 and flashes[0][1][0]==2)
     result,trace,_=controller(1,[event(11,40,230),key(0x1c)])
     check('Blank rows do not preview nonexistent rulers',result==0 and len([t for t in trace if t[0]=='select'])==1)
 
@@ -84,7 +86,12 @@ def main():
     m.word(STATE['g_army_slot_used_address'],BUFFER+8000)
     m.word(STATE['g_order_queue_address'],BUFFER+9000)
     texts=[];snapshots=[];freed=[];restores=[]
-    m.intercept('sango_ruler_sdk_text',4,lambda a:texts.append([*a[:2],m.text(a[2]),a[3]]))
+    m.intercept('sango_ruler_sdk_text_at',5,lambda a:texts.append([*a[1:3],m.text(a[3]),a[4]]))
+    def picture(a):
+        target,x,y,width,height,address=a
+        values=struct.unpack('<'+'H'*(width*height),m.read(address,width*height*2))
+        m.pixels.extend((target,x+col,y+row,values[row*width+col]) for row in range(height) for col in range(width))
+    m.intercept('sango_ruler_sdk_picture',6,picture)
     m.intercept('sango_color_sdk_snapshot',1,lambda a:snapshots.append(a[0]) or 0x81610000)
     m.intercept('sango_color_sdk_snapshot_free',1,lambda a:freed.append(a[0]))
     m.intercept('sango_color_sdk_restore',6,lambda a:restores.append(a))
@@ -97,8 +104,9 @@ def main():
             m.call('sango_ruler_update',cid,instruction_limit=2_000_000)
             record=resources[53];spec=record['image']
             offset=struct.unpack_from('<I',LIB,(53-1)*4)[0]+18+frame*((48+3)//4)*48
-            check(f'Scenario{sid} ruler{cid}: correct48px portrait frame at133,168',
-                  m.pixels==expected_pixels(LIB,CLR,entries[offset],133,168,CONTEXT))
+            entry=entries[offset];values=struct.unpack_from('<2304H',CLR,entry[1])
+            expected=[(CONTEXT,133+col,168+row,values[row*48+col]) for row in range(48) for col in range(48)]
+            check(f'Scenario{sid} ruler{cid}: correct48px portrait frame at133,168',m.pixels==expected)
             # Names independently decoded from the corresponding scenario table.
             textid={1:62,2:70,3:71,4:72}[sid]
             at=struct.unpack_from('<I',LIB,(textid-1)*4)[0];encoding=struct.unpack_from('<H',LIB,at+10)[0]

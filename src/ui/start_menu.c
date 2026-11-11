@@ -255,7 +255,6 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
     uint32_t first_visible = 0, selected_ruler = 0;
     uint32_t city_count;
     int city_coordinates_address;
-    bool cities_flash_on = false;
 
     if (!total_rulers)
         return 0xff;
@@ -274,14 +273,13 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
     }
     g_move_costs_address_view3[total_rulers * NAME_BYTES] = 0;
 
-    sango_ui_paint_begin();
     sango_ruler_begin(total_rulers);
     sango_menu_draw_ruler_names(0);
     sango_ruler_select(0, 0, 0, 0);
-    sango_ui_paint_end();
     city_coordinates_address = sango_resource_item(2, 6, g_resource_package_address);
     city_count =
         sango_faction_list_cities(g_temp_character_ids_address[0], (int)city_ids_or_title);
+    sango_ruler_present();
 
     while (true)
     {
@@ -303,7 +301,6 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
         }
         if (event[0] == 6)
         {
-            cities_flash_on = !cities_flash_on;
             sango_menu_flash_ruler_cities(city_count, city_ids_or_title,
                                           city_coordinates_address);
             continue;
@@ -331,17 +328,10 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
         else if (selected_ruler >= first_visible + VISIBLE_ROWS)
             first_visible = selected_ruler - VISIBLE_ROWS + 1;
 
-        if (cities_flash_on)
-        {
-            sango_menu_flash_ruler_cities(city_count, city_ids_or_title,
-                                          city_coordinates_address);
-            cities_flash_on = false;
-        }
-        sango_ui_paint_begin();
         sango_ruler_select(previous_selection, previous_first, selected_ruler, first_visible);
-        sango_ui_paint_end();
         city_count = sango_faction_list_cities(g_temp_character_ids_address[selected_ruler],
                                                (int)city_ids_or_title);
+        sango_ruler_present();
     }
 }
 
@@ -349,26 +339,7 @@ uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
 void sango_menu_flash_ruler_cities(uint32_t city_count, uint8_t *city_ids,
                                    int city_positions_address)
 {
-    uint16_t screen_x;
-    uint16_t screen_y;
-    uint8_t *city_or_position_entry;
-    uint32_t city_index;
-
-    city_index = 0;
-    city_or_position_entry = city_ids;
-    if ((city_count & 0xff) != 0)
-    {
-        do
-        {
-            city_or_position_entry =
-                (uint8_t *)(city_positions_address + (*city_or_position_entry & 0x7f) * 2);
-            screen_x = (uint16_t)*city_or_position_entry * 7 + SANGO_RULER_MAP_X + 3;
-            screen_y = (uint16_t)city_or_position_entry[1] * 7 + SANGO_RULER_MAP_Y + 3;
-            sango_display_invert_rectangle(screen_x, screen_y, screen_x + 1, screen_y + 1, 0);
-            city_index = city_index + 1 & 0xff;
-            city_or_position_entry = city_ids + city_index;
-        } while (city_index < (city_count & 0xff));
-    }
+    sango_ruler_flash_cities(city_count & 0xff, city_ids, city_positions_address);
     return;
 }
 

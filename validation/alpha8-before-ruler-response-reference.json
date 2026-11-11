@@ -1,0 +1,87 @@
+{
+  "version": "0.1.0-alpha.8",
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "bda_bytes": 237124,
+  "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
+  "compiler": "mipsel-none-elf-gcc.exe (GCC) 15.2.0",
+  "mips_checks": 4516,
+  "native_firmware_interface_checks": 10,
+  "physical_device_verified": false,
+  "complete_campaign_verified": false,
+  "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
+  "sango_lib_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+  "sango_lib_bytes": 518848,
+  "sango_clr_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
+  "sango_clr_bytes": 2759168,
+  "color_frames": 1240,
+  "color_unique_rgb_frames": 690,
+  "initialized_data_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
+  "mips_reports": {
+    "settings": {
+      "checks": 32,
+      "report": "validation/alpha8-settings-validation.json"
+    },
+    "color-mips": {
+      "checks": 3926,
+      "report": "validation/alpha8-color-mips-validation.json"
+    },
+    "music": {
+      "checks": 65,
+      "report": "validation/alpha8-music-validation.json"
+    },
+    "save-layout": {
+      "checks": 104,
+      "report": "validation/alpha8-save-layout-validation.json"
+    },
+    "menu-input": {
+      "checks": 44,
+      "report": "validation/alpha8-menu-input-validation.json"
+    },
+    "touch-input": {
+      "checks": 132,
+      "report": "validation/alpha8-touch-input-validation.json"
+    },
+    "intro": {
+      "checks": 41,
+      "report": "validation/alpha8-intro-validation.json"
+    },
+    "ruler-ui": {
+      "checks": 138,
+      "report": "validation/alpha8-ruler-ui-validation.json"
+    },
+    "menu-alpha": {
+      "checks": 34,
+      "report": "validation/menu-alpha-validation.json"
+    }
+  },
+  "native_report": "validation/menu-alpha-firmware-validation.json",
+  "runtime_evidence_basis": "Eight menu sprites only: source matte parsed before premultiplied RGBA reduction. Current CLR passes3926 compiled-MIPS color checks,34 alpha checks and10 native C200 menu composite/controller checks. BDA/LIB remain byte-identical to the settings build; its settings/music/save/menu/touch/intro/ruler tests apply to the same code and unchanged relevant art. Earlier19 native settings tests keep their original CLR hash and are not counted as new. Dedicated synthetic NAND and exact-byte RAM staging, no physical-device/full-campaign claim.",
+  "historical_evidence": "Broader battle/strategy/runtime checks in alpha.7 and earlier reports retain their hashes and are not counted as freshly rerun here.Original87 resource record bytes/offsets and45536 initialized bytes remain exact.",
+  "music_bytes": 5834932,
+  "music_tracks": [
+    {
+      "id": "menu",
+      "file": "menu.wav",
+      "bytes": 2932796,
+      "sha256": "eab0b2fa27827e60343186bb211bfa744875736d637f5d204ba33f25024aa4a7",
+      "samples": 5785038,
+      "duration_seconds": 262.36
+    },
+    {
+      "id": "strategy",
+      "file": "strategy.wav",
+      "bytes": 1229628,
+      "sha256": "b03814c7b795994fe2b513932b1466921d20f3a9c48b8e2374b148d49e72e3cd",
+      "samples": 2425500,
+      "duration_seconds": 110.0
+    },
+    {
+      "id": "battle",
+      "file": "battle.wav",
+      "bytes": 1672508,
+      "sha256": "7bcb7c43295ec7c3f397377c3d0d92065f86c0bae4ab9febb801b7868cf09bd8",
+      "samples": 3298680,
+      "duration_seconds": 149.6
+    }
+  ]
+}

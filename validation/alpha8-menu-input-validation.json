@@ -1,7 +1,7 @@
 {
   "passed": 44,
   "failed": 0,
-  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
   "scope": "Compiled MIPS paint scopes and complete popup/roster controllers; the redesigned faction page has separate ruler-ui validation. SDK surfaces and input queues modeled; native font/presentation checked separately. No physical latency claim.",
   "cases": [
     {

@@ -1,6 +1,11 @@
 #ifndef SANGO_RULER_H
 #define SANGO_RULER_H
 void sango_ruler_sdk_text(int x, int y, const char *text, int selected);
+void sango_ruler_sdk_text_at(unsigned int target, int x, int y, const char *text, int selected);
+void sango_ruler_sdk_picture(unsigned int target, int x, int y, unsigned int width,
+                             unsigned int height, const uint16_t *pixels);
+void sango_ruler_sdk_present(unsigned int canvas, unsigned int window, unsigned int dirty,
+                             int list_top, int list_bottom);
 #include "sango_types.h"
 
 enum
@@ -14,6 +19,8 @@ enum
     SANGO_RULER_MAP_Y = 64
 };
 void sango_ruler_begin(unsigned int count);
+void sango_ruler_present(void);
+void sango_ruler_flash_cities(unsigned int count, const uint8_t *cities, int positions);
 void sango_ruler_draw_names(unsigned int first);
 void sango_ruler_select(unsigned int previous, unsigned int previous_first, unsigned int selected,
                         unsigned int first);

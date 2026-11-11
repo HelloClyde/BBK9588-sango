@@ -1,0 +1,178 @@
+{
+  "passed": 21,
+  "failed": 0,
+  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "color_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
+  "library_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+  "scope": "Readiness sampled immediately after phase/command; values are emulator wall-time, not device latency. Native C200 faction selector with production wood background,48px portraits,16px fonts and touch/keyboard. Exact staged BDA/LIB/CLR on dedicated synthetic NAND, controlled entry at credits. Portrait pixels and unchanged background compared for all4 scenarios, preview/scroll/confirm/return exercised. No physical-device or full-campaign claim",
+  "cases": [
+    {
+      "name": "Scenario1 character5: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-ma-teng.png",
+      "screenshot_sha256": "52e0b510649a0345f371a974087caf17a4465a0b437a30ef2ae0c54240e67676"
+    },
+    {
+      "name": "Scenario1 character5: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-ma-teng.png",
+      "screenshot_sha256": "52e0b510649a0345f371a974087caf17a4465a0b437a30ef2ae0c54240e67676"
+    },
+    {
+      "name": "Scenario1 character13: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "1cb68bde812ab980517ed3ac5c43f399f3564f7b84266f620f57aeb2c196791f"
+    },
+    {
+      "name": "Scenario1 character13: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "1cb68bde812ab980517ed3ac5c43f399f3564f7b84266f620f57aeb2c196791f"
+    },
+    {
+      "name": "First80ms touch after page entry is processed within1s in emulator",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "1cb68bde812ab980517ed3ac5c43f399f3564f7b84266f620f57aeb2c196791f"
+    },
+    {
+      "name": "Native list click previews without confirming",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "1cb68bde812ab980517ed3ac5c43f399f3564f7b84266f620f57aeb2c196791f"
+    },
+    {
+      "name": "Scenario1 character1: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-cao-cao.png",
+      "screenshot_sha256": "fcd701a198abb3057e6618b99a5146c3505c7174b7248efd093ef253ced5166f"
+    },
+    {
+      "name": "Scenario1 character1: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-cao-cao.png",
+      "screenshot_sha256": "fcd701a198abb3057e6618b99a5146c3505c7174b7248efd093ef253ced5166f"
+    },
+    {
+      "name": "Scenario1 character5: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-reopened.png",
+      "screenshot_sha256": "52e0b510649a0345f371a974087caf17a4465a0b437a30ef2ae0c54240e67676"
+    },
+    {
+      "name": "Scenario1 character5: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-reopened.png",
+      "screenshot_sha256": "52e0b510649a0345f371a974087caf17a4465a0b437a30ef2ae0c54240e67676"
+    },
+    {
+      "name": "Native Confirm button returns selectedCaoCao ID1",
+      "passed": true,
+      "screenshot": "scenario1-cao-cao.png",
+      "screenshot_sha256": "fcd701a198abb3057e6618b99a5146c3505c7174b7248efd093ef253ced5166f"
+    },
+    {
+      "name": "Scenario2 character11: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario2-ma-teng.png",
+      "screenshot_sha256": "e0cf7a1ac888a156a9174c57325e5d980037142476a575b598baf4ac05b0f565"
+    },
+    {
+      "name": "Scenario2 character11: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario2-ma-teng.png",
+      "screenshot_sha256": "e0cf7a1ac888a156a9174c57325e5d980037142476a575b598baf4ac05b0f565"
+    },
+    {
+      "name": "Native Return button cancels without selecting a ruler",
+      "passed": true,
+      "screenshot": "scenario1-reopened.png",
+      "screenshot_sha256": "52e0b510649a0345f371a974087caf17a4465a0b437a30ef2ae0c54240e67676"
+    },
+    {
+      "name": "Scenario3 character7: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario3-ma-teng.png",
+      "screenshot_sha256": "210e749ed823a31ab2888cb7ce99fa27aee2727d4e7ee6b9ee36b124ae640b93"
+    },
+    {
+      "name": "Scenario3 character7: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario3-ma-teng.png",
+      "screenshot_sha256": "210e749ed823a31ab2888cb7ce99fa27aee2727d4e7ee6b9ee36b124ae640b93"
+    },
+    {
+      "name": "Scenario4 character0: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario4-cao-cao.png",
+      "screenshot_sha256": "3007a19ea42d86cf8070a86c840cac8cc776e089d24ff8f2eb45fc6185b4b608"
+    },
+    {
+      "name": "Scenario4 character0: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario4-cao-cao.png",
+      "screenshot_sha256": "3007a19ea42d86cf8070a86c840cac8cc776e089d24ff8f2eb45fc6185b4b608"
+    },
+    {
+      "name": "Scenario4 character1: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario4-liu-bei.png",
+      "screenshot_sha256": "463f9915bbf7d393e820953b9bc71fcea54ddacdc277fdd9e81fe0348aa090e0"
+    },
+    {
+      "name": "Scenario4 character1: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario4-liu-bei.png",
+      "screenshot_sha256": "463f9915bbf7d393e820953b9bc71fcea54ddacdc277fdd9e81fe0348aa090e0"
+    },
+    {
+      "name": "Native keyboard Confirm still returns the scenario-specificID",
+      "passed": true,
+      "screenshot": "scenario4-liu-bei.png",
+      "screenshot_sha256": "463f9915bbf7d393e820953b9bc71fcea54ddacdc277fdd9e81fe0348aa090e0"
+    }
+  ],
+  "observed_readiness_waits": [
+    {
+      "screenshot": "scenario1-ma-teng.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": null
+    },
+    {
+      "screenshot": "scenario1-liu-bei.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.266
+    },
+    {
+      "screenshot": "scenario1-cao-cao.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.281
+    },
+    {
+      "screenshot": "scenario1-reopened.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.469
+    },
+    {
+      "screenshot": "scenario2-ma-teng.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.375
+    },
+    {
+      "screenshot": "scenario3-ma-teng.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.406
+    },
+    {
+      "screenshot": "scenario4-cao-cao.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.406
+    },
+    {
+      "screenshot": "scenario4-liu-bei.png",
+      "ready_wait_seconds": 0.094,
+      "since_last_input_seconds": 0.266
+    }
+  ]
+}

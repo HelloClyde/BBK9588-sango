@@ -77,6 +77,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Opening-door motion, timer isolation or skip regression failed' }
           python tools/test_ruler_ui.py
           if ($LASTEXITCODE -ne 0) { throw 'Faction background, portraits or preview/confirm regression failed' }
+          python tools/test_ruler_response.py
+          if ($LASTEXITCODE -ne 0) { throw 'Faction first-frame, immediate input or incremental redraw regression failed' }
           python tools/test_settings.py
           if ($LASTEXITCODE -ne 0) { throw 'Music settings, persistence or secondary-menu regression failed' }
           python tools/test_menu_transparency.py

@@ -1,0 +1,146 @@
+{
+  "passed": 34,
+  "failed": 0,
+  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "adjacent_preview_window_pixels": 13117,
+  "previous_full_window_pixels": 76800,
+  "scope": "Actual compiled MIPS faction controller and compositor. Native SDK picture/text/copy/present boundaries modeled; first real input, complete initial commit, explicit contexts, no per-selection allocation/per-pixel image calls, dirty areas, scrolling, blink and canvas fallbacks checked. Native visuals/response separately tested; no physical latency claim.",
+  "cases": [
+    {
+      "name": "First input(11, 0, 170, 280) immediately returns correct result",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 170, 280) sees exactly one complete first commit",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 170, 280) renders only to borrowed offscreen surfaces",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 170, 280) allocates and frees no page snapshots",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 60, 280) immediately returns correct result",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 60, 280) sees exactly one complete first commit",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 60, 280) renders only to borrowed offscreen surfaces",
+      "passed": true
+    },
+    {
+      "name": "First input(11, 0, 60, 280) allocates and frees no page snapshots",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 28, 0, 0) immediately returns correct result",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 28, 0, 0) sees exactly one complete first commit",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 28, 0, 0) renders only to borrowed offscreen surfaces",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 28, 0, 0) allocates and frees no page snapshots",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 1, 0, 0) immediately returns correct result",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 1, 0, 0) sees exactly one complete first commit",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 1, 0, 0) renders only to borrowed offscreen surfaces",
+      "passed": true
+    },
+    {
+      "name": "First input(5, 1, 0, 0) allocates and frees no page snapshots",
+      "passed": true
+    },
+    {
+      "name": "First immediate name tap previews row4 and next tap confirms it",
+      "passed": true
+    },
+    {
+      "name": "Row preview never repaints the full static background",
+      "passed": true
+    },
+    {
+      "name": "First preview uses one dirty transaction, preserving old frame until ready",
+      "passed": true
+    },
+    {
+      "name": "Adjacent preview submits exactly the two affected rows",
+      "passed": true
+    },
+    {
+      "name": "Adjacent window copy budget is13117pixels instead of76800",
+      "passed": true
+    },
+    {
+      "name": "Switching adds no whole-window snapshots or per-pixel image drawing",
+      "passed": true
+    },
+    {
+      "name": "Bulk picture calls stay bounded to static art plus highlight and portrait",
+      "passed": true
+    },
+    {
+      "name": "Scroll never submits a full-window redraw after the first frame",
+      "passed": true
+    },
+    {
+      "name": "Scroll only refreshes the fixed ten-row list bounds",
+      "passed": true
+    },
+    {
+      "name": "Blink publishes only the84x64 map twice",
+      "passed": true
+    },
+    {
+      "name": "Blink does not render text, portraits or the full background again",
+      "passed": true
+    },
+    {
+      "name": "Blink markers are drawn only on the offscreen canvas",
+      "passed": true
+    },
+    {
+      "name": "Canvas fallback(0, 2170552324, 2170552336) can cancel immediately",
+      "passed": true
+    },
+    {
+      "name": "Canvas fallback(0, 2170552324, 2170552336) frees only owned memory",
+      "passed": true
+    },
+    {
+      "name": "Canvas fallback(0, 0, 2170552336) can cancel immediately",
+      "passed": true
+    },
+    {
+      "name": "Canvas fallback(0, 0, 2170552336) frees only owned memory",
+      "passed": true
+    },
+    {
+      "name": "Canvas fallback(0, 0, 0) can cancel immediately",
+      "passed": true
+    },
+    {
+      "name": "Canvas fallback(0, 0, 0) frees only owned memory",
+      "passed": true
+    }
+  ]
+}

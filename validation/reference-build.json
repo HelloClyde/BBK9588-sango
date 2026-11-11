@@ -1,11 +1,11 @@
 {
   "version": "0.1.0-alpha.8",
-  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
-  "bda_bytes": 237124,
+  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "bda_bytes": 239476,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "mipsel-none-elf-gcc.exe (GCC) 15.2.0",
-  "mips_checks": 4516,
-  "native_firmware_interface_checks": 10,
+  "mips_checks": 4550,
+  "native_firmware_interface_checks": 21,
   "physical_device_verified": false,
   "complete_campaign_verified": false,
   "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
@@ -51,12 +51,16 @@
     },
     "menu-alpha": {
       "checks": 34,
-      "report": "validation/menu-alpha-validation.json"
+      "report": "validation/alpha8-menu-alpha-validation.json"
+    },
+    "ruler-response": {
+      "checks": 34,
+      "report": "validation/alpha8-ruler-response-validation.json"
     }
   },
-  "native_report": "validation/menu-alpha-firmware-validation.json",
-  "runtime_evidence_basis": "Eight menu sprites only: source matte parsed before premultiplied RGBA reduction. Current CLR passes3926 compiled-MIPS color checks,34 alpha checks and10 native C200 menu composite/controller checks. BDA/LIB remain byte-identical to the settings build; its settings/music/save/menu/touch/intro/ruler tests apply to the same code and unchanged relevant art. Earlier19 native settings tests keep their original CLR hash and are not counted as new. Dedicated synthetic NAND and exact-byte RAM staging, no physical-device/full-campaign claim.",
-  "historical_evidence": "Broader battle/strategy/runtime checks in alpha.7 and earlier reports retain their hashes and are not counted as freshly rerun here.Original87 resource record bytes/offsets and45536 initialized bytes remain exact.",
+  "native_report": "validation/ruler-response-firmware-validation.json",
+  "runtime_evidence_basis": "Current exact BDA/LIB/CLR:4550 compiled-MIPS/host checks with modeled SDK boundaries and21 native C200 faction response/visual/controller checks. Explicit application-owned canvas assembly, complete first commit, bounded partial updates and bulk RGB565 SDK submission; no per-selection snapshots or per-pixel color image calls. Immediate80ms gestures observed, emulator screenshot timing is not physical-device latency. Dedicated synthetic NAND with exact-byte RAM staging, no physical-device/full-campaign claim.",
+  "historical_evidence": "Prior alpha.8 settings, menu-alpha native and alpha.7 reports retain their old BDA/CLR hashes. They are not included in21 current native checks. Original87 resource bytes and45536 initialized bytes remain exact.",
   "music_bytes": 5834932,
   "music_tracks": [
     {
