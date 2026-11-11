@@ -21,7 +21,7 @@ def main():
     library=(args.dir/'sango.lib').read_bytes()
     color=(args.dir/'sango.clr').read_bytes()
     magic,total,count,index,payload,size,crc=struct.unpack_from('<8sIIIIII',color)
-    if (magic,total,count,index,payload,size,crc)!=(b'SGCOLOR1',len(color),1204,32,32+1204*16,len(library),zlib.crc32(library)):raise SystemExit('Invalid color header or wrong companion LIB')
+    if (magic,total,count,index,payload,size,crc)!=(b'SGCOLOR1',len(color),info['color_frames'],32,32+info['color_frames']*16,len(library),zlib.crc32(library)):raise SystemExit('Invalid color header or wrong companion LIB')
     expected_files={prefix+'.bda','sango.lib','sango.clr',prefix+'-update.zip','BUILD_INFO.json','SHA256SUMS.txt'}
     if {p.name for p in args.dir.iterdir()}!=expected_files:raise SystemExit('Unexpected files in release directory')
     if set(files)!=expected_files-{'SHA256SUMS.txt'} or len(files)!=5:raise SystemExit('Incomplete checksum manifest')

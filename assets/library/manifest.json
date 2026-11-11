@@ -3133,13 +3133,13 @@
       ],
       "category": "战略地图",
       "name": "君主选择势力图",
-      "naming_evidence": "君主选择器绘制资源47，并依据城市坐标和所选君主控制的城市闪烁标记。",
+      "naming_evidence": "势力选择木质页绘制原资源47，并依据实际城市坐标和所选君主控制的城市闪烁标记。",
       "usage_status": "confirmed",
       "code_evidence": [
         {
-          "source": "src/ui/start_menu.c",
-          "function": "sango_menu_choose_ruler",
-          "expression": "sango_bitmap_draw_resource(0x2f,1,"
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_begin",
+          "expression": "draw_picture(47,"
         },
         {
           "source": "src/ui/start_menu.c",
@@ -5862,6 +5862,115 @@
           "expression": "sango_credits_draw("
         }
       ]
+    },
+    {
+      "id": 52,
+      "category": "补充界面",
+      "name": "势力选择木质底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "势力选择页的木质背景；名单、势力图、君主头像与姓名由实际选择动态绘制。",
+      "code_evidence": [
+        {
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_begin",
+          "expression": "draw_picture(52,"
+        }
+      ],
+      "image": {
+        "width": 240,
+        "height": 320,
+        "frames": 1,
+        "flags": 32,
+        "pngs": [
+          "../ruler/势力选择木质底图.png"
+        ]
+      },
+      "c_includes": []
+    },
+    {
+      "id": 53,
+      "category": "补充界面",
+      "name": "君主预览头像组",
+      "usage_status": "confirmed",
+      "naming_evidence": "按四个剧本城市归属读取实际君主ID，从对应剧本头像高清母图裁切48x48头像；映射表连接剧本、武将ID和头像帧号。",
+      "code_evidence": [
+        {
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_update",
+          "expression": "ruler_portrait_frames"
+        },
+        {
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_update",
+          "expression": "draw_picture(53,"
+        }
+      ],
+      "image": {
+        "width": 48,
+        "height": 48,
+        "frames": 33,
+        "flags": 32,
+        "pngs": [
+          "../ruler/君主000_马腾_预览头像.png",
+          "../ruler/君主001_公孙瓒_预览头像.png",
+          "../ruler/君主002_公孙度_预览头像.png",
+          "../ruler/君主003_张杨_预览头像.png",
+          "../ruler/君主004_刘备_预览头像.png",
+          "../ruler/君主005_袁绍_预览头像.png",
+          "../ruler/君主006_孔融_预览头像.png",
+          "../ruler/君主007_王匡_预览头像.png",
+          "../ruler/君主008_董卓_预览头像.png",
+          "../ruler/君主009_韩馥_预览头像.png",
+          "../ruler/君主010_曹操_预览头像.png",
+          "../ruler/君主011_陶谦_预览头像.png",
+          "../ruler/君主012_张鲁_预览头像.png",
+          "../ruler/君主013_刘岱_预览头像.png",
+          "../ruler/君主014_袁术_预览头像.png",
+          "../ruler/君主015_刘焉_预览头像.png",
+          "../ruler/君主016_刘表_预览头像.png",
+          "../ruler/君主017_孙坚_预览头像.png",
+          "../ruler/君主018_李_字码A2E3_预览头像.png",
+          "../ruler/君主019_吕布_预览头像.png",
+          "../ruler/君主020_刘璋_预览头像.png",
+          "../ruler/君主021_张绣_预览头像.png",
+          "../ruler/君主022_孙策_预览头像.png",
+          "../ruler/君主023_韩玄_预览头像.png",
+          "../ruler/君主024_张邈_预览头像.png",
+          "../ruler/君主025_公孙康_预览头像.png",
+          "../ruler/君主026_孙权_预览头像.png",
+          "../ruler/君主027_金旋_预览头像.png",
+          "../ruler/君主028_刘度_预览头像.png",
+          "../ruler/君主029_赵范_预览头像.png",
+          "../ruler/君主030_曹丕_预览头像.png",
+          "../ruler/君主031_刘禅_预览头像.png",
+          "../ruler/君主032_孟获_预览头像.png"
+        ]
+      },
+      "c_includes": []
+    },
+    {
+      "id": 77,
+      "category": "补充界面",
+      "name": "势力选择选中木纹条",
+      "usage_status": "confirmed",
+      "naming_evidence": "势力列表当前行使用深木色图片，文字按当前君主姓名动态绘制；普通行恢复同一背景像素。",
+      "code_evidence": [
+        {
+          "source": "src/sango_ruler.c",
+          "function": "draw_row",
+          "expression": "draw_picture(77,"
+        }
+      ],
+      "image": {
+        "width": 56,
+        "height": 18,
+        "frames": 1,
+        "flags": 32,
+        "pngs": [
+          "../ruler/势力选择选中木纹条.png"
+        ]
+      },
+      "c_includes": []
     }
   ],
   "naming_schema": 2

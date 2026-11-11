@@ -1,0 +1,794 @@
+{
+  "generator": "Built-in GPT Image background; existing GPT Image portrait masters",
+  "background_master": "../color/generated/wood-ui-ruler-background.png",
+  "background_prompt": "../color/prompts/wood-ui-ruler-background.txt",
+  "layout_followup_prompt": "../color/prompts/wood-ui-ruler-background-layout.txt",
+  "portraits": [
+    {
+      "frame": 0,
+      "name": "马腾",
+      "source": "武将头像/剧本01武将头像_资源048/武将005_马腾_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        815,
+        41,
+        909,
+        135
+      ]
+    },
+    {
+      "frame": 1,
+      "name": "公孙瓒",
+      "source": "武将头像/剧本01武将头像_资源048/武将016_公孙瓒_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        31,
+        355,
+        125,
+        449
+      ]
+    },
+    {
+      "frame": 2,
+      "name": "公孙度",
+      "source": "武将头像/剧本01武将头像_资源048/武将017_公孙度_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        188,
+        355,
+        282,
+        449
+      ]
+    },
+    {
+      "frame": 3,
+      "name": "张杨",
+      "source": "武将头像/剧本01武将头像_资源048/武将009_张杨_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        188,
+        198,
+        282,
+        292
+      ]
+    },
+    {
+      "frame": 4,
+      "name": "刘备",
+      "source": "武将头像/剧本01武将头像_资源048/武将013_刘备_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        815,
+        198,
+        909,
+        292
+      ]
+    },
+    {
+      "frame": 5,
+      "name": "袁绍",
+      "source": "武将头像/剧本01武将头像_资源048/武将002_袁绍_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        345,
+        41,
+        439,
+        135
+      ]
+    },
+    {
+      "frame": 6,
+      "name": "孔融",
+      "source": "武将头像/剧本01武将头像_资源048/武将007_孔融_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        1129,
+        41,
+        1223,
+        135
+      ]
+    },
+    {
+      "frame": 7,
+      "name": "王匡",
+      "source": "武将头像/剧本01武将头像_资源048/武将011_王匡_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        502,
+        198,
+        596,
+        292
+      ]
+    },
+    {
+      "frame": 8,
+      "name": "董卓",
+      "source": "武将头像/剧本01武将头像_资源048/武将000_董卓_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        31,
+        41,
+        125,
+        135
+      ]
+    },
+    {
+      "frame": 9,
+      "name": "韩馥",
+      "source": "武将头像/剧本01武将头像_资源048/武将010_韩馥_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        345,
+        198,
+        439,
+        292
+      ]
+    },
+    {
+      "frame": 10,
+      "name": "曹操",
+      "source": "武将头像/剧本01武将头像_资源048/武将001_曹操_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        188,
+        41,
+        282,
+        135
+      ]
+    },
+    {
+      "frame": 11,
+      "name": "陶谦",
+      "source": "武将头像/剧本01武将头像_资源048/武将006_陶谦_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        972,
+        41,
+        1066,
+        135
+      ]
+    },
+    {
+      "frame": 12,
+      "name": "张鲁",
+      "source": "武将头像/剧本01武将头像_资源048/武将018_张鲁_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        345,
+        355,
+        439,
+        449
+      ]
+    },
+    {
+      "frame": 13,
+      "name": "刘岱",
+      "source": "武将头像/剧本01武将头像_资源048/武将008_刘岱_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        31,
+        198,
+        125,
+        292
+      ]
+    },
+    {
+      "frame": 14,
+      "name": "袁术",
+      "source": "武将头像/剧本01武将头像_资源048/武将003_袁术_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        502,
+        41,
+        596,
+        135
+      ]
+    },
+    {
+      "frame": 15,
+      "name": "刘焉",
+      "source": "武将头像/剧本01武将头像_资源048/武将015_刘焉_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        1129,
+        198,
+        1223,
+        292
+      ]
+    },
+    {
+      "frame": 16,
+      "name": "刘表",
+      "source": "武将头像/剧本01武将头像_资源048/武将014_刘表_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        972,
+        198,
+        1066,
+        292
+      ]
+    },
+    {
+      "frame": 17,
+      "name": "孙坚",
+      "source": "武将头像/剧本01武将头像_资源048/武将004_孙坚_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        658,
+        41,
+        752,
+        135
+      ]
+    },
+    {
+      "frame": 18,
+      "name": "李_字码A2E3",
+      "source": "武将头像/剧本02武将头像_资源049/武将000_李_字码A2E3_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        1129,
+        355,
+        1223,
+        449
+      ]
+    },
+    {
+      "frame": 19,
+      "name": "吕布",
+      "source": "武将头像/剧本02武将头像_资源049/武将008_吕布_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        658,
+        355,
+        752,
+        449
+      ]
+    },
+    {
+      "frame": 20,
+      "name": "刘璋",
+      "source": "武将头像/剧本02武将头像_资源049/武将013_刘璋_头像.png",
+      "master": "generated/portraits-01.png",
+      "crop": [
+        188,
+        982,
+        282,
+        1076
+      ]
+    },
+    {
+      "frame": 21,
+      "name": "张绣",
+      "source": "武将头像/剧本02武将头像_资源049/武将007_张绣_头像.png",
+      "master": "generated/portraits-02.png",
+      "crop": [
+        188,
+        668,
+        282,
+        762
+      ]
+    },
+    {
+      "frame": 22,
+      "name": "孙策",
+      "source": "武将头像/剧本02武将头像_资源049/武将005_孙策_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        972,
+        982,
+        1066,
+        1076
+      ]
+    },
+    {
+      "frame": 23,
+      "name": "韩玄",
+      "source": "武将头像/剧本02武将头像_资源049/武将009_韩玄_头像.png",
+      "master": "generated/portraits-03.png",
+      "crop": [
+        31,
+        198,
+        125,
+        292
+      ]
+    },
+    {
+      "frame": 24,
+      "name": "张邈",
+      "source": "武将头像/剧本02武将头像_资源049/武将006_张邈_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        658,
+        198,
+        752,
+        292
+      ]
+    },
+    {
+      "frame": 25,
+      "name": "公孙康",
+      "source": "武将头像/剧本03武将头像_资源050/武将010_公孙康_头像.png",
+      "master": "generated/portraits-01.png",
+      "crop": [
+        1129,
+        668,
+        1223,
+        762
+      ]
+    },
+    {
+      "frame": 26,
+      "name": "孙权",
+      "source": "武将头像/剧本03武将头像_资源050/武将006_孙权_头像.png",
+      "master": "generated/portraits-00.png",
+      "crop": [
+        1129,
+        982,
+        1223,
+        1076
+      ]
+    },
+    {
+      "frame": 27,
+      "name": "金旋",
+      "source": "武将头像/剧本03武将头像_资源050/武将003_金旋_头像.png",
+      "master": "generated/portraits-03.png",
+      "crop": [
+        972,
+        825,
+        1066,
+        919
+      ]
+    },
+    {
+      "frame": 28,
+      "name": "刘度",
+      "source": "武将头像/剧本03武将头像_资源050/武将001_刘度_头像.png",
+      "master": "generated/portraits-03.png",
+      "crop": [
+        658,
+        825,
+        752,
+        919
+      ]
+    },
+    {
+      "frame": 29,
+      "name": "赵范",
+      "source": "武将头像/剧本03武将头像_资源050/武将002_赵范_头像.png",
+      "master": "generated/portraits-03.png",
+      "crop": [
+        815,
+        825,
+        909,
+        919
+      ]
+    },
+    {
+      "frame": 30,
+      "name": "曹丕",
+      "source": "武将头像/剧本04武将头像_资源051/武将000_曹丕_头像.png",
+      "master": "generated/portraits-03.png",
+      "crop": [
+        188,
+        1138,
+        282,
+        1232
+      ]
+    },
+    {
+      "frame": 31,
+      "name": "刘禅",
+      "source": "武将头像/剧本04武将头像_资源051/武将001_刘禅_头像.png",
+      "master": "generated/portraits-04.png",
+      "crop": [
+        31,
+        668,
+        125,
+        762
+      ]
+    },
+    {
+      "frame": 32,
+      "name": "孟获",
+      "source": "武将头像/剧本04武将头像_资源051/武将003_孟获_头像.png",
+      "master": "generated/portraits-04.png",
+      "crop": [
+        188,
+        668,
+        282,
+        762
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": 1,
+      "rulers": [
+        {
+          "character_id": 5,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 5,
+          "deck_frame": 0,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将005_马腾_头像.png"
+        },
+        {
+          "character_id": 16,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 16,
+          "deck_frame": 1,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将016_公孙瓒_头像.png"
+        },
+        {
+          "character_id": 17,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 17,
+          "deck_frame": 2,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将017_公孙度_头像.png"
+        },
+        {
+          "character_id": 9,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 9,
+          "deck_frame": 3,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将009_张杨_头像.png"
+        },
+        {
+          "character_id": 13,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 13,
+          "deck_frame": 4,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将013_刘备_头像.png"
+        },
+        {
+          "character_id": 2,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 2,
+          "deck_frame": 5,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将002_袁绍_头像.png"
+        },
+        {
+          "character_id": 7,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 7,
+          "deck_frame": 6,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将007_孔融_头像.png"
+        },
+        {
+          "character_id": 11,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 11,
+          "deck_frame": 7,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将011_王匡_头像.png"
+        },
+        {
+          "character_id": 0,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 0,
+          "deck_frame": 8,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将000_董卓_头像.png"
+        },
+        {
+          "character_id": 10,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 10,
+          "deck_frame": 9,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将010_韩馥_头像.png"
+        },
+        {
+          "character_id": 1,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 1,
+          "deck_frame": 10,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将001_曹操_头像.png"
+        },
+        {
+          "character_id": 6,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 6,
+          "deck_frame": 11,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将006_陶谦_头像.png"
+        },
+        {
+          "character_id": 18,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 18,
+          "deck_frame": 12,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将018_张鲁_头像.png"
+        },
+        {
+          "character_id": 8,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 8,
+          "deck_frame": 13,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将008_刘岱_头像.png"
+        },
+        {
+          "character_id": 3,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 3,
+          "deck_frame": 14,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将003_袁术_头像.png"
+        },
+        {
+          "character_id": 15,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 15,
+          "deck_frame": 15,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将015_刘焉_头像.png"
+        },
+        {
+          "character_id": 14,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 14,
+          "deck_frame": 16,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将014_刘表_头像.png"
+        },
+        {
+          "character_id": 4,
+          "source_portrait_resource": 48,
+          "source_portrait_frame": 4,
+          "deck_frame": 17,
+          "source_name": "武将头像/剧本01武将头像_资源048/武将004_孙坚_头像.png"
+        }
+      ]
+    },
+    {
+      "scenario": 2,
+      "rulers": [
+        {
+          "character_id": 11,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 11,
+          "deck_frame": 0,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将011_马腾_头像.png"
+        },
+        {
+          "character_id": 3,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 3,
+          "deck_frame": 5,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将003_袁绍_头像.png"
+        },
+        {
+          "character_id": 10,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 10,
+          "deck_frame": 2,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将010_公孙度_头像.png"
+        },
+        {
+          "character_id": 15,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 15,
+          "deck_frame": 6,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将015_孔融_头像.png"
+        },
+        {
+          "character_id": 0,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 0,
+          "deck_frame": 18,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将000_李_字码A2E3_头像.png"
+        },
+        {
+          "character_id": 8,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 8,
+          "deck_frame": 19,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将008_吕布_头像.png"
+        },
+        {
+          "character_id": 2,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 2,
+          "deck_frame": 4,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将002_刘备_头像.png"
+        },
+        {
+          "character_id": 14,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 14,
+          "deck_frame": 12,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将014_张鲁_头像.png"
+        },
+        {
+          "character_id": 1,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 1,
+          "deck_frame": 10,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将001_曹操_头像.png"
+        },
+        {
+          "character_id": 13,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 13,
+          "deck_frame": 20,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将013_刘璋_头像.png"
+        },
+        {
+          "character_id": 7,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 7,
+          "deck_frame": 21,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将007_张绣_头像.png"
+        },
+        {
+          "character_id": 4,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 4,
+          "deck_frame": 14,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将004_袁术_头像.png"
+        },
+        {
+          "character_id": 5,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 5,
+          "deck_frame": 22,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将005_孙策_头像.png"
+        },
+        {
+          "character_id": 12,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 12,
+          "deck_frame": 16,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将012_刘表_头像.png"
+        },
+        {
+          "character_id": 9,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 9,
+          "deck_frame": 23,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将009_韩玄_头像.png"
+        },
+        {
+          "character_id": 6,
+          "source_portrait_resource": 49,
+          "source_portrait_frame": 6,
+          "deck_frame": 24,
+          "source_name": "武将头像/剧本02武将头像_资源049/武将006_张邈_头像.png"
+        }
+      ]
+    },
+    {
+      "scenario": 3,
+      "rulers": [
+        {
+          "character_id": 7,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 7,
+          "deck_frame": 0,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将007_马腾_头像.png"
+        },
+        {
+          "character_id": 4,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 4,
+          "deck_frame": 10,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将004_曹操_头像.png"
+        },
+        {
+          "character_id": 10,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 10,
+          "deck_frame": 25,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将010_公孙康_头像.png"
+        },
+        {
+          "character_id": 8,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 8,
+          "deck_frame": 12,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将008_张鲁_头像.png"
+        },
+        {
+          "character_id": 9,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 9,
+          "deck_frame": 20,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将009_刘璋_头像.png"
+        },
+        {
+          "character_id": 6,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 6,
+          "deck_frame": 26,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将006_孙权_头像.png"
+        },
+        {
+          "character_id": 5,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 5,
+          "deck_frame": 4,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将005_刘备_头像.png"
+        },
+        {
+          "character_id": 3,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 3,
+          "deck_frame": 27,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将003_金旋_头像.png"
+        },
+        {
+          "character_id": 0,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 0,
+          "deck_frame": 23,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将000_韩玄_头像.png"
+        },
+        {
+          "character_id": 1,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 1,
+          "deck_frame": 28,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将001_刘度_头像.png"
+        },
+        {
+          "character_id": 2,
+          "source_portrait_resource": 50,
+          "source_portrait_frame": 2,
+          "deck_frame": 29,
+          "source_name": "武将头像/剧本03武将头像_资源050/武将002_赵范_头像.png"
+        }
+      ]
+    },
+    {
+      "scenario": 4,
+      "rulers": [
+        {
+          "character_id": 0,
+          "source_portrait_resource": 51,
+          "source_portrait_frame": 0,
+          "deck_frame": 30,
+          "source_name": "武将头像/剧本04武将头像_资源051/武将000_曹丕_头像.png"
+        },
+        {
+          "character_id": 4,
+          "source_portrait_resource": 51,
+          "source_portrait_frame": 4,
+          "deck_frame": 25,
+          "source_name": "武将头像/剧本04武将头像_资源051/武将004_公孙康_头像.png"
+        },
+        {
+          "character_id": 1,
+          "source_portrait_resource": 51,
+          "source_portrait_frame": 1,
+          "deck_frame": 31,
+          "source_name": "武将头像/剧本04武将头像_资源051/武将001_刘禅_头像.png"
+        },
+        {
+          "character_id": 2,
+          "source_portrait_resource": 51,
+          "source_portrait_frame": 2,
+          "deck_frame": 26,
+          "source_name": "武将头像/剧本04武将头像_资源051/武将002_孙权_头像.png"
+        },
+        {
+          "character_id": 3,
+          "source_portrait_resource": 51,
+          "source_portrait_frame": 3,
+          "deck_frame": 32,
+          "source_name": "武将头像/剧本04武将头像_资源051/武将003_孟获_头像.png"
+        }
+      ]
+    }
+  ],
+  "portrait_size": [
+    48,
+    48
+  ],
+  "portrait_source": "Cropped from the corresponding original GPT Image master, not enlarged24px PNGs",
+  "highlight_source": {
+    "master": "../color/generated/wood-ui-menu-states.png",
+    "crop": [
+      200,
+      24,
+      360,
+      74
+    ],
+    "size": [
+      56,
+      18
+    ]
+  }
+}

@@ -15,6 +15,7 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
 #define text_offset (*(uint32_t *)(abi_storage + 48))
 
     bool has_scrollbar;
+    bool repaint_started = false;
     bool thumb_changed;
     short previous_thumb_top;
     uint32_t thumb_y;
@@ -40,6 +41,7 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
         sango_legacy_trap(7);
     }
     option_count = text_bytes / characters_per_row & 0xff;
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(g_text_left - 3, g_text_top - 3, g_text_right + 2,
                                       g_text_bottom + 2, 0, 0);
     has_scrollbar = visible_rows < option_count;
@@ -69,6 +71,7 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
     sango_text_draw_legacy(g_text_left, g_text_top, menu_text + text_offset);
     highlight_top = (uint32_t)(uint8_t)g_text_top + visible_selection_row * 0xc & 0xff;
     highlight_bottom = highlight_top + 0xc;
+    sango_ui_paint_end();
     sango_display_invert_rectangle(g_text_left, (short)highlight_top, g_text_right,
                                    (short)highlight_bottom, 0);
     thumb_y = (uint32_t)(uint8_t)g_text_top;
@@ -84,8 +87,10 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
                 {
                     sango_display_draw_rectangle(g_text_right + 3, previous_thumb_top,
                                                  g_text_right + 5, thumb_bottom, 0, 0, 0);
-                    sango_display_put_gray_pixel(g_text_right + 4, previous_thumb_top + 1, 0, 0);
-                    sango_display_put_gray_pixel(g_text_right + 4, previous_thumb_top + 1, 0, 0);
+                    sango_display_put_gray_pixel(g_text_right + 4, previous_thumb_top + 1, 0,
+                                                 0);
+                    sango_display_put_gray_pixel(g_text_right + 4, previous_thumb_top + 1, 0,
+                                                 0);
                     uint32_t float_bits = sango_soft_int_to_f32((int)(char)selected_option);
                     if ((char)selected_option < 0)
                     {
@@ -102,18 +107,18 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
                     float_bits = sango_soft_f32_to_int(float_bits);
                     thumb_y = float_bits & 0xff;
                     thumb_bottom = (short)thumb_y + 2;
-                    sango_display_draw_rectangle(g_text_right + 3, (short)thumb_y, g_text_right + 5,
-                                                 thumb_bottom, 3, 0, 0);
+                    sango_display_draw_rectangle(g_text_right + 3, (short)thumb_y,
+                                                 g_text_right + 5, thumb_bottom, 3, 0, 0);
                 }
-                sango_display_invert_rectangle(g_text_right + 3, (short)thumb_y, g_text_right + 5,
-                                               thumb_bottom, 0);
+                sango_display_invert_rectangle(g_text_right + 3, (short)thumb_y,
+                                               g_text_right + 5, thumb_bottom, 0);
             }
             sango_input_next_event(&event_kind);
             if (event_kind == SANGO_TOUCH_TAP || event_kind == SANGO_TOUCH_HOLD)
             {
                 int tapped =
-                    sango_touch_choose_row(&event_kind, g_text_left, g_text_top, g_text_right, 12,
-                                           visible_rows, top_option, option_count);
+                    sango_touch_choose_row(&event_kind, g_text_left, g_text_top, g_text_right,
+                                           12, visible_rows, top_option, option_count);
                 if (tapped >= 0)
                 {
                     selected_option = (uint32_t)tapped;
@@ -210,13 +215,20 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
                     visible_selection_row = selected_option - top_option;
                 }
             }
+            sango_ui_paint_begin();
+            repaint_started = true;
             sango_text_draw_legacy(g_text_left, g_text_top, menu_text + text_offset);
         }
     update_selection_highlight:
         highlight_top = (uint32_t)(uint8_t)g_text_top + visible_selection_row * 0xc & 0xff;
         highlight_bottom = highlight_top + 0xc;
+        if (repaint_started)
+        {
+            sango_ui_paint_end();
+            repaint_started = false;
+        }
         sango_display_invert_rectangle(g_text_left, (short)highlight_top, g_text_right,
-                                       (short)highlight_bottom, 0);
+                                      (short)highlight_bottom, 0);
     } while (true);
 }
 #undef event_kind
@@ -228,8 +240,8 @@ uint32_t sango_ui_choose_option(uint16_t *bounds, uint32_t initial_selection, ch
 #undef text_offset
 
 /* 原函数 0x81c077bc */
-void sango_bitmap_draw_resource(uint32_t resource_id, uint32_t frame_number, uint32_t x, short y,
-                                char draw_to_screen)
+void sango_bitmap_draw_resource(uint32_t resource_id, uint32_t frame_number, uint32_t x,
+                                short y, char draw_to_screen)
 {
     unsigned char abi_storage[17] __attribute__((aligned(8)));
     (*(char *)(abi_storage + 0)) = draw_to_screen;
@@ -243,8 +255,8 @@ void sango_bitmap_draw_resource(uint32_t resource_id, uint32_t frame_number, uin
     uint32_t screen_x;
 
     screen_x = x & 0xffff;
-    bitmap =
-        (uint8_t *)sango_resource_item(resource_id & 0xffff, '\x01', g_resource_package_address);
+    bitmap = (uint8_t *)sango_resource_item(resource_id & 0xffff, '\x01',
+                                            g_resource_package_address);
     if ((bitmap != (uint8_t *)0x0) && ((frame_number & 0xff) <= (uint32_t)bitmap[4]))
     {
         dimension = (uint32_t)*bitmap + (uint32_t)bitmap[1] * 0x100;
@@ -256,10 +268,11 @@ void sango_bitmap_draw_resource(uint32_t resource_id, uint32_t frame_number, uin
         }
         dimension = (uint32_t)bitmap[2] + (uint32_t)bitmap[3] * 0x100 & 0xffff;
         flags = bitmap[5];
-        bitmap = bitmap +
-                 (((row_bytes * dimension & 0xffff) << (flags & 1)) * ((frame_number & 0xff) - 1) &
-                  0xffff) +
-                 6;
+        bitmap =
+            bitmap +
+            (((row_bytes * dimension & 0xffff) << (flags & 1)) * ((frame_number & 0xff) - 1) &
+             0xffff) +
+            6;
         if (draw_to_screen == '\0')
         {
             if ((flags & 1) == 0)
@@ -416,7 +429,8 @@ void sango_battle_show_short_message(char *text, uint16_t wait_units, uint16_t r
     uint8_t *background_bitmap;
     uint32_t screen_x;
 
-    background_bitmap = (uint8_t *)sango_resource_item(0x1a, '\x01', g_resource_package_address);
+    background_bitmap =
+        (uint8_t *)sango_resource_item(0x1a, '\x01', g_resource_package_address);
     screen_y = (row_or_center & 0xff) * 0xc;
     screen_x = (int)(0xef - (uint32_t)*background_bitmap) >> 1 & 0xff;
     if ((row_or_center & 0xff) == 0xff)

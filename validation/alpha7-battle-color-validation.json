@@ -1,0 +1,114 @@
+{
+  "passed": 250,
+  "failed": 0,
+  "masked_battle_frames": 168,
+  "opaque_terrain_tiles": 46,
+  "transparent_weather_digit_frames": 15,
+  "animation_groups": [
+    {
+      "resource": 19,
+      "commands": 66,
+      "frames": 56,
+      "restores": 64
+    },
+    {
+      "resource": 20,
+      "commands": 60,
+      "frames": 50,
+      "restores": 58
+    },
+    {
+      "resource": 21,
+      "commands": 54,
+      "frames": 44,
+      "restores": 52
+    },
+    {
+      "resource": 22,
+      "commands": 60,
+      "frames": 50,
+      "restores": 58
+    },
+    {
+      "resource": 23,
+      "commands": 54,
+      "frames": 44,
+      "restores": 52
+    },
+    {
+      "resource": 24,
+      "commands": 60,
+      "frames": 50,
+      "restores": 58
+    },
+    {
+      "resource": 25,
+      "commands": 5,
+      "frames": 5,
+      "restores": 4
+    },
+    {
+      "resource": 27,
+      "commands": 18,
+      "frames": 17,
+      "restores": 16
+    },
+    {
+      "resource": 35,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 36,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 37,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 38,
+      "commands": 15,
+      "frames": 19,
+      "restores": 14
+    },
+    {
+      "resource": 39,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 40,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 41,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 42,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    },
+    {
+      "resource": 43,
+      "commands": 8,
+      "frames": 8,
+      "restores": 7
+    }
+  ],
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "color_sha256": "117c6e723d1b88311438c6a4d05825f45c8abc63181ad9bc79c887422250a1df",
+  "scope": "Real compiled MIPS timelines for all 17 battle groups, RGB565 sprite loops and backing-context ownership/clip/interrupt/failure paths. SDK capture/copy/pixel/timer boundaries modeled; native SDK backing-context copy separately verified. Terrain semantic colors and overlay alpha checked; no full battle/campaign or physical-device claim."
+}

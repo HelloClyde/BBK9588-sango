@@ -13,7 +13,7 @@ def main():
     lib=(ROOT/'build/sango.lib').read_bytes();clr=(ROOT/'build/sango.clr').read_bytes()
     definition=json.loads((ROOT/'assets/color/terrain/river-geometry.json').read_text(encoding='utf8'))
     frames={f['frame']:f for f in read_catalog()['frames'] if f['resource']==4}
-    entries={struct.unpack_from('<I',clr,32+i*16)[0]:struct.unpack_from('<IIHHI',clr,32+i*16) for i in range(1204)}
+    entries={struct.unpack_from('<I',clr,32+i*16)[0]:struct.unpack_from('<IIHHI',clr,32+i*16) for i in range(struct.unpack_from('<I',clr,12)[0])}
     record=struct.unpack_from('<I',lib,12)[0]
     manifest=json.loads((ROOT/'assets/library/manifest.json').read_text(encoding='utf8'))
     spec=next(r for r in manifest['records'] if r['id']==4)['images'][0]

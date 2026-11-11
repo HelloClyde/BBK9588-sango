@@ -1,0 +1,172 @@
+{
+  "passed": 41,
+  "failed": 0,
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "scope": "Compiled MIPS leaf composition, timer isolation, real touch recognizer, skip/drag/failure/cleanup and actual startup wiring. SDK copies/input modeled; native moving-frame screenshots checked separately.",
+  "cases": [
+    {
+      "name": "Distance 0 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 0 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 1 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 1 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 6 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 6 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 30 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 30 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 60 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 60 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 114 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 114 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 119 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 119 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 120 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 120 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 121 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 121 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "Distance 1000 uses the proper moving halves and menu background",
+      "passed": true
+    },
+    {
+      "name": "Distance 1000 presents one complete offscreen frame",
+      "passed": true
+    },
+    {
+      "name": "none: only dedicated timer4 advances the intended frames",
+      "passed": true
+    },
+    {
+      "name": "none: stop timer and free one captured gate on every exit",
+      "passed": true
+    },
+    {
+      "name": "none: leave a complete menu ready for normal input",
+      "passed": true
+    },
+    {
+      "name": "key: only dedicated timer4 advances the intended frames",
+      "passed": true
+    },
+    {
+      "name": "key: stop timer and free one captured gate on every exit",
+      "passed": true
+    },
+    {
+      "name": "key: leave a complete menu ready for normal input",
+      "passed": true
+    },
+    {
+      "name": "tap: only dedicated timer4 advances the intended frames",
+      "passed": true
+    },
+    {
+      "name": "tap: stop timer and free one captured gate on every exit",
+      "passed": true
+    },
+    {
+      "name": "tap: leave a complete menu ready for normal input",
+      "passed": true
+    },
+    {
+      "name": "hold: only dedicated timer4 advances the intended frames",
+      "passed": true
+    },
+    {
+      "name": "hold: stop timer and free one captured gate on every exit",
+      "passed": true
+    },
+    {
+      "name": "hold: leave a complete menu ready for normal input",
+      "passed": true
+    },
+    {
+      "name": "drag: only dedicated timer4 advances the intended frames",
+      "passed": true
+    },
+    {
+      "name": "drag: stop timer and free one captured gate on every exit",
+      "passed": true
+    },
+    {
+      "name": "drag: leave a complete menu ready for normal input",
+      "passed": true
+    },
+    {
+      "name": "Missing allocation: safely show the final menu without waiting",
+      "passed": true
+    },
+    {
+      "name": "Missing canvas: safely show the final menu without waiting",
+      "passed": true
+    },
+    {
+      "name": "Startup result 255: normal completion opens; explicit skip bypasses",
+      "passed": true
+    },
+    {
+      "name": "Startup result 28: normal completion opens; explicit skip bypasses",
+      "passed": true
+    },
+    {
+      "name": "Startup result 1: normal completion opens; explicit skip bypasses",
+      "passed": true
+    },
+    {
+      "name": "Startup result 254: normal completion opens; explicit skip bypasses",
+      "passed": true
+    }
+  ]
+}

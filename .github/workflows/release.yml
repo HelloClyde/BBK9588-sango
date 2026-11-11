@@ -69,6 +69,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Battle options differ from original 9288S row actions' }
           python tools/test_music.py
           if ($LASTEXITCODE -ne 0) { throw 'Music decoder, streaming lifecycle or timer isolation failed' }
+          python tools/test_save_layout.py
+          if ($LASTEXITCODE -ne 0) { throw 'Save layout regression failed' }
+          python tools/test_menu_input.py
+          if ($LASTEXITCODE -ne 0) { throw 'Menu/table paint scopes or ruler input regression failed' }
+          python tools/test_intro.py
+          if ($LASTEXITCODE -ne 0) { throw 'Opening-door motion, timer isolation or skip regression failed' }
+          python tools/test_ruler_ui.py
+          if ($LASTEXITCODE -ne 0) { throw 'Faction background, portraits or preview/confirm regression failed' }
           python tools/test_battle_ui_color.py
           if ($LASTEXITCODE -ne 0) { throw 'Image HUD or centered combat UI checks failed' }
           python tools/test_battle_hud.py

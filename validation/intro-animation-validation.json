@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-11",
+  "bda_sha256": "b9deaefdb71afd04bf3aa386925f5fbee56202ddbb2f7f2e0438279825d51e1a",
+  "color_sha256": "13f54bcbbe611f34c23bc963959af2c941c4886b94234462d8679f4e06c7b707",
+  "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "original_lib_and_wood_images_unchanged": true,
+  "mips_checks": 41,
+  "native_checks": 8,
+  "reference": {
+    "reference_exe_sha256": "4eafbd3c59b64bf56fb810e47de43cb9d1075530801a8f991cf007f510954f9c",
+    "9288s_timeline": [
+      [
+        0,
+        0,
+        40,
+        40,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        3,
+        0
+      ]
+    ],
+    "9588_timeline": [
+      [
+        0,
+        0,
+        40,
+        40,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        3,
+        0
+      ]
+    ],
+    "same_two_commands": true,
+    "reference_run": "Unmodified original9288S EXE on separate cloned NAND in nativeS1C33 emulator.110 screenshots captured at approximately47ms intervals over5.17seconds. At frame2 gate appeared; at frame44 menu appeared. No intermediate separated-leaf frame observed. Does not establish that every9288S variant behaves this way.",
+    "implementation": "New explicit center-to-sides sliding-leaf effect for9588 using the current wood gate; source LIB timeline retained. Not claimed as a byte-exact reconstruction of an observed9288S effect."
+  },
+  "scope": "Explicit center-to-sides moving gate effect added to startup after original intro completes naturally. Skip retains menu input. Native frame pixel geometry and real timer4 motion checked, no physical-device claim.",
+  "native_report": "build/intro-native/native-intro-validation.json"
+}

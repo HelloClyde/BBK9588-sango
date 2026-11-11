@@ -91,7 +91,8 @@ int sango_select_session(void)
                 {
                     g_player_character = (uint8_t)selection;
                     selection = sango_character_find_city(g_player_character);
-                    city_coordinates = sango_resource_item(2, '\x06', g_resource_package_address);
+                    city_coordinates =
+                        sango_resource_item(2, '\x06', g_resource_package_address);
                     scratch = g_scratch_buffer_address;
                     city_position = (uint8_t *)(city_coordinates + selection * 2);
                     g_strategy_cursor_x = *city_position;
@@ -126,7 +127,8 @@ int sango_select_session(void)
                         if ((uint32_t)(uint8_t)(&g_first_city_owner)[selection * 0x24] !=
                             g_player_character + 1)
                         {
-                            character_count = sango_city_list_idle_characters(selection, scratch);
+                            character_count =
+                                sango_city_list_idle_characters(selection, scratch);
                             city_coordinates = g_character_table_address;
                             character_index = 0;
                             if (character_count != 0)
@@ -148,13 +150,15 @@ int sango_select_session(void)
                 }
             }
         }
-    } while ((selection != 1) || (selection = sango_save_choose_slot('\x01'), selection == 0xff));
+    } while ((selection != 1) ||
+             (selection = sango_save_choose_slot('\x01'), selection == 0xff));
     return 1;
 }
 
 /* 原函数 0x81c15d18 */
 /* 静态背景加选中项动画；键盘选择范围保持0～3。 */
-uint32_t sango_menu_select_animated(uint16_t background_resource, short selection_animation_base)
+uint32_t sango_menu_select_animated(uint16_t background_resource,
+                                    short selection_animation_base)
 {
     unsigned char abi_storage[24] __attribute__((aligned(8)));
 #define event_kind (*(int *)(abi_storage + 0))
@@ -217,7 +221,8 @@ poll_menu_event:
             selection = selection & 3;
             sango_bitmap_draw_resource((uint32_t)background_resource, 1, 0, 0, '\0');
         }
-        key_or_result = sango_animation_play_resource(selection_animation_base + (short)selection);
+        key_or_result =
+            sango_animation_play_resource(selection_animation_base + (short)selection);
         if (key_or_result == 0xff)
             goto poll_menu_event;
         event_kind = 5;
@@ -238,129 +243,107 @@ void sango_menu_show_credits(void)
 /* 原函数 0x81c15e6c */
 uint32_t sango_menu_choose_ruler(uint32_t ruler_count)
 {
-    unsigned char abi_storage[64] __attribute__((aligned(8)));
-#define city_ids_or_title (*(uint8_t(*)[40])(abi_storage + 0))
-#define event_kind (*(int *)(abi_storage + 40))
-#define key_code (*(int *)(abi_storage + 44))
-
-    bool cities_flash_on;
-    int city_coordinates_address;
-    uint32_t first_visible;
-    uint32_t highlight_top;
-    int row_position;
+    enum
+    {
+        NAME_BYTES = 6,
+        NAME_BUFFER_BYTES = 250,
+        VISIBLE_ROWS = SANGO_RULER_ROWS
+    };
+    uint8_t city_ids_or_title[40];
+    int event[3];
+    uint32_t total_rulers = ruler_count & 0xff;
+    uint32_t first_visible = 0, selected_ruler = 0;
     uint32_t city_count;
-    uint32_t selected_ruler;
-    uint32_t total_rulers;
+    int city_coordinates_address;
+    bool cities_flash_on = false;
 
-    total_rulers = ruler_count & 0xff;
-    uint32_t ruler_index = 0;
-    sango_display_fill_gray_rectangle(0, 0, 0xef, 0x13f, 0, 0);
-    if (total_rulers != 0)
+    if (!total_rulers)
+        return 0xff;
+    /* The shared move-cost buffer has 250 bytes. Every padded name needs six
+     * bytes, followed by a final NUL: padding used to overwrite that NUL and
+     * let the text renderer walk into old heap data. */
+    if (total_rulers > (NAME_BUFFER_BYTES - 1) / NAME_BYTES)
+        total_rulers = (NAME_BUFFER_BYTES - 1) / NAME_BYTES;
+    for (uint32_t index = 0; index < total_rulers; ++index)
     {
-        do
-        {
-            uint32_t text_slot_offset = ruler_index * 6 & 0xff;
-            sango_load_named_text(g_temp_character_ids_address[ruler_index],
-                                  g_move_costs_address_view3 + text_slot_offset);
-            uint32_t text_bytes = sango_crt_strlen(g_move_costs_address_view3);
-            text_bytes = text_bytes & 0xff;
-            if (text_bytes < text_slot_offset + 6)
-            {
-                sango_memory_fill(g_move_costs_address_view3 + text_bytes, 0x20,
-                                  (text_slot_offset - text_bytes) + 6);
-            }
-            ruler_index = ruler_index + 1 & 0xff;
-        } while (ruler_index < total_rulers);
+        char *name_slot = g_move_costs_address_view3 + index * NAME_BYTES;
+        sango_load_named_text(g_temp_character_ids_address[index], name_slot);
+        uint32_t name_bytes = sango_crt_strlen(name_slot);
+        if (name_bytes < NAME_BYTES)
+            sango_memory_fill(name_slot + name_bytes, 0x20, NAME_BYTES - name_bytes);
     }
-    sango_display_draw_rectangle(0, 0, 0xef, 0x13f, 3, 0, 0);
-    sango_resource_read_text(1, 0x2d, city_ids_or_title);
-    sango_text_draw_legacy(0x48, 4, (char *)city_ids_or_title);
-    sango_bitmap_draw_resource(0x2f, 1, 0x3c, 0x14, '\x01');
-    sango_display_draw_rectangle(0xd, 10, 0x36, 0x13b, 3, 0, 0);
-    city_coordinates_address = sango_resource_item(2, '\x06', g_resource_package_address);
+    g_move_costs_address_view3[total_rulers * NAME_BYTES] = 0;
+
+    sango_ui_paint_begin();
+    sango_ruler_begin(total_rulers);
     sango_menu_draw_ruler_names(0);
-    sango_display_invert_rectangle(0x10, 0xd, 0x34, 0x19, 0);
-    first_visible = 0;
-    selected_ruler = 0;
-    cities_flash_on = false;
+    sango_ruler_select(0, 0, 0, 0);
+    sango_ui_paint_end();
+    city_coordinates_address = sango_resource_item(2, 6, g_resource_package_address);
     city_count =
-        sango_faction_list_cities((uint32_t)*g_temp_character_ids_address, (int)city_ids_or_title);
-    highlight_top = 0xd;
-    row_position = 0x19;
-    do
+        sango_faction_list_cities(g_temp_character_ids_address[0], (int)city_ids_or_title);
+
+    while (true)
     {
-        while (sango_input_next_event(&event_kind), event_kind != 5)
+        sango_input_next_event(event);
+        int tapped = sango_touch_choose_row(
+            event, SANGO_RULER_LIST_LEFT, SANGO_RULER_LIST_TOP, SANGO_RULER_LIST_RIGHT,
+            SANGO_RULER_ROW_HEIGHT, VISIBLE_ROWS, first_visible, total_rulers);
+        int button = sango_ruler_touch_button(event);
+        if (button)
         {
-            int tapped = sango_touch_choose_row(&event_kind, 16, 13, 52, 12, 25, first_visible,
-                                                total_rulers);
-            if (tapped >= 0)
-                return (uint32_t)g_temp_character_ids_address[tapped];
-            key_code = sango_touch_swipe_key(&event_kind);
-            if (key_code)
-            {
-                event_kind = 5;
-                break;
-            }
-            cities_flash_on = (bool)(cities_flash_on ^ 1);
-            sango_menu_flash_ruler_cities(city_count, city_ids_or_title, city_coordinates_address);
+            event[0] = 5;
+            event[1] = button;
         }
-        sango_display_invert_rectangle(0x10, (short)highlight_top, 0x34, (short)row_position, 0);
+        if (event[0] == SANGO_TOUCH_PAN_END)
+        {
+            event[1] = sango_touch_swipe_key(event);
+            if (event[1])
+                event[0] = 5;
+        }
+        if (event[0] == 6)
+        {
+            cities_flash_on = !cities_flash_on;
+            sango_menu_flash_ruler_cities(city_count, city_ids_or_title,
+                                          city_coordinates_address);
+            continue;
+        }
+        if (event[0] != 5 && tapped < 0)
+            continue;
+        /* Confirm/cancel return immediately; only a changed selection needs
+         * paint work. Touch updates and unrelated keys cannot redraw names. */
+        if (event[0] == 5 && event[1] == BDA_KEY_ENTER)
+            return sango_ruler_end(g_temp_character_ids_address[selected_ruler]);
+        if (event[0] == 5 && event[1] == BDA_KEY_ESCAPE)
+            return sango_ruler_end(0xff);
+        uint32_t previous_selection = selected_ruler;
+        uint32_t previous_first = first_visible;
+        if (tapped >= 0)
+            selected_ruler = (unsigned int)tapped;
+        else if (event[1] == BDA_KEY_UP && selected_ruler > 0)
+            --selected_ruler;
+        else if (event[1] == BDA_KEY_DOWN && selected_ruler + 1 < total_rulers)
+            ++selected_ruler;
+        if (selected_ruler == previous_selection)
+            continue;
+        if (selected_ruler < first_visible)
+            first_visible = selected_ruler;
+        else if (selected_ruler >= first_visible + VISIBLE_ROWS)
+            first_visible = selected_ruler - VISIBLE_ROWS + 1;
+
         if (cities_flash_on)
         {
-            sango_menu_flash_ruler_cities(city_count, city_ids_or_title, city_coordinates_address);
+            sango_menu_flash_ruler_cities(city_count, city_ids_or_title,
+                                          city_coordinates_address);
             cities_flash_on = false;
         }
-        if (key_code == 0x1c)
-        {
-            return (uint32_t)g_temp_character_ids_address[selected_ruler];
-        }
-        if (key_code < 0x1d)
-        {
-            row_position = selected_ruler - first_visible;
-            if (key_code == 1)
-            {
-                return 0xff;
-            }
-        }
-        else if (key_code == 0x67)
-        {
-            row_position = -first_visible;
-            if (selected_ruler != 0)
-            {
-                if (selected_ruler == first_visible)
-                {
-                    first_visible = selected_ruler - 1 & 0xff;
-                }
-                selected_ruler = selected_ruler - 1 & 0xff;
-            update_visible_row:
-                row_position = selected_ruler - first_visible;
-            }
-        }
-        else
-        {
-            row_position = selected_ruler - first_visible;
-            if ((key_code == 0x6c) && ((int)selected_ruler < (int)(total_rulers - 1)))
-            {
-                selected_ruler = selected_ruler + 1 & 0xff;
-                row_position = selected_ruler - first_visible;
-                if (0x18 < row_position)
-                {
-                    first_visible = first_visible + 1 & 0xff;
-                    goto update_visible_row;
-                }
-            }
-        }
-        sango_menu_draw_ruler_names(first_visible);
-        highlight_top = row_position * 0xc + 0xdU & 0xff;
-        row_position = highlight_top + 0xc;
-        sango_display_invert_rectangle(0x10, (short)highlight_top, 0x34, (short)row_position, 0);
-        city_count = sango_faction_list_cities(
-            (uint32_t)g_temp_character_ids_address[selected_ruler], (int)city_ids_or_title);
-    } while (true);
+        sango_ui_paint_begin();
+        sango_ruler_select(previous_selection, previous_first, selected_ruler, first_visible);
+        sango_ui_paint_end();
+        city_count = sango_faction_list_cities(g_temp_character_ids_address[selected_ruler],
+                                               (int)city_ids_or_title);
+    }
 }
-#undef city_ids_or_title
-#undef event_kind
-#undef key_code
 
 /* 原函数 0x81c161c4 */
 void sango_menu_flash_ruler_cities(uint32_t city_count, uint8_t *city_ids,
@@ -379,8 +362,8 @@ void sango_menu_flash_ruler_cities(uint32_t city_count, uint8_t *city_ids,
         {
             city_or_position_entry =
                 (uint8_t *)(city_positions_address + (*city_or_position_entry & 0x7f) * 2);
-            screen_x = (uint16_t)*city_or_position_entry * 7 + 0x3f & 0xff;
-            screen_y = (uint16_t)city_or_position_entry[1] * 7 + 0x17 & 0xff;
+            screen_x = (uint16_t)*city_or_position_entry * 7 + SANGO_RULER_MAP_X + 3;
+            screen_y = (uint16_t)city_or_position_entry[1] * 7 + SANGO_RULER_MAP_Y + 3;
             sango_display_invert_rectangle(screen_x, screen_y, screen_x + 1, screen_y + 1, 0);
             city_index = city_index + 1 & 0xff;
             city_or_position_entry = city_ids + city_index;
@@ -392,11 +375,7 @@ void sango_menu_flash_ruler_cities(uint32_t city_count, uint8_t *city_ids,
 /* 原函数 0x81c16274 */
 void sango_menu_draw_ruler_names(uint32_t first_ruler)
 {
-    g_text_left = 0x10;
-    g_text_right = 0x34;
-    g_text_top = 0xd;
-    g_text_bottom = 0x139;
-    sango_text_draw_legacy(0x10, 0xd, (char *)(g_move_costs_address + (first_ruler & 0xff) * 6));
+    sango_ruler_draw_names(first_ruler);
     return;
 }
 

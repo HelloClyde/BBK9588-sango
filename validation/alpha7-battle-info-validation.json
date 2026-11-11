@@ -1,0 +1,14 @@
+{
+  "passed": 27,
+  "failed": 0,
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "color_sha256": "117c6e723d1b88311438c6a4d05825f45c8abc63181ad9bc79c887422250a1df",
+  "weather_frames": 5,
+  "weather_native_size": [
+    18,
+    18
+  ],
+  "info_font": 16,
+  "info_presentation": "One completed off-screen page, then explicit dismissal and battlefield restore.",
+  "scope": "Real compiled MIPS info sheet fields/resources/GBK wrapping, MAX/invalid values, ownership failure and combat-state restoration; actual native-weather parser/CRC/bounds/source/alpha and18x18 pixel copying. SDK canvas/font/present boundaries and derived combat stats modeled; native C200 separately tested."
+}

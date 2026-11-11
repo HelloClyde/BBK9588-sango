@@ -188,7 +188,7 @@ def main():
             mm=Machine(IMAGE);mm.record('sango_save_draw_slots',0);mm.record('sango_display_invert_rectangle',5)
             requests=[]
             mm.intercept('sango_save_write_slot' if mode==0 else 'sango_save_load_slot',1,lambda a:requests.append(a[0]) or 1)
-            install_events(mm,[event(11,100,116+row*27+5)])
+            install_events(mm,[event(11,100,102+row*27+5)])
             assert mm.call('sango_save_choose_slot',mode)==row and requests==[row];checks+=1
     with (ROOT/'build/sango.elf').open('rb') as f:
         elf=ELFFile(f);data=elf.get_section_by_name('.sango_data').data();extension=elf.get_section_by_name('.sango_touch')

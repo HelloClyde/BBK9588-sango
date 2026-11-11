@@ -15,8 +15,8 @@
       "source_rgba_sha256": "3138c701377a47ff1ce4a5812e561f2d80c08b60f0223d0066c143d0ce63ec41",
       "flags": 32,
       "color": "library/界面/启动片头动画_资源003/启动片头动画.png",
-      "batch": "page-003",
-      "color_sha256": "d45d4066588d8912e19668d9ef3cb7e0c706f4309a6f7e344803ef9654a5cc46"
+      "batch": "wood-ui-opening-door",
+      "color_sha256": "806833b3e26fbff4f45a3920656d79a746097df21e97f391161639128cd7e780"
     },
     {
       "resource": 4,
@@ -4215,8 +4215,8 @@
       "source_rgba_sha256": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
       "flags": 32,
       "color": "library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
-      "batch": "page-044",
-      "color_sha256": "fe37a1fd87963157f9968f48d557b525a0c90e98ce1426ebff8f6c92e2151c32"
+      "batch": "wood-ui-main-menu",
+      "color_sha256": "066121f5b07cbc2926884505c915f604ae80b2dc965afc68eb03bdfb7e1671f1"
     },
     {
       "resource": 45,
@@ -19167,8 +19167,14 @@
       "source_rgba_sha256": "569e25813389e8f1beee2a374b80ae1173747592d6fb87fbd72e8fc6db3bbff0",
       "flags": 32,
       "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "5e531fda7cd0fb05914c6828efe9c11e94dc10704c911d5c44e3e80e1831e8bf"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "dc6892ed6cc989207f408fca48ea37efd306175f8ada553fa36340a9736008d0",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 100,
@@ -19183,8 +19189,14 @@
       "source_rgba_sha256": "e8fb928d17ad586f7dc01838d41454b3e423a91eb9039e4101e7ecb56dd040c6",
       "flags": 32,
       "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "bb685a8dd80062c28ffe1ef76e5b83f7c99a4e87359dab00b623519192982ce5"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "d2db6907394a6ba48b20e23d819187f04d5fc2a9957f11115501332e525b713b",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 101,
@@ -19199,8 +19211,14 @@
       "source_rgba_sha256": "b9841fc7009391a1f31607ae833a9f3f7bf5d0049ff59b24902b69113730ce8f",
       "flags": 32,
       "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "6ff41dec103c2b1dd27bcdacbbd82ee6281782d7cf3e096d9ff3395acd2fc273"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "50d4044ff9101287110e0bd8cb13774360906745c35c84f9b08d8dafa1df08dc",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 101,
@@ -19215,8 +19233,14 @@
       "source_rgba_sha256": "839ade155a9fabaa546416195ef3501042fe0d0ac73ac0f0261efc7ac44129dd",
       "flags": 32,
       "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "15545db96ed1bfe84edf37698e8be502fb6bfdd98a10901beff3408e3c490ac5"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "99b7248e842285ed3c5ba3f816ed9c5d441b8c92af256099e522bebb410296f0",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 102,
@@ -19231,8 +19255,14 @@
       "source_rgba_sha256": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
       "flags": 32,
       "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "7d5512b8f05a58411e43f18bad6b6e5ff53b3aeba5375d6b849fc2f1c115c4c7"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "99944287e608ad489b1d08d45dfe5b092e85e1a90854c0e377eb713bd888b958",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 102,
@@ -19247,8 +19277,14 @@
       "source_rgba_sha256": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
       "flags": 32,
       "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "ce79538302832a3a61293e20092ce0d76062a0f51ab0c150962ae803fd1c6157"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "58337fdb59fdc4aaf874c5ae39ea5f53c5dad6fb0d4c44b472caceea423734ac",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 103,
@@ -19263,8 +19299,14 @@
       "source_rgba_sha256": "a333523461c10981ad4a22c69cbf29785e4c1d2807ab39588467953e5809cdbb",
       "flags": 32,
       "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "d35dd5360505912f5f9331968b4d98d2e19885481fc2af6c022d815cc19f581c"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "7ce078226e97b506ba77721f435b14ec7a8b68a86e7daa0b609047b51076e29b",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 103,
@@ -19279,8 +19321,14 @@
       "source_rgba_sha256": "ba8ddf112d506329305ed34ffed481e96de499ad71c19b25f3ac476aa655f87a",
       "flags": 32,
       "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "aaf435be7fd401147de4fdc635bae7b58e975d1b878e4a89e765f80c9a71136d"
+      "batch": "wood-ui-menu-states",
+      "color_sha256": "77fab3cfb0e8cc303c3394441f72b1db96dfafc7906bed3d07c59354b45bd113",
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
     },
     {
       "resource": 104,
@@ -19441,6 +19489,566 @@
       "color": "credits/credits-240x320.png",
       "batch": "page-018",
       "color_sha256": "8152f6f1a69402f37fd80465e4a70c12084cb878c76e8f843253383996b0a66c"
+    },
+    {
+      "resource": 52,
+      "name": "势力选择木质底图",
+      "image": 0,
+      "frame": 0,
+      "source": "../ruler/势力选择木质底图.png",
+      "size": [
+        240,
+        320
+      ],
+      "source_rgba_sha256": "48c884de6b0cef3347aeb3c027a03949f4c7c7ca02692e197b242fa9e969cdaf",
+      "flags": 32,
+      "color": "library/补充界面/势力选择木质底图_资源052/势力选择木质底图.png",
+      "batch": "ruler-page",
+      "color_sha256": "b9556c28f43acd4fd43bc3a3cb0744814747c3cd48bf4efe47ba7c9512e60ad3"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 0,
+      "source": "../ruler/君主000_马腾_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "999b6ae59607268fae9aff48a7c40903551d403ccceb129c4f2c8557c72a2250",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主000_马腾_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "e1bc11b129d29445a11bb22ddb0a3ffd7f9384ba7b2f4ee7ca4e95e8edd726e8"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 1,
+      "source": "../ruler/君主001_公孙瓒_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "2a2f69e14ef1dcc8816ec18ac60a8c2461c9a5f0190b64851b07b9b783ba3c0c",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主001_公孙瓒_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "ddd2a49e7cc9315c94632d2224a16214282500965239a1b0759f08dd91b8a411"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 2,
+      "source": "../ruler/君主002_公孙度_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "eb5ffa6336d1c1159a3e7e39b59cf622a1bdf5377df7f113308cc074afd82a0e",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主002_公孙度_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "d25f1097d68f8c21a06774889c92c54800d9f73094915bbd0bb90019a1956fdb"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 3,
+      "source": "../ruler/君主003_张杨_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "1e552089567cc5e0b053b69ee6dba9a2d119a3279faf7faef5695ca6c6da3884",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主003_张杨_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "986c3b819071e791d01b27348dbbfdf18955484cd133825487d8af0a72fe86cb"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 4,
+      "source": "../ruler/君主004_刘备_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "fdb67b174c7d2c3a34ae86cb56c2ae577749176c14a2372fa202c3b6cad8a4b0",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主004_刘备_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "1654675ca71e32bf6c65bef2b1da56f2de8e431154e8481b5c675bb45581e75c"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 5,
+      "source": "../ruler/君主005_袁绍_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "6861c3a1adf096dae7a7b3e50509b5ec6bc95d31dbbbe453afa2c96e52321819",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主005_袁绍_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "12005d42681bed1a833f710300e311d1de611c4ed89299fb566f3baab2f225f4"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 6,
+      "source": "../ruler/君主006_孔融_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "a84281d72166af3265f0a3e5932a23f1b9619e20e49338583c6b90b70c8cee39",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主006_孔融_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "56db1124989ea1b2495b561cfc3480ad10183ce2bf5bef89d380c79edad6f22e"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 7,
+      "source": "../ruler/君主007_王匡_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "cd4ce43316b5ebc02d93ae58ad5f6c13d86e57c93c8b6ea798793780143b6b30",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主007_王匡_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "b5d6e1c7ef7d618e8aac31a866df387d2a6c71eaa146337e2a0eb24653aec3c8"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 8,
+      "source": "../ruler/君主008_董卓_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "01553962e6aa37cccee2baba01427e013f91378e18443e191dc08b9fcd883345",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主008_董卓_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "32d458f1edb25d97753b87c96b27805ecd2ef6d471e43b4bbef4e4161111c41a"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 9,
+      "source": "../ruler/君主009_韩馥_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "1f46d01a6cef700242f661f6e8c47629c3bc2d083389d3fb694bddf46fad6dc8",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主009_韩馥_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "6dcc6e3e8abe432175b57e824321f6fb9292314569ec086bc620155fa6ca8651"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 10,
+      "source": "../ruler/君主010_曹操_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "1343b2f6a64f4adeff3a54a66a8d4db8f433ab9336b4c0400e5dff3a3c8ec676",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主010_曹操_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "57fc6596d8ebb7a416ad2e641d4bc24d93d8c8d128659e08e2498ed05163f1f0"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 11,
+      "source": "../ruler/君主011_陶谦_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "758192d54d7b3da38fdc973974ce03313d0e20646a48d1e6c349eb879edd5daa",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主011_陶谦_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "e247b5992584962986892c409f7fac8302223e81112e7861422adc1f8defb6f7"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 12,
+      "source": "../ruler/君主012_张鲁_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "b0f5223bda8860b722076fe93486d90faabc094d1cf532bf1155e5d86fb48873",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主012_张鲁_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "962641b193480805fb05760188c4eb8484ac71af5500f451e5119f0763a57f41"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 13,
+      "source": "../ruler/君主013_刘岱_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "6944fa823ca6d9bb44ecfa86672181573734e2eb938d729c6c6ed5edba0ace85",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主013_刘岱_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "df1a08c7ad7354d62e251bcbd91302955a70d4b5f11b9e2a26d63c750caf20ea"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 14,
+      "source": "../ruler/君主014_袁术_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "1d307b114684da8e60703755c6f855b54878fda9a6373d97f56cf835a1edc005",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主014_袁术_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "de1bb3c3a6a4cbd1926b1d9c65b33368b559da3680e9a5e9b29f128c1c7f6837"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 15,
+      "source": "../ruler/君主015_刘焉_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "d86efcba8f650ba10b305206e3602e5494acce980d22ad5b33bc2159a8483036",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主015_刘焉_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "309792040dda40d05110c34db4f47aaa6f39df026c98da754c9fdfde9da4b158"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 16,
+      "source": "../ruler/君主016_刘表_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "ef094c2b71f5320253a5cad2aef5539e111b1a95504dd71985fdc1f7c1c4079e",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主016_刘表_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "e25fdba1c9c5a42d1059aeef362f900979f6cf18795d938ea203a251a7ac513e"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 17,
+      "source": "../ruler/君主017_孙坚_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "b7f303659ee134366de1521521c1a09d4fb47a50f334fe02680f074eca7d17a5",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主017_孙坚_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "612e925b4ff243b5e82fb713d9d31b65f1fb2214c0d67c3b7f2a9bb7d57627af"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 18,
+      "source": "../ruler/君主018_李_字码A2E3_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "480e812a112bded94caa28076db20b50830d4a10d1f19869fb3a3b638f3f6e9f",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主018_李_字码A2E3_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "64b49b82914c2706195c54b7ba154776b9e65947ee2ab9f0fd08284b9876d056"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 19,
+      "source": "../ruler/君主019_吕布_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "8dcc75f5aeae0e69b1d731f8aaa22fda9b235ae3ccce5a41a1c6ae2b45bc064e",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主019_吕布_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "c4074343053a629c48f18cfc4f877337a120dd735ddf83a2e0578ff12b25d97c"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 20,
+      "source": "../ruler/君主020_刘璋_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "71df1d57e2d2b857bb07e96bfe6516fdb742bb410561d55ea53cdfc600daacec",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主020_刘璋_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "26ee9e63960e77c5a9288ad4f46ce7983e5647ea3e5b339425eb69569203aa9c"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 21,
+      "source": "../ruler/君主021_张绣_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "110943e40769fcb916d64b9ac41d76ecaf9929148dfd92c40342a7a490f8773e",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主021_张绣_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "a4461355d45fe9f047aff6ecacc6a51ea434dfdcbce2a867f4a1d3ed6fb29e58"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 22,
+      "source": "../ruler/君主022_孙策_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "3d678dddbb1bd2bc6fdc36b205dc0f8eeafa4671856e243fc58a89f2badf890e",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主022_孙策_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "951bbd07385f5ec4439f52d5b85de66952b9ffde5390af816e88ede0c674a1b8"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 23,
+      "source": "../ruler/君主023_韩玄_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "fed228b7ee42d215583c6d2c8e31565763bac99eb38afbb02d2cbd9582f40211",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主023_韩玄_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "d4cdb969f7d39bbd2637603f00e3e828f6de59ee439d73b3fc9152cce2cfd604"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 24,
+      "source": "../ruler/君主024_张邈_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "7d7e6be5f723447dad13ed1e9ca0724f148c7e53ea34661554385e6762c9ad8f",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主024_张邈_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "28a3ddb279b0aea3aeed1f98dcb39916fe4d5067638a1b51b09cdb31e76dcf50"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 25,
+      "source": "../ruler/君主025_公孙康_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "827defe7c2908a1da536c2c571edd821f626b21f0ec0ac54e887809b9a2af57b",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主025_公孙康_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "c99520cb66eb9307ff33baf752e85903ba524f0f6366e98b8a2c5780b4f4dea1"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 26,
+      "source": "../ruler/君主026_孙权_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "a4142826ba1cc6c240e4bd272c047db8fff373ff5804bae39e78ac051ff1ee55",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主026_孙权_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "de86518269e1ceb5e9e04240b39a2e581e610555fdbb363514c5c7546d97bdae"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 27,
+      "source": "../ruler/君主027_金旋_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "33ca2a47a4fb5a0b7a53202fe1b621a0d639519bf6d8b7cbbefff6479a6a5fc7",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主027_金旋_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "677e45d09204df0f4f598bccf5234293807bd7f358acb7f42b75bd3fd3503526"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 28,
+      "source": "../ruler/君主028_刘度_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "17bcd0d25d1aa8bc6c8953011b217756615fdfc07eea282b008fdf90229ccdb6",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主028_刘度_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "4af979ce97f1a8a80bb1e4ee15feb11fdccfc5d516ac278de7e5429b02bf5090"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 29,
+      "source": "../ruler/君主029_赵范_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "2fd26ccff87c30e8001c9e30cef8eecd625650e2876fb391b0c21c59608dc7e8",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主029_赵范_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "a5a90b915f22dcc460d59ec42aa6a363525957b955276898a7cfea75c3264529"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 30,
+      "source": "../ruler/君主030_曹丕_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "9e63ebc3a8cb96f490e4f72d866261d2743ec1222ea44c27d36c9efc66da1f86",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主030_曹丕_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "15ed00a7fa9628085d88014ace4f1bb1cf09d1653e86896bf071a1a01218b60b"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 31,
+      "source": "../ruler/君主031_刘禅_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "257a82dfd49e51e0842c72ea8aecfb2d1c5938d02bbff82d8c837139da43cca6",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主031_刘禅_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "510ff46d43845fd3fdabaa81c77be01b7e0faa6a697a020f7c84b675bc63d770"
+    },
+    {
+      "resource": 53,
+      "name": "君主预览头像组",
+      "image": 0,
+      "frame": 32,
+      "source": "../ruler/君主032_孟获_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "source_rgba_sha256": "b1bd18a52e03725a2617da670ef55aad4fb06b7a70c99280e538d2f22a5555b1",
+      "flags": 32,
+      "color": "library/补充界面/君主预览头像组_资源053/君主032_孟获_预览头像.png",
+      "batch": "ruler-portraits",
+      "color_sha256": "8f4cd829759277920c6280afe628335c5cb6f7692b2ba1da986c5559ece633d2"
+    },
+    {
+      "resource": 77,
+      "name": "势力选择选中木纹条",
+      "image": 0,
+      "frame": 0,
+      "source": "../ruler/势力选择选中木纹条.png",
+      "size": [
+        56,
+        18
+      ],
+      "source_rgba_sha256": "0e7393e5f05eae8bae627d60daff66bbd06114514cbe62df835c81feb1efbf50",
+      "flags": 32,
+      "color": "library/补充界面/势力选择选中木纹条_资源077/势力选择选中木纹条.png",
+      "batch": "ruler-highlight",
+      "color_sha256": "334c9566c13982cedf1f1945dcb5dbf970d4bc5f2481c2bc69676b9c07c44f3a"
     }
   ],
   "unique": [
@@ -28599,6 +29207,321 @@
       "source_rgba_sha256": "da7c82454cbf2c78bdd7d3bafa5de3da6a1280f6a7c7d84596bba26ec8d651a4",
       "flags": 32,
       "key": "da7c82454cbf2c78bdd7d3bafa5de3da6a1280f6a7c7d84596bba26ec8d651a4"
+    },
+    {
+      "key": "48c884de6b0cef3347aeb3c027a03949f4c7c7ca02692e197b242fa9e969cdaf",
+      "source": "../ruler/势力选择木质底图.png",
+      "size": [
+        240,
+        320
+      ],
+      "flags": 32
+    },
+    {
+      "key": "999b6ae59607268fae9aff48a7c40903551d403ccceb129c4f2c8557c72a2250",
+      "source": "../ruler/君主000_马腾_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "2a2f69e14ef1dcc8816ec18ac60a8c2461c9a5f0190b64851b07b9b783ba3c0c",
+      "source": "../ruler/君主001_公孙瓒_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "eb5ffa6336d1c1159a3e7e39b59cf622a1bdf5377df7f113308cc074afd82a0e",
+      "source": "../ruler/君主002_公孙度_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "1e552089567cc5e0b053b69ee6dba9a2d119a3279faf7faef5695ca6c6da3884",
+      "source": "../ruler/君主003_张杨_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "fdb67b174c7d2c3a34ae86cb56c2ae577749176c14a2372fa202c3b6cad8a4b0",
+      "source": "../ruler/君主004_刘备_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "6861c3a1adf096dae7a7b3e50509b5ec6bc95d31dbbbe453afa2c96e52321819",
+      "source": "../ruler/君主005_袁绍_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "a84281d72166af3265f0a3e5932a23f1b9619e20e49338583c6b90b70c8cee39",
+      "source": "../ruler/君主006_孔融_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "cd4ce43316b5ebc02d93ae58ad5f6c13d86e57c93c8b6ea798793780143b6b30",
+      "source": "../ruler/君主007_王匡_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "01553962e6aa37cccee2baba01427e013f91378e18443e191dc08b9fcd883345",
+      "source": "../ruler/君主008_董卓_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "1f46d01a6cef700242f661f6e8c47629c3bc2d083389d3fb694bddf46fad6dc8",
+      "source": "../ruler/君主009_韩馥_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "1343b2f6a64f4adeff3a54a66a8d4db8f433ab9336b4c0400e5dff3a3c8ec676",
+      "source": "../ruler/君主010_曹操_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "758192d54d7b3da38fdc973974ce03313d0e20646a48d1e6c349eb879edd5daa",
+      "source": "../ruler/君主011_陶谦_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "b0f5223bda8860b722076fe93486d90faabc094d1cf532bf1155e5d86fb48873",
+      "source": "../ruler/君主012_张鲁_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "6944fa823ca6d9bb44ecfa86672181573734e2eb938d729c6c6ed5edba0ace85",
+      "source": "../ruler/君主013_刘岱_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "1d307b114684da8e60703755c6f855b54878fda9a6373d97f56cf835a1edc005",
+      "source": "../ruler/君主014_袁术_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "d86efcba8f650ba10b305206e3602e5494acce980d22ad5b33bc2159a8483036",
+      "source": "../ruler/君主015_刘焉_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "ef094c2b71f5320253a5cad2aef5539e111b1a95504dd71985fdc1f7c1c4079e",
+      "source": "../ruler/君主016_刘表_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "b7f303659ee134366de1521521c1a09d4fb47a50f334fe02680f074eca7d17a5",
+      "source": "../ruler/君主017_孙坚_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "480e812a112bded94caa28076db20b50830d4a10d1f19869fb3a3b638f3f6e9f",
+      "source": "../ruler/君主018_李_字码A2E3_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "8dcc75f5aeae0e69b1d731f8aaa22fda9b235ae3ccce5a41a1c6ae2b45bc064e",
+      "source": "../ruler/君主019_吕布_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "71df1d57e2d2b857bb07e96bfe6516fdb742bb410561d55ea53cdfc600daacec",
+      "source": "../ruler/君主020_刘璋_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "110943e40769fcb916d64b9ac41d76ecaf9929148dfd92c40342a7a490f8773e",
+      "source": "../ruler/君主021_张绣_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "3d678dddbb1bd2bc6fdc36b205dc0f8eeafa4671856e243fc58a89f2badf890e",
+      "source": "../ruler/君主022_孙策_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "fed228b7ee42d215583c6d2c8e31565763bac99eb38afbb02d2cbd9582f40211",
+      "source": "../ruler/君主023_韩玄_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "7d7e6be5f723447dad13ed1e9ca0724f148c7e53ea34661554385e6762c9ad8f",
+      "source": "../ruler/君主024_张邈_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "827defe7c2908a1da536c2c571edd821f626b21f0ec0ac54e887809b9a2af57b",
+      "source": "../ruler/君主025_公孙康_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "a4142826ba1cc6c240e4bd272c047db8fff373ff5804bae39e78ac051ff1ee55",
+      "source": "../ruler/君主026_孙权_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "33ca2a47a4fb5a0b7a53202fe1b621a0d639519bf6d8b7cbbefff6479a6a5fc7",
+      "source": "../ruler/君主027_金旋_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "17bcd0d25d1aa8bc6c8953011b217756615fdfc07eea282b008fdf90229ccdb6",
+      "source": "../ruler/君主028_刘度_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "2fd26ccff87c30e8001c9e30cef8eecd625650e2876fb391b0c21c59608dc7e8",
+      "source": "../ruler/君主029_赵范_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "9e63ebc3a8cb96f490e4f72d866261d2743ec1222ea44c27d36c9efc66da1f86",
+      "source": "../ruler/君主030_曹丕_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "257a82dfd49e51e0842c72ea8aecfb2d1c5938d02bbff82d8c837139da43cca6",
+      "source": "../ruler/君主031_刘禅_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "b1bd18a52e03725a2617da670ef55aad4fb06b7a70c99280e538d2f22a5555b1",
+      "source": "../ruler/君主032_孟获_预览头像.png",
+      "size": [
+        48,
+        48
+      ],
+      "flags": 32
+    },
+    {
+      "key": "0e7393e5f05eae8bae627d60daff66bbd06114514cbe62df835c81feb1efbf50",
+      "source": "../ruler/势力选择选中木纹条.png",
+      "size": [
+        56,
+        18
+      ],
+      "flags": 32
     }
   ],
   "batches": [
@@ -35377,6 +36300,527 @@
         1,
         1
       ]
+    },
+    {
+      "id": "wood-ui-main-menu",
+      "reference": "references/wood-ui-main-menu.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-main-menu.txt",
+      "edit_type": "built-in GPT Image material/color edit; geometry and exact text retained",
+      "previous_batch": "page-044",
+      "master": "generated/wood-ui-main-menu.png",
+      "master_size": [
+        1086,
+        1448
+      ],
+      "master_sha256": "33bd401c3119ca20a53752854653376dbe42ca835c081508a20d46925cd7c25e",
+      "imported_frames": 1
+    },
+    {
+      "id": "wood-ui-opening-door",
+      "reference": "references/wood-ui-opening-door.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "3138c701377a47ff1ce4a5812e561f2d80c08b60f0223d0066c143d0ce63ec41",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-opening-door.txt",
+      "edit_type": "built-in GPT Image material/color edit; geometry and exact text retained",
+      "previous_batch": "page-003",
+      "master": "generated/wood-ui-opening-door.png",
+      "master_size": [
+        1086,
+        1448
+      ],
+      "master_sha256": "c62fba3b5560819d754a025cc568d065c98ebcade5c523e454b0699e368c8048",
+      "imported_frames": 1
+    },
+    {
+      "id": "wood-ui-menu-states",
+      "reference": "references/wood-ui-menu-states.png",
+      "canvas": [
+        1280,
+        1280
+      ],
+      "items": [
+        {
+          "key": "569e25813389e8f1beee2a374b80ae1173747592d6fb87fbd72e8fc6db3bbff0",
+          "box": [
+            0,
+            0,
+            630,
+            285
+          ]
+        },
+        {
+          "key": "e8fb928d17ad586f7dc01838d41454b3e423a91eb9039e4101e7ecb56dd040c6",
+          "box": [
+            650,
+            0,
+            1280,
+            285
+          ]
+        },
+        {
+          "key": "b9841fc7009391a1f31607ae833a9f3f7bf5d0049ff59b24902b69113730ce8f",
+          "box": [
+            0,
+            320,
+            630,
+            605
+          ]
+        },
+        {
+          "key": "839ade155a9fabaa546416195ef3501042fe0d0ac73ac0f0261efc7ac44129dd",
+          "box": [
+            650,
+            320,
+            1280,
+            605
+          ]
+        },
+        {
+          "key": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
+          "box": [
+            0,
+            640,
+            630,
+            925
+          ]
+        },
+        {
+          "key": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
+          "box": [
+            650,
+            640,
+            1280,
+            925
+          ]
+        },
+        {
+          "key": "a333523461c10981ad4a22c69cbf29785e4c1d2807ab39588467953e5809cdbb",
+          "box": [
+            0,
+            960,
+            630,
+            1245
+          ]
+        },
+        {
+          "key": "ba8ddf112d506329305ed34ffed481e96de499ad71c19b25f3ac476aa655f87a",
+          "box": [
+            650,
+            960,
+            1280,
+            1245
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-menu-states.txt",
+      "edit_type": "built-in GPT Image wood normal/selected material states; original 126x57 sprite dimensions",
+      "master": "generated/wood-ui-menu-states.png",
+      "master_size": [
+        1254,
+        1254
+      ],
+      "master_sha256": "40918ad379af6ac1ed1e79604c99f3932ef0e1ae4328e585760ebd9830aa33fc",
+      "imported_frames": 8
+    },
+    {
+      "id": "ruler-page",
+      "canvas": [
+        240,
+        320
+      ],
+      "items": [
+        {
+          "key": "48c884de6b0cef3347aeb3c027a03949f4c7c7ca02692e197b242fa9e969cdaf",
+          "box": [
+            0,
+            0,
+            240,
+            320
+          ]
+        }
+      ],
+      "status": "imported",
+      "master": "generated/ruler-page-import.png",
+      "master_size": [
+        240,
+        320
+      ],
+      "master_sha256": "b9556c28f43acd4fd43bc3a3cb0744814747c3cd48bf4efe47ba7c9512e60ad3",
+      "imported_frames": 1,
+      "composition": "Existing GPT Image art, crop/resize/encoding only"
+    },
+    {
+      "id": "ruler-portraits",
+      "canvas": [
+        384,
+        240
+      ],
+      "items": [
+        {
+          "key": "999b6ae59607268fae9aff48a7c40903551d403ccceb129c4f2c8557c72a2250",
+          "box": [
+            0,
+            0,
+            48,
+            48
+          ]
+        },
+        {
+          "key": "2a2f69e14ef1dcc8816ec18ac60a8c2461c9a5f0190b64851b07b9b783ba3c0c",
+          "box": [
+            48,
+            0,
+            96,
+            48
+          ]
+        },
+        {
+          "key": "eb5ffa6336d1c1159a3e7e39b59cf622a1bdf5377df7f113308cc074afd82a0e",
+          "box": [
+            96,
+            0,
+            144,
+            48
+          ]
+        },
+        {
+          "key": "1e552089567cc5e0b053b69ee6dba9a2d119a3279faf7faef5695ca6c6da3884",
+          "box": [
+            144,
+            0,
+            192,
+            48
+          ]
+        },
+        {
+          "key": "fdb67b174c7d2c3a34ae86cb56c2ae577749176c14a2372fa202c3b6cad8a4b0",
+          "box": [
+            192,
+            0,
+            240,
+            48
+          ]
+        },
+        {
+          "key": "6861c3a1adf096dae7a7b3e50509b5ec6bc95d31dbbbe453afa2c96e52321819",
+          "box": [
+            240,
+            0,
+            288,
+            48
+          ]
+        },
+        {
+          "key": "a84281d72166af3265f0a3e5932a23f1b9619e20e49338583c6b90b70c8cee39",
+          "box": [
+            288,
+            0,
+            336,
+            48
+          ]
+        },
+        {
+          "key": "cd4ce43316b5ebc02d93ae58ad5f6c13d86e57c93c8b6ea798793780143b6b30",
+          "box": [
+            336,
+            0,
+            384,
+            48
+          ]
+        },
+        {
+          "key": "01553962e6aa37cccee2baba01427e013f91378e18443e191dc08b9fcd883345",
+          "box": [
+            0,
+            48,
+            48,
+            96
+          ]
+        },
+        {
+          "key": "1f46d01a6cef700242f661f6e8c47629c3bc2d083389d3fb694bddf46fad6dc8",
+          "box": [
+            48,
+            48,
+            96,
+            96
+          ]
+        },
+        {
+          "key": "1343b2f6a64f4adeff3a54a66a8d4db8f433ab9336b4c0400e5dff3a3c8ec676",
+          "box": [
+            96,
+            48,
+            144,
+            96
+          ]
+        },
+        {
+          "key": "758192d54d7b3da38fdc973974ce03313d0e20646a48d1e6c349eb879edd5daa",
+          "box": [
+            144,
+            48,
+            192,
+            96
+          ]
+        },
+        {
+          "key": "b0f5223bda8860b722076fe93486d90faabc094d1cf532bf1155e5d86fb48873",
+          "box": [
+            192,
+            48,
+            240,
+            96
+          ]
+        },
+        {
+          "key": "6944fa823ca6d9bb44ecfa86672181573734e2eb938d729c6c6ed5edba0ace85",
+          "box": [
+            240,
+            48,
+            288,
+            96
+          ]
+        },
+        {
+          "key": "1d307b114684da8e60703755c6f855b54878fda9a6373d97f56cf835a1edc005",
+          "box": [
+            288,
+            48,
+            336,
+            96
+          ]
+        },
+        {
+          "key": "d86efcba8f650ba10b305206e3602e5494acce980d22ad5b33bc2159a8483036",
+          "box": [
+            336,
+            48,
+            384,
+            96
+          ]
+        },
+        {
+          "key": "ef094c2b71f5320253a5cad2aef5539e111b1a95504dd71985fdc1f7c1c4079e",
+          "box": [
+            0,
+            96,
+            48,
+            144
+          ]
+        },
+        {
+          "key": "b7f303659ee134366de1521521c1a09d4fb47a50f334fe02680f074eca7d17a5",
+          "box": [
+            48,
+            96,
+            96,
+            144
+          ]
+        },
+        {
+          "key": "480e812a112bded94caa28076db20b50830d4a10d1f19869fb3a3b638f3f6e9f",
+          "box": [
+            96,
+            96,
+            144,
+            144
+          ]
+        },
+        {
+          "key": "8dcc75f5aeae0e69b1d731f8aaa22fda9b235ae3ccce5a41a1c6ae2b45bc064e",
+          "box": [
+            144,
+            96,
+            192,
+            144
+          ]
+        },
+        {
+          "key": "71df1d57e2d2b857bb07e96bfe6516fdb742bb410561d55ea53cdfc600daacec",
+          "box": [
+            192,
+            96,
+            240,
+            144
+          ]
+        },
+        {
+          "key": "110943e40769fcb916d64b9ac41d76ecaf9929148dfd92c40342a7a490f8773e",
+          "box": [
+            240,
+            96,
+            288,
+            144
+          ]
+        },
+        {
+          "key": "3d678dddbb1bd2bc6fdc36b205dc0f8eeafa4671856e243fc58a89f2badf890e",
+          "box": [
+            288,
+            96,
+            336,
+            144
+          ]
+        },
+        {
+          "key": "fed228b7ee42d215583c6d2c8e31565763bac99eb38afbb02d2cbd9582f40211",
+          "box": [
+            336,
+            96,
+            384,
+            144
+          ]
+        },
+        {
+          "key": "7d7e6be5f723447dad13ed1e9ca0724f148c7e53ea34661554385e6762c9ad8f",
+          "box": [
+            0,
+            144,
+            48,
+            192
+          ]
+        },
+        {
+          "key": "827defe7c2908a1da536c2c571edd821f626b21f0ec0ac54e887809b9a2af57b",
+          "box": [
+            48,
+            144,
+            96,
+            192
+          ]
+        },
+        {
+          "key": "a4142826ba1cc6c240e4bd272c047db8fff373ff5804bae39e78ac051ff1ee55",
+          "box": [
+            96,
+            144,
+            144,
+            192
+          ]
+        },
+        {
+          "key": "33ca2a47a4fb5a0b7a53202fe1b621a0d639519bf6d8b7cbbefff6479a6a5fc7",
+          "box": [
+            144,
+            144,
+            192,
+            192
+          ]
+        },
+        {
+          "key": "17bcd0d25d1aa8bc6c8953011b217756615fdfc07eea282b008fdf90229ccdb6",
+          "box": [
+            192,
+            144,
+            240,
+            192
+          ]
+        },
+        {
+          "key": "2fd26ccff87c30e8001c9e30cef8eecd625650e2876fb391b0c21c59608dc7e8",
+          "box": [
+            240,
+            144,
+            288,
+            192
+          ]
+        },
+        {
+          "key": "9e63ebc3a8cb96f490e4f72d866261d2743ec1222ea44c27d36c9efc66da1f86",
+          "box": [
+            288,
+            144,
+            336,
+            192
+          ]
+        },
+        {
+          "key": "257a82dfd49e51e0842c72ea8aecfb2d1c5938d02bbff82d8c837139da43cca6",
+          "box": [
+            336,
+            144,
+            384,
+            192
+          ]
+        },
+        {
+          "key": "b1bd18a52e03725a2617da670ef55aad4fb06b7a70c99280e538d2f22a5555b1",
+          "box": [
+            0,
+            192,
+            48,
+            240
+          ]
+        }
+      ],
+      "status": "imported",
+      "master": "generated/ruler-portraits-import.png",
+      "master_size": [
+        384,
+        240
+      ],
+      "master_sha256": "09657b8edc10b528bf973532bddd81cee3560581ec403fbfbafeef6e95b46165",
+      "imported_frames": 33,
+      "composition": "Existing GPT Image art, crop/resize/encoding only"
+    },
+    {
+      "id": "ruler-highlight",
+      "canvas": [
+        56,
+        18
+      ],
+      "items": [
+        {
+          "key": "0e7393e5f05eae8bae627d60daff66bbd06114514cbe62df835c81feb1efbf50",
+          "box": [
+            0,
+            0,
+            56,
+            18
+          ]
+        }
+      ],
+      "status": "imported",
+      "master": "generated/ruler-highlight-import.png",
+      "master_size": [
+        56,
+        18
+      ],
+      "master_sha256": "334c9566c13982cedf1f1945dcb5dbf970d4bc5f2481c2bc69676b9c07c44f3a",
+      "imported_frames": 1,
+      "composition": "Existing GPT Image art, crop/resize/encoding only"
     }
   ],
   "native_frames": 1204,

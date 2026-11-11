@@ -1,0 +1,112 @@
+{
+  "passed": 26,
+  "failed": 0,
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "scope": "Real compiled MIPS sango_battle_show_options, resource001 text decode and sango_ui_choose_option; touch row hit-testing and keyboard events execute. SDK draw/present/input boundaries modeled. No new confirmation is added: row4 directly sets result2, matching reviewed9288S code.",
+  "cases": [
+    {
+      "name": "touch: row0 ends turn/retreats without view submenu",
+      "passed": true
+    },
+    {
+      "name": "touch: row4 ends turn/retreats without view submenu",
+      "passed": true
+    },
+    {
+      "name": "touch: row1 changes only setting0 to0",
+      "passed": true
+    },
+    {
+      "name": "touch: row1 changes only setting0 to1",
+      "passed": true
+    },
+    {
+      "name": "touch: row1 submenu cancel preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "touch: row2 changes only setting1 to0",
+      "passed": true
+    },
+    {
+      "name": "touch: row2 changes only setting1 to1",
+      "passed": true
+    },
+    {
+      "name": "touch: row2 submenu cancel preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "touch: row3 changes only setting2 to0",
+      "passed": true
+    },
+    {
+      "name": "touch: row3 changes only setting2 to1",
+      "passed": true
+    },
+    {
+      "name": "touch: row3 submenu cancel preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "touch: close parent preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "key: row0 ends turn/retreats without view submenu",
+      "passed": true
+    },
+    {
+      "name": "key: row4 ends turn/retreats without view submenu",
+      "passed": true
+    },
+    {
+      "name": "key: row1 changes only setting0 to0",
+      "passed": true
+    },
+    {
+      "name": "key: row1 changes only setting0 to1",
+      "passed": true
+    },
+    {
+      "name": "key: row1 submenu cancel preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "key: row2 changes only setting1 to0",
+      "passed": true
+    },
+    {
+      "name": "key: row2 changes only setting1 to1",
+      "passed": true
+    },
+    {
+      "name": "key: row2 submenu cancel preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "key: row3 changes only setting2 to0",
+      "passed": true
+    },
+    {
+      "name": "key: row3 changes only setting2 to1",
+      "passed": true
+    },
+    {
+      "name": "key: row3 submenu cancel preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "key: close parent preserves battle/settings",
+      "passed": true
+    },
+    {
+      "name": "Multiple settings then retreat dispatch each visible row correctly",
+      "passed": true
+    },
+    {
+      "name": "Touch setting then physical keys can retreat",
+      "passed": true
+    }
+  ]
+}

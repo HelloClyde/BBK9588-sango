@@ -1,0 +1,162 @@
+[
+  {
+    "resource": 3,
+    "name": "启动片头动画",
+    "image": 0,
+    "frame": 0,
+    "source": "界面/启动片头动画_资源003/启动片头动画.png",
+    "size": [
+      240,
+      320
+    ],
+    "source_rgba_sha256": "3138c701377a47ff1ce4a5812e561f2d80c08b60f0223d0066c143d0ce63ec41",
+    "flags": 32,
+    "color": "library/界面/启动片头动画_资源003/启动片头动画.png",
+    "batch": "page-003",
+    "color_sha256": "d45d4066588d8912e19668d9ef3cb7e0c706f4309a6f7e344803ef9654a5cc46"
+  },
+  {
+    "resource": 44,
+    "name": "主菜单静态底图",
+    "image": 0,
+    "frame": 0,
+    "source": "界面/主菜单静态底图_资源044/主菜单静态底图.png",
+    "size": [
+      240,
+      320
+    ],
+    "source_rgba_sha256": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
+    "flags": 32,
+    "color": "library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
+    "batch": "page-044",
+    "color_sha256": "fe37a1fd87963157f9968f48d557b525a0c90e98ce1426ebff8f6c92e2151c32"
+  },
+  {
+    "resource": 100,
+    "name": "开始新局选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "569e25813389e8f1beee2a374b80ae1173747592d6fb87fbd72e8fc6db3bbff0",
+    "flags": 32,
+    "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "5e531fda7cd0fb05914c6828efe9c11e94dc10704c911d5c44e3e80e1831e8bf"
+  },
+  {
+    "resource": 100,
+    "name": "开始新局选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "e8fb928d17ad586f7dc01838d41454b3e423a91eb9039e4101e7ecb56dd040c6",
+    "flags": 32,
+    "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "bb685a8dd80062c28ffe1ef76e5b83f7c99a4e87359dab00b623519192982ce5"
+  },
+  {
+    "resource": 101,
+    "name": "读取存档选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "b9841fc7009391a1f31607ae833a9f3f7bf5d0049ff59b24902b69113730ce8f",
+    "flags": 32,
+    "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "6ff41dec103c2b1dd27bcdacbbd82ee6281782d7cf3e096d9ff3395acd2fc273"
+  },
+  {
+    "resource": 101,
+    "name": "读取存档选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "839ade155a9fabaa546416195ef3501042fe0d0ac73ac0f0261efc7ac44129dd",
+    "flags": 32,
+    "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "15545db96ed1bfe84edf37698e8be502fb6bfdd98a10901beff3408e3c490ac5"
+  },
+  {
+    "resource": 102,
+    "name": "制作群组选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
+    "flags": 32,
+    "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "7d5512b8f05a58411e43f18bad6b6e5ff53b3aeba5375d6b849fc2f1c115c4c7"
+  },
+  {
+    "resource": 102,
+    "name": "制作群组选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
+    "flags": 32,
+    "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "ce79538302832a3a61293e20092ce0d76062a0f51ab0c150962ae803fd1c6157"
+  },
+  {
+    "resource": 103,
+    "name": "退出游戏选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "a333523461c10981ad4a22c69cbf29785e4c1d2807ab39588467953e5809cdbb",
+    "flags": 32,
+    "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "d35dd5360505912f5f9331968b4d98d2e19885481fc2af6c022d815cc19f581c"
+  },
+  {
+    "resource": 103,
+    "name": "退出游戏选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "ba8ddf112d506329305ed34ffed481e96de499ad71c19b25f3ac476aa655f87a",
+    "flags": 32,
+    "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "aaf435be7fd401147de4fdc635bae7b58e975d1b878e4a89e765f80c9a71136d"
+  }
+]

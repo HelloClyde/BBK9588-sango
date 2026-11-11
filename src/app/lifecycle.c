@@ -25,12 +25,15 @@ void sango_game_lifecycle(void)
 #define session_error_text (*(char(*)[56])(abi_storage + 56))
 
     int failed;
+    uint32_t intro_result;
 
     graphics_init_stub();
     failed = sango_load_package_and_buffers();
     if (failed == 0)
     {
-        sango_animation_play_resource(3);
+        intro_result = sango_animation_play_resource(3);
+        if (intro_result == 0xff)
+            sango_intro_open_menu();
         failed = sango_allocate_session_state();
         if (failed == 0)
         {

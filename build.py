@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
 SDK_COMMIT='ef3bf3b7328a3a8fa9ba48593c63285300725fb7'
-SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk','sango_color_animation','sango_touch','sango_battle_info','sango_music','sango_music_sdk']
+SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk','sango_color_animation','sango_touch','sango_battle_info','sango_music','sango_music_sdk','sango_ui_paint','sango_intro','sango_ruler']
 
 def command(args,**kwargs):
     return subprocess.run([str(x) for x in args],check=True,**kwargs)
@@ -50,7 +50,7 @@ def make_header(payload):
     return bytes(data)
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cc');args=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cc');p.add_argument('--music-diagnostics',action='store_true');args=p.parse_args()
     if not (ROOT/'sdk/sdk/include/bda_sdk.h').is_file():
         raise SystemExit('Initialize the pinned SDK: git submodule update --init sdk')
     revision=sdk_revision()
@@ -82,6 +82,7 @@ def main():
         '-Os','-ffunction-sections','-fdata-sections','-Wno-incompatible-pointer-types',
         '-Wno-int-conversion','-I',ROOT/'include','-I',ROOT/'sdk/sdk/include']
     objects=[]
+    if args.music_diagnostics:flags+=['-DSANGO_MUSIC_DIAGNOSTICS=1']
     for name in SOURCES:
         source=out/'sango_engine.c' if name=='sango_engine' else ROOT/'src'/(name+'.c')
         obj=out/(name+'.o');command([cc,*flags,'-c',source,'-o',obj]);objects.append(obj)

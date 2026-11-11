@@ -1,0 +1,185 @@
+{
+  "generator": "built-in GPT Image",
+  "mode": "edit",
+  "date": "2026-11-11",
+  "palette": "Aged walnut/elm, warm pale timber plaques, carved brown relief; pale letters on selected dark wood.",
+  "masters": {
+    "generated/wood-ui-opening-door.png": "c62fba3b5560819d754a025cc568d065c98ebcade5c523e454b0699e368c8048",
+    "generated/wood-ui-main-menu.png": "33bd401c3119ca20a53752854653376dbe42ca835c081508a20d46925cd7c25e",
+    "generated/wood-ui-menu-states.png": "40918ad379af6ac1ed1e79604c99f3932ef0e1ae4328e585760ebd9830aa33fc"
+  },
+  "prompts": {
+    "prompts/wood-ui-opening-door.txt": "cebc60db98385259d9ffd1418a948c4d35375e58949f8799d3f7faa9f6cc1693",
+    "prompts/wood-ui-main-menu.txt": "2e6d38cce92060a7be52f869ce225d3425b78833f35f3d567c9b76e14b02f008",
+    "prompts/wood-ui-menu-states.txt": "bf4b51883ef9b0d289a1d2a5bdb97a0d9c2b76d8b5e3abe69c5ebf549035d138"
+  },
+  "previous_assets": "variants/gold-before-wood",
+  "changed_frames": [
+    {
+      "resource": 3,
+      "image": 0,
+      "frame": 0,
+      "path": "library/界面/启动片头动画_资源003/启动片头动画.png",
+      "sha256": "806833b3e26fbff4f45a3920656d79a746097df21e97f391161639128cd7e780",
+      "size": [
+        240,
+        320
+      ],
+      "transparency": null
+    },
+    {
+      "resource": 44,
+      "image": 0,
+      "frame": 0,
+      "path": "library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
+      "sha256": "066121f5b07cbc2926884505c915f604ae80b2dc965afc68eb03bdfb7e1671f1",
+      "size": [
+        240,
+        320
+      ],
+      "transparency": null
+    },
+    {
+      "resource": 100,
+      "image": 0,
+      "frame": 0,
+      "path": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+      "sha256": "dc6892ed6cc989207f408fca48ea37efd306175f8ada553fa36340a9736008d0",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 100,
+      "image": 1,
+      "frame": 0,
+      "path": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+      "sha256": "d2db6907394a6ba48b20e23d819187f04d5fc2a9957f11115501332e525b713b",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 101,
+      "image": 0,
+      "frame": 0,
+      "path": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+      "sha256": "50d4044ff9101287110e0bd8cb13774360906745c35c84f9b08d8dafa1df08dc",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 101,
+      "image": 1,
+      "frame": 0,
+      "path": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+      "sha256": "99b7248e842285ed3c5ba3f816ed9c5d441b8c92af256099e522bebb410296f0",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 102,
+      "image": 0,
+      "frame": 0,
+      "path": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+      "sha256": "99944287e608ad489b1d08d45dfe5b092e85e1a90854c0e377eb713bd888b958",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 102,
+      "image": 1,
+      "frame": 0,
+      "path": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+      "sha256": "58337fdb59fdc4aaf874c5ae39ea5f53c5dad6fb0d4c44b472caceea423734ac",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 103,
+      "image": 0,
+      "frame": 0,
+      "path": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+      "sha256": "7ce078226e97b506ba77721f435b14ec7a8b68a86e7daa0b609047b51076e29b",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    },
+    {
+      "resource": 103,
+      "image": 1,
+      "frame": 0,
+      "path": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+      "sha256": "77fab3cfb0e8cc303c3394441f72b1db96dfafc7906bed3d07c59354b45bd113",
+      "size": [
+        126,
+        57
+      ],
+      "transparency": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 225,
+        "maximum_chroma": 24,
+        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+      }
+    }
+  ],
+  "unchanged_native_frames": 1194,
+  "runtime_bda_sha256": "137179076b570a79491ce04c59819b2cf89635104f3dd5a45dc6c08e8a39db1a",
+  "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "color_sha256": "13f54bcbbe611f34c23bc963959af2c941c4886b94234462d8679f4e06c7b707",
+  "integration": "Only10 PNG frames and8 external-corner alpha policies updated. Same resource IDs, native dimensions, original LIB/masks/timelines, menu coordinates/hitboxes and D4 runtime. Full-page generated art visually reviewed; generated stroke edges are not claimed pixel-identical. Scenario/save/battle/status/gameplay art unchanged.",
+  "native_report": "build/wood-ui-native/native-wood-ui-validation.json"
+}

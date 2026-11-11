@@ -62,7 +62,7 @@ def main():
     header=struct.unpack_from('<8sIIIIII',colors)
     assert header[:1]==(b'SGCOLOR1',) and header[1]==len(colors) and header[5:]==(len(lib),zlib.crc32(lib))
     entries=[struct.unpack_from('<IIHHI',colors,32+i*16) for i in range(header[2])]
-    catalog=read_catalog();assert len(entries)==len(catalog['frames'])==1204
+    catalog=read_catalog();assert len(entries)==len(catalog['frames'])==1239
     assert all(b['status']=='imported' for b in catalog['batches'])
     m=machine(lib,colors)
     by_offset={e[0]:e for e in entries}
@@ -180,10 +180,10 @@ def main():
         assert frees==([COLOR_ADDRESS] if case in ['short-read','wrong-lib','valid'] else []),(case,frees)
         assert closed==([] if case=='missing' else [7]),case
         count+=1
-    report={'passed':count,'failed':0,'frames':1204,'unique_rgb_frames':len({e[1] for e in entries}),'combat_frames':combat_frames,
+    report={'passed':count,'failed':0,'frames':len(entries),'unique_rgb_frames':len({e[1] for e in entries}),'combat_frames':combat_frames,
             'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),
             'color_sha256':hashlib.sha256(colors).hexdigest(),
-            'scope':'Real compiled MIPS CRC32, header/index validation, all 1204 source-offset lookups and native PNG/RGB565 byte equivalence, original masks, four raster entry points, clipping and screen/context selection, opaque-black copy key, supplemental dispatch and optional SDK file lifecycle. SDK pixels/files/allocations modeled; native rendering separately verified.'}
+            'scope':'Real compiled MIPS CRC32, header/index validation, all source-offset lookups and native PNG/RGB565 byte equivalence, original masks, four raster entry points, clipping and screen/context selection, opaque-black copy key, supplemental dispatch and optional SDK file lifecycle. SDK pixels/files/allocations modeled; native rendering separately verified.'}
     (ROOT/'build/color-mips-validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report))
 

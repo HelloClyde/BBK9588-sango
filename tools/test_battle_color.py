@@ -35,7 +35,7 @@ def main():
         masked_frames+=1;checks+=1
     # Weather mattes and number counters are transparent, while the actual
     # warm/cool glyph pixels remain visible, including opaque black.
-    entries=[struct.unpack_from('<IIHHI',color,32+i*16) for i in range(1204)]
+    entries=[struct.unpack_from('<IIHHI',color,32+i*16) for i in range(struct.unpack_from('<I',color,12)[0])]
     alpha_frames=0
     for f in [f for f in catalog['frames'] if f['resource'] in (9,15)]:
         r=records[f['resource']];spec=r['images'][f['image']];w,h=f['size']

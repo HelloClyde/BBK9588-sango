@@ -18,4 +18,6 @@
 #include "sango_battle_ui.h"
 #include "sango_touch.h"
 #include "sango_music.h"
+#include "sango_ui_paint.h"
+#include "sango_ruler.h"
 #endif

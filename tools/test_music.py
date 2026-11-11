@@ -28,10 +28,13 @@ def wave_fixture(source,samples=500):
 
 class Player:
     def __init__(self,files,frame=123):
-        self.m=Machine((ROOT/'build/sango.elf').read_bytes());self.files=files;self.handles={};self.log=[];self.output=bytearray();self.clock=100;self.capacity=8;self.limit=1024;self.read_limit=256;self.fail_seek=False;self.write_error=False;self.attenuate_in_place=False
+        self.m=Machine((ROOT/'build/sango.elf').read_bytes());self.files=files;self.handles={};self.log=[];self.output=bytearray();self.clock=100;self.capacity=8;self.limit=1024;self.read_limit=4096;self.fail_seek=False;self.write_error=False;self.attenuate_in_place=False
         self.m.word(STATE['g_app_frame'],frame)
+        if 'sango_music_sdk_diagnostic_start' in self.m.symbols:
+            self.m.intercept('sango_music_sdk_diagnostic_start',1,lambda a:None)
         self.m.write(BUFFER,'A:\\应用\\数据\\游戏\\sango.lib'.encode('gbk')+b'\0')
-        self.m.intercept('sango_music_sdk_clock',0,lambda a:self.clock)
+        if 'sango_music_sdk_clock' in self.m.symbols:
+            self.m.intercept('sango_music_sdk_clock',0,lambda a:self.clock)
         self.m.intercept('sango_music_sdk_timer',1,lambda a:self.log.append(('timer',a[0])))
         self.m.intercept('sango_music_sdk_audio_open',0,lambda a:self.log.append(('audio-open',)))
         self.m.intercept('sango_music_sdk_audio_stop',0,lambda a:self.log.append(('audio-stop',)))
@@ -49,7 +52,7 @@ class Player:
             self.handles[a[0]][1]=pos;return pos
         def read(a):
             data,pos=self.handles[a[0]];got=min(a[2],len(data)-pos,self.read_limit)
-            self.m.write(a[1],data[pos:pos+got]);self.handles[a[0]][1]+=got;return got
+            self.m.write(a[1],data[pos:pos+got]);self.handles[a[0]][1]+=got;self.log.append(('read',got));return got
         def write(a):
             if self.write_error:return -1
             got=min(a[1],self.limit);data=self.m.read(a[0],got);self.output.extend(data)
@@ -80,25 +83,27 @@ def main():
     for name,data in raw.items():
         player=Player(raw);player.scene(['menu.wav','strategy.wav','battle.wav'].index(name)+1)
         head=b''.join(decode(data[o:o+256]) for o in range(60,60+256*9,256))
-        assert player.output==head[:8192] and len(player.handles)==1;player.stop();assert not player.handles;checks+=1
-    p=Player(fixture);p.scene(1);assert p.output==(expected['menu.wav']*9)[:8192];checks+=1
+        assert player.output==head[:1024] and len(player.handles)==1;player.stop();assert not player.handles;checks+=1
+    p=Player(fixture);p.scene(1)
+    for _ in range(7):p.poll()
+    assert p.output==(expected['menu.wav']*9)[:8192];checks+=1
     # C200 applies its current attenuation to the caller's writable PCM.
     # Regenerating the next buffer must never reuse that already-scaled data.
     volume=Player(fixture);volume.attenuate_in_place=True;volume.scene(1);volume.poll()
-    assert volume.output==(expected['menu.wav']*17)[:16384];volume.stop();checks+=1
+    assert volume.output==(expected['menu.wav']*3)[:2048];volume.stop();checks+=1
     # Same scene continues rather than reopening; changing scenes closes old
     # audio/file before opening the next, and preserves1024-byte write order.
     before=len([x for x in p.log if x[0]=='open']);p.poll();p.scene(1)
     assert len([x for x in p.log if x[0]=='open'])==before;checks+=1
     for scene,name in [(2,'strategy.wav'),(3,'battle.wav'),(2,'strategy.wav'),(1,'menu.wav')]:
-        p.output.clear();p.capacity=8;p.scene(scene);assert p.output==(expected[name]*9)[:8192] and len(p.handles)==1;checks+=1
+        p.output.clear();p.capacity=8;p.scene(scene);assert p.output==(expected[name]*2)[:1024] and len(p.handles)==1;checks+=1
     p.stop();last=list(p.log);p.stop();p.poll();assert p.log==last and not p.handles;checks+=1
     for limit in [0,256,1024]:
         p=Player(fixture);p.limit=limit;p.scene(1)
         assert p.output==(expected['menu.wav']*9)[:len(p.output)]
         p.limit=1024;p.poll();assert p.output==(expected['menu.wav']*20)[:len(p.output)];p.stop();checks+=1
     p=Player(fixture);p.capacity=0;p.scene(1);assert not p.output;p.poll(1);assert p.output==(expected['menu.wav']*2)[:1024];p.stop();checks+=1
-    p=Player(fixture);p.read_limit=7;p.scene(1);assert p.output==(expected['menu.wav']*9)[:8192];p.stop();checks+=1
+    p=Player(fixture);p.read_limit=7;p.scene(1);assert p.output==(expected['menu.wav']*2)[:1024];p.stop();checks+=1
     p=Player({});p.scene(1);p.poll();p.poll();assert p.log==[('open','menu.wav')];p.stop();checks+=1
     p=Player(fixture,frame=0);p.scene(1);assert not p.log;checks+=1
     mutations=[(0,b'NOPE'),(4,b'\0'*4),(20,b'\1\0'),(22,b'\2\0'),(24,struct.pack('<I',44100)),(32,struct.pack('<H',128)),(34,b'\x10\0'),(38,b'\0\0'),(48,b'\0'*4),(56,struct.pack('<I',255)),(62,b'\x59'),(63,b'\1')]
@@ -107,7 +112,19 @@ def main():
         assert not p.output and not p.handles,offset;p.stop();checks+=1
     p=Player(fixture);p.fail_seek=True;p.scene(1);assert not p.handles and not p.output;checks+=1
     p=Player(fixture);p.write_error=True;p.scene(1);assert not p.handles and ('audio-stop',) in p.log;checks+=1
-    p=Player(fixture);p.clock=0xfffffff8;p.scene(1);size=len(p.output);p.poll(elapsed=10);assert len(p.output)==size;p.poll(elapsed=10);assert len(p.output)>size;p.stop();checks+=1
+    p=Player(fixture);p.clock=0xfffffff8;p.scene(1);size=len(p.output);p.poll(elapsed=0);assert len(p.output)==size+1024;p.poll(elapsed=8);assert len(p.output)==size+2048;p.stop();checks+=1
+    # One call cannot monopolize input with eight potentially blocking writes.
+    p=Player(raw);p.scene(1);assert len([x for x in p.log if x[0]=='write'])==1
+    for _ in range(12):
+        before=len(p.output);p.poll();assert len(p.output)-before==1024
+    p.stop();checks+=1
+    # 32 PCM buffers consume33 ADPCM blocks;4KiB read-ahead needs only3 reads.
+    p=Player(raw);p.scene(1)
+    for _ in range(31):p.poll()
+    large=[x for x in p.log if x[0]=='read' and x[1]>256]
+    expected_head=b''.join(decode(raw['menu.wav'][60+i*256:60+(i+1)*256]) for i in range(33))
+    assert len(large)==3 and all(x[1]==4096 for x in large) and p.output==expected_head[:32768]
+    p.stop();checks+=1
     # Music timer callbacks must leave the game's pending event words intact.
     p=Player(fixture);names=['g_native_event_kind','g_native_event_key','g_native_event_data']
     for name,value in zip(names,[5,28,123]):p.m.word(STATE[name],value)

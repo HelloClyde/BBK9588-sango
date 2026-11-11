@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-11",
+  "bda_sha256": "137179076b570a79491ce04c59819b2cf89635104f3dd5a45dc6c08e8a39db1a",
+  "color_sha256": "13f54bcbbe611f34c23bc963959af2c941c4886b94234462d8679f4e06c7b707",
+  "library_sha256": "01869a536d248156beef8d00c8185b5670731df82fbed39e9daba46fec8b2a11",
+  "changed_frames": 10,
+  "unchanged_frames": 1194,
+  "color_mips_checks": 3818,
+  "menu_mips_checks": 89,
+  "touch_mips_checks": 132,
+  "native_firmware_checks": 13,
+  "native_scope": "Native C200 SDK RGB565 painter, original opening timeline and actual animated main-menu input. Exact BDA/LIB/CLR staged in RAM on dedicated synthetic NAND; controlled display fixture entered at credits. All closed-gate/static-menu/eight overlay pixels compared including transparent corners. No physical-device or full-campaign claim",
+  "device_installed": false,
+  "provenance": "assets/color/wood-ui-provenance.json",
+  "original_lib_and_d4_executable_unchanged": true
+}

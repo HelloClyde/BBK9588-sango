@@ -1,0 +1,445 @@
+{
+  "passed": 104,
+  "failed": 0,
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "colored_cells": [
+    [
+      96,
+      120
+    ],
+    [
+      122,
+      147
+    ],
+    [
+      149,
+      173
+    ]
+  ],
+  "glyph_height": 12,
+  "text_tops": [
+    102,
+    129,
+    156
+  ],
+  "scope": "Actual compiled MIPS slot list with modeled file metadata/name/number and text output boundaries. Actual save/load controller and touch row logic, empty/full/incomplete pairs, ruler/year assembly, scenario restoration, file closure, all three slots, keyboard wrapping and outside touches. Read/write payload code and save format unchanged. Native font screenshot checked separately.",
+  "cases": [
+    {
+      "name": "empty text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "empty text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "empty displays original empty marker",
+      "passed": true
+    },
+    {
+      "name": "full text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "full text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "Existing metadata/name/year remain in original slot order",
+      "passed": true
+    },
+    {
+      "name": "primary-only text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "primary-only text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "primary-only displays original empty marker",
+      "passed": true
+    },
+    {
+      "name": "secondary-only text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "secondary-only text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "secondary-only displays original empty marker",
+      "passed": true
+    },
+    {
+      "name": "mixed text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "mixed text fits 存读档列表底图_资源046",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(24,96) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(100,96) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(215,96) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(24,108) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(100,108) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(215,108) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(24,120) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(100,120) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row0 touch(215,120) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(24,122) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(100,122) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(215,122) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(24,134) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(100,134) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(215,134) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(24,147) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(100,147) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row1 touch(215,147) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(24,149) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(100,149) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(215,149) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(24,161) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(100,161) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(215,161) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(24,173) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(100,173) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 row2 touch(215,173) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[] selects0",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[108] selects1",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[108] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[108, 108] selects2",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[108, 108] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[108, 108, 108] selects0",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[108, 108, 108] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[103] selects2",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[103] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[103, 103] selects1",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[103, 103] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[103, 103, 103] selects0",
+      "passed": true
+    },
+    {
+      "name": "Mode0 keyboard[103, 103, 103] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode0 outside touch(23,108) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 outside touch(216,108) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 outside touch(100,94) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode0 outside touch(100,176) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(24,96) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(100,96) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(215,96) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(24,108) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(100,108) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(215,108) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(24,120) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(100,120) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row0 touch(215,120) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(24,122) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(100,122) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(215,122) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(24,134) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(100,134) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(215,134) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(24,147) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(100,147) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row1 touch(215,147) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(24,149) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(100,149) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(215,149) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(24,161) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(100,161) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(215,161) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(24,173) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(100,173) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 row2 touch(215,173) uses that save slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[] selects0",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[108] selects1",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[108] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[108, 108] selects2",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[108, 108] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[108, 108, 108] selects0",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[108, 108, 108] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[103] selects2",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[103] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[103, 103] selects1",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[103, 103] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[103, 103, 103] selects0",
+      "passed": true
+    },
+    {
+      "name": "Mode1 keyboard[103, 103, 103] highlight fits ruled cell",
+      "passed": true
+    },
+    {
+      "name": "Mode1 outside touch(23,108) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 outside touch(216,108) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 outside touch(100,94) cannot overwrite/load a slot",
+      "passed": true
+    },
+    {
+      "name": "Mode1 outside touch(100,176) cannot overwrite/load a slot",
+      "passed": true
+    }
+  ],
+  "local_baseline_reproductions": 1
+}

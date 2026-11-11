@@ -2,15 +2,16 @@
 #include "sango_internal.h"
 
 /* One file and fixed streaming buffers outside the original save region.
- * The game owns no global volume setting and uses only the verified SDK. */
+ * Read sixteen ADPCM blocks together; submit at most one PCM buffer per poll. */
 static struct
 {
-    unsigned int wanted, scene, busy, streaming, timer, last_poll;
+    unsigned int wanted, scene, busy, streaming, timer;
     int file;
     uint32_t data_offset, data_bytes, data_left, total_samples, samples_left;
     unsigned int decoded_position, pending_bytes, written_bytes;
     char directory[224];
-    uint8_t encoded[SANGO_MUSIC_BLOCK_BYTES];
+    unsigned int encoded_position, encoded_bytes;
+    uint8_t encoded[16 * SANGO_MUSIC_BLOCK_BYTES];
     int16_t decoded[SANGO_MUSIC_BLOCK_SAMPLES];
     int16_t pending[512];
 } music;
@@ -96,6 +97,7 @@ static int rewind_stream(void)
     music.data_left = music.data_bytes;
     music.samples_left = music.total_samples;
     music.decoded_position = SANGO_MUSIC_BLOCK_SAMPLES;
+    music.encoded_position = music.encoded_bytes = 0;
     return 1;
 }
 
@@ -194,10 +196,21 @@ static int prepare_pcm(void)
             return 0;
         if (music.decoded_position == SANGO_MUSIC_BLOCK_SAMPLES)
         {
-            if (music.data_left < 256 || !read_exact(music.encoded, 256) ||
-                !sango_music_decode_ima_block(music.encoded, music.decoded))
+            if (music.encoded_position == music.encoded_bytes)
+            {
+                unsigned int bytes = music.data_left;
+                if (bytes > sizeof(music.encoded))
+                    bytes = sizeof(music.encoded);
+                if (bytes < SANGO_MUSIC_BLOCK_BYTES || !read_exact(music.encoded, bytes))
+                    return 0;
+                music.data_left -= bytes;
+                music.encoded_position = 0;
+                music.encoded_bytes = bytes;
+            }
+            if (!sango_music_decode_ima_block(music.encoded + music.encoded_position,
+                                              music.decoded))
                 return 0;
-            music.data_left -= 256;
+            music.encoded_position += SANGO_MUSIC_BLOCK_BYTES;
             music.decoded_position = 0;
         }
         count = 505 - music.decoded_position;
@@ -218,14 +231,11 @@ static int prepare_pcm(void)
 
 void sango_music_poll(void)
 {
-    uint32_t now;
     unsigned int writes;
     if (music.busy || !music.wanted || !music.directory[0] || !g_app_frame)
         return;
-    now = sango_music_sdk_clock();
-    if (music.wanted == music.scene && (uint32_t)(now - music.last_poll) < 20)
-        return;
-    music.last_poll = now;
+    /* The GUI timer clock can lag while the device is drawing. The firmware
+     * audio queue supplies pacing even when that GUI clock does not advance. */
     music.busy = 1;
     if (music.wanted != music.scene)
     {
@@ -233,9 +243,9 @@ void sango_music_poll(void)
         music.scene = music.wanted;
         (void)open_scene(music.scene);
     }
-    /* ready() supplies backpressure. Short writes retain pending samples;
-     * at most eight1024-byte writes per call keep work bounded. */
-    for (writes = 0; music.streaming && music.wanted == music.scene && writes < 8; ++writes)
+    /* Firmware writes may yield to DMA. One1024-byte write per poll avoids
+     * monopolizing the game thread; short writes retain pending samples. */
+    for (writes = 0; music.streaming && music.wanted == music.scene && writes < 1; ++writes)
     {
         unsigned int remaining;
         int written;
@@ -294,6 +304,9 @@ void sango_music_set_library_path(const char *library_path)
     unsigned int i = 0, last = 0;
     sango_music_shutdown();
     music.directory[0] = 0;
+#ifdef SANGO_MUSIC_DIAGNOSTICS
+    sango_music_sdk_diagnostic_start(library_path);
+#endif
     while (library_path[i])
     {
         if (i >= 200)

@@ -11,6 +11,7 @@ enum
 enum
 {
     SANGO_MUSIC_TIMER_ID = 3,
+    SANGO_MUSIC_POLL_MS = 10,
     SANGO_MUSIC_BLOCK_BYTES = 256,
     SANGO_MUSIC_BLOCK_SAMPLES = 505
 };
@@ -29,4 +30,7 @@ void sango_music_sdk_audio_open(void);
 int sango_music_sdk_audio_ready(void);
 int sango_music_sdk_audio_write(const void *pcm, unsigned int bytes);
 void sango_music_sdk_audio_stop(void);
+#ifdef SANGO_MUSIC_DIAGNOSTICS
+void sango_music_sdk_diagnostic_start(const char *library_path);
+#endif
 #endif

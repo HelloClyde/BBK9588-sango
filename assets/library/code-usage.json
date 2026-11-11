@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "reviewed_resources": 89,
+  "reviewed_resources": 92,
   "source_sha256_lf": {
     "docs/original-credits-call.c.txt": "8007364b97eed193ec0d2eae90c0d5acb24e34682f081484db2099e5d5ea861e",
     "src/app/boot.c": "dae47ac3bada542fac7057690cf34a30af0166b40b2e41cd2eff26668b5ed71f",
-    "src/app/lifecycle.c": "97ed15deaf4a4374d2b8d22b173dffb4459c79db0f0cc00a242814dbed318130",
+    "src/app/lifecycle.c": "434857c9cfc8414fdb62a886e806f997675a036216bb3cd9bc01f897ff5e30a0",
     "src/app/memory.c": "0b753073a594350fba17ee1b3907079bf9690236325ea01aba9e1eba24a529df",
     "src/battle/actions.c": "5130479e5efe320d3f655e75b69e47d712d2bd95e3b531daf10020a78a50fa34",
     "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
@@ -30,8 +30,9 @@
     "src/sango_battle_ui.c": "e918a6f2c8232d37f6064a1a83074f2b2aba789a94f11d2a1ba74ad8e1833da4",
     "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
+    "src/sango_ruler.c": "8b59fc2a137380b0611e3128ed1362512cc505d5f6ee23283f97aca825e2ae64",
     "src/sango_statusbar.c": "0ff71941e03ccc2d2c8842f9cbf7f5b39e22d42e2a78b2107bcaff510daabf87",
-    "src/save/savegame.c": "745735021a07912ff1bea3b362f57779dfa654b1004d0277054f3c9843b0734f",
+    "src/save/savegame.c": "9387e2ef010f1683abd9018ced38c64fe4c71912ce7517b5b73d11e1bca85358",
     "src/strategy/aftermath.c": "59ea738c5c2563e6ce1a30dd1144a009b214133483239f88ca4fe830fbb2eaa4",
     "src/strategy/ai.c": "eadc3db74a2ca965d29c6e2d4be95f807a4480324039e0b595007702931d5432",
     "src/strategy/calendar.c": "4313a38e2f2437fdc4c0e92860c200f730fea1707a906b1a00fbec9f01178594",
@@ -45,10 +46,10 @@
     "src/strategy/turns.c": "6739d8d53c5212e1f7046034efeea6297e337f1d077469241810a249450f4b5c",
     "src/ui/city_details.c": "f8db7542ab7bf7a831df3512febbdcd767b5640888d7b8b2195396109bc80f11",
     "src/ui/info_panels.c": "6a59c62ac3eb809e2e8cbede65416c66c993e6deb588b9cfae7dbebb573222cb",
-    "src/ui/lists.c": "878b27f37e270cb7711217c834c129de11afc4bed31b5e7a0760243fc5f43c9a",
-    "src/ui/menu_and_text.c": "e73bac2db17eb840eedc56c71baaa501700dceb967abf4368d01580866f3fb31",
+    "src/ui/lists.c": "a6d2bd8e550e444ef2de5604268a06734b02384ae2425dc37e1b9f4c6b0bb9c0",
+    "src/ui/menu_and_text.c": "97deca205cbe7f84882a9f8458b84425cfb494430afb20d7f5769d7b8423a1b9",
     "src/ui/numeric.c": "313be7ba71d58bc8951714b060477701eeb1b400b9da60531cc6a70f8c095acf",
-    "src/ui/start_menu.c": "9fe782db56131eaf9c7cca9fbd639c587e25cd0c00c1a82e73e2dc285e8f2c92",
+    "src/ui/start_menu.c": "34d188e3cb8d409bff71c5854a75d9b9092aafece4075ce85d34623517492666",
     "src/ui/system_menu.c": "f9d08f029248a685041b29692e7923698cb5f4ec855af861df522c4870b00cdc"
   },
   "resources": [
@@ -69,7 +70,7 @@
           "source": "src/save/savegame.c",
           "function": "sango_save_draw_slots",
           "expression": "sango_resource_read_text(1,0x40,",
-          "line": 85
+          "line": 89
         }
       ]
     },
@@ -211,7 +212,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_show_credits",
           "expression": "sango_credits_draw(g_game_context);",
-          "line": 231
+          "line": 236
         }
       ],
       "animation_usage": {
@@ -2911,7 +2912,7 @@
           "source": "src/ui/menu_and_text.c",
           "function": "sango_battle_show_short_message",
           "expression": "sango_resource_item(0x1a,'\\x01',",
-          "line": 413
+          "line": 426
         },
         {
           "source": "src/battle/actions.c",
@@ -3863,7 +3864,7 @@
           "source": "src/save/savegame.c",
           "function": "sango_save_draw_slots",
           "expression": "sango_bitmap_draw_resource(0x2e,1,",
-          "line": 85
+          "line": 89
         },
         {
           "source": "src/save/savegame.c",
@@ -3878,19 +3879,19 @@
       "category": "战略地图",
       "name": "君主选择势力图",
       "usage_status": "confirmed",
-      "naming_evidence": "君主选择器绘制资源47，并依据城市坐标和所选君主控制的城市闪烁标记。",
+      "naming_evidence": "势力选择木质页绘制原资源47，并依据实际城市坐标和所选君主控制的城市闪烁标记。",
       "code_evidence": [
         {
-          "source": "src/ui/start_menu.c",
-          "function": "sango_menu_choose_ruler",
-          "expression": "sango_bitmap_draw_resource(0x2f,1,",
-          "line": 239
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_begin",
+          "expression": "draw_picture(47,",
+          "line": 68
         },
         {
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_choose_ruler",
           "expression": "sango_menu_flash_ruler_cities(",
-          "line": 239
+          "line": 244
         }
       ]
     },
@@ -4246,7 +4247,7 @@
           "source": "src/ui/lists.c",
           "function": "sango_item_format_attribute",
           "expression": "0x41",
-          "line": 126
+          "line": 127
         }
       ]
     },
@@ -4393,7 +4394,7 @@
           "source": "src/ui/lists.c",
           "function": "sango_item_read_name",
           "expression": "sango_resource_read_text(0x49,",
-          "line": 396
+          "line": 399
         }
       ]
     },
@@ -4521,7 +4522,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4579,7 +4580,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4637,7 +4638,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4695,7 +4696,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4753,7 +4754,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4811,7 +4812,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4869,7 +4870,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -4927,7 +4928,7 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_select_animated",
           "expression": "sango_animation_play_resource(selection_animation_base + (short)selection)",
-          "line": 157
+          "line": 160
         }
       ],
       "animation_usage": {
@@ -5437,7 +5438,58 @@
           "source": "src/ui/start_menu.c",
           "function": "sango_menu_show_credits",
           "expression": "sango_credits_draw(",
-          "line": 231
+          "line": 236
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "category": "补充界面",
+      "name": "势力选择木质底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "势力选择页的木质背景；名单、势力图、君主头像与姓名由实际选择动态绘制。",
+      "code_evidence": [
+        {
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_begin",
+          "expression": "draw_picture(52,",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "category": "补充界面",
+      "name": "君主预览头像组",
+      "usage_status": "confirmed",
+      "naming_evidence": "按四个剧本城市归属读取实际君主ID，从对应剧本头像高清母图裁切48x48头像；映射表连接剧本、武将ID和头像帧号。",
+      "code_evidence": [
+        {
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_update",
+          "expression": "ruler_portrait_frames",
+          "line": 80
+        },
+        {
+          "source": "src/sango_ruler.c",
+          "function": "sango_ruler_update",
+          "expression": "draw_picture(53,",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "category": "补充界面",
+      "name": "势力选择选中木纹条",
+      "usage_status": "confirmed",
+      "naming_evidence": "势力列表当前行使用深木色图片，文字按当前君主姓名动态绘制；普通行恢复同一背景像素。",
+      "code_evidence": [
+        {
+          "source": "src/sango_ruler.c",
+          "function": "draw_row",
+          "expression": "draw_picture(77,",
+          "line": 42
         }
       ]
     }
@@ -6117,11 +6169,11 @@
     },
     {
       "function": "sango_bitmap_draw_resource",
-      "line": "(uint8_t *)sango_resource_item(resource_id & 0xffff, '\\x01', g_resource_package_address);"
+      "line": "bitmap = (uint8_t *)sango_resource_item(resource_id & 0xffff, '\\x01',"
     },
     {
       "function": "sango_battle_show_short_message",
-      "line": "background_bitmap = (uint8_t *)sango_resource_item(0x1a, '\\x01', g_resource_package_address);"
+      "line": "(uint8_t *)sango_resource_item(0x1a, '\\x01', g_resource_package_address);"
     },
     {
       "function": "sango_strategy_resolve_search",
@@ -6449,7 +6501,7 @@
     },
     {
       "function": "sango_select_session",
-      "line": "city_coordinates = sango_resource_item(2, '\\x06', g_resource_package_address);"
+      "line": "sango_resource_item(2, '\\x06', g_resource_package_address);"
     },
     {
       "function": "sango_menu_select_animated",
@@ -6461,19 +6513,11 @@
     },
     {
       "function": "sango_menu_select_animated",
-      "line": "key_or_result = sango_animation_play_resource(selection_animation_base + (short)selection);"
+      "line": "sango_animation_play_resource(selection_animation_base + (short)selection);"
     },
     {
       "function": "sango_menu_choose_ruler",
-      "line": "sango_resource_read_text(1, 0x2d, city_ids_or_title);"
-    },
-    {
-      "function": "sango_menu_choose_ruler",
-      "line": "sango_bitmap_draw_resource(0x2f, 1, 0x3c, 0x14, '\\x01');"
-    },
-    {
-      "function": "sango_menu_choose_ruler",
-      "line": "city_coordinates_address = sango_resource_item(2, '\\x06', g_resource_package_address);"
+      "line": "city_coordinates_address = sango_resource_item(2, 6, g_resource_package_address);"
     },
     {
       "function": "sango_animation_play_resource",
@@ -6541,7 +6585,7 @@
     },
     {
       "function": "sango_game_lifecycle",
-      "line": "sango_animation_play_resource(3);"
+      "line": "intro_result = sango_animation_play_resource(3);"
     },
     {
       "function": "sango_game_lifecycle",
@@ -6633,7 +6677,7 @@
     },
     {
       "function": "sango_ui_draw_character_row",
-      "line": "sango_resource_read_text(name_resource, (character_id & 0xff) + 1 & 0xff, attribute_text);"
+      "line": "sango_resource_read_text(name_resource, (character_id & 0xff) + 1 & 0xff,"
     },
     {
       "function": "sango_ui_draw_character_row",

@@ -102,13 +102,14 @@ void sango_ui_draw_item_row(uint8_t item_id, uint32_t first_attribute, char left
         for (; attribute_index < 5; attribute_index = attribute_index + 1 & 0xff)
         {
             column_width = column_widths + attribute_index;
-            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc, (int)table_state,
-                                                 &cell_x, cell_y);
+            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc,
+                                                 (int)table_state, &cell_x, cell_y);
             if (cell_fits == 0)
             {
                 return;
             }
-            sango_item_format_attribute((uint32_t)item_id, (char)attribute_index, attribute_text);
+            sango_item_format_attribute((uint32_t)item_id, (char)attribute_index,
+                                        attribute_text);
             sango_text_draw_centered((uint16_t)*column_width * 3 + (uint16_t)cell_x,
                                      (uint16_t)cell_y[0], attribute_text);
         }
@@ -211,8 +212,8 @@ uint32_t sango_ui_draw_item_header(uint32_t first_attribute, char left, char top
             column_width = column_widths + attribute_index;
             if (4 < attribute_index)
                 break;
-            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc, (int)table_state,
-                                                 &cell_x, cell_y);
+            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc,
+                                                 (int)table_state, &cell_x, cell_y);
             if (cell_fits == 0)
             {
                 return attribute_index;
@@ -271,14 +272,15 @@ uint32_t sango_ui_select_item(int item_ids_address, uint32_t item_count, uint32_
     {
         if (redraw_table)
         {
-            sango_display_fill_gray_rectangle((short)content_left, (short)content_top,
-                                              (short)content_right,
-                                              (short)(content_top + visible_rows * 12 + 11), 0, 0);
+            sango_ui_paint_begin();
+            sango_display_fill_gray_rectangle(
+                (short)content_left, (short)content_top, (short)content_right,
+                (short)(content_top + visible_rows * 12 + 11), 0, 0);
             uint8_t *first_attribute = column_pages + column_page;
             char header_x = (char)header_left;
             char header_y = (char)(box_top + 1);
-            uint32_t next_attribute = sango_ui_draw_item_header((uint32_t)*first_attribute,
-                                                                header_x, header_y, table_width);
+            uint32_t next_attribute = sango_ui_draw_item_header(
+                (uint32_t)*first_attribute, header_x, header_y, table_width);
             column_pages[column_page + 1] = (uint8_t)next_attribute;
             uint32_t row_index = 0;
             if (visible_rows != 0)
@@ -300,6 +302,7 @@ uint32_t sango_ui_select_item(int item_ids_address, uint32_t item_count, uint32_
             }
             int row_origin = content_top + (selected_row - top_row) * 12;
             int highlight_top = row_origin + 12;
+            sango_ui_paint_end();
             if (true)
                 sango_display_invert_rectangle((short)content_left, (short)highlight_top,
                                                highlight_right, (short)(row_origin + 23), 0);
@@ -441,14 +444,15 @@ void sango_ui_draw_character_row(uint32_t character_id, uint32_t first_attribute
         {
             name_resource = 0x48;
         }
-        sango_resource_read_text(name_resource, (character_id & 0xff) + 1 & 0xff, attribute_text);
+        sango_resource_read_text(name_resource, (character_id & 0xff) + 1 & 0xff,
+                                 attribute_text);
         sango_text_draw_centered(cell_x + 0x18, (uint16_t)cell_y[0], attribute_text);
         sango_resource_read_text(2, 8, column_widths);
         for (; attribute_index < 0xd; attribute_index = attribute_index + 1 & 0xff)
         {
             column_width = column_widths + attribute_index;
-            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc, (int)table_state,
-                                                 &cell_x, cell_y);
+            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc,
+                                                 (int)table_state, &cell_x, cell_y);
             if (cell_fits == 0)
             {
                 return;
@@ -612,7 +616,8 @@ void sango_character_format_attribute(uint32_t character_id, uint8_t attribute, 
 }
 
 /* 原函数 0x81c19100 */
-uint32_t sango_ui_draw_character_header(uint32_t first_attribute, char left, char top, char width)
+uint32_t sango_ui_draw_character_header(uint32_t first_attribute, char left, char top,
+                                        char width)
 {
     unsigned char abi_storage[64] __attribute__((aligned(8)));
 #define cell_y (*(uint8_t(*)[7])(abi_storage + 1))
@@ -639,8 +644,8 @@ uint32_t sango_ui_draw_character_header(uint32_t first_attribute, char left, cha
             column_width = column_widths + attribute_index;
             if (0xc < attribute_index)
                 break;
-            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc, (int)table_state,
-                                                 &cell_x, cell_y);
+            cell_fits = sango_ui_table_next_cell(*column_width * '\x06' + 1, 0xc,
+                                                 (int)table_state, &cell_x, cell_y);
             if (cell_fits == 0)
             {
                 return attribute_index;
@@ -699,6 +704,7 @@ uint32_t sango_ui_select_character(int character_ids_address, uint32_t character
     {
         if (redraw_table)
         {
+            sango_ui_paint_begin();
             sango_display_fill_gray_rectangle((short)content_left, (short)content_top,
                                               (short)content_right, (short)frame_bottom, 0, 0);
             uint8_t *first_attribute = column_pages + column_page;
@@ -727,6 +733,7 @@ uint32_t sango_ui_select_character(int character_ids_address, uint32_t character
             }
             int row_origin = content_top + (selected_row - top_row) * 12;
             int highlight_top = row_origin + 12;
+            sango_ui_paint_end();
             if (highlight_top < 0x8c)
                 sango_display_invert_rectangle((short)content_left, (short)highlight_top,
                                                highlight_right, (short)(row_origin + 23), 0);

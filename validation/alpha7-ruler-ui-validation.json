@@ -1,0 +1,562 @@
+{
+  "passed": 138,
+  "failed": 0,
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "library_sha256": "b99b32769a0144262e7af79bfa9605cdcafafcc55db23b3071fa9a226179e0d3",
+  "color_sha256": "117c6e723d1b88311438c6a4d05825f45c8abc63181ad9bc79c887422250a1df",
+  "scope": "Actual MIPS faction controller, scenario loader and portrait renderer; all50 original scenario rulers use matching portrait/name IDs. Touch previews, explicit buttons, scrolling, bounds and borrowed-canvas ownership checked. SDK pixels/text/context boundaries modeled; native page/font checked separately.",
+  "cases": [
+    {
+      "name": "0 rulers retain bounded names and confirm/cancel result",
+      "passed": true
+    },
+    {
+      "name": "0 rulers release the page on confirm",
+      "passed": true
+    },
+    {
+      "name": "1 rulers retain bounded names and confirm/cancel result",
+      "passed": true
+    },
+    {
+      "name": "1 rulers release the page on confirm",
+      "passed": true
+    },
+    {
+      "name": "18 rulers retain bounded names and confirm/cancel result",
+      "passed": true
+    },
+    {
+      "name": "18 rulers release the page on confirm",
+      "passed": true
+    },
+    {
+      "name": "41 rulers retain bounded names and confirm/cancel result",
+      "passed": true
+    },
+    {
+      "name": "41 rulers release the page on confirm",
+      "passed": true
+    },
+    {
+      "name": "86 rulers retain bounded names and confirm/cancel result",
+      "passed": true
+    },
+    {
+      "name": "86 rulers release the page on confirm",
+      "passed": true
+    },
+    {
+      "name": "Touch delta 0: preview row3 then explicit Confirm returns row3",
+      "passed": true
+    },
+    {
+      "name": "Touch delta 0: row3 preview occurred before leaving",
+      "passed": true
+    },
+    {
+      "name": "Touch delta 1: preview row3 then explicit Confirm returns row3",
+      "passed": true
+    },
+    {
+      "name": "Touch delta 1: row3 preview occurred before leaving",
+      "passed": true
+    },
+    {
+      "name": "Touch delta 28: preview row3 then explicit Confirm returns row3",
+      "passed": true
+    },
+    {
+      "name": "Touch delta 28: row3 preview occurred before leaving",
+      "passed": true
+    },
+    {
+      "name": "Return button corner 24,267 cancels and frees the page",
+      "passed": true
+    },
+    {
+      "name": "Return button corner 104,294 cancels and frees the page",
+      "passed": true
+    },
+    {
+      "name": "Return button corner 60,280 cancels and frees the page",
+      "passed": true
+    },
+    {
+      "name": "Confirm button corner 136,267 uses current selection",
+      "passed": true
+    },
+    {
+      "name": "Confirm button corner 218,294 uses current selection",
+      "passed": true
+    },
+    {
+      "name": "Confirm button corner 170,280 uses current selection",
+      "passed": true
+    },
+    {
+      "name": "Outside button point 23,280 does not activate a button",
+      "passed": true
+    },
+    {
+      "name": "Outside button point 105,280 does not activate a button",
+      "passed": true
+    },
+    {
+      "name": "Outside button point 135,280 does not activate a button",
+      "passed": true
+    },
+    {
+      "name": "Outside button point 219,280 does not activate a button",
+      "passed": true
+    },
+    {
+      "name": "Outside button point 170,266 does not activate a button",
+      "passed": true
+    },
+    {
+      "name": "Outside button point 170,295 does not activate a button",
+      "passed": true
+    },
+    {
+      "name": "Ten visible rows scroll to keep row30 previewed",
+      "passed": true
+    },
+    {
+      "name": "Map flashing uses translated map coordinates only",
+      "passed": true
+    },
+    {
+      "name": "Blank rows do not preview nonexistent rulers",
+      "passed": true
+    },
+    {
+      "name": "Scenario1: preview candidates match the actual game loader",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler5: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler5: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler16: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler16: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler17: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler17: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler9: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler9: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler13: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler13: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler2: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler2: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler7: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler7: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler11: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler11: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler0: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler0: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler10: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler10: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler1: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler1: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler6: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler6: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler18: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler18: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler8: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler8: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler3: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler3: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler15: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler15: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler14: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler14: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler4: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario1 ruler4: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2: preview candidates match the actual game loader",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler11: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler11: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler3: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler3: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler10: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler10: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler15: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler15: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler0: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler0: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler8: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler8: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler2: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler2: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler14: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler14: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler1: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler1: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler13: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler13: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler7: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler7: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler4: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler4: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler5: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler5: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler12: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler12: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler9: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler9: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler6: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario2 ruler6: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3: preview candidates match the actual game loader",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler7: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler7: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler4: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler4: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler10: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler10: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler8: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler8: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler9: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler9: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler6: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler6: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler5: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler5: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler3: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler3: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler0: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler0: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler1: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler1: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler2: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario3 ruler2: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario4: preview candidates match the actual game loader",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler0: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler0: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler4: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler4: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler1: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler1: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler2: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler2: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler3: correct48px portrait frame at133,168",
+      "passed": true
+    },
+    {
+      "name": "Scenario4 ruler3: displayed name uses the same characterID",
+      "passed": true
+    },
+    {
+      "name": "Page background/map are colored rather than white",
+      "passed": true
+    },
+    {
+      "name": "Existing game canvas is reused without another page allocation",
+      "passed": true
+    },
+    {
+      "name": "Repeated page cleanup never frees the application canvas",
+      "passed": true
+    }
+  ]
+}

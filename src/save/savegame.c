@@ -17,15 +17,19 @@ uint32_t sango_save_choose_slot(char load_mode)
 
     sango_save_draw_slots();
     slot = 0;
-    sango_display_invert_rectangle(0x18, 0x74, 0x86, 0x80, 0);
-    highlight_top_or_io_result = 0x74;
-    highlight_bottom = 0x80;
+    sango_display_invert_rectangle(SANGO_SAVE_ROW_LEFT, SANGO_SAVE_TEXT_TOP,
+                                   SANGO_SAVE_ROW_RIGHT,
+                                   SANGO_SAVE_TEXT_TOP + SANGO_SAVE_TEXT_HEIGHT - 1, 0);
+    highlight_top_or_io_result = SANGO_SAVE_TEXT_TOP;
+    highlight_bottom = SANGO_SAVE_TEXT_TOP + SANGO_SAVE_TEXT_HEIGHT - 1;
     do
     {
         do
         {
             sango_input_next_event(&event_kind);
-            int tapped = sango_touch_choose_row(&event_kind, 24, 116, 216, 27, 3, 0, 3);
+            int tapped = sango_touch_choose_row(
+                &event_kind, SANGO_SAVE_ROW_LEFT, SANGO_SAVE_ROW_TOP, SANGO_SAVE_ROW_RIGHT,
+                SANGO_SAVE_ROW_HEIGHT, SANGO_SAVE_SLOT_COUNT, 0, SANGO_SAVE_SLOT_COUNT);
             if (tapped >= 0)
             {
                 slot = (uint32_t)tapped;
@@ -33,8 +37,8 @@ uint32_t sango_save_choose_slot(char load_mode)
                 key_code = BDA_KEY_ENTER;
             }
         } while (event_kind != 5);
-        sango_display_invert_rectangle(0x18, (short)highlight_top_or_io_result, 0x86,
-                                       (short)highlight_bottom, 0);
+        sango_display_invert_rectangle(SANGO_SAVE_ROW_LEFT, (short)highlight_top_or_io_result,
+                                       SANGO_SAVE_ROW_RIGHT, (short)highlight_bottom, 0);
         if (key_code == 0x1c)
         {
             if (load_mode == '\0')
@@ -63,19 +67,19 @@ uint32_t sango_save_choose_slot(char load_mode)
             slot = slot - 1;
             if (slot == 0xffffffff)
             {
-                slot = 2;
+                slot = SANGO_SAVE_SLOT_COUNT - 1;
             }
         }
-        else if ((key_code == 0x6c) && (slot = slot + 1, slot == 3))
+        else if ((key_code == 0x6c) && (slot = slot + 1, slot == SANGO_SAVE_SLOT_COUNT))
         {
             slot = 0;
         }
-        slot = (int)slot % 3;
-        highlight_row = slot * 0x1b + 0x22 & 0xff;
-        highlight_bottom = highlight_row + 0x5e;
-        highlight_top_or_io_result = highlight_row + 0x52;
-        sango_display_invert_rectangle(0x18, (short)highlight_top_or_io_result, 0x86,
-                                       (short)highlight_bottom, 0);
+        slot = (int)slot % SANGO_SAVE_SLOT_COUNT;
+        highlight_row = SANGO_SAVE_TEXT_TOP + slot * SANGO_SAVE_ROW_HEIGHT;
+        highlight_bottom = highlight_row + SANGO_SAVE_TEXT_HEIGHT - 1;
+        highlight_top_or_io_result = highlight_row;
+        sango_display_invert_rectangle(SANGO_SAVE_ROW_LEFT, (short)highlight_top_or_io_result,
+                                       SANGO_SAVE_ROW_RIGHT, (short)highlight_bottom, 0);
     } while (true);
 }
 #undef event_kind
@@ -149,9 +153,11 @@ void sango_save_draw_slots(void)
             text_length = bbk_strlen(formatted_value);
             bbk_memcpy(year_text_start, formatted_value, text_length + 1 & 0xff);
         }
-        sango_text_draw_legacy(0x28, slot_index * 0x1b + 0x74, primary_path_or_summary);
+        sango_text_draw_legacy(SANGO_SAVE_TEXT_LEFT,
+                               SANGO_SAVE_TEXT_TOP + slot_index * SANGO_SAVE_ROW_HEIGHT,
+                               primary_path_or_summary);
         slot_index = slot_index + 1 & 0xff;
-    } while (slot_index < 3);
+    } while (slot_index < SANGO_SAVE_SLOT_COUNT);
     g_scenario_id_view2 = original_scenario;
     return;
 }

@@ -194,15 +194,15 @@
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c07068` | [`sango_ui_choose_option`](../src/ui/menu_and_text.c#L6) |
-| `0x81c077bc` | [`sango_bitmap_draw_resource`](../src/ui/menu_and_text.c#L231) |
-| `0x81c0791c` | [`sango_text_draw_wrapped_box`](../src/ui/menu_and_text.c#L290) |
-| `0x81c079fc` | [`sango_text_wrap_lines`](../src/ui/menu_and_text.c#L341) |
-| `0x81c07b20` | [`sango_text_find_line_end`](../src/ui/menu_and_text.c#L384) |
-| `0x81c07b58` | [`sango_text_draw_centered`](../src/ui/menu_and_text.c#L403) |
-| `0x81c07bc0` | [`sango_battle_show_short_message`](../src/ui/menu_and_text.c#L413) |
-| `0x81c07cac` | [`sango_math_sqrt_step_search`](../src/ui/menu_and_text.c#L434) |
-| `0x81c07cf0` | [`sango_text_draw_padded_number`](../src/ui/menu_and_text.c#L458) |
-| `0x81c07e10` | [`sango_character_troop_capacity`](../src/ui/menu_and_text.c#L503) |
+| `0x81c077bc` | [`sango_bitmap_draw_resource`](../src/ui/menu_and_text.c#L243) |
+| `0x81c0791c` | [`sango_text_draw_wrapped_box`](../src/ui/menu_and_text.c#L303) |
+| `0x81c079fc` | [`sango_text_wrap_lines`](../src/ui/menu_and_text.c#L354) |
+| `0x81c07b20` | [`sango_text_find_line_end`](../src/ui/menu_and_text.c#L397) |
+| `0x81c07b58` | [`sango_text_draw_centered`](../src/ui/menu_and_text.c#L416) |
+| `0x81c07bc0` | [`sango_battle_show_short_message`](../src/ui/menu_and_text.c#L426) |
+| `0x81c07cac` | [`sango_math_sqrt_step_search`](../src/ui/menu_and_text.c#L448) |
+| `0x81c07cf0` | [`sango_text_draw_padded_number`](../src/ui/menu_and_text.c#L472) |
+| `0x81c07e10` | [`sango_character_troop_capacity`](../src/ui/menu_and_text.c#L517) |
 
 ## src/platform/window_graphics.c
 
@@ -509,12 +509,12 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c159a0` | [`sango_allocate_session_state`](../src/ui/start_menu.c#L6) |
 | `0x81c15acc` | [`sango_select_session`](../src/ui/start_menu.c#L52) |
-| `0x81c15d18` | [`sango_menu_select_animated`](../src/ui/start_menu.c#L157) |
-| `0x81c15e44` | [`sango_menu_show_credits`](../src/ui/start_menu.c#L231) |
-| `0x81c15e6c` | [`sango_menu_choose_ruler`](../src/ui/start_menu.c#L239) |
-| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L366) |
-| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L393) |
-| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L404) |
+| `0x81c15d18` | [`sango_menu_select_animated`](../src/ui/start_menu.c#L160) |
+| `0x81c15e44` | [`sango_menu_show_credits`](../src/ui/start_menu.c#L236) |
+| `0x81c15e6c` | [`sango_menu_choose_ruler`](../src/ui/start_menu.c#L244) |
+| `0x81c161c4` | [`sango_menu_flash_ruler_cities`](../src/ui/start_menu.c#L349) |
+| `0x81c16274` | [`sango_menu_draw_ruler_names`](../src/ui/start_menu.c#L376) |
+| `0x81c162e0` | [`sango_animation_play_resource`](../src/ui/start_menu.c#L383) |
 
 ## src/save/savegame.c
 
@@ -523,9 +523,9 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c16330` | [`sango_save_choose_slot`](../src/save/savegame.c#L7) |
-| `0x81c164c8` | [`sango_save_draw_slots`](../src/save/savegame.c#L85) |
-| `0x81c16704` | [`sango_save_load_slot`](../src/save/savegame.c#L169) |
-| `0x81c16940` | [`sango_save_write_slot`](../src/save/savegame.c#L217) |
+| `0x81c164c8` | [`sango_save_draw_slots`](../src/save/savegame.c#L89) |
+| `0x81c16704` | [`sango_save_load_slot`](../src/save/savegame.c#L175) |
+| `0x81c16940` | [`sango_save_write_slot`](../src/save/savegame.c#L223) |
 
 ## src/app/lifecycle.c
 
@@ -535,9 +535,9 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c16c24` | [`sango_main`](../src/app/lifecycle.c#L6) |
 | `0x81c16c80` | [`sango_game_lifecycle`](../src/app/lifecycle.c#L21) |
-| `0x81c16d68` | [`sango_app_free_resource_buffer`](../src/app/lifecycle.c#L65) |
-| `0x81c16db0` | [`sango_app_show_initialization_error`](../src/app/lifecycle.c#L75) |
-| `0x81c16de8` | [`sango_resource_prepare_hook`](../src/app/lifecycle.c#L87) |
+| `0x81c16d68` | [`sango_app_free_resource_buffer`](../src/app/lifecycle.c#L68) |
+| `0x81c16db0` | [`sango_app_show_initialization_error`](../src/app/lifecycle.c#L78) |
+| `0x81c16de8` | [`sango_resource_prepare_hook`](../src/app/lifecycle.c#L90) |
 
 ## src/strategy/calendar.c
 
@@ -588,14 +588,14 @@ SDK窗口消息及基础绘图适配。
 | `0x81c18380` | [`sango_ui_table_next_cell`](../src/ui/lists.c#L26) |
 | `0x81c18410` | [`sango_ui_table_next_row`](../src/ui/lists.c#L62) |
 | `0x81c18450` | [`sango_ui_draw_item_row`](../src/ui/lists.c#L78) |
-| `0x81c185cc` | [`sango_item_format_attribute`](../src/ui/lists.c#L126) |
-| `0x81c18704` | [`sango_ui_draw_item_header`](../src/ui/lists.c#L187) |
-| `0x81c18874` | [`sango_ui_select_item`](../src/ui/lists.c#L235) |
-| `0x81c18c80` | [`sango_item_read_name`](../src/ui/lists.c#L396) |
-| `0x81c18cac` | [`sango_ui_draw_character_row`](../src/ui/lists.c#L403) |
-| `0x81c18e88` | [`sango_character_format_attribute`](../src/ui/lists.c#L472) |
-| `0x81c19100` | [`sango_ui_draw_character_header`](../src/ui/lists.c#L615) |
-| `0x81c19270` | [`sango_ui_select_character`](../src/ui/lists.c#L663) |
+| `0x81c185cc` | [`sango_item_format_attribute`](../src/ui/lists.c#L127) |
+| `0x81c18704` | [`sango_ui_draw_item_header`](../src/ui/lists.c#L188) |
+| `0x81c18874` | [`sango_ui_select_item`](../src/ui/lists.c#L236) |
+| `0x81c18c80` | [`sango_item_read_name`](../src/ui/lists.c#L399) |
+| `0x81c18cac` | [`sango_ui_draw_character_row`](../src/ui/lists.c#L406) |
+| `0x81c18e88` | [`sango_character_format_attribute`](../src/ui/lists.c#L476) |
+| `0x81c19100` | [`sango_ui_draw_character_header`](../src/ui/lists.c#L619) |
+| `0x81c19270` | [`sango_ui_select_character`](../src/ui/lists.c#L668) |
 
 ## src/ui/city_details.c
 

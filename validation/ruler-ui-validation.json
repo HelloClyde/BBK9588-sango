@@ -1,0 +1,145 @@
+{
+  "date": "2026-11-11",
+  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
+  "library_sha256": "b99b32769a0144262e7af79bfa9605cdcafafcc55db23b3071fa9a226179e0d3",
+  "color_sha256": "117c6e723d1b88311438c6a4d05825f45c8abc63181ad9bc79c887422250a1df",
+  "color_frames": 1239,
+  "original_resource_records_unchanged": 87,
+  "additional_resource_ids": [
+    52,
+    53,
+    77
+  ],
+  "ruler_candidates": 50,
+  "portrait_frames": 33,
+  "portrait_size": [
+    48,
+    48
+  ],
+  "mips_checks": 138,
+  "native_checks": 20,
+  "scope": "Native C200 faction selector with production wood background,48px portraits,16px fonts and touch/keyboard. Exact staged BDA/LIB/CLR on dedicated synthetic NAND, controlled entry at credits. Portrait pixels and unchanged background compared for all4 scenarios, preview/scroll/confirm/return exercised. No physical-device or full-campaign claim",
+  "provenance": "assets/ruler/provenance.json",
+  "cases": [
+    {
+      "name": "Scenario1 character5: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-ma-teng.png",
+      "screenshot_sha256": "b81dfa9dece31021d3be025b5d3a3336e632702f1ff47475f833c39b97f61406"
+    },
+    {
+      "name": "Scenario1 character5: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-ma-teng.png",
+      "screenshot_sha256": "b81dfa9dece31021d3be025b5d3a3336e632702f1ff47475f833c39b97f61406"
+    },
+    {
+      "name": "Scenario1 character13: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "f977c618ccde64db65457b157a5b9625d4932771dbd76339679a4c4afdfc2dc1"
+    },
+    {
+      "name": "Scenario1 character13: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "f977c618ccde64db65457b157a5b9625d4932771dbd76339679a4c4afdfc2dc1"
+    },
+    {
+      "name": "Native list click previews without confirming",
+      "passed": true,
+      "screenshot": "scenario1-liu-bei.png",
+      "screenshot_sha256": "f977c618ccde64db65457b157a5b9625d4932771dbd76339679a4c4afdfc2dc1"
+    },
+    {
+      "name": "Scenario1 character1: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-cao-cao.png",
+      "screenshot_sha256": "95a86c57d08d7ea1221e37cc31c7f30863e55aa069c3f0a59dd324f15b476e02"
+    },
+    {
+      "name": "Scenario1 character1: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-cao-cao.png",
+      "screenshot_sha256": "95a86c57d08d7ea1221e37cc31c7f30863e55aa069c3f0a59dd324f15b476e02"
+    },
+    {
+      "name": "Scenario1 character5: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario1-reopened.png",
+      "screenshot_sha256": "b81dfa9dece31021d3be025b5d3a3336e632702f1ff47475f833c39b97f61406"
+    },
+    {
+      "name": "Scenario1 character5: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario1-reopened.png",
+      "screenshot_sha256": "b81dfa9dece31021d3be025b5d3a3336e632702f1ff47475f833c39b97f61406"
+    },
+    {
+      "name": "Native Confirm button returns selectedCaoCao ID1",
+      "passed": true,
+      "screenshot": "scenario1-cao-cao.png",
+      "screenshot_sha256": "95a86c57d08d7ea1221e37cc31c7f30863e55aa069c3f0a59dd324f15b476e02"
+    },
+    {
+      "name": "Scenario2 character11: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario2-ma-teng.png",
+      "screenshot_sha256": "9bfd52532a998312c315c790817f1eadc7b631bcf2c2cd2f77d8caed3d74804e"
+    },
+    {
+      "name": "Scenario2 character11: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario2-ma-teng.png",
+      "screenshot_sha256": "9bfd52532a998312c315c790817f1eadc7b631bcf2c2cd2f77d8caed3d74804e"
+    },
+    {
+      "name": "Native Return button cancels without selecting a ruler",
+      "passed": true,
+      "screenshot": "scenario1-reopened.png",
+      "screenshot_sha256": "b81dfa9dece31021d3be025b5d3a3336e632702f1ff47475f833c39b97f61406"
+    },
+    {
+      "name": "Scenario3 character7: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario3-ma-teng.png",
+      "screenshot_sha256": "1a9e1f697d54942b77835613e3dceb6ee72faadcb2658308957fade5643a8194"
+    },
+    {
+      "name": "Scenario3 character7: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario3-ma-teng.png",
+      "screenshot_sha256": "1a9e1f697d54942b77835613e3dceb6ee72faadcb2658308957fade5643a8194"
+    },
+    {
+      "name": "Scenario4 character0: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario4-cao-cao.png",
+      "screenshot_sha256": "6ecad3287a35034e7c09e44d3680d46288c2e24e88333f06e49d767d4d74d842"
+    },
+    {
+      "name": "Scenario4 character0: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario4-cao-cao.png",
+      "screenshot_sha256": "6ecad3287a35034e7c09e44d3680d46288c2e24e88333f06e49d767d4d74d842"
+    },
+    {
+      "name": "Scenario4 character1: native preview matches correct48px portrait",
+      "passed": true,
+      "screenshot": "scenario4-liu-bei.png",
+      "screenshot_sha256": "eff0c2ecfd19b917f54a8feccfb7fcde9621b427ce486ecfde5b3f275d39f46b"
+    },
+    {
+      "name": "Scenario4 character1: static wood background remains exact",
+      "passed": true,
+      "screenshot": "scenario4-liu-bei.png",
+      "screenshot_sha256": "eff0c2ecfd19b917f54a8feccfb7fcde9621b427ce486ecfde5b3f275d39f46b"
+    },
+    {
+      "name": "Native keyboard Confirm still returns the scenario-specificID",
+      "passed": true,
+      "screenshot": "scenario4-liu-bei.png",
+      "screenshot_sha256": "eff0c2ecfd19b917f54a8feccfb7fcde9621b427ce486ecfde5b3f275d39f46b"
+    }
+  ]
+}
