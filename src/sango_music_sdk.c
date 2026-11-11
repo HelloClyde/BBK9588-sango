@@ -124,8 +124,18 @@ __attribute__((noinline)) void sango_music_sdk_audio_open(void)
 {
     previous_attenuation = bda_audio_get_attenuation();
     bda_audio_open_pcm(BDA_AUDIO_SAMPLE_RATE_22050, BDA_AUDIO_BITS_16, BDA_AUDIO_CHANNELS_MONO);
-    bda_audio_set_attenuation(24);
     owns_attenuation = 1;
+    sango_music_sdk_audio_volume(sango_music_get_volume());
+}
+__attribute__((noinline)) void sango_music_sdk_audio_volume(unsigned int level)
+{
+    if (owns_attenuation)
+    {
+        if (level > 10)
+            level = 10;
+        /* SDK attenuation uses multiples of3; level8 retains alpha.7's24. */
+        bda_audio_set_attenuation(level <= 8 ? 96 - level * 9 : (10 - level) * 12);
+    }
 }
 __attribute__((noinline)) int sango_music_sdk_audio_ready(void)
 {

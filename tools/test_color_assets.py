@@ -62,7 +62,7 @@ def main():
     header=struct.unpack_from('<8sIIIIII',colors)
     assert header[:1]==(b'SGCOLOR1',) and header[1]==len(colors) and header[5:]==(len(lib),zlib.crc32(lib))
     entries=[struct.unpack_from('<IIHHI',colors,32+i*16) for i in range(header[2])]
-    catalog=read_catalog();assert len(entries)==len(catalog['frames'])==1239
+    catalog=read_catalog();assert len(entries)==len(catalog['frames'])==1240
     assert all(b['status']=='imported' for b in catalog['batches'])
     m=machine(lib,colors)
     by_offset={e[0]:e for e in entries}

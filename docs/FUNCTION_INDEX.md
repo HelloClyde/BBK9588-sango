@@ -449,7 +449,7 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c13d80` | [`sango_load_package_and_buffers`](../src/app/memory.c#L7) |
-| `0x81c13f64` | [`sango_release_package_and_buffers`](../src/app/memory.c#L74) |
+| `0x81c13f64` | [`sango_release_package_and_buffers`](../src/app/memory.c#L75) |
 
 ## src/platform/event_loop.c
 

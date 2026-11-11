@@ -1,97 +1,58 @@
 {
-  "version": "0.1.0-alpha.7",
-  "bda_sha256": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
-  "bda_bytes": 234712,
+  "version": "0.1.0-alpha.8",
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "bda_bytes": 237124,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
-  "compiler": "GCC 15.2.0",
-  "mips_checks": 5636,
-  "native_firmware_interface_checks": 20,
+  "compiler": "mipsel-none-elf-gcc.exe (GCC) 15.2.0",
+  "mips_checks": 4482,
+  "native_firmware_interface_checks": 19,
   "physical_device_verified": false,
   "complete_campaign_verified": false,
   "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
-  "sango_lib_sha256": "b99b32769a0144262e7af79bfa9605cdcafafcc55db23b3071fa9a226179e0d3",
-  "sango_lib_bytes": 499630,
-  "sango_clr_sha256": "117c6e723d1b88311438c6a4d05825f45c8abc63181ad9bc79c887422250a1df",
-  "sango_clr_bytes": 2605552,
-  "color_frames": 1239,
-  "color_unique_rgb_frames": 689,
-  "runtime_payload_sha256": "01d3bfb629ab73dae2011c6189ee8a8a7d19c08d76f2d784f4becc03fca4f728",
+  "sango_lib_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+  "sango_lib_bytes": 518848,
+  "sango_clr_sha256": "6103e31216fbc9d2992fb5aaa653099c23c1fa17af650b3680e42e49888d87af",
+  "sango_clr_bytes": 2759168,
+  "color_frames": 1240,
+  "color_unique_rgb_frames": 690,
   "initialized_data_sha256": "970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f",
-  "library_validation": "Original87 records and initialized data remain exact.92 records,1239 native PNG/RGB565 frames, original-only roundtrip, compiled-MIPS loader/CRC/raster checks. New52/53/77 supplement the index without moving original offsets.",
-  "runtime_evidence_basis": "Fresh compiled-MIPS regressions for the exact release payload;20 native C200 faction-selector checks for exact BDA/LIB/CLR. Native fonts, portraits, unchanged wood background, preview/scroll/confirm/return verified on dedicated synthetic NAND with controlled entry and exact-byte RAM resource staging. Not a native-filesystem, physical-device or full-campaign claim.",
   "mips_reports": {
+    "settings": {
+      "checks": 32,
+      "report": "validation/alpha8-settings-validation.json"
+    },
     "color-mips": {
-      "checks": 3923,
-      "report": "validation/alpha7-color-mips-validation.json"
-    },
-    "strategy-color": {
-      "checks": 88,
-      "report": "validation/alpha7-strategy-color-validation.json"
-    },
-    "battle-color": {
-      "checks": 250,
-      "report": "validation/alpha7-battle-color-validation.json"
-    },
-    "river-geometry": {
-      "checks": 88,
-      "report": "validation/alpha7-river-geometry-validation.json"
-    },
-    "battle-pixel-grid": {
-      "checks": 22,
-      "report": "validation/alpha7-battle-pixel-grid-validation.json"
-    },
-    "touch-input": {
-      "checks": 132,
-      "report": "validation/alpha7-touch-input-validation.json"
-    },
-    "battle-info": {
-      "checks": 27,
-      "report": "validation/alpha7-battle-info-validation.json"
-    },
-    "battle-options": {
-      "checks": 26,
-      "report": "validation/alpha7-battle-options-validation.json"
+      "checks": 3926,
+      "report": "validation/alpha8-color-mips-validation.json"
     },
     "music": {
       "checks": 65,
-      "report": "validation/alpha7-music-validation.json"
+      "report": "validation/alpha8-music-validation.json"
     },
     "save-layout": {
       "checks": 104,
-      "report": "validation/alpha7-save-layout-validation.json"
+      "report": "validation/alpha8-save-layout-validation.json"
     },
     "menu-input": {
       "checks": 44,
-      "report": "validation/alpha7-menu-input-validation.json"
+      "report": "validation/alpha8-menu-input-validation.json"
+    },
+    "touch-input": {
+      "checks": 132,
+      "report": "validation/alpha8-touch-input-validation.json"
     },
     "intro": {
       "checks": 41,
-      "report": "validation/alpha7-intro-validation.json"
+      "report": "validation/alpha8-intro-validation.json"
     },
     "ruler-ui": {
       "checks": 138,
-      "report": "validation/alpha7-ruler-ui-validation.json"
-    },
-    "battle-ui-color": {
-      "checks": 113,
-      "report": "validation/alpha7-battle-ui-color-validation.json"
-    },
-    "battle-hud": {
-      "checks": 59,
-      "report": "validation/alpha7-battle-hud-validation.json"
-    },
-    "battle-summary": {
-      "checks": 9,
-      "report": "validation/alpha7-battle-summary-validation.json"
-    },
-    "battle-viewport": {
-      "checks": 507,
-      "report": "validation/alpha7-battle-viewport-validation.json"
+      "report": "validation/alpha8-ruler-ui-validation.json"
     }
   },
-  "native_report": "validation/ruler-ui-validation.json",
-  "historical_evidence": "Earlier native popup/save/wood/door/audio and game-interface reports retain their own build hashes. They are historical evidence and excluded from the20 fresh native checks.60026 runtime,27163 control-flow and15857 keyboard comparisons are also historical.",
-  "hardware_feedback": "User confirmed D1 diagnostic music audible, then reported lag. Subsequent read-ahead/work-budget changes and this complete alpha.7 build await physical-device retest.",
+  "native_report": "validation/wood-settings-validation.json",
+  "runtime_evidence_basis": "Current exact BDA/LIB/CLR. Compiled MIPS settings, music, color, save-layout, menu, touch, intro and ruler checks.19 native C200 settings/font/touch/credits/scenario/state/save UI checks using controlled entry, dedicated synthetic NAND and exact-byte RAM staging. Not native filesystem persistence, physical audio performance or full-campaign evidence.",
+  "historical_evidence": "Broader battle/strategy/runtime checks in alpha.7 and earlier reports retain their hashes and are not counted as freshly rerun here.Original87 resource record bytes/offsets and45536 initialized bytes remain exact.",
   "music_bytes": 5834932,
   "music_tracks": [
     {

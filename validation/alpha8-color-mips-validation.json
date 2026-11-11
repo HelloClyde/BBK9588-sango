@@ -1,0 +1,10 @@
+{
+  "passed": 3926,
+  "failed": 0,
+  "frames": 1240,
+  "unique_rgb_frames": 690,
+  "combat_frames": 140,
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "color_sha256": "6103e31216fbc9d2992fb5aaa653099c23c1fa17af650b3680e42e49888d87af",
+  "scope": "Real compiled MIPS CRC32, header/index validation, all source-offset lookups and native PNG/RGB565 byte equivalence, original masks, four raster entry points, clipping and screen/context selection, opaque-black copy key, supplemental dispatch and optional SDK file lifecycle. SDK pixels/files/allocations modeled; native rendering separately verified."
+}

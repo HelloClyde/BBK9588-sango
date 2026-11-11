@@ -1,0 +1,124 @@
+{
+  "passed": 19,
+  "failed": 0,
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "library_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+  "color_sha256": "6103e31216fbc9d2992fb5aaa653099c23c1fa17af650b3680e42e49888d87af",
+  "scope": "Native C200 settings fonts/touch/credits/volume and historical page/states/save controls. Dedicated synthetic NAND, exact byte BDA/LIB/CLR staging and controlled fixture. Not physical audio performance, native filesystem persistence or full-campaign validation.",
+  "cases": [
+    {
+      "name": "Settings background replaces old menu at every static pixel",
+      "passed": true,
+      "screenshot": "settings-default.png",
+      "screenshot_sha256": "855f42e80f26e7555971265cef064ce6a473fdd90bfdc174a2505d823ee6da72"
+    },
+    {
+      "name": "Native music toggle changes only the state glyph region",
+      "passed": true,
+      "screenshot": "settings-off.png",
+      "screenshot_sha256": "d563cdb5abca9e7c3ec43eba63c5f8a1593d2d6cc92cd228cd7c15d5cfd1159a"
+    },
+    {
+      "name": "Native plus applies volume9",
+      "passed": true,
+      "screenshot": "settings-90.png",
+      "screenshot_sha256": "378fa115e625abc631eebeb2710230fd8771eb96ece79cea320b96cd7e787da8"
+    },
+    {
+      "name": "Native plus applies volume10",
+      "passed": true,
+      "screenshot": "settings-100.png",
+      "screenshot_sha256": "d772005dcbd29117ab3866ff7a22517fc4027931cd3b42c0a4061b91569aced3"
+    },
+    {
+      "name": "Native plus and minus change the displayed percentage",
+      "passed": true,
+      "screenshot": "settings-70.png",
+      "screenshot_sha256": "907a6aa0914ac639382db9834555bf49bd4db990a61c9c7ffbefeaeeb337be6a"
+    },
+    {
+      "name": "Settings credits opens a different complete page",
+      "passed": true,
+      "screenshot": "credits-from-settings.png",
+      "screenshot_sha256": "920b17fefbc9ac27e6f244c6fcfcfb1f86812961cda3f6d9002b33b66337819d"
+    },
+    {
+      "name": "Back preserves selected off and70percent values",
+      "passed": true,
+      "screenshot": "settings-after-credits.png",
+      "screenshot_sha256": "3f191ab24269dd6ebfdbb7fc68041da14af355b8be6dccde9542eb76de038fb5"
+    },
+    {
+      "name": "Native wood credits including author matches all76800 pixels",
+      "passed": true,
+      "screenshot": "credits-author.png",
+      "screenshot_sha256": "920b17fefbc9ac27e6f244c6fcfcfb1f86812961cda3f6d9002b33b66337819d"
+    },
+    {
+      "name": "Native wood historical page matches all76800 pixels",
+      "passed": true,
+      "screenshot": "scenario-static.png",
+      "screenshot_sha256": "e8027704f38304d9151a561711a5c02a02e94429907f83c2663286ceacb14a0b"
+    },
+    {
+      "name": "Native historical row0 state0 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row0-state0.png",
+      "screenshot_sha256": "16c11812fcf6acd6d8fc5c5221fefe67b25249a06f4f5f0d7aed59ef850205bf"
+    },
+    {
+      "name": "Native historical row0 state1 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row0-state1.png",
+      "screenshot_sha256": "c9534aca04f566f98459eaf8bcdc8ecfb1b4b01fa98489285bfdacb37e060297"
+    },
+    {
+      "name": "Native historical row1 state0 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row1-state0.png",
+      "screenshot_sha256": "25ec8a158720a189684ac286cfcc9e2cd8990a3812b1e652d691e9b003071f24"
+    },
+    {
+      "name": "Native historical row1 state1 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row1-state1.png",
+      "screenshot_sha256": "04ff1350d4792b11528c8d764b77c3548202df7dfe58c9aa6785a509730ee1eb"
+    },
+    {
+      "name": "Native historical row2 state0 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row2-state0.png",
+      "screenshot_sha256": "70b3bb1b1c3fcd4c1bfd2813dd100c40e5337032ede1c5bb198a8a08e5612e75"
+    },
+    {
+      "name": "Native historical row2 state1 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row2-state1.png",
+      "screenshot_sha256": "383aaf17d72ce518b94f75c227fa756a16ef95d9f7b363d8f3f6e554b7181f64"
+    },
+    {
+      "name": "Native historical row3 state0 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row3-state0.png",
+      "screenshot_sha256": "d6077f6ad01e0f1ba584ef1fd574ce762f0a99026bdb95915ec8e64eeb21aa03"
+    },
+    {
+      "name": "Native historical row3 state1 retains exact sprite geometry",
+      "passed": true,
+      "screenshot": "scenario-row3-state1.png",
+      "screenshot_sha256": "5216ea1a4bb5d26bef7aedaccd8f6dcf5fd4b6cdfb4a16800bdd5ab7a7aa7ad2"
+    },
+    {
+      "name": "Actual historical selector keyboard still chooses scenario3",
+      "passed": true,
+      "screenshot": "scenario-keyboard-row2.png",
+      "screenshot_sha256": "383aaf17d72ce518b94f75c227fa756a16ef95d9f7b363d8f3f6e554b7181f64"
+    },
+    {
+      "name": "Wood save page retains cancel without loading a slot",
+      "passed": true,
+      "screenshot": "save-slot2.png",
+      "screenshot_sha256": "c9891e29a1a4f301dccf48521fd346eb88845f50225c5042ee70c470dda2c293"
+    }
+  ]
+}

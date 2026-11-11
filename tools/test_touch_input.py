@@ -193,7 +193,7 @@ def main():
     with (ROOT/'build/sango.elf').open('rb') as f:
         elf=ELFFile(f);data=elf.get_section_by_name('.sango_data').data();extension=elf.get_section_by_name('.sango_touch')
         assert len(data)==45536 and hashlib.sha256(data).hexdigest()=='970e2121b60aa27d340563a249d63df2c67ce7a006ee8cb4c6cddd0cf0f3301f'
-        assert extension['sh_addr']>=0x81c2ba71 and extension['sh_addr']+extension['sh_size']<=0x81c30000;checks+=1
+    assert extension['sh_addr']>=0x81c2ba71 and extension['sh_addr']+extension['sh_size']<=0x81c34000;checks+=1
     report={'passed':checks,'failed':0,'bda_sha256':hashlib.sha256((ROOT/'build/三国霸业.bda').read_bytes()).hexdigest(),'scope':'Actual compiled MIPS window callback, gesture recognizer, event normalization, full 16-bit coordinates, duplicate/up/cancel/bounds/timer sampling, image menu hitboxes/controllers, popup rows, strategy clicks, battle mode1/2/3 taps, drag clamps, numeric and roster selection. SDK queue/coordinate/pixel boundaries modeled. Initialized legacy/save data unchanged; touch extension outside legacy state. Native firmware tested separately.'}
     (ROOT/'build/touch-input-validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8');print(json.dumps(report))
 

@@ -16,6 +16,9 @@ static struct
     int16_t pending[512];
 } music;
 
+static unsigned int music_disabled;
+static unsigned int music_volume = 8;
+
 static unsigned int read16(const uint8_t *p) { return p[0] | (unsigned int)p[1] << 8; }
 static uint32_t read32(const uint8_t *p) { return read16(p) | (uint32_t)read16(p + 2) << 16; }
 
@@ -232,7 +235,15 @@ static int prepare_pcm(void)
 void sango_music_poll(void)
 {
     unsigned int writes;
-    if (music.busy || !music.wanted || !music.directory[0] || !g_app_frame)
+    if (music.busy)
+        return;
+    if (music_disabled || !music_volume)
+    {
+        close_stream();
+        music.scene = 0;
+        return;
+    }
+    if (!music.wanted || !music.directory[0] || !g_app_frame)
         return;
     /* The GUI timer clock can lag while the device is drawing. The firmware
      * audio queue supplies pacing even when that GUI clock does not advance. */
@@ -245,7 +256,8 @@ void sango_music_poll(void)
     }
     /* Firmware writes may yield to DMA. One1024-byte write per poll avoids
      * monopolizing the game thread; short writes retain pending samples. */
-    for (writes = 0; music.streaming && music.wanted == music.scene && writes < 1; ++writes)
+    for (writes = 0; music.streaming && music.wanted == music.scene &&
+                        !music_disabled && music_volume && writes < 1; ++writes)
     {
         unsigned int remaining;
         int written;
@@ -268,12 +280,36 @@ void sango_music_poll(void)
             break;
         music.written_bytes += (unsigned int)written;
     }
-    if (!music.wanted)
+    if (!music.wanted || music_disabled || !music_volume)
     {
         close_stream();
         music.scene = 0;
     }
     music.busy = 0;
+}
+
+void sango_music_set_enabled(unsigned int enabled)
+{
+    music_disabled = !enabled;
+    sango_music_poll();
+}
+
+unsigned int sango_music_is_enabled(void)
+{
+    return !music_disabled;
+}
+
+void sango_music_set_volume(unsigned int level)
+{
+    music_volume = level > 10 ? 10 : level;
+    if (music.streaming && !music_disabled && music_volume)
+        sango_music_sdk_audio_volume(music_volume);
+    sango_music_poll();
+}
+
+unsigned int sango_music_get_volume(void)
+{
+    return music_volume;
 }
 
 void sango_music_shutdown(void)

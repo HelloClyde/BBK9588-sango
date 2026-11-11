@@ -1,0 +1,205 @@
+{
+  "generator": "built-in GPT Image",
+  "date": "2026-11-12",
+  "mode": "edit and reference-based generation",
+  "changed_resources": [
+    18,
+    44,
+    45,
+    46,
+    102,
+    104,
+    105,
+    106,
+    107
+  ],
+  "added_resource": 78,
+  "previous_native_assets": "variants/before-wood-settings",
+  "author_line": "优化作者 HelloClyde",
+  "assets": [
+    {
+      "master": "generated/wood-ui-credits-author.png",
+      "prompt": "prompts/wood-ui-credits-author.txt",
+      "master_sha256": "6430d98c616a3bcd310ca59cebc9b6dfdf2f8db27ba2ce34b997756b7b373082",
+      "items": [
+        {
+          "key": "da7c82454cbf2c78bdd7d3bafa5de3da6a1280f6a7c7d84596bba26ec8d651a4",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "master": "generated/wood-ui-main-menu-settings.png",
+      "prompt": "prompts/wood-ui-main-menu-settings.txt",
+      "master_sha256": "d7abe8fab2235b3dc0077f4323977b60ef30148caf439c54044a1aee0d8cc84d",
+      "items": [
+        {
+          "key": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "master": "generated/wood-ui-scenario-page.png",
+      "prompt": "prompts/wood-ui-scenario-page.txt",
+      "master_sha256": "99980fec9d06d11699f1313ddf016eb6295251ba4a8f8a1f0a79cc6e7c8b83b0",
+      "items": [
+        {
+          "key": "fbab328b2af29350d24865f9d753be87e104d1cfa7a260b9c729a645befa4af5",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "master": "generated/wood-ui-save-list.png",
+      "prompt": "prompts/wood-ui-save-list.txt",
+      "master_sha256": "674d4fcd254269dd42ea9764d1940ddbb325b31d7f47600ec7b53fd5ff0c56d1",
+      "items": [
+        {
+          "key": "dbb03957d87a39ee752d71a31242daba616d5bad8da6986636d03f6db01cd031",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "master": "generated/wood-ui-scenario-states.png",
+      "prompt": "prompts/wood-ui-scenario-states.txt",
+      "master_sha256": "ae1f03f6e2628d17315727c03bc2d7699da1e646e745637e35ae71dae2fb1da0",
+      "items": [
+        {
+          "key": "d89ff535a08a8d43dc76da3687cf1349e9b64e86fa93612524527836f93611eb",
+          "box": [
+            4,
+            2,
+            687,
+            253
+          ]
+        },
+        {
+          "key": "195c05bf8f1d85df2229c1b163fb88c745f91c324366395d000f4fd6d4481e97",
+          "box": [
+            715,
+            2,
+            1398,
+            253
+          ]
+        },
+        {
+          "key": "9c23958fb1e21b6799ceee236002be20f54a78c64bc33899cd7b18a15d43ec9c",
+          "box": [
+            4,
+            282,
+            687,
+            535
+          ]
+        },
+        {
+          "key": "b15a359c0d81ded075e41fe08e3c98b98f2363ab7756af461fea56b252d2e079",
+          "box": [
+            715,
+            282,
+            1398,
+            535
+          ]
+        },
+        {
+          "key": "d8dee3a4f7bb51418d276180f7406c9f88c03921c95bf62344eee1085b66a88f",
+          "box": [
+            4,
+            565,
+            687,
+            812
+          ]
+        },
+        {
+          "key": "30fa001df7949905e46bf8fd7be6e939f949dc5af964826613494c99de5115c5",
+          "box": [
+            715,
+            565,
+            1398,
+            812
+          ]
+        },
+        {
+          "key": "107ecc003e0cac65642d230f9d43e71d0182ce427faf890e6964b473ddf0c81f",
+          "box": [
+            5,
+            846,
+            687,
+            1094
+          ]
+        },
+        {
+          "key": "24bb1152bc455a26e6bcb3b93d77ef34d3084251b2f6c999ddedf7656f003794",
+          "box": [
+            715,
+            846,
+            1398,
+            1094
+          ]
+        }
+      ]
+    },
+    {
+      "master": "generated/wood-ui-settings-menu-states.png",
+      "prompt": "prompts/wood-ui-settings-menu-states.txt",
+      "master_sha256": "34fddff3e25355eb38d72c63b43e1960b6e7310ea326326819008cd3c7d48ca3",
+      "items": [
+        {
+          "key": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
+          "box": [
+            4,
+            632,
+            616,
+            908
+          ]
+        },
+        {
+          "key": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
+          "box": [
+            639,
+            632,
+            1252,
+            908
+          ]
+        }
+      ]
+    },
+    {
+      "master": "generated/wood-ui-settings-page.png",
+      "prompt": "prompts/wood-ui-settings-page.txt",
+      "master_sha256": "b871e998964381ac2c7ff0a8281df281a4a2936456604c368b2f964aacce716c",
+      "items": [
+        {
+          "key": "c01cbd65d0b6771f08fd3e3f343de76b6bbc65dd141b18e1ad22a133fa02f9b6",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ]
+    }
+  ]
+}

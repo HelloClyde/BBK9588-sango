@@ -20,4 +20,5 @@
 #include "sango_music.h"
 #include "sango_ui_paint.h"
 #include "sango_ruler.h"
+#include "sango_settings.h"
 #endif

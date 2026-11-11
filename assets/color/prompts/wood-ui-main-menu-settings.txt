@@ -1,0 +1,2 @@
+Use case: text-localization.
+Edit the supplied wooden 三国霸业 main menu. Change ONLY the third plaque's four Chinese characters from 制作群组 to 游戏设置. Keep the exact third plaque bounds and the original text's center, scale, near-black ink and calligraphic weight. Preserve every other pixel as closely as possible: 三国霸业 title, 新君登陆, 重返沙场, 卸甲归田, all wood colors/grain, carved frames, backgrounds, borders, spacing and positions. Same1086x1448 portrait canvas, full edge-to-edge image, no new buttons, no crop, no padding or watermark. Output only the edited menu.

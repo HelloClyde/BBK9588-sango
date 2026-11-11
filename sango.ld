@@ -2,16 +2,16 @@ ENTRY(bda_main)
 SECTIONS {
  . = 0x81c00020; .entry : { *(.text.entry) }
  . = 0x81c00060; .text : {
-   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_intro.o *sango_ruler.o) .text*)
+   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_intro.o *sango_ruler.o *sango_settings.o) .text*)
    /* Keep the optional music diagnostics within the extension's size limit. */
    *sango_intro.o(.text.sango_intro_sdk_copy .text.sango_intro_compose)
  }
- .rodata : { *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_intro.o *sango_ruler.o) .rodata*) }
+ .rodata : { *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_intro.o *sango_ruler.o *sango_settings.o) .rodata*) }
  .data : {
-   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o) .data*)
-   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o) .sdata*)
-   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o) .bss*)
-   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o) COMMON)
+   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o *sango_settings.o) .data*)
+   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o *sango_settings.o) .sdata*)
+   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o *sango_settings.o) .bss*)
+   *(EXCLUDE_FILE (*sango_touch.o *sango_battle_info.o *sango_music.o *sango_music_sdk.o *sango_ui_paint.o *sango_intro.o *sango_ruler.o *sango_settings.o) COMMON)
  }
  ASSERT(. <= 0x81c1fef0, "Recovered C exceeds original text area")
  . = 0x81c1fef0; .sango_data : { KEEP(*(.sango_data)) }
@@ -26,6 +26,7 @@ SECTIONS {
    *sango_ui_paint.o(.data* .sdata* .bss* COMMON)
    *sango_intro.o(.text* .rodata* .data* .sdata* .bss* COMMON)
    *sango_ruler.o(.text* .rodata* .data* .sdata* .bss* COMMON)
+   *sango_settings.o(.text* .rodata* .data* .sdata* .bss* COMMON)
    __sango_touch_end = .;
  }
  ASSERT(. <= 0x81c34000, "UI extension exceeds reserved application space")

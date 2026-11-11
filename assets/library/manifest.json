@@ -4890,7 +4890,7 @@
       "original_sha256": "af2242d5b2e194228049ea743c317b265bbfe0fc9361129a03f4e32fa7d2a8ab",
       "category": "菜单动画",
       "name": "开始新局选中动画",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "images": [
         {
           "width": 126,
@@ -4939,7 +4939,7 @@
       "original_sha256": "a89913735adf194a2c06c9956f82a7802075978a16202ac8a8ec6055ca2a02c3",
       "category": "菜单动画",
       "name": "读取存档选中动画",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "images": [
         {
           "width": 126,
@@ -4982,13 +4982,13 @@
     {
       "id": 102,
       "kind": "animation",
-      "record": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_原始记录.bin",
+      "record": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_原始记录.bin",
       "original_offset": 323132,
       "original_bytes": 3688,
       "original_sha256": "84ac5653a3debd586966c37e4547c5b747e07f54da060ecb99a1a70c9b35d247",
       "category": "菜单动画",
-      "name": "制作群组选中动画",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "name": "游戏设置选中动画",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "images": [
         {
           "width": 126,
@@ -4998,7 +4998,7 @@
           "offset": 28,
           "bytes": 1830,
           "pngs": [
-            "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png"
+            "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png"
           ]
         },
         {
@@ -5009,11 +5009,11 @@
           "offset": 1858,
           "bytes": 1830,
           "pngs": [
-            "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png"
+            "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png"
           ]
         }
       ],
-      "timeline": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_播放指令.json",
+      "timeline": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_播放指令.json",
       "usage_status": "confirmed",
       "code_evidence": [
         {
@@ -5037,7 +5037,7 @@
       "original_sha256": "01cc24bc26f1a024a4ab03703bd426c829e9131158b556e7fb1450dd451f0baf",
       "category": "菜单动画",
       "name": "退出游戏选中动画",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "images": [
         {
           "width": 126,
@@ -5968,6 +5968,30 @@
         "flags": 32,
         "pngs": [
           "../ruler/势力选择选中木纹条.png"
+        ]
+      },
+      "c_includes": []
+    },
+    {
+      "id": 78,
+      "category": "补充界面",
+      "name": "游戏设置木质底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "主菜单第三项进入设置页；音乐开关、音量、制作群组和返回共用木色底图，状态及音量动态透明绘制。",
+      "code_evidence": [
+        {
+          "source": "src/sango_settings.c",
+          "function": "sango_settings_draw",
+          "expression": "sango_bitmap_draw_resource(SANGO_SETTINGS_RESOURCE,"
+        }
+      ],
+      "image": {
+        "width": 240,
+        "height": 320,
+        "frames": 1,
+        "flags": 32,
+        "pngs": [
+          "../settings/游戏设置木质底图.png"
         ]
       },
       "c_includes": []

@@ -1,0 +1,136 @@
+{
+  "passed": 32,
+  "failed": 0,
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "scope": "Actual compiled MIPS settings UI, preference encode/validation/reload, keyboard/touch/drag boundaries and full streaming lifecycle. SDK file/audio/font/input boundaries modeled; native UI checked separately.",
+  "cases": [
+    {
+      "name": "Escape returns without changing or writing preferences",
+      "passed": true
+    },
+    {
+      "name": "Touch toggle and plus apply before returning",
+      "passed": true
+    },
+    {
+      "name": "Settings persist a versioned checksummed record",
+      "passed": true
+    },
+    {
+      "name": "A new application instance restores off and90percent",
+      "passed": true
+    },
+    {
+      "name": "Corrupt settings byte0 cannot change defaults",
+      "passed": true
+    },
+    {
+      "name": "Corrupt settings byte3 cannot change defaults",
+      "passed": true
+    },
+    {
+      "name": "Corrupt settings byte4 cannot change defaults",
+      "passed": true
+    },
+    {
+      "name": "Corrupt settings byte5 cannot change defaults",
+      "passed": true
+    },
+    {
+      "name": "Corrupt settings byte6 cannot change defaults",
+      "passed": true
+    },
+    {
+      "name": "Corrupt settings byte7 cannot change defaults",
+      "passed": true
+    },
+    {
+      "name": "Keyboard actions[28] respect music and volume bounds",
+      "passed": true
+    },
+    {
+      "name": "Keyboard actions[108, 106] respect music and volume bounds",
+      "passed": true
+    },
+    {
+      "name": "Keyboard actions[108, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105] respect music and volume bounds",
+      "passed": true
+    },
+    {
+      "name": "Keyboard actions[108, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106] respect music and volume bounds",
+      "passed": true
+    },
+    {
+      "name": "Keyboard credits returns to the same settings page",
+      "passed": true
+    },
+    {
+      "name": "Touch credits is the secondary credits entry",
+      "passed": true
+    },
+    {
+      "name": "Outside and drag event(11, 0, 0, 90) never activate a control",
+      "passed": true
+    },
+    {
+      "name": "Outside and drag event(11, 0, 120, 175) never activate a control",
+      "passed": true
+    },
+    {
+      "name": "Outside and drag event(11, 0, 90, 260) never activate a control",
+      "passed": true
+    },
+    {
+      "name": "Outside and drag event(12, 1, 100, 90) never activate a control",
+      "passed": true
+    },
+    {
+      "name": "Outside and drag event(13, 0, 100, 90) never activate a control",
+      "passed": true
+    },
+    {
+      "name": "Paint uses native settings resource and exact percentageb'0%'",
+      "passed": true
+    },
+    {
+      "name": "Paint uses native settings resource and exact percentageb'10%'",
+      "passed": true
+    },
+    {
+      "name": "Paint uses native settings resource and exact percentageb'80%'",
+      "passed": true
+    },
+    {
+      "name": "Paint uses native settings resource and exact percentageb'100%'",
+      "passed": true
+    },
+    {
+      "name": "Music initially streams with the existing default",
+      "passed": true
+    },
+    {
+      "name": "Disabled music stops file decoder timer and writes across scene changes",
+      "passed": true
+    },
+    {
+      "name": "Enable resumes the most recently requested scene",
+      "passed": true
+    },
+    {
+      "name": "Live volume changes reach the SDK stream",
+      "passed": true
+    },
+    {
+      "name": "Zero volume suspends decoding instead of silently consuming CPU",
+      "passed": true
+    },
+    {
+      "name": "Raising zero volume resumes the requested battle track",
+      "passed": true
+    },
+    {
+      "name": "Original initialized/save data remains exact",
+      "passed": true
+    }
+  ]
+}

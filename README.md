@@ -5,7 +5,7 @@
 恢复逻辑已按战斗、战略、存读档、资源、界面和运行库拆成42个模块，函数采用语义名称；
 大型流程和剩余短函数已整理变量名与标签，仍保留部分恢复出的布局和控制流；本项目不是原开发者的工程。
 
-当前版本为 **0.1.0-alpha.7**，源码托管于
+当前开发版为 **0.1.0-alpha.8**，最近已发布版本为 **0.1.0-alpha.7**；源码托管于
 [HelloClyde/BBK9588-sango](https://github.com/HelloClyde/BBK9588-sango)。
 构建状态见 [GitHub Actions](https://github.com/HelloClyde/BBK9588-sango/actions)；
 预发布安装包见 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases)。
@@ -16,7 +16,7 @@
 
 从本仓库 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases) 选择同一版本的 `-update.zip`，
 建议直接使用升级 ZIP，其中包含同版本 BDA、`sango.lib`、`sango.clr` 和三首背景音乐。
-游戏内全部1239帧素材已用 GPT Image 上色，包括头像、地图、兵种、动画、菜单和补充界面；
+游戏内全部1240帧素材已用 GPT Image 上色，包括头像、地图、兵种、动画、菜单和补充界面；
 原灰度素材和此前三张彩色草稿保留。启动图标按9288S原图恢复左下曹操、无金冠、铺满背景的整面旗帜及部分可见的“曹”字；旧母图和未采用草稿均保留。城市图标使用透明底，彩色战略地图铺满240×232，消除右侧和下方留白；
 逻辑仍为原7×7格，底栏位置不变。彩色目录与格式见 [彩色素材](assets/color/README.md)。
 
@@ -37,8 +37,8 @@
 ```
 
 源码包含原 `sango.LIB` 完整解包素材与新增素材，构建时重新生成 `sango.lib`。
-扩展索引资源库为499630字节，包含原87条资源及补充底栏、制作群组、势力背景和君主预览，共92条资源；
-`sango.clr` 为2605552字节 RGB565 彩色包，覆盖1239帧，重复图案共用689份像素，另附240×24原尺寸状态图和5张18×18天气图。两库随升级包一起安装。
+开发版扩展索引资源库为518848字节，包含原87条资源及补充底栏、制作群组、势力背景、君主预览和游戏设置，共93条资源；
+`sango.clr` 为2759168字节 RGB565 彩色包，覆盖1240帧，重复图案共用690份像素，另附240×24原尺寸状态图和5张18×18天气图。两库随升级包一起安装。
 文件名沿用原来的 **sango.lib**，不是 sanguo.lib；Windows/设备中的旧拼写 `sango.LIB` 是同名文件。
 本包不包含系统固件、原版 BDA、字库转储或个人存档。
 
@@ -124,7 +124,7 @@ python tools/test_color_assets.py
 彩色绘制通过固定SDK的命名 RGB565 接口，透明遮罩、动画指令及存档布局沿用原数据。
 缺少彩色包或其LIB校验不符时回退灰度。修改彩色PNG后运行 `python tools/color_assets.py refresh` 再完整构建。
 详细格式、编辑约束及解包命令见 [原库说明](assets/library/README.md) 和 [彩色包说明](assets/color/README.md)。
-`python tools/audit_resource_usage.py --check` 可检查92项资源的命名依据、调用表达式和选择表是否仍与代码相符。
+`python tools/audit_resource_usage.py --check` 可检查93项资源的命名依据、调用表达式和选择表是否仍与代码相符。
 
 ## 截图
 
@@ -134,7 +134,7 @@ python tools/test_color_assets.py
 
 | 主菜单 | 战略地图 | 战斗界面 |
 | --- | --- | --- |
-| ![主菜单](docs/screenshots/wood-ui/main-menu.png) | ![战略地图](docs/screenshots/strategy.png) | ![战斗界面](docs/screenshots/battle.png) |
+| ![主菜单](docs/screenshots/settings/main-menu-settings.png) | ![战略地图](docs/screenshots/strategy.png) | ![战斗界面](docs/screenshots/battle.png) |
 
 | 势力与君主预览 | 开门动画 |
 | --- | --- |
@@ -177,3 +177,5 @@ python tools/test_color_assets.py
 势力选择页已加入与主菜单一致的木质底图和当前君主48×48头像，点选名字先预览，再点“确定”进入。四个剧本均按实际君主ID绑定头像和姓名，说明及模拟器截图见 [势力选择页](docs/RULER_SELECTION.md)。
 
 alpha.7同时改善菜单整页绘制、存档槽位对齐与背景音乐读取预算，说明见 [菜单响应](docs/MENU_INPUT.md)、[存档布局](docs/SAVE_LAYOUT.md)、[开门动画](docs/OPENING_ANIMATION.md)及 [音乐播放](docs/MUSIC_PLAYBACK.md)。
+
+后续开发版将主菜单第三项改为“游戏设置”，提供音乐开关、0～100%音量及制作群组入口；偏好独立保存在资源目录的`sango.cfg`。制作群组、存读档及历史时期页补齐木色，制作群组图片新增“优化作者 HelloClyde”。用法、素材来源和原生截图见 [游戏设置](docs/GAME_SETTINGS.md)。正式alpha.7下载仍对应其发布时的验证记录。

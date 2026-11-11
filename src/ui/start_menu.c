@@ -70,7 +70,7 @@ int sango_select_session(void)
                     selection = sango_menu_select_animated(0x2c, 100);
                     if (selection != 2)
                         break;
-                    sango_menu_show_credits();
+                    sango_settings_show();
                 }
                 if ((int)selection < 3)
                     break;

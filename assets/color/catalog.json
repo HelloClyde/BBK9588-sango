@@ -4215,8 +4215,8 @@
       "source_rgba_sha256": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
       "flags": 32,
       "color": "library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
-      "batch": "wood-ui-main-menu",
-      "color_sha256": "066121f5b07cbc2926884505c915f604ae80b2dc965afc68eb03bdfb7e1671f1"
+      "batch": "wood-ui-main-menu-settings",
+      "color_sha256": "5ba7506c882977ce14d367620932f1c0698a6fd6c6498dcbd14f1bcb5c5cd7ea"
     },
     {
       "resource": 45,
@@ -4231,8 +4231,8 @@
       "source_rgba_sha256": "fbab328b2af29350d24865f9d753be87e104d1cfa7a260b9c729a645befa4af5",
       "flags": 32,
       "color": "library/界面/剧本菜单静态底图_资源045/剧本菜单静态底图.png",
-      "batch": "page-045",
-      "color_sha256": "67c4ec23692b8c6100d942f983790241e546ce5ad142bb0e1494f9136e8a3d1d"
+      "batch": "wood-ui-scenario-page",
+      "color_sha256": "5ce30e28008ea3fcc2d44c4978079d78f7b6689061165f74735df30759be5be6"
     },
     {
       "resource": 46,
@@ -4247,8 +4247,8 @@
       "source_rgba_sha256": "dbb03957d87a39ee752d71a31242daba616d5bad8da6986636d03f6db01cd031",
       "flags": 32,
       "color": "library/界面/存读档列表底图_资源046/存读档列表底图.png",
-      "batch": "page-046",
-      "color_sha256": "53be89130de398a5f217df890cfe9766bd955841d6469fabcc8b3890726977ab"
+      "batch": "wood-ui-save-list",
+      "color_sha256": "b8dda74f2f2e0f2ecb35792810032085ce86ad46d00f50f249976a0a0d05b3b8"
     },
     {
       "resource": 47,
@@ -19244,19 +19244,19 @@
     },
     {
       "resource": 102,
-      "name": "制作群组选中动画",
+      "name": "游戏设置选中动画",
       "image": 0,
       "frame": 0,
-      "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+      "source": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
       "size": [
         126,
         57
       ],
       "source_rgba_sha256": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
       "flags": 32,
-      "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
-      "batch": "wood-ui-menu-states",
-      "color_sha256": "99944287e608ad489b1d08d45dfe5b092e85e1a90854c0e377eb713bd888b958",
+      "color": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
+      "batch": "wood-ui-settings-menu-states",
+      "color_sha256": "61458774f292519b5832bc7cb750bf9c68f2b8d6aa892beb98edc12ee426d34d",
       "transparency": {
         "mode": "edge-connected-white",
         "minimum_channel": 225,
@@ -19266,19 +19266,19 @@
     },
     {
       "resource": 102,
-      "name": "制作群组选中动画",
+      "name": "游戏设置选中动画",
       "image": 1,
       "frame": 0,
-      "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+      "source": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
       "size": [
         126,
         57
       ],
       "source_rgba_sha256": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
       "flags": 32,
-      "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
-      "batch": "wood-ui-menu-states",
-      "color_sha256": "58337fdb59fdc4aaf874c5ae39ea5f53c5dad6fb0d4c44b472caceea423734ac",
+      "color": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
+      "batch": "wood-ui-settings-menu-states",
+      "color_sha256": "91fd9aff1be0c1ff30e210fe23b4c98c4fa27ed81aff014df30fa89123121ce6",
       "transparency": {
         "mode": "edge-connected-white",
         "minimum_channel": 225,
@@ -19343,8 +19343,8 @@
       "source_rgba_sha256": "d89ff535a08a8d43dc76da3687cf1349e9b64e86fa93612524527836f93611eb",
       "flags": 32,
       "color": "library/菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "b37a5ccb5ae603142a1abd74beec48ad4eef2915a016ee24b4beec09620f6116"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "15833df454c9752867a363f35218f1a1d90d306702ab8d3dffe40c92fba3e268"
     },
     {
       "resource": 104,
@@ -19359,8 +19359,8 @@
       "source_rgba_sha256": "195c05bf8f1d85df2229c1b163fb88c745f91c324366395d000f4fd6d4481e97",
       "flags": 32,
       "color": "library/菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "fdad300a3c453116f1851a7610cca7647e7eb1bb1cba798282b5ddb2a6108844"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "5a91b3bd2c0626fe258d0da4629d9d0c10c69adbda0ba3a26e8c973d1cfebb9d"
     },
     {
       "resource": 105,
@@ -19375,8 +19375,8 @@
       "source_rgba_sha256": "9c23958fb1e21b6799ceee236002be20f54a78c64bc33899cd7b18a15d43ec9c",
       "flags": 32,
       "color": "library/菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "ec065e77a1d37f18a5eaeff8067ad2eac391e571571731c4800b611622e4e8d0"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "f03d9de2fff47f5bc8dadb6c6c0fb641fed08818859090ed18bc9fde8ea43d6f"
     },
     {
       "resource": 105,
@@ -19391,8 +19391,8 @@
       "source_rgba_sha256": "b15a359c0d81ded075e41fe08e3c98b98f2363ab7756af461fea56b252d2e079",
       "flags": 32,
       "color": "library/菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "1c45e893601b581a8b94080824843d058f9c51a625fb7b7da07b0c5eee925da4"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "6f03573086c1c09ee5afc08f4450aba2c9c4a00be0beb085e8354aac67048958"
     },
     {
       "resource": 106,
@@ -19407,8 +19407,8 @@
       "source_rgba_sha256": "d8dee3a4f7bb51418d276180f7406c9f88c03921c95bf62344eee1085b66a88f",
       "flags": 32,
       "color": "library/菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "90ae51cd859cb594577900f9783e7788498c773bb7ab9e99f0935157b1194464"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "52380eee44afd863627473a388e3e8eda799bcd2a2377ff820f31bb6685a4d04"
     },
     {
       "resource": 106,
@@ -19423,8 +19423,8 @@
       "source_rgba_sha256": "30fa001df7949905e46bf8fd7be6e939f949dc5af964826613494c99de5115c5",
       "flags": 32,
       "color": "library/菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "df5e67ddc640bd50312cfc9754057bdd4d06667fe90a6e277ece26c439a6ff67"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "58ab02be10f348940fce9ace0560a2f35a2adb769732362b2cceb5015ec6f4b4"
     },
     {
       "resource": 107,
@@ -19439,8 +19439,8 @@
       "source_rgba_sha256": "107ecc003e0cac65642d230f9d43e71d0182ce427faf890e6964b473ddf0c81f",
       "flags": 32,
       "color": "library/菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵000.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "259511fb108a56f9cc4b9edcd1ecc13031ef743fe5df5bed27eef99cccb40151"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "459fca1406e0e7f65315acf5baf7420ab7fbcba0cb415b2f4871cc93b1cc14ef"
     },
     {
       "resource": 107,
@@ -19455,8 +19455,8 @@
       "source_rgba_sha256": "24bb1152bc455a26e6bcb3b93d77ef34d3084251b2f6c999ddedf7656f003794",
       "flags": 32,
       "color": "library/菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵001.png",
-      "batch": "menu-frames-00",
-      "color_sha256": "45f93e4a9e54c471f2b188f9a45da7b8274f748f57e28333926afa2b9bc2144d"
+      "batch": "wood-ui-scenario-states",
+      "color_sha256": "b5788fef2202c8214b9548c28fd624b98c4d653ca5d6353e7c60dd175bb1a9f3"
     },
     {
       "resource": 17,
@@ -19487,8 +19487,8 @@
       "source_rgba_sha256": "da7c82454cbf2c78bdd7d3bafa5de3da6a1280f6a7c7d84596bba26ec8d651a4",
       "flags": 32,
       "color": "credits/credits-240x320.png",
-      "batch": "page-018",
-      "color_sha256": "8152f6f1a69402f37fd80465e4a70c12084cb878c76e8f843253383996b0a66c"
+      "batch": "wood-ui-credits-author",
+      "color_sha256": "88fb9caf8089555e0408c2bc0acefe9ff74d9fd1602b68d0bc040ed923387baa"
     },
     {
       "resource": 52,
@@ -20049,6 +20049,22 @@
       "color": "library/补充界面/势力选择选中木纹条_资源077/势力选择选中木纹条.png",
       "batch": "ruler-highlight",
       "color_sha256": "334c9566c13982cedf1f1945dcb5dbf970d4bc5f2481c2bc69676b9c07c44f3a"
+    },
+    {
+      "resource": 78,
+      "name": "游戏设置木质底图",
+      "image": 0,
+      "frame": 0,
+      "source": "../settings/游戏设置木质底图.png",
+      "size": [
+        240,
+        320
+      ],
+      "source_rgba_sha256": "c01cbd65d0b6771f08fd3e3f343de76b6bbc65dd141b18e1ad22a133fa02f9b6",
+      "flags": 32,
+      "color": "library/补充界面/游戏设置木质底图_资源078/游戏设置木质底图.png",
+      "batch": "wood-ui-settings-page",
+      "color_sha256": "960073f748e3d41d44c45ceb5551c2ae7504ed1b322acb7fbfcec05df669cb64"
     }
   ],
   "unique": [
@@ -29017,7 +29033,7 @@
       "name": "制作群组选中动画",
       "image": 0,
       "frame": 0,
-      "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+      "source": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
       "size": [
         126,
         57
@@ -29031,7 +29047,7 @@
       "name": "制作群组选中动画",
       "image": 1,
       "frame": 0,
-      "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+      "source": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
       "size": [
         126,
         57
@@ -29520,6 +29536,15 @@
       "size": [
         56,
         18
+      ],
+      "flags": 32
+    },
+    {
+      "key": "c01cbd65d0b6771f08fd3e3f343de76b6bbc65dd141b18e1ad22a133fa02f9b6",
+      "source": "../settings/游戏设置木质底图.png",
+      "size": [
+        240,
+        320
       ],
       "flags": 32
     }
@@ -36821,10 +36846,273 @@
       "master_sha256": "334c9566c13982cedf1f1945dcb5dbf970d4bc5f2481c2bc69676b9c07c44f3a",
       "imported_frames": 1,
       "composition": "Existing GPT Image art, crop/resize/encoding only"
+    },
+    {
+      "id": "wood-ui-credits-author",
+      "reference": "generated/wood-ui-credits.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "da7c82454cbf2c78bdd7d3bafa5de3da6a1280f6a7c7d84596bba26ec8d651a4",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-credits-author.txt",
+      "master": "generated/wood-ui-credits-author.png",
+      "master_size": [
+        1086,
+        1448
+      ],
+      "master_sha256": "6430d98c616a3bcd310ca59cebc9b6dfdf2f8db27ba2ce34b997756b7b373082",
+      "imported_frames": 1
+    },
+    {
+      "id": "wood-ui-main-menu-settings",
+      "reference": "generated/wood-ui-main-menu.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-main-menu-settings.txt",
+      "master": "generated/wood-ui-main-menu-settings.png",
+      "master_size": [
+        1086,
+        1448
+      ],
+      "master_sha256": "d7abe8fab2235b3dc0077f4323977b60ef30148caf439c54044a1aee0d8cc84d",
+      "imported_frames": 1
+    },
+    {
+      "id": "wood-ui-scenario-page",
+      "reference": "generated/page-045.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "fbab328b2af29350d24865f9d753be87e104d1cfa7a260b9c729a645befa4af5",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-scenario-page.txt",
+      "master": "generated/wood-ui-scenario-page.png",
+      "master_size": [
+        1086,
+        1448
+      ],
+      "master_sha256": "99980fec9d06d11699f1313ddf016eb6295251ba4a8f8a1f0a79cc6e7c8b83b0",
+      "imported_frames": 1
+    },
+    {
+      "id": "wood-ui-save-list",
+      "reference": "generated/page-046.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "dbb03957d87a39ee752d71a31242daba616d5bad8da6986636d03f6db01cd031",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-save-list.txt",
+      "master": "generated/wood-ui-save-list.png",
+      "master_size": [
+        1086,
+        1448
+      ],
+      "master_sha256": "674d4fcd254269dd42ea9764d1940ddbb325b31d7f47600ec7b53fd5ff0c56d1",
+      "imported_frames": 1
+    },
+    {
+      "id": "wood-ui-scenario-states",
+      "reference": "references/wood-ui-scenario-states.png",
+      "canvas": [
+        1402,
+        1122
+      ],
+      "items": [
+        {
+          "key": "d89ff535a08a8d43dc76da3687cf1349e9b64e86fa93612524527836f93611eb",
+          "box": [
+            4,
+            2,
+            687,
+            253
+          ]
+        },
+        {
+          "key": "195c05bf8f1d85df2229c1b163fb88c745f91c324366395d000f4fd6d4481e97",
+          "box": [
+            715,
+            2,
+            1398,
+            253
+          ]
+        },
+        {
+          "key": "9c23958fb1e21b6799ceee236002be20f54a78c64bc33899cd7b18a15d43ec9c",
+          "box": [
+            4,
+            282,
+            687,
+            535
+          ]
+        },
+        {
+          "key": "b15a359c0d81ded075e41fe08e3c98b98f2363ab7756af461fea56b252d2e079",
+          "box": [
+            715,
+            282,
+            1398,
+            535
+          ]
+        },
+        {
+          "key": "d8dee3a4f7bb51418d276180f7406c9f88c03921c95bf62344eee1085b66a88f",
+          "box": [
+            4,
+            565,
+            687,
+            812
+          ]
+        },
+        {
+          "key": "30fa001df7949905e46bf8fd7be6e939f949dc5af964826613494c99de5115c5",
+          "box": [
+            715,
+            565,
+            1398,
+            812
+          ]
+        },
+        {
+          "key": "107ecc003e0cac65642d230f9d43e71d0182ce427faf890e6964b473ddf0c81f",
+          "box": [
+            5,
+            846,
+            687,
+            1094
+          ]
+        },
+        {
+          "key": "24bb1152bc455a26e6bcb3b93d77ef34d3084251b2f6c999ddedf7656f003794",
+          "box": [
+            715,
+            846,
+            1398,
+            1094
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-scenario-states.txt",
+      "master": "generated/wood-ui-scenario-states.png",
+      "master_size": [
+        1402,
+        1122
+      ],
+      "master_sha256": "ae1f03f6e2628d17315727c03bc2d7699da1e646e745637e35ae71dae2fb1da0",
+      "imported_frames": 8
+    },
+    {
+      "id": "wood-ui-settings-menu-states",
+      "reference": "generated/wood-ui-menu-states.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "items": [
+        {
+          "key": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
+          "box": [
+            4,
+            632,
+            616,
+            908
+          ]
+        },
+        {
+          "key": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
+          "box": [
+            639,
+            632,
+            1252,
+            908
+          ]
+        }
+      ],
+      "status": "imported",
+      "prompt": "prompts/wood-ui-settings-menu-states.txt",
+      "master": "generated/wood-ui-settings-menu-states.png",
+      "master_size": [
+        1254,
+        1254
+      ],
+      "master_sha256": "34fddff3e25355eb38d72c63b43e1960b6e7310ea326326819008cd3c7d48ca3",
+      "imported_frames": 2
+    },
+    {
+      "id": "wood-ui-settings-page",
+      "reference": "references/wood-ui-settings-layout.png",
+      "canvas": [
+        1086,
+        1448
+      ],
+      "items": [
+        {
+          "key": "c01cbd65d0b6771f08fd3e3f343de76b6bbc65dd141b18e1ad22a133fa02f9b6",
+          "box": [
+            0,
+            0,
+            1086,
+            1448
+          ]
+        }
+      ],
+      "status": "imported",
+      "master": "generated/wood-ui-settings-page.png",
+      "prompt": "prompts/wood-ui-settings-page.txt",
+      "imported_frames": 1
     }
   ],
-  "native_frames": 1204,
-  "unique_frames": 654,
+  "native_frames": 1240,
+  "unique_frames": 690,
   "notes": "Original gray PNGs unchanged; generated RGB copies keep semantic relative names. Original LIB masks and animation indices remain authoritative.",
   "generation": {
     "tool": "GPT Image via image_gen.imagegen",

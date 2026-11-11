@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "reviewed_resources": 92,
+  "reviewed_resources": 93,
   "source_sha256_lf": {
     "docs/original-credits-call.c.txt": "8007364b97eed193ec0d2eae90c0d5acb24e34682f081484db2099e5d5ea861e",
     "src/app/boot.c": "dae47ac3bada542fac7057690cf34a30af0166b40b2e41cd2eff26668b5ed71f",
     "src/app/lifecycle.c": "434857c9cfc8414fdb62a886e806f997675a036216bb3cd9bc01f897ff5e30a0",
-    "src/app/memory.c": "0b753073a594350fba17ee1b3907079bf9690236325ea01aba9e1eba24a529df",
+    "src/app/memory.c": "fbe81d489a81e1de23e7aa643e87dc583375b7d2f03c34eafcd2f2e08155ce76",
     "src/battle/actions.c": "5130479e5efe320d3f655e75b69e47d712d2bd95e3b531daf10020a78a50fa34",
     "src/battle/ai.c": "1e1bd9e44a2a6f308dbf56a9c5ee0e0af269b052853443d49547420145e5fe3d",
     "src/battle/army.c": "88eb3c28a4ee14eb8ab907b32f8d5db96704983e3bfce0bba258f7a65e257e49",
@@ -31,6 +31,7 @@
     "src/sango_credits.c": "3fccb93df7bb61a13448f7649732c8eac5343b04202a552532b64711d0ac2eb4",
     "src/sango_data.c": "d7abf1c418d3e832f4afe151c77c947fdb273d579b2f32627e79232decc0396b",
     "src/sango_ruler.c": "8b59fc2a137380b0611e3128ed1362512cc505d5f6ee23283f97aca825e2ae64",
+    "src/sango_settings.c": "3179181588d97749c4f88c1575bad7474754011df10a3f2fd5974a18c560c7b4",
     "src/sango_statusbar.c": "0ff71941e03ccc2d2c8842f9cbf7f5b39e22d42e2a78b2107bcaff510daabf87",
     "src/save/savegame.c": "9387e2ef010f1683abd9018ced38c64fe4c71912ce7517b5b73d11e1bca85358",
     "src/strategy/aftermath.c": "59ea738c5c2563e6ce1a30dd1144a009b214133483239f88ca4fe830fbb2eaa4",
@@ -49,7 +50,7 @@
     "src/ui/lists.c": "a6d2bd8e550e444ef2de5604268a06734b02384ae2425dc37e1b9f4c6b0bb9c0",
     "src/ui/menu_and_text.c": "97deca205cbe7f84882a9f8458b84425cfb494430afb20d7f5769d7b8423a1b9",
     "src/ui/numeric.c": "313be7ba71d58bc8951714b060477701eeb1b400b9da60531cc6a70f8c095acf",
-    "src/ui/start_menu.c": "34d188e3cb8d409bff71c5854a75d9b9092aafece4075ce85d34623517492666",
+    "src/ui/start_menu.c": "d4b62342accb671a47aed73613b048536b565da688bb52c866c4545ee6fbd771",
     "src/ui/system_menu.c": "f9d08f029248a685041b29692e7923698cb5f4ec855af861df522c4870b00cdc"
   },
   "resources": [
@@ -4510,7 +4511,7 @@
       "category": "菜单动画",
       "name": "开始新局选中动画",
       "usage_status": "confirmed",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "code_evidence": [
         {
           "source": "src/ui/start_menu.c",
@@ -4568,7 +4569,7 @@
       "category": "菜单动画",
       "name": "读取存档选中动画",
       "usage_status": "confirmed",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "code_evidence": [
         {
           "source": "src/ui/start_menu.c",
@@ -4624,9 +4625,9 @@
     {
       "id": 102,
       "category": "菜单动画",
-      "name": "制作群组选中动画",
+      "name": "游戏设置选中动画",
       "usage_status": "confirmed",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "code_evidence": [
         {
           "source": "src/ui/start_menu.c",
@@ -4644,7 +4645,7 @@
       "animation_usage": {
         "intervals": [
           {
-            "use": "制作群组选中动画",
+            "use": "游戏设置选中动画",
             "first": 0,
             "last": 1
           }
@@ -4653,26 +4654,26 @@
           {
             "image": 0,
             "pngs": [
-              "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png"
+              "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png"
             ],
             "command_indices": [
               0
             ],
             "uses": [
-              "制作群组选中动画"
+              "游戏设置选中动画"
             ],
             "role": "由时间轴指令引用；不凭画面指定精灵角色"
           },
           {
             "image": 1,
             "pngs": [
-              "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png"
+              "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png"
             ],
             "command_indices": [
               1
             ],
             "uses": [
-              "制作群组选中动画"
+              "游戏设置选中动画"
             ],
             "role": "由时间轴指令引用；不凭画面指定精灵角色"
           }
@@ -4684,7 +4685,7 @@
       "category": "菜单动画",
       "name": "退出游戏选中动画",
       "usage_status": "confirmed",
-      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、制作群组、退出。",
+      "naming_evidence": "菜单底图44以100为动画基ID，当前选项为0到3；会话入口对应开始新局、读档、游戏设置、退出。102号原作制作群组图保留灰度记录，彩色图显示游戏设置。",
       "code_evidence": [
         {
           "source": "src/ui/start_menu.c",
@@ -5490,6 +5491,21 @@
           "function": "draw_row",
           "expression": "draw_picture(77,",
           "line": 42
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "category": "补充界面",
+      "name": "游戏设置木质底图",
+      "usage_status": "confirmed",
+      "naming_evidence": "主菜单第三项进入设置页；音乐开关、音量、制作群组和返回共用木色底图，状态及音量动态透明绘制。",
+      "code_evidence": [
+        {
+          "source": "src/sango_settings.c",
+          "function": "sango_settings_draw",
+          "expression": "sango_bitmap_draw_resource(SANGO_SETTINGS_RESOURCE,",
+          "line": 74
         }
       ]
     }

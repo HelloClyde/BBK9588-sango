@@ -58,6 +58,7 @@ int sango_load_package_and_buffers(void)
                         if (!failed)
                         {
                             sango_music_set_library_path(library_path);
+                            sango_settings_load(library_path);
                             sango_color_load(library_path, library_bytes);
                         }
                     }

@@ -31,7 +31,7 @@
       "resource": 44,
       "image": 0,
       "frame": 0,
-      "path": "library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
+      "path": "variants/before-wood-settings/library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
       "sha256": "066121f5b07cbc2926884505c915f604ae80b2dc965afc68eb03bdfb7e1671f1",
       "size": [
         240,
@@ -111,7 +111,7 @@
       "resource": 102,
       "image": 0,
       "frame": 0,
-      "path": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+      "path": "variants/before-wood-settings/library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
       "sha256": "99944287e608ad489b1d08d45dfe5b092e85e1a90854c0e377eb713bd888b958",
       "size": [
         126,
@@ -128,7 +128,7 @@
       "resource": 102,
       "image": 1,
       "frame": 0,
-      "path": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+      "path": "variants/before-wood-settings/library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
       "sha256": "58337fdb59fdc4aaf874c5ae39ea5f53c5dad6fb0d4c44b472caceea423734ac",
       "size": [
         126,

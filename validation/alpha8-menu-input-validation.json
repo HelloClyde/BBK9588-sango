@@ -1,0 +1,184 @@
+{
+  "passed": 44,
+  "failed": 0,
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "scope": "Compiled MIPS paint scopes and complete popup/roster controllers; the redesigned faction page has separate ruler-ui validation. SDK surfaces and input queues modeled; native font/presentation checked separately. No physical latency claim.",
+  "cases": [
+    {
+      "name": "Unmatched end does not publish/free a surface",
+      "passed": true
+    },
+    {
+      "name": "Nested begin reuses one compatible surface",
+      "passed": true
+    },
+    {
+      "name": "Nested end leaves content offscreen",
+      "passed": true
+    },
+    {
+      "name": "Outermost end restores context, publishes once, then frees",
+      "passed": true
+    },
+    {
+      "name": "Subsequent redraw scopes allocate and free independently",
+      "passed": true
+    },
+    {
+      "name": "Unavailable canvas/context 0 safely falls back without leaking",
+      "passed": true
+    },
+    {
+      "name": "Unavailable canvas/context 81600000 safely falls back without leaking",
+      "passed": true
+    },
+    {
+      "name": "Option menu result 0 retains navigation/confirm/cancel",
+      "passed": true
+    },
+    {
+      "name": "Option menu 0 publishes initial/scroll text in complete scopes",
+      "passed": true
+    },
+    {
+      "name": "Option menu 0 uses the window for native selection inversion",
+      "passed": true
+    },
+    {
+      "name": "Option menu result 255 retains navigation/confirm/cancel",
+      "passed": true
+    },
+    {
+      "name": "Option menu 255 publishes initial/scroll text in complete scopes",
+      "passed": true
+    },
+    {
+      "name": "Option menu 255 uses the window for native selection inversion",
+      "passed": true
+    },
+    {
+      "name": "Option menu result 1 retains navigation/confirm/cancel",
+      "passed": true
+    },
+    {
+      "name": "Option menu 1 publishes initial/scroll text in complete scopes",
+      "passed": true
+    },
+    {
+      "name": "Option menu 1 uses the window for native selection inversion",
+      "passed": true
+    },
+    {
+      "name": "Option menu result 4 retains navigation/confirm/cancel",
+      "passed": true
+    },
+    {
+      "name": "Option menu 4 publishes initial/scroll text in complete scopes",
+      "passed": true
+    },
+    {
+      "name": "Option menu 4 uses the window for native selection inversion",
+      "passed": true
+    },
+    {
+      "name": "character roster 0/28 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "character roster 0/28 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "character roster 0/28 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "character roster 255/1 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "character roster 255/1 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "character roster 255/1 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "character roster 5/108 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "character roster 5/108 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "character roster 5/108 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "character roster 0/106 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "character roster 0/106 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "character roster 0/106 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "item roster 0/28 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "item roster 0/28 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "item roster 0/28 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "item roster 255/1 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "item roster 255/1 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "item roster 255/1 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "item roster 5/108 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "item roster 5/108 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "item roster 5/108 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "item roster 0/106 preserves input result",
+      "passed": true
+    },
+    {
+      "name": "item roster 0/106 batches headers and all rows",
+      "passed": true
+    },
+    {
+      "name": "item roster 0/106 inverts only the native window",
+      "passed": true
+    },
+    {
+      "name": "Original initialized/save data stays byte-identical",
+      "passed": true
+    }
+  ]
+}

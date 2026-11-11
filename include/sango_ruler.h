@@ -1,5 +1,6 @@
 #ifndef SANGO_RULER_H
 #define SANGO_RULER_H
+void sango_ruler_sdk_text(int x, int y, const char *text, int selected);
 #include "sango_types.h"
 
 enum

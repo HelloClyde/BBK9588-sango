@@ -1,0 +1,238 @@
+[
+  {
+    "resource": 44,
+    "name": "主菜单静态底图",
+    "image": 0,
+    "frame": 0,
+    "source": "界面/主菜单静态底图_资源044/主菜单静态底图.png",
+    "size": [
+      240,
+      320
+    ],
+    "source_rgba_sha256": "2d442408caa7262955417ea6f6c9236fd0f0c845aa7634044c64c853ff3b35c2",
+    "flags": 32,
+    "color": "library/界面/主菜单静态底图_资源044/主菜单静态底图.png",
+    "batch": "wood-ui-main-menu",
+    "color_sha256": "066121f5b07cbc2926884505c915f604ae80b2dc965afc68eb03bdfb7e1671f1"
+  },
+  {
+    "resource": 45,
+    "name": "剧本菜单静态底图",
+    "image": 0,
+    "frame": 0,
+    "source": "界面/剧本菜单静态底图_资源045/剧本菜单静态底图.png",
+    "size": [
+      240,
+      320
+    ],
+    "source_rgba_sha256": "fbab328b2af29350d24865f9d753be87e104d1cfa7a260b9c729a645befa4af5",
+    "flags": 32,
+    "color": "library/界面/剧本菜单静态底图_资源045/剧本菜单静态底图.png",
+    "batch": "page-045",
+    "color_sha256": "67c4ec23692b8c6100d942f983790241e546ce5ad142bb0e1494f9136e8a3d1d"
+  },
+  {
+    "resource": 46,
+    "name": "存读档列表底图",
+    "image": 0,
+    "frame": 0,
+    "source": "界面/存读档列表底图_资源046/存读档列表底图.png",
+    "size": [
+      240,
+      320
+    ],
+    "source_rgba_sha256": "dbb03957d87a39ee752d71a31242daba616d5bad8da6986636d03f6db01cd031",
+    "flags": 32,
+    "color": "library/界面/存读档列表底图_资源046/存读档列表底图.png",
+    "batch": "page-046",
+    "color_sha256": "53be89130de398a5f217df890cfe9766bd955841d6469fabcc8b3890726977ab"
+  },
+  {
+    "resource": 102,
+    "name": "制作群组选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
+    "flags": 32,
+    "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵000.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "99944287e608ad489b1d08d45dfe5b092e85e1a90854c0e377eb713bd888b958",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 102,
+    "name": "制作群组选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
+    "flags": 32,
+    "color": "library/菜单动画/制作群组选中动画_资源102/制作群组选中动画_精灵001.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "58337fdb59fdc4aaf874c5ae39ea5f53c5dad6fb0d4c44b472caceea423734ac",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 104,
+    "name": "剧本01选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵000.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "d89ff535a08a8d43dc76da3687cf1349e9b64e86fa93612524527836f93611eb",
+    "flags": 32,
+    "color": "library/菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "b37a5ccb5ae603142a1abd74beec48ad4eef2915a016ee24b4beec09620f6116"
+  },
+  {
+    "resource": 104,
+    "name": "剧本01选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵001.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "195c05bf8f1d85df2229c1b163fb88c745f91c324366395d000f4fd6d4481e97",
+    "flags": 32,
+    "color": "library/菜单动画/剧本01选中动画_资源104/剧本01选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "fdad300a3c453116f1851a7610cca7647e7eb1bb1cba798282b5ddb2a6108844"
+  },
+  {
+    "resource": 105,
+    "name": "剧本02选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵000.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "9c23958fb1e21b6799ceee236002be20f54a78c64bc33899cd7b18a15d43ec9c",
+    "flags": 32,
+    "color": "library/菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "ec065e77a1d37f18a5eaeff8067ad2eac391e571571731c4800b611622e4e8d0"
+  },
+  {
+    "resource": 105,
+    "name": "剧本02选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵001.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "b15a359c0d81ded075e41fe08e3c98b98f2363ab7756af461fea56b252d2e079",
+    "flags": 32,
+    "color": "library/菜单动画/剧本02选中动画_资源105/剧本02选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "1c45e893601b581a8b94080824843d058f9c51a625fb7b7da07b0c5eee925da4"
+  },
+  {
+    "resource": 106,
+    "name": "剧本03选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵000.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "d8dee3a4f7bb51418d276180f7406c9f88c03921c95bf62344eee1085b66a88f",
+    "flags": 32,
+    "color": "library/菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "90ae51cd859cb594577900f9783e7788498c773bb7ab9e99f0935157b1194464"
+  },
+  {
+    "resource": 106,
+    "name": "剧本03选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵001.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "30fa001df7949905e46bf8fd7be6e939f949dc5af964826613494c99de5115c5",
+    "flags": 32,
+    "color": "library/菜单动画/剧本03选中动画_资源106/剧本03选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "df5e67ddc640bd50312cfc9754057bdd4d06667fe90a6e277ece26c439a6ff67"
+  },
+  {
+    "resource": 107,
+    "name": "剧本04选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵000.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "107ecc003e0cac65642d230f9d43e71d0182ce427faf890e6964b473ddf0c81f",
+    "flags": 32,
+    "color": "library/菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵000.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "259511fb108a56f9cc4b9edcd1ecc13031ef743fe5df5bed27eef99cccb40151"
+  },
+  {
+    "resource": 107,
+    "name": "剧本04选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵001.png",
+    "size": [
+      157,
+      57
+    ],
+    "source_rgba_sha256": "24bb1152bc455a26e6bcb3b93d77ef34d3084251b2f6c999ddedf7656f003794",
+    "flags": 32,
+    "color": "library/菜单动画/剧本04选中动画_资源107/剧本04选中动画_精灵001.png",
+    "batch": "menu-frames-00",
+    "color_sha256": "45f93e4a9e54c471f2b188f9a45da7b8274f748f57e28333926afa2b9bc2144d"
+  },
+  {
+    "resource": 18,
+    "name": "制作群组补充竖屏页",
+    "image": 0,
+    "frame": 0,
+    "source": "../credits/credits-240x320.png",
+    "size": [
+      240,
+      320
+    ],
+    "source_rgba_sha256": "da7c82454cbf2c78bdd7d3bafa5de3da6a1280f6a7c7d84596bba26ec8d651a4",
+    "flags": 32,
+    "color": "credits/credits-240x320.png",
+    "batch": "page-018",
+    "color_sha256": "8152f6f1a69402f37fd80465e4a70c12084cb878c76e8f843253383996b0a66c"
+  }
+]

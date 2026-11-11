@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
 SDK_COMMIT='ef3bf3b7328a3a8fa9ba48593c63285300725fb7'
-SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk','sango_color_animation','sango_touch','sango_battle_info','sango_music','sango_music_sdk','sango_ui_paint','sango_intro','sango_ruler']
+SOURCES=['sango_engine','sango_data','sango_entry','sango_statusbar','sango_credits','sango_battle_ui','sango_color','sango_color_sdk','sango_color_animation','sango_touch','sango_battle_info','sango_music','sango_music_sdk','sango_ui_paint','sango_intro','sango_ruler','sango_settings']
 
 def command(args,**kwargs):
     return subprocess.run([str(x) for x in args],check=True,**kwargs)

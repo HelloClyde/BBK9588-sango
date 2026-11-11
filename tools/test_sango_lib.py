@@ -24,7 +24,7 @@ class LibraryTests(unittest.TestCase):
 
     def test_original_records_and_unused_slots(self):
         slots,records=lib.catalog(self.packed)
-        self.assertEqual((slots,len(records)),(116,92))
+        self.assertEqual((slots,len(records)),(116,93))
         before={r['id']:r for r in lib.catalog(self.original)[1]}
         for record in records:
             if record['id'] in before:
@@ -33,9 +33,9 @@ class LibraryTests(unittest.TestCase):
                 a,b=record['offset'],old['offset']
                 self.assertEqual(self.packed[a:a+record['bytes']],self.original[b:b+old['bytes']])
         for rid in range(1,117):
-            if rid not in (17,18,52,53,77):
+            if rid not in (17,18,52,53,77,78):
                 self.assertEqual(self.packed[(rid-1)*4:rid*4],self.original[(rid-1)*4:rid*4])
-        self.assertEqual(len(self.packed),499630)
+        self.assertEqual(len(self.packed),518848)
 
     def test_maps_and_menu_animations_use_correct_formats(self):
         maps=[r for r in self.manifest['records'] if r['kind']=='map']
@@ -50,8 +50,8 @@ class LibraryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='sango-roundtrip-') as name:
             root=Path(name)/'assets/library'
             result=lib.unpack(self.packed,root)
-            self.assertEqual(len(result['records']),92)
-            self.assertEqual(result['png_frames'],1239)  # original frames plus reviewed UI/portraits
+            self.assertEqual(len(result['records']),93)
+            self.assertEqual(result['png_frames'],1240)  # original frames plus reviewed UI/portraits/settings
             self.assertTrue(all(r['kind']=='animation' for r in result['records'] if 100<=r['id']<=107))
             self.assertEqual(lib.pack(root),self.packed)
 
