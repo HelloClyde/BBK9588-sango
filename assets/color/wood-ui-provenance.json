@@ -43,7 +43,7 @@
       "resource": 100,
       "image": 0,
       "frame": 0,
-      "path": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+      "path": "variants/menu-white-matte/library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
       "sha256": "dc6892ed6cc989207f408fca48ea37efd306175f8ada553fa36340a9736008d0",
       "size": [
         126,
@@ -60,7 +60,7 @@
       "resource": 100,
       "image": 1,
       "frame": 0,
-      "path": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+      "path": "variants/menu-white-matte/library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
       "sha256": "d2db6907394a6ba48b20e23d819187f04d5fc2a9957f11115501332e525b713b",
       "size": [
         126,
@@ -77,7 +77,7 @@
       "resource": 101,
       "image": 0,
       "frame": 0,
-      "path": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+      "path": "variants/menu-white-matte/library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
       "sha256": "50d4044ff9101287110e0bd8cb13774360906745c35c84f9b08d8dafa1df08dc",
       "size": [
         126,
@@ -94,7 +94,7 @@
       "resource": 101,
       "image": 1,
       "frame": 0,
-      "path": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+      "path": "variants/menu-white-matte/library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
       "sha256": "99b7248e842285ed3c5ba3f816ed9c5d441b8c92af256099e522bebb410296f0",
       "size": [
         126,
@@ -145,7 +145,7 @@
       "resource": 103,
       "image": 0,
       "frame": 0,
-      "path": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+      "path": "variants/menu-white-matte/library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
       "sha256": "7ce078226e97b506ba77721f435b14ec7a8b68a86e7daa0b609047b51076e29b",
       "size": [
         126,
@@ -162,7 +162,7 @@
       "resource": 103,
       "image": 1,
       "frame": 0,
-      "path": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+      "path": "variants/menu-white-matte/library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
       "sha256": "77fab3cfb0e8cc303c3394441f72b1db96dfafc7906bed3d07c59354b45bd113",
       "size": [
         126,

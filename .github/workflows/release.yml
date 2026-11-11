@@ -79,6 +79,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Faction background, portraits or preview/confirm regression failed' }
           python tools/test_settings.py
           if ($LASTEXITCODE -ne 0) { throw 'Music settings, persistence or secondary-menu regression failed' }
+          python tools/test_menu_transparency.py
+          if ($LASTEXITCODE -ne 0) { throw 'Menu sprite alpha or white-edge regression failed' }
           python tools/test_battle_ui_color.py
           if ($LASTEXITCODE -ne 0) { throw 'Image HUD or centered combat UI checks failed' }
           python tools/test_battle_hud.py

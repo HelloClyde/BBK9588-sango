@@ -1,0 +1,55 @@
+{
+  "source": "Existing reviewed GPT Image wood menu masters",
+  "correction": "Decode edge-connected white source matte, resize premultiplied RGBA, encode binary RGB565 transparent key",
+  "previous_assets": "variants/menu-white-matte",
+  "changed_frames": [
+    {
+      "resource": 100,
+      "image": 0,
+      "path": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+      "sha256": "8f60ae378df167a3895b530f48a80ebbf1f626be4deb6e17e22b6a2cf0aa0900"
+    },
+    {
+      "resource": 100,
+      "image": 1,
+      "path": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+      "sha256": "323f5e5c42d1157e74e46cf1bc773c0d25696e4f3d6a0dd87283e4de58611b62"
+    },
+    {
+      "resource": 101,
+      "image": 0,
+      "path": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+      "sha256": "9ec5614b5b938c5dce801879555e88ed2ef60051a859c6714357578b57335707"
+    },
+    {
+      "resource": 101,
+      "image": 1,
+      "path": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+      "sha256": "494e8da5bc9324e1e2b5f595707b774f1422ae4f3219fecb5a7446d35b2d07e3"
+    },
+    {
+      "resource": 102,
+      "image": 0,
+      "path": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
+      "sha256": "1f3152bb5d992617ab6f87c7bed68358ab889f4c0bd0493b7c1af2fef42e0115"
+    },
+    {
+      "resource": 102,
+      "image": 1,
+      "path": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
+      "sha256": "a310cf3971d6c3e93b86d1d96466bcf8a7e5aace60806240521f86045480518b"
+    },
+    {
+      "resource": 103,
+      "image": 0,
+      "path": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+      "sha256": "3089bf782f1d71605c034225eb5b50a79aad68fd4e4d99711250d2610e141baf"
+    },
+    {
+      "resource": 103,
+      "image": 1,
+      "path": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+      "sha256": "d8b49542fa02d307e550955cb9829ec39e519d1bdb7145ec508f6e3265eb17fd"
+    }
+  ]
+}

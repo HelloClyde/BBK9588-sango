@@ -19168,12 +19168,11 @@
       "flags": 32,
       "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
       "batch": "wood-ui-menu-states",
-      "color_sha256": "dc6892ed6cc989207f408fca48ea37efd306175f8ada553fa36340a9736008d0",
+      "color_sha256": "8f60ae378df167a3895b530f48a80ebbf1f626be4deb6e17e22b6a2cf0aa0900",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19190,12 +19189,11 @@
       "flags": 32,
       "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
       "batch": "wood-ui-menu-states",
-      "color_sha256": "d2db6907394a6ba48b20e23d819187f04d5fc2a9957f11115501332e525b713b",
+      "color_sha256": "323f5e5c42d1157e74e46cf1bc773c0d25696e4f3d6a0dd87283e4de58611b62",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19212,12 +19210,11 @@
       "flags": 32,
       "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
       "batch": "wood-ui-menu-states",
-      "color_sha256": "50d4044ff9101287110e0bd8cb13774360906745c35c84f9b08d8dafa1df08dc",
+      "color_sha256": "9ec5614b5b938c5dce801879555e88ed2ef60051a859c6714357578b57335707",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19234,12 +19231,11 @@
       "flags": 32,
       "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
       "batch": "wood-ui-menu-states",
-      "color_sha256": "99b7248e842285ed3c5ba3f816ed9c5d441b8c92af256099e522bebb410296f0",
+      "color_sha256": "494e8da5bc9324e1e2b5f595707b774f1422ae4f3219fecb5a7446d35b2d07e3",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19256,12 +19252,11 @@
       "flags": 32,
       "color": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
       "batch": "wood-ui-settings-menu-states",
-      "color_sha256": "61458774f292519b5832bc7cb750bf9c68f2b8d6aa892beb98edc12ee426d34d",
+      "color_sha256": "1f3152bb5d992617ab6f87c7bed68358ab889f4c0bd0493b7c1af2fef42e0115",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19278,12 +19273,11 @@
       "flags": 32,
       "color": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
       "batch": "wood-ui-settings-menu-states",
-      "color_sha256": "91fd9aff1be0c1ff30e210fe23b4c98c4fa27ed81aff014df30fa89123121ce6",
+      "color_sha256": "a310cf3971d6c3e93b86d1d96466bcf8a7e5aace60806240521f86045480518b",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19300,12 +19294,11 @@
       "flags": 32,
       "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
       "batch": "wood-ui-menu-states",
-      "color_sha256": "7ce078226e97b506ba77721f435b14ec7a8b68a86e7daa0b609047b51076e29b",
+      "color_sha256": "3089bf782f1d71605c034225eb5b50a79aad68fd4e4d99711250d2610e141baf",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -19322,12 +19315,11 @@
       "flags": 32,
       "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
       "batch": "wood-ui-menu-states",
-      "color_sha256": "77fab3cfb0e8cc303c3394441f72b1db96dfafc7906bed3d07c59354b45bd113",
+      "color_sha256": "d8b49542fa02d307e550955cb9829ec39e519d1bdb7145ec508f6e3265eb17fd",
       "transparency": {
-        "mode": "edge-connected-white",
-        "minimum_channel": 225,
-        "maximum_chroma": 24,
-        "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+        "mode": "image-alpha",
+        "threshold": 128,
+        "reason": "Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering."
       }
     },
     {
@@ -36476,7 +36468,12 @@
         1254
       ],
       "master_sha256": "40918ad379af6ac1ed1e79604c99f3932ef0e1ae4328e585760ebd9830aa33fc",
-      "imported_frames": 8
+      "imported_frames": 8,
+      "alpha_import": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 200,
+        "maximum_chroma": 40
+      }
     },
     {
       "id": "ruler-page",
@@ -37085,7 +37082,12 @@
         1254
       ],
       "master_sha256": "34fddff3e25355eb38d72c63b43e1960b6e7310ea326326819008cd3c7d48ca3",
-      "imported_frames": 2
+      "imported_frames": 2,
+      "alpha_import": {
+        "mode": "edge-connected-white",
+        "minimum_channel": 200,
+        "maximum_chroma": 40
+      }
     },
     {
       "id": "wood-ui-settings-page",

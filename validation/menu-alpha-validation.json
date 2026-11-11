@@ -1,0 +1,145 @@
+{
+  "passed": 34,
+  "failed": 0,
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "color_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
+  "scope": "Source-matte decoding retains enclosed whites; all eight actual packed menu sprites have no neutral-white outer ring. Real compiled MIPS raster leaves alpha-zero pixels unchanged and preserves complete lettering fields. Native compositing checked separately.",
+  "cases": [
+    {
+      "name": "Outer atlas matte becomes transparent before reduction",
+      "passed": true
+    },
+    {
+      "name": "Enclosed pale lettering/panel stays opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource100/0 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource100/0 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource100/0 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource100/0 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource100/1 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource100/1 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource100/1 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource100/1 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource101/0 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource101/0 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource101/0 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource101/0 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource101/1 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource101/1 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource101/1 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource101/1 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource102/0 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource102/0 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource102/0 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource102/0 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource102/1 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource102/1 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource102/1 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource102/1 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource103/0 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource103/0 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource103/0 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource103/0 keeps the complete lettering field opaque",
+      "passed": true
+    },
+    {
+      "name": "Resource103/1 has no opaque neutral white edge",
+      "passed": true
+    },
+    {
+      "name": "Resource103/1 has declared binary alpha",
+      "passed": true
+    },
+    {
+      "name": "Resource103/1 real MIPS leaves every alpha-zero pixel untouched",
+      "passed": true
+    },
+    {
+      "name": "Resource103/1 keeps the complete lettering field opaque",
+      "passed": true
+    }
+  ]
+}

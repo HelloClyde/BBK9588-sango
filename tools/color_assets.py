@@ -69,7 +69,9 @@ def import_atlas(slug, source):
         if row_bounds is not None:
             box = (0,row_bounds[index][0],master.width,row_bounds[index][1])
         sampling = Image.Resampling.NEAREST if batch.get('resample') == 'nearest' else Image.Resampling.LANCZOS
-        native = master.crop(box).resize(tuple(original['size']), sampling)
+        crop = master.crop(box)
+        native = (resize_alpha_sprite(crop, tuple(original['size']), batch['alpha_import'])
+                  if batch.get('alpha_import') else crop.resize(tuple(original['size']), sampling))
         # Every alias gets a semantically named RGB PNG. The original LIB mask
         # remains the authoritative transparent/opaque geometry at runtime.
         for frame in catalog['frames']:
@@ -80,6 +82,10 @@ def import_atlas(slug, source):
                 frame['color'] = output.resolve().relative_to(COLOR.resolve()).as_posix()
                 frame['batch'] = slug
                 frame['color_sha256'] = hashlib.sha256(output.read_bytes()).hexdigest()
+                if batch.get('alpha_import'):
+                    frame['transparency'] = {
+                        'mode': 'image-alpha', 'threshold': 128,
+                        'reason': 'Atlas matte removed before premultiplied downsampling; preserve pale interior wood and lettering.'}
                 imported[frame['source']] = frame['color']
     batch.update(status='imported',master='generated/'+slug+'.png',
                  master_size=list(master.size),
@@ -101,13 +107,18 @@ TRANSPARENT_ZERO=0x100
 
 
 def transparent_background(image, policy):
-    """Decode the explicitly declared white matte around an opaque city sprite.
+    """Decode explicit sprite alpha or an exterior white atlas matte.
 
     Only edge-connected near-white pixels are transparent. Enclosed white
     windows/roof details remain opaque. This is resource alpha metadata,
     independent of illustration generation and the original LIB mask planes.
     """
     if not policy:return set()
+    if policy.get('mode') == 'image-alpha':
+        if 'A' not in image.getbands():
+            raise ValueError('Explicit image-alpha policy needs an alpha channel')
+        return {i for i,a in enumerate(image.getchannel('A').get_flattened_data())
+                if a < policy.get('threshold',128)}
     if policy.get('mode') not in ('edge-connected-white','all-near-white'):
         raise ValueError('Unsupported color transparency policy')
     width,height=image.size
@@ -133,6 +144,23 @@ def transparent_background(image, policy):
         if y:pending.append(index-width)
         if y+1<height:pending.append(index+width)
     return transparent
+
+
+def resize_alpha_sprite(image, size, policy):
+    """Decode the source atlas matte before reducing to the device pixel grid.
+
+    Pillow resizes RGBA through premultiplied RGBa, so transparent white cannot
+    contaminate opaque edge colors. The device uses a binary transparent key.
+    Enclosed pale panels/glyphs never join the outer matte component.
+    """
+    transparent=transparent_background(image,policy)
+    rgba=image.convert('RGBA')
+    alpha=Image.new('L',image.size,255)
+    alpha.putdata([0 if i in transparent else 255 for i in range(image.width*image.height)])
+    rgba.putalpha(alpha)
+    native=rgba.resize(size,Image.Resampling.LANCZOS)
+    native.putalpha(native.getchannel('A').point(lambda a:255 if a>=128 else 0))
+    return native
 
 
 def encode_frame(image, frame):

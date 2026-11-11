@@ -1,0 +1,178 @@
+[
+  {
+    "resource": 100,
+    "name": "开始新局选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "569e25813389e8f1beee2a374b80ae1173747592d6fb87fbd72e8fc6db3bbff0",
+    "flags": 32,
+    "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵000.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "dc6892ed6cc989207f408fca48ea37efd306175f8ada553fa36340a9736008d0",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 100,
+    "name": "开始新局选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "e8fb928d17ad586f7dc01838d41454b3e423a91eb9039e4101e7ecb56dd040c6",
+    "flags": 32,
+    "color": "library/菜单动画/开始新局选中动画_资源100/开始新局选中动画_精灵001.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "d2db6907394a6ba48b20e23d819187f04d5fc2a9957f11115501332e525b713b",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 101,
+    "name": "读取存档选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "b9841fc7009391a1f31607ae833a9f3f7bf5d0049ff59b24902b69113730ce8f",
+    "flags": 32,
+    "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵000.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "50d4044ff9101287110e0bd8cb13774360906745c35c84f9b08d8dafa1df08dc",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 101,
+    "name": "读取存档选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "839ade155a9fabaa546416195ef3501042fe0d0ac73ac0f0261efc7ac44129dd",
+    "flags": 32,
+    "color": "library/菜单动画/读取存档选中动画_资源101/读取存档选中动画_精灵001.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "99b7248e842285ed3c5ba3f816ed9c5d441b8c92af256099e522bebb410296f0",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 102,
+    "name": "游戏设置选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "ad6c2ee642a82a60db42a51d0703362602eb38b93756e23bcd8f54e95288af52",
+    "flags": 32,
+    "color": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵000.png",
+    "batch": "wood-ui-settings-menu-states",
+    "color_sha256": "61458774f292519b5832bc7cb750bf9c68f2b8d6aa892beb98edc12ee426d34d",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 102,
+    "name": "游戏设置选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "34f785115bd18159ec44056df50abd9f68e6474d824f2de8cff86945821227dd",
+    "flags": 32,
+    "color": "library/菜单动画/游戏设置选中动画_资源102/游戏设置选中动画_精灵001.png",
+    "batch": "wood-ui-settings-menu-states",
+    "color_sha256": "91fd9aff1be0c1ff30e210fe23b4c98c4fa27ed81aff014df30fa89123121ce6",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 103,
+    "name": "退出游戏选中动画",
+    "image": 0,
+    "frame": 0,
+    "source": "菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "a333523461c10981ad4a22c69cbf29785e4c1d2807ab39588467953e5809cdbb",
+    "flags": 32,
+    "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵000.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "7ce078226e97b506ba77721f435b14ec7a8b68a86e7daa0b609047b51076e29b",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  },
+  {
+    "resource": 103,
+    "name": "退出游戏选中动画",
+    "image": 1,
+    "frame": 0,
+    "source": "菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+    "size": [
+      126,
+      57
+    ],
+    "source_rgba_sha256": "ba8ddf112d506329305ed34ffed481e96de499ad71c19b25f3ac476aa655f87a",
+    "flags": 32,
+    "color": "library/菜单动画/退出游戏选中动画_资源103/退出游戏选中动画_精灵001.png",
+    "batch": "wood-ui-menu-states",
+    "color_sha256": "77fab3cfb0e8cc303c3394441f72b1db96dfafc7906bed3d07c59354b45bd113",
+    "transparency": {
+      "mode": "edge-connected-white",
+      "minimum_channel": 225,
+      "maximum_chroma": 24,
+      "reason": "Only external white sprite-sheet corner matte; keep enclosed pale wood and lettering opaque."
+    }
+  }
+]

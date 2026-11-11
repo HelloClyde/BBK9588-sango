@@ -72,6 +72,8 @@ def main():
                     'canvas':list(states.size),'items':state_items})
     for batch in imports:
         batch.update(status='reviewed',prompt='prompts/'+batch['id']+'.txt')
+        if batch['id']=='wood-ui-settings-menu-states':
+            batch['alpha_import']={'mode':'edge-connected-white','minimum_channel':200,'maximum_chroma':40}
         catalog['batches']=[b for b in catalog['batches'] if b['id']!=batch['id']]+[batch]
     color.write_catalog(catalog)
     for batch in imports:

@@ -15,6 +15,8 @@
 
 32项MIPS设置检查与19项原生C200界面检查通过；后者按精确字节载入BDA/LIB/CLR，隔离合成NAND的ECC差异。报告见 `validation/settings-validation.json` 和 `validation/wood-settings-validation.json`，不宣称真机音量或完整战役通过。
 
+后续主菜单白边修复只改八张菜单PNG的透明导入及CLR，BDA、LIB和设置/署名图片字节不变。白底在缩放前解析，保留木色边框和文字；针对新CLR另做编译MIPS透明检查和原生四选项/两状态合成检查。前述19项界面报告保留其修复前CLR哈希，不改写为新结果。
+
 | 设置页 | 制作群组 |
 | --- | --- |
 | ![设置默认值](screenshots/settings/settings-default.png) | ![优化署名](screenshots/settings/credits-author.png) |

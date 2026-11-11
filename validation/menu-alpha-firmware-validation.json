@@ -1,0 +1,70 @@
+{
+  "passed": 10,
+  "failed": 0,
+  "bda_sha256": "796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3",
+  "library_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+  "color_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
+  "scope": "Actual native C200 RGB SDK, all8 menu state composites and animated keyboard/touch controllers. Exact BDA/LIB/CLR staged on dedicated synthetic NAND with isolated diagnostic entry. No physical-device/full-campaign claim.",
+  "cases": [
+    {
+      "name": "Native menu row0 state0 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row0-state0.png",
+      "screenshot_sha256": "c0d9afffaf8bcb4c86559dae083e73f5977092f305a4f073de02f0ce7db4425b"
+    },
+    {
+      "name": "Native menu row0 state1 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row0-state1.png",
+      "screenshot_sha256": "0e81e2282cfb81eff748cf281818097c5e3725921f1330d986a3415749508788"
+    },
+    {
+      "name": "Native menu row1 state0 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row1-state0.png",
+      "screenshot_sha256": "d29a0efc935cf4bb3f61d95fecd88469e25131515c972f0ce7f2df81656db484"
+    },
+    {
+      "name": "Native menu row1 state1 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row1-state1.png",
+      "screenshot_sha256": "91697f6d87a56398641e4f9dcae70d70b4e79251ea0372291da9f7a42aacf7f2"
+    },
+    {
+      "name": "Native menu row2 state0 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row2-state0.png",
+      "screenshot_sha256": "2814755801c099739f30f803e2d54395cd40fae487e50340f16456651e821f8a"
+    },
+    {
+      "name": "Native menu row2 state1 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row2-state1.png",
+      "screenshot_sha256": "712cdb86f4c4a7d3d0414a4084fae6d274acc630d19311239f578d93b7942301"
+    },
+    {
+      "name": "Native menu row3 state0 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row3-state0.png",
+      "screenshot_sha256": "1227c8b0522b045b04c955695638c067c5218636904e3486e2a67cc6d3366ffb"
+    },
+    {
+      "name": "Native menu row3 state1 exactly composites alpha over wood",
+      "passed": true,
+      "screenshot": "row3-state1.png",
+      "screenshot_sha256": "02b88fa4591dfb41813694547d22871d4724857ead770eedb0e24bc1472aa27b"
+    },
+    {
+      "name": "Animated keyboard selection still returns settings row2",
+      "passed": true,
+      "screenshot": "keyboard-row2.png",
+      "screenshot_sha256": "712cdb86f4c4a7d3d0414a4084fae6d274acc630d19311239f578d93b7942301"
+    },
+    {
+      "name": "Animated touch selection still returns exit row3",
+      "passed": true,
+      "screenshot": "row3-state0.png",
+      "screenshot_sha256": "1227c8b0522b045b04c955695638c067c5218636904e3486e2a67cc6d3366ffb"
+    }
+  ]
+}

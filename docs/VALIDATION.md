@@ -2,13 +2,15 @@
 
 ## 当前开发版 alpha.8
 
-游戏设置、木色补齐及新增署名的BDA为237124字节，SHA-256 `796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3`；LIB为518848字节，SHA-256 `a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c`；CLR为2759168字节，SHA-256 `6103e31216fbc9d2992fb5aaa653099c23c1fa17af650b3680e42e49888d87af`。
+游戏设置、木色补齐及新增署名的BDA为237124字节，SHA-256 `796f3426379137e0bdf00f1c5de2aec5e3d23dba728763aca6bef6722c7110f3`；LIB为518848字节，SHA-256 `a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c`；CLR为2759168字节，SHA-256 `4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e`。
 
-当前确切构建通过4482项编译MIPS检查：设置32、彩色3926、音乐65、存档104、菜单44、触摸132、开门41、势力页138；另有2项本地旧版问题重现不计入本数。原87条资源和45536字节初始化数据保持原字节，93项资源语义核对和10项LIB回包检查通过。逐项报告见 `validation/alpha8-*-validation.json` 及 [当前参考](../validation/reference-build.json)。
+设置版通过4482项编译MIPS检查：设置32、彩色3926、音乐65、存档104、菜单44、触摸132、开门41、势力页138；另有2项本地旧版问题重现不计入本数。原87条资源和45536字节初始化数据保持原字节，93项资源语义核对和10项LIB回包检查通过。逐项报告见 `validation/alpha8-*-validation.json` 及 [当前参考](../validation/reference-build.json)。
 
 19项原生C200检查覆盖设置底图全静态区域、实际开关/音量/返回、制作群组完整像素与新增署名、历史时期整页及8张选中帧、实际剧本选择和木色读档取消。截图和精确范围见 [设置界面](GAME_SETTINGS.md) 与 [原生记录](../validation/wood-settings-validation.json)。使用独立合成NAND和精确字节RAM载入，不表示真机音量表现、原生配置文件持久化或完整战役通过。
 
 固定SDK与编译器保持alpha.7版本；设置独立保存在资源目录的`sango.cfg`，升级包不覆盖该文件。此前alpha.7的更广战斗/战略检查保留原哈希，未计为alpha.8本轮新跑。
+
+菜单白边修复另有34项透明导入/真实MIPS检查和10项原生菜单检查，验证四个选项的两种状态及按键/触摸；本轮新CLR的3926项彩色检查通过。仅八张菜单PNG与CLR改变，BDA、LIB、其余1232帧保持原字节。设置版的相关代码检查沿用相同BDA，旧报告保留其原CLR哈希；前述19项原生设置页验证不计作新CLR的新跑结果。新原生记录见 `validation/menu-alpha-firmware-validation.json`，导入来源见 `assets/color/menu-alpha-provenance.json`。
 
 ## alpha.7历史记录
 

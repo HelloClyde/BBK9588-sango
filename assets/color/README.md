@@ -105,6 +105,8 @@ SGCOLOR1的1204条原索引保持不变，可选的原尺寸状态图追加在�
 
 设置页与木色补齐共更新14帧原生图片，新增078号设置底图。母图、提示词和精确裁切框见 [wood-settings-provenance.json](wood-settings-provenance.json)，以前版本保存在 `variants/before-wood-settings/`。制作群组图片底部的“优化作者 HelloClyde”已烘焙在素材内。`python tools/prepare_wood_settings_assets.py` 可重新导入这些母图；开关状态与音量百分比由原生透明字形绘制，固定标题和按钮文字来自图片。
 
+主菜单八张状态图现从母图先解析外侧白底，再用预乘Alpha缩到126×57，最后编码二值透明键；避免缩放后再抠白底留下灰白轮廓。封闭的浅木面板和浅色文字保留不透明，其他1232帧不变。`python tools/prepare_menu_transparency.py` 可从原母图重导；修复前PNG位于 `variants/menu-white-matte/`，来源见 [menu-alpha-provenance.json](menu-alpha-provenance.json)。
+
 ## 势力选择木质页与君主预览
 
 势力选择使用同风格底图、48×48君主头像和深木色选中条（资源052、053、077）。背景由GPT Image生成，头像从对应剧本原有高清母图裁切，未放大24像素PNG。50个剧本君主选择的姓名、原头像ID和33张预览帧的映射由实际城市归属与代码确定。素材、裁切和提示词见 [来源记录](../ruler/provenance.json)，使用和验证见 [势力选择](../../docs/RULER_SELECTION.md)。

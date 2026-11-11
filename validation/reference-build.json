@@ -4,14 +4,14 @@
   "bda_bytes": 237124,
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "compiler": "mipsel-none-elf-gcc.exe (GCC) 15.2.0",
-  "mips_checks": 4482,
-  "native_firmware_interface_checks": 19,
+  "mips_checks": 4516,
+  "native_firmware_interface_checks": 10,
   "physical_device_verified": false,
   "complete_campaign_verified": false,
   "original_sango_lib_sha256": "42920210b5a130781ed1f1cce4bdaca3fc1bb95f14fac8d88d170a9ad77490a5",
   "sango_lib_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
   "sango_lib_bytes": 518848,
-  "sango_clr_sha256": "6103e31216fbc9d2992fb5aaa653099c23c1fa17af650b3680e42e49888d87af",
+  "sango_clr_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
   "sango_clr_bytes": 2759168,
   "color_frames": 1240,
   "color_unique_rgb_frames": 690,
@@ -48,10 +48,14 @@
     "ruler-ui": {
       "checks": 138,
       "report": "validation/alpha8-ruler-ui-validation.json"
+    },
+    "menu-alpha": {
+      "checks": 34,
+      "report": "validation/menu-alpha-validation.json"
     }
   },
-  "native_report": "validation/wood-settings-validation.json",
-  "runtime_evidence_basis": "Current exact BDA/LIB/CLR. Compiled MIPS settings, music, color, save-layout, menu, touch, intro and ruler checks.19 native C200 settings/font/touch/credits/scenario/state/save UI checks using controlled entry, dedicated synthetic NAND and exact-byte RAM staging. Not native filesystem persistence, physical audio performance or full-campaign evidence.",
+  "native_report": "validation/menu-alpha-firmware-validation.json",
+  "runtime_evidence_basis": "Eight menu sprites only: source matte parsed before premultiplied RGBA reduction. Current CLR passes3926 compiled-MIPS color checks,34 alpha checks and10 native C200 menu composite/controller checks. BDA/LIB remain byte-identical to the settings build; its settings/music/save/menu/touch/intro/ruler tests apply to the same code and unchanged relevant art. Earlier19 native settings tests keep their original CLR hash and are not counted as new. Dedicated synthetic NAND and exact-byte RAM staging, no physical-device/full-campaign claim.",
   "historical_evidence": "Broader battle/strategy/runtime checks in alpha.7 and earlier reports retain their hashes and are not counted as freshly rerun here.Original87 resource record bytes/offsets and45536 initialized bytes remain exact.",
   "music_bytes": 5834932,
   "music_tracks": [
