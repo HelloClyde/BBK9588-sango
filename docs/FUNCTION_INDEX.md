@@ -391,9 +391,9 @@ SDK窗口消息及基础绘图适配。
 | `0x81c11bbc` | [`sango_character_pay_action`](../src/strategy/aftermath.c#L627) |
 | `0x81c11c28` | [`sango_city_find_weakest_target`](../src/strategy/aftermath.c#L640) |
 | `0x81c11d98` | [`sango_strategy_show_army_attack`](../src/strategy/aftermath.c#L711) |
-| `0x81c11f18` | [`sango_strategy_show_armies_engage`](../src/strategy/aftermath.c#L743) |
-| `0x81c12058` | [`sango_strategy_show_battle_victory`](../src/strategy/aftermath.c#L768) |
-| `0x81c12188` | [`sango_strategy_show_battle_defeat`](../src/strategy/aftermath.c#L796) |
+| `0x81c11f18` | [`sango_strategy_show_armies_engage`](../src/strategy/aftermath.c#L745) |
+| `0x81c12058` | [`sango_strategy_show_battle_victory`](../src/strategy/aftermath.c#L772) |
+| `0x81c12188` | [`sango_strategy_show_battle_defeat`](../src/strategy/aftermath.c#L802) |
 
 ## src/strategy/rosters.c
 
@@ -439,8 +439,8 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c13b9c` | [`sango_ui_input_food_amount`](../src/ui/numeric.c#L6) |
-| `0x81c13c3c` | [`sango_ui_input_money_amount`](../src/ui/numeric.c#L23) |
-| `0x81c13cdc` | [`sango_ui_input_troop_amount`](../src/ui/numeric.c#L40) |
+| `0x81c13c3c` | [`sango_ui_input_money_amount`](../src/ui/numeric.c#L25) |
+| `0x81c13cdc` | [`sango_ui_input_troop_amount`](../src/ui/numeric.c#L43) |
 
 ## src/app/memory.c
 
@@ -478,14 +478,14 @@ SDK窗口消息及基础绘图适配。
 | `0x81c14cac` | [`sango_font_load_glyph`](../src/render/raster.c#L443) |
 | `0x81c14d98` | [`sango_font_glyph_offset`](../src/render/raster.c#L486) |
 | `0x81c14dd8` | [`sango_ui_show_message`](../src/render/raster.c#L493) |
-| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L521) |
-| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L529) |
-| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L566) |
-| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L608) |
-| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L616) |
-| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L629) |
-| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L637) |
-| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L649) |
+| `0x81c14f98` | [`sango_render_present`](../src/render/raster.c#L523) |
+| `0x81c14fb8` | [`sango_bitmap_draw_frame_screen`](../src/render/raster.c#L531) |
+| `0x81c15070` | [`sango_bitmap_draw_frame`](../src/render/raster.c#L568) |
+| `0x81c15134` | [`sango_text_draw_context`](../src/render/raster.c#L610) |
+| `0x81c151a8` | [`sango_text_reset_clip_bounds`](../src/render/raster.c#L618) |
+| `0x81c151e4` | [`sango_text_draw_character`](../src/render/raster.c#L631) |
+| `0x81c15210` | [`sango_render_clear_rectangle`](../src/render/raster.c#L639) |
+| `0x81c152a4` | [`sango_bitmap_rectangle_byte_count`](../src/render/raster.c#L651) |
 
 ## src/resources/library.c
 
@@ -568,15 +568,15 @@ SDK窗口消息及基础绘图适配。
 | 原地址 | 当前函数／源码位置 |
 | --- | --- |
 | `0x81c17c48` | [`sango_ui_show_city_event`](../src/ui/info_panels.c#L6) |
-| `0x81c17e18` | [`sango_strategy_spawn_items_for_year`](../src/ui/info_panels.c#L61) |
-| `0x81c17eb4` | [`sango_item_remove_attributes`](../src/ui/info_panels.c#L87) |
-| `0x81c17f44` | [`sango_ui_show_strategy_text`](../src/ui/info_panels.c#L106) |
-| `0x81c17f78` | [`sango_ui_draw_character_panel`](../src/ui/info_panels.c#L118) |
-| `0x81c18024` | [`sango_ui_show_character_message`](../src/ui/info_panels.c#L135) |
-| `0x81c18150` | [`sango_item_mark_discovered`](../src/ui/info_panels.c#L166) |
-| `0x81c181b8` | [`sango_city_list_items`](../src/ui/info_panels.c#L193) |
-| `0x81c18248` | [`sango_city_find_item`](../src/ui/info_panels.c#L227) |
-| `0x81c182d0` | [`sango_city_neighbor_direction`](../src/ui/info_panels.c#L261) |
+| `0x81c17e18` | [`sango_strategy_spawn_items_for_year`](../src/ui/info_panels.c#L63) |
+| `0x81c17eb4` | [`sango_item_remove_attributes`](../src/ui/info_panels.c#L89) |
+| `0x81c17f44` | [`sango_ui_show_strategy_text`](../src/ui/info_panels.c#L108) |
+| `0x81c17f78` | [`sango_ui_draw_character_panel`](../src/ui/info_panels.c#L120) |
+| `0x81c18024` | [`sango_ui_show_character_message`](../src/ui/info_panels.c#L137) |
+| `0x81c18150` | [`sango_item_mark_discovered`](../src/ui/info_panels.c#L170) |
+| `0x81c181b8` | [`sango_city_list_items`](../src/ui/info_panels.c#L197) |
+| `0x81c18248` | [`sango_city_find_item`](../src/ui/info_panels.c#L231) |
+| `0x81c182d0` | [`sango_city_neighbor_direction`](../src/ui/info_panels.c#L265) |
 
 ## src/ui/lists.c
 
@@ -607,8 +607,8 @@ SDK窗口消息及基础绘图适配。
 | `0x81c19748` | [`sango_city_format_attribute`](../src/ui/city_details.c#L13) |
 | `0x81c19a98` | [`sango_city_format_status`](../src/ui/city_details.c#L133) |
 | `0x81c19b1c` | [`sango_ui_show_city_details`](../src/ui/city_details.c#L158) |
-| `0x81c19cac` | [`sango_load_named_text`](../src/ui/city_details.c#L239) |
-| `0x81c19d30` | [`sango_strategy_run_player_commands`](../src/ui/city_details.c#L267) |
+| `0x81c19cac` | [`sango_load_named_text`](../src/ui/city_details.c#L241) |
+| `0x81c19d30` | [`sango_strategy_run_player_commands`](../src/ui/city_details.c#L269) |
 
 ## src/strategy/ai.c
 
@@ -643,7 +643,7 @@ SDK窗口消息及基础绘图适配。
 | --- | --- |
 | `0x81c1b2b4` | [`sango_ui_show_system_menu`](../src/ui/system_menu.c#L6) |
 | `0x81c1b364` | [`sango_ui_select_number`](../src/ui/system_menu.c#L44) |
-| `0x81c1b784` | [`sango_ui_show_ai_progress`](../src/ui/system_menu.c#L179) |
+| `0x81c1b784` | [`sango_ui_show_ai_progress`](../src/ui/system_menu.c#L185) |
 
 ## src/strategy/session.c
 

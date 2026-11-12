@@ -1,7 +1,7 @@
 {
   "passed": 41,
   "failed": 0,
-  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "bda_sha256": "d1e4bf278817f082c9f8900a04a0e510ed5be506c36173745fe3283ce0d59789",
   "scope": "Compiled MIPS leaf composition, timer isolation, real touch recognizer, skip/drag/failure/cleanup and actual startup wiring. SDK copies/input modeled; native moving-frame screenshots checked separately.",
   "cases": [
     {

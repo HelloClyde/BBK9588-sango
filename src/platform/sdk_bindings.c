@@ -322,11 +322,11 @@ void sango_display_present_context(uint32_t destination_context, uint32_t source
     {
         if (source_context != 0)
         {
-            bda_sango_gui_draw_guard(1);
+            sango_ui_paint_guard(1);
             bda_sango_gui_context_copy(source_context, 0, 0, 0xf0, 0x140, g_draw_context, 0, 0,
                                        0xf81f);
-            bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-            bda_sango_gui_draw_guard(0);
+            sango_ui_paint_redraw();
+            sango_ui_paint_guard(0);
         }
     }
     else
@@ -365,10 +365,10 @@ void sango_display_invert_rectangle(short left, short top, short right, short bo
     origin_y = (int)top;
     if (context == 0)
     {
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_draw_aux_rectangle(g_draw_context, origin_x, origin_y, right - origin_x,
                                          bottom - origin_y);
-        bda_sango_gui_draw_guard(0);
+        sango_ui_paint_guard(0);
     }
     else
     {
@@ -445,9 +445,9 @@ void sango_text_draw_native(short x, short y, char *text, uint32_t context)
 {
     if (context == 0)
     {
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_draw_text(g_draw_context, (int)x, (int)y, text, -1);
-        bda_sango_gui_draw_guard(0);
+        sango_ui_paint_guard(0);
     }
     else
     {
@@ -735,11 +735,11 @@ int bbk_message_box(char *message, char *title, uint32_t flags)
         bda_sango_gui_context_copy(g_draw_context, 0, 0, 0xf0, 0x140,
                                    (uint32_t)saved_screen_context, 0, 0, 0xf81f);
         dialog_result = bda_sango_gui_message_box(0, message, title, flags);
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_context_copy((uint32_t)saved_screen_context, 0, 0, 0xf0, 0x140,
                                    g_draw_context, 0, 0, 0xf81f);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-        bda_sango_gui_draw_guard(0);
+        sango_ui_paint_redraw();
+        sango_ui_paint_guard(0);
         bda_sango_gui_compatible_free(saved_screen_context);
     }
     return dialog_result;

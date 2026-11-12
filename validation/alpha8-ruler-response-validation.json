@@ -1,7 +1,7 @@
 {
   "passed": 34,
   "failed": 0,
-  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "bda_sha256": "d1e4bf278817f082c9f8900a04a0e510ed5be506c36173745fe3283ce0d59789",
   "adjacent_preview_window_pixels": 13117,
   "previous_full_window_pixels": 76800,
   "scope": "Actual compiled MIPS faction controller and compositor. Native SDK picture/text/copy/present boundaries modeled; first real input, complete initial commit, explicit contexts, no per-selection allocation/per-pixel image calls, dirty areas, scrolling, blink and canvas fallbacks checked. Native visuals/response separately tested; no physical latency claim.",

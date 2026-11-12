@@ -73,6 +73,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Save layout regression failed' }
           python tools/test_menu_input.py
           if ($LASTEXITCODE -ne 0) { throw 'Menu/table paint scopes or ruler input regression failed' }
+          python tools/test_menu_atomic.py
+          if ($LASTEXITCODE -ne 0) { throw 'Popup outer frame or intermediate firmware flush regression failed' }
           python tools/test_intro.py
           if ($LASTEXITCODE -ne 0) { throw 'Opening-door motion, timer isolation or skip regression failed' }
           python tools/test_ruler_ui.py

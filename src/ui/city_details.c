@@ -212,6 +212,7 @@ uint32_t sango_ui_show_city_details(uint8_t city_id)
             }
             first_attribute = attribute_index_or_page & 0xff;
         redraw_attributes:
+            sango_ui_paint_begin();
             sango_display_fill_gray_rectangle(0x45, 2, 0xa9, 0x13a, 0, 0);
             attribute_format_argument = 0x13b;
             sango_display_draw_rectangle(0x44, 1, 0xaa, 0x13b, 3, 0, 0);
@@ -227,6 +228,7 @@ uint32_t sango_ui_show_city_details(uint8_t city_id)
                 visible_row = visible_row + 1 & 0xff;
                 attribute_index_or_page = first_attribute + visible_row;
             } while (visible_row < 0x17);
+            sango_ui_paint_end();
             initial_draw = false;
         }
     } while (true);

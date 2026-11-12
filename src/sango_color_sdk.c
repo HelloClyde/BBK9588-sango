@@ -9,7 +9,7 @@ void sango_color_sdk_pixel(uint32_t context, int x, int y, uint16_t color)
 
 void sango_color_sdk_guard(int enabled)
 {
-    bda_sango_gui_draw_guard(enabled);
+    sango_ui_paint_guard(enabled);
 }
 
 /* Native font pixels are drawn at their original size on the existing art.

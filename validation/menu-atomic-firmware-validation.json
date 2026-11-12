@@ -1,0 +1,152 @@
+{
+  "passed": 26,
+  "failed": 0,
+  "bda_sha256": "d1e4bf278817f082c9f8900a04a0e510ed5be506c36173745fe3283ce0d59789",
+  "library_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+  "color_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
+  "baseline_bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "fixture_sha256": "ab4e175c48c332f0735f00fcbd677582b861358a099442300a3e218543f44319",
+  "fixture_source_sha256": "43beb7530ff221c8025620012feac6964db702803480411785b726b640a22cf1",
+  "observer_sha256": "e53ab2fc612f58f9a8e0c322aec8530de9852ed813a096fedaa6d7cfe098043c",
+  "scope": "Native C200 production menu/frame/font/SDK paths, observed by pausing immediately before first content draw and reading physical LCD, then resuming to capture completed dialogs. Eight dialogs cover command group, domestic, diplomacy, military, character/item tables, numeric amount and city details. Exact pre-fix BDA independently reproduces the early rectangle; completed command-group pixels remain byte-identical. Dedicated synthetic NAND, exact BDA/LIB/CLR RAM staging, no production memory or SDK substitution. Observation fixture is excluded from delivery. Boundary sampling is not a vsync, physical-device latency, full campaign or native filesystem claim.",
+  "cases": [
+    {
+      "name": "command-group: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_text_draw_legacy"
+    },
+    {
+      "name": "command-group: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "command-group: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/command-group.png",
+      "screenshot_sha256": "58f9582ba8e7cbce271524fb24302f86fd4d8290162330273e22f4e8ab83a7db"
+    },
+    {
+      "name": "domestic: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_text_draw_legacy"
+    },
+    {
+      "name": "domestic: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "domestic: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/domestic.png",
+      "screenshot_sha256": "aad5872f3254c2d6b674aea57348be64cbf0cc69a233a959c3261c43c4dc6d17"
+    },
+    {
+      "name": "diplomacy: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_text_draw_legacy"
+    },
+    {
+      "name": "diplomacy: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "diplomacy: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/diplomacy.png",
+      "screenshot_sha256": "f313c3e0bc91c30b61892d523843da7daada4ea51cfd8e4a89ab0a5be5cd33d2"
+    },
+    {
+      "name": "military: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_text_draw_legacy"
+    },
+    {
+      "name": "military: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "military: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/military.png",
+      "screenshot_sha256": "eb66df12d164f6b8ff53c736d256fa8200736d9668a92983499317559eba1de5"
+    },
+    {
+      "name": "characters: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_ui_draw_character_header"
+    },
+    {
+      "name": "characters: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "characters: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/characters.png",
+      "screenshot_sha256": "e3a3c03c5aa47ae4ae765b88c1a400ab95815629f8f3ec9442b254257905c066"
+    },
+    {
+      "name": "items: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_ui_draw_item_header"
+    },
+    {
+      "name": "items: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "items: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/items.png",
+      "screenshot_sha256": "9133b69ac3f886818f6c40edc7d28c746ada57048482678e4c03194a66a64a67"
+    },
+    {
+      "name": "amount: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_text_draw_legacy"
+    },
+    {
+      "name": "amount: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "amount: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/amount.png",
+      "screenshot_sha256": "9390eb47d8f0676f53962423629ad6f645131c44aa46aefb988ece78226edc22"
+    },
+    {
+      "name": "city-details: observed actual first content entry after frame construction",
+      "passed": true,
+      "boundary": "sango_text_draw_legacy"
+    },
+    {
+      "name": "city-details: physical LCD still contains original full background before content is ready",
+      "passed": true,
+      "lcd_sha256": "c1bf9d7a56cba0ab29a10a35898b48e2142e4fd10137f6d5cc38487d5e60b372"
+    },
+    {
+      "name": "city-details: final popup contains native text and completed fields",
+      "passed": true,
+      "screenshot": "docs/screenshots/menu-atomic/city-details.png",
+      "screenshot_sha256": "fb0e512043aecaa0a9a9aa982f6a0f119cdabc5251fe35d4315a31dd1c60f2df"
+    },
+    {
+      "name": "Pre-fix exact BDA reproduces premature outer frame at first text entry",
+      "passed": true,
+      "baseline_bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+      "lcd_sha256": "52a3d5f6529a63697643a0f4f61426d047d0bd4b9e924f1d856a0eede1961f38"
+    },
+    {
+      "name": "Finished command-group pixels are unchanged by flush suppression",
+      "passed": true
+    }
+  ]
+}

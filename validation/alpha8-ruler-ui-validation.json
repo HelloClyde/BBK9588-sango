@@ -1,7 +1,7 @@
 {
   "passed": 138,
   "failed": 0,
-  "bda_sha256": "16db08f6275f63f8c6c95c2e7b9b934dc8c3105afeff257a5025151f691fb0c9",
+  "bda_sha256": "d1e4bf278817f082c9f8900a04a0e510ed5be506c36173745fe3283ce0d59789",
   "library_sha256": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
   "color_sha256": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
   "scope": "Actual MIPS faction controller, scenario loader and portrait renderer; all50 original scenario rulers use matching portrait/name IDs. Touch previews, explicit buttons, scrolling, bounds and borrowed-canvas ownership checked. SDK pixels/text/context boundaries modeled; native page/font checked separately.",

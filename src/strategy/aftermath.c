@@ -714,6 +714,7 @@ void sango_strategy_show_army_attack(uint8_t ruler_id, char city_id)
     char *message;
     char *text_part;
 
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(0x3b, 0x75, 0xb3, 0xc9, 0, 0);
     sango_display_draw_rectangle(0x3b, 0x75, 0xb3, 0xc9, 3, 0, 0);
     event_images = (uint8_t *)sango_resource_item(0x4c, '\x01', g_resource_package_address);
@@ -733,6 +734,7 @@ void sango_strategy_show_army_attack(uint8_t ruler_id, char city_id)
     sango_city_read_name(city_id, text_part);
     bbk_strcat(message, text_part);
     sango_text_draw_centered(0x77, 0xb9, message);
+    sango_ui_paint_end();
     sango_input_wait(0x1e, '\0');
     sango_render_clear_rectangle(0x78, 0xd4, 0x9f, 0xef, g_game_context);
     sango_text_draw_context(0x78, 0xd4, text_part, g_game_context);
@@ -746,6 +748,7 @@ void sango_strategy_show_armies_engage(uint8_t first_ruler, uint8_t second_ruler
     char *text_part;
     char *message;
 
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(0x3b, 0x75, 0xb3, 0xc9, 0, 0);
     sango_display_draw_rectangle(0x3b, 0x75, 0xb3, 0xc9, 3, 0, 0);
     event_images = (uint8_t *)sango_resource_item(0x4c, '\x01', g_resource_package_address);
@@ -760,6 +763,7 @@ void sango_strategy_show_armies_engage(uint8_t first_ruler, uint8_t second_ruler
     sango_resource_read_text(0x40, 0x69, text_part);
     bbk_strcat(message, text_part);
     sango_text_draw_centered(0x77, 0xb9, message);
+    sango_ui_paint_end();
     sango_input_wait(0x32, '\0');
     return;
 }
@@ -771,6 +775,7 @@ void sango_strategy_show_battle_victory(uint8_t owner_id)
     char *message;
     char *text_part;
 
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(0x3b, 0x75, 0xb3, 0xc9, 0, 0);
     sango_display_draw_rectangle(0x3b, 0x75, 0xb3, 0xc9, 3, 0, 0);
     event_images = (uint8_t *)sango_resource_item(0x4c, '\x01', g_resource_package_address);
@@ -788,6 +793,7 @@ void sango_strategy_show_battle_victory(uint8_t owner_id)
     sango_resource_read_text(0x40, 0x5b, text_part);
     bbk_strcat(message, text_part);
     sango_text_draw_centered(0x77, 0xb9, message);
+    sango_ui_paint_end();
     sango_input_wait(0x32, '\0');
     return;
 }
@@ -799,6 +805,7 @@ void sango_strategy_show_battle_defeat(void)
     char *text_part;
     char *message;
 
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(0x3b, 0x75, 0xb3, 0xc9, 0, 0);
     sango_display_draw_rectangle(0x3b, 0x75, 0xb3, 0xc9, 3, 0, 0);
     event_images = (uint8_t *)sango_resource_item(0x4c, '\x01', g_resource_package_address);
@@ -809,6 +816,7 @@ void sango_strategy_show_battle_defeat(void)
     sango_resource_read_text(0x40, 0x5c, text_part);
     bbk_strcat(message, text_part);
     sango_text_draw_centered(0x77, 0xb9, message);
+    sango_ui_paint_end();
     sango_input_wait(0x32, '\0');
     return;
 }

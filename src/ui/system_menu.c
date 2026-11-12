@@ -58,6 +58,9 @@ uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
     if (9999 < limit)
         limit = 9999;
     uint32_t value = initial_value & 0xffff;
+    /* Amount dialogs already began before drawing their outer frame. */
+    if (!sango_ui_paint_active())
+        sango_ui_paint_begin();
     sango_resource_read_text(0x40, 0x2c, prompt_text);
     sango_text_draw_legacy(0x53, 0x99, prompt_text);
     sango_resource_read_text(0x40, 0x2d, prompt_text);
@@ -73,6 +76,8 @@ uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
     {
         if (redraw_digits)
         {
+            if (!sango_ui_paint_active())
+                sango_ui_paint_begin();
             /* 保留原来的逐位生成和8/16位转换，包括超出上限的初始值。 */
             char low_value_byte = (char)value;
             if (last_digit_index == 3)
@@ -104,6 +109,7 @@ uint32_t sango_ui_select_number(uint32_t initial_value, uint32_t maximum_value)
             sango_text_draw_legacy(0x7d, 0x99, &digit0);
             short highlight_offset = (short)digit_index * 6;
             redraw_digits = false;
+            sango_ui_paint_end();
             sango_display_invert_rectangle(highlight_offset + 0x7d, 0x99, highlight_offset + 0x82,
                                            0xa4, 0);
         }

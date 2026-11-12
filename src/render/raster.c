@@ -505,11 +505,13 @@ void sango_ui_show_message(char *text, uint32_t wait_units)
         g_text_bottom_view2 = 0x13a;
         g_text_top = 5;
     }
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(g_text_left - 3, g_text_top - 3, g_text_right_view2 + 3,
                                       g_text_bottom_view2 + 2, 0, 0);
     sango_display_draw_rectangle(g_text_left - 3, g_text_top - 3, g_text_right_view2 + 3,
                                  g_text_bottom_view2 + 2, 3, 0, 0);
     sango_text_draw_legacy(g_text_left, g_text_top, text);
+    sango_ui_paint_end();
     if ((wait_units & 0xff) != 0)
     {
         sango_input_wait((short)(wait_units & 0xff) * 0x28, '\x01');

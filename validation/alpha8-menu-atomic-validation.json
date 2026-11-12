@@ -1,0 +1,156 @@
+{
+  "passed": 37,
+  "failed": 0,
+  "bda_sha256": "d1e4bf278817f082c9f8900a04a0e510ed5be506c36173745fe3283ce0d59789",
+  "scope": "Actual compiled MIPS modal controllers; all frame/content draws must target compatible canvas before a single publish and before input. Native physical LCD sampled separately. Optional old ELF reproduces early-frame defect. No physical-device latency claim.",
+  "cases": [
+    {
+      "name": "character: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "character: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "item: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "item: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "food: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "food: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "food: first publish contains buttons and initial digits",
+      "passed": true
+    },
+    {
+      "name": "money: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "money: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "money: first publish contains buttons and initial digits",
+      "passed": true
+    },
+    {
+      "name": "troop: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "troop: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "troop: first publish contains buttons and initial digits",
+      "passed": true
+    },
+    {
+      "name": "city-details: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "city-details: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "message: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "message: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "character-message: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "character-message: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "city-event: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "city-event: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "army-attack: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "army-attack: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "armies-engage: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "armies-engage: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "battle-victory: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "battle-victory: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "battle-defeat: frame and all content are offscreen until one publish",
+      "passed": true
+    },
+    {
+      "name": "battle-defeat: no pending paint or redirected context after input",
+      "passed": true
+    },
+    {
+      "name": "Outside a modal, SDK guard/redraw still reach firmware",
+      "passed": true
+    },
+    {
+      "name": "Offscreen nested paint suppresses every intermediate firmware flush",
+      "passed": true
+    },
+    {
+      "name": "Auxiliary canvas is reused without allocating a snapshot",
+      "passed": true
+    },
+    {
+      "name": "Inner scope cannot reenable window refresh",
+      "passed": true
+    },
+    {
+      "name": "Borrowed canvas is published once and never freed",
+      "passed": true
+    },
+    {
+      "name": "Closing the complete popup restores normal firmware flushing",
+      "passed": true
+    },
+    {
+      "name": "Auxiliary alias with g_game_context cannot overwrite backing storage",
+      "passed": true
+    },
+    {
+      "name": "Auxiliary alias with g_message_context cannot overwrite backing storage",
+      "passed": true
+    }
+  ]
+}

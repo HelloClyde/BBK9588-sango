@@ -254,8 +254,6 @@ uint32_t sango_ui_select_item(int item_ids_address, uint32_t item_count, uint32_
     if (total_rows < visible_rows)
         visible_rows = total_rows;
     uint32_t frame_bottom = box_top + visible_rows * 12 + 12 & 0xff;
-    sango_display_draw_rectangle((short)(left & 0xff), (short)box_top, (uint16_t)right,
-                                 (short)frame_bottom + 1, 3, 0, 0);
 
     uint32_t header_left = (left & 0xff) + 1;
     uint32_t content_left = header_left & 0xff;
@@ -273,6 +271,8 @@ uint32_t sango_ui_select_item(int item_ids_address, uint32_t item_count, uint32_
         if (redraw_table)
         {
             sango_ui_paint_begin();
+            sango_display_draw_rectangle((short)(left & 0xff), (short)box_top,
+                                         (uint16_t)right, (short)frame_bottom + 1, 3, 0, 0);
             sango_display_fill_gray_rectangle(
                 (short)content_left, (short)content_top, (short)content_right,
                 (short)(content_top + visible_rows * 12 + 11), 0, 0);
@@ -686,8 +686,6 @@ uint32_t sango_ui_select_character(int character_ids_address, uint32_t character
     if (total_rows < visible_rows)
         visible_rows = total_rows;
     uint32_t frame_bottom = box_top + visible_rows * 12 + 12 & 0xff;
-    sango_display_draw_rectangle((short)(left & 0xff), (short)box_top, (uint16_t)right,
-                                 (short)frame_bottom + 1, 3, 0, 0);
 
     uint32_t header_left = (left & 0xff) + 1;
     uint32_t content_left = header_left & 0xff;
@@ -705,6 +703,8 @@ uint32_t sango_ui_select_character(int character_ids_address, uint32_t character
         if (redraw_table)
         {
             sango_ui_paint_begin();
+            sango_display_draw_rectangle((short)(left & 0xff), (short)box_top,
+                                         (uint16_t)right, (short)frame_bottom + 1, 3, 0, 0);
             sango_display_fill_gray_rectangle((short)content_left, (short)content_top,
                                               (short)content_right, (short)frame_bottom, 0, 0);
             uint8_t *first_attribute = column_pages + column_page;

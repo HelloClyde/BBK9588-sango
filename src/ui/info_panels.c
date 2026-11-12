@@ -33,6 +33,7 @@ void sango_ui_show_city_event(uint8_t city_id, uint32_t unused_event_value,
         bbk_strcat(destination, source);
         governor_id = governor_one_based - 1;
         sango_strategy_present();
+        sango_ui_paint_begin();
         sango_display_fill_gray_rectangle(4, 0x10b, 0xea, 0x13b, 0, 0);
         sango_display_draw_rectangle(4, 0x10b, 0xea, 0x13a, 3, 0, 0);
         text_boxes[0] = 8;
@@ -49,6 +50,7 @@ void sango_ui_show_city_event(uint8_t city_id, uint32_t unused_event_value,
         sango_load_named_text(governor_id, governor_name);
         sango_text_draw_centered(0x22, 299, governor_name);
         sango_text_draw_wrapped_box(text_boxes, text_boxes + 4, destination);
+        sango_ui_paint_end();
         sango_input_wait(100, '\x01');
     }
     return;
@@ -140,6 +142,7 @@ void sango_ui_show_character_message(uint8_t character_id, char *message)
 
     uint8_t *portraits;
 
+    sango_ui_paint_begin();
     sango_display_fill_gray_rectangle(4, 0x10b, 0xea, 0x13b, 0, 0);
     sango_display_draw_rectangle(4, 0x10b, 0xea, 0x13a, 3, 0, 0);
     text_boxes[0] = 8;
@@ -156,6 +159,7 @@ void sango_ui_show_character_message(uint8_t character_id, char *message)
     sango_load_named_text(character_id, character_name);
     sango_text_draw_centered(0x22, 299, character_name);
     sango_text_draw_wrapped_box(text_boxes, text_boxes + 4, message);
+    sango_ui_paint_end();
     sango_input_wait(100, '\x01');
     return;
 }

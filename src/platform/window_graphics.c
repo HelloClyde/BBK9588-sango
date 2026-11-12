@@ -69,7 +69,7 @@ void sango_display_copy_and_refresh(short source_x, short source_y, uint32_t tar
             if (source_context != 0)
             {
                 bda_sango_gui_context_copy(0, 0, 0, 0xf0, 0x140, g_draw_context, copy_x, copy_y, 0);
-                bda_sango_gui_request_redraw(g_app_frame, 0, 0);
+                sango_ui_paint_redraw();
             }
         }
         else
@@ -126,11 +126,11 @@ void sango_display_fill_rectangle(short left, short top, short right, short bott
         color = (uint32_t)bda_sango_gui_draw_object(brush_kind);
     if (target == 0)
     {
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_bind_image_resource(g_draw_context, color);
         bda_sango_gui_fill_region(g_draw_context, screen_x, screen_y, width, height);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-        bda_sango_gui_draw_guard(0);
+        sango_ui_paint_redraw();
+        sango_ui_paint_guard(0);
     }
     else
     {
@@ -221,7 +221,7 @@ void sango_display_blit_palette_bitmap(short x, short y, short width, short heig
                                         crop_y);
             return;
         }
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         active_draw_context = bda_sango_gui_object_draw_begin(g_app_frame);
         bda_sango_gui_render_region(active_draw_context, screen_x, screen_y, draw_width,
                                     draw_height, bitmap_width, bitmap_height, &descriptor_flags,
@@ -241,7 +241,7 @@ void sango_display_blit_palette_bitmap(short x, short y, short width, short heig
                                         crop_y);
             return;
         }
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         active_draw_context = bda_sango_gui_object_draw_begin(g_app_frame);
         transparent_color = bda_sango_gui_rgb(active_draw_context, 0xff, 0, 0xff);
         bda_sango_gui_render_region(active_draw_context, screen_x, screen_y, draw_width,
@@ -249,7 +249,7 @@ void sango_display_blit_palette_bitmap(short x, short y, short width, short heig
                                     crop_x, crop_y);
     }
     bda_sango_gui_object_draw_end(g_app_frame, active_draw_context);
-    bda_sango_gui_draw_guard(0);
+    sango_ui_paint_guard(0);
     return;
 }
 #undef source_x
@@ -354,7 +354,7 @@ void sango_display_capture_bitmap(short x, short y, short width, short height, s
                                      pixel_data, copy_mode);
         bda_sango_gui_bitmap_buffer((int)x, (int)y, draw_width, draw_height, pixel_data,
                                     g_frame_buffer, copy_mode);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
+        sango_ui_paint_redraw();
     }
 release_pixel_data:
     if (pixel_data != 0)
@@ -420,10 +420,10 @@ void sango_display_put_gray_pixel(short x, short y, uint32_t gray_level, uint32_
     brush_object = bda_sango_gui_draw_object(brush_kind);
     if (draw_context == 0)
     {
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_put_pixel(g_draw_context, screen_x, screen_y, (uint32_t)brush_object);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
-        bda_sango_gui_draw_guard(0);
+        sango_ui_paint_redraw();
+        sango_ui_paint_guard(0);
     }
     else
     {
@@ -539,12 +539,12 @@ void sango_display_draw_line(short start_x, short start_y, short end_x, short en
     if (target_context == 0)
     {
         previous_pen = bda_sango_gui_select_draw_object(g_draw_context, pen_object);
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_move_to(g_draw_context, clipped_start_x, clipped_start_y);
         bda_sango_gui_line_to(g_draw_context, clipped_end_x, clipped_end_y);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
+        sango_ui_paint_redraw();
         bda_sango_gui_select_draw_object(g_draw_context, previous_pen);
-        bda_sango_gui_draw_guard(0);
+        sango_ui_paint_guard(0);
     }
     else if ((clipped_start_x == clipped_end_x) || (clipped_start_y == clipped_end_y))
     {
@@ -714,11 +714,11 @@ draw_rectangle_edges:
     if (context == 0)
     {
         previous_draw_object = bda_sango_gui_select_draw_object(g_draw_context, draw_object);
-        bda_sango_gui_draw_guard(1);
+        sango_ui_paint_guard(1);
         bda_sango_gui_rectangle(g_draw_context, normalized_left, normalized_top,
                                 normalized_right + 1, normalized_bottom + 1);
-        bda_sango_gui_draw_guard(0);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
+        sango_ui_paint_guard(0);
+        sango_ui_paint_redraw();
         bda_sango_gui_select_draw_object(g_draw_context, previous_draw_object);
     }
     edge_left = (short)normalized_left;
@@ -794,7 +794,7 @@ draw_circle:
     {
         previous_pen = bda_sango_gui_select_draw_object(g_draw_context, pen_object);
         bda_sango_gui_circle(g_draw_context, origin_x, origin_y, radius);
-        bda_sango_gui_request_redraw(g_app_frame, 0, 0);
+        sango_ui_paint_redraw();
         bda_sango_gui_select_draw_object(g_draw_context, previous_pen);
     }
     decision_error = radius * -2 + 3;
