@@ -5,7 +5,7 @@
 恢复逻辑已按战斗、战略、存读档、资源、界面和运行库拆成42个模块，函数采用语义名称；
 大型流程和剩余短函数已整理变量名与标签，仍保留部分恢复出的布局和控制流；本项目不是原开发者的工程。
 
-当前开发版为 **0.1.0-alpha.8**，最近已发布版本为 **0.1.0-alpha.7**；源码托管于
+当前版本为 **0.1.0-alpha.8 预发布版**；源码托管于
 [HelloClyde/BBK9588-sango](https://github.com/HelloClyde/BBK9588-sango)。
 构建状态见 [GitHub Actions](https://github.com/HelloClyde/BBK9588-sango/actions)；
 预发布安装包见 [Releases](https://github.com/HelloClyde/BBK9588-sango/releases)。
@@ -178,4 +178,4 @@ python tools/test_color_assets.py
 
 alpha.7同时改善菜单整页绘制、存档槽位对齐与背景音乐读取预算，说明见 [菜单响应](docs/MENU_INPUT.md)、[存档布局](docs/SAVE_LAYOUT.md)、[开门动画](docs/OPENING_ANIMATION.md)及 [音乐播放](docs/MUSIC_PLAYBACK.md)。
 
-后续开发版将主菜单第三项改为“游戏设置”，提供音乐开关、0～100%音量及制作群组入口；偏好独立保存在资源目录的`sango.cfg`。制作群组、存读档及历史时期页补齐木色，制作群组图片新增“优化作者 HelloClyde”。用法、素材来源和原生截图见 [游戏设置](docs/GAME_SETTINGS.md)。正式alpha.7下载仍对应其发布时的验证记录。
+alpha.8将主菜单第三项改为“游戏设置”，提供音乐开关、0～100%音量及制作群组入口；偏好独立保存在资源目录的`sango.cfg`。制作群组、存读档及历史时期页补齐木色，制作群组图片新增“优化作者 HelloClyde”。用法、素材来源和原生截图见 [游戏设置](docs/GAME_SETTINGS.md)。势力页在完整组页后才显示，切换复用画布并更新局部；菜单离屏绘制期间阻止中途刷新，外框、文字、表单和数值按钮齐备后统一提交。主菜单选中图片先处理透明底再缩放，去除白边。对应方法与实际LCD采样见 [菜单绘制](docs/MENU_INPUT.md)；旧版报告保留各自构建哈希。
