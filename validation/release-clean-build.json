@@ -1,13 +1,13 @@
 {
-  "tested_commit": "678f56c46b82c0ed1e4239225572b56d85d761aa",
-  "version": "0.1.0-alpha.7",
+  "tested_commit": "d18f61dfb4527aa58dc0552250c9fe632434756a",
+  "version": "0.1.0-alpha.8",
   "sdk_commit": "ef3bf3b7328a3a8fa9ba48593c63285300725fb7",
   "clean_checkout": true,
   "local_object_cache_only": true,
   "exact_bda_lib_clr_match": {
-    "三国霸业.bda": "c6531141225c27bb5b9de66af004b9b07697a38e156f8eaafbe4bd473ec19b47",
-    "sango.lib": "b99b32769a0144262e7af79bfa9605cdcafafcc55db23b3071fa9a226179e0d3",
-    "sango.clr": "117c6e723d1b88311438c6a4d05825f45c8abc63181ad9bc79c887422250a1df",
+    "三国霸业.bda": "d1e4bf278817f082c9f8900a04a0e510ed5be506c36173745fe3283ce0d59789",
+    "sango.lib": "a95106b2d658ee4c45c4051f7e5d67d7eb3aab5cdb1a4d8cdb921978ccafb18c",
+    "sango.clr": "4c8c66674e6b5c4d924b0c68c78f966d89ec3e06e79f33775d0cc14246ce831e",
     "music/menu.wav": "eab0b2fa27827e60343186bb211bfa744875736d637f5d204ba33f25024aa4a7",
     "music/strategy.wav": "b03814c7b795994fe2b513932b1466921d20f3a9c48b8e2374b148d49e72e3cd",
     "music/battle.wav": "7bcb7c43295ec7c3f397377c3d0d92065f86c0bae4ab9febb801b7868cf09bd8"
@@ -18,6 +18,11 @@
   "compiled_menu_checks": 44,
   "compiled_intro_checks": 41,
   "compiled_ruler_checks": 138,
+  "compiled_menu_atomic_checks": 37,
+  "compiled_ruler_response_checks": 34,
+  "compiled_settings_checks": 32,
+  "compiled_menu_transparency_checks": 34,
+  "compiled_touch_checks": 132,
   "resource_roundtrip_checks": 10,
-  "scope": "Independent clean local source clone and pinned SDK checkout. Configurable GCC15.2.0; no original BDA/LIB, private diagnostic snapshots, FLAC or FFmpeg dependency. Clean build and generated sources remain clean. All six output files exactly match separately runtime-tested payloads. New music/save/menu/intro/ruler checks and full package integrity pass; broader5636 compiled checks and native20 documented separately."
+  "scope": "Independent clean local source clone and pinned SDK checkout. Configurable GCC15.2.0; no original BDA/LIB, private diagnostic snapshots, FLAC or FFmpeg dependency. Clean build and generated sources remain clean. All six output files exactly match separately runtime-tested payloads. Clean-source music/save/menu/atomic/intro/ruler/response/settings/transparency/touch checks and full package integrity pass. Exact final BDA matches the4587 modeled checks and45 native checks recorded separately; Actions runs the wider regression set."
 }
